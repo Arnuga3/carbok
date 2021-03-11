@@ -1,0 +1,7 @@
+{
+  "name": "carbok",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
