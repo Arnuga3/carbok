@@ -4,9 +4,30 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
+import {createStore, applyMiddleware} from 'redux';
+import {Provider as ReduxProvider} from 'react-redux';
+import {createLogger} from 'redux-logger';
+import thunk from 'redux-thunk';
+import reducer from './redux/reducers/index';
+
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+
+const logger = createLogger({
+  collapsed: true,
+  timestamp: false,
+  duration: true,
+});
+
+const store = createStore(reducer, applyMiddleware(logger, thunk));
+
+// Call the element loader after the platform has been bootstrapped
+defineCustomElements(window);
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ReduxProvider store={store}>
+      <App/>
+    </ReduxProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
