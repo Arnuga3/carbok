@@ -12,7 +12,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import { homeOutline, calculatorOutline, pizzaOutline, fastFoodOutline } from 'ionicons/icons';
 import Home from './pages/home/Home';
 import Calculator from './pages/calculator/Calculator';
-import Meals from './pages/meals/Meals';
+import { Meals } from './pages/meals/Meals';
 import Products from './pages/products/Products';
 
 /* Core CSS required for Ionic components to work properly */
@@ -33,6 +33,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { Meal } from './pages/meals/meal/Meal';
 
 const App: React.FC = () => (
   <IonApp>
@@ -40,37 +41,30 @@ const App: React.FC = () => (
       <IonTabs>
 
         <IonRouterOutlet>
-          <Route exact path="/home">
-            <Home />
-          </Route>
-          <Route exact path="/calculator">
-            <Calculator />
-          </Route>
-          <Route path="/meals">
-            <Meals />
-          </Route>
-          <Route path="/products">
-            <Products />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/meals" />
+          <Route exact path='/:tab(home)' component={Home}/>
+          <Route exact path='/:tab(calculator)' component={Calculator}/>
+          <Route exact path='/:tab(meals)' component={Meals}/>
+          <Route exact path='/:tab(meals)/:id/products' component={Meal} />
+          <Route exact path='/:tab(products)' component={Products}/>
+          <Route exact path='/'>
+            <Redirect from='/' to='/meals'/>
           </Route>
         </IonRouterOutlet>
 
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="home" href="/home">
+        <IonTabBar slot='bottom'>
+          <IonTabButton tab='home' href='/home'>
             <IonIcon icon={homeOutline} />
             <IonLabel>Home</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="calculator" href="/calculator">
+          <IonTabButton tab='calculator' href='/calculator'>
             <IonIcon icon={calculatorOutline} />
             <IonLabel>Calulator</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="meals" href="/meals">
+          <IonTabButton tab='meals' href='/meals'>
             <IonIcon icon={fastFoodOutline} />
             <IonLabel>Meals</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="products" href="/products">
+          <IonTabButton tab='products' href='/products'>
             <IonIcon icon={pizzaOutline} />
             <IonLabel>Products</IonLabel>
           </IonTabButton>

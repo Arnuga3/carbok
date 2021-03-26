@@ -15,7 +15,7 @@ interface Props {
 }
 
 export const MealCard: React.FC<Props> = ({ meal }) => (
-  <IonCard>
+  <IonCard routerLink={`/meals/${meal.id}/products`}>
     <IonCardHeader>
       <IonCardTitle>{meal.type}</IonCardTitle>
       <IonCardSubtitle>
