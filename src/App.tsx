@@ -13,7 +13,9 @@ import { homeOutline, calculatorOutline, pizzaOutline, fastFoodOutline } from 'i
 import Home from './pages/home/Home';
 import Calculator from './pages/calculator/Calculator';
 import { Meals } from './pages/meals/Meals';
-import Products from './pages/products/Products';
+import { Meal } from './pages/meals/meal/Meal';
+import { Products } from './pages/products/Products';
+import { Product } from './pages/products/product/Product';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -33,7 +35,6 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import { Meal } from './pages/meals/meal/Meal';
 
 const App: React.FC = () => (
   <IonApp>
@@ -46,6 +47,7 @@ const App: React.FC = () => (
           <Route exact path='/:tab(meals)' component={Meals}/>
           <Route exact path='/:tab(meals)/:id/products' component={Meal} />
           <Route exact path='/:tab(products)' component={Products}/>
+          <Route exact path='/:tab(products)/add-product' component={Product}/>
           <Route exact path='/'>
             <Redirect from='/' to='/meals'/>
           </Route>

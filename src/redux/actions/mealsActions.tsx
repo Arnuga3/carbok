@@ -1,4 +1,4 @@
-import { Meal } from "../../interfaces/Meal";
+import { IMeal } from "../../interfaces/IMeal";
 
 export enum MealsActions {
     ADD_MEAL = 'ADD_MEAL'
@@ -6,9 +6,9 @@ export enum MealsActions {
 
 interface AddMeal {
     type: MealsActions.ADD_MEAL,
-    meal: Meal
+    meal: IMeal
 }
 
-export const addMeal = (meal: Meal): AddMeal => ({type: MealsActions.ADD_MEAL, meal});
+export const addMeal = (meal: IMeal): AddMeal => ({type: MealsActions.ADD_MEAL, meal});
 
 export type MealsActionType = AddMeal;

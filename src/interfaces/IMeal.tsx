@@ -1,8 +1,9 @@
 import { MealType } from "../enums/MealType";
+import { IProduct } from "./IProduct";
 
-export interface Meal {
+export interface IMeal {
     id: string;
     type: MealType;
     dateTime: Date;
-    products: [];
+    products: IProduct[];
 }

@@ -1,12 +1,16 @@
-import { combineReducers, Reducer } from 'redux';
+import { combineReducers } from 'redux';
 import { mealsReducer, MealsState } from './mealsReducer';
-import productsState, { ProductsState } from './productsReducer';
+import { productsReducer, ProductsState } from './productsReducer';
+import { productCategoriesReducer, ProductCategoriesState } from './productCategoriesReducer';
 
 export interface AppState {
   mealsState: MealsState,
-  productsState: Reducer<ProductsState>,
+  productsState: ProductsState,
+  productCategoriesState: ProductCategoriesState;
 }
 
 export default combineReducers({
   mealsState: mealsReducer,
+  productsState: productsReducer,
+  productCategoriesState: productCategoriesReducer,
 });

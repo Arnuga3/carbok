@@ -1,6 +1,5 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
-import { useSelector } from "react-redux";
 import {
   IonBackButton,
   IonButtons,
@@ -11,16 +10,15 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { MealProducts } from "./MealProducts";
-import { Meal as MealInterface } from "./../../../interfaces/Meal";
+import { IMeal } from "../../../interfaces/IMeal";
 
-import { AppState } from "../../../redux/reducers";
+import { useMeals } from "../../../hooks/mealsHook";
 
 interface MealPageProps extends RouteComponentProps<{ id: string }> {}
 
 export const Meal: React.FC<MealPageProps> = ({ match }) => {
-  const meal: MealInterface | undefined = useSelector(({ mealsState }: AppState) =>
-    mealsState.meals.find((meal) => meal.id === match.params.id)
-  );
+  const { meals } = useMeals();
+  const meal: IMeal | undefined = meals.find((meal) => meal.id === match.params.id);
   return (
     <IonPage>
       {meal ? (

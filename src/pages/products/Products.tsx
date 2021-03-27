@@ -1,22 +1,44 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import React from "react";
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonIcon,
+  IonList,
+  IonButton,
+} from "@ionic/react";
+import { add } from "ionicons/icons";
+import styled from "styled-components";
 
-const Products: React.FC = () => {
+export const Products: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Products</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
+      <IonContentStyled>
+        <IonHeader slot="fixed">
           <IonToolbar>
-            <IonTitle size="large">Products</IonTitle>
+            <IonTitle>Products</IonTitle>
           </IonToolbar>
         </IonHeader>
-      </IonContent>
+        <IonList>
+          <AddButton
+            expand='block'
+            shape='round'
+            routerLink='/products/add-product'
+          >
+            <IonIcon slot='icon-only' icon={add} />
+          </AddButton>
+        </IonList>
+      </IonContentStyled>
     </IonPage>
   );
 };
 
-export default Products;
+const IonContentStyled = styled(IonContent)`
+  --padding-top: 50px;
+`;
+
+const AddButton = styled(IonButton)`
+  margin: 12px;
+`;

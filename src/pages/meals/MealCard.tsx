@@ -8,10 +8,10 @@ import {
 } from "@ionic/react";
 import moment from "moment";
 
-import { Meal } from "../../interfaces/Meal";
+import { IMeal } from "../../interfaces/IMeal";
 
 interface Props {
-  meal: Meal;
+  meal: IMeal;
 }
 
 export const MealCard: React.FC<Props> = ({ meal }) => (

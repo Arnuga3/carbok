@@ -1,0 +1,16 @@
+{
+    "product.category.grains": "Grains",
+    "product.category.grains.description": "Bread, cereal, rice, pasta etc.",
+    "product.category.fruit": "Fruit",
+    "product.category.fruit.description": "Fruit",
+    "product.category.vegetables": "Vegetables",
+    "product.category.vegetables.description": "Vegetables, legumes",
+    "product.category.protein": "Protein",
+    "product.category.protein.description": "Meat, poultry, fish, eggs, nuts etc.",
+    "product.category.dairy": "Dairy",
+    "product.category.dairy.description": "Milk, yogurt, cheese etc.",
+    "product.category.sweets": "Sweets",
+    "product.category.sweets.description": "Sweets",
+    "product.category.other": "Other",
+    "product.category.other.description": "A mix of different product items"
+}

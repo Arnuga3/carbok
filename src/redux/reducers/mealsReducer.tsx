@@ -1,9 +1,9 @@
 import { Reducer } from 'redux';
-import { Meal } from '../../interfaces/Meal';
+import { IMeal } from '../../interfaces/IMeal';
 import { MealsActions } from '../actions/mealsActions';
 
 export interface MealsState {
-  meals: Meal[];
+  meals: IMeal[];
 }
 
 const defaultState: MealsState = {
