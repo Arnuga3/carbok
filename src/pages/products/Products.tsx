@@ -11,8 +11,11 @@ import {
 } from "@ionic/react";
 import { add } from "ionicons/icons";
 import styled from "styled-components";
+import { IProduct } from "../../interfaces/IProduct";
+import { useProducts } from "../../hooks/productsHook";
 
 export const Products: React.FC = () => {
+  const { products } = useProducts();
   return (
     <IonPage>
       <IonContentStyled>
@@ -29,6 +32,9 @@ export const Products: React.FC = () => {
           >
             <IonIcon slot='icon-only' icon={add} />
           </AddButton>
+          {products.map((product: IProduct, i: number) =>
+            <p key={i}>{product.name}</p>
+          )}
         </IonList>
       </IonContentStyled>
     </IonPage>

@@ -15,7 +15,7 @@ import Calculator from './pages/calculator/Calculator';
 import { Meals } from './pages/meals/Meals';
 import { Meal } from './pages/meals/meal/Meal';
 import { Products } from './pages/products/Products';
-import { Product } from './pages/products/product/Product';
+import { AddProduct } from './pages/products/product/AddProduct';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -47,7 +47,7 @@ const App: React.FC = () => (
           <Route exact path='/:tab(meals)' component={Meals}/>
           <Route exact path='/:tab(meals)/:id/products' component={Meal} />
           <Route exact path='/:tab(products)' component={Products}/>
-          <Route exact path='/:tab(products)/add-product' component={Product}/>
+          <Route exact path='/:tab(products)/add-product' component={AddProduct}/>
           <Route exact path='/'>
             <Redirect from='/' to='/meals'/>
           </Route>

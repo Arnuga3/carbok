@@ -20,7 +20,7 @@ import { addMeal } from "../../redux/actions/mealsActions";
 import { MealCard } from "./MealCard";
 import { useMeals } from '../../hooks/mealsHook';
 
-import { uuidv4 } from "./../../util/helpers";
+import { uuidv4 } from "../../utils/helper";
 
 export const Meals: React.FC = () => {
   const dispatch = useDispatch();

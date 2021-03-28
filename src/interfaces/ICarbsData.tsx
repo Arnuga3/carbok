@@ -1,5 +1,5 @@
 export interface ICarbsData {
-    carbs: number;
     portion: number;
+    carbs: number;
     sugars: number;
 }
