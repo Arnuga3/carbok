@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   IonHeader,
@@ -8,13 +8,6 @@ import {
   IonToolbar,
   IonBackButton,
   IonButtons,
-  IonInput,
-  IonItem,
-  IonList,
-  IonLabel,
-  IonRange,
-  IonSegment,
-  IonSegmentButton,
   IonButton,
 } from "@ionic/react";
 import styled from "styled-components";
@@ -23,13 +16,17 @@ import { IProductCategory } from "../../../interfaces/IProductCategory";
 import { addProduct } from "../../../redux/actions/productsActions";
 import { IProduct } from "../../../interfaces/IProduct";
 import { uuidv4 } from "../../../utils/helper";
+import { RangeSlider } from "./form/RangeSlider";
+import { ProductMain } from "./form/ProductMain";
+import { UnitsType } from "../../../types/UnitsType";
 
 export interface IProductDummy {
   id?: string;
   name?: string;
   category?: IProductCategory | null;
-  units: string;
+  units: UnitsType;
   portion: number;
+  defaultPortion: number;
   carbs: number;
   sugars: number;
 }
@@ -37,7 +34,8 @@ export interface IProductDummy {
 const defaultData: IProductDummy = {
   units: "g",
   category: null,
-  portion: 0,
+  portion: 100,
+  defaultPortion: 100,
   carbs: 0,
   sugars: 0,
 };
@@ -53,12 +51,17 @@ export const AddProduct: React.FC = () => {
   };
 
   const handleSave = () => {
-    if (data.category && data.name) {
+    if (data.category && data.name && dataValid()) {
       const product: IProduct = {
         id: uuidv4(),
         name: data.name,
         category: data.category,
-        units: { nameKey: data.units, shortNameKey: data.units },
+        // TODO - Complete this later
+        units: {
+          type: data.units,
+          nameKey: data.units,
+          shortNameKey: data.units,
+        },
         carbsData: {
           portion: data.portion,
           carbs: data.carbs,
@@ -68,6 +71,26 @@ export const AddProduct: React.FC = () => {
       dispatch(addProduct(product));
     }
   };
+
+  const nameValid = useCallback(() => {
+    return data.name && data.name.trim() !== '';
+  }, [data.name]);
+
+  const portionValid = useCallback(() => {
+    return data.portion > 0;
+  }, [data.portion]);
+
+  const carbsValid = useCallback(() => {
+    return data.carbs <= data.portion;
+  }, [data.carbs, data.portion]);
+
+  const sugarsValid = useCallback(() => {
+    return data.sugars <= data.carbs;
+  }, [data.carbs, data.sugars]);
+
+  const dataValid = () => {
+    return nameValid() && portionValid() && carbsValid() && sugarsValid();
+  }
 
   return (
     <IonPage>
@@ -80,65 +103,63 @@ export const AddProduct: React.FC = () => {
             <IonTitle>Add Product</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonList lines="full">
-          <IonItemStyled>
-            <IonLabel color="medium">Name</IonLabel>
-            <IonInput
-              className="input-right-align"
-              onIonInput={(e: any) =>
-                setData({ ...data, name: e.target.value })
-              }
-            ></IonInput>
-          </IonItemStyled>
-          <IonItemStyled onClick={() => setOpenCategoryModal(true)}>
-            <IonLabel color="medium">Category</IonLabel>
-            <IonInput
-              className="input-right-align"
-              value={data?.category?.type ?? ""}
-            ></IonInput>
-          </IonItemStyled>
-          <IonItemStyled>
-            <IonLabel color="medium">Units</IonLabel>
-            <IonSegmentStyled
-              value={data.units}
-              onIonChange={(e) =>
-                setData({ ...data, units: e.detail.value ?? "" })
-              }
-            >
-              <IonSegmentButtonStyled value="ml">
-                <IonLabel>ml</IonLabel>
-              </IonSegmentButtonStyled>
-              <IonSegmentButtonStyled value="g">
-                <IonLabel>g</IonLabel>
-              </IonSegmentButtonStyled>
-            </IonSegmentStyled>
-          </IonItemStyled>
-          <IonItem>
-            <IonLabel color="medium">Portion</IonLabel>
-            <IonRange min={0} max={500} color="secondary">
-              <IonLabel slot="end">500</IonLabel>
-            </IonRange>
-          </IonItem>
-          <IonItem>
-            <IonLabel color="medium">Carbs</IonLabel>
-            <IonRange min={0} max={500} color="secondary">
-              <IonLabel slot="end">500</IonLabel>
-            </IonRange>
-          </IonItem>
-          <IonItem>
-            <IonLabel color="medium">Sugars</IonLabel>
-            <IonRange min={0} max={500} color="secondary">
-              <IonLabel slot="end">500</IonLabel>
-            </IonRange>
-          </IonItem>
-          <IonItem>
-            <IonLabel color="medium">Default Portion</IonLabel>
-            <IonRange min={0} max={500} color="secondary">
-              <IonLabel slot="end">500</IonLabel>
-            </IonRange>
-          </IonItem>
-        </IonList>
-        <SaveButton expand="block" shape="round" onClick={handleSave}>
+        <ProductMain
+          nameValid={nameValid()}
+          category={data.category}
+          units={data.units}
+          onNameChange={(name: string) => setData({ ...data, name })}
+          onUnitsChange={(units: UnitsType) => setData({ ...data, units })}
+          onCategoryModalOpen={() => setOpenCategoryModal(true)}
+        />
+        <RangeSlider
+          dataValid={portionValid()}
+          errorMessage='Required'
+          label="Per Portion"
+          value={data.portion}
+          units={data.units}
+          onChange={(portion: number) =>
+            setData({
+              ...data,
+              portion,
+            })
+          }
+        />
+        <RangeSlider
+          dataValid={carbsValid()}
+          errorMessage='Must be <= portion'
+          label="Carbohydrates"
+          value={data.carbs}
+          onChange={(carbs: number) =>
+            setData({
+              ...data,
+              carbs,
+            })
+          }
+        />
+        <RangeSlider
+          dataValid={sugarsValid()}
+          errorMessage='Must be <= total carbs'
+          label="Of which Sugars"
+          value={data.sugars}
+          onChange={(sugars: number) =>
+            setData({
+              ...data,
+              sugars,
+            })
+          }
+        />
+        <RangeSlider
+          label="Default Portion (optional)"
+          value={data.defaultPortion}
+          units={data.units}
+          onChange={(defaultPortion: number) =>
+            setData({
+              ...data,
+              defaultPortion,
+            })
+          }
+        />
+        <SaveButton disabled={!dataValid()} expand="block" shape="round" onClick={handleSave}>
           Save
         </SaveButton>
       </IonContentStyled>
@@ -157,19 +178,6 @@ const IonContentStyled = styled(IonContent)`
   & .input-right-align {
     text-align: right;
   }
-`;
-
-const IonItemStyled = styled(IonItem)`
-  --padding-top: 6px;
-  --padding-bottom: 6px;
-`;
-
-const IonSegmentStyled = styled(IonSegment)`
-  width: 50%;
-`;
-
-const IonSegmentButtonStyled = styled(IonSegmentButton)`
-  width: 15%;
 `;
 
 const SaveButton = styled(IonButton)`
