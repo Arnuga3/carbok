@@ -26,15 +26,16 @@ export const Products: React.FC = () => {
         </IonHeader>
         <IonList>
           <AddButton
-            expand='block'
-            shape='round'
-            routerLink='/products/add-product'
+            expand="block"
+            shape="round"
+            size="large"
+            routerLink="/products/add-product"
           >
-            <IonIcon slot='icon-only' icon={add} />
+            <IonIcon slot="icon-only" icon={add} />
           </AddButton>
-          {products.map((product: IProduct, i: number) =>
+          {products.map((product: IProduct, i: number) => (
             <p key={i}>{product.name}</p>
-          )}
+          ))}
         </IonList>
       </IonContentStyled>
     </IonPage>

@@ -9,6 +9,10 @@ import {
   IonBackButton,
   IonButtons,
   IonButton,
+  IonCard,
+  IonCardContent,
+  IonLabel,
+  IonIcon,
 } from "@ionic/react";
 import styled from "styled-components";
 import { CategorySelectModal } from "./CategorySelectModal";
@@ -16,14 +20,16 @@ import { IProductCategory } from "../../../interfaces/IProductCategory";
 import { addProduct } from "../../../redux/actions/productsActions";
 import { IProduct } from "../../../interfaces/IProduct";
 import { uuidv4 } from "../../../utils/helper";
-import { RangeSlider } from "./form/RangeSlider";
-import { ProductMain } from "./form/ProductMain";
+import { GeneralData } from "./form/GeneralData";
 import { UnitsType } from "../../../types/UnitsType";
+import { UnitsData } from "./form/UnitsData";
+import { NumericData, NumericInput } from "./form/NumericData";
+import { warningOutline } from "ionicons/icons";
 
 export interface IProductDummy {
   id?: string;
-  name?: string;
-  category?: IProductCategory | null;
+  name: string | null;
+  category: IProductCategory | null;
   units: UnitsType;
   portion: number;
   defaultPortion: number;
@@ -32,8 +38,9 @@ export interface IProductDummy {
 }
 
 const defaultData: IProductDummy = {
-  units: "g",
+  name: null,
   category: null,
+  units: "g",
   portion: 100,
   defaultPortion: 100,
   carbs: 0,
@@ -44,14 +51,29 @@ export const AddProduct: React.FC = () => {
   const dispatch = useDispatch();
   const [data, setData] = useState(defaultData);
   const [openCategoryModal, setOpenCategoryModal] = useState(false);
+  const [saveAttempted, setSaveAttempted] = useState(false);
 
   const handleCategorySelect = (category: IProductCategory) => {
     setData({ ...data, category });
     setOpenCategoryModal(false);
   };
 
+  const handleNumberInputChange = (type: NumericInput, value: any) => {
+    switch (type) {
+      case NumericInput.PORTION:
+        return setData({ ...data, portion: parseFloat(value) });
+      case NumericInput.CARBS:
+        return setData({ ...data, carbs: parseFloat(value) });
+      case NumericInput.SUGARS:
+        return setData({ ...data, sugars: parseFloat(value) });
+      case NumericInput.DEFAULT_PORTION:
+        return setData({ ...data, defaultPortion: parseFloat(value) });
+    }
+  };
+
   const handleSave = () => {
-    if (data.category && data.name && dataValid()) {
+    setSaveAttempted(true);
+    if (data.category && data.name) {
       const product: IProduct = {
         id: uuidv4(),
         name: data.name,
@@ -73,24 +95,24 @@ export const AddProduct: React.FC = () => {
   };
 
   const nameValid = useCallback(() => {
-    return data.name && data.name.trim() !== '';
-  }, [data.name]);
+    return !saveAttempted || (data.name && data.name.trim() !== "");
+  }, [data.name, saveAttempted]);
+
+  const categoryValid = useCallback(() => {
+    return !saveAttempted || data.category !== null;
+  }, [data.category, saveAttempted]);
 
   const portionValid = useCallback(() => {
     return data.portion > 0;
   }, [data.portion]);
 
   const carbsValid = useCallback(() => {
-    return data.carbs <= data.portion;
+    return data.carbs >= 0 && data.carbs <= data.portion;
   }, [data.carbs, data.portion]);
 
   const sugarsValid = useCallback(() => {
-    return data.sugars <= data.carbs;
+    return data.sugars >= 0 && data.sugars <= data.carbs;
   }, [data.carbs, data.sugars]);
-
-  const dataValid = () => {
-    return nameValid() && portionValid() && carbsValid() && sugarsValid();
-  }
 
   return (
     <IonPage>
@@ -103,65 +125,48 @@ export const AddProduct: React.FC = () => {
             <IonTitle>Add Product</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ProductMain
-          nameValid={nameValid()}
-          category={data.category}
-          units={data.units}
-          onNameChange={(name: string) => setData({ ...data, name })}
-          onUnitsChange={(units: UnitsType) => setData({ ...data, units })}
-          onCategoryModalOpen={() => setOpenCategoryModal(true)}
-        />
-        <RangeSlider
-          dataValid={portionValid()}
-          errorMessage='Required'
-          label="Per Portion"
-          value={data.portion}
-          units={data.units}
-          onChange={(portion: number) =>
-            setData({
-              ...data,
-              portion,
-            })
-          }
-        />
-        <RangeSlider
-          dataValid={carbsValid()}
-          errorMessage='Must be <= portion'
-          label="Carbohydrates"
-          value={data.carbs}
-          onChange={(carbs: number) =>
-            setData({
-              ...data,
-              carbs,
-            })
-          }
-        />
-        <RangeSlider
-          dataValid={sugarsValid()}
-          errorMessage='Must be <= total carbs'
-          label="Of which Sugars"
-          value={data.sugars}
-          onChange={(sugars: number) =>
-            setData({
-              ...data,
-              sugars,
-            })
-          }
-        />
-        <RangeSlider
-          label="Default Portion (optional)"
-          value={data.defaultPortion}
-          units={data.units}
-          onChange={(defaultPortion: number) =>
-            setData({
-              ...data,
-              defaultPortion,
-            })
-          }
-        />
-        <SaveButton disabled={!dataValid()} expand="block" shape="round" onClick={handleSave}>
-          Save
-        </SaveButton>
+        <IonCard>
+          <IonCardContent>
+            <Row>
+              <IonLabel color={nameValid() ? "" : "danger"}>
+                {!nameValid() && <IonIcon icon={warningOutline} />}Name
+              </IonLabel>
+              <GeneralData
+                categoryValid={categoryValid()}
+                category={data.category}
+                onNameChange={(name: string) => setData({ ...data, name })}
+                onCategoryModalOpen={() => setOpenCategoryModal(true)}
+              />
+            </Row>
+            <Row>
+              <IonLabel>Units</IonLabel>
+              <UnitsData
+                units={data.units}
+                onUnitsChange={(units: UnitsType) =>
+                  setData({ ...data, units })
+                }
+              />
+            </Row>
+            <Row>
+              <IonLabel>Carbs & Protion</IonLabel>
+              <NumericData
+                data={data}
+                portionValid={portionValid()}
+                carbsValid={carbsValid()}
+                sugarsValid={sugarsValid()}
+                onNumericDataChange={handleNumberInputChange}
+              />
+            </Row>
+            <SaveButton
+              size="large"
+              expand="block"
+              shape="round"
+              onClick={handleSave}
+            >
+              Save
+            </SaveButton>
+          </IonCardContent>
+        </IonCard>
       </IonContentStyled>
       <CategorySelectModal
         open={openCategoryModal}
@@ -181,5 +186,9 @@ const IonContentStyled = styled(IonContent)`
 `;
 
 const SaveButton = styled(IonButton)`
-  margin: 12px;
+  margin-top: 28px;
+`;
+
+const Row = styled.div`
+  margin-top: 12px;
 `;

@@ -53,6 +53,7 @@ export const Meals: React.FC = () => {
           <AddButton
             expand="block"
             shape="round"
+            size="large"
             onClick={() => setOpenActionSheet(true)}
           >
             <IonIcon slot='icon-only' icon={add} />
