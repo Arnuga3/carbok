@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   IonContent,
   IonHeader,
@@ -8,14 +8,26 @@ import {
   IonIcon,
   IonList,
   IonButton,
+  IonItem,
+  IonLabel,
 } from "@ionic/react";
 import { add } from "ionicons/icons";
 import styled from "styled-components";
 import { IProduct } from "../../interfaces/IProduct";
 import { useProducts } from "../../hooks/productsHook";
+import { useDispatch } from "react-redux";
+import { retrieveProducts } from "../../redux/actions/productsActions";
 
 export const Products: React.FC = () => {
+  const dispatch = useDispatch();
   const { products } = useProducts();
+
+  useEffect(() => {
+    if (products.length === 0) {
+      dispatch(retrieveProducts());
+    }
+  }, []);
+
   return (
     <IonPage>
       <IonContentStyled>
@@ -34,7 +46,9 @@ export const Products: React.FC = () => {
             <IonIcon slot="icon-only" icon={add} />
           </AddButton>
           {products.map((product: IProduct, i: number) => (
-            <p key={i}>{product.name}</p>
+            <IonItem key={i}>
+              <IonLabel>{product.name}</IonLabel>
+            </IonItem>
           ))}
         </IonList>
       </IonContentStyled>

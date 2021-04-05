@@ -10,12 +10,19 @@ const defaultState: ProductsState = {
   products: [],
 };
 
-const reducer: Reducer<ProductsState> = (state: ProductsState = defaultState, action) => {
+const reducer: Reducer<ProductsState> = (
+  state: ProductsState = defaultState,
+  action
+) => {
   switch (action.type) {
-
     case ProductsActions.ADD_PRODUCT:
       return {
         products: [...state.products, action.product],
+      };
+
+    case ProductsActions.ADD_PRODUCTS:
+      return {
+        products: action.products,
       };
 
     default:
@@ -23,4 +30,4 @@ const reducer: Reducer<ProductsState> = (state: ProductsState = defaultState, ac
   }
 };
 
-export {reducer as productsReducer};
+export { reducer as productsReducer };

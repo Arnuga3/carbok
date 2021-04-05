@@ -25,6 +25,7 @@ import { UnitsType } from "../../../types/UnitsType";
 import { UnitsData } from "./form/UnitsData";
 import { NumericData, NumericInput } from "./form/NumericData";
 import { warningOutline } from "ionicons/icons";
+import { RouteComponentProps } from "react-router";
 
 export interface IProductDummy {
   id?: string;
@@ -47,7 +48,7 @@ const defaultData: IProductDummy = {
   sugars: 0,
 };
 
-export const AddProduct: React.FC = () => {
+export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
   const dispatch = useDispatch();
   const [data, setData] = useState(defaultData);
   const [openCategoryModal, setOpenCategoryModal] = useState(false);
@@ -91,6 +92,7 @@ export const AddProduct: React.FC = () => {
         },
       };
       dispatch(addProduct(product));
+      history.goBack();
     }
   };
 
@@ -120,7 +122,7 @@ export const AddProduct: React.FC = () => {
         <IonHeader slot="fixed">
           <IonToolbar>
             <IonButtons slot="start">
-              <IonBackButton defaultHref="/meals" />
+              <IonBackButton defaultHref="/products" />
             </IonButtons>
             <IonTitle>Add Product</IonTitle>
           </IonToolbar>
