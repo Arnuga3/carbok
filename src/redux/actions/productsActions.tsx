@@ -1,11 +1,13 @@
 import { Dispatch } from "redux";
-import { IProduct } from "../../interfaces/IProduct";
-import { ProductsStorage } from "../../storage/productsStorage";
+import { IProduct } from "../../classes/product/IProduct";
+import { ProductsStorageService } from "../../services/productsStorageService";
 
 export enum ProductsActions {
   ADD_PRODUCT = "ADD_PRODUCT",
   ADD_PRODUCTS = "ADD_PRODUCTS",
 }
+
+export type ProductsActionType = AddProduct | AddProducts;
 
 interface AddProduct {
   type: ProductsActions.ADD_PRODUCT;
@@ -17,10 +19,21 @@ interface AddProducts {
   products: IProduct[];
 }
 
+const storeProduct = (product: IProduct): AddProduct => ({
+  type: ProductsActions.ADD_PRODUCT,
+  product,
+});
+
+const storeProducts = (products: IProduct[]): AddProducts => ({
+  type: ProductsActions.ADD_PRODUCTS,
+  products,
+});
+
 export const retrieveProducts = () => {
   return async (dispatch: Dispatch) => {
     try {
-      const products = await ProductsStorage.getAll();
+      const prodStorageSvc = new ProductsStorageService();
+      const products = await prodStorageSvc.getAll();
       if (products) {
         dispatch(storeProducts(products));
       }
@@ -30,25 +43,14 @@ export const retrieveProducts = () => {
   };
 };
 
-export const storeProducts = (products: IProduct[]): AddProducts => ({
-  type: ProductsActions.ADD_PRODUCTS,
-  products,
-});
-
 export function addProduct(product: IProduct) {
   return async (dispatch: Dispatch) => {
     try {
-      await ProductsStorage.save(product);
+      const prodStorageSvc = new ProductsStorageService();
+      await prodStorageSvc.save(product);
       dispatch(storeProduct(product));
     } catch (e) {
       console.log(e);
     }
   };
 }
-
-const storeProduct = (product: IProduct): AddProduct => ({
-  type: ProductsActions.ADD_PRODUCT,
-  product,
-});
-
-export type ProductsActionType = AddProduct | AddProducts;

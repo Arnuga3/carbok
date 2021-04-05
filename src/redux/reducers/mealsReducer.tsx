@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { IMeal } from '../../interfaces/IMeal';
+import { IMeal } from '../../classes/meal/IMeal';
 import { MealsActions } from '../actions/mealsActions';
 
 export interface MealsState {

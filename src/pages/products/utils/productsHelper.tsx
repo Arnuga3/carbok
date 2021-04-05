@@ -1,6 +1,6 @@
-import { IProduct } from "../../../interfaces/IProduct";
-import { IProductCategory } from "../../../interfaces/IProductCategory";
-import { CategoryProductsMapType } from "../../../types/CategoryProductsMapType";
+import { IProduct } from "../../../classes/product/IProduct";
+import { IProductCategory } from "../../../classes/productCategory/IProductCategory";
+import { CategoryProductsMapType } from "../product/CategorySelectModal";
 
 export function getGroupedProducts(
   categories: IProductCategory[],

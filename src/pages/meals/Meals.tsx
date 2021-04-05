@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   IonContent,
   IonHeader,
@@ -13,14 +14,12 @@ import { add } from "ionicons/icons";
 import styled from "styled-components";
 
 import { MealTypeActionSheet } from "./MealTypeActionSheet";
-import { MealType } from "../../enums/MealType";
-
-import { useDispatch } from "react-redux";
-import { addMeal } from "../../redux/actions/mealsActions";
 import { MealCard } from "./MealCard";
-import { useMeals } from '../../hooks/mealsHook';
+import { Meal } from "../../classes/meal/Meal";
+import { MealType } from "../../classes/meal/MealTypeEnum";
 
-import { uuidv4 } from "../../utils/helper";
+import { addMeal } from "../../redux/actions/mealsActions";
+import { useMeals } from '../../hooks/mealsHook';
 
 export const Meals: React.FC = () => {
   const dispatch = useDispatch();
@@ -29,12 +28,7 @@ export const Meals: React.FC = () => {
 
   const handleMealTypeSelect = (type: MealType) => {
     dispatch(
-      addMeal({
-        id: uuidv4(),
-        type,
-        dateTime: new Date(Date.now()),
-        products: [],
-      })
+      addMeal(new Meal(type, []))
     );
   };
 

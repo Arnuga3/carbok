@@ -8,7 +8,7 @@ import {
 } from "@ionic/react";
 import moment from "moment";
 
-import { IMeal } from "../../interfaces/IMeal";
+import { IMeal } from "../../classes/meal/IMeal";
 
 interface Props {
   meal: IMeal;

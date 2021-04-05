@@ -33,7 +33,7 @@ interface Props {
   onNumericDataChange: (type: NumericInput, value: string) => void;
 }
 
-export const NumericData: React.FC<Props> = ({
+export const CarbsData: React.FC<Props> = ({
   data,
   portionValid,
   carbsValid,
@@ -47,11 +47,11 @@ export const NumericData: React.FC<Props> = ({
     <>
       <ChipWrapper>
         <IonChip color="secondary" outline>
-          <IonLabel color="secondary">{`Portion: ${data.portion}${data.units}`}</IonLabel>
+          <IonLabel color="secondary">{`Portion: ${data.portion}${data.units.shortNameKey}`}</IonLabel>
         </IonChip>
         <IonChip color="medium">
           <IonLabel color="medium">
-            {`Default Portion: ${data.defaultPortion}${data.units}`}
+            {`Default Portion: ${data.defaultPortion}${data.units.shortNameKey}`}
           </IonLabel>
         </IonChip>
         <IonChip color="success" outline>

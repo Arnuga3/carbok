@@ -8,7 +8,7 @@ import {
   IonIcon,
 } from "@ionic/react";
 import styled from "styled-components";
-import { IProductCategory } from "../../../../interfaces/IProductCategory";
+import { IProductCategory } from "../../../../classes/productCategory/IProductCategory";
 import { pencil, warningOutline } from "ionicons/icons";
 
 interface Props {
@@ -18,7 +18,7 @@ interface Props {
   onCategoryModalOpen: any;
 }
 
-export const GeneralData: React.FC<Props> = ({
+export const MainData: React.FC<Props> = ({
   categoryValid,
   category,
   onNameChange,

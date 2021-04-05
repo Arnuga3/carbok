@@ -16,22 +16,24 @@ import {
 } from "@ionic/react";
 import styled from "styled-components";
 import { CategorySelectModal } from "./CategorySelectModal";
-import { IProductCategory } from "../../../interfaces/IProductCategory";
+import { IProductCategory } from "../../../classes/productCategory/IProductCategory";
 import { addProduct } from "../../../redux/actions/productsActions";
-import { IProduct } from "../../../interfaces/IProduct";
-import { uuidv4 } from "../../../utils/helper";
-import { GeneralData } from "./form/GeneralData";
-import { UnitsType } from "../../../types/UnitsType";
+import { MainData } from "./form/MainData";
 import { UnitsData } from "./form/UnitsData";
-import { NumericData, NumericInput } from "./form/NumericData";
+import { CarbsData, NumericInput } from "./form/CarbsData";
 import { warningOutline } from "ionicons/icons";
 import { RouteComponentProps } from "react-router";
+import { Product } from "../../../classes/product/Product";
+import { IUnits } from "../../../classes/units/IUnits";
+import { ProductCarbs } from "../../../classes/productCarbs/ProductCarbs";
+
+import { productUnits } from "../../../resources/productUnits";
 
 export interface IProductDummy {
   id?: string;
   name: string | null;
   category: IProductCategory | null;
-  units: UnitsType;
+  units: IUnits;
   portion: number;
   defaultPortion: number;
   carbs: number;
@@ -41,7 +43,7 @@ export interface IProductDummy {
 const defaultData: IProductDummy = {
   name: null,
   category: null,
-  units: "g",
+  units: productUnits[0],
   portion: 100,
   defaultPortion: 100,
   carbs: 0,
@@ -74,23 +76,20 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
 
   const handleSave = () => {
     setSaveAttempted(true);
+
     if (data.category && data.name) {
-      const product: IProduct = {
-        id: uuidv4(),
-        name: data.name,
-        category: data.category,
-        // TODO - Complete this later
-        units: {
-          type: data.units,
-          nameKey: data.units,
-          shortNameKey: data.units,
-        },
-        carbsData: {
-          portion: data.portion,
-          carbs: data.carbs,
-          sugars: data.sugars,
-        },
-      };
+      const porductCarbs = new ProductCarbs(
+        data.portion,
+        data.carbs,
+        data.sugars,
+        data.defaultPortion
+      );
+      const product = new Product(
+        data.name,
+        data.category,
+        data.units,
+        porductCarbs
+      );
       dispatch(addProduct(product));
       history.goBack();
     }
@@ -133,7 +132,7 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
               <IonLabel color={nameValid() ? "" : "danger"}>
                 {!nameValid() && <IonIcon icon={warningOutline} />}Name
               </IonLabel>
-              <GeneralData
+              <MainData
                 categoryValid={categoryValid()}
                 category={data.category}
                 onNameChange={(name: string) => setData({ ...data, name })}
@@ -144,14 +143,12 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
               <IonLabel>Units</IonLabel>
               <UnitsData
                 units={data.units}
-                onUnitsChange={(units: UnitsType) =>
-                  setData({ ...data, units })
-                }
+                onUnitsChange={(units: IUnits) => setData({ ...data, units })}
               />
             </Row>
             <Row>
               <IonLabel>Carbs & Protion</IonLabel>
-              <NumericData
+              <CarbsData
                 data={data}
                 portionValid={portionValid()}
                 carbsValid={carbsValid()}

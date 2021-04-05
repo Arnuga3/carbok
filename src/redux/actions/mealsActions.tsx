@@ -1,4 +1,4 @@
-import { IMeal } from "../../interfaces/IMeal";
+import { IMeal } from "../../classes/meal/IMeal";
 
 export enum MealsActions {
     ADD_MEAL = 'ADD_MEAL',

@@ -2,7 +2,7 @@ import React from 'react';
 import { IonActionSheet } from "@ionic/react";
 import { close } from "ionicons/icons";
 
-import { MealType } from "../../enums/MealType";
+import { MealType } from "../../classes/meal/MealTypeEnum";
 
 interface Props {
   open: any;

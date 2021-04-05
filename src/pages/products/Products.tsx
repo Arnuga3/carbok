@@ -13,7 +13,7 @@ import {
 } from "@ionic/react";
 import { add } from "ionicons/icons";
 import styled from "styled-components";
-import { IProduct } from "../../interfaces/IProduct";
+import { IProduct } from "../../classes/product/IProduct";
 import { useProducts } from "../../hooks/productsHook";
 import { useDispatch } from "react-redux";
 import { retrieveProducts } from "../../redux/actions/productsActions";

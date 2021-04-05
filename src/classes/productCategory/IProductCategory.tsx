@@ -1,4 +1,4 @@
-import { ProductCategoryType } from "../types/ProductCategoryType";
+import { ProductCategoryType } from "./ProductCategoryType";
 
 export interface IProductCategory {
     type: ProductCategoryType;

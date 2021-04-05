@@ -12,5 +12,10 @@
     "product.category.sweets": "Sweets",
     "product.category.sweets.description": "Sweets",
     "product.category.other": "Other",
-    "product.category.other.description": "A mix of different product items"
+    "product.category.other.description": "A mix of different product items",
+
+    "product.units.grams": "Grams",
+    "product.units.grams.short": "g",
+    "product.units.milliliters": "Milliliters",
+    "product.units.milliliters.short": "ml"
 }

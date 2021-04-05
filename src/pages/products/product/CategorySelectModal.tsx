@@ -10,10 +10,12 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import styled from "styled-components";
-import { useProductCategories } from "../../../hooks/productCategoriesHook";
-import { useProducts } from "../../../hooks/productsHook";
-import { CategoryProductsMapType } from "../../../types/CategoryProductsMapType";
 import { getGroupedProducts } from "../utils/productsHelper";
+import { IProduct } from "../../../classes/product/IProduct";
+import { ProductCategoryType } from "../../../classes/productCategory/ProductCategoryType";
+
+import { useProducts } from "../../../hooks/productsHook";
+import { categories } from "../../../resources/productCategories";
 
 interface Props {
   open: boolean;
@@ -21,12 +23,13 @@ interface Props {
   onSelect: any;
 }
 
+export type CategoryProductsMapType = Record<ProductCategoryType, IProduct[]>;
+
 export const CategorySelectModal: React.FC<Props> = ({
   open,
   onClose,
   onSelect,
 }) => {
-  const { categories } = useProductCategories();
   const { products } = useProducts();
   const categoryProductsMap: CategoryProductsMapType = getGroupedProducts(
     categories,

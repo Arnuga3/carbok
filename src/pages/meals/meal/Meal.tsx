@@ -10,7 +10,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { MealProducts } from "./MealProducts";
-import { IMeal } from "../../../interfaces/IMeal";
+import { IMeal } from "../../../classes/meal/IMeal";
 
 import { useMeals } from "../../../hooks/mealsHook";
 

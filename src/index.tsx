@@ -18,7 +18,7 @@ const logger = createLogger({
   duration: true,
 });
 
-const store = createStore(reducer, applyMiddleware(logger, thunk));
+export const store = createStore(reducer, applyMiddleware(logger, thunk));
 
 // Call the element loader after the platform has been bootstrapped
 defineCustomElements(window);
