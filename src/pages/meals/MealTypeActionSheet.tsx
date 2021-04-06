@@ -2,7 +2,7 @@ import React from 'react';
 import { IonActionSheet } from "@ionic/react";
 import { close } from "ionicons/icons";
 
-import { MealType } from "../../classes/meal/MealTypeEnum";
+import { mealTypes } from '../../resources/mealTypes';
 
 interface Props {
   open: any;
@@ -20,22 +20,10 @@ export const MealTypeActionSheet: React.FC<Props> = ({
     onDidDismiss={onClose}
     cssClass="my-custom-class"
     buttons={[
-      {
-        text: "Breakfast",
-        handler: () => onSelect(MealType.BREAKFAST),
-      },
-      {
-        text: "Lunch",
-        handler: () => onSelect(MealType.LUNCH),
-      },
-      {
-        text: "Dinner",
-        handler: () => onSelect(MealType.DINNER),
-      },
-      {
-        text: "Snack",
-        handler: () => onSelect(MealType.SNACK),
-      },
+      ...mealTypes.map((mealType) => ({
+        text: mealType.nameKey,
+        handler: () => onSelect(mealType)
+      })),
       {
         text: "Cancel",
         icon: close,

@@ -8,19 +8,19 @@ import {
   IonIcon,
 } from "@ionic/react";
 import styled from "styled-components";
-import { IProductCategory } from "../../../../classes/productCategory/IProductCategory";
 import { pencil, warningOutline } from "ionicons/icons";
+import { IProductDummy } from "../EditProduct";
 
 interface Props {
+  data: IProductDummy;
   categoryValid: boolean;
-  category: IProductCategory | null | undefined;
   onNameChange: (name: string) => void;
   onCategoryModalOpen: any;
 }
 
 export const MainData: React.FC<Props> = ({
+  data,
   categoryValid,
-  category,
   onNameChange,
   onCategoryModalOpen,
 }) => {
@@ -28,14 +28,15 @@ export const MainData: React.FC<Props> = ({
     <>
       <IonItem>
         <IonInput
+          value={data.name}
           onIonInput={(e: any) => onNameChange(e.target.value)}
         ></IonInput>
       </IonItem>
       <Row>
-        {category && category.type ? (
+        {data && data?.category?.type ? (
           <>
             <IonChip color="primary" outline>
-              <IonLabel color="primary">{category.type}</IonLabel>
+              <IonLabel color="primary">{data.category.type}</IonLabel>
             </IonChip>
             <IonChip color="medium" onClick={onCategoryModalOpen}>
               <IonLabel></IonLabel>

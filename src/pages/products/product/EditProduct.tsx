@@ -18,7 +18,7 @@ import {
 import styled from "styled-components";
 import { CategorySelectModal } from "./CategorySelectModal";
 import { IProductCategory } from "../../../classes/productCategory/IProductCategory";
-import { addProduct } from "../../../redux/actions/productsActions";
+import { updateProduct } from "../../../redux/actions/productsActions";
 import { MainData } from "./form/MainData";
 import { UnitsData } from "./form/UnitsData";
 import { CarbsData, NumericInput } from "./form/CarbsData";
@@ -27,8 +27,11 @@ import { RouteComponentProps } from "react-router";
 import { Product } from "../../../classes/product/Product";
 import { IUnits } from "../../../classes/units/IUnits";
 import { ProductCarbs } from "../../../classes/productCarbs/ProductCarbs";
-
+import { IProduct } from "../../../classes/product/IProduct";
+import { useProducts } from "../../../hooks/productsHook";
 import { productUnits } from "../../../resources/productUnits";
+
+interface EditProductPageProps extends RouteComponentProps<{ id: string }> {};
 
 export interface IProductDummy {
   id?: string;
@@ -51,10 +54,28 @@ const defaultData: IProductDummy = {
   sugars: 0,
 };
 
-export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
+export const EditProduct: React.FC<EditProductPageProps> = ({ history, match }) => {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
-  const [data, setData] = useState(defaultData);
+
+  const { products } = useProducts();
+  const productRetrieved: IProduct | undefined = products.find((product: IProduct) => product.id === match.params.id);
+  let product = defaultData;
+
+  if (productRetrieved) {
+    product = {
+      id: productRetrieved.id,
+      name: productRetrieved.name,
+      category: productRetrieved.category,
+      units: productRetrieved.units,
+      portion: productRetrieved.carbsData.portion,
+      defaultPortion: productRetrieved.carbsData.defaultPortion ?? defaultData.defaultPortion,
+      carbs: productRetrieved.carbsData.carbs,
+      sugars: productRetrieved.carbsData.sugars,
+    };
+  }
+
+  const [data, setData] = useState(product);
   const [openCategoryModal, setOpenCategoryModal] = useState(false);
   const [saveAttempted, setSaveAttempted] = useState(false);
 
@@ -76,24 +97,25 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
     }
   };
 
-  const handleSave = () => {
+  const handleUpdate = () => {
     setSaveAttempted(true);
     const carbsDataValid = portionValid() && carbsValid() && sugarsValid();
 
-    if (data.category && data.name && carbsDataValid) {
-      const porductCarbs = new ProductCarbs(
+    if (data.id && data.category && data.name && carbsDataValid) {
+      const productCarbs = new ProductCarbs(
         data.portion,
         data.carbs,
         data.sugars,
         data.defaultPortion
       );
-      const product = new Product(
-        data.name,
-        data.category,
-        data.units,
-        porductCarbs
-      );
-      dispatch(addProduct(product));
+      const product: IProduct = {
+        id: data.id,
+        name: data.name,
+        category: data.category,
+        units: data.units,
+        carbsData: productCarbs,
+      };
+      dispatch(updateProduct(product));
       history.goBack();
     }
   };
@@ -126,7 +148,7 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
             <IonButtons slot="start">
               <IonBackButton defaultHref="/products" />
             </IonButtons>
-            <IonTitle>Add Product</IonTitle>
+            <IonTitle>Edit Product</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonCard>
@@ -163,9 +185,9 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
               size="large"
               expand="block"
               shape="round"
-              onClick={handleSave}
+              onClick={handleUpdate}
             >
-              Save
+              Update
             </SaveButton>
           </IonCardContent>
         </IonCard>

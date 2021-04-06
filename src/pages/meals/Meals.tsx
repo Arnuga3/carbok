@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 import {
   IonContent,
   IonHeader,
@@ -16,20 +17,19 @@ import styled from "styled-components";
 import { MealTypeActionSheet } from "./MealTypeActionSheet";
 import { MealCard } from "./MealCard";
 import { Meal } from "../../classes/meal/Meal";
-import { MealType } from "../../classes/meal/MealTypeEnum";
 
 import { addMeal } from "../../redux/actions/mealsActions";
-import { useMeals } from '../../hooks/mealsHook';
+import { useMeals } from "../../hooks/mealsHook";
+import { IMealType } from "../../classes/mealType/IMealType";
 
 export const Meals: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { meals } = useMeals();
   const [openActionSheet, setOpenActionSheet] = useState(false);
 
-  const handleMealTypeSelect = (type: MealType) => {
-    dispatch(
-      addMeal(new Meal(type, []))
-    );
+  const handleMealTypeSelect = (mealType: IMealType) => {
+    dispatch(addMeal(new Meal(mealType, [])));
   };
 
   return (
@@ -37,7 +37,7 @@ export const Meals: React.FC = () => {
       <IonContentStyled>
         <IonHeader slot="fixed">
           <IonToolbar>
-            <IonTitle>Meals</IonTitle>
+            <IonTitle>{t("page.meals.title")}</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonList>
@@ -50,7 +50,7 @@ export const Meals: React.FC = () => {
             size="large"
             onClick={() => setOpenActionSheet(true)}
           >
-            <IonIcon slot='icon-only' icon={add} />
+            <IonIcon slot="icon-only" icon={add} />
           </AddButton>
         </IonList>
       </IonContentStyled>

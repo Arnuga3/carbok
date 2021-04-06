@@ -17,7 +17,7 @@ interface Props {
 export const MealCard: React.FC<Props> = ({ meal }) => (
   <IonCard routerLink={`/meals/${meal.id}/products`}>
     <IonCardHeader>
-      <IonCardTitle>{meal.type}</IonCardTitle>
+      <IonCardTitle>{meal.type.nameKey}</IonCardTitle>
       <IonCardSubtitle>
         {moment(meal.dateTime).format("MMM Do, YYYY")}
       </IonCardSubtitle>

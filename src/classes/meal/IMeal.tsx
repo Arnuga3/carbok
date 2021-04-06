@@ -1,9 +1,9 @@
-import { MealType } from "./MealTypeEnum";
+import { IMealType } from "../mealType/IMealType";
 import { IProduct } from "../product/IProduct";
 
 export interface IMeal {
     id: string;
-    type: MealType;
+    type: IMealType;
     dateTime: Date;
     products: IProduct[];
 }

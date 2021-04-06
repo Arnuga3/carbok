@@ -37,6 +37,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { EditProduct } from './pages/products/product/EditProduct';
 
 const App: React.FC = () => (
   <IonApp>
@@ -50,6 +51,7 @@ const App: React.FC = () => (
           <Route exact path='/:tab(meals)/:id/products' component={Meal} />
           <Route exact path='/:tab(products)' component={Products}/>
           <Route exact path='/:tab(products)/add-product' component={AddProduct}/>
+          <Route exact path='/:tab(products)/edit-product/:id' component={EditProduct}/>
           <Route exact path='/'>
             <Redirect from='/' to='/meals'/>
           </Route>

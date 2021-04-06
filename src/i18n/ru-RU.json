@@ -14,10 +14,8 @@
     "product.category.other": "Other",
     "product.category.other.description": "A mix of different product items",
 
-    "product.units.grams": "Grams",
-    "product.units.grams.short": "g",
+    "product.units.grams": "Грамы",
+    "product.units.grams.short": "г",
     "product.units.milliliters": "Milliliters",
-    "product.units.milliliters.short": "ml",
-
-    "page.meals.title": "Meals"
+    "product.units.milliliters.short": "ml"
 }

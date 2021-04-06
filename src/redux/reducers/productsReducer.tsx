@@ -25,6 +25,16 @@ const reducer: Reducer<ProductsState> = (
         products: action.products,
       };
 
+    case ProductsActions.UPDATE_PRODUCT:
+      return {
+        ...state,
+        products: state.products.map((product) =>
+          product.id === action.product.id
+            ? ({...product, ...action.product})
+            : product
+        ),
+      };
+
     default:
       return state;
   }

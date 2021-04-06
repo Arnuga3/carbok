@@ -46,7 +46,7 @@ export const Products: React.FC = () => {
             <IonIcon slot="icon-only" icon={add} />
           </AddButton>
           {products.map((product: IProduct, i: number) => (
-            <IonItem key={i}>
+            <IonItem key={i} routerLink={`/products/edit-product/${product.id}`}>
               <IonLabel>{product.name}</IonLabel>
             </IonItem>
           ))}
