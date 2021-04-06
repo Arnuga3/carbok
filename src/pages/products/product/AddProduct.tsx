@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from "react";
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from "react-redux";
 import {
   IonHeader,
@@ -51,6 +52,7 @@ const defaultData: IProductDummy = {
 };
 
 export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [data, setData] = useState(defaultData);
   const [openCategoryModal, setOpenCategoryModal] = useState(false);

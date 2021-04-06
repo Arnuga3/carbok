@@ -17,6 +17,8 @@ import { Meal } from './pages/meals/meal/Meal';
 import { Products } from './pages/products/Products';
 import { AddProduct } from './pages/products/product/AddProduct';
 
+import './i18n/config';
+
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from 'react-i18next';
 import {
   IonButton,
   IonButtons,
@@ -40,6 +41,7 @@ export const CarbsData: React.FC<Props> = ({
   sugarsValid,
   onNumericDataChange,
 }) => {
+  const { t } = useTranslation();
   const [openModal, setOpenModal] = useState(false);
   const dataValid = portionValid && carbsValid && sugarsValid;
 
@@ -47,11 +49,11 @@ export const CarbsData: React.FC<Props> = ({
     <>
       <ChipWrapper>
         <IonChip color="secondary" outline>
-          <IonLabel color="secondary">{`Portion: ${data.portion}${data.units.shortNameKey}`}</IonLabel>
+          <IonLabel color="secondary">{`Portion: ${data.portion}${t(data.units.shortNameKey)}`}</IonLabel>
         </IonChip>
         <IonChip color="medium">
           <IonLabel color="medium">
-            {`Default Portion: ${data.defaultPortion}${data.units.shortNameKey}`}
+            {`Default Portion: ${data.defaultPortion}${t(data.units.shortNameKey)}`}
           </IonLabel>
         </IonChip>
         <IonChip color="success" outline>
@@ -106,7 +108,7 @@ export const CarbsData: React.FC<Props> = ({
                     </IonLabel>
                   </IonChip>
                 </IonInputStyled>
-                {data.units}
+                {t(data.units.shortNameKey)}
               </Row>
               {!portionValid && <Error>Should be greater than 0</Error>}
 
@@ -129,7 +131,7 @@ export const CarbsData: React.FC<Props> = ({
                     </IonLabel>
                   </IonChip>
                 </IonInputStyled>
-                {data.units}
+                {t(data.units.shortNameKey)}
               </Row>
               {!carbsValid && (
                 <Error>Should be smaller or equal to Portion</Error>
@@ -149,7 +151,7 @@ export const CarbsData: React.FC<Props> = ({
                     <IonLabel color={"danger"}>...of which Sugars</IonLabel>
                   </IonChip>
                 </IonInputStyled>
-                {data.units}
+                {t(data.units.shortNameKey)}
               </Row>
               {!sugarsValid && (
                 <Error>Should be smaller or equal to Carbohydrates</Error>
@@ -172,7 +174,7 @@ export const CarbsData: React.FC<Props> = ({
                     <IonLabel color={"medium"}>Default Portion</IonLabel>
                   </IonChip>
                 </IonInputStyled>
-                {data.units}
+                {t(data.units.shortNameKey)}
               </Row>
 
               <OkButton
