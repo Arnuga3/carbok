@@ -19,5 +19,11 @@
     "product.units.milliliters": "Milliliters",
     "product.units.milliliters.short": "ml",
 
+    "meal.type.breakfast": "Breakfast",
+    "meal.type.lunch": "Lunch",
+    "meal.type.dinner": "Dinner",
+    "meal.type.snack": "Snack",
+    "meal.type.other": "Other",
+
     "page.meals.title": "Meals"
 }

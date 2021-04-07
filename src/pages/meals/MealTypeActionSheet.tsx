@@ -1,8 +1,9 @@
-import React from 'react';
+import React from "react";
 import { IonActionSheet } from "@ionic/react";
 import { close } from "ionicons/icons";
 
-import { mealTypes } from '../../resources/mealTypes';
+import { mealTypes } from "../../resources/mealTypes";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   open: any;
@@ -14,22 +15,25 @@ export const MealTypeActionSheet: React.FC<Props> = ({
   open,
   onClose,
   onSelect,
-}) => (
-  <IonActionSheet
-    isOpen={open}
-    onDidDismiss={onClose}
-    cssClass="my-custom-class"
-    buttons={[
-      ...mealTypes.map((mealType) => ({
-        text: mealType.nameKey,
-        handler: () => onSelect(mealType)
-      })),
-      {
-        text: "Cancel",
-        icon: close,
-        role: "cancel",
-        handler: onClose,
-      },
-    ]}
-  ></IonActionSheet>
-);
+}) => {
+  const { t } = useTranslation();
+  return (
+    <IonActionSheet
+      isOpen={open}
+      onDidDismiss={onClose}
+      cssClass="my-custom-class"
+      buttons={[
+        ...mealTypes.map((mealType) => ({
+          text: t(mealType.nameKey),
+          handler: () => onSelect(mealType),
+        })),
+        {
+          text: "Cancel",
+          icon: close,
+          role: "cancel",
+          handler: onClose,
+        },
+      ]}
+    ></IonActionSheet>
+  );
+};

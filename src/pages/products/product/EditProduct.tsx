@@ -55,7 +55,6 @@ const defaultData: IProductDummy = {
 };
 
 export const EditProduct: React.FC<EditProductPageProps> = ({ history, match }) => {
-  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
 
   const { products } = useProducts();
