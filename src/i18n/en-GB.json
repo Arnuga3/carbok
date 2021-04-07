@@ -43,6 +43,7 @@
     "button.edit": "Edit",
     "button.back": "Back",
     "button.update": "Update",
+    "button.delete": "Delete",
     "not.found": "Not Found",
 
     "page.meals.title": "Meals",
@@ -51,6 +52,8 @@
     "page.products.search.placeholder": "Search",
     "page.products.add.product.title": "Add Product",
     "page.products.edit.product.title": "Edit Product",
+    "page.products.edit.product.delete.alert.title": "Delete this product?",
+    "page.products.edit.product.delete.alert.subtitle": "It can't be undone",
     "page.products.button.add.product": "Add Product",
     "page.products.button.category": "Category",
     "page.products.categories.modal.title": "Categories",

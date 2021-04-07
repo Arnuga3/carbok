@@ -30,9 +30,15 @@ const reducer: Reducer<ProductsState> = (
         ...state,
         products: state.products.map((product) =>
           product.id === action.product.id
-            ? ({...product, ...action.product})
+            ? { ...product, ...action.product }
             : product
         ),
+      };
+
+    case ProductsActions.DELETE_PRODUCT:
+      return {
+        ...state,
+        products: state.products.filter((product) => product.id !== action.id),
       };
 
     default:

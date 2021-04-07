@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import {
   IonHeader,
@@ -14,11 +14,12 @@ import {
   IonCardContent,
   IonLabel,
   IonIcon,
+  IonAlert,
 } from "@ionic/react";
 import styled from "styled-components";
 import { CategorySelectModal } from "./CategorySelectModal";
 import { IProductCategory } from "../../../classes/productCategory/IProductCategory";
-import { updateProduct } from "../../../redux/actions/productsActions";
+import { deleteProduct, updateProduct } from "../../../redux/actions/productsActions";
 import { MainData } from "./form/MainData";
 import { UnitsData } from "./form/UnitsData";
 import { CarbsData, NumericInput } from "./form/CarbsData";
@@ -31,7 +32,7 @@ import { IProduct } from "../../../classes/product/IProduct";
 import { useProducts } from "../../../hooks/productsHook";
 import { productUnits } from "../../../resources/productUnits";
 
-interface EditProductPageProps extends RouteComponentProps<{ id: string }> {};
+interface EditProductPageProps extends RouteComponentProps<{ id: string }> {}
 
 export interface IProductDummy {
   id?: string;
@@ -54,12 +55,17 @@ const defaultData: IProductDummy = {
   sugars: 0,
 };
 
-export const EditProduct: React.FC<EditProductPageProps> = ({ history, match }) => {
+export const EditProduct: React.FC<EditProductPageProps> = ({
+  history,
+  match,
+}) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const { products } = useProducts();
-  const productRetrieved: IProduct | undefined = products.find((product: IProduct) => product.id === match.params.id);
+  const productRetrieved: IProduct | undefined = products.find(
+    (product: IProduct) => product.id === match.params.id
+  );
   let product = defaultData;
 
   if (productRetrieved) {
@@ -69,7 +75,8 @@ export const EditProduct: React.FC<EditProductPageProps> = ({ history, match }) 
       category: productRetrieved.category,
       units: productRetrieved.units,
       portion: productRetrieved.carbsData.portion,
-      defaultPortion: productRetrieved.carbsData.defaultPortion ?? defaultData.defaultPortion,
+      defaultPortion:
+        productRetrieved.carbsData.defaultPortion ?? defaultData.defaultPortion,
       carbs: productRetrieved.carbsData.carbs,
       sugars: productRetrieved.carbsData.sugars,
     };
@@ -78,6 +85,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({ history, match }) 
   const [data, setData] = useState(product);
   const [openCategoryModal, setOpenCategoryModal] = useState(false);
   const [saveAttempted, setSaveAttempted] = useState(false);
+  const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
 
   const handleCategorySelect = (category: IProductCategory) => {
     setData({ ...data, category });
@@ -120,6 +128,13 @@ export const EditProduct: React.FC<EditProductPageProps> = ({ history, match }) 
     }
   };
 
+  const handleDelete = () => {
+    if (data.id) {
+      dispatch(deleteProduct(data.id));
+      history.goBack();
+    }
+  };
+
   const nameValid = useCallback(() => {
     return !saveAttempted || (data.name && data.name.trim() !== "");
   }, [data.name, saveAttempted]);
@@ -146,7 +161,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({ history, match }) 
         <IonHeader slot="fixed">
           <IonToolbar>
             <IonButtons slot="start">
-              <IonBackButton defaultHref="/products" text={t("button.back")}/>
+              <IonBackButton defaultHref="/products" text={t("button.back")} />
             </IonButtons>
             <IonTitle>{t("page.products.edit.product.title")}</IonTitle>
           </IonToolbar>
@@ -173,7 +188,9 @@ export const EditProduct: React.FC<EditProductPageProps> = ({ history, match }) 
               />
             </Row>
             <Row>
-              <IonLabel>{t("page.products.form.portion.and.carbohydrates")}</IonLabel>
+              <IonLabel>
+                {t("page.products.form.portion.and.carbohydrates")}
+              </IonLabel>
               <CarbsData
                 data={data}
                 portionValid={portionValid()}
@@ -182,14 +199,25 @@ export const EditProduct: React.FC<EditProductPageProps> = ({ history, match }) 
                 onNumericDataChange={handleNumberInputChange}
               />
             </Row>
-            <SaveButton
-              size="large"
-              expand="block"
-              shape="round"
-              onClick={handleUpdate}
-            >
-              {t("button.update")}
-            </SaveButton>
+            <ButtonGroup>
+              <Button
+                color="danger"
+                size="large"
+                expand="block"
+                shape="round"
+                onClick={() => setOpenDeleteAlert(true)}
+              >
+                {t("button.delete")}
+              </Button>
+              <Button
+                size="large"
+                expand="block"
+                shape="round"
+                onClick={handleUpdate}
+              >
+                {t("button.update")}
+              </Button>
+            </ButtonGroup>
           </IonCardContent>
         </IonCard>
       </IonContentStyled>
@@ -198,6 +226,19 @@ export const EditProduct: React.FC<EditProductPageProps> = ({ history, match }) 
         onClose={() => setOpenCategoryModal(false)}
         onSelect={handleCategorySelect}
       />
+      <IonAlert
+          isOpen={openDeleteAlert}
+          onDidDismiss={() => setOpenDeleteAlert(false)}
+          header={t("page.products.edit.product.delete.alert.title")}
+          subHeader={t("page.products.edit.product.delete.alert.subtitle")}
+          buttons={[
+            { text: t("button.cancel") },
+            {
+              text: t("button.delete"),
+              handler: handleDelete,
+            }
+          ]}
+        />
     </IonPage>
   );
 };
@@ -210,8 +251,13 @@ const IonContentStyled = styled(IonContent)`
   }
 `;
 
-const SaveButton = styled(IonButton)`
+const ButtonGroup = styled.div`
+  display: flex;
   margin-top: 28px;
+`;
+
+const Button = styled(IonButton)`
+  flex: 1;
 `;
 
 const Row = styled.div`
