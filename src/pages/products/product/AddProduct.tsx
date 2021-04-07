@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import {
   IonHeader,
@@ -52,7 +52,7 @@ const defaultData: IProductDummy = {
 };
 
 export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [data, setData] = useState(defaultData);
   const [openCategoryModal, setOpenCategoryModal] = useState(false);
@@ -124,16 +124,17 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
         <IonHeader slot="fixed">
           <IonToolbar>
             <IonButtons slot="start">
-              <IonBackButton defaultHref="/products" />
+              <IonBackButton defaultHref="/products" text={t("button.back")}/>
             </IonButtons>
-            <IonTitle>Add Product</IonTitle>
+            <IonTitle>{t("page.products.add.product.title")}</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonCard>
           <IonCardContent>
             <Row>
               <IonLabel color={nameValid() ? "" : "danger"}>
-                {!nameValid() && <IonIcon icon={warningOutline} />}Name
+                {!nameValid() && <IonIcon icon={warningOutline} />}
+                {t("page.products.form.name")}
               </IonLabel>
               <MainData
                 data={data}
@@ -143,14 +144,14 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
               />
             </Row>
             <Row>
-              <IonLabel>Units</IonLabel>
+              <IonLabel>{t("page.products.form.units")}</IonLabel>
               <UnitsData
                 units={data.units}
                 onUnitsChange={(units: IUnits) => setData({ ...data, units })}
               />
             </Row>
             <Row>
-              <IonLabel>Carbs & Protion</IonLabel>
+              <IonLabel>{t("page.products.form.portion.and.carbohydrates")}</IonLabel>
               <CarbsData
                 data={data}
                 portionValid={portionValid()}
@@ -165,7 +166,7 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
               shape="round"
               onClick={handleSave}
             >
-              Save
+              {t("button.save")}
             </SaveButton>
           </IonCardContent>
         </IonCard>

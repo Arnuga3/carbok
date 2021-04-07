@@ -55,6 +55,7 @@ const defaultData: IProductDummy = {
 };
 
 export const EditProduct: React.FC<EditProductPageProps> = ({ history, match }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const { products } = useProducts();
@@ -145,16 +146,17 @@ export const EditProduct: React.FC<EditProductPageProps> = ({ history, match }) 
         <IonHeader slot="fixed">
           <IonToolbar>
             <IonButtons slot="start">
-              <IonBackButton defaultHref="/products" />
+              <IonBackButton defaultHref="/products" text={t("button.back")}/>
             </IonButtons>
-            <IonTitle>Edit Product</IonTitle>
+            <IonTitle>{t("page.products.edit.product.title")}</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonCard>
           <IonCardContent>
             <Row>
               <IonLabel color={nameValid() ? "" : "danger"}>
-                {!nameValid() && <IonIcon icon={warningOutline} />}Name
+                {!nameValid() && <IonIcon icon={warningOutline} />}
+                {t("page.products.form.name")}
               </IonLabel>
               <MainData
                 data={data}
@@ -164,14 +166,14 @@ export const EditProduct: React.FC<EditProductPageProps> = ({ history, match }) 
               />
             </Row>
             <Row>
-              <IonLabel>Units</IonLabel>
+              <IonLabel>{t("page.products.form.units")}</IonLabel>
               <UnitsData
                 units={data.units}
                 onUnitsChange={(units: IUnits) => setData({ ...data, units })}
               />
             </Row>
             <Row>
-              <IonLabel>Carbs & Protion</IonLabel>
+              <IonLabel>{t("page.products.form.portion.and.carbohydrates")}</IonLabel>
               <CarbsData
                 data={data}
                 portionValid={portionValid()}
@@ -186,7 +188,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({ history, match }) 
               shape="round"
               onClick={handleUpdate}
             >
-              Update
+              {t("button.update")}
             </SaveButton>
           </IonCardContent>
         </IonCard>

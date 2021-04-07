@@ -10,6 +10,7 @@ import {
 import styled from "styled-components";
 import { pencil, warningOutline } from "ionicons/icons";
 import { IProductDummy } from "../EditProduct";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   data: IProductDummy;
@@ -24,6 +25,7 @@ export const MainData: React.FC<Props> = ({
   onNameChange,
   onCategoryModalOpen,
 }) => {
+  const { t } = useTranslation();
   return (
     <>
       <IonItem>
@@ -36,7 +38,7 @@ export const MainData: React.FC<Props> = ({
         {data && data?.category?.type ? (
           <>
             <IonChip color="primary" outline>
-              <IonLabel color="primary">{data.category.type}</IonLabel>
+              <IonLabel color="primary">{t(data.category.nameKey)}</IonLabel>
             </IonChip>
             <IonChip color="medium" onClick={onCategoryModalOpen}>
               <IonLabel></IonLabel>
@@ -51,7 +53,7 @@ export const MainData: React.FC<Props> = ({
             onClick={onCategoryModalOpen}
           >
             {!categoryValid && <IonIcon icon={warningOutline} />}
-            Category
+            {t("page.products.button.category")}
           </IonButton>
         )}
       </Row>

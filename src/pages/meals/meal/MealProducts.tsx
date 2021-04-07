@@ -14,7 +14,6 @@ export const MealProducts: React.FC<Props> = ({ products = [] }) => {
           <IonLabel>{product.name ?? 'Product Placeholder'}</IonLabel>
         </IonItem>
       )}
-      {!products.length && <p>No Products</p>}
     </IonList>
   );
 };

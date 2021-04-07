@@ -1,6 +1,6 @@
 import { Units } from "../classes/units/Units";
 
 export const productUnits = [
-    new Units("g", "product.units.grams", "product.units.grams.short"),
-    new Units("ml", "product.units.milliliters", "product.units.milliliters.short"),
+    new Units("g", "units.grams", "units.grams.short"),
+    new Units("ml", "units.milliliters", "units.milliliters.short"),
 ]

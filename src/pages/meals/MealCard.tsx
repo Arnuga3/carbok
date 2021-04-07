@@ -25,7 +25,7 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
           {moment(meal.dateTime).format("MMM Do, YYYY")}
         </IonCardSubtitle>
       </IonCardHeader>
-      <IonCardContent>Total products: {meal?.products.length}</IonCardContent>
+      <IonCardContent>{meal?.products.length}</IonCardContent>
     </IonCard>
   );
 };

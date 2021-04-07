@@ -28,7 +28,7 @@ export const MealTypeActionSheet: React.FC<Props> = ({
           handler: () => onSelect(mealType),
         })),
         {
-          text: "Cancel",
+          text: t("button.cancel"),
           icon: close,
           role: "cancel",
           handler: onClose,

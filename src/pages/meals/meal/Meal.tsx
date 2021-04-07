@@ -13,10 +13,12 @@ import { MealProducts } from "./MealProducts";
 import { IMeal } from "../../../classes/meal/IMeal";
 
 import { useMeals } from "../../../hooks/mealsHook";
+import { useTranslation } from "react-i18next";
 
 interface MealPageProps extends RouteComponentProps<{ id: string }> {}
 
 export const Meal: React.FC<MealPageProps> = ({ match }) => {
+  const { t } = useTranslation();
   const { meals } = useMeals();
   const meal: IMeal | undefined = meals.find((meal) => meal.id === match.params.id);
   return (
@@ -26,7 +28,7 @@ export const Meal: React.FC<MealPageProps> = ({ match }) => {
           <IonHeader>
             <IonToolbar>
               <IonButtons slot="start">
-                <IonBackButton defaultHref='/meals'/>
+                <IonBackButton defaultHref='/meals' text={t("button.back")}/>
               </IonButtons>
               <IonTitle></IonTitle>
             </IonToolbar>
@@ -36,7 +38,7 @@ export const Meal: React.FC<MealPageProps> = ({ match }) => {
           </IonContent>
         </>
       ) : (
-        <p>Whoops! Something went wrong...</p>
+        <p>{t("not.found")}</p>
       )}
     </IonPage>
   );

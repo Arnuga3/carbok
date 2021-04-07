@@ -10,6 +10,9 @@ import {
   IonItem,
   IonText,
   IonSearchbar,
+  IonChip,
+  IonLabel,
+  IonIcon,
 } from "@ionic/react";
 import styled from "styled-components";
 import { IProduct } from "../../classes/product/IProduct";
@@ -17,6 +20,7 @@ import { useProducts } from "../../hooks/productsHook";
 import { useDispatch } from "react-redux";
 import { retrieveProducts } from "../../redux/actions/productsActions";
 import { useTranslation } from "react-i18next";
+import { scaleOutline } from "ionicons/icons";
 
 export const Products: React.FC = () => {
   const { t } = useTranslation();
@@ -51,7 +55,7 @@ export const Products: React.FC = () => {
       <IonContentStyled>
         <IonHeader slot="fixed">
           <IonToolbar>
-            <IonTitle>Products</IonTitle>
+            <IonTitle>{t("page.products.title")}</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonList>
@@ -61,9 +65,9 @@ export const Products: React.FC = () => {
             shape="round"
             routerLink="/products/add-product"
           >
-            Add Product
+            {t("page.products.button.add.product")}
           </AddButton>
-          <Search animated onIonChange={handleSearch}></Search>
+          <Search animated onIonChange={handleSearch} placeholder={t("page.products.search.placeholder")}></Search>
           {searchResult.map((product: IProduct, i: number) => (
             <IonItem
               detail
@@ -71,17 +75,29 @@ export const Products: React.FC = () => {
               routerLink={`/products/edit-product/${product.id}`}
             >
               <ListItemContent>
-                <ProductTitle>{product.name}</ProductTitle>
-                <IonText color="medium">
-                  <small>Per</small>
-                  <Label color="medium">{` ${product.carbsData.portion}${t(
-                    product.units.shortNameKey
-                  )} `}</Label>
-                  <small>- Carbohydrates</small>
-                  <Label color="success">{` ${product.carbsData.carbs}g `}</Label>
-                  <small> ...of which Sugars</small>
-                  <Label color="danger">{` ${product.carbsData.sugars}g`}</Label>
-                </IonText>
+                <ListItemTitle>{product.name}</ListItemTitle>
+                <ListItemRow>
+                  <ListItemChip color="secondary">
+                    <IonIcon icon={scaleOutline} />
+                    <ListItemLabel>{` ${product.carbsData.portion}${t(
+                      product.units.shortNameKey
+                    )} `}</ListItemLabel>
+                  </ListItemChip>
+                  <ListItemChip color="success">
+                    <IonLabel color="success">
+                      <ListItemLabel>{`${t("carbohydrates.short")} `}</ListItemLabel>
+                      {product.carbsData.carbs}
+                      <ListItemLabel>{t("units.grams.short")}</ListItemLabel>
+                    </IonLabel>
+                  </ListItemChip>
+                  <ListItemChip color="danger">
+                    <IonLabel color="danger">
+                      <ListItemLabel>{`${t("sugars")} `}</ListItemLabel>
+                      {product.carbsData.sugars}
+                      <ListItemLabel>{t("units.grams.short")}</ListItemLabel>
+                    </IonLabel>
+                  </ListItemChip>
+                </ListItemRow>
               </ListItemContent>
             </IonItem>
           ))}
@@ -102,20 +118,32 @@ const AddButton = styled(IonButton)`
 const Search = styled(IonSearchbar)`
   --border-radius: 25px;
   width: 100%;
+  padding-bottom: 12px;
 `;
 
 const ListItemContent = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 8px 0;
+  padding: 8px;
 `;
 
-const ProductTitle = styled.span`
-  font-weight: bolder;
-  padding: 2px 0;
+const ListItemTitle = styled.span`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
 `;
 
-const Label = styled(IonText)`
-  font-weight: bolder;
+const ListItemRow = styled.div`
+  display: flex;
+`;
+
+const ListItemLabel = styled(IonText)`
+  font-weight: bold;
   font-size: 0.8em;
+`;
+
+const ListItemChip = styled(IonChip)`
+  padding: 4px 8px;
 `;

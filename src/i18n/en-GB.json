@@ -14,10 +14,10 @@
     "product.category.other": "Other",
     "product.category.other.description": "A mix of different product items",
 
-    "product.units.grams": "Grams",
-    "product.units.grams.short": "g",
-    "product.units.milliliters": "Milliliters",
-    "product.units.milliliters.short": "ml",
+    "units.grams": "Grams",
+    "units.grams.short": "g",
+    "units.milliliters": "Milliliters",
+    "units.milliliters.short": "ml",
 
     "meal.type.breakfast": "Breakfast",
     "meal.type.lunch": "Lunch",
@@ -25,5 +25,36 @@
     "meal.type.snack": "Snack",
     "meal.type.other": "Other",
 
-    "page.meals.title": "Meals"
+    "portion": "Portion",
+    "portion.default": "Default Portion",
+    "carbohydrates": "Carbohydrates",
+    "carbohydrates.short": "Carbs",
+    "sugars": "Sugars",
+    "of.which.sugars": "...of which Sugars",
+
+    "tab.home": "Home",
+    "tab.calculator": "Calculator",
+    "tab.meals": "Meals",
+    "tab.products": "Products",
+
+    "button.cancel": "Cancel",
+    "button.close": "Close",
+    "button.save": "Save",
+    "button.edit": "Edit",
+    "button.back": "Back",
+    "button.update": "Update",
+    "not.found": "Not Found",
+
+    "page.meals.title": "Meals",
+
+    "page.products.title": "Products",
+    "page.products.search.placeholder": "Search",
+    "page.products.add.product.title": "Add Product",
+    "page.products.edit.product.title": "Edit Product",
+    "page.products.button.add.product": "Add Product",
+    "page.products.button.category": "Category",
+    "page.products.categories.modal.title": "Categories",
+    "page.products.form.name": "Name",
+    "page.products.form.units": "Units",
+    "page.products.form.portion.and.carbohydrates": "Portion & Carbohydrates"
 }

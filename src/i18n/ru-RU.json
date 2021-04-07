@@ -14,8 +14,8 @@
     "product.category.other": "Other",
     "product.category.other.description": "A mix of different product items",
 
-    "product.units.grams": "Грамы",
-    "product.units.grams.short": "г",
-    "product.units.milliliters": "Milliliters",
-    "product.units.milliliters.short": "ml"
+    "units.grams": "Грамы",
+    "units.grams.short": "г",
+    "units.milliliters": "Milliliters",
+    "units.milliliters.short": "ml"
 }

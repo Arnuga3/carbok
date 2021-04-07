@@ -49,18 +49,18 @@ export const CarbsData: React.FC<Props> = ({
     <>
       <ChipWrapper>
         <IonChip color="secondary" outline>
-          <IonLabel color="secondary">{`Portion: ${data.portion}${t(data.units.shortNameKey)}`}</IonLabel>
+          <IonLabel color="secondary">{`${t("portion")}: ${data.portion}${t(data.units.shortNameKey)}`}</IonLabel>
         </IonChip>
         <IonChip color="medium">
           <IonLabel color="medium">
-            {`Default Portion: ${data.defaultPortion}${t(data.units.shortNameKey)}`}
+            {`${t("portion.default")}: ${data.defaultPortion}${t(data.units.shortNameKey)}`}
           </IonLabel>
         </IonChip>
         <IonChip color="success" outline>
-          <IonLabel color="success">{`Carbs: ${data.carbs}g`}</IonLabel>
+          <IonLabel color="success">{`${t("carbohydrates.short")}: ${data.carbs}${t("units.grams.short")}`}</IonLabel>
         </IonChip>
         <IonChip color="danger" outline>
-          <IonLabel color="danger">{`...of which Sugars: ${data.sugars}g`}</IonLabel>
+          <IonLabel color="danger">{`${t("of.which.sugars")}: ${data.sugars}${t("units.grams.short")}`}</IonLabel>
         </IonChip>
       </ChipWrapper>
       <IonButton
@@ -69,20 +69,20 @@ export const CarbsData: React.FC<Props> = ({
         onClick={() => setOpenModal(true)}
       >
         {!dataValid && <IonIcon icon={warningOutline} />}
-        Edit
+        {t("button.edit")}
       </IonButton>
       <IonModal isOpen={openModal}>
         <IonContent>
           <IonHeader slot="fixed">
             <IonToolbar>
-              <IonTitle>Carbs per Portion</IonTitle>
+              <IonTitle>{t("page.products.form.portion.and.carbohydrates")}</IonTitle>
               <IonButtons slot="end">
                 <IonButton
                   onClick={() => setOpenModal(false)}
                   fill="solid"
                   shape="round"
                 >
-                  Close
+                  {t("button.close")}
                 </IonButton>
               </IonButtons>
             </IonToolbar>

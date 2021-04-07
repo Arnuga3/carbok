@@ -16,6 +16,7 @@ import { ProductCategoryType } from "../../../classes/productCategory/ProductCat
 
 import { useProducts } from "../../../hooks/productsHook";
 import { categories } from "../../../resources/productCategories";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   open: boolean;
@@ -30,6 +31,7 @@ export const CategorySelectModal: React.FC<Props> = ({
   onClose,
   onSelect,
 }) => {
+  const { t } = useTranslation();
   const { products } = useProducts();
   const categoryProductsMap: CategoryProductsMapType = getGroupedProducts(
     categories,
@@ -40,10 +42,10 @@ export const CategorySelectModal: React.FC<Props> = ({
       <IonContentStyled>
         <IonHeader slot="fixed">
           <IonToolbar>
-            <IonTitle>Categories</IonTitle>
+            <IonTitle>{t("page.products.categories.modal.title")}</IonTitle>
             <IonButtons slot="end">
               <IonButton onClick={onClose} fill="solid" shape="round">
-                Close
+                {t("button.close")}
               </IonButton>
             </IonButtons>
           </IonToolbar>
@@ -55,7 +57,7 @@ export const CategorySelectModal: React.FC<Props> = ({
               color={category.color}
               onClick={() => onSelect(category)}
             >
-              {category.type}
+              {t(category.nameKey)}
               <Badge slot="end" color="secondary">
                 {categoryProductsMap[category.type].length}
               </Badge>
