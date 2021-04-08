@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import {
@@ -18,15 +18,21 @@ import { MealTypeActionSheet } from "./MealTypeActionSheet";
 import { MealCard } from "./MealCard";
 import { Meal } from "../../classes/meal/Meal";
 
-import { addMeal } from "../../redux/actions/mealsActions";
+import { addMeal, retrieveMeals } from "../../redux/actions/mealsActions";
 import { useMeals } from "../../hooks/mealsHook";
 import { IMealType } from "../../classes/mealType/IMealType";
 
 export const Meals: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { meals } = useMeals();
+  const { meals, date } = useMeals();
   const [openActionSheet, setOpenActionSheet] = useState(false);
+
+  useEffect(() => {
+    if (meals.length === 0) {
+      dispatch(retrieveMeals(date));
+    }
+  }, []);
 
   const handleMealTypeSelect = (mealType: IMealType) => {
     dispatch(addMeal(new Meal(mealType, [])));

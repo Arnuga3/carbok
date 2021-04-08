@@ -21,6 +21,9 @@ import { Meals } from "./pages/meals/Meals";
 import { Meal } from "./pages/meals/meal/Meal";
 import { Products } from "./pages/products/Products";
 import { AddProduct } from "./pages/products/product/AddProduct";
+import { EditProduct } from "./pages/products/product/EditProduct";
+
+import { useTranslation } from "react-i18next";
 
 import "./i18n/config";
 
@@ -42,8 +45,6 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import { EditProduct } from "./pages/products/product/EditProduct";
-import { useTranslation } from "react-i18next";
 
 const App: React.FC = () => {
   const { t } = useTranslation();

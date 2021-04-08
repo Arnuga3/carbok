@@ -5,7 +5,7 @@ import { IMealType } from "../mealType/IMealType";
 
 export class Meal implements IMeal {
   id: string = uuidv4();
-  dateTime: Date = new Date(Date.now());
+  dateTime: Date = new Date();
   type: IMealType;
   products: IProduct[];
 

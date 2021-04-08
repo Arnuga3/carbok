@@ -16,7 +16,7 @@ import {
   IonIcon,
 } from "@ionic/react";
 import styled from "styled-components";
-import { CategorySelectModal } from "./CategorySelectModal";
+import { CategoriesModal } from "./CategoriesModal";
 import { IProductCategory } from "../../../classes/productCategory/IProductCategory";
 import { addProduct } from "../../../redux/actions/productsActions";
 import { MainData } from "./form/MainData";
@@ -171,7 +171,7 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
           </IonCardContent>
         </IonCard>
       </IonContentStyled>
-      <CategorySelectModal
+      <CategoriesModal
         open={openCategoryModal}
         onClose={() => setOpenCategoryModal(false)}
         onSelect={handleCategorySelect}

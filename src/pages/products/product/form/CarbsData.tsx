@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import {
   IonButton,
   IonButtons,
@@ -15,6 +15,7 @@ import {
   IonInput,
   IonIcon,
 } from "@ionic/react";
+import { close } from "ionicons/icons";
 import { IProductDummy } from "../AddProduct";
 import styled from "styled-components";
 import { warningOutline } from "ionicons/icons";
@@ -49,18 +50,26 @@ export const CarbsData: React.FC<Props> = ({
     <>
       <ChipWrapper>
         <IonChip color="secondary" outline>
-          <IonLabel color="secondary">{`${t("portion")}: ${data.portion}${t(data.units.shortNameKey)}`}</IonLabel>
+          <IonLabel color="secondary">{`${t("portion")}: ${data.portion}${t(
+            data.units.shortNameKey
+          )}`}</IonLabel>
         </IonChip>
         <IonChip color="medium">
           <IonLabel color="medium">
-            {`${t("portion.default")}: ${data.defaultPortion}${t(data.units.shortNameKey)}`}
+            {`${t("portion.default")}: ${data.defaultPortion}${t(
+              data.units.shortNameKey
+            )}`}
           </IonLabel>
         </IonChip>
         <IonChip color="success" outline>
-          <IonLabel color="success">{`${t("carbohydrates.short")}: ${data.carbs}${t("units.grams.short")}`}</IonLabel>
+          <IonLabel color="success">{`${t("carbohydrates.short")}: ${
+            data.carbs
+          }${t("units.grams.short")}`}</IonLabel>
         </IonChip>
         <IonChip color="danger" outline>
-          <IonLabel color="danger">{`${t("of.which.sugars")}: ${data.sugars}${t("units.grams.short")}`}</IonLabel>
+          <IonLabel color="danger">{`${t("of.which.sugars")}: ${data.sugars}${t(
+            "units.grams.short"
+          )}`}</IonLabel>
         </IonChip>
       </ChipWrapper>
       <IonButton
@@ -75,14 +84,12 @@ export const CarbsData: React.FC<Props> = ({
         <IonContent>
           <IonHeader slot="fixed">
             <IonToolbar>
-              <IonTitle>{t("page.products.form.portion.and.carbohydrates")}</IonTitle>
+              <IonTitle>
+                {t("page.products.form.portion.and.carbohydrates")}
+              </IonTitle>
               <IonButtons slot="end">
-                <IonButton
-                  onClick={() => setOpenModal(false)}
-                  fill="solid"
-                  shape="round"
-                >
-                  {t("button.close")}
+                <IonButton onClick={() => setOpenModal(false)}>
+                  <IonIcon icon={close} />
                 </IonButton>
               </IonButtons>
             </IonToolbar>

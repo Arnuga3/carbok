@@ -5,6 +5,7 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
+  IonIcon,
   IonModal,
   IonTitle,
   IonToolbar,
@@ -17,6 +18,7 @@ import { ProductCategoryType } from "../../../classes/productCategory/ProductCat
 import { useProducts } from "../../../hooks/productsHook";
 import { categories } from "../../../resources/productCategories";
 import { useTranslation } from "react-i18next";
+import { close } from "ionicons/icons";
 
 interface Props {
   open: boolean;
@@ -26,7 +28,7 @@ interface Props {
 
 export type CategoryProductsMapType = Record<ProductCategoryType, IProduct[]>;
 
-export const CategorySelectModal: React.FC<Props> = ({
+export const CategoriesModal: React.FC<Props> = ({
   open,
   onClose,
   onSelect,
@@ -38,14 +40,14 @@ export const CategorySelectModal: React.FC<Props> = ({
     products
   );
   return (
-    <IonModal isOpen={open} cssClass="my-custom-class">
+    <IonModal isOpen={open}>
       <IonContentStyled>
         <IonHeader slot="fixed">
           <IonToolbar>
             <IonTitle>{t("page.products.categories.modal.title")}</IonTitle>
             <IonButtons slot="end">
-              <IonButton onClick={onClose} fill="solid" shape="round">
-                {t("button.close")}
+              <IonButton onClick={onClose}>
+                <IonIcon icon={close}/>
               </IonButton>
             </IonButtons>
           </IonToolbar>

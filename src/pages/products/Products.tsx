@@ -9,7 +9,6 @@ import {
   IonButton,
   IonItem,
   IonText,
-  IonSearchbar,
   IonChip,
   IonLabel,
   IonIcon,
@@ -21,6 +20,7 @@ import { useDispatch } from "react-redux";
 import { retrieveProducts } from "../../redux/actions/productsActions";
 import { useTranslation } from "react-i18next";
 import { scaleOutline } from "ionicons/icons";
+import { ProductsSearch } from "../../components/common/ProductsSearch";
 
 export const Products: React.FC = () => {
   const { t } = useTranslation();
@@ -41,14 +41,7 @@ export const Products: React.FC = () => {
     }
   }, [products]);
 
-  const handleSearch = (e: any) => {
-    setSearchResult(
-      products.filter(
-        (product) =>
-          product.name.toLowerCase().indexOf(e.detail.value.toLowerCase()) > -1
-      )
-    );
-  };
+  const handleSearch = (result: IProduct[]) => setSearchResult(result);
 
   return (
     <IonPage>
@@ -67,7 +60,7 @@ export const Products: React.FC = () => {
           >
             {t("page.products.button.add.product")}
           </AddButton>
-          <Search animated onIonChange={handleSearch} placeholder={t("page.products.search.placeholder")}></Search>
+          <ProductsSearch products={products} onSearchComplete={handleSearch}/>
           {searchResult.map((product: IProduct, i: number) => (
             <IonItem
               detail
@@ -113,12 +106,6 @@ const IonContentStyled = styled(IonContent)`
 
 const AddButton = styled(IonButton)`
   margin: 10px;
-`;
-
-const Search = styled(IonSearchbar)`
-  --border-radius: 25px;
-  width: 100%;
-  padding-bottom: 12px;
 `;
 
 const ListItemContent = styled.div`

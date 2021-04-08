@@ -28,13 +28,13 @@ export const Meal: React.FC<MealPageProps> = ({ match }) => {
           <IonHeader>
             <IonToolbar>
               <IonButtons slot="start">
-                <IonBackButton defaultHref='/meals' text={t("button.back")}/>
+                <IonBackButton defaultHref={`/meals/${meal.id}/products`} text={t("button.back")}/>
               </IonButtons>
-              <IonTitle></IonTitle>
+              <IonTitle>{t(meal.type.nameKey)}</IonTitle>
             </IonToolbar>
           </IonHeader>
           <IonContent>
-            <MealProducts products={meal.products} />
+            <MealProducts meal={meal} products={meal.products} />
           </IonContent>
         </>
       ) : (

@@ -17,7 +17,7 @@ import {
   IonAlert,
 } from "@ionic/react";
 import styled from "styled-components";
-import { CategorySelectModal } from "./CategorySelectModal";
+import { CategoriesModal } from "./CategoriesModal";
 import { IProductCategory } from "../../../classes/productCategory/IProductCategory";
 import { deleteProduct, updateProduct } from "../../../redux/actions/productsActions";
 import { MainData } from "./form/MainData";
@@ -221,7 +221,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
           </IonCardContent>
         </IonCard>
       </IonContentStyled>
-      <CategorySelectModal
+      <CategoriesModal
         open={openCategoryModal}
         onClose={() => setOpenCategoryModal(false)}
         onSelect={handleCategorySelect}
