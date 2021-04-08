@@ -7,7 +7,6 @@ import {
   IonList,
   IonItem,
   IonIcon,
-  IonText,
   IonButtons,
   IonHeader,
   IonTitle,
@@ -20,6 +19,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { retrieveProducts } from "../../../redux/actions/productsActions";
 import { ProductsSearch } from "../../../components/common/ProductsSearch";
+import { ProductListItem } from "../../../components/common/ProductListItem";
 
 interface Props {
   open: boolean;
@@ -83,46 +83,14 @@ export const ProductsModal: React.FC<Props> = ({ open, onClose, onSelect }) => {
           {searchResult.map((product: IProduct, i: number) => (
             <IonItem key={i} onClick={() => toggleSelect(product)}>
               <IonIcon
-                color="primary"
+                color="medium"
                 icon={
                   selectedProducts.find((prd) => prd.id === product.id)
                     ? checkmarkCircle
                     : ellipseOutline
                 }
               />
-              <ListItemContent>
-                <ListItemTitle>
-                  {product.name}
-                  <IonText color="secondary">
-                    <small> &middot; {t(product.category.nameKey)}</small>
-                  </IonText>
-                </ListItemTitle>
-                <ListItemRow>
-                  <Label color="medium">
-                    <small>
-                      <b>{` ${product.carbsData.portion}${t(
-                        product.units.shortNameKey
-                      )} |`}</b>
-                    </small>
-                  </Label>
-                  <Label color="medium">
-                    <small>
-                      {t("carbohydrates.short")}
-                      <b>{` ${product.carbsData.carbs}${t(
-                        "units.grams.short"
-                      )} |`}</b>
-                    </small>
-                  </Label>
-                  <Label color="medium">
-                    <small>
-                      {t("of.which.sugars")}
-                      <b>{` ${product.carbsData.sugars}${t(
-                        "units.grams.short"
-                      )}`}</b>
-                    </small>
-                  </Label>
-                </ListItemRow>
-              </ListItemContent>
+              <ProductListItem product={product}/>
             </IonItem>
           ))}
         </IonList>
@@ -133,23 +101,4 @@ export const ProductsModal: React.FC<Props> = ({ open, onClose, onSelect }) => {
 
 const IonContentStyled = styled(IonContent)`
   --padding-top: 50px;
-`;
-
-const ListItemContent = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 12px;
-`;
-
-const ListItemTitle = styled.div`
-  font-weight: bold;
-`;
-
-const ListItemRow = styled.div`
-  display: flex;
-`;
-
-const Label = styled(IonText)`
-  margin: 0 4px;
 `;
