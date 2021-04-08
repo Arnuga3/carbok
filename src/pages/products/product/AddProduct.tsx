@@ -120,15 +120,15 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
 
   return (
     <IonPage>
+      <IonHeader slot="fixed">
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/products" text={t("button.back")} />
+          </IonButtons>
+          <IonTitle>{t("page.products.add.product.title")}</IonTitle>
+        </IonToolbar>
+      </IonHeader>
       <IonContentStyled>
-        <IonHeader slot="fixed">
-          <IonToolbar>
-            <IonButtons slot="start">
-              <IonBackButton defaultHref="/products" text={t("button.back")}/>
-            </IonButtons>
-            <IonTitle>{t("page.products.add.product.title")}</IonTitle>
-          </IonToolbar>
-        </IonHeader>
         <IonCard>
           <IonCardContent>
             <Row>
@@ -151,7 +151,9 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
               />
             </Row>
             <Row>
-              <IonLabel>{t("page.products.form.portion.and.carbohydrates")}</IonLabel>
+              <IonLabel>
+                {t("page.products.form.portion.and.carbohydrates")}
+              </IonLabel>
               <CarbsData
                 data={data}
                 portionValid={portionValid()}
@@ -181,8 +183,6 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
 };
 
 const IonContentStyled = styled(IonContent)`
-  --padding-top: 60px;
-
   & .input-right-align {
     text-align: right;
   }

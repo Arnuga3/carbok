@@ -14,6 +14,7 @@ import {
   IonContent,
   IonButton,
   IonModal,
+  IonFooter,
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -67,19 +68,18 @@ export const ProductsModal: React.FC<Props> = ({ open, onClose, onSelect }) => {
 
   return (
     <IonModal isOpen={open}>
-      <IonContentStyled>
-        <IonHeader slot="fixed">
-          <IonToolbar>
-            <IonTitle>{t("page.meals.add.product.modal.title")}</IonTitle>
-            <IonButtons slot="end">
-              <IonButton onClick={onClose}>
-                <IonIcon icon={close}/>
-              </IonButton>
-            </IonButtons>
-          </IonToolbar>
-        </IonHeader>
+      <IonHeader slot="fixed">
+        <IonToolbar>
+          <ProductsSearch products={products} onSearchComplete={handleSearch} />
+          <IonButtons slot="end">
+            <IonButton onClick={onClose}>
+              <IonIcon icon={close} />
+            </IonButton>
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
         <IonList>
-          <ProductsSearch products={products} onSearchComplete={handleSearch}/>
           {searchResult.map((product: IProduct, i: number) => (
             <IonItem key={i} onClick={() => toggleSelect(product)}>
               <IonIcon
@@ -90,15 +90,24 @@ export const ProductsModal: React.FC<Props> = ({ open, onClose, onSelect }) => {
                     : ellipseOutline
                 }
               />
-              <ProductListItem product={product}/>
+              <ProductListItem product={product} />
             </IonItem>
           ))}
         </IonList>
-      </IonContentStyled>
+      </IonContent>
+      {selectedProducts.length > 0 && (
+        <IonFooter slot="fixed">
+          <IonToolbar>
+            <SelectButton onClick={onClose} expand="block" shape="round">
+              {t("button.select")}
+            </SelectButton>
+          </IonToolbar>
+        </IonFooter>
+      )}
     </IonModal>
   );
 };
 
-const IonContentStyled = styled(IonContent)`
-  --padding-top: 50px;
+const SelectButton = styled(IonButton)`
+  margin: 0 12px;
 `;

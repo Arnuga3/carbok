@@ -41,12 +41,12 @@ export const Products: React.FC = () => {
 
   return (
     <IonPage>
-      <IonContentStyled>
-        <IonHeader slot="fixed">
-          <IonToolbar>
-            <IonTitle>{t("page.products.title")}</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+      <IonHeader slot="fixed">
+        <IonToolbar>
+          <IonTitle>{t("page.products.title")}</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
         <IonList>
           <AddButton
             size="large"
@@ -56,25 +56,21 @@ export const Products: React.FC = () => {
           >
             {t("page.products.button.add.product")}
           </AddButton>
-          <ProductsSearch products={products} onSearchComplete={handleSearch}/>
+          <ProductsSearch products={products} onSearchComplete={handleSearch} />
           {searchResult.map((product: IProduct, i: number) => (
             <IonItem
               detail
               key={i}
               routerLink={`/products/edit-product/${product.id}`}
             >
-              <ProductListItem product={product}/>
+              <ProductListItem product={product} />
             </IonItem>
           ))}
         </IonList>
-      </IonContentStyled>
+      </IonContent>
     </IonPage>
   );
 };
-
-const IonContentStyled = styled(IonContent)`
-  --padding-top: 50px;
-`;
 
 const AddButton = styled(IonButton)`
   margin: 10px;

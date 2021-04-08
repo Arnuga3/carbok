@@ -81,20 +81,20 @@ export const CarbsData: React.FC<Props> = ({
         {t("button.edit")}
       </IonButton>
       <IonModal isOpen={openModal}>
+        <IonHeader slot="fixed">
+          <IonToolbar>
+            <IonTitle>
+              {t("page.products.form.portion.and.carbohydrates")}
+            </IonTitle>
+            <IonButtons slot="end">
+              <IonButton onClick={() => setOpenModal(false)}>
+                <IonIcon icon={close} />
+              </IonButton>
+            </IonButtons>
+          </IonToolbar>
+        </IonHeader>
         <IonContent>
-          <IonHeader slot="fixed">
-            <IonToolbar>
-              <IonTitle>
-                {t("page.products.form.portion.and.carbohydrates")}
-              </IonTitle>
-              <IonButtons slot="end">
-                <IonButton onClick={() => setOpenModal(false)}>
-                  <IonIcon icon={close} />
-                </IonButton>
-              </IonButtons>
-            </IonToolbar>
-          </IonHeader>
-          <IonCardStyled>
+          <IonCard>
             <IonCardContent>
               <Row>
                 <IonInputStyled
@@ -118,7 +118,6 @@ export const CarbsData: React.FC<Props> = ({
                 {t(data.units.shortNameKey)}
               </Row>
               {!portionValid && <Error>Should be greater than 0</Error>}
-
               <Row>
                 <IonInputStyled
                   type="number"
@@ -143,7 +142,6 @@ export const CarbsData: React.FC<Props> = ({
               {!carbsValid && (
                 <Error>Should be smaller or equal to Portion</Error>
               )}
-
               <Row>
                 <IonInputStyled
                   type="number"
@@ -163,7 +161,6 @@ export const CarbsData: React.FC<Props> = ({
               {!sugarsValid && (
                 <Error>Should be smaller or equal to Carbohydrates</Error>
               )}
-
               <Row>
                 <IonInputStyled
                   type="number"
@@ -192,7 +189,7 @@ export const CarbsData: React.FC<Props> = ({
                 OK
               </OkButton>
             </IonCardContent>
-          </IonCardStyled>
+          </IonCard>
         </IonContent>
       </IonModal>
     </>
@@ -201,10 +198,6 @@ export const CarbsData: React.FC<Props> = ({
 
 const ChipWrapper = styled.div`
   margin: 12px 4px;
-`;
-
-const IonCardStyled = styled(IonCard)`
-  margin-top: 65px;
 `;
 
 const IonInputStyled = styled(IonInput)`

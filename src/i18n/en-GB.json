@@ -44,11 +44,11 @@
     "button.back": "Back",
     "button.update": "Update",
     "button.delete": "Delete",
+    "button.select": "Select",
     "not.found": "Not Found",
 
     "page.meals.title": "Meals",
     "page.meals.button.add.product": "Add Product",
-    "page.meals.add.product.modal.title": "Products",
 
     "page.products.title": "Products",
     "page.products.search.placeholder": "Search",

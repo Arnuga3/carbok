@@ -19,7 +19,10 @@ import {
 import styled from "styled-components";
 import { CategoriesModal } from "./CategoriesModal";
 import { IProductCategory } from "../../../classes/productCategory/IProductCategory";
-import { deleteProduct, updateProduct } from "../../../redux/actions/productsActions";
+import {
+  deleteProduct,
+  updateProduct,
+} from "../../../redux/actions/productsActions";
 import { MainData } from "./form/MainData";
 import { UnitsData } from "./form/UnitsData";
 import { CarbsData, NumericInput } from "./form/CarbsData";
@@ -157,15 +160,15 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
 
   return (
     <IonPage>
+      <IonHeader slot="fixed">
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/products" text={t("button.back")} />
+          </IonButtons>
+          <IonTitle>{t("page.products.edit.product.title")}</IonTitle>
+        </IonToolbar>
+      </IonHeader>
       <IonContentStyled>
-        <IonHeader slot="fixed">
-          <IonToolbar>
-            <IonButtons slot="start">
-              <IonBackButton defaultHref="/products" text={t("button.back")} />
-            </IonButtons>
-            <IonTitle>{t("page.products.edit.product.title")}</IonTitle>
-          </IonToolbar>
-        </IonHeader>
         <IonCard>
           <IonCardContent>
             <Row>
@@ -227,25 +230,23 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
         onSelect={handleCategorySelect}
       />
       <IonAlert
-          isOpen={openDeleteAlert}
-          onDidDismiss={() => setOpenDeleteAlert(false)}
-          header={t("page.products.edit.product.delete.alert.title")}
-          subHeader={t("page.products.edit.product.delete.alert.subtitle")}
-          buttons={[
-            { text: t("button.cancel") },
-            {
-              text: t("button.delete"),
-              handler: handleDelete,
-            }
-          ]}
-        />
+        isOpen={openDeleteAlert}
+        onDidDismiss={() => setOpenDeleteAlert(false)}
+        header={t("page.products.edit.product.delete.alert.title")}
+        subHeader={t("page.products.edit.product.delete.alert.subtitle")}
+        buttons={[
+          { text: t("button.cancel") },
+          {
+            text: t("button.delete"),
+            handler: handleDelete,
+          },
+        ]}
+      />
     </IonPage>
   );
 };
 
 const IonContentStyled = styled(IonContent)`
-  --padding-top: 60px;
-
   & .input-right-align {
     text-align: right;
   }

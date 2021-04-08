@@ -40,12 +40,12 @@ export const Meals: React.FC = () => {
 
   return (
     <IonPage>
-      <IonContentStyled>
-        <IonHeader slot="fixed">
-          <IonToolbar>
-            <IonTitle>{t("page.meals.title")}</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+      <IonHeader slot="fixed">
+        <IonToolbar>
+          <IonTitle>{t("page.meals.title")}</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
         <IonList>
           {meals.map((meal, i) => (
             <MealCard key={i} meal={meal} />
@@ -59,7 +59,7 @@ export const Meals: React.FC = () => {
             <IonIcon slot="icon-only" icon={add} />
           </AddButton>
         </IonList>
-      </IonContentStyled>
+      </IonContent>
       <MealTypeActionSheet
         open={openActionSheet}
         onSelect={handleMealTypeSelect}
@@ -68,10 +68,6 @@ export const Meals: React.FC = () => {
     </IonPage>
   );
 };
-
-const IonContentStyled = styled(IonContent)`
-  --padding-top: 50px;
-`;
 
 const AddButton = styled(IonButton)`
   margin: 12px;

@@ -41,17 +41,17 @@ export const CategoriesModal: React.FC<Props> = ({
   );
   return (
     <IonModal isOpen={open}>
-      <IonContentStyled>
-        <IonHeader slot="fixed">
-          <IonToolbar>
-            <IonTitle>{t("page.products.categories.modal.title")}</IonTitle>
-            <IonButtons slot="end">
-              <IonButton onClick={onClose}>
-                <IonIcon icon={close}/>
-              </IonButton>
-            </IonButtons>
-          </IonToolbar>
-        </IonHeader>
+      <IonHeader slot="fixed">
+        <IonToolbar>
+          <IonTitle>{t("page.products.categories.modal.title")}</IonTitle>
+          <IonButtons slot="end">
+            <IonButton onClick={onClose}>
+              <IonIcon icon={close} />
+            </IonButton>
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
         <Wrapper>
           {categories.map((category, i) => (
             <Category
@@ -66,14 +66,10 @@ export const CategoriesModal: React.FC<Props> = ({
             </Category>
           ))}
         </Wrapper>
-      </IonContentStyled>
+      </IonContent>
     </IonModal>
   );
 };
-
-const IonContentStyled = styled(IonContent)`
-  --padding-top: 60px;
-`;
 
 const Wrapper = styled.div`
   display: flex;
