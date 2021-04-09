@@ -10,15 +10,22 @@ import {
   IonIcon,
   IonList,
   IonButton,
+  IonListHeader,
+  IonText,
 } from "@ionic/react";
-import { add } from "ionicons/icons";
+import { add, chevronBackOutline, chevronForwardOutline } from "ionicons/icons";
 import styled from "styled-components";
+import moment from "moment";
 
 import { MealTypeActionSheet } from "./MealTypeActionSheet";
 import { MealCard } from "./MealCard";
 import { Meal } from "../../classes/meal/Meal";
 
-import { addMeal, retrieveMeals } from "../../redux/actions/mealsActions";
+import {
+  addMeal,
+  changeDate,
+  retrieveMeals,
+} from "../../redux/actions/mealsActions";
 import { useMeals } from "../../hooks/mealsHook";
 import { IMealType } from "../../classes/mealType/IMealType";
 
@@ -38,6 +45,16 @@ export const Meals: React.FC = () => {
     dispatch(addMeal(new Meal(mealType, [])));
   };
 
+  const getPreviousDay = () => {
+    const previousDay = moment(date).subtract(1, "day");
+    dispatch(changeDate(new Date(previousDay.toISOString())));
+  };
+
+  const getNextDay = () => {
+    const nextDay = moment(date).add(1, "day");
+    dispatch(changeDate(new Date(nextDay.toISOString())));
+  };
+
   return (
     <IonPage>
       <IonHeader slot="fixed">
@@ -47,6 +64,19 @@ export const Meals: React.FC = () => {
       </IonHeader>
       <IonContent>
         <IonList>
+          <IonListHeader>
+            <DateControl>
+              <IonButton onClick={getPreviousDay}>
+                <IonIcon icon={chevronBackOutline} />
+              </IonButton>
+              <IonText>
+                <h3>{moment(date).format("MMM Do, YYYY")}</h3>
+              </IonText>
+              <IonButton onClick={getNextDay}>
+                <IonIcon icon={chevronForwardOutline} />
+              </IonButton>
+            </DateControl>
+          </IonListHeader>
           {meals.map((meal, i) => (
             <MealCard key={i} meal={meal} />
           ))}
@@ -68,6 +98,13 @@ export const Meals: React.FC = () => {
     </IonPage>
   );
 };
+
+const DateControl = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 16px;
+`;
 
 const AddButton = styled(IonButton)`
   margin: 12px;

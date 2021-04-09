@@ -14,6 +14,7 @@ interface Props {
 export const MealProducts: React.FC<Props> = ({ meal, products = [] }) => {
   const { t } = useTranslation();
   const [openProductsModal, setOpenProductsModal] = useState(false);
+
   return (
     <>
       <IonList>
@@ -22,14 +23,14 @@ export const MealProducts: React.FC<Props> = ({ meal, products = [] }) => {
         </AddButton>
         {products.map((product, i) => (
           <IonItem key={i}>
-            <IonLabel>{product.name ?? "Product Placeholder"}</IonLabel>
+            <IonLabel>{product.name}</IonLabel>
           </IonItem>
         ))}
       </IonList>
       <ProductsModal
+        meal={meal}
         open={openProductsModal}
         onClose={() => setOpenProductsModal(false)}
-        onSelect={() => {}}
       />
     </>
   );

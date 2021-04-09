@@ -9,7 +9,6 @@ import {
   IonIcon,
   IonButtons,
   IonHeader,
-  IonTitle,
   IonToolbar,
   IonContent,
   IonButton,
@@ -21,16 +20,18 @@ import { useDispatch } from "react-redux";
 import { retrieveProducts } from "../../../redux/actions/productsActions";
 import { ProductsSearch } from "../../../components/common/ProductsSearch";
 import { ProductListItem } from "../../../components/common/ProductListItem";
+import { IMeal } from "../../../classes/meal/IMeal";
+import { updateMeal } from "../../../redux/actions/mealsActions";
 
 interface Props {
+  meal: IMeal,
   open: boolean;
   onClose: any;
-  onSelect: any;
 }
 
 const defaultSelectedProducts: IProduct[] = [];
 
-export const ProductsModal: React.FC<Props> = ({ open, onClose, onSelect }) => {
+export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { products } = useProducts();
@@ -66,12 +67,22 @@ export const ProductsModal: React.FC<Props> = ({ open, onClose, onSelect }) => {
 
   const handleSearch = (result: IProduct[]) => setSearchResult(result);
 
+  const handleSelect = () => {
+    const mealUpdated: IMeal = {...meal, products: [...meal.products, ...selectedProducts]};
+    dispatch(updateMeal(mealUpdated));
+    setSelectedProducts(defaultSelectedProducts);
+    onClose();
+  }
+
   return (
     <IonModal isOpen={open}>
-      <IonHeader slot="fixed">
+      <IonHeader>
         <IonToolbar>
-          <ProductsSearch products={products} onSearchComplete={handleSearch} />
-          <IonButtons slot="end">
+          <IonButtons>
+            <ProductsSearch
+              products={products}
+              onSearchComplete={handleSearch}
+            />
             <IonButton onClick={onClose}>
               <IonIcon icon={close} />
             </IonButton>
@@ -98,7 +109,7 @@ export const ProductsModal: React.FC<Props> = ({ open, onClose, onSelect }) => {
       {selectedProducts.length > 0 && (
         <IonFooter slot="fixed">
           <IonToolbar>
-            <SelectButton onClick={onClose} expand="block" shape="round">
+            <SelectButton onClick={handleSelect} expand="block" shape="round">
               {t("button.select")}
             </SelectButton>
           </IonToolbar>
