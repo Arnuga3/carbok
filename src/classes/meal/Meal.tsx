@@ -5,12 +5,13 @@ import { IMealType } from "../mealType/IMealType";
 
 export class Meal implements IMeal {
   id: string = uuidv4();
-  dateTime: Date = new Date();
+  dateTime: Date;
   type: IMealType;
   products: IProduct[];
 
-  constructor(type: IMealType, products: IProduct[] = []) {
+  constructor(type: IMealType, dateTime: Date = new Date(), products: IProduct[] = []) {
     this.type = type;
+    this.dateTime = dateTime;
     this.products = products;
   }
 }

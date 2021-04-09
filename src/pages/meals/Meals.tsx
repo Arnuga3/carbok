@@ -42,7 +42,7 @@ export const Meals: React.FC = () => {
   }, []);
 
   const handleMealTypeSelect = (mealType: IMealType) => {
-    dispatch(addMeal(new Meal(mealType, [])));
+    dispatch(addMeal(new Meal(mealType, date, [])));
   };
 
   const getPreviousDay = () => {

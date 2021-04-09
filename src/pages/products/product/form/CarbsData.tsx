@@ -32,7 +32,6 @@ export const CarbsData: React.FC<Props> = ({
   onNumericDataChange,
 }) => {
   const { t } = useTranslation();
-  // TODO - Add resource keys here
   return (
     <>
       <IonGrid>
@@ -53,7 +52,7 @@ export const CarbsData: React.FC<Props> = ({
             <Units>{t(data.units.shortNameKey)}</Units>
           </IonColRight>
         </IonRow>
-        {!portionValid && <Error>Should be greater than 0</Error>}
+        {!portionValid && <Error>{t("page.products.portion.error")}</Error>}
         <IonRow>
           <IonColLeft>
             <div>{t("carbohydrates")}</div>
@@ -71,7 +70,7 @@ export const CarbsData: React.FC<Props> = ({
             <Units>{t("units.grams.short")}</Units>
           </IonColRight>
         </IonRow>
-        {!carbsValid && <Error>Should be smaller or equal to Portion</Error>}
+        {!carbsValid && <Error>{t("page.products.carbs.error")}</Error>}
         <IonRow>
           <IonColLeft>
             <div>{t("of.which.sugars")}</div>
@@ -90,7 +89,7 @@ export const CarbsData: React.FC<Props> = ({
           </IonColRight>
         </IonRow>
         {!sugarsValid && (
-          <Error>Should be smaller or equal to Carbohydrates</Error>
+          <Error>{t("page.products.sugars.error")}</Error>
         )}
         <IonRow>
           <IonColLeft>
@@ -133,7 +132,7 @@ const IonColRight = styled(IonCol)`
 
 const IonInputStyled = styled(IonInput)`
   text-align: right;
-  font-size: 2em;
+  font-size: 1.2em;
   margin: 4px;
   border-radius: 8px;
   --background: var(--ion-color-light);

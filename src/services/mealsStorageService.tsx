@@ -44,11 +44,11 @@ export class MealsStorageService {
   }
 
   public async save(meal: IMeal): Promise<void> {
-    const today = new Date();
-    const dayMeals = await this.getAllForDate(today);
+    const date = meal.dateTime;
+    const dayMeals = await this.getAllForDate(date);
     dayMeals
-      ? await this.set(today, [...dayMeals, meal])
-      : await this.set(today, [meal]);
+      ? await this.set(date, [...dayMeals, meal])
+      : await this.set(date, [meal]);
   }
 
   public async update(date: Date, meal: IMeal): Promise<void> {
