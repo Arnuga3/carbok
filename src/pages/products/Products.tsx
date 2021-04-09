@@ -8,6 +8,10 @@ import {
   IonList,
   IonButton,
   IonItem,
+  IonButtons,
+  IonIcon,
+  IonListHeader,
+  IonText,
 } from "@ionic/react";
 import styled from "styled-components";
 import { IProduct } from "../../classes/product/IProduct";
@@ -17,6 +21,7 @@ import { retrieveProducts } from "../../redux/actions/productsActions";
 import { useTranslation } from "react-i18next";
 import { ProductsSearch } from "../../components/common/ProductsSearch";
 import { ProductListItem } from "../../components/common/ProductListItem";
+import { add } from "ionicons/icons";
 
 export const Products: React.FC = () => {
   const { t } = useTranslation();
@@ -41,22 +46,33 @@ export const Products: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader slot="fixed">
+      <IonHeaderStyled slot="fixed">
         <IonToolbar>
-          <IonTitle>{t("page.products.title")}</IonTitle>
+          <IonButtons>
+            <ProductsSearch
+              products={products}
+              onSearchComplete={handleSearch}
+            />
+            <AddButton
+              color="primary"
+              fill="solid"
+              shape="round"
+              size="large"
+              slot="icon-only"
+              routerLink="/products/add-product"
+            >
+              <IonIcon icon={add} />
+            </AddButton>
+          </IonButtons>
         </IonToolbar>
-      </IonHeader>
+      </IonHeaderStyled>
       <IonContent>
         <IonList>
-          <AddButton
-            size="large"
-            expand="block"
-            shape="round"
-            routerLink="/products/add-product"
-          >
-            {t("page.products.button.add.product")}
-          </AddButton>
-          <ProductsSearch products={products} onSearchComplete={handleSearch} />
+          <IonListHeader>
+            <IonText>
+              <p>#Group by Categories</p>
+            </IonText>
+          </IonListHeader>
           {searchResult.map((product: IProduct, i: number) => (
             <IonItem
               detail
@@ -72,6 +88,10 @@ export const Products: React.FC = () => {
   );
 };
 
+const IonHeaderStyled = styled(IonHeader)`
+  padding: 0 8px;
+`;
+
 const AddButton = styled(IonButton)`
-  margin: 10px;
+  padding-left: 4px;
 `;

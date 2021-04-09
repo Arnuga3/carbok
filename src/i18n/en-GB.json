@@ -25,12 +25,12 @@
     "meal.type.snack": "Snack",
     "meal.type.other": "Other",
 
-    "portion": "Portion",
+    "per.portion": "Per Portion",
     "portion.default": "Default Portion",
     "carbohydrates": "Carbohydrates",
     "carbohydrates.short": "Carbs",
     "sugars": "Sugars",
-    "of.which.sugars": "...of which Sugars",
+    "of.which.sugars": "of which Sugars",
 
     "tab.home": "Home",
     "tab.calculator": "Calculator",
@@ -50,7 +50,6 @@
     "page.meals.title": "Meals",
     "page.meals.button.add.product": "Add Products",
 
-    "page.products.title": "Products",
     "page.products.search.placeholder": "Search",
     "page.products.add.product.title": "Add Product",
     "page.products.edit.product.title": "Edit Product",
@@ -61,5 +60,5 @@
     "page.products.categories.modal.title": "Categories",
     "page.products.form.name": "Name",
     "page.products.form.units": "Units",
-    "page.products.form.portion.and.carbohydrates": "Portion & Carbohydrates"
+    "page.products.form.portion.and.carbohydrates": "Nutritions"
 }

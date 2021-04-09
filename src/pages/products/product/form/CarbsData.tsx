@@ -14,6 +14,9 @@ import {
   IonCardContent,
   IonInput,
   IonIcon,
+  IonCol,
+  IonGrid,
+  IonRow,
 } from "@ionic/react";
 import { close } from "ionicons/icons";
 import { IProductDummy } from "../AddProduct";
@@ -48,30 +51,40 @@ export const CarbsData: React.FC<Props> = ({
 
   return (
     <>
-      <ChipWrapper>
-        <IonChip color="secondary" outline>
-          <IonLabel color="secondary">{`${t("portion")}: ${data.portion}${t(
-            data.units.shortNameKey
-          )}`}</IonLabel>
-        </IonChip>
-        <IonChip color="medium">
-          <IonLabel color="medium">
-            {`${t("portion.default")}: ${data.defaultPortion}${t(
-              data.units.shortNameKey
-            )}`}
-          </IonLabel>
-        </IonChip>
-        <IonChip color="success" outline>
-          <IonLabel color="success">{`${t("carbohydrates.short")}: ${
-            data.carbs
-          }${t("units.grams.short")}`}</IonLabel>
-        </IonChip>
-        <IonChip color="danger" outline>
-          <IonLabel color="danger">{`${t("of.which.sugars")}: ${data.sugars}${t(
-            "units.grams.short"
-          )}`}</IonLabel>
-        </IonChip>
-      </ChipWrapper>
+      <IonGrid>
+        <IonRowStyled>
+          <IonColLeft>
+            <div>{t("per.portion")}</div>
+          </IonColLeft>
+          <IonColRight>
+            <div>{`${data.portion}${t(data.units.shortNameKey)}`}</div>
+          </IonColRight>
+        </IonRowStyled>
+        <IonRowStyled>
+          <IonColLeft>
+            <div>{t("carbohydrates")}</div>
+          </IonColLeft>
+          <IonColRight>
+            <div>{`${data.carbs}${t("units.grams.short")}`}</div>
+          </IonColRight>
+        </IonRowStyled>
+        <IonRowStyled>
+          <IonColLeft>
+            <div>{t("of.which.sugars")}</div>
+          </IonColLeft>
+          <IonColRight>
+            <div>{`${data.sugars}${t("units.grams.short")}`}</div>
+          </IonColRight>
+        </IonRowStyled>
+        <IonRowStyled>
+          <IonColLeft>
+            <div>{t("portion.default")}</div>
+          </IonColLeft>
+          <IonColRight>
+            <div>{`${data.defaultPortion}${t(data.units.shortNameKey)}`}</div>
+          </IonColRight>
+        </IonRowStyled>
+      </IonGrid>
       <IonButton
         color={dataValid ? "secondary" : "danger"}
         shape="round"
@@ -196,8 +209,18 @@ export const CarbsData: React.FC<Props> = ({
   );
 };
 
-const ChipWrapper = styled.div`
-  margin: 12px 4px;
+const IonRowStyled = styled(IonRow)`
+  border-bottom: 1px solid var(--ion-color-medium);
+`;
+
+const IonColLeft = styled(IonCol)`
+  font-size: 0.9em;
+`;
+
+const IonColRight = styled(IonCol)`
+  text-align: right;
+  font-weight: bold;
+  font-size: 0.9em;
 `;
 
 const IonInputStyled = styled(IonInput)`
