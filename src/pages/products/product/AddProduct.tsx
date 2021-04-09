@@ -14,13 +14,15 @@ import {
   IonCardContent,
   IonLabel,
   IonIcon,
+  IonInput,
+  IonItem,
 } from "@ionic/react";
 import styled from "styled-components";
 import { CategoriesModal } from "./CategoriesModal";
 import { IProductCategory } from "../../../classes/productCategory/IProductCategory";
 import { addProduct } from "../../../redux/actions/productsActions";
-import { MainData } from "./form/MainData";
-import { UnitsData } from "./form/UnitsData";
+import { Category } from "./form/Category";
+import { Units } from "./form/Units";
 import { CarbsData, NumericInput } from "./form/CarbsData";
 import { warningOutline } from "ionicons/icons";
 import { RouteComponentProps } from "react-router";
@@ -136,16 +138,28 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
                 {!nameValid() && <IonIcon icon={warningOutline} />}
                 {t("page.products.form.name")}
               </IonLabel>
-              <MainData
+              <IonItem>
+                <IonInput
+                  value={data.name}
+                  onIonInput={(e: any) =>
+                    setData({ ...data, name: e.target.value })
+                  }
+                ></IonInput>
+              </IonItem>
+            </Row>
+            <Row>
+              <IonLabel color={categoryValid() ? "" : "danger"}>
+                {t("page.products.form.category")}
+              </IonLabel>
+              <Category
                 data={data}
                 categoryValid={categoryValid()}
-                onNameChange={(name: string) => setData({ ...data, name })}
-                onCategoryModalOpen={() => setOpenCategoryModal(true)}
+                onCategorySelect={handleCategorySelect}
               />
             </Row>
             <Row>
               <IonLabel>{t("page.products.form.units")}</IonLabel>
-              <UnitsData
+              <Units
                 units={data.units}
                 onUnitsChange={(units: IUnits) => setData({ ...data, units })}
               />

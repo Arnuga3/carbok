@@ -10,7 +10,7 @@ interface Props {
   onUnitsChange: (event: any) => void;
 }
 
-export const UnitsData: React.FC<Props> = ({ units, onUnitsChange }) => {
+export const Units: React.FC<Props> = ({ units, onUnitsChange }) => {
   const { t } = useTranslation();
   return (
     <IonSegmentStyled
@@ -23,10 +23,10 @@ export const UnitsData: React.FC<Props> = ({ units, onUnitsChange }) => {
       }}
     >
       <IonSegmentButton value={productUnits[1].type}>
-        <IonLabel>{t(productUnits[1].shortNameKey)}</IonLabel>
+        <IonLabel>{t(productUnits[1].nameKey)}</IonLabel>
       </IonSegmentButton>
       <IonSegmentButton value={productUnits[0].type}>
-        <IonLabel>{t(productUnits[0].shortNameKey)}</IonLabel>
+        <IonLabel>{t(productUnits[0].nameKey)}</IonLabel>
       </IonSegmentButton>
     </IonSegmentStyled>
   );

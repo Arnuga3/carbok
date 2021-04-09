@@ -1,27 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import {
-  IonButton,
-  IonButtons,
-  IonHeader,
-  IonModal,
-  IonTitle,
-  IonToolbar,
-  IonContent,
-  IonLabel,
-  IonChip,
-  IonCard,
-  IonCardContent,
   IonInput,
-  IonIcon,
   IonCol,
   IonGrid,
   IonRow,
 } from "@ionic/react";
-import { close } from "ionicons/icons";
 import { IProductDummy } from "../AddProduct";
 import styled from "styled-components";
-import { warningOutline } from "ionicons/icons";
 
 export enum NumericInput {
   PORTION = "PORTION",
@@ -46,200 +32,119 @@ export const CarbsData: React.FC<Props> = ({
   onNumericDataChange,
 }) => {
   const { t } = useTranslation();
-  const [openModal, setOpenModal] = useState(false);
-  const dataValid = portionValid && carbsValid && sugarsValid;
-
+  // TODO - Add resource keys here
   return (
     <>
       <IonGrid>
-        <IonRowStyled>
+        <IonRow>
           <IonColLeft>
             <div>{t("per.portion")}</div>
           </IonColLeft>
           <IonColRight>
-            <div>{`${data.portion}${t(data.units.shortNameKey)}`}</div>
+            <IonInputStyled
+              type="number"
+              inputmode="numeric"
+              enterkeyhint="done"
+              value={data.portion}
+              onIonChange={(e: any) =>
+                onNumericDataChange(NumericInput.PORTION, e.target.value)
+              }
+            ></IonInputStyled>
+            <Units>{t(data.units.shortNameKey)}</Units>
           </IonColRight>
-        </IonRowStyled>
-        <IonRowStyled>
+        </IonRow>
+        {!portionValid && <Error>Should be greater than 0</Error>}
+        <IonRow>
           <IonColLeft>
             <div>{t("carbohydrates")}</div>
           </IonColLeft>
           <IonColRight>
-            <div>{`${data.carbs}${t("units.grams.short")}`}</div>
+            <IonInputStyled
+              type="number"
+              inputmode="numeric"
+              enterkeyhint="done"
+              value={data.carbs}
+              onIonChange={(e: any) =>
+                onNumericDataChange(NumericInput.CARBS, e.target.value)
+              }
+            ></IonInputStyled>
+            <Units>{t("units.grams.short")}</Units>
           </IonColRight>
-        </IonRowStyled>
-        <IonRowStyled>
+        </IonRow>
+        {!carbsValid && <Error>Should be smaller or equal to Portion</Error>}
+        <IonRow>
           <IonColLeft>
             <div>{t("of.which.sugars")}</div>
           </IonColLeft>
           <IonColRight>
-            <div>{`${data.sugars}${t("units.grams.short")}`}</div>
+            <IonInputStyled
+              type="number"
+              inputmode="numeric"
+              enterkeyhint="done"
+              value={data.sugars}
+              onIonChange={(e: any) =>
+                onNumericDataChange(NumericInput.SUGARS, e.target.value)
+              }
+            ></IonInputStyled>
+            <Units>{t("units.grams.short")}</Units>
           </IonColRight>
-        </IonRowStyled>
-        <IonRowStyled>
+        </IonRow>
+        {!sugarsValid && (
+          <Error>Should be smaller or equal to Carbohydrates</Error>
+        )}
+        <IonRow>
           <IonColLeft>
             <div>{t("portion.default")}</div>
           </IonColLeft>
           <IonColRight>
-            <div>{`${data.defaultPortion}${t(data.units.shortNameKey)}`}</div>
+            <IonInputStyled
+              type="number"
+              inputmode="numeric"
+              enterkeyhint="done"
+              value={data.defaultPortion}
+              onIonChange={(e: any) =>
+                onNumericDataChange(
+                  NumericInput.DEFAULT_PORTION,
+                  e.target.value
+                )
+              }
+            ></IonInputStyled>
+            <Units>{t(data.units.shortNameKey)}</Units>
           </IonColRight>
-        </IonRowStyled>
+        </IonRow>
       </IonGrid>
-      <IonButton
-        color={dataValid ? "secondary" : "danger"}
-        shape="round"
-        onClick={() => setOpenModal(true)}
-      >
-        {!dataValid && <IonIcon icon={warningOutline} />}
-        {t("button.edit")}
-      </IonButton>
-      <IonModal isOpen={openModal}>
-        <IonHeader slot="fixed">
-          <IonToolbar>
-            <IonTitle>
-              {t("page.products.form.portion.and.carbohydrates")}
-            </IonTitle>
-            <IonButtons slot="end">
-              <IonButton onClick={() => setOpenModal(false)}>
-                <IonIcon icon={close} />
-              </IonButton>
-            </IonButtons>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent>
-          <IonCard>
-            <IonCardContent>
-              <Row>
-                <IonInputStyled
-                  type="number"
-                  inputmode="numeric"
-                  enterkeyhint="done"
-                  value={data.portion}
-                  onIonChange={(e: any) =>
-                    onNumericDataChange(NumericInput.PORTION, e.target.value)
-                  }
-                >
-                  <IonChip
-                    color={portionValid ? "primary" : "danger"}
-                    outline={portionValid}
-                  >
-                    <IonLabel color={portionValid ? "primary" : "danger"}>
-                      Portion
-                    </IonLabel>
-                  </IonChip>
-                </IonInputStyled>
-                {t(data.units.shortNameKey)}
-              </Row>
-              {!portionValid && <Error>Should be greater than 0</Error>}
-              <Row>
-                <IonInputStyled
-                  type="number"
-                  inputmode="numeric"
-                  enterkeyhint="done"
-                  value={data.carbs}
-                  onIonChange={(e: any) =>
-                    onNumericDataChange(NumericInput.CARBS, e.target.value)
-                  }
-                >
-                  <IonChip
-                    color={carbsValid ? "success" : "danger"}
-                    outline={carbsValid}
-                  >
-                    <IonLabel color={carbsValid ? "success" : "danger"}>
-                      Carbohydrates
-                    </IonLabel>
-                  </IonChip>
-                </IonInputStyled>
-                {t(data.units.shortNameKey)}
-              </Row>
-              {!carbsValid && (
-                <Error>Should be smaller or equal to Portion</Error>
-              )}
-              <Row>
-                <IonInputStyled
-                  type="number"
-                  inputmode="numeric"
-                  enterkeyhint="done"
-                  value={data.sugars}
-                  onIonChange={(e: any) =>
-                    onNumericDataChange(NumericInput.SUGARS, e.target.value)
-                  }
-                >
-                  <IonChip color={"danger"} outline={sugarsValid}>
-                    <IonLabel color={"danger"}>...of which Sugars</IonLabel>
-                  </IonChip>
-                </IonInputStyled>
-                {t(data.units.shortNameKey)}
-              </Row>
-              {!sugarsValid && (
-                <Error>Should be smaller or equal to Carbohydrates</Error>
-              )}
-              <Row>
-                <IonInputStyled
-                  type="number"
-                  inputmode="numeric"
-                  enterkeyhint="done"
-                  value={data.defaultPortion}
-                  onIonChange={(e: any) =>
-                    onNumericDataChange(
-                      NumericInput.DEFAULT_PORTION,
-                      e.target.value
-                    )
-                  }
-                >
-                  <IonChip color={"medium"} outline>
-                    <IonLabel color={"medium"}>Default Portion</IonLabel>
-                  </IonChip>
-                </IonInputStyled>
-                {t(data.units.shortNameKey)}
-              </Row>
-
-              <OkButton
-                expand="block"
-                shape="round"
-                onClick={() => setOpenModal(false)}
-              >
-                OK
-              </OkButton>
-            </IonCardContent>
-          </IonCard>
-        </IonContent>
-      </IonModal>
     </>
   );
 };
 
-const IonRowStyled = styled(IonRow)`
-  border-bottom: 1px solid var(--ion-color-medium);
-`;
-
 const IonColLeft = styled(IonCol)`
+  display: flex;
+  align-items: center;
   font-size: 0.9em;
 `;
 
 const IonColRight = styled(IonCol)`
-  text-align: right;
+  display: flex;
+  align-items: center;
+  padding: 0;
   font-weight: bold;
   font-size: 0.9em;
 `;
 
 const IonInputStyled = styled(IonInput)`
   text-align: right;
-  font-size: 2.5em;
-  margin-right: 16px;
+  font-size: 2em;
+  --background: var(--ion-color-light);
+  margin: 4px;
+  border-radius: 8px;
+`;
+
+const Units = styled.span`
+  width: 20px;
 `;
 
 const Error = styled.div`
   color: salmon;
   font-size: 0.7em;
   text-align: right;
-`;
-
-const Row = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const OkButton = styled(IonButton)`
-  margin-top: 16px;
 `;

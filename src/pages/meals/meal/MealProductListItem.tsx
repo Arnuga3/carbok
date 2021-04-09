@@ -1,14 +1,13 @@
 import { IonText } from "@ionic/react";
-import React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { IProduct } from "../../classes/product/IProduct";
+import { IProduct } from "../../../classes/product/IProduct";
 
 interface Props {
   product: IProduct;
 }
 
-export const ProductListItem: React.FC<Props> = ({ product }) => {
+export const MealProductListItem: React.FC<Props> = ({ product }) => {
   const { t } = useTranslation();
   return (
     <ListItemContent>

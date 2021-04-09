@@ -94,7 +94,7 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
           {searchResult.map((product: IProduct, i: number) => (
             <IonItem key={i} onClick={() => toggleSelect(product)}>
               <IonIcon
-                color="medium"
+                color="primary"
                 icon={
                   selectedProducts.find((prd) => prd.id === product.id)
                     ? checkmarkCircle
@@ -120,5 +120,5 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
 };
 
 const SelectButton = styled(IonButton)`
-  margin: 0 12px;
+  margin: 12px;
 `;

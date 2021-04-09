@@ -27,7 +27,7 @@ interface Props {
 }
 
 export type CategoryProductsMapType = Record<ProductCategoryType, IProduct[]>;
-
+// TODO - Remove this component, keep it as an example
 export const CategoriesModal: React.FC<Props> = ({
   open,
   onClose,

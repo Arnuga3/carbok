@@ -15,6 +15,8 @@ import {
   IonLabel,
   IonIcon,
   IonAlert,
+  IonInput,
+  IonItem,
 } from "@ionic/react";
 import styled from "styled-components";
 import { CategoriesModal } from "./CategoriesModal";
@@ -23,8 +25,8 @@ import {
   deleteProduct,
   updateProduct,
 } from "../../../redux/actions/productsActions";
-import { MainData } from "./form/MainData";
-import { UnitsData } from "./form/UnitsData";
+import { Category } from "./form/Category";
+import { Units } from "./form/Units";
 import { CarbsData, NumericInput } from "./form/CarbsData";
 import { warningOutline } from "ionicons/icons";
 import { RouteComponentProps } from "react-router";
@@ -176,16 +178,28 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
                 {!nameValid() && <IonIcon icon={warningOutline} />}
                 {t("page.products.form.name")}
               </IonLabel>
-              <MainData
+              <IonItem>
+                <IonInput
+                  value={data.name}
+                  onIonInput={(e: any) =>
+                    setData({ ...data, name: e.target.value })
+                  }
+                ></IonInput>
+              </IonItem>
+            </Row>
+            <Row>
+              <IonLabel color={categoryValid() ? "" : "danger"}>
+                {t("page.products.form.category")}
+              </IonLabel>
+              <Category
                 data={data}
                 categoryValid={categoryValid()}
-                onNameChange={(name: string) => setData({ ...data, name })}
-                onCategoryModalOpen={() => setOpenCategoryModal(true)}
+                onCategorySelect={handleCategorySelect}
               />
             </Row>
             <Row>
               <IonLabel>{t("page.products.form.units")}</IonLabel>
-              <UnitsData
+              <Units
                 units={data.units}
                 onUnitsChange={(units: IUnits) => setData({ ...data, units })}
               />
@@ -202,25 +216,25 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
                 onNumericDataChange={handleNumberInputChange}
               />
             </Row>
-            <ButtonGroup>
-              <Button
-                color="danger"
-                size="large"
-                expand="block"
-                shape="round"
-                onClick={() => setOpenDeleteAlert(true)}
-              >
-                {t("button.delete")}
-              </Button>
-              <Button
-                size="large"
-                expand="block"
-                shape="round"
-                onClick={handleUpdate}
-              >
-                {t("button.update")}
-              </Button>
-            </ButtonGroup>
+            <Button
+              size="large"
+              expand="block"
+              shape="round"
+              fill="solid"
+              onClick={handleUpdate}
+            >
+              {t("button.update")}
+            </Button>
+            <Button
+              color="danger"
+              size="large"
+              expand="block"
+              shape="round"
+              fill="outline"
+              onClick={() => setOpenDeleteAlert(true)}
+            >
+              {t("button.delete")}
+            </Button>
           </IonCardContent>
         </IonCard>
       </IonContentStyled>
@@ -252,13 +266,8 @@ const IonContentStyled = styled(IonContent)`
   }
 `;
 
-const ButtonGroup = styled.div`
-  display: flex;
-  margin-top: 28px;
-`;
-
 const Button = styled(IonButton)`
-  flex: 1;
+  margin-top: 16px;
 `;
 
 const Row = styled.div`

@@ -57,7 +57,6 @@ export const Products: React.FC = () => {
               color="primary"
               fill="solid"
               shape="round"
-              size="large"
               slot="icon-only"
               routerLink="/products/add-product"
             >
