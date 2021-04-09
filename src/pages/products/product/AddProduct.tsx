@@ -138,14 +138,12 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
                 {!nameValid() && <IonIcon icon={warningOutline} />}
                 {t("page.products.form.name")}
               </IonLabel>
-              <IonItem>
-                <IonInput
-                  value={data.name}
-                  onIonInput={(e: any) =>
-                    setData({ ...data, name: e.target.value })
-                  }
-                ></IonInput>
-              </IonItem>
+              <IonInputStyled
+                value={data.name}
+                onIonInput={(e: any) =>
+                  setData({ ...data, name: e.target.value })
+                }
+              />
             </Row>
             <Row>
               <IonLabel color={categoryValid() ? "" : "danger"}>
@@ -208,4 +206,10 @@ const SaveButton = styled(IonButton)`
 
 const Row = styled.div`
   margin-top: 12px;
+`;
+
+const IonInputStyled = styled(IonInput)`
+  border-radius: 8px;
+  --background: var(--ion-color-light);
+  --padding-end: 8px;
 `;

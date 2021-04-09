@@ -134,9 +134,10 @@ const IonColRight = styled(IonCol)`
 const IonInputStyled = styled(IonInput)`
   text-align: right;
   font-size: 2em;
-  --background: var(--ion-color-light);
   margin: 4px;
   border-radius: 8px;
+  --background: var(--ion-color-light);
+  --padding-end: 8px;
 `;
 
 const Units = styled.span`
