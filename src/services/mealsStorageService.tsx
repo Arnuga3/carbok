@@ -12,19 +12,16 @@ export class MealsStorageService {
     this.key = key;
   }
 
-  public async getAllForDate(date: Date): Promise<IMeal[] | null> {
+  public async getAllForDate(date: Date): Promise<IMeal[]> {
     const dateKey = getDateString(date);
     const { value } = await Storage.get({ key: this.key });
-    return value ? JSON.parse(value)[dateKey] : null;
+    return value && JSON.parse(value)[dateKey] ? JSON.parse(value)[dateKey] : [];
   }
 
   public async get(date: Date, id: string): Promise<IMeal | null> {
     const dayMeals = await this.getAllForDate(date);
-    if (dayMeals) {
-      const meal = dayMeals.find((meal: IMeal) => meal.id === id);
-      return meal ? meal : null;
-    }
-    return null;
+    const meal = dayMeals.find((meal: IMeal) => meal.id === id);
+    return meal ? meal : null;
   }
 
   private async set(date: Date, meals: IMeal[]): Promise<void> {
@@ -46,30 +43,20 @@ export class MealsStorageService {
   public async save(meal: IMeal): Promise<void> {
     const date = meal.dateTime;
     const dayMeals = await this.getAllForDate(date);
-    dayMeals
-      ? await this.set(date, [...dayMeals, meal])
-      : await this.set(date, [meal]);
+    await this.set(date, [...dayMeals, meal]);
   }
 
   public async update(date: Date, meal: IMeal): Promise<void> {
     const dayMeals = await this.getAllForDate(date);
-    if (dayMeals) {
-      const mealsUpdated = dayMeals.map((m: IMeal) =>
-        m.id === meal.id ? { ...m, ...meal } : m
-      );
-      await this.set(date, mealsUpdated);
-    } else {
-      await this.set(date, [meal]);
-    }
+    const mealsUpdated = dayMeals.map((m: IMeal) =>
+      m.id === meal.id ? { ...m, ...meal } : m
+    );
+    await this.set(date, mealsUpdated);
   }
 
   public async remove(date: Date, id: string): Promise<void> {
     const dayMeals = await this.getAllForDate(date);
-    if (dayMeals) {
-      const mealsUpdated = dayMeals.filter(
-        (meal: IMeal) => meal.id !== id
-      );
-      await this.set(date, mealsUpdated);
-    }
+    const mealsUpdated = dayMeals.filter((meal: IMeal) => meal.id !== id);
+    await this.set(date, mealsUpdated);
   }
 }

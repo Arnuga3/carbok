@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { IMeal } from "../../classes/meal/IMeal";
-import { MealsStorageService } from "../../services/mealsStorageService";
+import { MealsStorageService } from "../../services/MealsStorageService";
 
 export enum MealsActions {
   ADD_MEAL = "ADD_MEAL",

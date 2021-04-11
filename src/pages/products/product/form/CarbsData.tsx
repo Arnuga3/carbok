@@ -1,11 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import {
-  IonInput,
-  IonCol,
-  IonGrid,
-  IonRow,
-} from "@ionic/react";
+import { IonInput, IonCol, IonGrid, IonRow } from "@ionic/react";
 import { IProductDummy } from "../AddProduct";
 import styled from "styled-components";
 
@@ -33,86 +28,79 @@ export const CarbsData: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation();
   return (
-    <>
-      <IonGrid>
-        <IonRow>
-          <IonColLeft>
-            <div>{t("per.portion")}</div>
-          </IonColLeft>
-          <IonColRight>
-            <IonInputStyled
-              type="number"
-              inputmode="numeric"
-              enterkeyhint="done"
-              value={data.portion}
-              onIonChange={(e: any) =>
-                onNumericDataChange(NumericInput.PORTION, e.target.value)
-              }
-            ></IonInputStyled>
-            <Units>{t(data.units.shortNameKey)}</Units>
-          </IonColRight>
-        </IonRow>
-        {!portionValid && <Error>{t("page.products.portion.error")}</Error>}
-        <IonRow>
-          <IonColLeft>
-            <div>{t("carbohydrates")}</div>
-          </IonColLeft>
-          <IonColRight>
-            <IonInputStyled
-              type="number"
-              inputmode="numeric"
-              enterkeyhint="done"
-              value={data.carbs}
-              onIonChange={(e: any) =>
-                onNumericDataChange(NumericInput.CARBS, e.target.value)
-              }
-            ></IonInputStyled>
-            <Units>{t("units.grams.short")}</Units>
-          </IonColRight>
-        </IonRow>
-        {!carbsValid && <Error>{t("page.products.carbs.error")}</Error>}
-        <IonRow>
-          <IonColLeft>
-            <div>{t("of.which.sugars")}</div>
-          </IonColLeft>
-          <IonColRight>
-            <IonInputStyled
-              type="number"
-              inputmode="numeric"
-              enterkeyhint="done"
-              value={data.sugars}
-              onIonChange={(e: any) =>
-                onNumericDataChange(NumericInput.SUGARS, e.target.value)
-              }
-            ></IonInputStyled>
-            <Units>{t("units.grams.short")}</Units>
-          </IonColRight>
-        </IonRow>
-        {!sugarsValid && (
-          <Error>{t("page.products.sugars.error")}</Error>
-        )}
-        <IonRow>
-          <IonColLeft>
-            <div>{t("portion.default")}</div>
-          </IonColLeft>
-          <IonColRight>
-            <IonInputStyled
-              type="number"
-              inputmode="numeric"
-              enterkeyhint="done"
-              value={data.defaultPortion}
-              onIonChange={(e: any) =>
-                onNumericDataChange(
-                  NumericInput.DEFAULT_PORTION,
-                  e.target.value
-                )
-              }
-            ></IonInputStyled>
-            <Units>{t(data.units.shortNameKey)}</Units>
-          </IonColRight>
-        </IonRow>
-      </IonGrid>
-    </>
+    <IonGrid>
+      <IonRow>
+        <IonColLeft>
+          <div>{t("per.portion")}</div>
+        </IonColLeft>
+        <IonColRight>
+          <IonInputStyled
+            type="number"
+            inputmode="numeric"
+            enterkeyhint="done"
+            value={data.portion}
+            onIonChange={(e: any) =>
+              onNumericDataChange(NumericInput.PORTION, e.target.value)
+            }
+          ></IonInputStyled>
+          <Units>{t(data.units.shortNameKey)}</Units>
+        </IonColRight>
+      </IonRow>
+      {!portionValid && <Error>{t("page.products.portion.error")}</Error>}
+      <IonRow>
+        <IonColLeft>
+          <div>{t("carbohydrates")}</div>
+        </IonColLeft>
+        <IonColRight>
+          <IonInputStyled
+            type="number"
+            inputmode="numeric"
+            enterkeyhint="done"
+            value={data.carbs}
+            onIonChange={(e: any) =>
+              onNumericDataChange(NumericInput.CARBS, e.target.value)
+            }
+          ></IonInputStyled>
+          <Units>{t("units.grams.short")}</Units>
+        </IonColRight>
+      </IonRow>
+      {!carbsValid && <Error>{t("page.products.carbs.error")}</Error>}
+      <IonRow>
+        <IonColLeft>
+          <div>{t("of.which.sugars")}</div>
+        </IonColLeft>
+        <IonColRight>
+          <IonInputStyled
+            type="number"
+            inputmode="numeric"
+            enterkeyhint="done"
+            value={data.sugars}
+            onIonChange={(e: any) =>
+              onNumericDataChange(NumericInput.SUGARS, e.target.value)
+            }
+          ></IonInputStyled>
+          <Units>{t("units.grams.short")}</Units>
+        </IonColRight>
+      </IonRow>
+      {!sugarsValid && <Error>{t("page.products.sugars.error")}</Error>}
+      <IonRow>
+        <IonColLeft>
+          <div>{t("portion.default")}</div>
+        </IonColLeft>
+        <IonColRight>
+          <IonInputStyled
+            type="number"
+            inputmode="numeric"
+            enterkeyhint="done"
+            value={data.defaultPortion}
+            onIonChange={(e: any) =>
+              onNumericDataChange(NumericInput.DEFAULT_PORTION, e.target.value)
+            }
+          ></IonInputStyled>
+          <Units>{t(data.units.shortNameKey)}</Units>
+        </IonColRight>
+      </IonRow>
+    </IonGrid>
   );
 };
 

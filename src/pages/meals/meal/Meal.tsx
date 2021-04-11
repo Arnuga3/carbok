@@ -9,13 +9,14 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { MealProducts } from "./MealProducts";
+import { MealProducts } from "./Products";
 import { IMeal } from "../../../classes/meal/IMeal";
 
 import { useMeals } from "../../../hooks/mealsHook";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { retrieveMeals } from "../../../redux/actions/mealsActions";
+import moment from "moment";
 
 interface MealPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -30,26 +31,22 @@ export const Meal: React.FC<MealPageProps> = ({ match }) => {
     }
   }, []);
 
-  const meal: IMeal | undefined = meals.find((meal) => meal.id === match.params.id);
+  const meal: IMeal | undefined = meals.find(
+    (meal) => meal.id === match.params.id
+  );
   return (
     <IonPage>
-      {meal ? (
-        <>
-          <IonHeader>
-            <IonToolbar>
-              <IonButtons slot="start">
-                <IonBackButton defaultHref={`/meals`} text={t("button.back")}/>
-              </IonButtons>
-              <IonTitle>{t(meal.type.nameKey)}</IonTitle>
-            </IonToolbar>
-          </IonHeader>
-          <IonContent>
-            <MealProducts meal={meal} products={meal.products} />
-          </IonContent>
-        </>
-      ) : (
-        <p>{t("not.found")}</p>
-      )}
+      <IonHeader>
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref={`/meals`} text={t("button.back")} />
+          </IonButtons>
+          {meal && <IonTitle>{`${moment(date).format("Do MMM")} - ${t(meal.type.nameKey)}`}</IonTitle>}
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
+        {meal && <MealProducts meal={meal} products={meal.products} />}
+      </IonContent>
     </IonPage>
   );
 };

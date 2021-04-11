@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { IProduct } from "../../classes/product/IProduct";
-import { ProductsStorageService } from "../../services/productsStorageService";
+import { ProductsStorageService } from "../../services/ProductsStorageService";
 
 export enum ProductsActions {
   ADD_PRODUCT = "ADD_PRODUCT",
