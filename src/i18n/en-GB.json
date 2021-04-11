@@ -48,11 +48,14 @@
     "button.update": "Update",
     "button.delete": "Delete",
     "button.select": "Select",
+    "button.add.note": "Add Note",
     "not.found": "Not Found",
 
     "page.meals.title": "Meals",
+    "page.meals.button.add.meal": "Add Meal",
     "page.meals.button.add.product": "Add Products",
 
+    "page.products.title": "Products",
     "page.products.search.placeholder": "Search",
     "page.products.add.product.title": "Add Product",
     "page.products.edit.product.title": "Edit Product",

@@ -8,10 +8,10 @@ import {
   IonIcon,
   IonList,
   IonButton,
-  IonText,
   IonButtons,
+  IonTitle,
 } from "@ionic/react";
-import { add, chevronBackOutline, chevronForwardOutline } from "ionicons/icons";
+import { chevronBackOutline, chevronForwardOutline } from "ionicons/icons";
 import styled from "styled-components";
 import moment from "moment";
 
@@ -26,8 +26,10 @@ import {
 } from "../../redux/actions/mealsActions";
 import { useMeals } from "../../hooks/mealsHook";
 import { IMealType } from "../../classes/mealType/IMealType";
+import { useTranslation } from "react-i18next";
 
 export const Meals: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { meals, date } = useMeals();
   const [openActionSheet, setOpenActionSheet] = useState(false);
@@ -56,17 +58,28 @@ export const Meals: React.FC = () => {
     <IonPage>
       <IonHeader slot="fixed">
         <IonToolbar color="primary">
-          <DateControl>
+          <IonTitle>{t("page.meals.title")}</IonTitle>
+        </IonToolbar>
+        <IonToolbar color="primary">
+          <IonButtons slot="start">
             <IonButton fill="clear" onClick={getPreviousDay}>
-              <IonIcon icon={chevronBackOutline} slot="icon-only" />
+              <IonIcon
+                icon={chevronBackOutline}
+                slot="icon-only"
+                color="secondary"
+              />
             </IonButton>
-            <IonText>
-              <h3>{moment(date).format("MMM Do, YYYY")}</h3>
-            </IonText>
+          </IonButtons>
+          <IonTitle>{moment(date).format("MMM Do, YYYY")}</IonTitle>
+          <IonButtons slot="end">
             <IonButton fill="clear" onClick={getNextDay}>
-              <IonIcon icon={chevronForwardOutline} slot="icon-only" />
+              <IonIcon
+                icon={chevronForwardOutline}
+                slot="icon-only"
+                color="secondary"
+              />
             </IonButton>
-          </DateControl>
+          </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -75,12 +88,13 @@ export const Meals: React.FC = () => {
             <MealCard key={i} meal={meal} />
           ))}
           <AddButton
+            color="secondary"
             expand="block"
             shape="round"
             size="large"
             onClick={() => setOpenActionSheet(true)}
           >
-            <IonIcon slot="icon-only" icon={add} />
+            {t("page.meals.button.add.meal")}
           </AddButton>
         </IonList>
       </IonContent>
@@ -92,12 +106,6 @@ export const Meals: React.FC = () => {
     </IonPage>
   );
 };
-
-const DateControl = styled(IonButtons)`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-`;
 
 const AddButton = styled(IonButton)`
   margin: 12px;

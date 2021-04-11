@@ -74,8 +74,8 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
   const handleSelect = () => {
     const mealProducts = selectedProducts.map((product) => ({
       ...product,
-      id: uuidv4(),   // Create a new id as this is a copy of the existing product, not a reference
-      carbsData: calculation.calculateTargetCarbsData(product.carbsData)
+      id: uuidv4(), // Create a new id as this is a copy of the existing product, not a reference
+      carbsData: calculation.calculateTargetCarbsData(product.carbsData),
     }));
     const mealUpdated: IMeal = {
       ...meal,
@@ -94,15 +94,17 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
     <IonModal isOpen={open}>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonButtonsStyled>
+          <IonButtons>
             <ProductsSearch
               products={products}
               onSearchComplete={handleSearch}
             />
-            <IonButton onClick={handleClose}>
-              <IonIcon icon={close} />
+          </IonButtons>
+          <IonButtonsCentered slot="end">
+            <IonButton onClick={handleClose} color="secondary">
+              <IonIcon icon={close} slot="icon-only" />
             </IonButton>
-          </IonButtonsStyled>
+          </IonButtonsCentered>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -110,7 +112,7 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
           {searchResult.map((product: IProduct, i: number) => (
             <IonItem key={i} onClick={() => toggleSelect(product)}>
               <IonIcon
-                color="primary"
+                color="tertiary"
                 icon={
                   selectedProducts.find((prd) => prd.id === product.id)
                     ? checkmarkCircle
@@ -126,6 +128,7 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
         <IonFooter slot="fixed">
           <IonToolbar>
             <SelectButton
+              color="secondary"
               onClick={handleSelect}
               expand="block"
               shape="round"
@@ -140,8 +143,8 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
   );
 };
 
-const IonButtonsStyled = styled(IonButtons)`
-  margin-right: 4px;
+const IonButtonsCentered = styled(IonButtons)`
+  align-self: center;
 `;
 
 const SelectButton = styled(IonButton)`

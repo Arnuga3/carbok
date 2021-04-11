@@ -151,7 +151,11 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
       <IonHeader slot="fixed">
         <IonToolbar color="primary">
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/products" text={t("button.back")} />
+            <IonBackButton
+              defaultHref="/products"
+              text={t("button.back")}
+              color="secondary"
+            />
           </IonButtons>
           <IonTitle>{t("page.products.edit.product.title")}</IonTitle>
         </IonToolbar>
@@ -201,6 +205,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
               />
             </Row>
             <Button
+              color="secondary"
               size="large"
               expand="block"
               shape="round"

@@ -1,8 +1,7 @@
 import React from "react";
 import { IonActionSheet } from "@ionic/react";
-import { close } from "ionicons/icons";
+import { chatbubbleOutline, close, trashOutline } from "ionicons/icons";
 
-import { mealTypes } from "../../resources/mealTypes";
 import { useTranslation } from "react-i18next";
 
 interface Props {
@@ -10,22 +9,25 @@ interface Props {
   onClose: any;
   onSelect: any;
 }
-
-export const MealTypeActionSheet: React.FC<Props> = ({
-  open,
-  onClose,
-  onSelect,
-}) => {
+// TODO - Implement delete and add note functionality
+export const MealActionSheet: React.FC<Props> = ({ open, onClose, onSelect }) => {
   const { t } = useTranslation();
   return (
     <IonActionSheet
       isOpen={open}
       onDidDismiss={onClose}
       buttons={[
-        ...mealTypes.map((mealType) => ({
-          text: t(mealType.nameKey),
-          handler: () => onSelect(mealType),
-        })),
+        {
+          text: t("button.add.note"),
+          icon: chatbubbleOutline,
+          handler: onClose,
+        },
+        {
+          text: t("button.delete"),
+          role: "destructive",
+          icon: trashOutline,
+          handler: onClose,
+        },
         {
           text: t("button.cancel"),
           icon: close,

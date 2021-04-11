@@ -72,7 +72,7 @@ export const MealProducts: React.FC<Props> = ({ meal, products = [] }) => {
       dispatch(updateMeal(mealUpdated));
     }
   };
-
+// TODO - Add alert here
   const handleMealProductDelete = (product: IProduct) => {
     if (slidingItems) {
       slidingItems.closeOpened();
@@ -99,6 +99,7 @@ export const MealProducts: React.FC<Props> = ({ meal, products = [] }) => {
     <>
       <IonList>
         <AddButton
+          color="secondary"
           size="large"
           expand="block"
           shape="round"

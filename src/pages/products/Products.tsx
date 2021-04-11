@@ -13,6 +13,7 @@ import {
   IonItemSliding,
   IonItemOption,
   IonAlert,
+  IonTitle,
 } from "@ionic/react";
 import styled from "styled-components";
 import { IProduct } from "../../classes/product/IProduct";
@@ -80,15 +81,15 @@ export const Products: React.FC = () => {
     <IonPage>
       <IonHeader slot="fixed">
         <IonToolbar color="primary">
-          <IonButtonsStyled>
-            <ProductsSearch
-              products={products}
-              onSearchComplete={handleSearch}
-            />
-            <AddButton fill="clear" routerLink="/products/add-product">
-              <IonIcon icon={add} slot="icon-only" />
-            </AddButton>
-          </IonButtonsStyled>
+          <IonTitle>{t("page.products.title")}</IonTitle>
+          <IonButtons slot="end">
+            <IonButton fill="clear" routerLink="/products/add-product">
+              <IonIcon icon={add} slot="icon-only" color="secondary" />
+            </IonButton>
+          </IonButtons>
+        </IonToolbar>
+        <IonToolbar color="primary">
+          <ProductsSearch products={products} onSearchComplete={handleSearch} />
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -126,9 +127,10 @@ export const Products: React.FC = () => {
         header={t("page.products.edit.product.delete.alert.title")}
         subHeader={t("page.products.edit.product.delete.alert.subtitle")}
         buttons={[
-          { text: t("button.cancel") },
+          { text: t("button.cancel"), role: "cancel" },
           {
             text: t("button.delete"),
+            role: "destructive",
             handler: handleDelete,
           },
         ]}
@@ -136,12 +138,6 @@ export const Products: React.FC = () => {
     </IonPage>
   );
 };
-
-const IonButtonsStyled = styled(IonButtons)`
-  margin-right: 4px;
-`;
-
-const AddButton = styled(IonButton)``;
 
 const SlidingAction = styled(IonItemOption)`
   width: 75px;

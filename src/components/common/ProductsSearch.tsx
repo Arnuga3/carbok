@@ -33,8 +33,11 @@ export const ProductsSearch: React.FC<Props> = ({
 };
 
 const Search = styled(IonSearchbar)`
+  --background: rgba(255,255,255,0.25);
+  --placeholder-color: rgba(255,255,255,0.9);
+  --icon-color: var(--ion-color-secondary);
+  --color: white;
   --border-radius: 25px;
-  width: 100%;
-  padding-top: 4px !important;
-  padding-bottom: 4px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
 `;
