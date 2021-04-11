@@ -123,7 +123,7 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
   return (
     <IonPage>
       <IonHeader slot="fixed">
-        <IonToolbar>
+        <IonToolbar color="primary">
           <IonButtons slot="start">
             <IonBackButton defaultHref="/products" text={t("button.back")} />
           </IonButtons>

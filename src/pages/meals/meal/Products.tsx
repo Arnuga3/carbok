@@ -167,5 +167,5 @@ const AddButton = styled(IonButton)`
 `;
 
 const SlidingAction = styled(IonItemOption)`
-  width: 50px;
+  width: 75px;
 `;

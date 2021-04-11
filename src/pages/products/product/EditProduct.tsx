@@ -149,7 +149,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
   return (
     <IonPage>
       <IonHeader slot="fixed">
-        <IonToolbar>
+        <IonToolbar color="primary">
           <IonButtons slot="start">
             <IonBackButton defaultHref="/products" text={t("button.back")} />
           </IonButtons>

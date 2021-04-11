@@ -93,8 +93,8 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
   return (
     <IonModal isOpen={open}>
       <IonHeader>
-        <IonToolbar>
-          <IonButtons>
+        <IonToolbar color="primary">
+          <IonButtonsStyled>
             <ProductsSearch
               products={products}
               onSearchComplete={handleSearch}
@@ -102,7 +102,7 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
             <IonButton onClick={handleClose}>
               <IonIcon icon={close} />
             </IonButton>
-          </IonButtons>
+          </IonButtonsStyled>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -139,6 +139,10 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
     </IonModal>
   );
 };
+
+const IonButtonsStyled = styled(IonButtons)`
+  margin-right: 4px;
+`;
 
 const SelectButton = styled(IonButton)`
   margin: 12px;

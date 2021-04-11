@@ -78,25 +78,19 @@ export const Products: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeaderStyled slot="fixed">
-        <IonToolbar>
-          <IonButtons>
+      <IonHeader slot="fixed">
+        <IonToolbar color="primary">
+          <IonButtonsStyled>
             <ProductsSearch
               products={products}
               onSearchComplete={handleSearch}
             />
-            <AddButton
-              color="primary"
-              fill="solid"
-              shape="round"
-              slot="icon-only"
-              routerLink="/products/add-product"
-            >
-              <IonIcon icon={add} />
+            <AddButton fill="clear" routerLink="/products/add-product">
+              <IonIcon icon={add} slot="icon-only" />
             </AddButton>
-          </IonButtons>
+          </IonButtonsStyled>
         </IonToolbar>
-      </IonHeaderStyled>
+      </IonHeader>
       <IonContent>
         <IonList>
           {searchResult.map((product: IProduct, i: number) => (
@@ -143,14 +137,12 @@ export const Products: React.FC = () => {
   );
 };
 
-const IonHeaderStyled = styled(IonHeader)`
-  padding: 0 8px;
+const IonButtonsStyled = styled(IonButtons)`
+  margin-right: 4px;
 `;
 
-const AddButton = styled(IonButton)`
-  padding-left: 4px;
-`;
+const AddButton = styled(IonButton)``;
 
 const SlidingAction = styled(IonItemOption)`
-  width: 50px;
+  width: 75px;
 `;

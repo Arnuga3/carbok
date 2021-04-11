@@ -67,5 +67,7 @@
     "page.products.form.portion.and.carbohydrates": "Nutritions",
     "page.products.portion.error": "Should be greater than 0",
     "page.products.carbs.error": "Should be smaller or equal to Portion",
-    "page.products.sugars.error": "Should be smaller or equal to Carbohydrates"
+    "page.products.sugars.error": "Should be smaller or equal to Carbohydrates",
+
+    "page.settings.title": "Settings"
 }

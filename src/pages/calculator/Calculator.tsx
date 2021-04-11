@@ -4,16 +4,11 @@ const Calculator: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="primary">
           <IonTitle>Calculator</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Calculator</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+      <IonContent>
       </IonContent>
     </IonPage>
   );

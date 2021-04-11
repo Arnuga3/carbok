@@ -37,7 +37,7 @@ export const Meal: React.FC<MealPageProps> = ({ match }) => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="primary">
           <IonButtons slot="start">
             <IonBackButton defaultHref={`/meals`} text={t("button.back")} />
           </IonButtons>
