@@ -9,8 +9,6 @@ import {
   IonItem,
   IonButtons,
   IonIcon,
-  IonListHeader,
-  IonText,
   IonItemOptions,
   IonItemSliding,
   IonItemOption,
@@ -28,6 +26,8 @@ import { ProductsSearch } from "../../components/common/ProductsSearch";
 import { ProductListItem } from "../../components/common/ProductListItem";
 import { add, createOutline, trashOutline } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
+
+const MEALSPAGE = "meals-page";
 
 export const Products: React.FC = () => {
   const { t } = useTranslation();
@@ -99,16 +99,11 @@ export const Products: React.FC = () => {
       </IonHeaderStyled>
       <IonContent>
         <IonList>
-          <IonListHeader>
-            <IonText>
-              <p>#Group by Categories</p>
-            </IonText>
-          </IonListHeader>
           {searchResult.map((product: IProduct, i: number) => (
             <IonItemSliding
               key={i}
-              id={product.name + i}
-              onClick={() => toggleActionsSlide(product.name + i)}
+              id={product.name + i + MEALSPAGE}
+              onClick={() => toggleActionsSlide(product.name + i + MEALSPAGE)}
             >
               <IonItem detail>
                 <ProductListItem product={product} />

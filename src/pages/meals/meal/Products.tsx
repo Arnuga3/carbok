@@ -13,12 +13,12 @@ import {
 import { IProduct } from "../../../classes/product/IProduct";
 import { IMeal } from "../../../classes/meal/IMeal";
 import { ProductsModal } from "./ProductsModal";
-import { ProductListItem } from "./ProductListItem";
 import { useDispatch } from "react-redux";
 import { updateMeal } from "../../../redux/actions/mealsActions";
 import { scaleOutline, trashOutline } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
 import CalculationService from "../../../services/CalculationService";
+import { ProductListItem } from "../../../components/common/ProductListItem";
 
 interface Props {
   meal: IMeal;

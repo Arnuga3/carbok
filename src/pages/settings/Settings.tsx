@@ -1,6 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 
-const Account: React.FC = () => {
+const Settings: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -19,4 +19,4 @@ const Account: React.FC = () => {
   );
 };
 
-export default Account;
+export default Settings;

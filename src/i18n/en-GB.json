@@ -25,6 +25,12 @@
     "meal.type.snack": "Snack",
     "meal.type.other": "Other",
 
+    "tab.home": "Home",
+    "tab.calculator": "Calculator",
+    "tab.meals": "Meals",
+    "tab.products": "Products",
+    "tab.settings": "Settings",
+
     "per.portion": "Per Portion",
     "portion.default": "Default Portion",
     "portion.size": "Portion Size",
@@ -32,11 +38,7 @@
     "carbohydrates.short": "Carbs",
     "sugars": "Sugars",
     "of.which.sugars": "of which Sugars",
-
-    "tab.home": "Home",
-    "tab.calculator": "Calculator",
-    "tab.meals": "Meals",
-    "tab.products": "Products",
+    "products": "Products",
 
     "button.cancel": "Cancel",
     "button.close": "Close",

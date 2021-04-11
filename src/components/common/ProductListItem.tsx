@@ -3,6 +3,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { IProduct } from "../../classes/product/IProduct";
+import { CircleBadge } from "./CircleBadge";
 
 interface Props {
   product: IProduct;
@@ -13,9 +14,10 @@ export const ProductListItem: React.FC<Props> = ({ product }) => {
   return (
     <ListItemContent>
       <ContentRow>
-        <IonText>
+        <NameBadge>
+          <CircleBadge color={product.category.color} />
           <strong>{product.name}</strong>
-        </IonText>
+        </NameBadge>
         <IonText color="medium">
           <small>
             {` ${product.carbsData.portion}${t(product.units.shortNameKey)}`}
@@ -57,4 +59,9 @@ const ContentRow = styled.div`
   display: flex;
   justify-content: space-between;
   line-height: 90%;
+`;
+
+const NameBadge = styled.div`
+  display: flex;
+  align-items: center;
 `;

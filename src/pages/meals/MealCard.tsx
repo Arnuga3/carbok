@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  IonBadge,
   IonCard,
   IonCardContent,
   IonCardSubtitle,
@@ -14,6 +13,7 @@ import { useTranslation } from "react-i18next";
 import { MealProductsChart } from "../../components/common/MealProductsChart";
 import { CalculationService } from "../../services/CalculationService";
 import { chartColors } from "../../resources/config";
+import { CircleBadge } from "../../components/common/CircleBadge";
 
 interface Props {
   meal: IMeal;
@@ -28,7 +28,7 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
         <div>
           <IonCardTitle>{t(meal.type.nameKey)}</IonCardTitle>
           <CardSubtitle>
-            <Badge color={chartColors.carbohydrates} />
+            <CircleBadge color={chartColors.carbohydrates} />
             <IonText>
               {`${t("carbohydrates")}: ${calculation.getMealTotalCarbs(
                 meal.products
@@ -36,14 +36,14 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
             </IonText>
           </CardSubtitle>
           <CardSubtitle>
-            <Badge color={chartColors.sugars} />
+            <CircleBadge color={chartColors.sugars} />
             <IonText>
               {` ${t("of.which.sugars")}: ${calculation.getMealTotalSugars(
                 meal.products
               )}${t("units.grams.short")}`}
             </IonText>
           </CardSubtitle>
-          <SmallText>{meal.products.length} Products</SmallText>
+          <SmallText>{`${meal.products.length} ${t("products")}`}</SmallText>
         </div>
         <MealProductsChart meal={meal} />
       </IonCardContentStyled>
@@ -58,14 +58,7 @@ const IonCardContentStyled = styled(IonCardContent)`
 
 const CardSubtitle = styled(IonCardSubtitle)`
   display: flex;
-`;
-
-const Badge = styled.div`
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin: 5px;
-  background-color: ${({ color }) => color};
+  align-items: center;
 `;
 
 const SmallText = styled.div`

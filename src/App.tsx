@@ -12,7 +12,8 @@ import { IonReactRouter } from "@ionic/react-router";
 import {
   homeOutline,
   calculatorOutline,
-  pizzaOutline,
+  restaurantOutline,
+  personOutline,
   fastFoodOutline,
 } from "ionicons/icons";
 import Home from "./pages/home/Home";
@@ -45,6 +46,7 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import Settings from "./pages/settings/Settings";
 
 const App: React.FC = () => {
   const { t } = useTranslation();
@@ -58,6 +60,7 @@ const App: React.FC = () => {
             <Route exact path="/:tab(meals)" component={Meals} />
             <Route exact path="/:tab(meals)/:id/products" component={Meal} />
             <Route exact path="/:tab(products)" component={Products} />
+            <Route exact path="/:tab(settings)" component={Settings} />
             <Route
               exact
               path="/:tab(products)/add-product"
@@ -83,12 +86,16 @@ const App: React.FC = () => {
               <IonLabel>{t("tab.calculator")}</IonLabel>
             </IonTabButton>
             <IonTabButton tab="meals" href="/meals">
-              <IonIcon icon={fastFoodOutline} />
+              <IonIcon icon={restaurantOutline} />
               <IonLabel>{t("tab.meals")}</IonLabel>
             </IonTabButton>
             <IonTabButton tab="products" href="/products">
-              <IonIcon icon={pizzaOutline} />
+              <IonIcon icon={fastFoodOutline} />
               <IonLabel>{t("tab.products")}</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="settings" href="/settings">
+              <IonIcon icon={personOutline} />
+              <IonLabel>{t("tab.settings")}</IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>
