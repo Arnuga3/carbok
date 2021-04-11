@@ -14,23 +14,17 @@ import {
   IonCardContent,
   IonLabel,
   IonIcon,
-  IonAlert,
   IonInput,
-  IonItem,
 } from "@ionic/react";
 import styled from "styled-components";
 import { CategoriesModal } from "./CategoriesModal";
 import { IProductCategory } from "../../../classes/productCategory/IProductCategory";
-import {
-  deleteProduct,
-  updateProduct,
-} from "../../../redux/actions/productsActions";
+import { updateProduct } from "../../../redux/actions/productsActions";
 import { Category } from "./form/Category";
 import { Units } from "./form/Units";
 import { CarbsData, NumericInput } from "./form/CarbsData";
 import { warningOutline } from "ionicons/icons";
 import { RouteComponentProps } from "react-router";
-import { Product } from "../../../classes/product/Product";
 import { IUnits } from "../../../classes/units/IUnits";
 import { ProductCarbs } from "../../../classes/productCarbs/ProductCarbs";
 import { IProduct } from "../../../classes/product/IProduct";
@@ -90,7 +84,6 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
   const [data, setData] = useState(product);
   const [openCategoryModal, setOpenCategoryModal] = useState(false);
   const [saveAttempted, setSaveAttempted] = useState(false);
-  const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
 
   const handleCategorySelect = (category: IProductCategory) => {
     setData({ ...data, category });
@@ -129,13 +122,6 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
         carbsData: productCarbs,
       };
       dispatch(updateProduct(product));
-      history.goBack();
-    }
-  };
-
-  const handleDelete = () => {
-    if (data.id) {
-      dispatch(deleteProduct(data.id));
       history.goBack();
     }
   };
@@ -223,16 +209,6 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
             >
               {t("button.update")}
             </Button>
-            <Button
-              color="danger"
-              size="large"
-              expand="block"
-              shape="round"
-              fill="outline"
-              onClick={() => setOpenDeleteAlert(true)}
-            >
-              {t("button.delete")}
-            </Button>
           </IonCardContent>
         </IonCard>
       </IonContentStyled>
@@ -240,19 +216,6 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
         open={openCategoryModal}
         onClose={() => setOpenCategoryModal(false)}
         onSelect={handleCategorySelect}
-      />
-      <IonAlert
-        isOpen={openDeleteAlert}
-        onDidDismiss={() => setOpenDeleteAlert(false)}
-        header={t("page.products.edit.product.delete.alert.title")}
-        subHeader={t("page.products.edit.product.delete.alert.subtitle")}
-        buttons={[
-          { text: t("button.cancel") },
-          {
-            text: t("button.delete"),
-            handler: handleDelete,
-          },
-        ]}
       />
     </IonPage>
   );

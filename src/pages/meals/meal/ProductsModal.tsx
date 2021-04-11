@@ -75,7 +75,7 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
     const mealProducts = selectedProducts.map((product) => ({
       ...product,
       id: uuidv4(),   // Create a new id as this is a copy of the existing product, not a reference
-      carbsData: calculation.calculateDefaultCarbsData(product.carbsData)
+      carbsData: calculation.calculateTargetCarbsData(product.carbsData)
     }));
     const mealUpdated: IMeal = {
       ...meal,

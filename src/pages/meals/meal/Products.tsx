@@ -16,11 +16,7 @@ import { ProductsModal } from "./ProductsModal";
 import { ProductListItem } from "./ProductListItem";
 import { useDispatch } from "react-redux";
 import { updateMeal } from "../../../redux/actions/mealsActions";
-import {
-  chevronForwardOutline,
-  createOutline,
-  trashOutline,
-} from "ionicons/icons";
+import { scaleOutline, trashOutline } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
 import CalculationService from "../../../services/CalculationService";
 
@@ -48,12 +44,12 @@ export const MealProducts: React.FC<Props> = ({ meal, products = [] }) => {
   const handlePortionSizeUpdate = (targetPortion: number) => {
     if (selectedProduct) {
       const { carbs, sugars, portion } = selectedProduct.carbsData;
-      const carbsUpdated = calculation.getCarbsPerPortion(
+      const carbsUpdated = calculation.getPortionCarbs(
         carbs,
         portion,
         targetPortion
       );
-      const sugarsUpdated = calculation.getSugarsPerPortion(
+      const sugarsUpdated = calculation.getPortionSugars(
         carbs,
         sugars,
         portion,
@@ -124,7 +120,7 @@ export const MealProducts: React.FC<Props> = ({ meal, products = [] }) => {
                 color="secondary"
                 onClick={() => handlePortionSizeChange(product)}
               >
-                <IonIcon icon={createOutline} />
+                <IonIcon icon={scaleOutline} />
               </SlidingAction>
               <SlidingAction
                 color="danger"

@@ -3,7 +3,6 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonTitle,
   IonToolbar,
   IonList,
   IonButton,
@@ -12,16 +11,23 @@ import {
   IonIcon,
   IonListHeader,
   IonText,
+  IonItemOptions,
+  IonItemSliding,
+  IonItemOption,
+  IonAlert,
 } from "@ionic/react";
 import styled from "styled-components";
 import { IProduct } from "../../classes/product/IProduct";
 import { useProducts } from "../../hooks/productsHook";
 import { useDispatch } from "react-redux";
-import { retrieveProducts } from "../../redux/actions/productsActions";
-import { useTranslation } from "react-i18next";
+import {
+  deleteProduct,
+  retrieveProducts,
+} from "../../redux/actions/productsActions";
 import { ProductsSearch } from "../../components/common/ProductsSearch";
 import { ProductListItem } from "../../components/common/ProductListItem";
-import { add } from "ionicons/icons";
+import { add, createOutline, trashOutline } from "ionicons/icons";
+import { useTranslation } from "react-i18next";
 
 export const Products: React.FC = () => {
   const { t } = useTranslation();
@@ -29,6 +35,10 @@ export const Products: React.FC = () => {
   const { products } = useProducts();
 
   const [searchResult, setSearchResult] = useState(products);
+  const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
+  const [productForDelete, setProductForDelete] = useState<IProduct | null>(
+    null
+  );
 
   useEffect(() => {
     if (products.length === 0) {
@@ -43,6 +53,28 @@ export const Products: React.FC = () => {
   }, [products]);
 
   const handleSearch = (result: IProduct[]) => setSearchResult(result);
+
+  const toggleActionsSlide = async (selector: string) => {
+    const productEl: any = document.querySelector("#" + selector);
+    const openItemNum = await productEl.getOpenAmount();
+    if (productEl && openItemNum === 0) {
+      productEl.open();
+    } else {
+      productEl.close();
+    }
+  };
+
+  const handleDeletePressed = (product: IProduct) => {
+    setProductForDelete(product);
+    setOpenDeleteAlert(true);
+  };
+
+  const handleDelete = () => {
+    if (productForDelete) {
+      dispatch(deleteProduct(productForDelete.id));
+      setProductForDelete(null);
+    }
+  };
 
   return (
     <IonPage>
@@ -73,16 +105,45 @@ export const Products: React.FC = () => {
             </IonText>
           </IonListHeader>
           {searchResult.map((product: IProduct, i: number) => (
-            <IonItem
-              detail
+            <IonItemSliding
               key={i}
-              routerLink={`/products/edit-product/${product.id}`}
+              id={product.name + i}
+              onClick={() => toggleActionsSlide(product.name + i)}
             >
-              <ProductListItem product={product} />
-            </IonItem>
+              <IonItem detail>
+                <ProductListItem product={product} />
+              </IonItem>
+              <IonItemOptions>
+                <SlidingAction
+                  color="secondary"
+                  routerLink={`/products/edit-product/${product.id}`}
+                >
+                  <IonIcon icon={createOutline} />
+                </SlidingAction>
+                <SlidingAction
+                  color="danger"
+                  onClick={() => handleDeletePressed(product)}
+                >
+                  <IonIcon icon={trashOutline} />
+                </SlidingAction>
+              </IonItemOptions>
+            </IonItemSliding>
           ))}
         </IonList>
       </IonContent>
+      <IonAlert
+        isOpen={openDeleteAlert}
+        onDidDismiss={() => setOpenDeleteAlert(false)}
+        header={t("page.products.edit.product.delete.alert.title")}
+        subHeader={t("page.products.edit.product.delete.alert.subtitle")}
+        buttons={[
+          { text: t("button.cancel") },
+          {
+            text: t("button.delete"),
+            handler: handleDelete,
+          },
+        ]}
+      />
     </IonPage>
   );
 };
@@ -93,4 +154,8 @@ const IonHeaderStyled = styled(IonHeader)`
 
 const AddButton = styled(IonButton)`
   padding-left: 4px;
+`;
+
+const SlidingAction = styled(IonItemOption)`
+  width: 50px;
 `;
