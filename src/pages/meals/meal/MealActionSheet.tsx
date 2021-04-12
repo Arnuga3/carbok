@@ -9,7 +9,7 @@ interface Props {
   onClose: any;
   onDelete: any;
 }
-// TODO - Implement delete and add note functionality
+// TODO - Implement add note functionality
 export const MealActionSheet: React.FC<Props> = ({ open, onClose, onDelete }) => {
   const { t } = useTranslation();
   return (

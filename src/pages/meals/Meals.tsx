@@ -9,6 +9,9 @@ import {
   IonList,
   IonButton,
   IonButtons,
+  IonDatetime,
+  IonItem,
+  IonLabel,
 } from "@ionic/react";
 import {
   calendarOutline,
@@ -56,7 +59,11 @@ export const Meals: React.FC = () => {
     const nextDay = moment(date).add(1, "day");
     dispatch(changeDate(new Date(nextDay.toISOString())));
   };
-// TODO - Implement calndar picker
+
+  const getCalendarDay = (date: Date) => {
+    dispatch(changeDate(date));
+  };
+
   return (
     <IonPage>
       <IonHeader slot="fixed">
@@ -71,10 +78,13 @@ export const Meals: React.FC = () => {
             </IonButton>
           </IonButtons>
           <IonButtonsCenter>
-            <IonButton fill="clear" color="secondary">
-              <IonIcon icon={calendarOutline} />
-            </IonButton>
-            {moment(date).format("D MMM YYYY")}
+            <IonItem color="primary" lines="none">
+              <IonIcon icon={calendarOutline} color="secondary" />
+              <IonDatetime
+                value={moment(date).toISOString()}
+                onIonChange={(e: any) => getCalendarDay(e.detail.value)}
+              ></IonDatetime>
+            </IonItem>
           </IonButtonsCenter>
           <IonButtons slot="end">
             <IonButton fill="clear" onClick={getNextDay}>
@@ -113,8 +123,8 @@ export const Meals: React.FC = () => {
 };
 
 const IonButtonsCenter = styled(IonButtons)`
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 `;
 
 const AddButton = styled(IonButton)`
