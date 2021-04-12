@@ -13,7 +13,6 @@ import {
   IonItemSliding,
   IonItemOption,
   IonAlert,
-  IonTitle,
 } from "@ionic/react";
 import styled from "styled-components";
 import { IProduct } from "../../classes/product/IProduct";
@@ -81,18 +80,20 @@ export const Products: React.FC = () => {
     <IonPage>
       <IonHeader slot="fixed">
         <IonToolbar color="primary">
-          <IonTitle>{t("page.products.title")}</IonTitle>
           <IonButtons slot="end">
-            <IonButton fill="clear" routerLink="/products/add-product">
-              <IonIcon icon={add} slot="icon-only" color="secondary" />
+            <IonButton
+              shape="round"
+              fill="solid"
+              routerLink="/products/add-product"
+              color="secondary"
+            >
+              {t("page.products.button.add.product")}
             </IonButton>
           </IonButtons>
         </IonToolbar>
-        <IonToolbar color="primary">
-          <ProductsSearch products={products} onSearchComplete={handleSearch} />
-        </IonToolbar>
       </IonHeader>
       <IonContent>
+        <ProductsSearch products={products} onSearchComplete={handleSearch} />
         <IonList>
           {searchResult.map((product: IProduct, i: number) => (
             <IonItemSliding

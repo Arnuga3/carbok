@@ -1,4 +1,4 @@
 export const chartColors = {
-  carbohydrates: "#89e8e6",
-  sugars: "#ffabff",
+  carbohydrates: "#f4ab52",
+  sugars: "#f25454",
 };

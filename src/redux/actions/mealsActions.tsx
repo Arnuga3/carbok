@@ -6,10 +6,16 @@ export enum MealsActions {
   ADD_MEAL = "ADD_MEAL",
   ADD_MEALS = "ADD_MEALS",
   UPDATE_MEAL = "UPDATE_MEAL",
+  DELETE_MEAL = "DELETE_MEAL",
   CHANGE_DATE = "CHANGE_DATE",
 }
 
-export type MealsActionType = AddMeal | AddMeals | UpdateMeal | ChangeDate;
+export type MealsActionType =
+  | AddMeal
+  | AddMeals
+  | UpdateMeal
+  | DeleteMeal
+  | ChangeDate;
 
 interface AddMeal {
   type: MealsActions.ADD_MEAL;
@@ -23,6 +29,11 @@ interface AddMeals {
 
 interface UpdateMeal {
   type: MealsActions.UPDATE_MEAL;
+  meal: IMeal;
+}
+
+interface DeleteMeal {
+  type: MealsActions.DELETE_MEAL;
   meal: IMeal;
 }
 
@@ -43,6 +54,11 @@ export const storeMeals = (meals: IMeal[]): AddMeals => ({
 
 export const updateStoredMeal = (meal: IMeal): UpdateMeal => ({
   type: MealsActions.UPDATE_MEAL,
+  meal,
+});
+
+export const deleteStoredMeal = (meal: IMeal): DeleteMeal => ({
+  type: MealsActions.DELETE_MEAL,
   meal,
 });
 
@@ -83,6 +99,18 @@ export const updateMeal = (meal: IMeal) => {
       const mealsStorageSvc = new MealsStorageService();
       await mealsStorageSvc.update(meal.dateTime, meal);
       dispatch(updateStoredMeal(meal));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};
+
+export const deleteMeal = (meal: IMeal) => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const mealsStorageSvc = new MealsStorageService();
+      await mealsStorageSvc.remove(meal);
+      dispatch(deleteStoredMeal(meal));
     } catch (e) {
       console.log(e);
     }

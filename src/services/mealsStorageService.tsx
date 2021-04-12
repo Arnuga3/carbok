@@ -54,9 +54,9 @@ export class MealsStorageService {
     await this.set(date, mealsUpdated);
   }
 
-  public async remove(date: Date, id: string): Promise<void> {
-    const dayMeals = await this.getAllForDate(date);
-    const mealsUpdated = dayMeals.filter((meal: IMeal) => meal.id !== id);
-    await this.set(date, mealsUpdated);
+  public async remove(meal: IMeal): Promise<void> {
+    const dayMeals = await this.getAllForDate(meal.dateTime);
+    const mealsUpdated = dayMeals.filter((m: IMeal) => m.id !== meal.id);
+    await this.set(meal.dateTime, mealsUpdated);
   }
 }

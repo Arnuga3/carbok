@@ -9,9 +9,12 @@ import {
   IonList,
   IonButton,
   IonButtons,
-  IonTitle,
 } from "@ionic/react";
-import { chevronBackOutline, chevronForwardOutline } from "ionicons/icons";
+import {
+  calendarOutline,
+  chevronBackOutline,
+  chevronForwardOutline,
+} from "ionicons/icons";
 import styled from "styled-components";
 import moment from "moment";
 
@@ -53,13 +56,10 @@ export const Meals: React.FC = () => {
     const nextDay = moment(date).add(1, "day");
     dispatch(changeDate(new Date(nextDay.toISOString())));
   };
-
+// TODO - Implement calndar picker
   return (
     <IonPage>
       <IonHeader slot="fixed">
-        <IonToolbar color="primary">
-          <IonTitle>{t("page.meals.title")}</IonTitle>
-        </IonToolbar>
         <IonToolbar color="primary">
           <IonButtons slot="start">
             <IonButton fill="clear" onClick={getPreviousDay}>
@@ -70,7 +70,12 @@ export const Meals: React.FC = () => {
               />
             </IonButton>
           </IonButtons>
-          <IonTitle>{moment(date).format("MMM Do, YYYY")}</IonTitle>
+          <IonButtonsCenter>
+            <IonButton fill="clear" color="secondary">
+              <IonIcon icon={calendarOutline} />
+            </IonButton>
+            {moment(date).format("D MMM YYYY")}
+          </IonButtonsCenter>
           <IonButtons slot="end">
             <IonButton fill="clear" onClick={getNextDay}>
               <IonIcon
@@ -106,6 +111,11 @@ export const Meals: React.FC = () => {
     </IonPage>
   );
 };
+
+const IonButtonsCenter = styled(IonButtons)`
+display: flex;
+justify-content: center;
+`;
 
 const AddButton = styled(IonButton)`
   margin: 12px;

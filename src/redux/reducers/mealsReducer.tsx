@@ -37,6 +37,14 @@ const reducer: Reducer<MealsState> = (
         ),
       };
 
+    case MealsActions.DELETE_MEAL:
+      return {
+        ...state,
+        meals: state.meals.filter((meal) =>
+          meal.id !== action.meal.id
+        ),
+      };
+
     case MealsActions.CHANGE_DATE:
       return {
         ...state,

@@ -7,10 +7,10 @@ import { useTranslation } from "react-i18next";
 interface Props {
   open: any;
   onClose: any;
-  onSelect: any;
+  onDelete: any;
 }
 // TODO - Implement delete and add note functionality
-export const MealActionSheet: React.FC<Props> = ({ open, onClose, onSelect }) => {
+export const MealActionSheet: React.FC<Props> = ({ open, onClose, onDelete }) => {
   const { t } = useTranslation();
   return (
     <IonActionSheet
@@ -26,7 +26,7 @@ export const MealActionSheet: React.FC<Props> = ({ open, onClose, onSelect }) =>
           text: t("button.delete"),
           role: "destructive",
           icon: trashOutline,
-          handler: onClose,
+          handler: onDelete,
         },
         {
           text: t("button.cancel"),

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import {
+  IonAlert,
   IonBackButton,
   IonButton,
   IonButtons,
@@ -18,17 +19,18 @@ import { MealActionSheet } from "./MealActionSheet";
 import { useMeals } from "../../../hooks/mealsHook";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import { retrieveMeals } from "../../../redux/actions/mealsActions";
+import { deleteMeal, retrieveMeals } from "../../../redux/actions/mealsActions";
 import moment from "moment";
 import { ellipsisVerticalOutline } from "ionicons/icons";
 
 interface MealPageProps extends RouteComponentProps<{ id: string }> {}
 
-export const Meal: React.FC<MealPageProps> = ({ match }) => {
+export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { meals, date } = useMeals();
   const [openActionSheet, setOpenActionSheet] = useState(false);
+  const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
 
   useEffect(() => {
     if (meals.length === 0) {
@@ -39,6 +41,14 @@ export const Meal: React.FC<MealPageProps> = ({ match }) => {
   const meal: IMeal | undefined = meals.find(
     (meal) => meal.id === match.params.id
   );
+
+  const handleDelete = () => {
+    if (meal) {
+      dispatch(deleteMeal(meal));
+      history.goBack();
+    }
+  };
+
   return (
     <IonPage>
       <IonHeader>
@@ -51,12 +61,15 @@ export const Meal: React.FC<MealPageProps> = ({ match }) => {
             />
           </IonButtons>
           {meal && (
-            <IonTitle>{`${moment(date).format("Do MMM")} - ${t(
+            <IonTitle>{`${moment(date).format("D MMMM")} - ${t(
               meal.type.nameKey
             )}`}</IonTitle>
           )}
           <IonButtons slot="end">
-            <IonButton color="secondary" onClick={() => setOpenActionSheet(true)}>
+            <IonButton
+              color="secondary"
+              onClick={() => setOpenActionSheet(true)}
+            >
               <IonIcon icon={ellipsisVerticalOutline} slot="icon-only" />
             </IonButton>
           </IonButtons>
@@ -67,8 +80,22 @@ export const Meal: React.FC<MealPageProps> = ({ match }) => {
       </IonContent>
       <MealActionSheet
         open={openActionSheet}
-        onSelect={() => {}}
+        onDelete={() => setOpenDeleteAlert(true)}
         onClose={() => setOpenActionSheet(false)}
+      />
+      <IonAlert
+        isOpen={openDeleteAlert}
+        onDidDismiss={() => setOpenDeleteAlert(false)}
+        header={t("page.meals.button.delete.meal.alert.title")}
+        subHeader={t("page.meals.button.delete.meal.alert.subtitle")}
+        buttons={[
+          { text: t("button.cancel"), role: "cancel" },
+          {
+            text: t("button.delete"),
+            role: "destructive",
+            handler: handleDelete,
+          },
+        ]}
       />
     </IonPage>
   );

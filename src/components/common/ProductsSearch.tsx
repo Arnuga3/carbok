@@ -25,7 +25,6 @@ export const ProductsSearch: React.FC<Props> = ({
   return (
     <Search
       clearIcon={closeCircleOutline}
-      animated
       onIonChange={handleSearch}
       placeholder={t("page.products.search.placeholder")}
     />
@@ -33,11 +32,10 @@ export const ProductsSearch: React.FC<Props> = ({
 };
 
 const Search = styled(IonSearchbar)`
-  --background: rgba(255,255,255,0.25);
-  --placeholder-color: rgba(255,255,255,0.9);
-  --icon-color: var(--ion-color-secondary);
-  --color: white;
+  // --background: rgba(255,255,255,0.25);
+  // --placeholder-color: rgba(255,255,255,0.9);
+  // --icon-color: var(--ion-color-secondary);
+  // --color: white;
   --border-radius: 25px;
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
+  --padding: 0;
 `;
