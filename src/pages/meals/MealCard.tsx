@@ -1,10 +1,10 @@
 import React from "react";
 import {
-  IonButton,
   IonCard,
   IonCardContent,
   IonCardSubtitle,
   IonCardTitle,
+  IonIcon,
   IonText,
 } from "@ionic/react";
 import styled from "styled-components";
@@ -15,6 +15,7 @@ import { MealProductsChart } from "../../components/common/MealProductsChart";
 import { CalculationService } from "../../services/CalculationService";
 import { chartColors } from "../../resources/config";
 import { CircleBadge } from "../../components/common/CircleBadge";
+import { chatboxOutline } from "ionicons/icons";
 
 interface Props {
   meal: IMeal;
@@ -28,6 +29,7 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
       <IonCardContentStyled>
         <div>
           <IonCardTitle>{t(meal.type.nameKey)}</IonCardTitle>
+          <SmallText>{`${meal.products.length} ${t("products")}`}</SmallText>
           <CardSubtitle>
             <CircleBadge color={chartColors.carbohydrates} />
             <IonText>
@@ -44,7 +46,16 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
               )}${t("units.grams.short")}`}
             </IonText>
           </CardSubtitle>
-          <SmallText>{`${meal.products.length} ${t("products")}`}</SmallText>
+          {meal.note && (
+            <NoteText>
+              <NoteIcon
+                slot="icon-only"
+                icon={chatboxOutline}
+                color="primary"
+              />
+              {meal.note}
+            </NoteText>
+          )}
         </div>
         <MealProductsChart meal={meal} />
       </IonCardContentStyled>
@@ -63,5 +74,15 @@ const CardSubtitle = styled(IonCardSubtitle)`
 `;
 
 const SmallText = styled.div`
+  font-size: 0.9em;
+  color: var(--ion-color-medium);
+`;
+
+const NoteText = styled.div`
   font-size: 0.8em;
+  color: var(--ion-color-medium);
+`;
+
+const NoteIcon = styled(IonIcon)`
+  padding-right: 4px;
 `;

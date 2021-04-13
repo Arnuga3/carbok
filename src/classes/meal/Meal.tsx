@@ -8,8 +8,13 @@ export class Meal implements IMeal {
   dateTime: Date;
   type: IMealType;
   products: IProduct[];
+  note: string = "";
 
-  constructor(type: IMealType, dateTime: Date = new Date(), products: IProduct[] = []) {
+  constructor(
+    type: IMealType,
+    dateTime: Date = new Date(),
+    products: IProduct[] = []
+  ) {
     this.type = type;
     this.dateTime = dateTime;
     this.products = products;

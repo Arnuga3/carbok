@@ -94,20 +94,15 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
     <IonModal isOpen={open}>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonButtons>
-            <ProductsSearch
-              products={products}
-              onSearchComplete={handleSearch}
-            />
-          </IonButtons>
-          <IonButtonsCentered slot="end">
+          <IonButtons slot="end">
             <IonButton onClick={handleClose} color="secondary">
               <IonIcon icon={close} slot="icon-only" />
             </IonButton>
-          </IonButtonsCentered>
+          </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent>
+        <ProductsSearch products={products} onSearchComplete={handleSearch} />
         <IonList>
           {searchResult.map((product: IProduct, i: number) => (
             <IonItem key={i} onClick={() => toggleSelect(product)}>
@@ -142,10 +137,6 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
     </IonModal>
   );
 };
-
-const IonButtonsCentered = styled(IonButtons)`
-  align-self: center;
-`;
 
 const SelectButton = styled(IonButton)`
   margin: 12px;

@@ -6,4 +6,5 @@ export interface IMeal {
     type: IMealType;
     dateTime: Date;
     products: IProduct[];
+    note?: string;
 }

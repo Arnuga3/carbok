@@ -1,16 +1,17 @@
 import React from "react";
 import { IonActionSheet } from "@ionic/react";
-import { chatbubbleOutline, close, trashOutline } from "ionicons/icons";
+import { chatboxOutline, close, trashOutline } from "ionicons/icons";
 
 import { useTranslation } from "react-i18next";
 
 interface Props {
   open: any;
   onClose: any;
+  onNote: any;
   onDelete: any;
 }
-// TODO - Implement add note functionality
-export const MealActionSheet: React.FC<Props> = ({ open, onClose, onDelete }) => {
+
+export const MealActionSheet: React.FC<Props> = ({ open, onClose, onNote, onDelete }) => {
   const { t } = useTranslation();
   return (
     <IonActionSheet
@@ -18,9 +19,9 @@ export const MealActionSheet: React.FC<Props> = ({ open, onClose, onDelete }) =>
       onDidDismiss={onClose}
       buttons={[
         {
-          text: t("button.add.note"),
-          icon: chatbubbleOutline,
-          handler: onClose,
+          text: t("button.note"),
+          icon: chatboxOutline,
+          handler: onNote,
         },
         {
           text: t("button.delete"),

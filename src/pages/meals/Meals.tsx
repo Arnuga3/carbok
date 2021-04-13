@@ -78,13 +78,11 @@ export const Meals: React.FC = () => {
             </IonButton>
           </IonButtons>
           <IonButtonsCenter>
-            <IonItem color="primary" lines="none">
-              <IonIcon icon={calendarOutline} color="secondary" />
-              <IonDatetime
-                value={moment(date).toISOString()}
-                onIonChange={(e: any) => getCalendarDay(e.detail.value)}
-              ></IonDatetime>
-            </IonItem>
+            <IonIcon icon={calendarOutline} color="secondary" slot="icon-only" />
+            <IonDatetime
+              value={moment(date).toISOString()}
+              onIonChange={(e: any) => getCalendarDay(e.detail.value)}
+            ></IonDatetime>
           </IonButtonsCenter>
           <IonButtons slot="end">
             <IonButton fill="clear" onClick={getNextDay}>

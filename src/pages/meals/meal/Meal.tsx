@@ -12,14 +12,18 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { MealProducts } from "./Products";
+import { Products } from "./Products";
 import { IMeal } from "../../../classes/meal/IMeal";
 import { MealActionSheet } from "./MealActionSheet";
 
 import { useMeals } from "../../../hooks/mealsHook";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import { deleteMeal, retrieveMeals } from "../../../redux/actions/mealsActions";
+import {
+  deleteMeal,
+  retrieveMeals,
+  updateMeal,
+} from "../../../redux/actions/mealsActions";
 import moment from "moment";
 import { ellipsisVerticalOutline } from "ionicons/icons";
 
@@ -31,6 +35,7 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
   const { meals, date } = useMeals();
   const [openActionSheet, setOpenActionSheet] = useState(false);
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
+  const [openNoteAlert, setOpenNoteAlert] = useState(false);
 
   useEffect(() => {
     if (meals.length === 0) {
@@ -46,6 +51,12 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
     if (meal) {
       dispatch(deleteMeal(meal));
       history.goBack();
+    }
+  };
+
+  const handleNote = (note: string) => {
+    if (meal && note) {
+      dispatch(updateMeal({ ...meal, note }));
     }
   };
 
@@ -76,10 +87,11 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        {meal && <MealProducts meal={meal} products={meal.products} />}
+        {meal && <Products meal={meal} />}
       </IonContent>
       <MealActionSheet
         open={openActionSheet}
+        onNote={() => setOpenNoteAlert(true)}
         onDelete={() => setOpenDeleteAlert(true)}
         onClose={() => setOpenActionSheet(false)}
       />
@@ -94,6 +106,25 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
             text: t("button.delete"),
             role: "destructive",
             handler: handleDelete,
+          },
+        ]}
+      />
+      <IonAlert
+        isOpen={openNoteAlert}
+        onDidDismiss={() => setOpenNoteAlert(false)}
+        header={t("page.meals.note.alert.title")}
+        inputs={[
+          {
+            name: "note",
+            value: meal?.note,
+            type: "textarea",
+          },
+        ]}
+        buttons={[
+          { text: t("button.cancel") },
+          {
+            text: t("button.save"),
+            handler: ({ note }) => handleNote(note),
           },
         ]}
       />

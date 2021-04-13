@@ -9,25 +9,26 @@ import {
   IonItemOptions,
   IonItemSliding,
   IonList,
+  IonListHeader,
+  IonText,
 } from "@ionic/react";
 import { IProduct } from "../../../classes/product/IProduct";
 import { IMeal } from "../../../classes/meal/IMeal";
 import { ProductsModal } from "./ProductsModal";
 import { useDispatch } from "react-redux";
 import { updateMeal } from "../../../redux/actions/mealsActions";
-import { scaleOutline, trashOutline } from "ionicons/icons";
+import { chatboxOutline, scaleOutline, trashOutline } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
 import CalculationService from "../../../services/CalculationService";
 import { ProductListItem } from "../../../components/common/ProductListItem";
 
 interface Props {
   meal: IMeal;
-  products: IProduct[];
 }
 
 const slidingItems: any = document.querySelector(".prod-slide");
 
-export const MealProducts: React.FC<Props> = ({ meal, products = [] }) => {
+export const Products: React.FC<Props> = ({ meal }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const calculation = new CalculationService();
@@ -72,7 +73,7 @@ export const MealProducts: React.FC<Props> = ({ meal, products = [] }) => {
       dispatch(updateMeal(mealUpdated));
     }
   };
-// TODO - Add alert here
+  // TODO - Add alert here
   const handleMealProductDelete = (product: IProduct) => {
     if (slidingItems) {
       slidingItems.closeOpened();
@@ -98,6 +99,14 @@ export const MealProducts: React.FC<Props> = ({ meal, products = [] }) => {
   return (
     <>
       <IonList>
+        {meal.note && (
+          <IonListHeader>
+            <IonItem lines="none">
+              <IonIcon icon={chatboxOutline} slot="start" color="tertiary" />
+              <IonText color="medium">{meal.note}</IonText>
+            </IonItem>
+          </IonListHeader>
+        )}
         <AddButton
           color="secondary"
           size="large"
@@ -107,7 +116,7 @@ export const MealProducts: React.FC<Props> = ({ meal, products = [] }) => {
         >
           {t("page.meals.button.add.product")}
         </AddButton>
-        {products.map((product, i) => (
+        {meal.products.map((product, i) => (
           <IonItemSliding
             key={i}
             id={product.name + i}
