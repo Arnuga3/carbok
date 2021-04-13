@@ -98,8 +98,8 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
       <IonAlert
         isOpen={openDeleteAlert}
         onDidDismiss={() => setOpenDeleteAlert(false)}
-        header={t("page.meals.button.delete.meal.alert.title")}
-        subHeader={t("page.meals.button.delete.meal.alert.subtitle")}
+        header={t("page.meals.delete.meal.alert.title")}
+        subHeader={t("page.meals.delete.meal.alert.subtitle")}
         buttons={[
           { text: t("button.cancel"), role: "cancel" },
           {

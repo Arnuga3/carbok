@@ -35,6 +35,7 @@ export const Products: React.FC<Props> = ({ meal }) => {
 
   const [openProductsModal, setOpenProductsModal] = useState(false);
   const [openPortionSizeAlert, setOpenPortionSizeAlert] = useState(false);
+  const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
 
   const handlePortionSizeChange = (product: IProduct) => {
@@ -73,17 +74,24 @@ export const Products: React.FC<Props> = ({ meal }) => {
       dispatch(updateMeal(mealUpdated));
     }
   };
-  // TODO - Add alert here
-  const handleMealProductDelete = (product: IProduct) => {
+
+  const handleMealProductDelete = () => {
     if (slidingItems) {
       slidingItems.closeOpened();
     }
-    dispatch(
-      updateMeal({
-        ...meal,
-        products: meal.products.filter((prod) => prod.id !== product.id),
-      })
-    );
+    if (selectedProduct) {
+      dispatch(
+        updateMeal({
+          ...meal,
+          products: meal.products.filter((prod) => prod.id !== selectedProduct.id),
+        })
+      );
+    }
+  };
+
+  const handleOnMealProductDelete = (product: IProduct) => {
+    setSelectedProduct(product);
+    setOpenDeleteAlert(true);
   };
 
   const toggleActionsSlide = async (selector: string) => {
@@ -99,14 +107,6 @@ export const Products: React.FC<Props> = ({ meal }) => {
   return (
     <>
       <IonList>
-        {meal.note && (
-          <IonListHeader>
-            <IonItem lines="none">
-              <IonIcon icon={chatboxOutline} slot="start" color="tertiary" />
-              <IonText color="medium">{meal.note}</IonText>
-            </IonItem>
-          </IonListHeader>
-        )}
         <AddButton
           color="secondary"
           size="large"
@@ -134,13 +134,21 @@ export const Products: React.FC<Props> = ({ meal }) => {
               </SlidingAction>
               <SlidingAction
                 color="danger"
-                onClick={() => handleMealProductDelete(product)}
+                onClick={() => handleOnMealProductDelete(product)}
               >
                 <IonIcon icon={trashOutline} />
               </SlidingAction>
             </IonItemOptions>
           </IonItemSliding>
         ))}
+        {meal.note && (
+          <Note>
+            <IonItem lines="none">
+              <IonIcon icon={chatboxOutline} slot="start" color="tertiary" />
+              <IonText color="medium">{meal.note}</IonText>
+            </IonItem>
+          </Note>
+        )}
       </IonList>
       <ProductsModal
         meal={meal}
@@ -168,6 +176,20 @@ export const Products: React.FC<Props> = ({ meal }) => {
           },
         ]}
       />
+      <IonAlert
+        isOpen={openDeleteAlert}
+        onDidDismiss={() => setOpenDeleteAlert(false)}
+        header={t("page.meals.delete.meal.product.alert.title")}
+        subHeader={t("page.meals.delete.meal.product.alert.subtitle")}
+        buttons={[
+          { text: t("button.cancel"), role: "cancel" },
+          {
+            text: t("button.delete"),
+            role: "destructive",
+            handler: handleMealProductDelete,
+          },
+        ]}
+      />
     </>
   );
 };
@@ -178,4 +200,8 @@ const AddButton = styled(IonButton)`
 
 const SlidingAction = styled(IonItemOption)`
   width: 75px;
+`;
+
+const Note = styled.div`
+  padding: 12px 8px 0 8px;
 `;

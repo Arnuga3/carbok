@@ -2,6 +2,7 @@ import React from "react";
 import {
   IonCard,
   IonCardContent,
+  IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
   IonIcon,
@@ -26,10 +27,12 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
   const calculation = new CalculationService();
   return (
     <IonCard routerLink={`/meals/${meal.id}/products`}>
+      <CardHeader>
+        <IonCardTitle>{t(meal.type.nameKey)}</IonCardTitle>
+        <IonCardSubtitle>{`${meal.products.length} ${t("products")}`}</IonCardSubtitle>
+      </CardHeader>
       <IonCardContentStyled>
         <div>
-          <IonCardTitle>{t(meal.type.nameKey)}</IonCardTitle>
-          <SmallText>{`${meal.products.length} ${t("products")}`}</SmallText>
           <CardSubtitle>
             <CircleBadge color={chartColors.carbohydrates} />
             <IonText>
@@ -47,14 +50,7 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
             </IonText>
           </CardSubtitle>
           {meal.note && (
-            <NoteText>
-              <NoteIcon
-                slot="icon-only"
-                icon={chatboxOutline}
-                color="primary"
-              />
-              {meal.note}
-            </NoteText>
+            <NoteIcon slot="icon-only" icon={chatboxOutline} color="primary" />
           )}
         </div>
         <MealProductsChart meal={meal} />
@@ -63,26 +59,21 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
   );
 };
 
+const CardHeader = styled(IonCardHeader)`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const IonCardContentStyled = styled(IonCardContent)`
   display: flex;
   justify-content: space-between;
 `;
 
-const CardSubtitle = styled(IonCardSubtitle)`
+const CardSubtitle = styled(IonText)`
   display: flex;
   align-items: center;
 `;
 
-const SmallText = styled.div`
-  font-size: 0.9em;
-  color: var(--ion-color-medium);
-`;
-
-const NoteText = styled.div`
-  font-size: 0.8em;
-  color: var(--ion-color-medium);
-`;
-
 const NoteIcon = styled(IonIcon)`
-  padding-right: 4px;
+  padding: 8px 0;
 `;
