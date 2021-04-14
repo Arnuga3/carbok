@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { Redirect, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import {
   IonApp,
   IonIcon,
@@ -23,8 +25,10 @@ import { Meal } from "./pages/meals/meal/Meal";
 import { Products } from "./pages/products/Products";
 import { AddProduct } from "./pages/products/product/AddProduct";
 import { EditProduct } from "./pages/products/product/EditProduct";
+import { Settings } from "./pages/settings/Settings";
 
 import { useTranslation } from "react-i18next";
+import { initAppSettings } from "./redux/actions/appSettingsActions";
 
 import "./i18n/config";
 
@@ -46,10 +50,15 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import Settings from "./pages/settings/Settings";
 
 const App: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+      dispatch(initAppSettings(i18n));
+  }, []);
+
   return (
     <IonApp>
       <IonReactRouter>

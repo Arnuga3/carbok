@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 import {
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonCardSubtitle,
-  IonCardTitle,
   IonContent,
   IonHeader,
   IonItem,
@@ -16,12 +17,20 @@ import {
   IonToggle,
   IonToolbar,
 } from "@ionic/react";
-import { useTranslation } from "react-i18next";
+import { useAppSettings } from "../../hooks/appSettingsHook";
+import { changeAppSettings } from "../../redux/actions/appSettingsActions";
 
-const Settings: React.FC = () => {
-  const { t } = useTranslation();
+export const Settings: React.FC = () => {
+  const { t, i18n } = useTranslation();
+  const dispatch = useDispatch()
+  const { settings } = useAppSettings();
   const [checked, setChecked] = useState(false);
-  const [gender, setGender] = useState<string>();
+
+  const handleLanguageChange = (language: string) => {
+    i18n.changeLanguage(language);
+    dispatch(changeAppSettings({...settings, language}));
+  };
+
   return (
     <IonPage>
       <IonHeader slot="fixed">
@@ -45,11 +54,11 @@ const Settings: React.FC = () => {
             <IonItem lines="none">
               <IonLabel>Language</IonLabel>
               <IonSelect
-                value={gender}
-                onIonChange={(e) => setGender(e.detail.value)}
+                value={settings.language}
+                onIonChange={(e) => handleLanguageChange(e.detail.value)}
               >
-                <IonSelectOption value="female">English</IonSelectOption>
-                <IonSelectOption value="male">Russian</IonSelectOption>
+                <IonSelectOption value="en-GB">English</IonSelectOption>
+                <IonSelectOption value="ru-RU">Russian</IonSelectOption>
               </IonSelect>
             </IonItem>
           </IonCardContent>
@@ -58,5 +67,3 @@ const Settings: React.FC = () => {
     </IonPage>
   );
 };
-
-export default Settings;
