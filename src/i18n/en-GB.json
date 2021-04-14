@@ -45,9 +45,8 @@
     "button.save": "Save",
     "button.edit": "Edit",
     "button.back": "Back",
-    "button.update": "Update",
     "button.delete": "Delete",
-    "button.select": "Select",
+    "button.add.selected": "Add Selected",
     "button.note": "Note",
     "not.found": "Not Found",
 
@@ -71,10 +70,13 @@
     "page.products.form.name": "Name",
     "page.products.form.category": "Category",
     "page.products.form.units": "Units",
-    "page.products.form.portion.and.carbohydrates": "Nutritions",
+    "page.products.form.portion.and.carbohydrates": "Portions & Carbohydrates",
     "page.products.portion.error": "Should be greater than 0",
     "page.products.carbs.error": "Should be smaller or equal to Portion",
     "page.products.sugars.error": "Should be smaller or equal to Carbohydrates",
 
-    "page.settings.title": "Settings"
+    "page.settings.title": "Settings",
+    "page.settings.card.title": "Application Settings",
+    "page.settings.card.dark.mode": "Dark Mode",
+    "page.settings.card.dark.language": "Language"
 }

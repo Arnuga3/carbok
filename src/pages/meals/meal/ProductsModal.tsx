@@ -129,7 +129,7 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
               shape="round"
               size="large"
             >
-              {t("button.select")}
+              {t("button.add.selected")}
             </SelectButton>
           </IonToolbar>
         </IonFooter>

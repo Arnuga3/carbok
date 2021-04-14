@@ -20,22 +20,20 @@ export const Category: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation();
   return (
-    <>
-      <Row>
-        {categories.map((category, i) => (
-          <IonChipStyled
-            key={i}
-            outline={!!(data.category && category.type === data.category.type)}
-            color={categoryValid ? category.color : "danger"}
-            onClick={() => onCategorySelect(category)}
-          >
-            <IonLabelStyled color={category.color}>
-              {t(category.nameKey)}
-            </IonLabelStyled>
-          </IonChipStyled>
-        ))}
-      </Row>
-    </>
+    <Row>
+      {categories.map((category, i) => (
+        <IonChipStyled
+          key={i}
+          outline={!!(data.category && category.type === data.category.type)}
+          color={categoryValid ? category.color : "danger"}
+          onClick={() => onCategorySelect(category)}
+        >
+          <IonLabelStyled color={category.color}>
+            {t(category.nameKey)}
+          </IonLabelStyled>
+        </IonChipStyled>
+      ))}
+    </Row>
   );
 };
 
@@ -48,5 +46,5 @@ const IonLabelStyled = styled(IonLabel)`
 `;
 
 const Row = styled.div`
-  margin: 18px 0;
+  margin-bottom: 18px;
 `;

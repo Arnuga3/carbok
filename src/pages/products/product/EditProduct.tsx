@@ -164,7 +164,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
         <IonCard>
           <IonCardContent>
             <Row>
-              <IonLabel color={nameValid() ? "" : "danger"}>
+              <IonLabel color={nameValid() ? "primary" : "danger"}>
                 {!nameValid() && <IonIcon icon={warningOutline} />}
                 {t("page.products.form.name")}
               </IonLabel>
@@ -176,7 +176,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
               />
             </Row>
             <Row>
-              <IonLabel color={categoryValid() ? "" : "danger"}>
+              <IonLabel color={categoryValid() ? "primary" : "danger"}>
                 {t("page.products.form.category")}
               </IonLabel>
               <Category
@@ -186,14 +186,14 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
               />
             </Row>
             <Row>
-              <IonLabel>{t("page.products.form.units")}</IonLabel>
+              <IonLabel color="primary">{t("page.products.form.units")}</IonLabel>
               <Units
                 units={data.units}
                 onUnitsChange={(units: IUnits) => setData({ ...data, units })}
               />
             </Row>
             <Row>
-              <IonLabel>
+              <IonLabel color="primary">
                 {t("page.products.form.portion.and.carbohydrates")}
               </IonLabel>
               <CarbsData
@@ -212,7 +212,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
               fill="solid"
               onClick={handleUpdate}
             >
-              {t("button.update")}
+              {t("button.save")}
             </Button>
           </IonCardContent>
         </IonCard>
@@ -243,5 +243,5 @@ const Row = styled.div`
 const IonInputStyled = styled(IonInput)`
   border-radius: 8px;
   --background: var(--ion-color-light);
-  --padding-end: 8px;
+  --padding-start: 8px;
 `;

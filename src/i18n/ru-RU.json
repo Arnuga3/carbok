@@ -33,7 +33,7 @@
 
     "per.portion": "На порцию",
     "portion.default": "Порция по умолчанию",
-    "portion.size": "Размер порции",
+    "portion.size": "Размер Порции",
     "carbohydrates": "Углеводы",
     "carbohydrates.short": "Углеводы",
     "sugars": "Сахар",
@@ -45,9 +45,8 @@
     "button.save": "Сохранить",
     "button.edit": "Изменить",
     "button.back": "Назад",
-    "button.update": "Обновить",
     "button.delete": "Удалить",
-    "button.select": "Выделить",
+    "button.add.selected": "Добавить Выделеное",
     "button.note": "Заметка",
     "not.found": "Не Найдено",
 
@@ -71,10 +70,13 @@
     "page.products.form.name": "Название",
     "page.products.form.category": "Категория",
     "page.products.form.units": "Единица Измерения",
-    "page.products.form.portion.and.carbohydrates": "Nutritions",
+    "page.products.form.portion.and.carbohydrates": "Порции и Углеводы",
     "page.products.portion.error": "Должно быть больше 0",
     "page.products.carbs.error": "Должно быть меньше или равно Порции",
     "page.products.sugars.error": "Должно быть меньше или равно Углеводам",
 
-    "page.settings.title": "Настройки"
+    "page.settings.title": "Настройки",
+    "page.settings.card.title": "Настройки Приложения",
+    "page.settings.card.dark.mode": "Тёмный Режим",
+    "page.settings.card.dark.language": "Язык"
 }

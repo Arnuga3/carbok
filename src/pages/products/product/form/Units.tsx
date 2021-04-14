@@ -35,4 +35,5 @@ export const Units: React.FC<Props> = ({ units, onUnitsChange }) => {
 const IonSegmentStyled = styled(IonSegment)`
   width: 95%;
   margin: 10px auto;
+  margin-bottom: 18px;
 `;
