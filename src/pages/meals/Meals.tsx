@@ -10,8 +10,6 @@ import {
   IonButton,
   IonButtons,
   IonDatetime,
-  IonItem,
-  IonLabel,
 } from "@ionic/react";
 import {
   calendarOutline,
@@ -20,6 +18,7 @@ import {
 } from "ionicons/icons";
 import styled from "styled-components";
 import moment from "moment";
+import "moment/min/locales";
 
 import { MealTypeActionSheet } from "./MealTypeActionSheet";
 import { MealCard } from "./MealCard";
@@ -33,10 +32,12 @@ import {
 import { useMeals } from "../../hooks/mealsHook";
 import { IMealType } from "../../classes/mealType/IMealType";
 import { useTranslation } from "react-i18next";
+import { useAppSettings } from "../../hooks/appSettingsHook";
 
 export const Meals: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { settings } = useAppSettings();
   const { meals, date } = useMeals();
   const [openActionSheet, setOpenActionSheet] = useState(false);
 
@@ -45,6 +46,14 @@ export const Meals: React.FC = () => {
       dispatch(retrieveMeals(date));
     }
   }, []);
+
+  useEffect(() => {
+    moment.locale(
+      settings.language.indexOf("-") === -1
+        ? settings.language
+        : settings.language.substr(0, settings.language.indexOf("-"))
+    );
+  }, [settings.language]);
 
   const handleMealTypeSelect = (mealType: IMealType) => {
     dispatch(addMeal(new Meal(mealType, date, [])));
@@ -78,8 +87,15 @@ export const Meals: React.FC = () => {
             </IonButton>
           </IonButtons>
           <IonButtonsCenter>
-            <IonIcon icon={calendarOutline} color="secondary" slot="icon-only" />
+            <IonIcon
+              icon={calendarOutline}
+              color="secondary"
+              slot="icon-only"
+            />
             <IonDatetime
+              doneText={t("button.done")}
+              cancelText={t("button.cancel")}
+              monthShortNames={moment.monthsShort()}
               value={moment(date).toISOString()}
               onIonChange={(e: any) => getCalendarDay(e.detail.value)}
             ></IonDatetime>

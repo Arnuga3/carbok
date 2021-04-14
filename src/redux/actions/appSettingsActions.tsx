@@ -25,7 +25,7 @@ export const initAppSettings = (i18n: i18n) => {
       const settings = await appSettingsStorageSvc.get();
       if (settings) {
         i18n.changeLanguage(settings.language);
-        document.body.classList.toggle('dark', settings.themeMode === 'dark');
+        document.body.classList.toggle("dark", settings.themeMode === "dark");
         dispatch(setAppSettings(settings));
       }
     } catch (e) {

@@ -17,23 +17,25 @@ import {
   IonToggle,
   IonToolbar,
 } from "@ionic/react";
-import LocaleCode from 'locale-code';
+import LocaleCode from "locale-code";
 import { useAppSettings } from "../../hooks/appSettingsHook";
 import { changeAppSettings } from "../../redux/actions/appSettingsActions";
 
 export const Settings: React.FC = () => {
   const { t, i18n } = useTranslation();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { settings } = useAppSettings();
 
   const handleLanguageChange = (language: string) => {
     i18n.changeLanguage(language);
-    dispatch(changeAppSettings({...settings, language}));
+    dispatch(changeAppSettings({ ...settings, language }));
   };
 
   const handleThemeModeChange = (enabled: boolean) => {
-    document.body.classList.toggle('dark', enabled);
-    dispatch(changeAppSettings({...settings, themeMode: enabled ? 'dark' : 'light'}));
+    document.body.classList.toggle("dark", enabled);
+    dispatch(
+      changeAppSettings({ ...settings, themeMode: enabled ? "dark" : "light" })
+    );
   };
 
   return (
@@ -52,7 +54,7 @@ export const Settings: React.FC = () => {
             <IonItem lines="none">
               <IonLabel>{t("page.settings.card.dark.mode")}</IonLabel>
               <IonToggle
-                checked={settings.themeMode === 'dark'}
+                checked={settings.themeMode === "dark"}
                 onIonChange={(e) => handleThemeModeChange(e.detail.checked)}
               />
             </IonItem>
@@ -62,9 +64,11 @@ export const Settings: React.FC = () => {
                 value={settings.language}
                 onIonChange={(e) => handleLanguageChange(e.detail.value)}
               >
-                {Object.keys(i18n.store.data).map((language, i) =>
-                  <IonSelectOption key={i} value={language}>{LocaleCode.getLanguageNativeName(language)}</IonSelectOption>
-                )}
+                {Object.keys(i18n.store.data).map((language, i) => (
+                  <IonSelectOption key={i} value={language}>
+                    {LocaleCode.getLanguageNativeName(language)}
+                  </IonSelectOption>
+                ))}
               </IonSelect>
             </IonItem>
           </IonCardContent>

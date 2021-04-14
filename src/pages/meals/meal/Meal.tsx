@@ -9,6 +9,7 @@ import {
   IonHeader,
   IonIcon,
   IonPage,
+  IonText,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
@@ -72,9 +73,9 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
             />
           </IonButtons>
           {meal && (
-            <IonTitle>{`${moment(date).format("D MMMM")} - ${t(
+            <IonText>{`${t(
               meal.type.nameKey
-            )}`}</IonTitle>
+            )}, ${moment(date).format("MMM D")}`}</IonText>
           )}
           <IonButtons slot="end">
             <IonButton
@@ -86,9 +87,7 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        {meal && <Products meal={meal} />}
-      </IonContent>
+      <IonContent>{meal && <Products meal={meal} />}</IonContent>
       <MealActionSheet
         open={openActionSheet}
         onNote={() => setOpenNoteAlert(true)}
