@@ -31,6 +31,7 @@
     "tab.products": "Products",
     "tab.settings": "Settings",
 
+    "per": "Per",
     "per.portion": "Per Portion",
     "portion.default": "Default Portion",
     "portion.size": "Portion Size",
@@ -39,6 +40,7 @@
     "sugars": "Sugars",
     "of.which.sugars": "of which Sugars",
     "products": "Products",
+    "not.found": "Not Found",
 
     "button.cancel": "Cancel",
     "button.close": "Close",
@@ -49,7 +51,7 @@
     "button.done": "Done",
     "button.add.selected": "Add Selected",
     "button.note": "Note",
-    "not.found": "Not Found",
+    "button.reset": "Reset",
 
     "page.meals.button.add.meal": "Add Meal",
     "page.meals.delete.meal.alert.title": "Delete meal?",
@@ -67,7 +69,8 @@
     "page.products.edit.product.delete.alert.subtitle": "This will be permanently deleted",
     "page.products.button.add.product": "Add Product",
     "page.products.button.category": "Category",
-    "page.products.categories.modal.title": "Categories",
+    "page.products.caluclator.modal.title": "Quick Calculator",
+    "page.products.caluclator.modal.result.title": "Carbohydrates Per Portion",
     "page.products.form.name": "Name",
     "page.products.form.category": "Category",
     "page.products.form.units": "Units",

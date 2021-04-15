@@ -31,6 +31,7 @@
     "tab.products": "Продукты",
     "tab.settings": "Настройки",
 
+    "per": "На",
     "per.portion": "На порцию",
     "portion.default": "Порция по умолчанию",
     "portion.size": "Размер Порции",
@@ -39,6 +40,7 @@
     "sugars": "Сахар",
     "of.which.sugars": "из которых Сахар",
     "products": "Продукты",
+    "not.found": "Не Найдено",
 
     "button.cancel": "Отменить",
     "button.close": "Закрыть",
@@ -49,7 +51,7 @@
     "button.done": "Ок",
     "button.add.selected": "Добавить Выделеное",
     "button.note": "Заметка",
-    "not.found": "Не Найдено",
+    "button.reset": "Сбросить",
 
     "page.meals.button.add.meal": "Добавить Еду",
     "page.meals.delete.meal.alert.title": "Удалить Еду?",
@@ -67,7 +69,7 @@
     "page.products.edit.product.delete.alert.subtitle": "Продукт будет полностью удален",
     "page.products.button.add.product": "Добавить Продукт",
     "page.products.button.category": "Категория",
-    "page.products.categories.modal.title": "Категории",
+    "page.products.caluclator.modal.title": "Быстрый Калькулятор",
     "page.products.form.name": "Название",
     "page.products.form.category": "Категория",
     "page.products.form.units": "Единица Измерения",

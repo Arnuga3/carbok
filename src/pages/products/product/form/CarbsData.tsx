@@ -27,6 +27,13 @@ export const CarbsData: React.FC<Props> = ({
   onNumericDataChange,
 }) => {
   const { t } = useTranslation();
+
+  const handleFocus = (e: any) => {
+    e.currentTarget
+      .getInputElement()
+      .then((el: HTMLInputElement) => el.select());
+  };
+
   return (
     <IonGrid>
       <IonRow>
@@ -42,6 +49,7 @@ export const CarbsData: React.FC<Props> = ({
             onIonChange={(e: any) =>
               onNumericDataChange(NumericInput.PORTION, e.target.value)
             }
+            onFocus={handleFocus}
           ></IonInputStyled>
           <Units>{t(data.units.shortNameKey)}</Units>
         </IonColRight>
@@ -60,6 +68,7 @@ export const CarbsData: React.FC<Props> = ({
             onIonChange={(e: any) =>
               onNumericDataChange(NumericInput.CARBS, e.target.value)
             }
+            onFocus={handleFocus}
           ></IonInputStyled>
           <Units>{t("units.grams.short")}</Units>
         </IonColRight>
@@ -78,6 +87,7 @@ export const CarbsData: React.FC<Props> = ({
             onIonChange={(e: any) =>
               onNumericDataChange(NumericInput.SUGARS, e.target.value)
             }
+            onFocus={handleFocus}
           ></IonInputStyled>
           <Units>{t("units.grams.short")}</Units>
         </IonColRight>
@@ -96,6 +106,7 @@ export const CarbsData: React.FC<Props> = ({
             onIonChange={(e: any) =>
               onNumericDataChange(NumericInput.DEFAULT_PORTION, e.target.value)
             }
+            onFocus={handleFocus}
           ></IonInputStyled>
           <Units>{t(data.units.shortNameKey)}</Units>
         </IonColRight>

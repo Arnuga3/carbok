@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import styled from "styled-components";
 import {
   IonContent,
   IonHeader,
@@ -14,18 +17,18 @@ import {
   IonItemOption,
   IonAlert,
 } from "@ionic/react";
-import styled from "styled-components";
+import { createOutline, trashOutline } from "ionicons/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalculator } from "@fortawesome/free-solid-svg-icons";
 import { IProduct } from "../../classes/product/IProduct";
+import { CalculatorModal } from "./CalculatorModal";
+import { ProductsSearch } from "../../components/common/ProductsSearch";
+import { ProductListItem } from "../../components/common/ProductListItem";
 import { useProducts } from "../../hooks/productsHook";
-import { useDispatch } from "react-redux";
 import {
   deleteProduct,
   retrieveProducts,
 } from "../../redux/actions/productsActions";
-import { ProductsSearch } from "../../components/common/ProductsSearch";
-import { ProductListItem } from "../../components/common/ProductListItem";
-import { add, createOutline, trashOutline } from "ionicons/icons";
-import { useTranslation } from "react-i18next";
 
 const MEALSPAGE = "meals-page";
 
@@ -36,6 +39,7 @@ export const Products: React.FC = () => {
 
   const [searchResult, setSearchResult] = useState(products);
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
+  const [openCalculatorModal, setOpenCalculatorModal] = useState(false);
   const [productForDelete, setProductForDelete] = useState<IProduct | null>(
     null
   );
@@ -80,6 +84,15 @@ export const Products: React.FC = () => {
     <IonPage>
       <IonHeader slot="fixed">
         <IonToolbar color="primary">
+          <IonButtons slot="start">
+            <IonButton
+              fill="clear"
+              color="secondary"
+              onClick={() => setOpenCalculatorModal(true)}
+            >
+              <FontAwesomeIcon icon={faCalculator} size="2x" />
+            </IonButton>
+          </IonButtons>
           <IonButtons slot="end">
             <IonButton
               shape="round"
@@ -135,6 +148,10 @@ export const Products: React.FC = () => {
             handler: handleDelete,
           },
         ]}
+      />
+      <CalculatorModal
+        open={openCalculatorModal}
+        onClose={() => setOpenCalculatorModal(false)}
       />
     </IonPage>
   );
