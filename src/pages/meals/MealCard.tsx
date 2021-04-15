@@ -29,7 +29,7 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
     <IonCard routerLink={`/meals/${meal.id}/products`}>
       <CardHeader>
         <IonCardTitle>{t(meal.type.nameKey)}</IonCardTitle>
-        <IonCardSubtitle>{`${meal.products.length} ${t("products")}`}</IonCardSubtitle>
+        <IonCardSubtitle>{`${t("products")}: ${meal.products.length}`}</IonCardSubtitle>
       </CardHeader>
       <IonCardContentStyled>
         <div>

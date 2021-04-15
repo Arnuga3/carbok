@@ -52,6 +52,8 @@
     "button.add.selected": "Add Selected",
     "button.note": "Note",
     "button.reset": "Reset",
+    "button.export": "Export",
+    "button.import": "Import",
 
     "page.meals.button.add.meal": "Add Meal",
     "page.meals.delete.meal.alert.title": "Delete meal?",
@@ -70,7 +72,7 @@
     "page.products.button.add.product": "Add Product",
     "page.products.button.category": "Category",
     "page.products.caluclator.modal.title": "Quick Calculator",
-    "page.products.caluclator.modal.result.title": "Carbohydrates Per Portion",
+    "page.products.caluclator.modal.result.title": "Carbohydrates per Portion",
     "page.products.form.name": "Name",
     "page.products.form.category": "Category",
     "page.products.form.units": "Units",
@@ -82,5 +84,6 @@
     "page.settings.title": "Settings",
     "page.settings.card.title": "Application Settings",
     "page.settings.card.dark.mode": "Dark Mode",
-    "page.settings.card.dark.language": "Language"
+    "page.settings.card.dark.language": "Language",
+    "page.settings.card.title.data": "User Data"
 }

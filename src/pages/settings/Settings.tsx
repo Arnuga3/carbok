@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 import {
+  IonButton,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonCardSubtitle,
   IonContent,
   IonHeader,
+  IonIcon,
   IonItem,
   IonLabel,
   IonPage,
@@ -20,6 +23,9 @@ import {
 import LocaleCode from "locale-code";
 import { useAppSettings } from "../../hooks/appSettingsHook";
 import { changeAppSettings } from "../../redux/actions/appSettingsActions";
+import { downloadOutline, pushOutline } from "ionicons/icons";
+import { MealsStorageService } from "../../services/MealsStorageService";
+import { ProductsStorageService } from "../../services/ProductsStorageService";
 
 export const Settings: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -36,6 +42,23 @@ export const Settings: React.FC = () => {
     dispatch(
       changeAppSettings({ ...settings, themeMode: enabled ? "dark" : "light" })
     );
+  };
+
+  const handleExport = async () => {
+    const mealsStorageSvc = new MealsStorageService();
+    const productsStorageSvc = new ProductsStorageService();
+
+    const data = {
+      meals: await mealsStorageSvc.getAllData(),
+      products: await productsStorageSvc.getAllData(),
+    };
+
+    const a = window.document.createElement('a');
+    a.href = window.URL.createObjectURL(new Blob([JSON.stringify(data)], {type : 'application/json'}));
+    a.download = `${Date.now()}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   return (
@@ -73,7 +96,34 @@ export const Settings: React.FC = () => {
             </IonItem>
           </IonCardContent>
         </IonCard>
+        <IonCard>
+          <IonCardHeader>
+            <IonCardSubtitle>
+              {t("page.settings.card.title.data")}
+            </IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
+            <Button
+              color="tertiary"
+              size="large"
+              expand="block"
+              shape="round"
+              onClick={handleExport}
+            >
+              {t("button.export")}
+              <IonIcon slot="end" icon={downloadOutline} />
+            </Button>
+            <Button color="tertiary" size="large" expand="block" shape="round">
+              <IonIcon slot="start" icon={pushOutline} />
+              {t("button.import")}
+            </Button>
+          </IonCardContent>
+        </IonCard>
       </IonContent>
     </IonPage>
   );
 };
+
+const Button = styled(IonButton)`
+  margin-top: 12px;
+`;

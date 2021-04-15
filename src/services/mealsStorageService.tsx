@@ -12,6 +12,11 @@ export class MealsStorageService {
     this.key = key;
   }
 
+  public async getAllData(): Promise<{ [dateStamp: string]: IMeal[] }> {
+    const { value } = await Storage.get({ key: this.key });
+    return value ? JSON.parse(value) : [];
+  }
+
   public async getAllForDate(date: Date): Promise<IMeal[]> {
     const dateKey = getDateString(date);
     const { value } = await Storage.get({ key: this.key });

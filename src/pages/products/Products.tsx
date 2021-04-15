@@ -17,9 +17,7 @@ import {
   IonItemOption,
   IonAlert,
 } from "@ionic/react";
-import { createOutline, trashOutline } from "ionicons/icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalculator } from "@fortawesome/free-solid-svg-icons";
+import { calculator, createOutline, trashOutline } from "ionicons/icons";
 import { IProduct } from "../../classes/product/IProduct";
 import { CalculatorModal } from "./CalculatorModal";
 import { ProductsSearch } from "../../components/common/ProductsSearch";
@@ -88,9 +86,10 @@ export const Products: React.FC = () => {
             <IonButton
               fill="clear"
               color="secondary"
+              shape="round"
               onClick={() => setOpenCalculatorModal(true)}
             >
-              <FontAwesomeIcon icon={faCalculator} size="2x" />
+              <IonIcon slot="icon-only" icon={calculator} />
             </IonButton>
           </IonButtons>
           <IonButtons slot="end">

@@ -52,6 +52,8 @@
     "button.add.selected": "Добавить Выделеное",
     "button.note": "Заметка",
     "button.reset": "Сбросить",
+    "button.export": "Скачать",
+    "button.import": "Залить",
 
     "page.meals.button.add.meal": "Добавить Еду",
     "page.meals.delete.meal.alert.title": "Удалить Еду?",
@@ -70,6 +72,7 @@
     "page.products.button.add.product": "Добавить Продукт",
     "page.products.button.category": "Категория",
     "page.products.caluclator.modal.title": "Быстрый Калькулятор",
+    "page.products.caluclator.modal.result.title": "Углеводов на Порцию",
     "page.products.form.name": "Название",
     "page.products.form.category": "Категория",
     "page.products.form.units": "Единица Измерения",
@@ -81,5 +84,6 @@
     "page.settings.title": "Настройки",
     "page.settings.card.title": "Настройки Приложения",
     "page.settings.card.dark.mode": "Тёмный Режим",
-    "page.settings.card.dark.language": "Язык"
+    "page.settings.card.dark.language": "Язык",
+    "page.settings.card.title.data": "Данные Пользователя"
 }

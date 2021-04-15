@@ -12,10 +12,10 @@ import {
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import {
-  homeOutline,
-  restaurantOutline,
-  personOutline,
-  fastFoodOutline,
+  restaurant,
+  fastFood,
+  person,
+  home,
 } from "ionicons/icons";
 import Home from "./pages/home/Home";
 import { Meals } from "./pages/meals/Meals";
@@ -84,19 +84,19 @@ const App: React.FC = () => {
 
           <IonTabBar slot="bottom">
             <IonTabButton tab="home" href="/home">
-              <IonIcon icon={homeOutline} />
+              <IonIcon icon={home} />
               <IonLabel>{t("tab.home")}</IonLabel>
             </IonTabButton>
             <IonTabButton tab="meals" href="/meals">
-              <IonIcon icon={restaurantOutline} />
+              <IonIcon icon={restaurant} />
               <IonLabel>{t("tab.meals")}</IonLabel>
             </IonTabButton>
             <IonTabButton tab="products" href="/products">
-              <IonIcon icon={fastFoodOutline} />
+              <IonIcon icon={fastFood} />
               <IonLabel>{t("tab.products")}</IonLabel>
             </IonTabButton>
             <IonTabButton tab="settings" href="/settings">
-              <IonIcon icon={personOutline} />
+              <IonIcon icon={person} />
               <IonLabel>{t("tab.settings")}</IonLabel>
             </IonTabButton>
           </IonTabBar>
