@@ -84,6 +84,10 @@
     "page.settings.title": "Settings",
     "page.settings.card.title": "Application Settings",
     "page.settings.card.dark.mode": "Dark Mode",
-    "page.settings.card.dark.language": "Language",
-    "page.settings.card.title.data": "User Data"
+    "page.settings.card.language": "Language",
+    "page.settings.card.title.data": "User Data",
+    "page.settings.card.data.alert.title": "Import Data?",
+    "page.settings.card.data.alert.subtitle": "All existing data will be overwritten",
+    "page.settings.toast.import.success": "Import Successful",
+    "page.settings.toast.import.fail": "Import failed"
 }

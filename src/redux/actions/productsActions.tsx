@@ -100,3 +100,15 @@ export function deleteProduct(id: string) {
     }
   };
 }
+
+export const importProducts = (products: IProduct[]) => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const prodStorageSvc = new ProductsStorageService();
+      await prodStorageSvc.importData(products);
+      dispatch(storeProducts(products));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};

@@ -84,6 +84,10 @@
     "page.settings.title": "Настройки",
     "page.settings.card.title": "Настройки Приложения",
     "page.settings.card.dark.mode": "Тёмный Режим",
-    "page.settings.card.dark.language": "Язык",
-    "page.settings.card.title.data": "Данные Пользователя"
+    "page.settings.card.language": "Язык",
+    "page.settings.card.title.data": "Данные Пользователя",
+    "page.settings.card.data.alert.title": "Залить Данные?",
+    "page.settings.card.data.alert.subtitle": "Все существующие данные будут перезаписаны",
+    "page.settings.toast.import.success": "Данные залиты успешно",
+    "page.settings.toast.import.fail": "Не удалось залить данные"
 }

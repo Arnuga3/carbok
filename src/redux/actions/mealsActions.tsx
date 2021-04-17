@@ -131,3 +131,18 @@ export const changeDate = (date: Date) => {
     }
   };
 };
+
+export const importMeals = (meals: {[key: string]: IMeal[]}) => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const mealsStorageSvc = new MealsStorageService();
+      await mealsStorageSvc.importData(meals);
+      const mealsToday = await mealsStorageSvc.getAllForDate(new Date());
+      if (mealsToday) {
+        dispatch(storeMeals(mealsToday));
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};

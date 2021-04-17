@@ -11,9 +11,16 @@ export class ProductsStorageService {
     this.key = key;
   }
 
-  public async getAllData(): Promise<IProduct[]> {
+  public async exportData(): Promise<IProduct[]> {
     const { value } = await Storage.get({ key: this.key });
     return value ? JSON.parse(value) : [];
+  }
+
+  public async importData(data: IProduct[]): Promise<void> {
+    await Storage.set({
+      key: this.key,
+      value: JSON.stringify(data),
+    });
   }
 
   public async getAll(): Promise<IProduct[] | null> {
