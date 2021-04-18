@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   IonButton,
   IonButtons,
@@ -21,8 +21,10 @@ import {
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { close } from "ionicons/icons";
+import { IProduct } from "../../classes/product/IProduct";
 
 interface Props {
+  product: IProduct | null;
   open: boolean;
   onClose: any;
 }
@@ -33,10 +35,24 @@ const defaultDataState = {
   targetPortion: 0,
 };
 
-export const CalculatorModal: React.FC<Props> = ({ open, onClose }) => {
+export const CalculatorModal: React.FC<Props> = ({
+  product = null,
+  open,
+  onClose,
+}) => {
   const { t } = useTranslation();
   const [data, setData] = useState(defaultDataState);
   const { portion, carbs, targetPortion } = data;
+
+  useEffect(() => {
+    if (product) {
+      setData({
+        portion: product.carbsData.portion,
+        carbs: product.carbsData.carbs,
+        targetPortion: product.carbsData.defaultPortion ?? 0,
+      });
+    }
+  }, [product]);
 
   const handleFocus = (e: any) => {
     e.currentTarget
@@ -53,7 +69,15 @@ export const CalculatorModal: React.FC<Props> = ({ open, onClose }) => {
   }, [data.carbs, data.portion]);
 
   const handleReset = () => {
-    setData(defaultDataState);
+    if (product) {
+      setData({
+        portion: product.carbsData.portion,
+        carbs: product.carbsData.carbs,
+        targetPortion: product.carbsData.defaultPortion ?? 0,
+      });
+    } else {
+      setData(defaultDataState);
+    }
   };
 
   const result = () => {

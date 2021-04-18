@@ -15,13 +15,9 @@ import {
   restaurant,
   fastFood,
   person,
-  home,
-  barChartOutline,
-  barChart,
-  pieChart,
   statsChart,
 } from "ionicons/icons";
-import Home from "./pages/home/Home";
+import Overview from "./pages/overview/Overview";
 import { Meals } from "./pages/meals/Meals";
 import { Meal } from "./pages/meals/meal/Meal";
 import { Products } from "./pages/products/Products";
@@ -66,7 +62,7 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route exact path="/:tab(home)" component={Home} />
+            <Route exact path="/:tab(overview)" component={Overview} />
             <Route exact path="/:tab(meals)" component={Meals} />
             <Route exact path="/:tab(meals)/:id/products" component={Meal} />
             <Route exact path="/:tab(products)" component={Products} />
@@ -87,9 +83,9 @@ const App: React.FC = () => {
           </IonRouterOutlet>
 
           <IonTabBar slot="bottom">
-            <IonTabButton tab="home" href="/home">
+            <IonTabButton tab="overview" href="/overview">
               <IonIcon icon={statsChart} />
-              <IonLabel>{t("tab.home")}</IonLabel>
+              <IonLabel>{t("tab.overview")}</IonLabel>
             </IonTabButton>
             <IonTabButton tab="meals" href="/meals">
               <IonIcon icon={restaurant} />

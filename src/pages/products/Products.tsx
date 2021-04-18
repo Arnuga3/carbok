@@ -40,9 +40,7 @@ export const Products: React.FC = () => {
   const [searchResult, setSearchResult] = useState(products);
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
   const [openCalculatorModal, setOpenCalculatorModal] = useState(false);
-  const [productForDelete, setProductForDelete] = useState<IProduct | null>(
-    null
-  );
+  const [productSelected, setProductSelected] = useState<IProduct | null>(null);
 
   useEffect(() => {
     if (products.length === 0) {
@@ -68,15 +66,20 @@ export const Products: React.FC = () => {
     }
   };
 
-  const handleDeletePressed = (product: IProduct) => {
-    setProductForDelete(product);
+  const handleOnCalculate = (product: IProduct) => {
+    setProductSelected(product);
+    setOpenCalculatorModal(true);
+  };
+
+  const handleOnDelete = (product: IProduct) => {
+    setProductSelected(product);
     setOpenDeleteAlert(true);
   };
 
   const handleDelete = () => {
-    if (productForDelete) {
-      dispatch(deleteProduct(productForDelete.id));
-      setProductForDelete(null);
+    if (productSelected) {
+      dispatch(deleteProduct(productSelected.id));
+      setProductSelected(null);
     }
   };
 
@@ -125,16 +128,22 @@ export const Products: React.FC = () => {
               </IonItem>
               <IonItemOptions>
                 <SlidingAction
+                  color="secondary"
+                  onClick={() => handleOnCalculate(product)}
+                >
+                  <IonIcon icon={calculator} slot="icon-only" />
+                </SlidingAction>
+                <SlidingAction
                   color="tertiary"
                   routerLink={`/products/edit-product/${product.id}`}
                 >
-                  <IonIcon icon={createOutline} />
+                  <IonIcon icon={createOutline} slot="icon-only" />
                 </SlidingAction>
                 <SlidingAction
                   color="danger"
-                  onClick={() => handleDeletePressed(product)}
+                  onClick={() => handleOnDelete(product)}
                 >
-                  <IonIcon icon={trashOutline} />
+                  <IonIcon icon={trashOutline} slot="icon-only" />
                 </SlidingAction>
               </IonItemOptions>
             </IonItemSliding>
@@ -156,6 +165,7 @@ export const Products: React.FC = () => {
         ]}
       />
       <CalculatorModal
+        product={productSelected}
         open={openCalculatorModal}
         onClose={() => setOpenCalculatorModal(false)}
       />

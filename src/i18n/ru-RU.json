@@ -25,7 +25,7 @@
     "meal.type.snack": "Перекус",
     "meal.type.other": "Другое",
 
-    "tab.home": "Обзор",
+    "tab.overview": "Обзор",
     "tab.calculator": "Калькулятор",
     "tab.meals": "Питание",
     "tab.products": "Продукты",
@@ -55,10 +55,10 @@
     "button.export": "Скачать",
     "button.import": "Залить",
 
-    "page.home.title": "Главная",
-    "page.home.carbs.range.card.title": "Последние {{days}} дней",
-    "page.home.carbs.range.card.subtitle": "из которых {{sugarPercent}}% Сахара",
-    "page.home.foods.range.card.title": "Группы пищевых продуктов",
+    "page.overview.title": "Обзор",
+    "page.overview.carbs.range.card.title": "Последние {{days}} дней",
+    "page.overview.carbs.range.card.subtitle": "из которых {{sugarPercent}}% Сахара",
+    "page.overview.foods.range.card.title": "Группы пищевых продуктов",
 
     "page.meals.button.add.meal": "Добавить Еду",
     "page.meals.delete.meal.alert.title": "Удалить Еду?",

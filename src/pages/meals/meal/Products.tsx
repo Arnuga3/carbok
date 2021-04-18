@@ -137,13 +137,13 @@ export const Products: React.FC<Props> = ({ meal }) => {
                 color="tertiary"
                 onClick={() => handlePortionSizeChange(product)}
               >
-                <IonIcon icon={scaleOutline} />
+                <IonIcon icon={scaleOutline} slot="icon-only" />
               </SlidingAction>
               <SlidingAction
                 color="danger"
                 onClick={() => handleOnMealProductDelete(product)}
               >
-                <IonIcon icon={trashOutline} />
+                <IonIcon icon={trashOutline} slot="icon-only" />
               </SlidingAction>
             </IonItemOptions>
           </IonItemSliding>

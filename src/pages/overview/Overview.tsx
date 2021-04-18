@@ -9,13 +9,13 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { ChartCards } from "./ChartCards";
 
-const Home: React.FC = () => {
+const Overview: React.FC = () => {
   const { t } = useTranslation();
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonTitle>{t("page.home.title")}</IonTitle>
+          <IonTitle>{t("page.overview.title")}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -25,4 +25,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Overview;

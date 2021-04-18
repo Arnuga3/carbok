@@ -146,7 +146,7 @@ export const ChartCards: React.FC = () => {
           <IonIcon icon={chevronBackOutline} slot="icon-only" />
         </IonButton>
         <IonText color="medium">
-          {t("page.home.carbs.range.card.title", {
+          {t("page.overview.carbs.range.card.title", {
             days: cardData.range.split("_")[0],
           })}
         </IonText>
@@ -175,7 +175,7 @@ export const ChartCards: React.FC = () => {
       </IonCard>
       <IonCard>
         <CardHeader>
-          <IonCardTitle>{t("page.home.foods.range.card.title")}</IonCardTitle>
+          <IonCardTitle>{t("page.overview.foods.range.card.title")}</IonCardTitle>
           {cardData.from && cardData.to && (
             <IonCardSubtitle>{`${moment(cardData.from).format(
               "D MMM"

@@ -38,7 +38,7 @@ export const MealCarbsLinearChart: React.FC<Props> = ({ meals }) => {
   return (
     <>
       <IonText>
-        {t("page.home.carbs.range.card.subtitle", {
+        {t("page.overview.carbs.range.card.subtitle", {
           sugarPercent: Math.floor((totals.sugars * 100) / totals.carbs),
         })}
       </IonText>
