@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
+  IonButton,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
+  IonIcon,
+  IonLabel,
+  IonText,
 } from "@ionic/react";
 import moment from "moment";
 import styled from "styled-components";
@@ -16,8 +20,9 @@ import { MealsStorageService } from "../../services/MealsStorageService";
 import { CalculationService } from "../../services/CalculationService";
 import { MealCarbsLinearChart } from "./MealCarbsLinearChart";
 import { CategoriesPieChart } from "./CategoriesPieChart";
+import { chevronBackOutline, chevronForwardOutline } from "ionicons/icons";
 
-export type Range = "7_days" | "30_days";
+export type Range = "7_days" | "30_days" | "90_days";
 
 interface CardData {
   range: Range;
@@ -81,22 +86,88 @@ export const ChartCards: React.FC = () => {
           categories: calculation.getPieChartData(products),
         });
         break;
+
+      case "90_days":
+        const ago90Days = moment(today).subtract(90, "day").toDate();
+        rangeMeals = await mealsStorageService.getAllForRange(ago90Days, today);
+        for (const meal of rangeMeals) {
+          products = [...products, ...meal.products];
+        }
+        setCardData({
+          from: ago90Days,
+          to: today,
+          range,
+          meals: rangeMeals,
+          categories: calculation.getPieChartData(products),
+        });
+        break;
     }
   };
+
+  const getPreviousRange = () => {
+    switch (cardData.range) {
+      case "7_days":
+        getCardRangeData("30_days");
+        break;
+
+      case "30_days":
+        getCardRangeData("90_days");
+        break;
+
+      default:
+        return false;
+    }
+  };
+
+  const getNextRange = () => {
+    switch (cardData.range) {
+      case "30_days":
+        getCardRangeData("7_days");
+        break;
+
+      case "90_days":
+        getCardRangeData("30_days");
+        break;
+
+      default:
+        return false;
+    }};
+
   return (
     <>
+      <RangeSwitch>
+        <IonButton
+          color="medium"
+          fill="clear"
+          shape="round"
+          onClick={getPreviousRange}
+          disabled={cardData.range === '90_days'}
+        >
+          <IonIcon icon={chevronBackOutline} slot="icon-only" />
+        </IonButton>
+        <IonText color="medium">
+          {t("page.home.carbs.range.card.title", {
+            days: cardData.range.split("_")[0],
+          })}
+        </IonText>
+        <IonButton
+          color="medium"
+          fill="clear"
+          shape="round"
+          onClick={getNextRange}
+          disabled={cardData.range === '7_days'}
+        >
+          <IonIcon icon={chevronForwardOutline} slot="icon-only" />
+        </IonButton>
+      </RangeSwitch>
       <IonCard>
         <CardHeader>
+          <IonCardTitle>{t("carbohydrates")}</IonCardTitle>
           {cardData.from && cardData.to && (
-            <IonCardTitle>
-              {t("page.home.carbs.range.card.title", {
-                days: cardData.range === "7_days" ? 7 : 30,
-              })}
-            </IonCardTitle>
+            <CardSubtitle>{`${moment(cardData.from).format("D MMM")} - ${moment(
+              cardData.to
+            ).format("D MMM")}`}</CardSubtitle>
           )}
-          <IonCardSubtitle>{`${moment(cardData.from).format(
-            "D MMM"
-          )} - ${moment(cardData.to).format("D MMM")}`}</IonCardSubtitle>
         </CardHeader>
         <IonCardContent>
           <MealCarbsLinearChart meals={cardData.meals} />
@@ -104,16 +175,12 @@ export const ChartCards: React.FC = () => {
       </IonCard>
       <IonCard>
         <CardHeader>
+          <IonCardTitle>{t("page.home.foods.range.card.title")}</IonCardTitle>
           {cardData.from && cardData.to && (
-            <IonCardTitle>
-              {t("page.home.carbs.range.card.title", {
-                days: cardData.range === "7_days" ? 7 : 30,
-              })}
-            </IonCardTitle>
+            <IonCardSubtitle>{`${moment(cardData.from).format(
+              "D MMM"
+            )} - ${moment(cardData.to).format("D MMM")}`}</IonCardSubtitle>
           )}
-          <IonCardSubtitle>{`${moment(cardData.from).format(
-            "D MMM"
-          )} - ${moment(cardData.to).format("D MMM")}`}</IonCardSubtitle>
         </CardHeader>
         <IonCardContent>
           <CategoriesPieChart categories={cardData.categories} />
@@ -126,4 +193,15 @@ export const ChartCards: React.FC = () => {
 const CardHeader = styled(IonCardHeader)`
   display: flex;
   justify-content: space-between;
+`;
+
+const CardSubtitle = styled(IonCardSubtitle)`
+  padding-left: 4px;
+`;
+
+const RangeSwitch = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
 `;

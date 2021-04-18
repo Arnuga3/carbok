@@ -25,7 +25,7 @@
     "meal.type.snack": "Snack",
     "meal.type.other": "Other",
 
-    "tab.home": "Home",
+    "tab.home": "Overview",
     "tab.calculator": "Calculator",
     "tab.meals": "Meals",
     "tab.products": "Products",
@@ -57,7 +57,8 @@
 
     "page.home.title": "Home",
     "page.home.carbs.range.card.title": "Last {{days}} days",
-    "page.home.carbs.range.card.subtitle": "Carbohydrates, of which {{sugarPercent}}% Sugars",
+    "page.home.carbs.range.card.subtitle": "of which {{sugarPercent}}% Sugars",
+    "page.home.foods.range.card.title": "Food Groups",
 
     "page.meals.button.add.meal": "Add Meal",
     "page.meals.delete.meal.alert.title": "Delete meal?",

@@ -32,7 +32,7 @@ export const CategoriesPieChart: React.FC<Props> = ({ categories }) => {
       </ResponsiveContainer>
       <div>
         {categories.map((category: IChartProductCategory, index: number) => (
-          <Category>
+          <Category key={index}>
             <CircleBadge color={category.color} />
             {t(category.name)}
           </Category>

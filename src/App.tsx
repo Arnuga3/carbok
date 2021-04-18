@@ -16,6 +16,10 @@ import {
   fastFood,
   person,
   home,
+  barChartOutline,
+  barChart,
+  pieChart,
+  statsChart,
 } from "ionicons/icons";
 import Home from "./pages/home/Home";
 import { Meals } from "./pages/meals/Meals";
@@ -84,7 +88,7 @@ const App: React.FC = () => {
 
           <IonTabBar slot="bottom">
             <IonTabButton tab="home" href="/home">
-              <IonIcon icon={home} />
+              <IonIcon icon={statsChart} />
               <IonLabel>{t("tab.home")}</IonLabel>
             </IonTabButton>
             <IonTabButton tab="meals" href="/meals">
