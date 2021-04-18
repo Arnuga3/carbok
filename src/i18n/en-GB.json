@@ -55,6 +55,10 @@
     "button.export": "Export",
     "button.import": "Import",
 
+    "page.home.title": "Home",
+    "page.home.carbs.range.card.title": "Last {{days}} days",
+    "page.home.carbs.range.card.subtitle": "Carbohydrates, of which {{sugarPercent}}% Sugars",
+
     "page.meals.button.add.meal": "Add Meal",
     "page.meals.delete.meal.alert.title": "Delete meal?",
     "page.meals.delete.meal.alert.subtitle": "This will be permanently deleted",

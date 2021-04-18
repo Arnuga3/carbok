@@ -1,5 +1,5 @@
 export interface IChartProductCategory {
-  name?: string;
+  name: string;
   value: number;
   type: string;
   color: string;

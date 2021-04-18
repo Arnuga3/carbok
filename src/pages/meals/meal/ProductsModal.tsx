@@ -107,6 +107,7 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
           {searchResult.map((product: IProduct, i: number) => (
             <IonItem key={i} onClick={() => toggleSelect(product)}>
               <IonIcon
+                slot="start"
                 color="tertiary"
                 icon={
                   selectedProducts.find((prd) => prd.id === product.id)

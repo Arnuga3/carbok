@@ -13,7 +13,7 @@ export const MealProductsChart: React.FC<Props> = ({ meal }) => {
   const carbsData = calculation.getPieChartCarbSugarPercents(meal.products);
   return (
     <PieChart width={75} height={75}>
-      <Pie data={carbsData} dataKey="value" nameKey="name" outerRadius={18}>
+      <Pie data={carbsData} dataKey="value" nameKey="name" outerRadius={20}>
         {carbsData.map((item, index) => (
           <Cell key={`cell-${index}`} fill={item.color} />
         ))}
@@ -23,7 +23,7 @@ export const MealProductsChart: React.FC<Props> = ({ meal }) => {
         dataKey="value"
         nameKey="name"
         innerRadius={20}
-        outerRadius={35}
+        outerRadius={32}
       >
         {productCategories.map((category, index) => (
           <Cell key={`cell-${index}`} fill={category.color} />

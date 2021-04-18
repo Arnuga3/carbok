@@ -27,7 +27,7 @@
 
     "tab.home": "Главная",
     "tab.calculator": "Калькулятор",
-    "tab.meals": "Еда",
+    "tab.meals": "Питание",
     "tab.products": "Продукты",
     "tab.settings": "Настройки",
 
@@ -54,6 +54,10 @@
     "button.reset": "Сбросить",
     "button.export": "Скачать",
     "button.import": "Залить",
+
+    "page.home.title": "Главная",
+    "page.home.carbs.range.card.title": "Последние {{days}} дней",
+    "page.home.carbs.range.card.subtitle": "Углеводы, из которых {{sugarPercent}}% Сахара",
 
     "page.meals.button.add.meal": "Добавить Еду",
     "page.meals.delete.meal.alert.title": "Удалить Еду?",

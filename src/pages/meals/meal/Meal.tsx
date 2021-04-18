@@ -10,7 +10,6 @@ import {
   IonIcon,
   IonPage,
   IonText,
-  IonTitle,
   IonToolbar,
 } from "@ionic/react";
 import { Products } from "./Products";
@@ -26,7 +25,7 @@ import {
   updateMeal,
 } from "../../../redux/actions/mealsActions";
 import moment from "moment";
-import { ellipsisVerticalOutline } from "ionicons/icons";
+import { ellipsisVertical } from "ionicons/icons";
 
 interface MealPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -82,7 +81,7 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
               color="secondary"
               onClick={() => setOpenActionSheet(true)}
             >
-              <IonIcon icon={ellipsisVerticalOutline} slot="icon-only" />
+              <IonIcon icon={ellipsisVertical} slot="icon-only" />
             </IonButton>
           </IonButtons>
         </IonToolbar>

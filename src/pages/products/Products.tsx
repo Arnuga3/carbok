@@ -16,6 +16,7 @@ import {
   IonItemSliding,
   IonItemOption,
   IonAlert,
+  IonAvatar,
 } from "@ionic/react";
 import { calculator, createOutline, trashOutline } from "ionicons/icons";
 import { IProduct } from "../../classes/product/IProduct";
@@ -27,8 +28,9 @@ import {
   deleteProduct,
   retrieveProducts,
 } from "../../redux/actions/productsActions";
+import { CircleBadge } from "../../components/common/CircleBadge";
 
-const MEALSPAGE = "meals-page";
+const PRODUCTSPAGE = "products-page";
 
 export const Products: React.FC = () => {
   const { t } = useTranslation();
@@ -110,15 +112,20 @@ export const Products: React.FC = () => {
           {searchResult.map((product: IProduct, i: number) => (
             <IonItemSliding
               key={i}
-              id={product.name + i + MEALSPAGE}
-              onClick={() => toggleActionsSlide(product.name + i + MEALSPAGE)}
+              id={PRODUCTSPAGE + i}
+              onClick={() => toggleActionsSlide(PRODUCTSPAGE + i)}
             >
               <IonItem detail>
+                <IonAvatar slot="start">
+                  <CircleBadge color={product.category.color} size={40}>
+                    {t(product.category.nameKey).slice(0, 3)}
+                  </CircleBadge>
+                </IonAvatar>
                 <ProductListItem product={product} />
               </IonItem>
               <IonItemOptions>
                 <SlidingAction
-                  color="secondary"
+                  color="tertiary"
                   routerLink={`/products/edit-product/${product.id}`}
                 >
                   <IonIcon icon={createOutline} />

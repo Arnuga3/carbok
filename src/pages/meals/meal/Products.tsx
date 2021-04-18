@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import {
   IonAlert,
+  IonAvatar,
   IonButton,
   IonIcon,
   IonItem,
@@ -9,7 +10,6 @@ import {
   IonItemOptions,
   IonItemSliding,
   IonList,
-  IonListHeader,
   IonText,
 } from "@ionic/react";
 import { IProduct } from "../../../classes/product/IProduct";
@@ -21,10 +21,12 @@ import { chatboxOutline, scaleOutline, trashOutline } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
 import CalculationService from "../../../services/CalculationService";
 import { ProductListItem } from "../../../components/common/ProductListItem";
+import { CircleBadge } from "../../../components/common/CircleBadge";
 
 interface Props {
   meal: IMeal;
 }
+const MEALSPAGE = "meals-page";
 
 const slidingItems: any = document.querySelector(".prod-slide");
 
@@ -119,15 +121,20 @@ export const Products: React.FC<Props> = ({ meal }) => {
         {meal.products.map((product, i) => (
           <IonItemSliding
             key={i}
-            id={product.name + i}
-            onClick={() => toggleActionsSlide(product.name + i)}
+            id={MEALSPAGE + i}
+            onClick={() => toggleActionsSlide(MEALSPAGE + i)}
           >
             <IonItem detail>
+                <IonAvatar slot="start">
+                  <CircleBadge color={product.category.color} size={40}>
+                    {t(product.category.nameKey).slice(0, 3)}
+                  </CircleBadge>
+                </IonAvatar>
               <ProductListItem product={product} />
             </IonItem>
             <IonItemOptions>
               <SlidingAction
-                color="secondary"
+                color="tertiary"
                 onClick={() => handlePortionSizeChange(product)}
               >
                 <IonIcon icon={scaleOutline} />

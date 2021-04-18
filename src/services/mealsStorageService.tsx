@@ -1,6 +1,7 @@
 import { Plugins } from "@capacitor/core";
 import { IMeal } from "../classes/meal/IMeal";
 import { getDateString } from "../utils/helper";
+import moment from "moment";
 
 const { Storage } = Plugins;
 const mealsStorageKey = "meals";
@@ -17,7 +18,7 @@ export class MealsStorageService {
     return value ? JSON.parse(value) : [];
   }
 
-  public async importData(data: {[key: string]: IMeal[]}): Promise<void> {
+  public async importData(data: { [key: string]: IMeal[] }): Promise<void> {
     await Storage.set({
       key: this.key,
       value: JSON.stringify(data),
@@ -27,7 +28,30 @@ export class MealsStorageService {
   public async getAllForDate(date: Date): Promise<IMeal[]> {
     const dateKey = getDateString(date);
     const { value } = await Storage.get({ key: this.key });
-    return value && JSON.parse(value)[dateKey] ? JSON.parse(value)[dateKey] : [];
+    return value && JSON.parse(value)[dateKey]
+      ? JSON.parse(value)[dateKey]
+      : [];
+  }
+
+  public async getAllForRange(
+    startDate: Date,
+    endDate: Date
+  ): Promise<IMeal[]> {
+    let date = startDate;
+    let dates: Date[] = [startDate];
+    let rangeMeals: IMeal[] = [];
+
+    while (moment(date).isBefore(endDate, "day")) {
+      const nextDay = moment(date).add(1, "day").toDate();
+      dates = [...dates, nextDay];
+      date = nextDay;
+    }
+
+    for (const date of dates) {
+      const meals = await this.getAllForDate(date);
+      rangeMeals = [...rangeMeals, ...meals];
+    }
+    return rangeMeals;
   }
 
   public async get(date: Date, id: string): Promise<IMeal | null> {

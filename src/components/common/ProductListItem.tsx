@@ -1,9 +1,7 @@
 import { IonText } from "@ionic/react";
-import React from "react";
+import { IProduct } from "../../classes/product/IProduct";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { IProduct } from "../../classes/product/IProduct";
-import { CircleBadge } from "./CircleBadge";
 
 interface Props {
   product: IProduct;
@@ -15,8 +13,7 @@ export const ProductListItem: React.FC<Props> = ({ product }) => {
     <ListItemContent>
       <ContentRow>
         <NameBadge>
-          <CircleBadge color={product.category.color} />
-          <strong>{product.name}</strong>
+          {product.name}
         </NameBadge>
         <IonText color="medium">
           <small>
@@ -52,7 +49,7 @@ const ListItemContent = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 8px 16px;
+  padding: 8px 16px 8px 0;
 `;
 
 const ContentRow = styled.div`
@@ -64,4 +61,5 @@ const ContentRow = styled.div`
 const NameBadge = styled.div`
   display: flex;
   align-items: center;
+  font-size: 1.1em;
 `;

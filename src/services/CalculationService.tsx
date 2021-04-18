@@ -71,6 +71,7 @@ export class CalculationService {
         value: 0,
         type: category.type,
         color: category.color,
+        name: category.nameKey,
       })
     );
     return this.getCategoriesWithWeights(chartProductCategories, products);

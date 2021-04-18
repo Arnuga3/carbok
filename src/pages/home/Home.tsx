@@ -1,14 +1,25 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { ChartCards } from "./ChartCards";
 
 const Home: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonTitle>Home</IonTitle>
+          <IonTitle>{t("page.home.title")}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
+        <ChartCards />
       </IonContent>
     </IonPage>
   );
