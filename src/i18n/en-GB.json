@@ -55,7 +55,6 @@
     "button.export": "Export",
     "button.import": "Import",
 
-    "page.overview.title": "Overview",
     "page.overview.carbs.range.card.title": "Last {{days}} days",
     "page.overview.carbs.range.card.subtitle": "of which {{sugarPercent}}% Sugars",
     "page.overview.foods.range.card.title": "Food Groups",
@@ -86,13 +85,14 @@
     "page.products.carbs.error": "Should be smaller or equal to Portion",
     "page.products.sugars.error": "Should be smaller or equal to Carbohydrates",
 
-    "page.settings.title": "Settings",
     "page.settings.card.title": "Application Settings",
     "page.settings.card.dark.mode": "Dark Mode",
     "page.settings.card.language": "Language",
     "page.settings.card.title.data": "User Data",
     "page.settings.card.data.alert.title": "Import Data?",
     "page.settings.card.data.alert.subtitle": "All existing data will be overwritten",
+    "page.settings.toast.export.success": "Exported to Documents",
+    "page.settings.toast.export.fail": "Export failed",
     "page.settings.toast.import.success": "Import Successful",
     "page.settings.toast.import.fail": "Import failed"
 }

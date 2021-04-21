@@ -11,13 +11,8 @@ import {
   IonTabs,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import {
-  restaurant,
-  fastFood,
-  person,
-  statsChart,
-} from "ionicons/icons";
-import Overview from "./pages/overview/Overview";
+import { restaurant, fastFood, person, statsChart } from "ionicons/icons";
+import { Overview } from "./pages/overview/Overview";
 import { Meals } from "./pages/meals/Meals";
 import { Meal } from "./pages/meals/meal/Meal";
 import { Products } from "./pages/products/Products";
@@ -27,6 +22,9 @@ import { Settings } from "./pages/settings/Settings";
 
 import { useTranslation } from "react-i18next";
 import { initAppSettings } from "./redux/actions/appSettingsActions";
+
+import styled from 'styled-components';
+import icon from "./resources/icons/logo.svg";
 
 import "./i18n/config";
 
@@ -54,7 +52,7 @@ const App: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      dispatch(initAppSettings(i18n));
+    dispatch(initAppSettings(i18n));
   }, []);
 
   return (
@@ -84,7 +82,7 @@ const App: React.FC = () => {
 
           <IonTabBar slot="bottom">
             <IonTabButton tab="overview" href="/overview">
-              <IonIcon icon={statsChart} />
+              <CarbokIcon src={icon} />
               <IonLabel>{t("tab.overview")}</IonLabel>
             </IonTabButton>
             <IonTabButton tab="meals" href="/meals">
@@ -107,3 +105,9 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+const CarbokIcon = styled(IonIcon)`
+  // padding-left: 16px;
+  // font-size: 24px;
+
+`;

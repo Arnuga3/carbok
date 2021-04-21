@@ -109,15 +109,6 @@ export const Products: React.FC<Props> = ({ meal }) => {
   return (
     <>
       <IonList>
-        <AddButton
-          color="secondary"
-          size="large"
-          expand="block"
-          shape="round"
-          onClick={() => setOpenProductsModal(true)}
-        >
-          {t("page.meals.button.add.product")}
-        </AddButton>
         {meal.products.map((product, i) => (
           <IonItemSliding
             key={i}
@@ -156,6 +147,14 @@ export const Products: React.FC<Props> = ({ meal }) => {
             </IonItem>
           </Note>
         )}
+        <AddButton
+          color="primary"
+          expand="block"
+          shape="round"
+          onClick={() => setOpenProductsModal(true)}
+        >
+          {t("page.meals.button.add.product")}
+        </AddButton>
       </IonList>
       <ProductsModal
         meal={meal}

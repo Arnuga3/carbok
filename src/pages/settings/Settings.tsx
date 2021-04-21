@@ -14,8 +14,8 @@ import {
   IonSelectOption,
   IonTitle,
   IonToggle,
-  IonToolbar,
 } from "@ionic/react";
+import styled from "styled-components";
 import LocaleCode from "locale-code";
 import { useAppSettings } from "../../hooks/appSettingsHook";
 import { changeAppSettings } from "../../redux/actions/appSettingsActions";
@@ -40,12 +40,7 @@ export const Settings: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader slot="fixed">
-        <IonToolbar color="primary">
-          <IonTitle>{t("page.settings.title")}</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
+      <IonContent fullscreen>
         <IonCard>
           <IonCardHeader>
             <IonCardSubtitle>{t("page.settings.card.title")}</IonCardSubtitle>
@@ -78,3 +73,7 @@ export const Settings: React.FC = () => {
     </IonPage>
   );
 };
+
+const HeaderContent = styled.div`
+  display: flex;
+`;

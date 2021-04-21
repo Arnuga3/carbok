@@ -92,17 +92,15 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
 
   return (
     <IonModal isOpen={open}>
-      <IonHeader>
-        <IonToolbar color="primary">
-          <IonButtons slot="end">
-            <IonButton onClick={handleClose} color="secondary">
-              <IonIcon icon={close} slot="icon-only" />
-            </IonButton>
-          </IonButtons>
-        </IonToolbar>
+      <IonHeader mode="ios" translucent>
+        <HeaderContent>
+          <ProductsSearch products={products} onSearchComplete={handleSearch} />
+          <IonButton onClick={handleClose} color="primary" fill="clear">
+            <IonIcon icon={close} slot="icon-only" />
+          </IonButton>
+        </HeaderContent>
       </IonHeader>
-      <IonContent>
-        <ProductsSearch products={products} onSearchComplete={handleSearch} />
+      <IonContent fullscreen>
         <IonList>
           {searchResult.map((product: IProduct, i: number) => (
             <IonItem key={i} onClick={() => toggleSelect(product)}>
@@ -124,11 +122,10 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
         <IonFooter slot="fixed">
           <IonToolbar>
             <SelectButton
-              color="secondary"
+              color="primary"
               onClick={handleSelect}
               expand="block"
               shape="round"
-              size="large"
             >
               {t("button.add.selected")}
             </SelectButton>
@@ -138,6 +135,11 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
     </IonModal>
   );
 };
+
+const HeaderContent = styled.div`
+  display: flex;
+  padding: 0 8px;
+`;
 
 const SelectButton = styled(IonButton)`
   margin: 12px;

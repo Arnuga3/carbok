@@ -1,10 +1,11 @@
 {
-  "name": "carbok",
+  "name": "Carbok",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
     "@capacitor/android": "^2.4.7",
     "@capacitor/core": "2.4.7",
+    "@capacitor/ios": "^2.4.7",
     "@ionic/pwa-elements": "^3.0.2",
     "@ionic/react": "^5.5.0",
     "@ionic/react-hooks": "0.0.8",
@@ -56,7 +57,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start-android": "ionic capacitor copy android && ionic capacitor run android -l --host=192.168.1.6:8100"
+    "start-android": "ionic capacitor copy android && ionic capacitor run android -l --host=192.168.1.6:8100",
+    "build-debug-apk": "cd android && ./gradlew assembleDebug && cd .."
   },
   "eslintConfig": {
     "extends": [

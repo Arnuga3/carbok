@@ -21,7 +21,7 @@ import { chatboxOutline } from "ionicons/icons";
 interface Props {
   meal: IMeal;
 }
-
+// TODO - Add short note's text to meal card
 export const MealCard: React.FC<Props> = ({ meal }) => {
   const { t } = useTranslation();
   const calculation = new CalculationService();

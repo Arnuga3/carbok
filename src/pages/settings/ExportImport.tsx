@@ -20,6 +20,13 @@ import { importProducts } from "../../redux/actions/productsActions";
 import { IMeal } from "../../classes/meal/IMeal";
 import { IProduct } from "../../classes/product/IProduct";
 
+import {
+  Plugins,
+  FilesystemDirectory,
+  FilesystemEncoding,
+} from "@capacitor/core";
+const { Filesystem } = Plugins;
+
 export const ExportImport: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -29,22 +36,32 @@ export const ExportImport: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
 
   const handleExport = async () => {
-    const mealsStorageSvc = new MealsStorageService();
-    const productsStorageSvc = new ProductsStorageService();
+    try {
+      const mealsStorageSvc = new MealsStorageService();
+      const productsStorageSvc = new ProductsStorageService();
 
-    const data = {
-      meals: await mealsStorageSvc.exportData(),
-      products: await productsStorageSvc.exportData(),
-    };
-
-    const a = window.document.createElement("a");
-    a.href = window.URL.createObjectURL(
-      new Blob([JSON.stringify(data)], { type: "application/json" })
-    );
-    a.download = `${Date.now()}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+      const data = {
+        meals: await mealsStorageSvc.exportData(),
+        products: await productsStorageSvc.exportData(),
+      };
+      await Filesystem.writeFile({
+        path: `${Date.now()}.json`,
+        data: JSON.stringify(data),
+        directory: FilesystemDirectory.Documents,
+        encoding: FilesystemEncoding.UTF8,
+      });
+      present({
+        message: t("page.settings.toast.export.success"),
+        duration: 2000,
+        color: "success",
+      });
+    } catch (e) {
+      present({
+        message: t("page.settings.toast.export.fail"),
+        duration: 2000,
+        color: "danger",
+      });
+    }
   };
 
   const handleFileSelect = () => {
@@ -103,7 +120,7 @@ export const ExportImport: React.FC = () => {
     }
     setFile(null);
   };
-
+  // TODO - Debug and fix export on device
   return (
     <>
       <IonCard>
@@ -134,7 +151,6 @@ export const ExportImport: React.FC = () => {
               hidden
               id="data-import"
               type="file"
-              accept="application/json"
               onChange={handleOnImport}
             />
           </Button>

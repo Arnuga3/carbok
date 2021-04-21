@@ -51,6 +51,8 @@ export const CalculatorModal: React.FC<Props> = ({
         carbs: product.carbsData.carbs,
         targetPortion: product.carbsData.defaultPortion ?? 0,
       });
+    } else {
+      setData(defaultDataState);
     }
   }, [product]);
 
@@ -88,17 +90,15 @@ export const CalculatorModal: React.FC<Props> = ({
 
   return (
     <IonModal isOpen={open}>
-      <IonHeader slot="fixed">
-        <IonToolbar color="primary">
+      <IonHeader mode="ios" translucent>
+        <HeaderContent>
           <IonTitle>{t("page.products.caluclator.modal.title")}</IonTitle>
-          <IonButtons slot="end">
-            <IonButton onClick={onClose}>
-              <IonIcon icon={close} slot="icon-only" color="secondary" />
-            </IonButton>
-          </IonButtons>
-        </IonToolbar>
+          <IonButton onClick={onClose} color="primary" fill="clear">
+            <IonIcon icon={close} slot="icon-only" />
+          </IonButton>
+        </HeaderContent>
       </IonHeader>
-      <IonContent>
+      <IonContent fullscreen>
         <IonCard>
           <IonCardHeader>
             <IonCardTitle>
@@ -178,10 +178,9 @@ export const CalculatorModal: React.FC<Props> = ({
           </IonCardContent>
         </IonCard>
         <ResetButton
-          color="secondary"
+          color="primary"
           expand="block"
           shape="round"
-          size="large"
           onClick={handleReset}
         >
           {t("button.reset")}
@@ -190,6 +189,11 @@ export const CalculatorModal: React.FC<Props> = ({
     </IonModal>
   );
 };
+
+const HeaderContent = styled.div`
+  display: flex;
+  padding: 0 8px;
+`;
 
 const Result = styled.div`
   text-align: center;

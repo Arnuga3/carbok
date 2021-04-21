@@ -15,6 +15,9 @@ import {
   IonLabel,
   IonIcon,
   IonInput,
+  isPlatform,
+  IonCardHeader,
+  IonCardSubtitle,
 } from "@ionic/react";
 import styled from "styled-components";
 import { CategoriesModal } from "./CategoriesModal";
@@ -148,74 +151,89 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
 
   return (
     <IonPage>
-      <IonHeader slot="fixed">
-        <IonToolbar color="primary">
-          <IonButtons slot="start">
-            <IonBackButton
-              defaultHref="/products"
-              text={t("button.back")}
-              color="secondary"
-            />
-          </IonButtons>
-          <IonTitle>{t("page.products.edit.product.title")}</IonTitle>
-        </IonToolbar>
+      <IonHeader mode="ios" translucent>
+        <HeaderContent>
+          <IonBackButton
+            mode={isPlatform("ios") ? "ios" : "md"}
+            defaultHref="/products"
+            text={t("button.back")}
+            color="primary"
+          />
+          <IonTitle color="medium">
+            {t("page.products.edit.product.title")}
+          </IonTitle>
+        </HeaderContent>
       </IonHeader>
-      <IonContentStyled>
+      <IonContentStyled fullscreen>
         <IonCard>
+          <IonCardHeader>
+            <IonCardSubtitle>
+              {!nameValid() && (
+                <IonIcon
+                  icon={warningOutline}
+                  color={nameValid() ? "primary" : "danger"}
+                />
+              )}
+              {t("page.products.form.name")}
+            </IonCardSubtitle>
+          </IonCardHeader>
           <IonCardContent>
-            <Row>
-              <IonLabel color={nameValid() ? "primary" : "danger"}>
-                {!nameValid() && <IonIcon icon={warningOutline} />}
-                {t("page.products.form.name")}
-              </IonLabel>
-              <IonInputStyled
-                value={data.name}
-                onIonInput={(e: any) =>
-                  setData({ ...data, name: e.target.value })
-                }
-              />
-            </Row>
-            <Row>
-              <IonLabel color={categoryValid() ? "primary" : "danger"}>
-                {t("page.products.form.category")}
-              </IonLabel>
-              <Category
-                data={data}
-                categoryValid={categoryValid()}
-                onCategorySelect={handleCategorySelect}
-              />
-            </Row>
-            <Row>
-              <IonLabel color="primary">{t("page.products.form.units")}</IonLabel>
-              <Units
-                units={data.units}
-                onUnitsChange={(units: IUnits) => setData({ ...data, units })}
-              />
-            </Row>
-            <Row>
-              <IonLabel color="primary">
-                {t("page.products.form.portion.and.carbohydrates")}
-              </IonLabel>
-              <CarbsData
-                data={data}
-                portionValid={portionValid()}
-                carbsValid={carbsValid()}
-                sugarsValid={sugarsValid()}
-                onNumericDataChange={handleNumberInputChange}
-              />
-            </Row>
-            <Button
-              color="secondary"
-              size="large"
-              expand="block"
-              shape="round"
-              fill="solid"
-              onClick={handleUpdate}
-            >
-              {t("button.save")}
-            </Button>
+            <IonInputStyled
+              value={data.name}
+              onIonInput={(e: any) =>
+                setData({ ...data, name: e.target.value })
+              }
+            />
           </IonCardContent>
         </IonCard>
+        <IonCard>
+          <IonCardHeader>
+            <IonCardSubtitle>
+              {t("page.products.form.category")}
+            </IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
+            <Category
+              data={data}
+              categoryValid={categoryValid()}
+              onCategorySelect={handleCategorySelect}
+            />
+          </IonCardContent>
+        </IonCard>
+        <IonCard>
+          <IonCardHeader>
+            <IonCardSubtitle>{t("page.products.form.units")}</IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
+            <Units
+              units={data.units}
+              onUnitsChange={(units: IUnits) => setData({ ...data, units })}
+            />
+          </IonCardContent>
+        </IonCard>
+        <IonCard>
+          <IonCardContent>
+            <IonLabel color="primary">
+              {t("page.products.form.portion.and.carbohydrates")}
+            </IonLabel>
+            <CarbsData
+              data={data}
+              portionValid={portionValid()}
+              carbsValid={carbsValid()}
+              sugarsValid={sugarsValid()}
+              onNumericDataChange={handleNumberInputChange}
+            />
+          </IonCardContent>
+        </IonCard>
+        <Button
+          color="primary"
+          expand="block"
+          shape="round"
+          fill="solid"
+          onClick={handleUpdate}
+        >
+          {t("button.save")}
+        </Button>
       </IonContentStyled>
       <CategoriesModal
         open={openCategoryModal}
@@ -226,6 +244,13 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
   );
 };
 
+const HeaderContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+`;
+
 const IonContentStyled = styled(IonContent)`
   & .input-right-align {
     text-align: right;
@@ -233,11 +258,7 @@ const IonContentStyled = styled(IonContent)`
 `;
 
 const Button = styled(IonButton)`
-  margin-top: 16px;
-`;
-
-const Row = styled.div`
-  margin-top: 12px;
+  margin: 12px;
 `;
 
 const IonInputStyled = styled(IonInput)`

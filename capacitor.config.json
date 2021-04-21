@@ -1,6 +1,6 @@
 {
   "appId": "com.carbok.app",
-  "appName": "carbok",
+  "appName": "Carbok",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "windowsAndroidStudioPath": "C:/Users/arnis/AppData/Local/JetBrains/Toolbox/apps/AndroidStudio/ch-0/201.6953283/bin/studio64.exe",

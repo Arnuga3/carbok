@@ -4,14 +4,14 @@ import {
   IonAlert,
   IonBackButton,
   IonButton,
-  IonButtons,
   IonContent,
   IonHeader,
   IonIcon,
   IonPage,
-  IonText,
-  IonToolbar,
+  isPlatform,
+  IonTitle,
 } from "@ionic/react";
+import styled from "styled-components";
 import { Products } from "./Products";
 import { IMeal } from "../../../classes/meal/IMeal";
 import { MealActionSheet } from "./MealActionSheet";
@@ -59,34 +59,33 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
       dispatch(updateMeal({ ...meal, note }));
     }
   };
-// TODO - Add option to copy meal to another day
+  // TODO - Add option to copy meal to another day
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar color="primary">
-          <IonButtons slot="start">
-            <IonBackButton
-              defaultHref={`/meals`}
-              text={t("button.back")}
-              color="secondary"
-            />
-          </IonButtons>&nbsp;
+      <IonHeader mode="ios" translucent>
+        <HeaderContent>
+          <IonBackButton
+            mode={isPlatform("ios") ? "ios" : "md"}
+            defaultHref={`/meals`}
+            text={t("button.back")}
+            color="primary"
+          />
+          &nbsp;
           {meal && (
-            <IonText>{`${t(
-              meal.type.nameKey
-            )}, ${moment(date).format("MMM D")}`}</IonText>
+            <IonTitle color="medium">{`${t(meal.type.nameKey)}, ${moment(date).format(
+              "MMM D"
+            )}`}</IonTitle>
           )}
-          <IonButtons slot="end">
-            <IonButton
-              color="secondary"
-              onClick={() => setOpenActionSheet(true)}
-            >
-              <IonIcon icon={ellipsisVertical} slot="icon-only" />
-            </IonButton>
-          </IonButtons>
-        </IonToolbar>
+          <IonButton
+            color="primary"
+            fill="clear"
+            onClick={() => setOpenActionSheet(true)}
+          >
+            <IonIcon icon={ellipsisVertical} slot="icon-only" />
+          </IonButton>
+        </HeaderContent>
       </IonHeader>
-      <IonContent>{meal && <Products meal={meal} />}</IonContent>
+      <IonContent fullscreen>{meal && <Products meal={meal} />}</IonContent>
       <MealActionSheet
         open={openActionSheet}
         onNote={() => setOpenNoteAlert(true)}
@@ -129,3 +128,10 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
     </IonPage>
   );
 };
+
+const HeaderContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+`;

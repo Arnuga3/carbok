@@ -4,12 +4,11 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonToolbar,
   IonIcon,
   IonList,
   IonButton,
-  IonButtons,
   IonDatetime,
+  IonItem,
 } from "@ionic/react";
 import {
   calendarOutline,
@@ -75,23 +74,17 @@ export const Meals: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader slot="fixed">
-        <IonToolbar color="primary">
-          <IonButtons slot="start">
-            <IonButton fill="clear" onClick={getPreviousDay}>
-              <IonIcon
-                icon={chevronBackOutline}
-                slot="icon-only"
-                color="secondary"
-              />
-            </IonButton>
-          </IonButtons>
-          <IonButtonsCenter>
+      <IonHeader mode="ios" translucent>
+        <HeaderContent>
+          <IonButton fill="clear" onClick={getPreviousDay}>
             <IonIcon
-              icon={calendarOutline}
-              color="secondary"
+              icon={chevronBackOutline}
               slot="icon-only"
+              color="primary"
             />
+          </IonButton>
+          <DateSelect lines="none">
+            <IonIcon icon={calendarOutline} color="primary" slot="start" />
             <IonDatetime
               doneText={t("button.done")}
               cancelText={t("button.cancel")}
@@ -99,28 +92,25 @@ export const Meals: React.FC = () => {
               value={moment(date).toISOString()}
               onIonChange={(e: any) => getCalendarDay(e.detail.value)}
             ></IonDatetime>
-          </IonButtonsCenter>
-          <IonButtons slot="end">
-            <IonButton fill="clear" onClick={getNextDay}>
-              <IonIcon
-                icon={chevronForwardOutline}
-                slot="icon-only"
-                color="secondary"
-              />
-            </IonButton>
-          </IonButtons>
-        </IonToolbar>
+          </DateSelect>
+          <IonButton fill="clear" onClick={getNextDay}>
+            <IonIcon
+              icon={chevronForwardOutline}
+              slot="icon-only"
+              color="primary"
+            />
+          </IonButton>
+        </HeaderContent>
       </IonHeader>
-      <IonContent>
+      <IonContent fullscreen>
         <IonList>
           {meals.map((meal, i) => (
             <MealCard key={i} meal={meal} />
           ))}
           <AddButton
-            color="secondary"
+            color="primary"
             expand="block"
             shape="round"
-            size="large"
             onClick={() => setOpenActionSheet(true)}
           >
             {t("page.meals.button.add.meal")}
@@ -136,9 +126,15 @@ export const Meals: React.FC = () => {
   );
 };
 
-const IonButtonsCenter = styled(IonButtons)`
+const HeaderContent = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+`;
+
+const DateSelect = styled(IonItem)`
+  --border-radius: 25px;
 `;
 
 const AddButton = styled(IonButton)`

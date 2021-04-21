@@ -18,7 +18,7 @@ import {
   IonAlert,
   IonAvatar,
 } from "@ionic/react";
-import { calculator, createOutline, trashOutline } from "ionicons/icons";
+import { add, addOutline, calculator, createOutline, trashOutline } from "ionicons/icons";
 import { IProduct } from "../../classes/product/IProduct";
 import { CalculatorModal } from "./CalculatorModal";
 import { ProductsSearch } from "../../components/common/ProductsSearch";
@@ -85,32 +85,32 @@ export const Products: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader slot="fixed">
-        <IonToolbar color="primary">
+      <IonHeader mode="ios" translucent>
+        <HeaderContent>
           <IonButtons slot="start">
             <IonButton
               fill="clear"
-              color="secondary"
               shape="round"
+              color="primary"
               onClick={() => setOpenCalculatorModal(true)}
             >
               <IonIcon slot="icon-only" icon={calculator} />
             </IonButton>
           </IonButtons>
+          <ProductsSearch products={products} onSearchComplete={handleSearch} />
           <IonButtons slot="end">
             <IonButton
+              fill="clear"
               shape="round"
-              fill="solid"
+              color="primary"
               routerLink="/products/add-product"
-              color="secondary"
             >
-              {t("page.products.button.add.product")}
+              <IonIcon icon={addOutline} slot="icon-only" />
             </IonButton>
           </IonButtons>
-        </IonToolbar>
+        </HeaderContent>
       </IonHeader>
-      <IonContent>
-        <ProductsSearch products={products} onSearchComplete={handleSearch} />
+      <IonContent fullscreen>
         <IonList>
           {searchResult.map((product: IProduct, i: number) => (
             <IonItemSliding
@@ -172,6 +172,11 @@ export const Products: React.FC = () => {
     </IonPage>
   );
 };
+
+const HeaderContent = styled.div`
+  display: flex;
+  padding: 0 8px;
+`;
 
 const SlidingAction = styled(IonItemOption)`
   width: 75px;
