@@ -106,7 +106,7 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
             <IonItem key={i} onClick={() => toggleSelect(product)}>
               <IonIcon
                 slot="start"
-                color="tertiary"
+                color="primary"
                 icon={
                   selectedProducts.find((prd) => prd.id === product.id)
                     ? checkmarkCircle
