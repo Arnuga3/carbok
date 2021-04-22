@@ -11,7 +11,7 @@ import {
   IonTabs,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { restaurant, fastFood, person, statsChart } from "ionicons/icons";
+import { restaurant, fastFood, person } from "ionicons/icons";
 import { Overview } from "./pages/overview/Overview";
 import { Meals } from "./pages/meals/Meals";
 import { Meal } from "./pages/meals/meal/Meal";

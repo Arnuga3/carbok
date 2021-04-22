@@ -45,7 +45,7 @@ export const ExportImport: React.FC = () => {
         products: await productsStorageSvc.exportData(),
       };
       await Filesystem.writeFile({
-        path: `${Date.now()}.json`,
+        path: `carbok-${Date.now()}.json`,
         data: JSON.stringify(data),
         directory: FilesystemDirectory.Documents,
         encoding: FilesystemEncoding.UTF8,
@@ -120,7 +120,7 @@ export const ExportImport: React.FC = () => {
     }
     setFile(null);
   };
-  // TODO - Debug and fix export on device
+
   return (
     <>
       <IonCard>

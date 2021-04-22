@@ -1,3 +1,4 @@
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import {
@@ -6,13 +7,12 @@ import {
   IonCardHeader,
   IonCardSubtitle,
   IonContent,
-  IonHeader,
+  IonIcon,
   IonItem,
   IonLabel,
   IonPage,
   IonSelect,
   IonSelectOption,
-  IonTitle,
   IonToggle,
 } from "@ionic/react";
 import styled from "styled-components";
@@ -20,6 +20,8 @@ import LocaleCode from "locale-code";
 import { useAppSettings } from "../../hooks/appSettingsHook";
 import { changeAppSettings } from "../../redux/actions/appSettingsActions";
 import { ExportImport } from "./ExportImport";
+import icon from "./../../resources/icons/logo.svg";
+import { version } from "./../../../package.json";
 
 export const Settings: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -41,6 +43,10 @@ export const Settings: React.FC = () => {
   return (
     <IonPage>
       <IonContent fullscreen>
+        <Version>
+          <IonIcon src={icon}></IonIcon>
+          <small>{version}</small>
+        </Version>
         <IonCard>
           <IonCardHeader>
             <IonCardSubtitle>{t("page.settings.card.title")}</IonCardSubtitle>
@@ -74,6 +80,12 @@ export const Settings: React.FC = () => {
   );
 };
 
-const HeaderContent = styled.div`
-  display: flex;
+const Version = styled.div`
+  text-align: center;
+  color: var(--ion-color-medium);
+  margin-top: 8px;
+
+  & small {
+    margin-left: 4px;
+  }
 `;
