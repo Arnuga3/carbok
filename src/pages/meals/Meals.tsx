@@ -79,25 +79,23 @@ export const Meals: React.FC = () => {
           <IonButton fill="clear" onClick={getPreviousDay}>
             <IonIcon
               icon={chevronBackOutline}
-              slot="icon-only"
-              color="primary"
+              color="medium"
             />
           </IonButton>
           <DateSelect lines="none">
             <IonIcon icon={calendarOutline} color="primary" slot="start" />
-            <IonDatetime
+            <Datetime
               doneText={t("button.done")}
               cancelText={t("button.cancel")}
               monthShortNames={moment.monthsShort()}
               value={moment(date).toISOString()}
               onIonChange={(e: any) => getCalendarDay(e.detail.value)}
-            ></IonDatetime>
+            ></Datetime>
           </DateSelect>
           <IonButton fill="clear" onClick={getNextDay}>
             <IonIcon
               icon={chevronForwardOutline}
-              slot="icon-only"
-              color="primary"
+              color="medium"
             />
           </IonButton>
         </HeaderContent>
@@ -135,6 +133,11 @@ const HeaderContent = styled.div`
 
 const DateSelect = styled(IonItem)`
   --border-radius: 25px;
+`;
+
+const Datetime = styled(IonDatetime)`
+  color: var(--ion-color-medium);
+  font-weight: bold;
 `;
 
 const AddButton = styled(IonButton)`
