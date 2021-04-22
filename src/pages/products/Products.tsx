@@ -83,6 +83,11 @@ export const Products: React.FC = () => {
     }
   };
 
+  const handleOnClose = () => {
+    setProductSelected(null);
+    setOpenCalculatorModal(false);
+  };
+
   return (
     <IonPage>
       <IonHeader mode="ios" translucent>
@@ -167,7 +172,7 @@ export const Products: React.FC = () => {
       <CalculatorModal
         product={productSelected}
         open={openCalculatorModal}
-        onClose={() => setOpenCalculatorModal(false)}
+        onClose={handleOnClose}
       />
     </IonPage>
   );
