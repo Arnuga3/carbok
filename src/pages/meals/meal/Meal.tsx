@@ -81,7 +81,7 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
             fill="clear"
             onClick={() => setOpenActionSheet(true)}
           >
-            <IonIcon icon={ellipsisVertical} slot="icon-only" />
+            <IonIcon icon={ellipsisVertical} />
           </IonButton>
         </HeaderContent>
       </IonHeader>

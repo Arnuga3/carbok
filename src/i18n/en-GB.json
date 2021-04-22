@@ -61,9 +61,9 @@
 
     "page.meals.button.add.meal": "Add Meal",
     "page.meals.delete.meal.alert.title": "Delete meal?",
-    "page.meals.delete.meal.alert.subtitle": "This will be permanently deleted",
+    "page.meals.delete.meal.alert.subtitle": "It will be permanently deleted",
     "page.meals.delete.meal.product.alert.title": "Delete product?",
-    "page.meals.delete.meal.product.alert.subtitle": "This will be permanently deleted",
+    "page.meals.delete.meal.product.alert.subtitle": "It will be removed from a meal",
     "page.meals.button.add.product": "Add Products",
     "page.meals.note.alert.title": "Meal Note",
 

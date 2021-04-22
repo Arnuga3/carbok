@@ -63,7 +63,7 @@
     "page.meals.delete.meal.alert.title": "Удалить Еду?",
     "page.meals.delete.meal.alert.subtitle": "Еда будет полностью удалена",
     "page.meals.delete.meal.product.alert.title": "Удалить Продукт?",
-    "page.meals.delete.meal.product.alert.subtitle": "Продукт будет полностью удален",
+    "page.meals.delete.meal.product.alert.subtitle": "Продукт будет убран из Еды",
     "page.meals.button.add.product": "Добавить Продукты",
     "page.meals.note.alert.title": "Заметка",
 
