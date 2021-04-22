@@ -212,10 +212,12 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
           </IonCardContent>
         </IonCard>
         <IonCard>
-          <IonCardContent>
-            <IonLabel color="primary">
+          <IonCardHeader>
+            <IonCardSubtitle>
               {t("page.products.form.portion.and.carbohydrates")}
-            </IonLabel>
+            </IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
             <CarbsData
               data={data}
               portionValid={portionValid()}

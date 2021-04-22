@@ -183,10 +183,12 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
           </IonCardContent>
         </IonCard>
         <IonCard>
-          <IonCardContent>
-            <IonLabel color="primary">
+          <IonCardHeader>
+            <IonCardSubtitle>
               {t("page.products.form.portion.and.carbohydrates")}
-            </IonLabel>
+            </IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
             <CarbsData
               data={data}
               portionValid={portionValid()}
