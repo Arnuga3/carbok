@@ -21,7 +21,7 @@ import { chatboxOutline } from "ionicons/icons";
 interface Props {
   meal: IMeal;
 }
-// TODO - Add short note's text to meal card
+
 export const MealCard: React.FC<Props> = ({ meal }) => {
   const { t } = useTranslation();
   const calculation = new CalculationService();
@@ -29,7 +29,9 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
     <IonCard routerLink={`/meals/${meal.id}/products`}>
       <CardHeader>
         <IonCardTitle>{t(meal.type.nameKey)}</IonCardTitle>
-        <IonCardSubtitle>{`${t("products")}: ${meal.products.length}`}</IonCardSubtitle>
+        <IonCardSubtitle>{`${t("products")}: ${
+          meal.products.length
+        }`}</IonCardSubtitle>
       </CardHeader>
       <IonCardContentStyled>
         <div>
@@ -50,7 +52,16 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
             </IonText>
           </CardSubtitle>
           {meal.note && (
-            <NoteIcon slot="icon-only" icon={chatboxOutline} color="primary" />
+            <Note>
+              <NoteIcon
+                slot="icon-only"
+                icon={chatboxOutline}
+                color="primary"
+              />
+              <IonText color="medium">
+                <small>{meal.note}</small>
+              </IonText>
+            </Note>
           )}
         </div>
         <MealProductsChart meal={meal} />
@@ -74,6 +85,11 @@ const CardSubtitle = styled(IonText)`
   align-items: center;
 `;
 
+const Note = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const NoteIcon = styled(IonIcon)`
-  padding: 8px 0;
+  padding: 8px 4px 8px 0;
 `;

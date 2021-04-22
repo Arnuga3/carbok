@@ -72,9 +72,9 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
           />
           &nbsp;
           {meal && (
-            <IonTitle color="medium">{`${t(meal.type.nameKey)}, ${moment(date).format(
-              "MMM D"
-            )}`}</IonTitle>
+            <IonTitle color="medium">{`${t(meal.type.nameKey)}, ${moment(
+              date
+            ).format("MMM D")}`}</IonTitle>
           )}
           <IonButton
             color="primary"
@@ -115,6 +115,9 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
             name: "note",
             value: meal?.note,
             type: "textarea",
+            attributes: {
+              maxlength: 100,
+            },
           },
         ]}
         buttons={[
