@@ -5,7 +5,7 @@ export const categories = [
       "grains",
       "product.category.grains",
       "product.category.grains.description",
-      "#ff9f1c"
+      "#F3872F"
     ),
     new ProductCategory(
       "fruit",
@@ -35,12 +35,12 @@ export const categories = [
       "sweets",
       "product.category.sweets",
       "product.category.sweets.description",
-      "#9d4edd"
+      "#FF598F"
     ),
     new ProductCategory(
       "other",
       "product.category.other",
       "product.category.other.description",
-      "#219ebc"
+      "#15B2D3"
     ),
   ];
