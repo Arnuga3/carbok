@@ -16,10 +16,11 @@ export const CategoriesPieChart: React.FC<Props> = ({ categories }) => {
       <ResponsiveContainer width={"60%"} height={150}>
         <PieChart>
           <Pie
+            stroke="none"
             data={categories}
             dataKey="value"
             nameKey="name"
-            innerRadius={35}
+            innerRadius={32}
             outerRadius={55}
           >
             {categories.map(
