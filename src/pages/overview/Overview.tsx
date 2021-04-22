@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   IonButton,
   IonCard,
@@ -11,11 +12,10 @@ import {
   IonPage,
   IonTitle,
 } from "@ionic/react";
-import styled from "styled-components";
-import { useTranslation } from "react-i18next";
 import { chevronBackOutline, chevronForwardOutline } from "ionicons/icons";
 import moment from "moment";
-import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { IChartProductCategory } from "../../classes/productCategory/IChartProductCategory";
 import { IProduct } from "../../classes/product/IProduct";
 import { IMeal } from "../../classes/meal/IMeal";
@@ -140,13 +140,12 @@ export const Overview: React.FC = () => {
       <IonHeader mode="ios" translucent>
         <RangeSwitch>
           <IonButton
-            color="primary"
+            color={cardData.range === "90_days" ? "light" : "medium"}
             fill="clear"
             shape="round"
             onClick={getPreviousRange}
-            disabled={cardData.range === "90_days"}
           >
-            <IonIcon icon={chevronBackOutline} slot="icon-only" />
+            <IonIcon icon={chevronBackOutline} />
           </IonButton>
           <IonTitle color="medium">
             {t("page.overview.carbs.range.card.title", {
@@ -154,13 +153,12 @@ export const Overview: React.FC = () => {
             })}
           </IonTitle>
           <IonButton
-            color="primary"
+            color={cardData.range === "7_days" ? "light" : "medium"}
             fill="clear"
             shape="round"
             onClick={getNextRange}
-            disabled={cardData.range === "7_days"}
           >
-            <IonIcon icon={chevronForwardOutline} slot="icon-only" />
+            <IonIcon icon={chevronForwardOutline} />
           </IonButton>
         </RangeSwitch>
       </IonHeader>
