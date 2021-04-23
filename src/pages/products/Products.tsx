@@ -18,7 +18,13 @@ import {
   IonAlert,
   IonAvatar,
 } from "@ionic/react";
-import { add, addOutline, calculator, createOutline, trashOutline } from "ionicons/icons";
+import {
+  add,
+  addOutline,
+  calculator,
+  createOutline,
+  trashOutline,
+} from "ionicons/icons";
 import { IProduct } from "../../classes/product/IProduct";
 import { CalculatorModal } from "./CalculatorModal";
 import { ProductsSearch } from "../../components/common/ProductsSearch";
@@ -117,42 +123,44 @@ export const Products: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
         <IonList>
-          {searchResult.map((product: IProduct, i: number) => (
-            <IonItemSliding
-              key={i}
-              id={PRODUCTSPAGE + i}
-              onClick={() => toggleActionsSlide(PRODUCTSPAGE + i)}
-            >
-              <IonItem detail>
-                <IonAvatar slot="start">
-                  <CircleBadge color={product.category.color} size={40}>
-                    {t(product.category.nameKey).slice(0, 3)}
-                  </CircleBadge>
-                </IonAvatar>
-                <ProductListItem product={product} />
-              </IonItem>
-              <IonItemOptions>
-                <SlidingAction
-                  color="secondary"
-                  onClick={() => handleOnCalculate(product)}
-                >
-                  <IonIcon icon={calculator} slot="icon-only" />
-                </SlidingAction>
-                <SlidingAction
-                  color="tertiary"
-                  routerLink={`/products/edit-product/${product.id}`}
-                >
-                  <IonIcon icon={createOutline} slot="icon-only" />
-                </SlidingAction>
-                <SlidingAction
-                  color="danger"
-                  onClick={() => handleOnDelete(product)}
-                >
-                  <IonIcon icon={trashOutline} slot="icon-only" />
-                </SlidingAction>
-              </IonItemOptions>
-            </IonItemSliding>
-          ))}
+          {searchResult
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((product: IProduct, i: number) => (
+              <IonItemSliding
+                key={i}
+                id={PRODUCTSPAGE + i}
+                onClick={() => toggleActionsSlide(PRODUCTSPAGE + i)}
+              >
+                <IonItem detail>
+                  <IonAvatar slot="start">
+                    <CircleBadge color={product.category.color} size={40}>
+                      {t(product.category.nameKey).slice(0, 3)}
+                    </CircleBadge>
+                  </IonAvatar>
+                  <ProductListItem product={product} />
+                </IonItem>
+                <IonItemOptions>
+                  <SlidingAction
+                    color="secondary"
+                    onClick={() => handleOnCalculate(product)}
+                  >
+                    <IonIcon icon={calculator} slot="icon-only" />
+                  </SlidingAction>
+                  <SlidingAction
+                    color="tertiary"
+                    routerLink={`/products/edit-product/${product.id}`}
+                  >
+                    <IonIcon icon={createOutline} slot="icon-only" />
+                  </SlidingAction>
+                  <SlidingAction
+                    color="danger"
+                    onClick={() => handleOnDelete(product)}
+                  >
+                    <IonIcon icon={trashOutline} slot="icon-only" />
+                  </SlidingAction>
+                </IonItemOptions>
+              </IonItemSliding>
+            ))}
         </IonList>
       </IonContent>
       <IonAlert
