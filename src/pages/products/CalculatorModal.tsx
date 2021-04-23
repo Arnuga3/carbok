@@ -89,7 +89,7 @@ export const CalculatorModal: React.FC<Props> = ({
   };
 
   return (
-    <IonModal isOpen={open}>
+    <IonModal isOpen={open} onWillDismiss={onClose}>
       <IonHeader mode="ios" translucent>
         <HeaderContent>
           <IonTitle color="medium">{t("page.products.caluclator.modal.title")}</IonTitle>
