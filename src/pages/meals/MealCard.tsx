@@ -3,9 +3,9 @@ import {
   IonCard,
   IonCardContent,
   IonCardHeader,
-  IonCardSubtitle,
   IonCardTitle,
   IonIcon,
+  IonReorder,
   IonText,
 } from "@ionic/react";
 import styled from "styled-components";
@@ -16,7 +16,7 @@ import { MealProductsChart } from "../../components/common/MealProductsChart";
 import { CalculationService } from "../../services/CalculationService";
 import { chartColors } from "../../resources/config";
 import { CircleBadge } from "../../components/common/CircleBadge";
-import { chatboxOutline } from "ionicons/icons";
+import { chatboxOutline, reorderThreeOutline } from "ionicons/icons";
 
 interface Props {
   meal: IMeal;
@@ -28,10 +28,11 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
   return (
     <IonCard routerLink={`/meals/${meal.id}/products`}>
       <CardHeader>
-        <IonCardTitle>{t(meal.type.nameKey)}</IonCardTitle>
-        <IonCardSubtitle>{`${t("products")}: ${
-          meal.products.length
-        }`}</IonCardSubtitle>
+        <div>
+          <IonCardTitle>{t(meal.type.nameKey)}</IonCardTitle>
+          <small>{`${t("products")}: ${meal.products.length}`}</small>
+        </div>
+        <IonReorder />
       </CardHeader>
       <IonCardContentStyled>
         <div>

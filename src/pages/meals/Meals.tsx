@@ -9,6 +9,7 @@ import {
   IonButton,
   IonDatetime,
   IonItem,
+  IonReorderGroup,
 } from "@ionic/react";
 import {
   calendarOutline,
@@ -27,6 +28,8 @@ import {
   addMeal,
   changeDate,
   retrieveMeals,
+  storeMeals,
+  updateMeals,
 } from "../../redux/actions/mealsActions";
 import { useMeals } from "../../hooks/mealsHook";
 import { IMealType } from "../../classes/mealType/IMealType";
@@ -72,15 +75,16 @@ export const Meals: React.FC = () => {
     dispatch(changeDate(date));
   };
 
+  const handleReorder = (e: any) => {
+    dispatch(updateMeals(date, e.detail.complete(meals)));
+  };
+
   return (
     <IonPage>
       <IonHeader mode="ios" translucent>
         <HeaderContent>
           <IonButton fill="clear" onClick={getPreviousDay}>
-            <IonIcon
-              icon={chevronBackOutline}
-              color="medium"
-            />
+            <IonIcon icon={chevronBackOutline} color="medium" />
           </IonButton>
           <DateSelect lines="none">
             <IonIcon icon={calendarOutline} color="primary" slot="start" />
@@ -93,18 +97,17 @@ export const Meals: React.FC = () => {
             ></Datetime>
           </DateSelect>
           <IonButton fill="clear" onClick={getNextDay}>
-            <IonIcon
-              icon={chevronForwardOutline}
-              color="medium"
-            />
+            <IonIcon icon={chevronForwardOutline} color="medium" />
           </IonButton>
         </HeaderContent>
       </IonHeader>
       <IonContent fullscreen>
         <IonList>
-          {meals.map((meal, i) => (
-            <MealCard key={i} meal={meal} />
-          ))}
+          <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
+            {meals.map((meal, i) => (
+              <MealCard key={i} meal={meal} />
+            ))}
+          </IonReorderGroup>
           <AddButton
             color="primary"
             expand="block"

@@ -105,6 +105,18 @@ export const updateMeal = (meal: IMeal) => {
   };
 };
 
+export const updateMeals = (date: Date, meals: IMeal[]) => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const mealsStorageSvc = new MealsStorageService();
+      await mealsStorageSvc.updateAllForDate(date, meals);
+      dispatch(storeMeals(meals));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};
+
 export const deleteMeal = (meal: IMeal) => {
   return async (dispatch: Dispatch) => {
     try {
