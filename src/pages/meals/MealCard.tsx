@@ -99,13 +99,13 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
         {display === "details" ? (
           <>
             {meal.products.map((product, i) => (
-              <i key={i}>{`
+              <ProductItem key={i} color={product.category.color}>{`
                 ${product.name}
                 ${product.carbsData.portion}${t(product.units.shortNameKey)}
                 (${product.carbsData.carbs} ${t("carbohydrates.short")})${
                 i !== meal.products.length - 1 ? "," : ""
               }
-              `}</i>
+              `}</ProductItem>
             ))}
             <Divider />
             <i>{`${calculation.getMealTotalCarbs(meal.products)} ${t(
@@ -169,6 +169,10 @@ const ActionButton = styled(IonButton)`
 
 const CardBody = styled(IonCardContent)`
   margin-top: 8px;
+`;
+
+const ProductItem = styled.i`
+  color: ${({color}) => color};
 `;
 
 const Divider = styled.div`

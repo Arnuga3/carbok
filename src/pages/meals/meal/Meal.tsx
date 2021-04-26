@@ -59,7 +59,7 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
       dispatch(updateMeal({ ...meal, note }));
     }
   };
-  // TODO - Add option to copy meal to another day
+
   return (
     <IonPage>
       <IonHeader mode="ios" translucent>
