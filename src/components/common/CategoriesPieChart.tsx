@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { IChartProductCategory } from "../../classes/productCategory/IChartProductCategory";
 import styled from "styled-components";
-import { CircleBadge } from "../../components/common/CircleBadge";
+import { CircleBadge } from "./CircleBadge";
 
 interface Props {
   categories: IChartProductCategory[] | [];

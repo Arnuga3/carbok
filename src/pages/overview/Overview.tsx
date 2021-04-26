@@ -22,7 +22,7 @@ import { IMeal } from "../../classes/meal/IMeal";
 import { MealsStorageService } from "../../services/MealsStorageService";
 import { CalculationService } from "../../services/CalculationService";
 import { MealCarbsLinearChart } from "./MealCarbsLinearChart";
-import { CategoriesPieChart } from "./CategoriesPieChart";
+import { CategoriesPieChart } from "../../components/common/CategoriesPieChart";
 
 export type Range = "7_days" | "30_days" | "90_days";
 

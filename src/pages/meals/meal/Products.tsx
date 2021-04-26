@@ -17,7 +17,7 @@ import { IMeal } from "../../../classes/meal/IMeal";
 import { ProductsModal } from "./ProductsModal";
 import { useDispatch } from "react-redux";
 import { updateMeal } from "../../../redux/actions/mealsActions";
-import { chatboxOutline, scaleOutline, trashOutline } from "ionicons/icons";
+import { chatbubbleOutline, scaleOutline, trashOutline } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
 import CalculationService from "../../../services/CalculationService";
 import { ProductListItem } from "../../../components/common/ProductListItem";
@@ -142,7 +142,7 @@ export const Products: React.FC<Props> = ({ meal }) => {
         {meal.note && (
           <Note>
             <IonItem lines="none">
-              <IonIcon icon={chatboxOutline} slot="start" color="tertiary" />
+              <IonIcon icon={chatbubbleOutline} slot="start" />
               <IonText color="medium">{meal.note}</IonText>
             </IonItem>
           </Note>

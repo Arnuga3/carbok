@@ -14,7 +14,7 @@ export class CalculationService {
     return (item * 100) / total;
   }
 
-  private getPercentsOfSugars(sugars: number, carbs: number): number {
+  public getPercentsOfSugars(sugars: number, carbs: number): number {
     if (!carbs || !sugars) {
       return 0;
     }
