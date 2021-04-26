@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   IonButton,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonCardTitle,
+  IonDatetime,
   IonIcon,
   IonReorder,
-  IonText,
 } from "@ionic/react";
 import styled from "styled-components";
 
@@ -23,6 +24,9 @@ import {
 } from "ionicons/icons";
 import { MealCarbsChart } from "../../components/common/MealCarbsChart";
 import CalculationService from "../../services/CalculationService";
+import moment from "moment";
+import { useMeals } from "../../hooks/mealsHook";
+import { copyMeal } from "../../redux/actions/mealsActions";
 
 interface Props {
   meal: IMeal;
@@ -32,11 +36,19 @@ type Display = "details" | "stats";
 
 export const MealCard: React.FC<Props> = ({ meal }) => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const calculation = new CalculationService();
   const [display, setDisplay] = useState<Display>("details");
+  const { date } = useMeals();
+
+  const copyDatetime = useRef<HTMLIonDatetimeElement | null>(null);
 
   const toggleDisplay = () => {
     setDisplay(display === "details" ? "stats" : "details");
+  };
+
+  const copyMealToDate = (date: Date) => {
+    dispatch(copyMeal(date, meal));
   };
 
   return (
@@ -46,7 +58,9 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
           <CardTitleWrapper>
             <Reorder />
             <div>
-              <IonCardTitle color="primary">{t(meal.type.nameKey)}</IonCardTitle>
+              <IonCardTitle color="primary">
+                {t(meal.type.nameKey)}
+              </IonCardTitle>
               <small>{`${t("products")}: ${meal.products.length}`}</small>
             </div>
           </CardTitleWrapper>
@@ -62,9 +76,14 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
                 slot="icon-only"
               />
             </ActionButton>
-            {/* <ActionButton fill="clear" shape="round" size="small">
+            <ActionButton
+              fill="clear"
+              shape="round"
+              size="small"
+              onClick={() => copyDatetime.current?.open()}
+            >
               <IonIcon icon={copyOutline} slot="icon-only" />
-            </ActionButton> */}
+            </ActionButton>
             <ActionButton
               fill="clear"
               shape="round"
@@ -106,6 +125,14 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
           </CardContent>
         )}
       </CardBody>
+      <Datetime
+        ref={copyDatetime}
+        doneText={t("button.done")}
+        cancelText={t("button.cancel")}
+        monthShortNames={moment.monthsShort()}
+        value={moment(date).toISOString()}
+        onIonChange={(e: any) => copyMealToDate(e.detail.value)}
+      />
     </IonCard>
   );
 };
@@ -161,4 +188,8 @@ const Note = styled.div`
 
 const NoteIcon = styled(IonIcon)`
   padding: 8px 4px 8px 0;
+`;
+
+const Datetime = styled(IonDatetime)`
+  display: none;
 `;

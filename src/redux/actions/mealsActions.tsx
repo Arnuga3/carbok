@@ -1,6 +1,8 @@
 import { Dispatch } from "redux";
 import { IMeal } from "../../classes/meal/IMeal";
+import { Meal } from "../../classes/meal/Meal";
 import { MealsStorageService } from "../../services/MealsStorageService";
+import { uuidv4 } from "../../utils/helper";
 
 export enum MealsActions {
   ADD_MEAL = "ADD_MEAL",
@@ -144,7 +146,7 @@ export const changeDate = (date: Date) => {
   };
 };
 
-export const importMeals = (meals: {[key: string]: IMeal[]}) => {
+export const importMeals = (meals: { [key: string]: IMeal[] }) => {
   return async (dispatch: Dispatch) => {
     try {
       const mealsStorageSvc = new MealsStorageService();
@@ -153,6 +155,23 @@ export const importMeals = (meals: {[key: string]: IMeal[]}) => {
       if (mealsToday) {
         dispatch(storeMeals(mealsToday));
       }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};
+
+export const copyMeal = (date: Date, meal: IMeal) => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const mealsStorageSvc = new MealsStorageService();
+      const productsCopy = meal.products.map((product) => ({
+        ...product,
+        id: uuidv4(),
+      }));
+      const mealCopy = new Meal(meal.type, date, productsCopy);
+      await mealsStorageSvc.saveToDate(date, mealCopy);
+      dispatch(changeStoredDate(date));
     } catch (e) {
       console.log(e);
     }

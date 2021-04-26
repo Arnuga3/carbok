@@ -81,6 +81,11 @@ export class MealsStorageService {
     const dayMeals = await this.getAllForDate(date);
     await this.set(date, [...dayMeals, meal]);
   }
+  
+  public async saveToDate(date: Date, meal: IMeal): Promise<void> {
+    const dayMeals = await this.getAllForDate(date);
+    await this.set(date, [...dayMeals, meal]);
+  }
 
   public async update(date: Date, meal: IMeal): Promise<void> {
     const dayMeals = await this.getAllForDate(date);

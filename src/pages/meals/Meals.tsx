@@ -28,7 +28,6 @@ import {
   addMeal,
   changeDate,
   retrieveMeals,
-  storeMeals,
   updateMeals,
 } from "../../redux/actions/mealsActions";
 import { useMeals } from "../../hooks/mealsHook";
