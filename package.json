@@ -1,6 +1,6 @@
 {
   "name": "Carbok",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "private": true,
   "dependencies": {
     "@capacitor/android": "^2.4.7",

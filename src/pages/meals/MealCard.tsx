@@ -9,6 +9,7 @@ import {
   IonDatetime,
   IonIcon,
   IonReorder,
+  IonText,
 } from "@ionic/react";
 import styled from "styled-components";
 
@@ -53,53 +54,28 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
 
   return (
     <IonCard>
-      <CardHeader>
+      <CardHeader color="primary">
         <CardHeaderTitle>
           <CardTitleWrapper>
             <Reorder />
             <div>
-              <IonCardTitle color="primary">
-                {t(meal.type.nameKey)}
-              </IonCardTitle>
+              <IonCardTitle>{t(meal.type.nameKey)}</IonCardTitle>
               <small>{`${t("products")}: ${meal.products.length}`}</small>
             </div>
           </CardTitleWrapper>
-          <CardActions>
-            <ActionButton
-              fill="clear"
-              shape="round"
-              size="small"
-              onClick={toggleDisplay}
-            >
-              <IonIcon
-                icon={display === "details" ? statsChartOutline : listOutline}
-                slot="icon-only"
-              />
-            </ActionButton>
-            <ActionButton
-              fill="clear"
-              shape="round"
-              size="small"
-              onClick={() => copyDatetime.current?.open()}
-            >
-              <IonIcon icon={copyOutline} slot="icon-only" />
-            </ActionButton>
-            <ActionButton
-              fill="clear"
-              shape="round"
-              size="small"
-              routerLink={`/meals/${meal.id}/products`}
-            >
-              <IonIcon icon={createOutline} slot="icon-only" />
-            </ActionButton>
-          </CardActions>
         </CardHeaderTitle>
+        <CardHeaderCarbs>
+          <TotalCarbs>
+            {calculation.getMealTotalCarbs(meal.products)}
+          </TotalCarbs>
+          <small>{t("carbohydrates")}</small>
+        </CardHeaderCarbs>
       </CardHeader>
       <CardBody>
         {display === "details" ? (
           <>
             {meal.products.map((product, i) => (
-              <ProductItem key={i} color={product.category.color}>{`
+              <ProductItem key={i}>{`
                 ${product.name}
                 ${product.carbsData.portion}${t(product.units.shortNameKey)}
                 (${product.carbsData.carbs} ${t("carbohydrates.short")})${
@@ -107,10 +83,6 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
               }
               `}</ProductItem>
             ))}
-            <Divider />
-            <i>{`${calculation.getMealTotalCarbs(meal.products)} ${t(
-              "carbohydrates"
-            )}`}</i>
             {meal.note && (
               <Note>
                 <NoteIcon icon={chatbubbleOutline} />
@@ -124,6 +96,38 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
             <MealProductsChart meal={meal} />
           </CardContent>
         )}
+        <Divider />
+        <CardActions>
+          <ActionButton
+            fill="clear"
+            shape="round"
+            size="small"
+            onClick={toggleDisplay}
+            disabled={meal.products.length === 0}
+          >
+            <IonIcon
+              icon={display === "details" ? statsChartOutline : listOutline}
+              slot="icon-only"
+            />
+          </ActionButton>
+          <ActionButton
+            fill="clear"
+            shape="round"
+            size="small"
+            onClick={() => copyDatetime.current?.open()}
+            disabled={meal.products.length === 0}
+          >
+            <IonIcon icon={copyOutline} slot="icon-only" />
+          </ActionButton>
+          <ActionButton
+            fill="clear"
+            shape="round"
+            size="small"
+            routerLink={`/meals/${meal.id}/products`}
+          >
+            <IonIcon icon={createOutline} slot="icon-only" />
+          </ActionButton>
+        </CardActions>
       </CardBody>
       <Datetime
         ref={copyDatetime}
@@ -148,6 +152,17 @@ const CardHeaderTitle = styled.div`
   flex: 5;
 `;
 
+const CardHeaderCarbs = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
+const TotalCarbs = styled(IonText)`
+  font-size: 1.8em;
+  fon-weight: bold;
+`;
+
 const CardTitleWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -159,7 +174,7 @@ const Reorder = styled(IonReorder)`
 
 const CardActions = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-evenly;
   margin-top: 8px;
 `;
 
@@ -171,12 +186,13 @@ const CardBody = styled(IonCardContent)`
   margin-top: 8px;
 `;
 
-const ProductItem = styled.i`
-  color: ${({color}) => color};
+const ProductItem = styled.p`
+  font-style: italic;
+  padding-left: 20px;
 `;
 
 const Divider = styled.div`
-  margin: 4px 0;
+  margin: 8px 0 4px 0;
   border-top: 1px solid var(--ion-color-primary);
 `;
 
