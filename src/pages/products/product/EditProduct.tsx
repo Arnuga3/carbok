@@ -33,6 +33,8 @@ import { ProductCarbs } from "../../../classes/productCarbs/ProductCarbs";
 import { IProduct } from "../../../classes/product/IProduct";
 import { useProducts } from "../../../hooks/productsHook";
 import { productUnits } from "../../../resources/productUnits";
+import { PortionTypeEnum } from "../../../classes/productCarbs/PortionTypeEnum";
+import { PortionType } from "../../../classes/productCarbs/PortionType";
 
 interface EditProductPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -41,6 +43,7 @@ export interface IProductDummy {
   name: string | null;
   category: IProductCategory | null;
   units: IUnits;
+  portionType: PortionType;
   portion: number;
   defaultPortion: number;
   carbs: number;
@@ -51,6 +54,7 @@ const defaultData: IProductDummy = {
   name: null,
   category: null,
   units: productUnits[0],
+  portionType: PortionTypeEnum.WEIGTH,
   portion: 100,
   defaultPortion: 100,
   carbs: 0,
@@ -76,6 +80,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
       name: productRetrieved.name,
       category: productRetrieved.category,
       units: productRetrieved.units,
+      portionType: productRetrieved.carbsData.portionType,
       portion: productRetrieved.carbsData.portion,
       defaultPortion:
         productRetrieved.carbsData.defaultPortion ?? defaultData.defaultPortion,
@@ -106,6 +111,15 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
     }
   };
 
+  const handlePortionTypeChange = (type: PortionType) => {
+    switch (type) {
+      case PortionTypeEnum.WEIGTH:
+        return setData({ ...data, portionType: PortionTypeEnum.WEIGTH });
+      case PortionTypeEnum.QUANTITY:
+        return setData({ ...data, portionType: PortionTypeEnum.QUANTITY });
+    }
+  };
+
   const handleUpdate = () => {
     setSaveAttempted(true);
     const carbsDataValid = portionValid() && carbsValid() && sugarsValid();
@@ -115,7 +129,8 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
         data.portion,
         data.carbs,
         data.sugars,
-        data.defaultPortion
+        data.defaultPortion,
+        data.portionType,
       );
       const product: IProduct = {
         id: data.id,
@@ -224,6 +239,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
               carbsValid={carbsValid()}
               sugarsValid={sugarsValid()}
               onNumericDataChange={handleNumberInputChange}
+              onPortionTypeChange={handlePortionTypeChange}
             />
           </IonCardContent>
         </IonCard>

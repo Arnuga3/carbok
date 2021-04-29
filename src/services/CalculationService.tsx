@@ -46,7 +46,7 @@ export class CalculationService {
   }
 
   public calculateTargetCarbsData(data: IProductCarbs) {
-    const { portion, carbs, sugars, defaultPortion } = data;
+    const { portionType, portion, carbs, sugars, defaultPortion } = data;
     if (defaultPortion) {
       const targetCarbs = this.getPortionCarbs(carbs, portion, defaultPortion);
       const targetSugars = this.getPortionSugars(
@@ -56,6 +56,7 @@ export class CalculationService {
         defaultPortion
       );
       return {
+        portionType,
         portion: defaultPortion,
         carbs: targetCarbs,
         sugars: targetSugars,

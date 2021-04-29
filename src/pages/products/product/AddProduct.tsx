@@ -31,12 +31,15 @@ import { IUnits } from "../../../classes/units/IUnits";
 import { ProductCarbs } from "../../../classes/productCarbs/ProductCarbs";
 
 import { productUnits } from "../../../resources/productUnits";
+import { PortionType } from "../../../classes/productCarbs/PortionType";
+import { PortionTypeEnum } from "../../../classes/productCarbs/PortionTypeEnum";
 
 export interface IProductDummy {
   id?: string;
   name: string | null;
   category: IProductCategory | null;
   units: IUnits;
+  portionType: PortionType;
   portion: number;
   defaultPortion: number;
   carbs: number;
@@ -47,6 +50,7 @@ const defaultData: IProductDummy = {
   name: null,
   category: null,
   units: productUnits[0],
+  portionType: PortionTypeEnum.WEIGTH,
   portion: 100,
   defaultPortion: 100,
   carbs: 0,
@@ -78,6 +82,15 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
     }
   };
 
+  const handlePortionTypeChange = (type: PortionType) => {
+    switch (type) {
+      case PortionTypeEnum.WEIGTH:
+        return setData({ ...data, portionType: PortionTypeEnum.WEIGTH });
+      case PortionTypeEnum.QUANTITY:
+        return setData({ ...data, portionType: PortionTypeEnum.QUANTITY });
+    }
+  };
+
   const handleSave = () => {
     setSaveAttempted(true);
     const carbsDataValid = portionValid() && carbsValid() && sugarsValid();
@@ -87,7 +100,8 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
         data.portion,
         data.carbs,
         data.sugars,
-        data.defaultPortion
+        data.defaultPortion,
+        data.portionType
       );
       const product = new Product(
         data.name,
@@ -195,6 +209,7 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
               carbsValid={carbsValid()}
               sugarsValid={sugarsValid()}
               onNumericDataChange={handleNumberInputChange}
+              onPortionTypeChange={handlePortionTypeChange}
             />
           </IonCardContent>
         </IonCard>

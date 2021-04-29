@@ -33,6 +33,7 @@
 
     "per": "На",
     "per.portion": "На порцию",
+    "pieces.per.portion": "Штук на порцию",
     "portion.default": "Порция по умолчанию",
     "portion.size": "Размер Порции",
     "carbohydrates": "Углеводы",
@@ -81,6 +82,8 @@
     "page.products.form.category": "Категория",
     "page.products.form.units": "Единица Измерения",
     "page.products.form.portion.and.carbohydrates": "Порции и Углеводы",
+    "page.products.portion.type.weight": "Вес",
+    "page.products.portion.type.quantity": "Штук",
     "page.products.portion.error": "Должно быть больше 0",
     "page.products.carbs.error": "Должно быть меньше или равно Порции",
     "page.products.sugars.error": "Должно быть меньше или равно Углеводам",

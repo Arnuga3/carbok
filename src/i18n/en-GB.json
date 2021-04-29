@@ -33,6 +33,7 @@
 
     "per": "Per",
     "per.portion": "Per Portion",
+    "pieces.per.portion": "Pieces per Portion",
     "portion.default": "Default Portion",
     "portion.size": "Portion Size",
     "carbohydrates": "Carbohydrates",
@@ -81,6 +82,8 @@
     "page.products.form.category": "Category",
     "page.products.form.units": "Units",
     "page.products.form.portion.and.carbohydrates": "Portions & Carbohydrates",
+    "page.products.portion.type.weight": "Weight",
+    "page.products.portion.type.quantity": "Quantuty",
     "page.products.portion.error": "Should be greater than 0",
     "page.products.carbs.error": "Should be smaller or equal to Portion",
     "page.products.sugars.error": "Should be smaller or equal to Carbohydrates",

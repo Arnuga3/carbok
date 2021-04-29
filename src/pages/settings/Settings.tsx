@@ -45,7 +45,7 @@ export const Settings: React.FC = () => {
       <IonContent fullscreen>
         <Version>
           <IonIcon src={icon}></IonIcon>
-          <small>{version}</small>
+          <small>v{version}</small>
         </Version>
         <IonCard>
           <IonCardHeader>
