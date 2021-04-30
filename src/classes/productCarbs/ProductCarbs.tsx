@@ -1,25 +1,16 @@
-import { IProductCarbs } from "./IProductCarbs";
-import { PortionType } from "./PortionType";
-import { PortionTypeEnum } from "./PortionTypeEnum";
+import { ICarbs } from "./ICarbs";
+import { ICarbsPer100 } from "./ICarbsPer100";
+import { ICarbsPerPortion } from "./ICarbsPerPortion";
 
-export class ProductCarbs implements IProductCarbs {
-  portionType: PortionType;
-  portion: number;
-  carbs: number;
-  sugars: number;
-  defaultPortion: number;
+export class ProductCarbs implements ICarbs {
+  per100: ICarbsPer100;
+  perPortion: ICarbsPerPortion;
 
   constructor(
-    portion: number,
-    carbs: number,
-    sugars: number,
-    defaultPortion: number = 0,
-    portionType = PortionTypeEnum.WEIGTH
+    per100: ICarbsPer100,
+    perPortion: ICarbsPerPortion,
   ) {
-    this.portion = portion;
-    this.carbs = carbs;
-    this.sugars = sugars;
-    this.defaultPortion = defaultPortion;
-    this.portionType = portionType;
+    this.per100 = per100;
+    this.perPortion = perPortion;
   }
 }

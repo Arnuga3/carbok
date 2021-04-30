@@ -46,11 +46,11 @@ export const CalculatorModal: React.FC<Props> = ({
 
   useEffect(() => {
     if (product) {
-      setData({
-        portion: product.carbsData.portion,
-        carbs: product.carbsData.carbs,
-        targetPortion: product.carbsData.defaultPortion ?? 0,
-      });
+      //FIXME setData({
+      //   portion: product.carbsData.portion,
+      //   carbs: product.carbsData.carbs,
+      //   targetPortion: product.carbsData.defaultPortion ?? 0,
+      // });
     } else {
       setData(defaultDataState);
     }
@@ -72,11 +72,11 @@ export const CalculatorModal: React.FC<Props> = ({
 
   const handleReset = () => {
     if (product) {
-      setData({
-        portion: product.carbsData.portion,
-        carbs: product.carbsData.carbs,
-        targetPortion: product.carbsData.defaultPortion ?? 0,
-      });
+      //FIXME setData({
+      //   portion: product.carbsData.portion,
+      //   carbs: product.carbsData.carbs,
+      //   targetPortion: product.carbsData.defaultPortion ?? 0,
+      // });
     } else {
       setData(defaultDataState);
     }

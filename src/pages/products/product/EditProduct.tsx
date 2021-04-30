@@ -6,13 +6,10 @@ import {
   IonContent,
   IonPage,
   IonTitle,
-  IonToolbar,
   IonBackButton,
-  IonButtons,
   IonButton,
   IonCard,
   IonCardContent,
-  IonLabel,
   IonIcon,
   IonInput,
   isPlatform,
@@ -25,40 +22,36 @@ import { IProductCategory } from "../../../classes/productCategory/IProductCateg
 import { updateProduct } from "../../../redux/actions/productsActions";
 import { Category } from "./form/Category";
 import { Units } from "./form/Units";
-import { CarbsData, NumericInput } from "./form/CarbsData";
+import { CarbsPerPortionData } from "./form/CarbsPerPortionData";
 import { warningOutline } from "ionicons/icons";
 import { RouteComponentProps } from "react-router";
 import { IUnits } from "../../../classes/units/IUnits";
-import { ProductCarbs } from "../../../classes/productCarbs/ProductCarbs";
 import { IProduct } from "../../../classes/product/IProduct";
 import { useProducts } from "../../../hooks/productsHook";
 import { productUnits } from "../../../resources/productUnits";
-import { PortionTypeEnum } from "../../../classes/productCarbs/PortionTypeEnum";
-import { PortionType } from "../../../classes/productCarbs/PortionType";
+import { IProductDummy } from "../../../classes/product/IProductDummy";
+import { ICarbsPer100 } from "../../../classes/productCarbs/ICarbsPer100";
+import { ICarbsPerPortion } from "../../../classes/productCarbs/ICarbsPerPortion";
+import { CarbsPer100Data } from "./form/CarbsPer100Data";
 
 interface EditProductPageProps extends RouteComponentProps<{ id: string }> {}
-
-export interface IProductDummy {
-  id?: string;
-  name: string | null;
-  category: IProductCategory | null;
-  units: IUnits;
-  portionType: PortionType;
-  portion: number;
-  defaultPortion: number;
-  carbs: number;
-  sugars: number;
-}
 
 const defaultData: IProductDummy = {
   name: null,
   category: null,
   units: productUnits[0],
-  portionType: PortionTypeEnum.WEIGTH,
-  portion: 100,
-  defaultPortion: 100,
-  carbs: 0,
-  sugars: 0,
+  carbsData: {
+    per100: {
+      carbs: 0,
+      sugars: 0,
+    },
+    perPortion: {
+      description: undefined,
+      quantity: 1,
+      carbs: 0,
+      sugars: 0,
+    },
+  },
 };
 
 export const EditProduct: React.FC<EditProductPageProps> = ({
@@ -72,97 +65,60 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
   const productRetrieved: IProduct | undefined = products.find(
     (product: IProduct) => product.id === match.params.id
   );
-  let product = defaultData;
+  let prod = defaultData;
 
   if (productRetrieved) {
-    product = {
+    prod = {
       id: productRetrieved.id,
       name: productRetrieved.name,
       category: productRetrieved.category,
       units: productRetrieved.units,
-      portionType: productRetrieved.carbsData.portionType,
-      portion: productRetrieved.carbsData.portion,
-      defaultPortion:
-        productRetrieved.carbsData.defaultPortion ?? defaultData.defaultPortion,
-      carbs: productRetrieved.carbsData.carbs,
-      sugars: productRetrieved.carbsData.sugars,
+      carbsData: productRetrieved.carbsData,
     };
   }
 
-  const [data, setData] = useState(product);
+  const [product, setProduct] = useState(prod);
   const [openCategoryModal, setOpenCategoryModal] = useState(false);
   const [saveAttempted, setSaveAttempted] = useState(false);
 
   const handleCategorySelect = (category: IProductCategory) => {
-    setData({ ...data, category });
+    setProduct({ ...product, category });
     setOpenCategoryModal(false);
   };
 
-  const handleNumberInputChange = (type: NumericInput, value: any) => {
-    switch (type) {
-      case NumericInput.PORTION:
-        return setData({ ...data, portion: parseFloat(value) });
-      case NumericInput.CARBS:
-        return setData({ ...data, carbs: parseFloat(value) });
-      case NumericInput.SUGARS:
-        return setData({ ...data, sugars: parseFloat(value) });
-      case NumericInput.DEFAULT_PORTION:
-        return setData({ ...data, defaultPortion: parseFloat(value) });
-    }
+
+  const handlePerPortionChange = (perPortion: ICarbsPerPortion) => {
+    setProduct({ ...product, carbsData: { ...product.carbsData, perPortion } });
   };
 
-  const handlePortionTypeChange = (type: PortionType) => {
-    switch (type) {
-      case PortionTypeEnum.WEIGTH:
-        return setData({ ...data, portionType: PortionTypeEnum.WEIGTH });
-      case PortionTypeEnum.QUANTITY:
-        return setData({ ...data, portionType: PortionTypeEnum.QUANTITY });
-    }
+  const handlePer100Change = (per100: ICarbsPer100) => {
+    setProduct({ ...product, carbsData: { ...product.carbsData, per100 } });
   };
 
   const handleUpdate = () => {
     setSaveAttempted(true);
-    const carbsDataValid = portionValid() && carbsValid() && sugarsValid();
+    // const carbsDataValid = portionValid() && carbsValid() && sugarsValid();
 
-    if (data.id && data.category && data.name && carbsDataValid) {
-      const productCarbs = new ProductCarbs(
-        data.portion,
-        data.carbs,
-        data.sugars,
-        data.defaultPortion,
-        data.portionType,
-      );
-      const product: IProduct = {
-        id: data.id,
-        name: data.name,
-        category: data.category,
-        units: data.units,
-        carbsData: productCarbs,
+    if (product.id && product.category && product.name /*&& carbsDataValid*/) {
+      const productUpdated: IProduct = {
+        id: product.id,
+        name: product.name,
+        category: product.category,
+        units: product.units,
+        carbsData: product.carbsData,
       };
-      dispatch(updateProduct(product));
+      dispatch(updateProduct(productUpdated));
       history.goBack();
     }
   };
 
   const nameValid = useCallback(() => {
-    return !saveAttempted || (data.name && data.name.trim() !== "");
-  }, [data.name, saveAttempted]);
+    return !saveAttempted || (product.name && product.name.trim() !== "");
+  }, [product.name, saveAttempted]);
 
   const categoryValid = useCallback(() => {
-    return !saveAttempted || data.category !== null;
-  }, [data.category, saveAttempted]);
-
-  const portionValid = useCallback(() => {
-    return data.portion > 0;
-  }, [data.portion]);
-
-  const carbsValid = useCallback(() => {
-    return data.carbs >= 0 && data.carbs <= data.portion;
-  }, [data.carbs, data.portion]);
-
-  const sugarsValid = useCallback(() => {
-    return data.sugars >= 0 && data.sugars <= data.carbs;
-  }, [data.carbs, data.sugars]);
+    return !saveAttempted || product.category !== null;
+  }, [product.category, saveAttempted]);
 
   return (
     <IonPage>
@@ -194,9 +150,9 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
           </IonCardHeader>
           <IonCardContent>
             <IonInputStyled
-              value={data.name}
+              value={product.name}
               onIonInput={(e: any) =>
-                setData({ ...data, name: e.target.value })
+                setProduct({ ...product, name: e.target.value })
               }
             />
           </IonCardContent>
@@ -209,7 +165,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
           </IonCardHeader>
           <IonCardContent>
             <Category
-              data={data}
+              data={product}
               categoryValid={categoryValid()}
               onCategorySelect={handleCategorySelect}
             />
@@ -221,8 +177,8 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
           </IonCardHeader>
           <IonCardContent>
             <Units
-              units={data.units}
-              onUnitsChange={(units: IUnits) => setData({ ...data, units })}
+              units={product.units}
+              onUnitsChange={(units: IUnits) => setProduct({ ...product, units })}
             />
           </IonCardContent>
         </IonCard>
@@ -233,13 +189,15 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
             </IonCardSubtitle>
           </IonCardHeader>
           <IonCardContent>
-            <CarbsData
-              data={data}
-              portionValid={portionValid()}
-              carbsValid={carbsValid()}
-              sugarsValid={sugarsValid()}
-              onNumericDataChange={handleNumberInputChange}
-              onPortionTypeChange={handlePortionTypeChange}
+            <CarbsPerPortionData
+              product={product}
+              onPerPortionChange={handlePerPortionChange}
+            />
+          </IonCardContent>
+          <IonCardContent>
+            <CarbsPer100Data
+              product={product}
+              onPer100Change={handlePer100Change}
             />
           </IonCardContent>
         </IonCard>

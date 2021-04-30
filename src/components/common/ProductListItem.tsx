@@ -17,7 +17,7 @@ export const ProductListItem: React.FC<Props> = ({ product }) => {
         </NameBadge>
         <IonText color="medium">
           <small>
-            {` ${product.carbsData.portion}${t(product.units.shortNameKey)}`}
+            {/* {` ${product.carbsData.portion}${t(product.units.shortNameKey)}`} */}
           </small>
         </IonText>
       </ContentRow>
@@ -27,7 +27,7 @@ export const ProductListItem: React.FC<Props> = ({ product }) => {
         </IonText>
         <IonText color="medium">
           <small>
-            {` ${product.carbsData.carbs}${t("units.grams.short")}`}
+            {/* {` ${product.carbsData.carbs}${t("units.grams.short")}`} */}
           </small>
         </IonText>
       </ContentRow>
@@ -37,7 +37,7 @@ export const ProductListItem: React.FC<Props> = ({ product }) => {
         </IonText>
         <IonText color="medium">
           <small>
-            {` ${product.carbsData.sugars}${t("units.grams.short")}`}
+            {/* {` ${product.carbsData.sugars}${t("units.grams.short")}`} */}
           </small>
         </IonText>
       </ContentRow>

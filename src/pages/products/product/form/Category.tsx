@@ -1,11 +1,12 @@
 import React from "react";
-import { IonInput, IonItem, IonLabel, IonChip } from "@ionic/react";
-import styled from "styled-components";
-import { IProductDummy } from "../EditProduct";
 import { useTranslation } from "react-i18next";
+import { IonLabel, IonChip } from "@ionic/react";
+import styled from "styled-components";
+
+import { IProductCategory } from "../../../../classes/productCategory/IProductCategory";
 
 import { categories } from "../../../../resources/productCategories";
-import { IProductCategory } from "../../../../classes/productCategory/IProductCategory";
+import { IProductDummy } from "../../../../classes/product/IProductDummy";
 
 interface Props {
   data: IProductDummy;

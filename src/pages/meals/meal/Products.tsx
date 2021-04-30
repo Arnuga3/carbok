@@ -47,18 +47,20 @@ export const Products: React.FC<Props> = ({ meal }) => {
 
   const handlePortionSizeUpdate = (targetPortion: number) => {
     if (selectedProduct) {
-      const { carbs, sugars, portion } = selectedProduct.carbsData;
-      const carbsUpdated = calculation.getPortionCarbs(
-        carbs,
-        portion,
-        targetPortion
-      );
-      const sugarsUpdated = calculation.getPortionSugars(
-        carbs,
-        sugars,
-        portion,
-        targetPortion
-      );
+      //FIXME const { carbs, sugars, portion } = selectedProduct.carbsData;
+      const carbsUpdated = 0;
+      // calculation.getPortionCarbs(
+      //   carbs,
+      //   portion,
+      //   targetPortion
+      // );
+      const sugarsUpdated = 0;
+      // calculation.getPortionSugars(
+      //   carbs,
+      //   sugars,
+      //   portion,
+      //   targetPortion
+      // );
       const carbsDataUpdated = {
         ...selectedProduct.carbsData,
         portion: targetPortion,
@@ -170,7 +172,7 @@ export const Products: React.FC<Props> = ({ meal }) => {
         inputs={[
           {
             name: "portion",
-            value: selectedProduct?.carbsData.portion,
+            //FIXME value: selectedProduct?.carbsData.portion,
             type: "number",
           },
         ]}

@@ -74,7 +74,7 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
       <CardBody>
         {display === "details" ? (
           <>
-            {meal.products.map((product, i) => (
+            {/*FIXME {meal.products.map((product, i) => (
               <ProductItem key={i}>{`
                 ${product.name}
                 ${product.carbsData.portion}${t(product.units.shortNameKey)}
@@ -82,7 +82,7 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
                 i !== meal.products.length - 1 ? "," : ""
               }
               `}</ProductItem>
-            ))}
+            ))} */}
             {meal.note && (
               <Note>
                 <NoteIcon icon={chatbubbleOutline} />

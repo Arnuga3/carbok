@@ -87,13 +87,13 @@ export class CalculationService {
       .reduce((data, product: IProduct) => {
         // Count total weights for each category
         return data.map((category: IChartProductCategory) => {
-          if (category.type === product.category.type) {
-            totalWeightCount += +product.carbsData.portion;
-            return {
-              ...category,
-              value: category.value + +product.carbsData.portion,
-            };
-          }
+          //FIXME if (category.type === product.category.type) {
+          //   totalWeightCount += +product.carbsData.portion;
+          //   return {
+          //     ...category,
+          //     value: category.value + +product.carbsData.portion,
+          //   };
+          // }
           return category;
         });
       }, categories)
@@ -106,14 +106,14 @@ export class CalculationService {
 
   public getMealTotalCarbs(products: IProduct[]): number {
     return products.reduce((total, product: IProduct) => {
-      const productCarbs = +product.carbsData.carbs;
+      const productCarbs = 0; //FIXME +product.carbsData.carbs;
       return this.dec2(total += productCarbs);
     }, 0);
   }
 
   public getMealTotalSugars(products: IProduct[]): number {
     return products.reduce((total, product: IProduct) => {
-      const productSugars = +product.carbsData.sugars;
+      const productSugars = 0; //FIXME +product.carbsData.sugars;
       return this.dec2(total += productSugars);
     }, 0);
   }

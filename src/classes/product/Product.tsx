@@ -1,21 +1,21 @@
 import { IProduct } from "./IProduct";
 import { IProductCategory } from "../productCategory/IProductCategory";
 import { IUnits } from "../units/IUnits";
-import { IProductCarbs } from "../productCarbs/IProductCarbs";
 import { uuidv4 } from "../../utils/helper";
+import { ICarbs } from "../productCarbs/ICarbs";
 
 export class Product implements IProduct {
   id: string = uuidv4();
   name: string;
   category: IProductCategory;
   units: IUnits;
-  carbsData: IProductCarbs;
+  carbsData: ICarbs;
 
   constructor(
     name: string,
     category: IProductCategory,
     units: IUnits,
-    carbsData: IProductCarbs
+    carbsData: ICarbs
   ) {
     this.name = name;
     this.category = category;
