@@ -1,5 +1,6 @@
 import { IProduct } from "../classes/product/IProduct";
-import { ICarbs } from "../classes/productCarbs/ICarbs";
+import { ICarbsPer100 } from "../classes/productCarbs/ICarbsPer100";
+import { ICarbsPerPortion } from "../classes/productCarbs/ICarbsPerPortion";
 // import { IProductCarbs } from "../classes/productCarbs/IProductCarbs";
 import { IChartProductCategory } from "../classes/productCategory/IChartProductCategory";
 import { IProductCategory } from "../classes/productCategory/IProductCategory";
@@ -46,28 +47,36 @@ export class CalculationService {
     return this.dec2(targetSugars);
   }
 
-  public calculateTargetCarbsData(carbsData: ICarbs) {
-    if (!carbsData.perPortionOn) {
-      const { carbs, sugars, defaultPortion } = carbsData.per100;
-      if (defaultPortion) {
-        const targetCarbs = this.getPortionCarbs(carbs, 100, defaultPortion);
-        const targetSugars = this.getPortionSugars(
-          carbs,
-          sugars,
-          100,
-          defaultPortion
-        );
-        return {
-          ...carbsData,
-          per100: {
-            carbs: targetCarbs,
-            sugars: targetSugars,
-            defaultPortion,
-          }
-        };
-      }
-    }
-    return carbsData;
+  public getCarbsFromQuantity(
+    perPortion: ICarbsPerPortion,
+    targetQuantity: number
+  ): ICarbsPerPortion {
+    const { carbs, sugars, quantity } = perPortion;
+    return {
+      ...perPortion,
+      carbs: this.dec2((carbs / quantity) * targetQuantity),
+      sugars: this.dec2((sugars / quantity) * targetQuantity),
+      quantity: targetQuantity,
+    };
+  }
+
+  public getCarbsFromWeight(
+    carbs100: number,
+    sugars100: number,
+    portion: number
+  ): ICarbsPer100 {
+    const targetCarbs = this.getPortionCarbs(carbs100, 100, portion);
+    const targetSugars = this.getPortionSugars(
+      carbs100,
+      sugars100,
+      100,
+      portion
+    );
+    return {
+      carbs: targetCarbs,
+      sugars: targetSugars,
+      portion,
+    };
   }
 
   public getPieChartData(products: IProduct[]) {
@@ -111,14 +120,14 @@ export class CalculationService {
   public getMealTotalCarbs(products: IProduct[]): number {
     return products.reduce((total, product: IProduct) => {
       const productCarbs = 0; //FIXME +product.carbsData.carbs;
-      return this.dec2(total += productCarbs);
+      return this.dec2((total += productCarbs));
     }, 0);
   }
 
   public getMealTotalSugars(products: IProduct[]): number {
     return products.reduce((total, product: IProduct) => {
       const productSugars = 0; //FIXME +product.carbsData.sugars;
-      return this.dec2(total += productSugars);
+      return this.dec2((total += productSugars));
     }, 0);
   }
 

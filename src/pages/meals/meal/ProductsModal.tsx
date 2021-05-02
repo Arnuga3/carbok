@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { checkmarkCircle, ellipseOutline, close } from "ionicons/icons";
-import { IProduct } from "../../../classes/product/IProduct";
-import { useProducts } from "../../../hooks/productsHook";
 import {
   IonList,
   IonItem,
@@ -14,15 +13,17 @@ import {
   IonModal,
   IonFooter,
 } from "@ionic/react";
-import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
-import { retrieveProducts } from "../../../redux/actions/productsActions";
+import { checkmarkCircle, ellipseOutline, close } from "ionicons/icons";
 import { ProductsSearch } from "../../../components/common/ProductsSearch";
 import { ProductListItem } from "../../../components/common/ProductListItem";
 import { IMeal } from "../../../classes/meal/IMeal";
+import { IProduct } from "../../../classes/product/IProduct";
+import { IMealProduct } from "../../../classes/meal/IMealProduct";
+import { MealProduct } from "../../../classes/meal/MealProduct";
+import { useProducts } from "../../../hooks/productsHook";
+import { retrieveProducts } from "../../../redux/actions/productsActions";
 import { updateMeal } from "../../../redux/actions/mealsActions";
 import CalculationService from "../../../services/CalculationService";
-import { uuidv4 } from "../../../utils/helper";
 
 interface Props {
   meal: IMeal;
@@ -71,15 +72,38 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
   const handleSearch = (result: IProduct[]) => setSearchResult(result);
 
   const handleSelect = () => {
-    const mealProducts = selectedProducts.map((product) => ({
-      ...product,
-      id: uuidv4(), // Create a new id as this is a copy of the existing product, not a reference
-      carbsData: calculation.calculateTargetCarbsData(product.carbsData),
-    }));
+    const mealProducts: IMealProduct[] = selectedProducts.map((product) => {
+      const mealProduct = new MealProduct(product);
+
+      if (mealProduct.portionType === 'weight') {
+        const { carbs, sugars } = mealProduct.carbsData.per100;
+        const { portion } = mealProduct.mealProductCarbs.per100;
+        return {
+          ...mealProduct,
+          mealProductCarbs: {
+            ...mealProduct.mealProductCarbs,
+            per100: calculation.getCarbsFromWeight(
+              carbs,
+              sugars,
+              portion,
+            ),
+          }
+        }
+      }
+
+      if (mealProduct.portionType === 'quantity') {
+        // TODO
+        return mealProduct;
+      }
+      
+      return mealProduct;
+    });
+
     const mealUpdated: IMeal = {
       ...meal,
       products: [...meal.products, ...mealProducts],
     };
+
     dispatch(updateMeal(mealUpdated));
     handleClose();
   };
@@ -112,7 +136,7 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
                     : ellipseOutline
                 }
               />
-              <ProductListItem product={product} mealProduct={true} />
+              <ProductListItem product={product} />
             </IonItem>
           ))}
         </IonList>

@@ -49,7 +49,7 @@ export const CarbsPer100Data: React.FC<Props> = ({
         per100 = { ...per100, sugars: result };
         break;
       case Per100Enum.DEFAULT_PORTION:
-        per100 = { ...per100, defaultPortion: result };
+        per100 = { ...per100, portion: result };
         break;
     }
     onPer100Change(per100, carbsValid() && sugarsValid());
@@ -104,7 +104,7 @@ export const CarbsPer100Data: React.FC<Props> = ({
             type="number"
             inputmode="numeric"
             enterkeyhint="done"
-            value={per100.defaultPortion}
+            value={per100.portion}
             onIonChange={(e: any) =>
               handlePer100Change(Per100Enum.DEFAULT_PORTION, e.target.value)
             }

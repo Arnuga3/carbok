@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import {
   IonAlert,
@@ -12,16 +14,20 @@ import {
   IonList,
   IonText,
 } from "@ionic/react";
-import { IProduct } from "../../../classes/product/IProduct";
+import {
+  chatbubbleOutline,
+  layersOutline,
+  scaleOutline,
+  trashOutline,
+} from "ionicons/icons";
 import { IMeal } from "../../../classes/meal/IMeal";
-import { ProductsModal } from "./ProductsModal";
-import { useDispatch } from "react-redux";
-import { updateMeal } from "../../../redux/actions/mealsActions";
-import { chatbubbleOutline, scaleOutline, trashOutline } from "ionicons/icons";
-import { useTranslation } from "react-i18next";
-import CalculationService from "../../../services/CalculationService";
-import { ProductListItem } from "../../../components/common/ProductListItem";
 import { CircleBadge } from "../../../components/common/CircleBadge";
+import { MealProductListItem } from "../../../components/common/MealProductListItem";
+import { ProductsModal } from "./ProductsModal";
+import { updateMeal } from "../../../redux/actions/mealsActions";
+import CalculationService from "../../../services/CalculationService";
+import { IMealProduct } from "../../../classes/meal/IMealProduct";
+import { PortionType } from "../../../classes/productCarbs/PortionType";
 
 interface Props {
   meal: IMeal;
@@ -37,41 +43,71 @@ export const Products: React.FC<Props> = ({ meal }) => {
 
   const [openProductsModal, setOpenProductsModal] = useState(false);
   const [openPortionSizeAlert, setOpenPortionSizeAlert] = useState(false);
+  const [openPortionQuantityAlert, setOpenPortionQuantityAlert] = useState(
+    false
+  );
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<IMealProduct | null>(
+    null
+  );
 
-  const handlePortionSizeChange = (product: IProduct) => {
+  const handlePortionSizeChange = (product: IMealProduct) => {
     setSelectedProduct(product);
     setOpenPortionSizeAlert(true);
   };
 
+  const handlePortionQunatityChange = (product: IMealProduct) => {
+    setSelectedProduct(product);
+    setOpenPortionQuantityAlert(true);
+  };
+
   const handlePortionSizeUpdate = (targetPortion: number) => {
     if (selectedProduct) {
-      //FIXME const { carbs, sugars, portion } = selectedProduct.carbsData;
-      const carbsUpdated = 0;
-      // calculation.getPortionCarbs(
-      //   carbs,
-      //   portion,
-      //   targetPortion
-      // );
-      const sugarsUpdated = 0;
-      // calculation.getPortionSugars(
-      //   carbs,
-      //   sugars,
-      //   portion,
-      //   targetPortion
-      // );
-      const carbsDataUpdated = {
-        ...selectedProduct.carbsData,
-        portion: targetPortion,
-        carbs: carbsUpdated,
-        sugars: sugarsUpdated,
-      };
+      const { carbs, sugars } = selectedProduct.carbsData.per100;
+      const portionType: PortionType = "weight";
+
       const mealUpdated = {
         ...meal,
-        products: meal.products.map((product) =>
+        products: meal.products.map((product: IMealProduct) =>
           product.id === selectedProduct.id
-            ? { ...product, carbsData: carbsDataUpdated }
+            ? {
+                ...product,
+                portionTypeInUse: portionType,
+                mealProductCarbs: {
+                  ...product.mealProductCarbs,
+                  per100: calculation.getCarbsFromWeight(
+                    carbs,
+                    sugars,
+                    targetPortion
+                  ),
+                },
+              }
+            : product
+        ),
+      };
+      dispatch(updateMeal(mealUpdated));
+    }
+  };
+
+  const handlePortionQuantityUpdate = (targetQuantity: number) => {
+    if (selectedProduct) {
+      const portionType: PortionType = "quantity";
+
+      const mealUpdated = {
+        ...meal,
+        products: meal.products.map((product: IMealProduct) =>
+          product.id === selectedProduct.id
+            ? {
+                ...product,
+                portionTypeInUse: portionType,
+                mealProductCarbs: {
+                  ...product.mealProductCarbs,
+                  perPortion: calculation.getCarbsFromQuantity(
+                    selectedProduct.carbsData.perPortion,
+                    targetQuantity,
+                  ),
+                },
+              }
             : product
         ),
       };
@@ -87,13 +123,15 @@ export const Products: React.FC<Props> = ({ meal }) => {
       dispatch(
         updateMeal({
           ...meal,
-          products: meal.products.filter((prod) => prod.id !== selectedProduct.id),
+          products: meal.products.filter(
+            (prod) => prod.id !== selectedProduct.id
+          ),
         })
       );
     }
   };
 
-  const handleOnMealProductDelete = (product: IProduct) => {
+  const handleOnMealProductDelete = (product: IMealProduct) => {
     setSelectedProduct(product);
     setOpenDeleteAlert(true);
   };
@@ -118,14 +156,22 @@ export const Products: React.FC<Props> = ({ meal }) => {
             onClick={() => toggleActionsSlide(MEALSPAGE + i)}
           >
             <IonItem detail>
-                <IonAvatar slot="start">
-                  <CircleBadge color={product.category.color} size={40}>
-                    {t(product.category.nameKey).slice(0, 3)}
-                  </CircleBadge>
-                </IonAvatar>
-              <ProductListItem product={product} mealProduct={true} />
+              <IonAvatar slot="start">
+                <CircleBadge color={product.category.color} size={40}>
+                  {t(product.category.nameKey).slice(0, 3)}
+                </CircleBadge>
+              </IonAvatar>
+              <MealProductListItem product={product} />
             </IonItem>
             <IonItemOptions>
+              {product.portionType === "quantity" && (
+                <SlidingAction
+                  color="secondary"
+                  onClick={() => handlePortionQunatityChange(product)}
+                >
+                  <IonIcon icon={layersOutline} slot="icon-only" />
+                </SlidingAction>
+              )}
               <SlidingAction
                 color="tertiary"
                 onClick={() => handlePortionSizeChange(product)}
@@ -172,7 +218,7 @@ export const Products: React.FC<Props> = ({ meal }) => {
         inputs={[
           {
             name: "portion",
-            //FIXME value: selectedProduct?.carbsData.portion,
+            value: selectedProduct?.mealProductCarbs.per100.portion,
             type: "number",
           },
         ]}
@@ -181,6 +227,27 @@ export const Products: React.FC<Props> = ({ meal }) => {
           {
             text: t("button.save"),
             handler: ({ portion }) => handlePortionSizeUpdate(portion),
+          },
+        ]}
+      />
+      <IonAlert
+        isOpen={openPortionQuantityAlert}
+        onDidDismiss={() => setOpenPortionQuantityAlert(false)}
+        header={`${t("quantity")} (${
+          selectedProduct ? selectedProduct?.carbsData.perPortion.description : ""
+        })`}
+        inputs={[
+          {
+            name: "quantity",
+            value: selectedProduct?.mealProductCarbs.perPortion.quantity,
+            type: "number",
+          },
+        ]}
+        buttons={[
+          { text: t("button.cancel") },
+          {
+            text: t("button.save"),
+            handler: ({ quantity }) => handlePortionQuantityUpdate(quantity),
           },
         ]}
       />

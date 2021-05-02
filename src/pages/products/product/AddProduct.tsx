@@ -41,11 +41,12 @@ const defaultData: IProductDummy = {
   name: null,
   category: null,
   units: productUnits[0],
+  portionType: 'weight',
   carbsData: {
     per100: {
       carbs: 0,
       sugars: 0,
-      defaultPortion: 100,
+      portion: 100,
     },
     perPortion: {
       description: undefined,
@@ -53,7 +54,6 @@ const defaultData: IProductDummy = {
       carbs: 0,
       sugars: 0,
     },
-    perPortionOn: false,
   },
 };
 
@@ -85,7 +85,8 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
         product.name,
         product.category,
         product.units,
-        product.carbsData
+        product.carbsData,
+        product.portionType,
       );
       dispatch(addProduct(newProduct));
       history.goBack();
@@ -185,20 +186,17 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
             </IonCardSubtitle>
             <IonItem lines="none">
               <IonToggle
-                checked={product.carbsData.perPortionOn}
+                checked={product.portionType === 'quantity'}
                 onIonChange={(e) =>
                   setProduct({
                     ...product,
-                    carbsData: {
-                      ...product.carbsData,
-                      perPortionOn: e.detail.checked,
-                    },
+                    portionType: e.detail.checked ? 'quantity' : 'weight',
                   })
                 }
               />
             </IonItem>
           </CardHeader>
-          {product.carbsData.perPortionOn && (
+          {product.portionType === 'quantity' && (
             <IonCardContent>
               <CarbsPerPortionData
                 product={product}

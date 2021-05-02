@@ -28,6 +28,7 @@ import CalculationService from "../../services/CalculationService";
 import moment from "moment";
 import { useMeals } from "../../hooks/mealsHook";
 import { copyMeal } from "../../redux/actions/mealsActions";
+import { MealCardProduct } from "./MealCardProduct";
 
 interface Props {
   meal: IMeal;
@@ -74,15 +75,9 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
       <CardBody>
         {display === "details" ? (
           <>
-            {/*FIXME {meal.products.map((product, i) => (
-              <ProductItem key={i}>{`
-                ${product.name}
-                ${product.carbsData.portion}${t(product.units.shortNameKey)}
-                (${product.carbsData.carbs} ${t("carbohydrates.short")})${
-                i !== meal.products.length - 1 ? "," : ""
-              }
-              `}</ProductItem>
-            ))} */}
+            {meal.products.map((product, i) => (
+              <MealCardProduct key={i} product={product} meal={meal} t={t} i={i} />
+            ))}
             {meal.note && (
               <Note>
                 <NoteIcon icon={chatbubbleOutline} />
@@ -184,11 +179,6 @@ const ActionButton = styled(IonButton)`
 
 const CardBody = styled(IonCardContent)`
   margin-top: 8px;
-`;
-
-const ProductItem = styled.p`
-  font-style: italic;
-  padding-left: 20px;
 `;
 
 const Divider = styled.div`

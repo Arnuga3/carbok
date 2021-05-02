@@ -1,22 +1,24 @@
 import { IonText } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { IProduct } from "../../classes/product/IProduct";
+import { IMealProduct } from "../../classes/meal/IMealProduct";
 
 interface Props {
-  product: IProduct;
+  product: IMealProduct;
 }
 
-export const ProductListItem: React.FC<Props> = ({ product }) => {
+export const MealProductListItem: React.FC<Props> = ({ product }) => {
   const { t } = useTranslation();
-  const data = product.portionType === 'quantity'
+  const data = product.portionTypeInUse === 'quantity'
     ? {
-        ...product.carbsData.perPortion,
-        portion: `${product.carbsData.perPortion.quantity} ${product.carbsData.perPortion.description}`,
+        ...product.mealProductCarbs.perPortion,
+        portion: `${product.mealProductCarbs.perPortion.quantity} ${product.mealProductCarbs.perPortion.description}`,
       }
     : {
-        ...product.carbsData.per100,
-        portion: `100${t(product.units.shortNameKey)}`,
+        ...product.mealProductCarbs.per100,
+        portion: `${product.mealProductCarbs.per100.portion}${t(
+          product.units.shortNameKey
+        )}`,
       };
   return (
     <ListItemContent>

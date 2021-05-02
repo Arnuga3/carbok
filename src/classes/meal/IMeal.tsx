@@ -1,10 +1,10 @@
 import { IMealType } from "../mealType/IMealType";
-import { IProduct } from "../product/IProduct";
+import { IMealProduct } from "./IMealProduct";
 
 export interface IMeal {
     id: string;
     type: IMealType;
     dateTime: Date;
-    products: IProduct[];
+    products: IMealProduct[];
     note?: string;
 }

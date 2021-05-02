@@ -1,4 +1,5 @@
 import { ICarbs } from "../productCarbs/ICarbs";
+import { PortionType } from "../productCarbs/PortionType";
 import { IProductCategory } from "../productCategory/IProductCategory";
 import { IUnits } from "../units/IUnits";
 
@@ -8,4 +9,5 @@ export interface IProductDummy {
   category: IProductCategory | null;
   units: IUnits;
   carbsData: ICarbs;
+  portionType: PortionType;
 }
