@@ -71,17 +71,17 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
   const handleSearch = (result: IProduct[]) => setSearchResult(result);
 
   const handleSelect = () => {
-    //FIXME const mealProducts = selectedProducts.map((product) => ({
-    //   ...product,
-    //   id: uuidv4(), // Create a new id as this is a copy of the existing product, not a reference
-    //   carbsData: calculation.calculateTargetCarbsData(product.carbsData),
-    // }));
-    // const mealUpdated: IMeal = {
-    //   ...meal,
-    //   products: [...meal.products, ...mealProducts],
-    // };
-    // dispatch(updateMeal(mealUpdated));
-    // handleClose();
+    const mealProducts = selectedProducts.map((product) => ({
+      ...product,
+      id: uuidv4(), // Create a new id as this is a copy of the existing product, not a reference
+      carbsData: calculation.calculateTargetCarbsData(product.carbsData),
+    }));
+    const mealUpdated: IMeal = {
+      ...meal,
+      products: [...meal.products, ...mealProducts],
+    };
+    dispatch(updateMeal(mealUpdated));
+    handleClose();
   };
 
   const handleClose = () => {
@@ -112,7 +112,7 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
                     : ellipseOutline
                 }
               />
-              <ProductListItem product={product} />
+              <ProductListItem product={product} mealProduct={true} />
             </IonItem>
           ))}
         </IonList>

@@ -137,7 +137,7 @@ export const Products: React.FC = () => {
                       {t(product.category.nameKey).slice(0, 3)}
                     </CircleBadge>
                   </IonAvatar>
-                  <ProductListItem product={product} />
+                  <ProductListItem product={product} mealProduct={false} />
                 </IonItem>
                 <IonItemOptions>
                   <SlidingAction

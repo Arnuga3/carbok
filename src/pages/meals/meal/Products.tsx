@@ -123,7 +123,7 @@ export const Products: React.FC<Props> = ({ meal }) => {
                     {t(product.category.nameKey).slice(0, 3)}
                   </CircleBadge>
                 </IonAvatar>
-              <ProductListItem product={product} />
+              <ProductListItem product={product} mealProduct={true} />
             </IonItem>
             <IonItemOptions>
               <SlidingAction

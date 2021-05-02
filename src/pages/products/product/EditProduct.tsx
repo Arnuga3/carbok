@@ -15,9 +15,10 @@ import {
   isPlatform,
   IonCardHeader,
   IonCardSubtitle,
+  IonItem,
+  IonToggle,
 } from "@ionic/react";
 import styled from "styled-components";
-import { CategoriesModal } from "./CategoriesModal";
 import { IProductCategory } from "../../../classes/productCategory/IProductCategory";
 import { updateProduct } from "../../../redux/actions/productsActions";
 import { Category } from "./form/Category";
@@ -44,6 +45,7 @@ const defaultData: IProductDummy = {
     per100: {
       carbs: 0,
       sugars: 0,
+      defaultPortion: 100,
     },
     perPortion: {
       description: undefined,
@@ -51,6 +53,7 @@ const defaultData: IProductDummy = {
       carbs: 0,
       sugars: 0,
     },
+    perPortionOn: false,
   },
 };
 
@@ -78,28 +81,27 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
   }
 
   const [product, setProduct] = useState(prod);
-  const [openCategoryModal, setOpenCategoryModal] = useState(false);
   const [saveAttempted, setSaveAttempted] = useState(false);
+  const [carbsDataValid, setCarbsDataValid] = useState(true);
 
   const handleCategorySelect = (category: IProductCategory) => {
     setProduct({ ...product, category });
-    setOpenCategoryModal(false);
   };
 
 
-  const handlePerPortionChange = (perPortion: ICarbsPerPortion) => {
+  const handlePerPortionChange = (perPortion: ICarbsPerPortion, dataValid: boolean) => {
+    setCarbsDataValid(dataValid);
     setProduct({ ...product, carbsData: { ...product.carbsData, perPortion } });
   };
 
-  const handlePer100Change = (per100: ICarbsPer100) => {
+  const handlePer100Change = (per100: ICarbsPer100, dataValid: boolean) => {
+    setCarbsDataValid(dataValid);
     setProduct({ ...product, carbsData: { ...product.carbsData, per100 } });
   };
 
   const handleUpdate = () => {
     setSaveAttempted(true);
-    // const carbsDataValid = portionValid() && carbsValid() && sugarsValid();
-
-    if (product.id && product.category && product.name /*&& carbsDataValid*/) {
+    if (product.id && product.category && product.name && carbsDataValid) {
       const productUpdated: IProduct = {
         id: product.id,
         name: product.name,
@@ -185,21 +187,45 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
         <IonCard>
           <IonCardHeader>
             <IonCardSubtitle>
-              {t("page.products.form.portion.and.carbohydrates")}
+              {t("page.products.form.carbohydrates")}
+              {t(product.units.shortNameKey)}
             </IonCardSubtitle>
           </IonCardHeader>
-          <IonCardContent>
-            <CarbsPerPortionData
-              product={product}
-              onPerPortionChange={handlePerPortionChange}
-            />
-          </IonCardContent>
           <IonCardContent>
             <CarbsPer100Data
               product={product}
               onPer100Change={handlePer100Change}
             />
           </IonCardContent>
+        </IonCard>
+        <IonCard>
+          <CardHeader>
+            <IonCardSubtitle>
+              {t("page.products.form.quantity")}
+            </IonCardSubtitle>
+            <IonItem lines="none">
+              <IonToggle
+                checked={product.carbsData.perPortionOn}
+                onIonChange={(e) =>
+                  setProduct({
+                    ...product,
+                    carbsData: {
+                      ...product.carbsData,
+                      perPortionOn: e.detail.checked,
+                    },
+                  })
+                }
+              />
+            </IonItem>
+          </CardHeader>
+          {product.carbsData.perPortionOn && (
+            <IonCardContent>
+              <CarbsPerPortionData
+                product={product}
+                onPerPortionChange={handlePerPortionChange}
+              />
+            </IonCardContent>
+          )}
         </IonCard>
         <Button
           color="primary"
@@ -211,11 +237,6 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
           {t("button.save")}
         </Button>
       </IonContentStyled>
-      <CategoriesModal
-        open={openCategoryModal}
-        onClose={() => setOpenCategoryModal(false)}
-        onSelect={handleCategorySelect}
-      />
     </IonPage>
   );
 };
@@ -231,6 +252,12 @@ const IonContentStyled = styled(IonContent)`
   & .input-right-align {
     text-align: right;
   }
+`;
+
+const CardHeader = styled(IonCardHeader)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const Button = styled(IonButton)`

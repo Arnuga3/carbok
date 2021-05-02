@@ -5,20 +5,28 @@ import styled from "styled-components";
 
 interface Props {
   product: IProduct;
+  mealProduct: boolean;
 }
 
-export const ProductListItem: React.FC<Props> = ({ product }) => {
+export const ProductListItem: React.FC<Props> = ({ product, mealProduct }) => {
   const { t } = useTranslation();
+  const data = product.carbsData.perPortionOn
+    ? {
+        ...product.carbsData.perPortion,
+        portion: `${product.carbsData.perPortion.quantity} ${product.carbsData.perPortion.description}`,
+      }
+    : {
+        ...product.carbsData.per100,
+        portion: `${
+          mealProduct ? product.carbsData.per100.defaultPortion : 100
+        }${t(product.units.shortNameKey)}`,
+      };
   return (
     <ListItemContent>
       <ContentRow>
-        <NameBadge>
-          {product.name}
-        </NameBadge>
+        <NameBadge>{product.name}</NameBadge>
         <IonText color="medium">
-          <small>
-            {/* {` ${product.carbsData.portion}${t(product.units.shortNameKey)}`} */}
-          </small>
+          <small>{data.portion}</small>
         </IonText>
       </ContentRow>
       <ContentRow>
@@ -26,9 +34,7 @@ export const ProductListItem: React.FC<Props> = ({ product }) => {
           <small>{t("carbohydrates")}</small>
         </IonText>
         <IonText color="medium">
-          <small>
-            {/* {` ${product.carbsData.carbs}${t("units.grams.short")}`} */}
-          </small>
+          <small>{` ${data.carbs}${t("units.grams.short")}`}</small>
         </IonText>
       </ContentRow>
       <ContentRow>
@@ -36,9 +42,7 @@ export const ProductListItem: React.FC<Props> = ({ product }) => {
           <small>{t("of.which.sugars")}</small>
         </IonText>
         <IonText color="medium">
-          <small>
-            {/* {` ${product.carbsData.sugars}${t("units.grams.short")}`} */}
-          </small>
+          <small>{` ${data.sugars}${t("units.grams.short")}`}</small>
         </IonText>
       </ContentRow>
     </ListItemContent>

@@ -1,5 +1,6 @@
 import { IProduct } from "../classes/product/IProduct";
-import { IProductCarbs } from "../classes/productCarbs/IProductCarbs";
+import { ICarbs } from "../classes/productCarbs/ICarbs";
+// import { IProductCarbs } from "../classes/productCarbs/IProductCarbs";
 import { IChartProductCategory } from "../classes/productCategory/IChartProductCategory";
 import { IProductCategory } from "../classes/productCategory/IProductCategory";
 import { chartColors } from "../resources/config";
@@ -45,25 +46,28 @@ export class CalculationService {
     return this.dec2(targetSugars);
   }
 
-  public calculateTargetCarbsData(data: IProductCarbs) {
-    const { portionType, portion, carbs, sugars, defaultPortion } = data;
-    if (defaultPortion) {
-      const targetCarbs = this.getPortionCarbs(carbs, portion, defaultPortion);
-      const targetSugars = this.getPortionSugars(
-        carbs,
-        sugars,
-        portion,
-        defaultPortion
-      );
-      return {
-        portionType,
-        portion: defaultPortion,
-        carbs: targetCarbs,
-        sugars: targetSugars,
-        defaultPortion,
-      };
+  public calculateTargetCarbsData(carbsData: ICarbs) {
+    if (!carbsData.perPortionOn) {
+      const { carbs, sugars, defaultPortion } = carbsData.per100;
+      if (defaultPortion) {
+        const targetCarbs = this.getPortionCarbs(carbs, 100, defaultPortion);
+        const targetSugars = this.getPortionSugars(
+          carbs,
+          sugars,
+          100,
+          defaultPortion
+        );
+        return {
+          ...carbsData,
+          per100: {
+            carbs: targetCarbs,
+            sugars: targetSugars,
+            defaultPortion,
+          }
+        };
+      }
     }
-    return data;
+    return carbsData;
   }
 
   public getPieChartData(products: IProduct[]) {

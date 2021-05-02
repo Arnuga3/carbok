@@ -8,11 +8,12 @@ import { IProductDummy } from "../../../../classes/product/IProductDummy";
 export enum Per100Enum {
   CARBS = "CARBS",
   SUGARS = "SUGARS",
+  DEFAULT_PORTION = "DEFAULT_PORTION",
 }
 
 interface Props {
   product: IProductDummy;
-  onPer100Change: (per100: ICarbsPer100) => void;
+  onPer100Change: (per100: ICarbsPer100, dataValid: boolean) => void;
 }
 
 export const CarbsPer100Data: React.FC<Props> = ({
@@ -38,20 +39,24 @@ export const CarbsPer100Data: React.FC<Props> = ({
 
   const handlePer100Change = (type: Per100Enum, value: any) => {
     let per100 = product.carbsData.per100;
+    const val = parseFloat(value);
+    const result = !val || val < 0 ? 0 : val;
     switch (type) {
       case Per100Enum.CARBS:
-        per100 = { ...per100, carbs: parseFloat(value) };
+        per100 = { ...per100, carbs: result };
         break;
       case Per100Enum.SUGARS:
-        per100 = { ...per100, sugars: parseFloat(value) };
+        per100 = { ...per100, sugars: result };
+        break;
+      case Per100Enum.DEFAULT_PORTION:
+        per100 = { ...per100, defaultPortion: result };
         break;
     }
-    onPer100Change(per100);
+    onPer100Change(per100, carbsValid() && sugarsValid());
   };
 
   return (
     <IonGrid>
-      {t("per.portion")}
       <IonRow>
         <IonColLeft>
           <div>{t("carbohydrates")}</div>
@@ -90,6 +95,24 @@ export const CarbsPer100Data: React.FC<Props> = ({
         </IonColRight>
       </IonRow>
       {!sugarsValid() && <Error>{t("page.products.sugars.error")}</Error>}
+      <IonRow>
+        <IonColLeft>
+          <div>{t("portion.default")}</div>
+        </IonColLeft>
+        <IonColRight>
+          <IonInputStyled
+            type="number"
+            inputmode="numeric"
+            enterkeyhint="done"
+            value={per100.defaultPortion}
+            onIonChange={(e: any) =>
+              handlePer100Change(Per100Enum.DEFAULT_PORTION, e.target.value)
+            }
+            onFocus={handleFocus}
+          ></IonInputStyled>
+          <Units>{t(product.units.shortNameKey)}</Units>
+        </IonColRight>
+      </IonRow>
     </IonGrid>
   );
 };
@@ -122,7 +145,7 @@ const Units = styled.span`
 `;
 
 const Error = styled.div`
-  color: salmon;
+  color: var(--ion-color-danger);
   font-size: 0.7em;
   text-align: right;
 `;

@@ -16,6 +16,8 @@ import {
   isPlatform,
   IonCardHeader,
   IonCardSubtitle,
+  IonItem,
+  IonToggle,
 } from "@ionic/react";
 import { warningOutline } from "ionicons/icons";
 import styled from "styled-components";
@@ -25,14 +27,12 @@ import { IUnits } from "../../../classes/units/IUnits";
 import { IProductDummy } from "../../../classes/product/IProductDummy";
 import { ICarbsPerPortion } from "../../../classes/productCarbs/ICarbsPerPortion";
 import { ICarbsPer100 } from "../../../classes/productCarbs/ICarbsPer100";
-import { PortionType } from "../../../classes/productCarbs/PortionType";
 
 import { Product } from "../../../classes/product/Product";
 import { Category } from "./form/Category";
 import { Units } from "./form/Units";
 import { CarbsPerPortionData } from "./form/CarbsPerPortionData";
 import { CarbsPer100Data } from "./form/CarbsPer100Data";
-import { CategoriesModal } from "./CategoriesModal";
 
 import { productUnits } from "../../../resources/productUnits";
 import { addProduct } from "../../../redux/actions/productsActions";
@@ -45,6 +45,7 @@ const defaultData: IProductDummy = {
     per100: {
       carbs: 0,
       sugars: 0,
+      defaultPortion: 100,
     },
     perPortion: {
       description: undefined,
@@ -52,6 +53,7 @@ const defaultData: IProductDummy = {
       carbs: 0,
       sugars: 0,
     },
+    perPortionOn: false,
   },
 };
 
@@ -59,68 +61,31 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [product, setProduct] = useState<IProductDummy>(defaultData);
-  const [openCategoryModal, setOpenCategoryModal] = useState(false);
   const [saveAttempted, setSaveAttempted] = useState(false);
+  const [carbsDataValid, setCarbsDataValid] = useState(true);
 
   const handleCategorySelect = (category: IProductCategory) => {
     setProduct({ ...product, category });
-    setOpenCategoryModal(false);
   };
 
-  const handlePerPortionChange = (perPortion: ICarbsPerPortion) => {
+  const handlePerPortionChange = (perPortion: ICarbsPerPortion, dataValid: boolean) => {
+    setCarbsDataValid(dataValid);
     setProduct({ ...product, carbsData: { ...product.carbsData, perPortion } });
   };
 
-  const handlePer100Change = (per100: ICarbsPer100) => {
+  const handlePer100Change = (per100: ICarbsPer100, dataValid: boolean) => {
+    setCarbsDataValid(dataValid);
     setProduct({ ...product, carbsData: { ...product.carbsData, per100 } });
-  };
-
-  // <IonSegmentStyled
-  //       value={data.portionType}
-  //       onIonChange={(e) => handlePortionTypeChange(e.detail.value)}
-  //     >
-  //       <IonSegmentButton value={PortionTypeEnum.QUANTITY}>
-  //         <IonLabel>{t("page.products.portion.type.quantity")}</IonLabel>
-  //       </IonSegmentButton>
-  //       <IonSegmentButton value={PortionTypeEnum.WEIGTH}>
-  //         <IonLabel>{t("page.products.portion.type.weight")}</IonLabel>
-  //       </IonSegmentButton>
-  //     </IonSegmentStyled>
-  
-
-  // const handlePortionTypeChange = (type: string | undefined) => {
-  //   switch (type) {
-  //     case PortionTypeEnum.WEIGTH:
-  //       onPortionTypeChange(PortionTypeEnum.WEIGTH);
-  //       break;
-  //     case PortionTypeEnum.QUANTITY:
-  //       onPortionTypeChange(PortionTypeEnum.QUANTITY);
-  //       break;
-  //   }
-  // };
-
-  const handlePortionTypeChange = (type: PortionType) => {
-    // switch (type) {
-    //   case PortionTypeEnum.WEIGTH:
-    //     return setProduct({ ...product, portionType: PortionTypeEnum.WEIGTH });
-    //   case PortionTypeEnum.QUANTITY:
-    //     return setProduct({
-    //       ...product,
-    //       portionType: PortionTypeEnum.QUANTITY,
-    //     });
-    // }
   };
 
   const handleSave = () => {
     setSaveAttempted(true);
-    // const carbsDataValid = portionValid() && carbsValid() && sugarsValid();
-
-    if (product.category && product.name/* && carbsDataValid*/) {
+    if (product.category && product.name && carbsDataValid) {
       const newProduct = new Product(
         product.name,
         product.category,
         product.units,
-        product.carbsData,
+        product.carbsData
       );
       dispatch(addProduct(newProduct));
       history.goBack();
@@ -134,10 +99,6 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
   const categoryValid = useCallback(() => {
     return !saveAttempted || product.category !== null;
   }, [product.category, saveAttempted]);
-
-  // const portionValid = useCallback(() => {
-  //   return product.portion > 0;
-  // }, [product.portion]);
 
   return (
     <IonPage>
@@ -206,21 +167,45 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
         <IonCard>
           <IonCardHeader>
             <IonCardSubtitle>
-              {t("page.products.form.portion.and.carbohydrates")}
+              {t("page.products.form.carbohydrates")}
+              {t(product.units.shortNameKey)}
             </IonCardSubtitle>
           </IonCardHeader>
-          <IonCardContent>
-            <CarbsPerPortionData
-              product={product}
-              onPerPortionChange={handlePerPortionChange}
-            />
-          </IonCardContent>
           <IonCardContent>
             <CarbsPer100Data
               product={product}
               onPer100Change={handlePer100Change}
             />
           </IonCardContent>
+        </IonCard>
+        <IonCard>
+          <CardHeader>
+            <IonCardSubtitle>
+              {t("page.products.form.quantity")}
+            </IonCardSubtitle>
+            <IonItem lines="none">
+              <IonToggle
+                checked={product.carbsData.perPortionOn}
+                onIonChange={(e) =>
+                  setProduct({
+                    ...product,
+                    carbsData: {
+                      ...product.carbsData,
+                      perPortionOn: e.detail.checked,
+                    },
+                  })
+                }
+              />
+            </IonItem>
+          </CardHeader>
+          {product.carbsData.perPortionOn && (
+            <IonCardContent>
+              <CarbsPerPortionData
+                product={product}
+                onPerPortionChange={handlePerPortionChange}
+              />
+            </IonCardContent>
+          )}
         </IonCard>
         <SaveButton
           color="primary"
@@ -231,11 +216,6 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
           {t("button.save")}
         </SaveButton>
       </IonContentStyled>
-      <CategoriesModal
-        open={openCategoryModal}
-        onClose={() => setOpenCategoryModal(false)}
-        onSelect={handleCategorySelect}
-      />
     </IonPage>
   );
 };
@@ -251,6 +231,12 @@ const IonContentStyled = styled(IonContent)`
   & .input-right-align {
     text-align: right;
   }
+`;
+
+const CardHeader = styled(IonCardHeader)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const SaveButton = styled(IonButton)`
