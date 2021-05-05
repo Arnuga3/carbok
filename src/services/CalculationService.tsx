@@ -102,11 +102,11 @@ export class CalculationService {
           if (category.type === product.category.type) {
             const weight =
               product.portionTypeInUse === "weight"
-                ? product.mealProductCarbs.per100.portion
-                : product.carbsData.per100.carbs !== 0
+                ? +product.mealProductCarbs.per100.portion
+                : +product.carbsData.per100.carbs !== 0
                 ? this.getPercentsOf(
-                    product.mealProductCarbs.perPortion.carbs,
-                    product.carbsData.per100.carbs
+                    +product.mealProductCarbs.perPortion.carbs,
+                    +product.carbsData.per100.carbs
                   )
                 : 0;
 

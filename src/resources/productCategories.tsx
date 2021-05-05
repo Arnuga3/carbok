@@ -5,19 +5,19 @@ export const categories = [
       "grains",
       "product.category.grains",
       "product.category.grains.description",
-      "#F3872F"
+      "#e29578"
     ),
     new ProductCategory(
       "fruit",
       "product.category.fruit",
       "product.category.fruit.description",
-      "#80b918"
+      "#83c5be"
     ),
     new ProductCategory(
       "vegetables",
       "product.category.vegetables",
       "product.category.vegetables.description",
-      "#2b9348"
+      "#006d77"
     ),
     new ProductCategory(
       "protein",
@@ -35,12 +35,12 @@ export const categories = [
       "sweets",
       "product.category.sweets",
       "product.category.sweets.description",
-      "#FF598F"
+      "#ffafcc"
     ),
     new ProductCategory(
       "other",
       "product.category.other",
       "product.category.other.description",
-      "#15B2D3"
+      "#a2d2ff"
     ),
   ];

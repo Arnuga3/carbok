@@ -120,7 +120,7 @@ export const Products: React.FC<Props> = ({ meal }) => {
           </Note>
         )}
         <AddButton
-          color="primary"
+          color="tertiary"
           expand="block"
           shape="round"
           onClick={() => setOpenProductsModal(true)}

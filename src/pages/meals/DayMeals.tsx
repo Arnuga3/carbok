@@ -108,7 +108,7 @@ export const DayMeals: React.FC = () => {
             ))}
           </IonReorderGroup>
           <AddButton
-            color="primary"
+            color="tertiary"
             expand="block"
             shape="round"
             onClick={() => setOpenActionSheet(true)}

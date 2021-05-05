@@ -21,7 +21,7 @@ import {
   copyOutline,
   createOutline,
   listOutline,
-  statsChartOutline,
+  pieChartOutline,
 } from "ionicons/icons";
 import { MealCarbsChart } from "../../components/common/MealCarbsChart";
 import CalculationService from "../../services/CalculationService";
@@ -55,7 +55,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
 
   return (
     <IonCard>
-      <CardHeader color="primary">
+      <CardHeader>
         <CardHeaderTitle>
           <CardTitleWrapper>
             <Reorder />
@@ -66,7 +66,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
           </CardTitleWrapper>
         </CardHeaderTitle>
         <CardHeaderCarbs>
-          <TotalCarbs>
+          <TotalCarbs color="secondary">
             {calculation.getMealTotalCarbs(meal.products)}
           </TotalCarbs>
           <small>{t("carbohydrates")}</small>
@@ -94,18 +94,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
         <Divider />
         <CardActions>
           <ActionButton
-            fill="clear"
-            shape="round"
-            size="small"
-            onClick={toggleDisplay}
-            disabled={meal.products.length === 0}
-          >
-            <IonIcon
-              icon={display === "details" ? statsChartOutline : listOutline}
-              slot="icon-only"
-            />
-          </ActionButton>
-          <ActionButton
+            color="secondary"
             fill="clear"
             shape="round"
             size="small"
@@ -115,6 +104,20 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
             <IonIcon icon={copyOutline} slot="icon-only" />
           </ActionButton>
           <ActionButton
+            color="secondary"
+            fill="clear"
+            shape="round"
+            size="small"
+            onClick={toggleDisplay}
+            disabled={meal.products.length === 0}
+          >
+            <IonIcon
+              icon={display === "details" ? pieChartOutline : listOutline}
+              slot="icon-only"
+            />
+          </ActionButton>
+          <ActionButton
+            color="secondary"
             fill="clear"
             shape="round"
             size="small"
@@ -154,8 +157,8 @@ const CardHeaderCarbs = styled.div`
 `;
 
 const TotalCarbs = styled(IonText)`
-  font-size: 1.8em;
-  fon-weight: bold;
+  font-size: 2em;
+  font-weight: bold;
 `;
 
 const CardTitleWrapper = styled.div`
@@ -179,11 +182,12 @@ const ActionButton = styled(IonButton)`
 
 const CardBody = styled(IonCardContent)`
   margin-top: 8px;
+  opacity: 0.8;
 `;
 
 const Divider = styled.div`
   margin: 8px 0 4px 0;
-  border-top: 1px solid var(--ion-color-primary);
+  border-top: 1px solid var(--ion-color-medium);
 `;
 
 const CardContent = styled.div`

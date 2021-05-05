@@ -139,7 +139,7 @@ export const ProductsSelectModal: React.FC<Props> = ({ meal, open, onClose }) =>
         <IonFooter slot="fixed">
           <IonToolbar>
             <SelectButton
-              color="primary"
+              color="tertiary"
               onClick={handleSelect}
               expand="block"
               shape="round"
