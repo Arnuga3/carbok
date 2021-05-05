@@ -12,7 +12,7 @@ export const ProductListItem: React.FC<Props> = ({ product }) => {
   const data = product.portionType === 'quantity'
     ? {
         ...product.carbsData.perPortion,
-        portion: `${product.carbsData.perPortion.quantity} ${product.carbsData.perPortion.description}`,
+        portion: `${product.carbsData.perPortion.quantity} ${product.carbsData.perPortion.description ?? ''}`,
       }
     : {
         ...product.carbsData.per100,

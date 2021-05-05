@@ -1,7 +1,6 @@
-import { IProduct } from "../classes/product/IProduct";
+import { IMealProduct } from "../classes/meal/IMealProduct";
 import { ICarbsPer100 } from "../classes/productCarbs/ICarbsPer100";
 import { ICarbsPerPortion } from "../classes/productCarbs/ICarbsPerPortion";
-// import { IProductCarbs } from "../classes/productCarbs/IProductCarbs";
 import { IChartProductCategory } from "../classes/productCategory/IChartProductCategory";
 import { IProductCategory } from "../classes/productCategory/IProductCategory";
 import { chartColors } from "../resources/config";
@@ -79,7 +78,7 @@ export class CalculationService {
     };
   }
 
-  public getPieChartData(products: IProduct[]) {
+  public getPieChartData(products: IMealProduct[]) {
     const chartProductCategories: IChartProductCategory[] = categories.map(
       (category: IProductCategory) => ({
         value: 0,
@@ -93,20 +92,23 @@ export class CalculationService {
 
   private getCategoriesWithWeights(
     categories: IChartProductCategory[],
-    products: IProduct[]
+    products: IMealProduct[]
   ): IChartProductCategory[] {
     let totalWeightCount: number = 0; // Used to calculate % of total weights
     return products
-      .reduce((data, product: IProduct) => {
+      .reduce((data, product: IMealProduct) => {
         // Count total weights for each category
         return data.map((category: IChartProductCategory) => {
-          //FIXME if (category.type === product.category.type) {
-          //   totalWeightCount += +product.carbsData.portion;
-          //   return {
-          //     ...category,
-          //     value: category.value + +product.carbsData.portion,
-          //   };
-          // }
+          if (category.type === product.category.type) {
+            const weight =
+              product.portionTypeInUse === "weight"
+                ? +product.mealProductCarbs.per100.portion
+                : (product.mealProductCarbs.perPortion.carbs * 100) /
+                  product.carbsData.per100.carbs;
+
+            totalWeightCount += weight;
+            return { ...category, value: category.value + weight };
+          }
           return category;
         });
       }, categories)
@@ -117,21 +119,27 @@ export class CalculationService {
       }));
   }
 
-  public getMealTotalCarbs(products: IProduct[]): number {
-    return products.reduce((total, product: IProduct) => {
-      const productCarbs = 0; //FIXME +product.carbsData.carbs;
+  public getMealTotalCarbs(products: IMealProduct[]): number {
+    return products.reduce((total, product: IMealProduct) => {
+      const productCarbs =
+        product.portionTypeInUse === "weight"
+          ? +product.mealProductCarbs.per100.carbs
+          : +product.mealProductCarbs.perPortion.carbs;
       return this.dec2((total += productCarbs));
     }, 0);
   }
 
-  public getMealTotalSugars(products: IProduct[]): number {
-    return products.reduce((total, product: IProduct) => {
-      const productSugars = 0; //FIXME +product.carbsData.sugars;
+  public getMealTotalSugars(products: IMealProduct[]): number {
+    return products.reduce((total, product: IMealProduct) => {
+      const productSugars =
+        product.portionTypeInUse === "weight"
+          ? +product.mealProductCarbs.per100.sugars
+          : +product.mealProductCarbs.perPortion.sugars;
       return this.dec2((total += productSugars));
     }, 0);
   }
 
-  public getPieChartCarbSugarPercents(products: IProduct[]) {
+  public getPieChartCarbSugarPercents(products: IMealProduct[]) {
     const carbs = this.getMealTotalCarbs(products);
     const sugars = this.getMealTotalSugars(products);
     const sugarPercentage = this.getPercentsOfSugars(sugars, carbs);

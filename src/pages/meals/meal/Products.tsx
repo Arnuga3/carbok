@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import {
-  IonAlert,
   IonAvatar,
   IonButton,
   IonIcon,
@@ -23,23 +21,19 @@ import {
 import { IMeal } from "../../../classes/meal/IMeal";
 import { CircleBadge } from "../../../components/common/CircleBadge";
 import { MealProductListItem } from "../../../components/common/MealProductListItem";
-import { ProductsModal } from "./ProductsModal";
-import { updateMeal } from "../../../redux/actions/mealsActions";
-import CalculationService from "../../../services/CalculationService";
+import { ProductsSelectModal } from "./ProductsSelectModal";
 import { IMealProduct } from "../../../classes/meal/IMealProduct";
-import { PortionType } from "../../../classes/productCarbs/PortionType";
+import { ChangePortionWeightAlert } from "./productAlerts/ChangePortionWeightAlert";
+import { ChangeQuantityAlert } from "./productAlerts/ChangeQuantityAlert";
+import { DeleteAlert } from "./productAlerts/DeleteAlert";
 
 interface Props {
   meal: IMeal;
 }
 const MEALSPAGE = "meals-page";
 
-const slidingItems: any = document.querySelector(".prod-slide");
-
 export const Products: React.FC<Props> = ({ meal }) => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const calculation = new CalculationService();
 
   const [openProductsModal, setOpenProductsModal] = useState(false);
   const [openPortionSizeAlert, setOpenPortionSizeAlert] = useState(false);
@@ -59,76 +53,6 @@ export const Products: React.FC<Props> = ({ meal }) => {
   const handlePortionQunatityChange = (product: IMealProduct) => {
     setSelectedProduct(product);
     setOpenPortionQuantityAlert(true);
-  };
-
-  const handlePortionSizeUpdate = (targetPortion: number) => {
-    if (selectedProduct) {
-      const { carbs, sugars } = selectedProduct.carbsData.per100;
-      const portionType: PortionType = "weight";
-
-      const mealUpdated = {
-        ...meal,
-        products: meal.products.map((product: IMealProduct) =>
-          product.id === selectedProduct.id
-            ? {
-                ...product,
-                portionTypeInUse: portionType,
-                mealProductCarbs: {
-                  ...product.mealProductCarbs,
-                  per100: calculation.getCarbsFromWeight(
-                    carbs,
-                    sugars,
-                    targetPortion
-                  ),
-                },
-              }
-            : product
-        ),
-      };
-      dispatch(updateMeal(mealUpdated));
-    }
-  };
-
-  const handlePortionQuantityUpdate = (targetQuantity: number) => {
-    if (selectedProduct) {
-      const portionType: PortionType = "quantity";
-
-      const mealUpdated = {
-        ...meal,
-        products: meal.products.map((product: IMealProduct) =>
-          product.id === selectedProduct.id
-            ? {
-                ...product,
-                portionTypeInUse: portionType,
-                mealProductCarbs: {
-                  ...product.mealProductCarbs,
-                  perPortion: calculation.getCarbsFromQuantity(
-                    selectedProduct.carbsData.perPortion,
-                    targetQuantity,
-                  ),
-                },
-              }
-            : product
-        ),
-      };
-      dispatch(updateMeal(mealUpdated));
-    }
-  };
-
-  const handleMealProductDelete = () => {
-    if (slidingItems) {
-      slidingItems.closeOpened();
-    }
-    if (selectedProduct) {
-      dispatch(
-        updateMeal({
-          ...meal,
-          products: meal.products.filter(
-            (prod) => prod.id !== selectedProduct.id
-          ),
-        })
-      );
-    }
   };
 
   const handleOnMealProductDelete = (product: IMealProduct) => {
@@ -204,66 +128,28 @@ export const Products: React.FC<Props> = ({ meal }) => {
           {t("page.meals.button.add.product")}
         </AddButton>
       </IonList>
-      <ProductsModal
+      <ProductsSelectModal
         meal={meal}
         open={openProductsModal}
         onClose={() => setOpenProductsModal(false)}
       />
-      <IonAlert
-        isOpen={openPortionSizeAlert}
-        onDidDismiss={() => setOpenPortionSizeAlert(false)}
-        header={`${t("portion.size")} (${
-          selectedProduct ? t(selectedProduct?.units.shortNameKey) : ""
-        })`}
-        inputs={[
-          {
-            name: "portion",
-            value: selectedProduct?.mealProductCarbs.per100.portion,
-            type: "number",
-          },
-        ]}
-        buttons={[
-          { text: t("button.cancel") },
-          {
-            text: t("button.save"),
-            handler: ({ portion }) => handlePortionSizeUpdate(portion),
-          },
-        ]}
+      <ChangePortionWeightAlert
+        meal={meal}
+        product={selectedProduct}
+        open={openPortionSizeAlert}
+        onClose={() => setOpenPortionSizeAlert(false)}
       />
-      <IonAlert
-        isOpen={openPortionQuantityAlert}
-        onDidDismiss={() => setOpenPortionQuantityAlert(false)}
-        header={`${t("quantity")} (${
-          selectedProduct ? selectedProduct?.carbsData.perPortion.description : ""
-        })`}
-        inputs={[
-          {
-            name: "quantity",
-            value: selectedProduct?.mealProductCarbs.perPortion.quantity,
-            type: "number",
-          },
-        ]}
-        buttons={[
-          { text: t("button.cancel") },
-          {
-            text: t("button.save"),
-            handler: ({ quantity }) => handlePortionQuantityUpdate(quantity),
-          },
-        ]}
+      <ChangeQuantityAlert
+        meal={meal}
+        product={selectedProduct}
+        open={openPortionQuantityAlert}
+        onClose={() => setOpenPortionQuantityAlert(false)}
       />
-      <IonAlert
-        isOpen={openDeleteAlert}
-        onDidDismiss={() => setOpenDeleteAlert(false)}
-        header={t("page.meals.delete.meal.product.alert.title")}
-        subHeader={t("page.meals.delete.meal.product.alert.subtitle")}
-        buttons={[
-          { text: t("button.cancel"), role: "cancel" },
-          {
-            text: t("button.delete"),
-            role: "destructive",
-            handler: handleMealProductDelete,
-          },
-        ]}
+      <DeleteAlert
+        meal={meal}
+        product={selectedProduct}
+        open={openDeleteAlert}
+        onClose={() => setOpenDeleteAlert(false)}
       />
     </>
   );

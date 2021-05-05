@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import {
   IonButton,
-  IonButtons,
   IonCard,
   IonCardContent,
   IonCardHeader,
@@ -16,7 +15,6 @@ import {
   IonRow,
   IonText,
   IonTitle,
-  IonToolbar,
 } from "@ionic/react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
@@ -46,11 +44,11 @@ export const CalculatorModal: React.FC<Props> = ({
 
   useEffect(() => {
     if (product) {
-      //FIXME setData({
-      //   portion: product.carbsData.portion,
-      //   carbs: product.carbsData.carbs,
-      //   targetPortion: product.carbsData.defaultPortion ?? 0,
-      // });
+      setData({
+        portion: 100,
+        carbs: product.carbsData.per100.carbs,
+        targetPortion: product.carbsData.per100.portion ?? 0,
+      });
     } else {
       setData(defaultDataState);
     }
@@ -72,11 +70,11 @@ export const CalculatorModal: React.FC<Props> = ({
 
   const handleReset = () => {
     if (product) {
-      //FIXME setData({
-      //   portion: product.carbsData.portion,
-      //   carbs: product.carbsData.carbs,
-      //   targetPortion: product.carbsData.defaultPortion ?? 0,
-      // });
+      setData({
+        portion: 100,
+        carbs: product.carbsData.per100.carbs,
+        targetPortion: product.carbsData.per100.portion ?? 0,
+      });
     } else {
       setData(defaultDataState);
     }

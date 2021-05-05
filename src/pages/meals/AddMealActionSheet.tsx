@@ -1,34 +1,31 @@
 import React from "react";
 import { IonActionSheet } from "@ionic/react";
-import { chatboxOutline, close, trashOutline } from "ionicons/icons";
+import { close } from "ionicons/icons";
 
+import { mealTypes } from "../../resources/mealTypes";
 import { useTranslation } from "react-i18next";
 
 interface Props {
   open: any;
   onClose: any;
-  onNote: any;
-  onDelete: any;
+  onSelect: any;
 }
 
-export const MealActionSheet: React.FC<Props> = ({ open, onClose, onNote, onDelete }) => {
+export const AddMealActionSheet: React.FC<Props> = ({
+  open,
+  onClose,
+  onSelect,
+}) => {
   const { t } = useTranslation();
   return (
     <IonActionSheet
       isOpen={open}
       onDidDismiss={onClose}
       buttons={[
-        {
-          text: t("button.note"),
-          icon: chatboxOutline,
-          handler: onNote,
-        },
-        {
-          text: t("button.delete"),
-          role: "destructive",
-          icon: trashOutline,
-          handler: onDelete,
-        },
+        ...mealTypes.map((mealType) => ({
+          text: t(mealType.nameKey),
+          handler: () => onSelect(mealType),
+        })),
         {
           text: t("button.cancel"),
           icon: close,

@@ -33,10 +33,10 @@ interface Props {
 
 const defaultSelectedProducts: IProduct[] = [];
 
-export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
+export const ProductsSelectModal: React.FC<Props> = ({ meal, open, onClose }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const calculation = new CalculationService();
+  const c = new CalculationService();
 
   const { products } = useProducts();
   const [searchResult, setSearchResult] = useState(products);
@@ -82,7 +82,7 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
           ...mealProduct,
           mealProductCarbs: {
             ...mealProduct.mealProductCarbs,
-            per100: calculation.getCarbsFromWeight(
+            per100: c.getCarbsFromWeight(
               carbs,
               sugars,
               portion,
@@ -90,12 +90,6 @@ export const ProductsModal: React.FC<Props> = ({ meal, open, onClose }) => {
           }
         }
       }
-
-      if (mealProduct.portionType === 'quantity') {
-        // TODO
-        return mealProduct;
-      }
-      
       return mealProduct;
     });
 

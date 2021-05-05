@@ -28,7 +28,7 @@ import CalculationService from "../../services/CalculationService";
 import moment from "moment";
 import { useMeals } from "../../hooks/mealsHook";
 import { copyMeal } from "../../redux/actions/mealsActions";
-import { MealCardProduct } from "./MealCardProduct";
+import { DayMealCardProduct } from "./DayMealCardProduct";
 
 interface Props {
   meal: IMeal;
@@ -36,7 +36,7 @@ interface Props {
 
 type Display = "details" | "stats";
 
-export const MealCard: React.FC<Props> = ({ meal }) => {
+export const DayMealCard: React.FC<Props> = ({ meal }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const calculation = new CalculationService();
@@ -76,7 +76,7 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
         {display === "details" ? (
           <>
             {meal.products.map((product, i) => (
-              <MealCardProduct key={i} product={product} meal={meal} t={t} i={i} />
+              <DayMealCardProduct key={i} product={product} meal={meal} t={t} i={i} />
             ))}
             {meal.note && (
               <Note>

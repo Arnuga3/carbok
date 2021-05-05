@@ -1,20 +1,21 @@
 import React from "react";
 import { IonActionSheet } from "@ionic/react";
-import { close } from "ionicons/icons";
+import { chatboxOutline, close, trashOutline } from "ionicons/icons";
 
-import { mealTypes } from "../../resources/mealTypes";
 import { useTranslation } from "react-i18next";
 
 interface Props {
   open: any;
   onClose: any;
-  onSelect: any;
+  onNote: any;
+  onDelete: any;
 }
 
-export const MealTypeActionSheet: React.FC<Props> = ({
+export const ActionSheet: React.FC<Props> = ({
   open,
   onClose,
-  onSelect,
+  onNote,
+  onDelete,
 }) => {
   const { t } = useTranslation();
   return (
@@ -22,10 +23,17 @@ export const MealTypeActionSheet: React.FC<Props> = ({
       isOpen={open}
       onDidDismiss={onClose}
       buttons={[
-        ...mealTypes.map((mealType) => ({
-          text: t(mealType.nameKey),
-          handler: () => onSelect(mealType),
-        })),
+        {
+          text: t("button.note"),
+          icon: chatboxOutline,
+          handler: onNote,
+        },
+        {
+          text: t("button.delete"),
+          role: "destructive",
+          icon: trashOutline,
+          handler: onDelete,
+        },
         {
           text: t("button.cancel"),
           icon: close,

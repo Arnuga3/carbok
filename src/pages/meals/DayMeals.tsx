@@ -20,8 +20,8 @@ import styled from "styled-components";
 import moment from "moment";
 import "moment/min/locales";
 
-import { MealTypeActionSheet } from "./MealTypeActionSheet";
-import { MealCard } from "./MealCard";
+import { AddMealActionSheet } from "./AddMealActionSheet";
+import { DayMealCard } from "./DayMealCard";
 import { Meal } from "../../classes/meal/Meal";
 
 import {
@@ -35,7 +35,7 @@ import { IMealType } from "../../classes/mealType/IMealType";
 import { useTranslation } from "react-i18next";
 import { useAppSettings } from "../../hooks/appSettingsHook";
 
-export const Meals: React.FC = () => {
+export const DayMeals: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { settings } = useAppSettings();
@@ -104,7 +104,7 @@ export const Meals: React.FC = () => {
         <IonList>
           <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
             {meals.map((meal, i) => (
-              <MealCard key={i} meal={meal} />
+              <DayMealCard key={i} meal={meal} />
             ))}
           </IonReorderGroup>
           <AddButton
@@ -117,7 +117,7 @@ export const Meals: React.FC = () => {
           </AddButton>
         </IonList>
       </IonContent>
-      <MealTypeActionSheet
+      <AddMealActionSheet
         open={openActionSheet}
         onSelect={handleMealTypeSelect}
         onClose={() => setOpenActionSheet(false)}

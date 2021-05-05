@@ -11,7 +11,7 @@ interface Props {
   i: number;
 }
 
-export const MealCardProduct: React.FC<Props> = ({ product, t, i, meal }) => {
+export const DayMealCardProduct: React.FC<Props> = ({ product, t, i, meal }) => {
   const data =
     product.portionTypeInUse === "quantity"
       ? {

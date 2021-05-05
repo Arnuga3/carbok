@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import {
-  IonAlert,
   IonBackButton,
   IonButton,
   IonContent,
@@ -11,21 +10,18 @@ import {
   isPlatform,
   IonTitle,
 } from "@ionic/react";
-import styled from "styled-components";
-import { Products } from "./Products";
-import { IMeal } from "../../../classes/meal/IMeal";
-import { MealActionSheet } from "./MealActionSheet";
-
-import { useMeals } from "../../../hooks/mealsHook";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import {
-  deleteMeal,
-  retrieveMeals,
-  updateMeal,
-} from "../../../redux/actions/mealsActions";
+import styled from "styled-components";
 import moment from "moment";
 import { ellipsisVertical } from "ionicons/icons";
+import { IMeal } from "../../../classes/meal/IMeal";
+import { Products } from "./Products";
+import { ActionSheet } from "./ActionSheet";
+import { NoteAlert } from "./alerts/NoteAlert";
+import { useMeals } from "../../../hooks/mealsHook";
+import { retrieveMeals } from "../../../redux/actions/mealsActions";
+import { DeleteAlert } from "./alerts/DeleteAlert";
 
 interface MealPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -46,19 +42,6 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
   const meal: IMeal | undefined = meals.find(
     (meal) => meal.id === match.params.id
   );
-
-  const handleDelete = () => {
-    if (meal) {
-      dispatch(deleteMeal(meal));
-      history.goBack();
-    }
-  };
-
-  const handleNote = (note: string) => {
-    if (meal && note) {
-      dispatch(updateMeal({ ...meal, note }));
-    }
-  };
 
   return (
     <IonPage>
@@ -86,47 +69,22 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
         </HeaderContent>
       </IonHeader>
       <IonContent fullscreen>{meal && <Products meal={meal} />}</IonContent>
-      <MealActionSheet
+      <ActionSheet
         open={openActionSheet}
         onNote={() => setOpenNoteAlert(true)}
         onDelete={() => setOpenDeleteAlert(true)}
         onClose={() => setOpenActionSheet(false)}
       />
-      <IonAlert
-        isOpen={openDeleteAlert}
-        onDidDismiss={() => setOpenDeleteAlert(false)}
-        header={t("page.meals.delete.meal.alert.title")}
-        subHeader={t("page.meals.delete.meal.alert.subtitle")}
-        buttons={[
-          { text: t("button.cancel"), role: "cancel" },
-          {
-            text: t("button.delete"),
-            role: "destructive",
-            handler: handleDelete,
-          },
-        ]}
+      <DeleteAlert
+        meal={meal}
+        history={history}
+        open={openDeleteAlert}
+        onClose={() => setOpenDeleteAlert(false)}
       />
-      <IonAlert
-        isOpen={openNoteAlert}
-        onDidDismiss={() => setOpenNoteAlert(false)}
-        header={t("page.meals.note.alert.title")}
-        inputs={[
-          {
-            name: "note",
-            value: meal?.note,
-            type: "textarea",
-            attributes: {
-              maxlength: 100,
-            },
-          },
-        ]}
-        buttons={[
-          { text: t("button.cancel") },
-          {
-            text: t("button.save"),
-            handler: ({ note }) => handleNote(note),
-          },
-        ]}
+      <NoteAlert
+        meal={meal}
+        open={openNoteAlert}
+        onClose={() => setOpenNoteAlert(false)}
       />
     </IonPage>
   );

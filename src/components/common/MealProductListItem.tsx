@@ -9,17 +9,20 @@ interface Props {
 
 export const MealProductListItem: React.FC<Props> = ({ product }) => {
   const { t } = useTranslation();
-  const data = product.portionTypeInUse === 'quantity'
-    ? {
-        ...product.mealProductCarbs.perPortion,
-        portion: `${product.mealProductCarbs.perPortion.quantity} ${product.mealProductCarbs.perPortion.description}`,
-      }
-    : {
-        ...product.mealProductCarbs.per100,
-        portion: `${product.mealProductCarbs.per100.portion}${t(
-          product.units.shortNameKey
-        )}`,
-      };
+  const data =
+    product.portionTypeInUse === "quantity"
+      ? {
+          ...product.mealProductCarbs.perPortion,
+          portion: `${product.mealProductCarbs.perPortion.quantity} ${
+            product.mealProductCarbs.perPortion.description ?? ""
+          }`,
+        }
+      : {
+          ...product.mealProductCarbs.per100,
+          portion: `${product.mealProductCarbs.per100.portion}${t(
+            product.units.shortNameKey
+          )}`,
+        };
   return (
     <ListItemContent>
       <ContentRow>

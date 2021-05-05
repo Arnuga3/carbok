@@ -13,7 +13,7 @@ import {
 import { IonReactRouter } from "@ionic/react-router";
 import { restaurant, fastFood, person } from "ionicons/icons";
 import { Overview } from "./pages/overview/Overview";
-import { Meals } from "./pages/meals/Meals";
+import { DayMeals } from "./pages/meals/DayMeals";
 import { Meal } from "./pages/meals/meal/Meal";
 import { Products } from "./pages/products/Products";
 import { AddProduct } from "./pages/products/product/AddProduct";
@@ -61,7 +61,7 @@ const App: React.FC = () => {
         <IonTabs>
           <IonRouterOutlet>
             <Route exact path="/:tab(overview)" component={Overview} />
-            <Route exact path="/:tab(meals)" component={Meals} />
+            <Route exact path="/:tab(meals)" component={DayMeals} />
             <Route exact path="/:tab(meals)/:id/products" component={Meal} />
             <Route exact path="/:tab(products)" component={Products} />
             <Route exact path="/:tab(settings)" component={Settings} />
