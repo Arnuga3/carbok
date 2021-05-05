@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 import styled from "styled-components";
@@ -20,6 +20,10 @@ export const DateRangeSwitch: React.FC<Props> = ({ data, onDateRangeChange }) =>
   const { t } = useTranslation();
   const c = new CalculationService();
   const mealsStorageService = new MealsStorageService();
+
+  useEffect(() => {
+    getCardRangeData("7_days");
+  }, []);
 
   const getCardRangeData = async (range: Range) => {
     let rangeMeals: IMeal[] = [];
