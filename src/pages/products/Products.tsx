@@ -35,6 +35,7 @@ import {
   retrieveProducts,
 } from "../../redux/actions/productsActions";
 import { CircleBadge } from "../../components/common/CircleBadge";
+import { categoryColours } from "../../resources/config";
 
 const PRODUCTSPAGE = "products-page";
 
@@ -133,7 +134,7 @@ export const Products: React.FC = () => {
               >
                 <IonItem detail>
                   <IonAvatar slot="start">
-                    <CircleBadge color={product.category.color} size={40}>
+                    <CircleBadge color={categoryColours[product.category.type]} size={40}>
                       {t(product.category.nameKey).slice(0, 3)}
                     </CircleBadge>
                   </IonAvatar>

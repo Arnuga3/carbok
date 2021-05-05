@@ -7,6 +7,7 @@ import { IProductCategory } from "../../../../classes/productCategory/IProductCa
 
 import { categories } from "../../../../resources/productCategories";
 import { IProductDummy } from "../../../../classes/product/IProductDummy";
+import { categoryColours } from "../../../../resources/config";
 
 interface Props {
   data: IProductDummy;
@@ -26,10 +27,10 @@ export const Category: React.FC<Props> = ({
         <IonChipStyled
           key={i}
           outline={!!(data.category && category.type === data.category.type)}
-          color={categoryValid ? category.color : "danger"}
+          color={categoryValid ? categoryColours[category.type] : "danger"}
           onClick={() => onCategorySelect(category)}
         >
-          <IonLabelStyled color={category.color}>
+          <IonLabelStyled color={categoryColours[category.type]}>
             {t(category.nameKey)}
           </IonLabelStyled>
         </IonChipStyled>

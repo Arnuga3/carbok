@@ -56,7 +56,7 @@ export const CategoriesModal: React.FC<Props> = ({
           {categories.map((category, i) => (
             <Category
               key={i}
-              color={category.color}
+              // color={category.color}
               onClick={() => onSelect(category)}
             >
               {t(category.nameKey)}

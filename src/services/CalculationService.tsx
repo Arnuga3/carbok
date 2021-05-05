@@ -3,7 +3,7 @@ import { ICarbsPer100 } from "../classes/productCarbs/ICarbsPer100";
 import { ICarbsPerPortion } from "../classes/productCarbs/ICarbsPerPortion";
 import { IChartProductCategory } from "../classes/productCategory/IChartProductCategory";
 import { IProductCategory } from "../classes/productCategory/IProductCategory";
-import { chartColors } from "../resources/config";
+import { categoryColours, chartColors } from "../resources/config";
 import { categories } from "../resources/productCategories";
 
 export class CalculationService {
@@ -83,7 +83,7 @@ export class CalculationService {
       (category: IProductCategory) => ({
         value: 0,
         type: category.type,
-        color: category.color,
+        color: categoryColours[category.type],
         name: category.nameKey,
       })
     );
