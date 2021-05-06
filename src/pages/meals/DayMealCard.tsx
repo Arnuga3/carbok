@@ -29,6 +29,7 @@ import moment from "moment";
 import { useMeals } from "../../hooks/mealsHook";
 import { copyMeal } from "../../redux/actions/mealsActions";
 import { DayMealCardProduct } from "./DayMealCardProduct";
+import { getMealKey } from "../../resources/mealTypes";
 
 interface Props {
   meal: IMeal;
@@ -57,13 +58,8 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
     <IonCard>
       <CardHeader>
         <CardHeaderTitle>
-          <CardTitleWrapper>
-            <Reorder />
-            <div>
-              <IonCardTitle>{t(meal.type.nameKey)}</IonCardTitle>
-              <small>{`${t("products")}: ${meal.products.length}`}</small>
-            </div>
-          </CardTitleWrapper>
+          <CardTitle>{t(getMealKey(meal.type))}</CardTitle>
+          <small>{`${t("products")}: ${meal.products.length}`}</small>
         </CardHeaderTitle>
         <CardHeaderCarbs>
           <TotalCarbs color="secondary">
@@ -76,7 +72,13 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
         {display === "details" ? (
           <>
             {meal.products.map((product, i) => (
-              <DayMealCardProduct key={i} product={product} meal={meal} t={t} i={i} />
+              <DayMealCardProduct
+                key={i}
+                product={product}
+                meal={meal}
+                t={t}
+                i={i}
+              />
             ))}
             {meal.note && (
               <Note>
@@ -93,8 +95,9 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
         )}
         <Divider />
         <CardActions>
+          <IonReorder />
           <ActionButton
-            color="secondary"
+            color="primary"
             fill="clear"
             shape="round"
             size="small"
@@ -104,7 +107,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
             <IonIcon icon={copyOutline} slot="icon-only" />
           </ActionButton>
           <ActionButton
-            color="secondary"
+            color="primary"
             fill="clear"
             shape="round"
             size="small"
@@ -117,7 +120,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
             />
           </ActionButton>
           <ActionButton
-            color="secondary"
+            color="primary"
             fill="clear"
             shape="round"
             size="small"
@@ -150,6 +153,12 @@ const CardHeaderTitle = styled.div`
   flex: 5;
 `;
 
+const CardTitle = styled.div`
+  color: var(--ion-color-primary);
+  font-size: 1.6em;
+  font-weight: bold;
+`;
+
 const CardHeaderCarbs = styled.div`
   display: flex;
   flex-direction: column;
@@ -159,15 +168,6 @@ const CardHeaderCarbs = styled.div`
 const TotalCarbs = styled(IonText)`
   font-size: 2em;
   font-weight: bold;
-`;
-
-const CardTitleWrapper = styled.div`
-  display: flex;
-  justify-content: flex-start;
-`;
-
-const Reorder = styled(IonReorder)`
-  margin-right: 16px;
 `;
 
 const CardActions = styled.div`
@@ -182,7 +182,6 @@ const ActionButton = styled(IonButton)`
 
 const CardBody = styled(IonCardContent)`
   margin-top: 8px;
-  opacity: 0.8;
 `;
 
 const Divider = styled.div`

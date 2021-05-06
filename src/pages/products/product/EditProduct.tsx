@@ -29,7 +29,7 @@ import { RouteComponentProps } from "react-router";
 import { IUnits } from "../../../classes/units/IUnits";
 import { IProduct } from "../../../classes/product/IProduct";
 import { useProducts } from "../../../hooks/productsHook";
-import { productUnits } from "../../../resources/productUnits";
+import { getUnitShortKey, productUnits } from "../../../resources/productUnits";
 import { IProductDummy } from "../../../classes/product/IProductDummy";
 import { ICarbsPer100 } from "../../../classes/productCarbs/ICarbsPer100";
 import { ICarbsPerPortion } from "../../../classes/productCarbs/ICarbsPerPortion";
@@ -41,7 +41,7 @@ const defaultData: IProductDummy = {
   name: null,
   category: null,
   units: productUnits[0],
-  portionType: 'weight',
+  portionType: "weight",
   carbsData: {
     per100: {
       carbs: 0,
@@ -89,8 +89,10 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
     setProduct({ ...product, category });
   };
 
-
-  const handlePerPortionChange = (perPortion: ICarbsPerPortion, dataValid: boolean) => {
+  const handlePerPortionChange = (
+    perPortion: ICarbsPerPortion,
+    dataValid: boolean
+  ) => {
     setCarbsDataValid(dataValid);
     setProduct({ ...product, carbsData: { ...product.carbsData, perPortion } });
   };
@@ -182,7 +184,9 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
           <IonCardContent>
             <Units
               units={product.units}
-              onUnitsChange={(units: IUnits) => setProduct({ ...product, units })}
+              onUnitsChange={(units: IUnits) =>
+                setProduct({ ...product, units })
+              }
             />
           </IonCardContent>
         </IonCard>
@@ -190,7 +194,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
           <IonCardHeader>
             <IonCardSubtitle>
               {t("page.products.form.carbohydrates")}
-              {t(product.units.shortNameKey)}
+              {t(getUnitShortKey(product.units.type))}
             </IonCardSubtitle>
           </IonCardHeader>
           <IonCardContent>
@@ -207,17 +211,17 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
             </IonCardSubtitle>
             <IonItem lines="none">
               <IonToggle
-                checked={product.portionType === 'quantity'}
+                checked={product.portionType === "quantity"}
                 onIonChange={(e) =>
                   setProduct({
                     ...product,
-                    portionType: e.detail.checked ? 'quantity' : 'weight',
+                    portionType: e.detail.checked ? "quantity" : "weight",
                   })
                 }
               />
             </IonItem>
           </CardHeader>
-          {product.portionType === 'quantity' && (
+          {product.portionType === "quantity" && (
             <IonCardContent>
               <CarbsPerPortionData
                 product={product}
@@ -227,7 +231,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
           )}
         </IonCard>
         <Button
-          color="primary"
+          color="tertiary"
           expand="block"
           shape="round"
           fill="solid"

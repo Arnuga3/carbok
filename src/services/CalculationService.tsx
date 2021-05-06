@@ -4,7 +4,7 @@ import { ICarbsPerPortion } from "../classes/productCarbs/ICarbsPerPortion";
 import { IChartProductCategory } from "../classes/productCategory/IChartProductCategory";
 import { IProductCategory } from "../classes/productCategory/IProductCategory";
 import { categoryColours, chartColors } from "../resources/config";
-import { categories } from "../resources/productCategories";
+import { categories, getCatKey } from "../resources/productCategories";
 
 export class CalculationService {
   private dec2(number: number) {
@@ -84,7 +84,7 @@ export class CalculationService {
         value: 0,
         type: category.type,
         color: categoryColours[category.type],
-        name: category.nameKey,
+        name: getCatKey(category.type),
       })
     );
     return this.getCategoriesWithWeights(chartProductCategories, products);

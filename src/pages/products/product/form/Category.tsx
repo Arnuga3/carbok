@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import { IProductCategory } from "../../../../classes/productCategory/IProductCategory";
 
-import { categories } from "../../../../resources/productCategories";
+import { categories, getCatKey } from "../../../../resources/productCategories";
 import { IProductDummy } from "../../../../classes/product/IProductDummy";
 import { categoryColours } from "../../../../resources/config";
 
@@ -31,7 +31,7 @@ export const Category: React.FC<Props> = ({
           onClick={() => onCategorySelect(category)}
         >
           <IonLabelStyled color={categoryColours[category.type]}>
-            {t(category.nameKey)}
+            {t(getCatKey(category.type))}
           </IonLabelStyled>
         </IonChipStyled>
       ))}

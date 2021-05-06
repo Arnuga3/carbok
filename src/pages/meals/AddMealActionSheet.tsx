@@ -2,7 +2,7 @@ import React from "react";
 import { IonActionSheet } from "@ionic/react";
 import { close } from "ionicons/icons";
 
-import { mealTypes } from "../../resources/mealTypes";
+import { getMealKey, mealTypes } from "../../resources/mealTypes";
 import { useTranslation } from "react-i18next";
 
 interface Props {
@@ -23,7 +23,7 @@ export const AddMealActionSheet: React.FC<Props> = ({
       onDidDismiss={onClose}
       buttons={[
         ...mealTypes.map((mealType) => ({
-          text: t(mealType.nameKey),
+          text: t(getMealKey(mealType)),
           handler: () => onSelect(mealType),
         })),
         {

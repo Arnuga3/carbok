@@ -4,6 +4,7 @@ import { IonInput, IonCol, IonGrid, IonRow } from "@ionic/react";
 import styled from "styled-components";
 import { ICarbsPer100 } from "../../../../classes/productCarbs/ICarbsPer100";
 import { IProductDummy } from "../../../../classes/product/IProductDummy";
+import { getUnitShortKey } from "../../../../resources/productUnits";
 
 export enum Per100Enum {
   CARBS = "CARBS",
@@ -110,7 +111,7 @@ export const CarbsPer100Data: React.FC<Props> = ({
             }
             onFocus={handleFocus}
           ></IonInputStyled>
-          <Units>{t(product.units.shortNameKey)}</Units>
+          <Units>{t(getUnitShortKey(product.units.type))}</Units>
         </IonColRight>
       </IonRow>
     </IonGrid>

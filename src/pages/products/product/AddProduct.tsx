@@ -34,14 +34,14 @@ import { Units } from "./form/Units";
 import { CarbsPerPortionData } from "./form/CarbsPerPortionData";
 import { CarbsPer100Data } from "./form/CarbsPer100Data";
 
-import { productUnits } from "../../../resources/productUnits";
+import { getUnitShortKey, productUnits } from "../../../resources/productUnits";
 import { addProduct } from "../../../redux/actions/productsActions";
 
 const defaultData: IProductDummy = {
   name: null,
   category: null,
   units: productUnits[0],
-  portionType: 'weight',
+  portionType: "weight",
   carbsData: {
     per100: {
       carbs: 0,
@@ -68,7 +68,10 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
     setProduct({ ...product, category });
   };
 
-  const handlePerPortionChange = (perPortion: ICarbsPerPortion, dataValid: boolean) => {
+  const handlePerPortionChange = (
+    perPortion: ICarbsPerPortion,
+    dataValid: boolean
+  ) => {
     setCarbsDataValid(dataValid);
     setProduct({ ...product, carbsData: { ...product.carbsData, perPortion } });
   };
@@ -86,7 +89,7 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
         product.category,
         product.units,
         product.carbsData,
-        product.portionType,
+        product.portionType
       );
       dispatch(addProduct(newProduct));
       history.goBack();
@@ -169,7 +172,7 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
           <IonCardHeader>
             <IonCardSubtitle>
               {t("page.products.form.carbohydrates")}
-              {t(product.units.shortNameKey)}
+              {t(getUnitShortKey(product.units.type))}
             </IonCardSubtitle>
           </IonCardHeader>
           <IonCardContent>
@@ -186,17 +189,17 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
             </IonCardSubtitle>
             <IonItem lines="none">
               <IonToggle
-                checked={product.portionType === 'quantity'}
+                checked={product.portionType === "quantity"}
                 onIonChange={(e) =>
                   setProduct({
                     ...product,
-                    portionType: e.detail.checked ? 'quantity' : 'weight',
+                    portionType: e.detail.checked ? "quantity" : "weight",
                   })
                 }
               />
             </IonItem>
           </CardHeader>
-          {product.portionType === 'quantity' && (
+          {product.portionType === "quantity" && (
             <IonCardContent>
               <CarbsPerPortionData
                 product={product}
@@ -206,7 +209,7 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
           )}
         </IonCard>
         <SaveButton
-          color="primary"
+          color="tertiary"
           expand="block"
           shape="round"
           onClick={handleSave}

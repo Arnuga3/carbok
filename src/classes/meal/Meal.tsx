@@ -1,17 +1,17 @@
 import { IMeal } from "./IMeal";
 import { uuidv4 } from "../../utils/helper";
-import { IMealType } from "../mealType/IMealType";
 import { IMealProduct } from "./IMealProduct";
+import { MealTypeEnum } from "./MealTypeEnum";
 
 export class Meal implements IMeal {
   id: string = uuidv4();
   dateTime: Date;
-  type: IMealType;
+  type: MealTypeEnum;
   products: IMealProduct[];
   note: string = "";
 
   constructor(
-    type: IMealType,
+    type: MealTypeEnum,
     dateTime: Date = new Date(),
     products: IMealProduct[] = []
   ) {

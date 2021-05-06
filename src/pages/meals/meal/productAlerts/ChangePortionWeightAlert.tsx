@@ -7,6 +7,7 @@ import { updateMeal } from "../../../../redux/actions/mealsActions";
 import { IMealProduct } from "../../../../classes/meal/IMealProduct";
 import { PortionType } from "../../../../classes/productCarbs/PortionType";
 import CalculationService from "../../../../services/CalculationService";
+import { getUnitShortKey } from "../../../../resources/productUnits";
 
 interface Props {
   meal: IMeal;
@@ -49,7 +50,7 @@ export const ChangePortionWeightAlert: React.FC<Props> = ({ meal, product, open,
       isOpen={open}
       onDidDismiss={onClose}
       header={`${t("portion.size")} (${
-        product ? t(product?.units.shortNameKey) : ""
+        product ? t(getUnitShortKey(product.units.type)) : ""
       })`}
       inputs={[
         {

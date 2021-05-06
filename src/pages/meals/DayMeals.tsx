@@ -31,9 +31,9 @@ import {
   updateMeals,
 } from "../../redux/actions/mealsActions";
 import { useMeals } from "../../hooks/mealsHook";
-import { IMealType } from "../../classes/mealType/IMealType";
 import { useTranslation } from "react-i18next";
 import { useAppSettings } from "../../hooks/appSettingsHook";
+import { MealTypeEnum } from "../../classes/meal/MealTypeEnum";
 
 export const DayMeals: React.FC = () => {
   const { t } = useTranslation();
@@ -56,7 +56,7 @@ export const DayMeals: React.FC = () => {
     );
   }, [settings.language]);
 
-  const handleMealTypeSelect = (mealType: IMealType) => {
+  const handleMealTypeSelect = (mealType: MealTypeEnum) => {
     dispatch(addMeal(new Meal(mealType, date, [])));
   };
 

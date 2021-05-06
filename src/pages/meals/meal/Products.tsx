@@ -27,6 +27,7 @@ import { ChangePortionWeightAlert } from "./productAlerts/ChangePortionWeightAle
 import { ChangeQuantityAlert } from "./productAlerts/ChangeQuantityAlert";
 import { DeleteAlert } from "./productAlerts/DeleteAlert";
 import { categoryColours } from "../../../resources/config";
+import { getCatKey } from "../../../resources/productCategories";
 
 interface Props {
   meal: IMeal;
@@ -83,7 +84,7 @@ export const Products: React.FC<Props> = ({ meal }) => {
             <IonItem detail>
               <IonAvatar slot="start">
                 <CircleBadge color={categoryColours[product.category.type]} size={40}>
-                  {t(product.category.nameKey).slice(0, 3)}
+                  {t(getCatKey(product.category.type)).slice(0, 3)}
                 </CircleBadge>
               </IonAvatar>
               <MealProductListItem product={product} />

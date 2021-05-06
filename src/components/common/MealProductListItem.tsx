@@ -2,6 +2,7 @@ import { IonText } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { IMealProduct } from "../../classes/meal/IMealProduct";
+import { getUnitShortKey } from "../../resources/productUnits";
 
 interface Props {
   product: IMealProduct;
@@ -20,7 +21,7 @@ export const MealProductListItem: React.FC<Props> = ({ product }) => {
       : {
           ...product.mealProductCarbs.per100,
           portion: `${product.mealProductCarbs.per100.portion}${t(
-            product.units.shortNameKey
+            getUnitShortKey(product.units.type)
           )}`,
         };
   return (

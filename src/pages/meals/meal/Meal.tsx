@@ -22,6 +22,7 @@ import { NoteAlert } from "./alerts/NoteAlert";
 import { useMeals } from "../../../hooks/mealsHook";
 import { retrieveMeals } from "../../../redux/actions/mealsActions";
 import { DeleteAlert } from "./alerts/DeleteAlert";
+import { getMealKey } from "../../../resources/mealTypes";
 
 interface MealPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -55,7 +56,7 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
           />
           &nbsp;
           {meal && (
-            <IonTitle color="medium">{`${t(meal.type.nameKey)}, ${moment(
+            <IonTitle color="medium">{`${t(getMealKey(meal.type))}, ${moment(
               date
             ).format("MMM D")}`}</IonTitle>
           )}

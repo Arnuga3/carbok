@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { IMeal } from "../../classes/meal/IMeal";
 import { IMealProduct } from "../../classes/meal/IMealProduct";
+import { getUnitShortKey } from "../../resources/productUnits";
 
 interface Props {
   product: IMealProduct;
@@ -11,7 +12,12 @@ interface Props {
   i: number;
 }
 
-export const DayMealCardProduct: React.FC<Props> = ({ product, t, i, meal }) => {
+export const DayMealCardProduct: React.FC<Props> = ({
+  product,
+  t,
+  i,
+  meal,
+}) => {
   const data =
     product.portionTypeInUse === "quantity"
       ? {
@@ -20,7 +26,7 @@ export const DayMealCardProduct: React.FC<Props> = ({ product, t, i, meal }) => 
         }
       : {
           portion: `${product.mealProductCarbs.per100.portion}${t(
-            product.units.shortNameKey
+            getUnitShortKey(product.units.type)
           )}`,
           carbs: product.mealProductCarbs.per100.carbs,
         };
@@ -37,5 +43,5 @@ export const DayMealCardProduct: React.FC<Props> = ({ product, t, i, meal }) => 
 
 const ProductItem = styled.p`
   font-style: italic;
-  padding-left: 20px;
+  padding-left: 8px;
 `;

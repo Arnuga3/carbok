@@ -16,7 +16,7 @@ import { IProduct } from "../../../classes/product/IProduct";
 import { ProductCategoryType } from "../../../classes/productCategory/ProductCategoryType";
 
 import { useProducts } from "../../../hooks/productsHook";
-import { categories } from "../../../resources/productCategories";
+import { categories, getCatKey } from "../../../resources/productCategories";
 import { useTranslation } from "react-i18next";
 import { close } from "ionicons/icons";
 
@@ -59,7 +59,7 @@ export const CategoriesModal: React.FC<Props> = ({
               // color={category.color}
               onClick={() => onSelect(category)}
             >
-              {t(category.nameKey)}
+              {t(getCatKey(category.type))}
               <Badge slot="end" color="secondary">
                 {categoryProductsMap[category.type].length}
               </Badge>

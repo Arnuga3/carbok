@@ -176,7 +176,7 @@ export const CalculatorModal: React.FC<Props> = ({
           </IonCardContent>
         </IonCard>
         <ResetButton
-          color="primary"
+          color="tertiary"
           expand="block"
           shape="round"
           onClick={handleReset}

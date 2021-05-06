@@ -3,7 +3,7 @@ import { IonLabel, IonSegment, IonSegmentButton } from "@ionic/react";
 import styled from "styled-components";
 import { IUnits } from "../../../../classes/units/IUnits";
 
-import { productUnits } from "../../../../resources/productUnits";
+import { getUnitKey, productUnits } from "../../../../resources/productUnits";
 
 interface Props {
   units: IUnits;
@@ -23,10 +23,10 @@ export const Units: React.FC<Props> = ({ units, onUnitsChange }) => {
       }}
     >
       <IonSegmentButton value={productUnits[1].type}>
-        <IonLabel>{t(productUnits[1].nameKey)}</IonLabel>
+        <IonLabel>{t(getUnitKey(productUnits[1].type))}</IonLabel>
       </IonSegmentButton>
       <IonSegmentButton value={productUnits[0].type}>
-        <IonLabel>{t(productUnits[0].nameKey)}</IonLabel>
+        <IonLabel>{t(getUnitKey(productUnits[0].type))}</IonLabel>
       </IonSegmentButton>
     </IonSegmentStyled>
   );
