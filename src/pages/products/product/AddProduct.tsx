@@ -35,7 +35,7 @@ import { CarbsPerPortionData } from "./form/CarbsPerPortionData";
 import { CarbsPer100Data } from "./form/CarbsPer100Data";
 
 import { getUnitShortKey, productUnits } from "../../../resources/productUnits";
-import { addProduct } from "../../../redux/actions/productsActions";
+import { addProduct } from "../../../redux/actions/products/actions";
 
 const defaultData: IProductDummy = {
   name: null,

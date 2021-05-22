@@ -33,7 +33,7 @@ import { useProducts } from "../../hooks/productsHook";
 import {
   deleteProduct,
   retrieveProducts,
-} from "../../redux/actions/productsActions";
+} from "../../redux/actions/products/actions";
 import { CircleBadge } from "../../components/common/CircleBadge";
 import { categoryColours } from "../../resources/config";
 import { getCatKey } from "../../resources/productCategories";
@@ -55,11 +55,11 @@ export const Products: React.FC = () => {
     createRef<HTMLIonInfiniteScrollElement>();
 
   useEffect(() => {
-    if (products && products.length !== 0) {
-      setSearchResult(products);
-    }
     if (!products) {
       dispatch(retrieveProducts(limit, offset, searchString));
+    }
+    if (products && products.length !== 0) {
+      setSearchResult(products);
     }
   }, [products]);
 

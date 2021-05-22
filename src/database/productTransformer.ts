@@ -50,3 +50,23 @@ export function transformToIProduct(dbProduct: IProductDB): IProduct {
   );
   return { ...product, id };
 }
+
+export function transformToIProductsDB(products: IProduct[]): IProductDB[] {
+  return products.map((prod) => transformToIProductDB(prod));
+}
+
+export function transformToIProductDB(product: IProduct): IProductDB {
+  return {
+    id: product.id,
+    name: product.name,
+    category: product.category.type,
+    units: product.units.type,
+    carbs100: product.carbsData.per100.carbs,
+    sugars100: product.carbsData.per100.sugars,
+    defPortion: product.carbsData.per100.portion,
+    quantity: product.carbsData.perPortion.quantity,
+    qCarbs: product.carbsData.perPortion.carbs,
+    qSugars: product.carbsData.perPortion.sugars,
+    portionType: product.portionType,
+  };
+}

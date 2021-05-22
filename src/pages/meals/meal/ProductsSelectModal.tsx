@@ -21,7 +21,7 @@ import { IProduct } from "../../../classes/product/IProduct";
 import { IMealProduct } from "../../../classes/meal/IMealProduct";
 import { MealProduct } from "../../../classes/meal/MealProduct";
 import { useProducts } from "../../../hooks/productsHook";
-import { retrieveProducts } from "../../../redux/actions/productsActions";
+import { retrieveProducts } from "../../../redux/actions/products/actions";
 import { updateMeal } from "../../../redux/actions/mealsActions";
 import CalculationService from "../../../services/CalculationService";
 

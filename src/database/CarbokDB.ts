@@ -1,7 +1,7 @@
 import Dexie from "dexie";
 import default_products from "./defaultProducts.json";
 
-class CarbokDB extends Dexie {
+export class CarbokDB extends Dexie {
   products: Dexie.Table<IProductDB, number>;
   units: Dexie.Table<IUnitsDB, number>;
 

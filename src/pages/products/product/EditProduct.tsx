@@ -20,7 +20,7 @@ import {
 } from "@ionic/react";
 import styled from "styled-components";
 import { IProductCategory } from "../../../classes/productCategory/IProductCategory";
-import { updateProduct } from "../../../redux/actions/productsActions";
+import { updateProduct } from "../../../redux/actions/products/actions";
 import { Category } from "./form/Category";
 import { Units } from "./form/Units";
 import { CarbsPerPortionData } from "./form/CarbsPerPortionData";

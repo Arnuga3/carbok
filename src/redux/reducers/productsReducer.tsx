@@ -1,6 +1,6 @@
 import { Reducer } from "redux";
 import { IProduct } from "../../classes/product/IProduct";
-import { ProductsActions } from "../actions/productsActions";
+import { ProductsActions } from "../actions/products/interfaces";
 
 export interface ProductsState {
   products: IProduct[];
