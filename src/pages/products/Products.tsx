@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createRef, RefObject, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
@@ -6,7 +6,6 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonToolbar,
   IonList,
   IonButton,
   IonItem,
@@ -17,9 +16,10 @@ import {
   IonItemOption,
   IonAlert,
   IonAvatar,
+  IonInfiniteScroll,
+  IonInfiniteScrollContent,
 } from "@ionic/react";
 import {
-  add,
   addOutline,
   calculator,
   createOutline,
@@ -43,26 +43,41 @@ const PRODUCTSPAGE = "products-page";
 export const Products: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { products } = useProducts();
+  const { products, limit, offset, searchString, fetching, allFetched } =
+    useProducts();
 
   const [searchResult, setSearchResult] = useState(products);
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
   const [openCalculatorModal, setOpenCalculatorModal] = useState(false);
   const [productSelected, setProductSelected] = useState<IProduct | null>(null);
 
-  useEffect(() => {
-    if (products.length === 0) {
-      dispatch(retrieveProducts());
-    }
-  }, []);
+  const ionInfiniteScrollRef: RefObject<HTMLIonInfiniteScrollElement> =
+    createRef<HTMLIonInfiniteScrollElement>();
 
   useEffect(() => {
     if (products && products.length !== 0) {
       setSearchResult(products);
     }
+    if (!products) {
+      dispatch(retrieveProducts(limit, offset, searchString));
+    }
   }, [products]);
 
-  const handleSearch = (result: IProduct[]) => setSearchResult(result);
+  useEffect(() => {
+    if (!fetching) {
+      completeInfineScroll();
+    }
+  }, [fetching]);
+
+  useEffect(() => {
+    if (ionInfiniteScrollRef.current) {
+      ionInfiniteScrollRef.current.disabled = allFetched;
+    }
+  }, [allFetched]);
+
+  useEffect(() => {
+    dispatch(retrieveProducts(limit, offset, searchString));
+  }, [searchString]);
 
   const toggleActionsSlide = async (selector: string) => {
     const productEl: any = document.querySelector("#" + selector);
@@ -96,6 +111,12 @@ export const Products: React.FC = () => {
     setOpenCalculatorModal(false);
   };
 
+  const completeInfineScroll = () => {
+    if (ionInfiniteScrollRef.current) {
+      ionInfiniteScrollRef.current.complete();
+    }
+  };
+
   return (
     <IonPage>
       <IonHeader mode="ios" translucent>
@@ -110,7 +131,7 @@ export const Products: React.FC = () => {
               <IonIcon slot="icon-only" icon={calculator} />
             </IonButton>
           </IonButtons>
-          <ProductsSearch products={products} onSearchComplete={handleSearch} />
+          <ProductsSearch />
           <IonButtons slot="end">
             <IonButton
               fill="clear"
@@ -135,7 +156,10 @@ export const Products: React.FC = () => {
               >
                 <IonItem detail>
                   <IonAvatar slot="start">
-                    <CircleBadge color={categoryColours[product.category.type]} size={40}>
+                    <CircleBadge
+                      color={categoryColours[product.category.type]}
+                      size={40}
+                    >
                       {t(getCatKey(product.category.type)).slice(0, 3)}
                     </CircleBadge>
                   </IonAvatar>
@@ -164,6 +188,12 @@ export const Products: React.FC = () => {
               </IonItemSliding>
             ))}
         </IonList>
+        <IonInfiniteScroll
+          ref={ionInfiniteScrollRef}
+          onIonInfinite={() => dispatch(retrieveProducts(limit, offset, searchString))}
+        >
+          <IonInfiniteScrollContent loadingSpinner="dots" />
+        </IonInfiniteScroll>
       </IonContent>
       <IonAlert
         isOpen={openDeleteAlert}

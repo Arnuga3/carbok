@@ -46,7 +46,7 @@ export const ProductsSelectModal: React.FC<Props> = ({ meal, open, onClose }) =>
 
   useEffect(() => {
     if (products.length === 0) {
-      dispatch(retrieveProducts());
+      // dispatch(retrieveProducts());
     }
   }, []);
 
@@ -111,7 +111,7 @@ export const ProductsSelectModal: React.FC<Props> = ({ meal, open, onClose }) =>
     <IonModal isOpen={open}>
       <IonHeader mode="ios" translucent>
         <HeaderContent>
-          <ProductsSearch products={products} onSearchComplete={handleSearch} />
+          {/* <ProductsSearch products={products} onSearchComplete={handleSearch} /> */}
           <IonButton onClick={handleClose} color="primary" fill="clear">
             <IonIcon icon={close} slot="icon-only" />
           </IonButton>

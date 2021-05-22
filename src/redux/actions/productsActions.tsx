@@ -1,12 +1,16 @@
 import { Dispatch } from "redux";
 import { IProduct } from "../../classes/product/IProduct";
+import { transformToIProducts } from "../../database/productTransformer";
 import { ProductsStorageService } from "../../services/ProductsStorageService";
+import { db } from "./../../database/CarbokDB";
 
 export enum ProductsActions {
   ADD_PRODUCT = "ADD_PRODUCT",
   ADD_PRODUCTS = "ADD_PRODUCTS",
   UPDATE_PRODUCT = "UPDATE_PRODUCT",
   DELETE_PRODUCT = "DELETE_PRODUCT",
+  FETCHING_START = "FETCHING_START",
+  SET_SEARCH_STRING = "SET_SEARCH_STRING",
 }
 
 export type ProductsActionType = AddProduct | AddProducts;
@@ -31,6 +35,15 @@ interface DeleteProduct {
   id: string;
 }
 
+interface FetchingStart {
+  type: ProductsActions.FETCHING_START;
+}
+
+interface SetSearchString {
+  type: ProductsActions.SET_SEARCH_STRING;
+  searchString: string | null;
+}
+
 const storeProduct = (product: IProduct): AddProduct => ({
   type: ProductsActions.ADD_PRODUCT,
   product,
@@ -51,13 +64,45 @@ const deleteStoredProduct = (id: string): DeleteProduct => ({
   id,
 });
 
-export const retrieveProducts = () => {
+const fetchingStart = (): FetchingStart => ({
+  type: ProductsActions.FETCHING_START,
+});
+
+export const setSearchString = (
+  searchString: string | null
+): SetSearchString => ({
+  type: ProductsActions.SET_SEARCH_STRING,
+  searchString,
+});
+
+export const retrieveProducts = (
+  limit: number,
+  offset: number,
+  searchText: string | null = null
+) => {
   return async (dispatch: Dispatch) => {
     try {
-      const prodStorageSvc = new ProductsStorageService();
-      const products = await prodStorageSvc.getAll();
-      if (products) {
-        dispatch(storeProducts(products));
+      dispatch(fetchingStart());
+
+      if (searchText) {
+        const regex = new RegExp(searchText);
+        await db.products
+          .filter((prod) => regex.test(prod.name.toLowerCase()))
+          .offset(offset)
+          .limit(limit)
+          .toArray()
+          .then((products) => dispatch(
+            storeProducts(transformToIProducts(products))
+          ));
+      } else {
+        await db.products
+          .orderBy("name")
+          .offset(offset)
+          .limit(limit)
+          .toArray()
+          .then((products) => dispatch(
+            storeProducts(transformToIProducts(products))
+          ));
       }
     } catch (e) {
       console.log(e);

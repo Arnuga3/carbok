@@ -4,7 +4,7 @@ import { UnitsType } from "./UnitsType";
 export class Units implements IUnits {
   type: UnitsType;
 
-  constructor(type: UnitsType, nameKey: string, shortNameKey: string) {
+  constructor(type: UnitsType) {
     this.type = type;
   }
 }

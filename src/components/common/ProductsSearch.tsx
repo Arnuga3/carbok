@@ -1,26 +1,16 @@
+import { useDispatch } from "react-redux";
 import { IonSearchbar } from "@ionic/react";
 import { closeCircleOutline } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
+import { setSearchString } from "../../redux/actions/productsActions";
 import styled from "styled-components";
-import { IProduct } from "../../classes/product/IProduct";
 
-interface Props {
-  products: IProduct[];
-  onSearchComplete: any;
-}
-
-export const ProductsSearch: React.FC<Props> = ({
-  products,
-  onSearchComplete,
-}) => {
+export const ProductsSearch: React.FC = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  
   const handleSearch = (e: any) => {
-    onSearchComplete(
-      products.filter(
-        (product: IProduct) =>
-          product.name.toLowerCase().indexOf(e.detail.value.toLowerCase()) > -1
-      )
-    );
+    dispatch(setSearchString(e.detail.value.toLowerCase()));
   };
   return (
     <Search

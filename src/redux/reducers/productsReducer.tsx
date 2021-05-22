@@ -4,10 +4,20 @@ import { ProductsActions } from "../actions/productsActions";
 
 export interface ProductsState {
   products: IProduct[];
+  readonly limit: number;
+  offset: number;
+  searchString: string | null;
+  fetching: boolean;
+  allFetched: boolean;
 }
 
 const defaultState: ProductsState = {
   products: [],
+  limit: 50,
+  offset: 0,
+  searchString: null,
+  fetching: false,
+  allFetched: false,
 };
 
 const reducer: Reducer<ProductsState> = (
@@ -17,12 +27,17 @@ const reducer: Reducer<ProductsState> = (
   switch (action.type) {
     case ProductsActions.ADD_PRODUCT:
       return {
+        ...state,
         products: [...state.products, action.product],
       };
 
     case ProductsActions.ADD_PRODUCTS:
       return {
-        products: action.products,
+        ...state,
+        products: [...state.products, ...action.products],
+        offset: state.offset + state.limit,
+        fetching: false,
+        allFetched: action.products.length < state.limit || action.products.length === 0,
       };
 
     case ProductsActions.UPDATE_PRODUCT:
@@ -39,6 +54,21 @@ const reducer: Reducer<ProductsState> = (
       return {
         ...state,
         products: state.products.filter((product) => product.id !== action.id),
+      };
+
+      
+    case ProductsActions.SET_SEARCH_STRING:
+      return {
+        ...state,
+        products: [],
+        offset: 0,
+        searchString: action.searchString,
+      };
+
+    case ProductsActions.FETCHING_START:
+      return {
+        ...state,
+        fetching: true,
       };
 
     default:
