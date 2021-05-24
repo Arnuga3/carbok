@@ -1,25 +1,25 @@
 import Dexie from "dexie";
-import default_products from "./defaultProducts.json";
+import { IMeal } from "../classes/meal/IMeal";
+import { IProduct } from "../classes/product/IProduct";
+import { Product } from "../classes/product/Product";
+import default_products from "./carbok-default-products.json";
 
 export class CarbokDB extends Dexie {
-  products: Dexie.Table<IProductDB, number>;
-  units: Dexie.Table<IUnitsDB, number>;
+  products: Dexie.Table<IProduct, string>;
+  meals: Dexie.Table<IMeal, string>;
 
   constructor() {
     super("CarbokDB");
     const db = this;
 
     this.version(1).stores({
-      products:
-        "id, name, category, units, carbs100, sugars100, defPortion, quantity, qCarbs, qSugars, portionType",
-      units: "id, type",
+      products: "id, name, category.type, units.type, portionType",
+      meals: "id, date, type",
     });
     db.on("populate", () => {
       db.products
-        .bulkAdd(default_products)
-        .then(() => {
-          console.log("Produsts populated successfully");
-        })
+        .bulkAdd(default_products as Product[])
+        .then(() => console.log("Produsts populated successfully"))
         .catch(Dexie.BulkError, (e: any) => {
           console.error(
             `${default_products.length}/${
@@ -31,27 +31,8 @@ export class CarbokDB extends Dexie {
     this.open();
 
     this.products = this.table("products");
-    this.units = this.table("units");
+    this.meals = this.table("meals");
   }
-}
-
-export interface IProductDB {
-  id: string;
-  name: string;
-  category: string;
-  units: string;
-  carbs100: number;
-  sugars100: number;
-  defPortion: number;
-  quantity: number;
-  qCarbs: number;
-  qSugars: number;
-  portionType: string;
-}
-
-export interface IUnitsDB {
-  id: string;
-  type: string;
 }
 
 export const db = new CarbokDB();

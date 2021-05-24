@@ -1,4 +1,9 @@
-import React, { createRef, RefObject, useEffect, useState } from "react";
+import React, {
+  createRef,
+  RefObject,
+  useEffect,
+  useState,
+} from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
@@ -40,13 +45,22 @@ import { getCatKey } from "../../resources/productCategories";
 
 const PRODUCTSPAGE = "products-page";
 
-export const Products: React.FC = () => {
+async function toggleActionsSlide(selector: string) {
+  const productEl: any = document.querySelector("#" + selector);
+  const openItemNum = await productEl.getOpenAmount();
+  if (productEl && openItemNum === 0) {
+    productEl.open();
+  } else {
+    productEl.close();
+  }
+}
+
+const Products: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { products, limit, offset, searchString, fetching, allFetched } =
     useProducts();
 
-  const [searchResult, setSearchResult] = useState(products);
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
   const [openCalculatorModal, setOpenCalculatorModal] = useState(false);
   const [productSelected, setProductSelected] = useState<IProduct | null>(null);
@@ -55,39 +69,17 @@ export const Products: React.FC = () => {
     createRef<HTMLIonInfiniteScrollElement>();
 
   useEffect(() => {
-    if (!products) {
-      dispatch(retrieveProducts(limit, offset, searchString));
-    }
-    if (products && products.length !== 0) {
-      setSearchResult(products);
-    }
-  }, [products]);
-
-  useEffect(() => {
     if (!fetching) {
       completeInfineScroll();
     }
-  }, [fetching]);
-
-  useEffect(() => {
-    if (ionInfiniteScrollRef.current) {
+    if (allFetched && ionInfiniteScrollRef.current) {
       ionInfiniteScrollRef.current.disabled = allFetched;
     }
-  }, [allFetched]);
+  }, [fetching, allFetched]);
 
   useEffect(() => {
     dispatch(retrieveProducts(limit, offset, searchString));
   }, [searchString]);
-
-  const toggleActionsSlide = async (selector: string) => {
-    const productEl: any = document.querySelector("#" + selector);
-    const openItemNum = await productEl.getOpenAmount();
-    if (productEl && openItemNum === 0) {
-      productEl.open();
-    } else {
-      productEl.close();
-    }
-  };
 
   const handleOnCalculate = (product: IProduct) => {
     setProductSelected(product);
@@ -116,6 +108,8 @@ export const Products: React.FC = () => {
       ionInfiniteScrollRef.current.complete();
     }
   };
+
+  console.log("Render Products component");
 
   return (
     <IonPage>
@@ -146,51 +140,51 @@ export const Products: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
         <IonList>
-          {searchResult
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map((product: IProduct, i: number) => (
-              <IonItemSliding
-                key={i}
-                id={PRODUCTSPAGE + i}
-                onClick={() => toggleActionsSlide(PRODUCTSPAGE + i)}
-              >
-                <IonItem detail>
-                  <IonAvatar slot="start">
-                    <CircleBadge
-                      color={categoryColours[product.category.type]}
-                      size={40}
-                    >
-                      {t(getCatKey(product.category.type)).slice(0, 3)}
-                    </CircleBadge>
-                  </IonAvatar>
-                  <ProductListItem product={product} />
-                </IonItem>
-                <IonItemOptions>
-                  <SlidingAction
-                    color="secondary"
-                    onClick={() => handleOnCalculate(product)}
+          {products.map((product: IProduct, i: number) => (
+            <IonItemSliding
+              key={i}
+              id={PRODUCTSPAGE + i}
+              onClick={() => toggleActionsSlide(PRODUCTSPAGE + i)}
+            >
+              <IonItem detail>
+                <IonAvatar slot="start">
+                  <CircleBadge
+                    color={categoryColours[product.category.type]}
+                    size={40}
                   >
-                    <IonIcon icon={calculator} slot="icon-only" />
-                  </SlidingAction>
-                  <SlidingAction
-                    color="tertiary"
-                    routerLink={`/products/edit-product/${product.id}`}
-                  >
-                    <IonIcon icon={createOutline} slot="icon-only" />
-                  </SlidingAction>
-                  <SlidingAction
-                    color="danger"
-                    onClick={() => handleOnDelete(product)}
-                  >
-                    <IonIcon icon={trashOutline} slot="icon-only" />
-                  </SlidingAction>
-                </IonItemOptions>
-              </IonItemSliding>
-            ))}
+                    {t(getCatKey(product.category.type)).slice(0, 3)}
+                  </CircleBadge>
+                </IonAvatar>
+                <ProductListItem product={product} />
+              </IonItem>
+              <IonItemOptions>
+                <SlidingAction
+                  color="secondary"
+                  onClick={() => handleOnCalculate(product)}
+                >
+                  <IonIcon icon={calculator} slot="icon-only" />
+                </SlidingAction>
+                <SlidingAction
+                  color="tertiary"
+                  routerLink={`/products/edit-product/${product.id}`}
+                >
+                  <IonIcon icon={createOutline} slot="icon-only" />
+                </SlidingAction>
+                <SlidingAction
+                  color="danger"
+                  onClick={() => handleOnDelete(product)}
+                >
+                  <IonIcon icon={trashOutline} slot="icon-only" />
+                </SlidingAction>
+              </IonItemOptions>
+            </IonItemSliding>
+          ))}
         </IonList>
         <IonInfiniteScroll
           ref={ionInfiniteScrollRef}
-          onIonInfinite={() => dispatch(retrieveProducts(limit, offset, searchString))}
+          onIonInfinite={() =>
+            dispatch(retrieveProducts(limit, offset, searchString))
+          }
         >
           <IonInfiniteScrollContent loadingSpinner="dots" />
         </IonInfiniteScroll>
@@ -217,6 +211,8 @@ export const Products: React.FC = () => {
     </IonPage>
   );
 };
+
+export default React.memo(Products);
 
 const HeaderContent = styled.div`
   display: flex;

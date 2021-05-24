@@ -5,7 +5,7 @@ import { MealTypeEnum } from "./MealTypeEnum";
 
 export class Meal implements IMeal {
   id: string = uuidv4();
-  dateTime: Date;
+  date: Date;
   type: MealTypeEnum;
   products: IMealProduct[];
   note: string = "";
@@ -16,7 +16,7 @@ export class Meal implements IMeal {
     products: IMealProduct[] = []
   ) {
     this.type = type;
-    this.dateTime = dateTime;
+    this.date = dateTime;
     this.products = products;
   }
 }

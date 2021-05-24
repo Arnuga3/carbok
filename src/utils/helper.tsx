@@ -11,3 +11,7 @@ export function uuidv4() {
 export function getDateString(date: Date): string {
   return moment(date).format("DMMYYY");
 }
+
+export function getDateOnly(date: Date): Date {
+  return new Date(moment(date).format("LL"));
+}

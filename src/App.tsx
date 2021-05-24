@@ -12,13 +12,13 @@ import {
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { restaurant, fastFood, person } from "ionicons/icons";
-import { Overview } from "./pages/overview/Overview";
-import { DayMeals } from "./pages/meals/DayMeals";
 import { Meal } from "./pages/meals/meal/Meal";
-import { Products } from "./pages/products/Products";
 import { AddProduct } from "./pages/products/product/AddProduct";
 import { EditProduct } from "./pages/products/product/EditProduct";
-import { Settings } from "./pages/settings/Settings";
+import Settings from "./pages/settings/Settings";
+import DayMeals from "./pages/meals/DayMeals";
+import Products from "./pages/products/Products";
+import Overview from "./pages/overview/Overview";
 
 import { useTranslation } from "react-i18next";
 import { initAppSettings } from "./redux/actions/appSettingsActions";
@@ -60,11 +60,11 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route exact path="/:tab(overview)" component={Overview} />
-            <Route exact path="/:tab(meals)" component={DayMeals} />
+            <Route exact path="/:tab(overview)" render={() => <Overview/>} />
+            <Route exact path="/:tab(meals)" render={() => <DayMeals/>} />
             <Route exact path="/:tab(meals)/:id/products" component={Meal} />
-            <Route exact path="/:tab(products)" component={Products} />
-            <Route exact path="/:tab(settings)" component={Settings} />
+            <Route exact path="/:tab(products)" render={() => <Products/>} />
+            <Route exact path="/:tab(settings)" render={() => <Settings/>} />
             <Route
               exact
               path="/:tab(products)/add-product"

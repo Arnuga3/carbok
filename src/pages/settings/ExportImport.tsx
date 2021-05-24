@@ -15,7 +15,7 @@ import {
 import { downloadOutline, pushOutline } from "ionicons/icons";
 import { MealsStorageService } from "../../services/MealsStorageService";
 import { ProductsStorageService } from "../../services/ProductsStorageService";
-import { importMeals } from "../../redux/actions/mealsActions";
+import { importMeals } from "../../redux/actions/meals/actions";
 import { importProducts } from "../../redux/actions/products/actions";
 import { IMeal } from "../../classes/meal/IMeal";
 import { IProduct } from "../../classes/product/IProduct";

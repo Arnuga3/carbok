@@ -23,7 +23,7 @@ import { ExportImport } from "./ExportImport";
 import icon from "./../../resources/icons/logo.svg";
 import { version } from "./../../../package.json";
 
-export const Settings: React.FC = () => {
+const Settings: React.FC = () => {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const { settings } = useAppSettings();
@@ -79,6 +79,8 @@ export const Settings: React.FC = () => {
     </IonPage>
   );
 };
+
+export default React.memo(Settings);
 
 const Version = styled.div`
   text-align: center;

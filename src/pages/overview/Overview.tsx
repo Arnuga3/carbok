@@ -35,7 +35,7 @@ const defaultCardDataState: CardData = {
   categories: [],
 };
 
-export const Overview: React.FC = () => {
+const Overview: React.FC = () => {
   const { t } = useTranslation();
   const [cardData, setCardData] = useState<CardData>(defaultCardDataState);
 
@@ -85,6 +85,8 @@ export const Overview: React.FC = () => {
     </IonPage>
   );
 };
+
+export default React.memo(Overview);
 
 const CardHeader = styled(IonCardHeader)`
   display: flex;

@@ -27,7 +27,7 @@ import { MealCarbsChart } from "../../components/common/MealCarbsChart";
 import CalculationService from "../../services/CalculationService";
 import moment from "moment";
 import { useMeals } from "../../hooks/mealsHook";
-import { copyMeal } from "../../redux/actions/mealsActions";
+import { copyMeal } from "../../redux/actions/meals/actions";
 import { DayMealCardProduct } from "./DayMealCardProduct";
 import { getMealKey } from "../../resources/mealTypes";
 

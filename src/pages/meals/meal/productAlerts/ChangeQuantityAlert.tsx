@@ -6,7 +6,7 @@ import { IMeal } from "../../../../classes/meal/IMeal";
 import { IMealProduct } from "../../../../classes/meal/IMealProduct";
 import { PortionType } from "../../../../classes/productCarbs/PortionType";
 import CalculationService from "../../../../services/CalculationService";
-import { updateMeal } from "../../../../redux/actions/mealsActions";
+import { updateMeal } from "../../../../redux/actions/meals/actions";
 
 interface Props {
   meal: IMeal;

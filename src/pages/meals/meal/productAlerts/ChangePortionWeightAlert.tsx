@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { IonAlert } from "@ionic/react";
 import { IMeal } from "../../../../classes/meal/IMeal";
-import { updateMeal } from "../../../../redux/actions/mealsActions";
+import { updateMeal } from "../../../../redux/actions/meals/actions";
 import { IMealProduct } from "../../../../classes/meal/IMealProduct";
 import { PortionType } from "../../../../classes/productCarbs/PortionType";
 import CalculationService from "../../../../services/CalculationService";

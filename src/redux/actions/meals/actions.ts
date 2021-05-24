@@ -1,48 +1,17 @@
 import { Dispatch } from "redux";
-import { IMeal } from "../../classes/meal/IMeal";
-import { Meal } from "../../classes/meal/Meal";
-import { MealsStorageService } from "../../services/MealsStorageService";
-import { uuidv4 } from "../../utils/helper";
-
-export enum MealsActions {
-  ADD_MEAL = "ADD_MEAL",
-  ADD_MEALS = "ADD_MEALS",
-  UPDATE_MEAL = "UPDATE_MEAL",
-  DELETE_MEAL = "DELETE_MEAL",
-  CHANGE_DATE = "CHANGE_DATE",
-}
-
-export type MealsActionType =
-  | AddMeal
-  | AddMeals
-  | UpdateMeal
-  | DeleteMeal
-  | ChangeDate;
-
-interface AddMeal {
-  type: MealsActions.ADD_MEAL;
-  meal: IMeal;
-}
-
-interface AddMeals {
-  type: MealsActions.ADD_MEALS;
-  meals: IMeal[];
-}
-
-interface UpdateMeal {
-  type: MealsActions.UPDATE_MEAL;
-  meal: IMeal;
-}
-
-interface DeleteMeal {
-  type: MealsActions.DELETE_MEAL;
-  meal: IMeal;
-}
-
-interface ChangeDate {
-  type: MealsActions.CHANGE_DATE;
-  date: Date;
-}
+import { IMeal } from "../../../classes/meal/IMeal";
+import { Meal } from "../../../classes/meal/Meal";
+import { MealsStorageService } from "../../../services/MealsStorageService";
+import { uuidv4 } from "../../../utils/helper";
+import {
+  AddMeal,
+  MealsActions,
+  AddMeals,
+  UpdateMeal,
+  DeleteMeal,
+  ChangeDate,
+} from "./interfaces";
+import { dataService } from "../../../services/DataService";
 
 export const storeMeal = (meal: IMeal): AddMeal => ({
   type: MealsActions.ADD_MEAL,
@@ -72,8 +41,7 @@ export const changeStoredDate = (date: Date): ChangeDate => ({
 export function addMeal(meal: IMeal) {
   return async (dispatch: Dispatch) => {
     try {
-      const mealsStorageSvc = new MealsStorageService();
-      await mealsStorageSvc.save(meal);
+      await dataService.addMeal(meal);
       dispatch(storeMeal(meal));
     } catch (e) {
       console.log(e);
@@ -84,9 +52,8 @@ export function addMeal(meal: IMeal) {
 export const retrieveMeals = (date: Date) => {
   return async (dispatch: Dispatch) => {
     try {
-      const mealsStorageSvc = new MealsStorageService();
-      const meals = await mealsStorageSvc.getAllForDate(date);
-      if (meals) {
+      const meals = await dataService.retrieveMeals(date);
+      if (meals && meals.length > 0) {
         dispatch(storeMeals(meals));
       }
     } catch (e) {
@@ -98,15 +65,14 @@ export const retrieveMeals = (date: Date) => {
 export const updateMeal = (meal: IMeal) => {
   return async (dispatch: Dispatch) => {
     try {
-      const mealsStorageSvc = new MealsStorageService();
-      await mealsStorageSvc.update(meal.dateTime, meal);
+      await dataService.updateMeal(meal);
       dispatch(updateStoredMeal(meal));
     } catch (e) {
       console.log(e);
     }
   };
 };
-
+//FIXME
 export const updateMeals = (date: Date, meals: IMeal[]) => {
   return async (dispatch: Dispatch) => {
     try {
@@ -122,8 +88,7 @@ export const updateMeals = (date: Date, meals: IMeal[]) => {
 export const deleteMeal = (meal: IMeal) => {
   return async (dispatch: Dispatch) => {
     try {
-      const mealsStorageSvc = new MealsStorageService();
-      await mealsStorageSvc.remove(meal);
+      await dataService.deleteMeal(meal.id);
       dispatch(deleteStoredMeal(meal));
     } catch (e) {
       console.log(e);
@@ -135,9 +100,8 @@ export const changeDate = (date: Date) => {
   return async (dispatch: Dispatch) => {
     try {
       dispatch(changeStoredDate(date));
-      const mealsStorageSvc = new MealsStorageService();
-      const meals = await mealsStorageSvc.getAllForDate(date);
-      if (meals) {
+      const meals = await dataService.retrieveMeals(date);
+      if (meals && meals.length > 0) {
         dispatch(storeMeals(meals));
       }
     } catch (e) {
@@ -145,7 +109,7 @@ export const changeDate = (date: Date) => {
     }
   };
 };
-
+//FIXME
 export const importMeals = (meals: { [key: string]: IMeal[] }) => {
   return async (dispatch: Dispatch) => {
     try {
@@ -160,7 +124,7 @@ export const importMeals = (meals: { [key: string]: IMeal[] }) => {
     }
   };
 };
-
+//FIXME
 export const copyMeal = (date: Date, meal: IMeal) => {
   return async (dispatch: Dispatch) => {
     try {

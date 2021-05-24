@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { IMeal } from "../../../../classes/meal/IMeal";
 import { IonAlert } from "@ionic/react";
-import { deleteMeal } from "../../../../redux/actions/mealsActions";
+import { deleteMeal } from "../../../../redux/actions/meals/actions";
 
 interface Props {
   meal: IMeal | undefined;

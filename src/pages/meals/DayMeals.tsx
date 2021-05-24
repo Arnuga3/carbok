@@ -29,13 +29,14 @@ import {
   changeDate,
   retrieveMeals,
   updateMeals,
-} from "../../redux/actions/mealsActions";
+} from "../../redux/actions/meals/actions";
 import { useMeals } from "../../hooks/mealsHook";
 import { useTranslation } from "react-i18next";
 import { useAppSettings } from "../../hooks/appSettingsHook";
 import { MealTypeEnum } from "../../classes/meal/MealTypeEnum";
+import { getDateOnly } from "../../utils/helper";
 
-export const DayMeals: React.FC = () => {
+const DayMeals: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { settings } = useAppSettings();
@@ -57,7 +58,7 @@ export const DayMeals: React.FC = () => {
   }, [settings.language]);
 
   const handleMealTypeSelect = (mealType: MealTypeEnum) => {
-    dispatch(addMeal(new Meal(mealType, date, [])));
+    dispatch(addMeal(new Meal(mealType, getDateOnly(date), [])));
   };
 
   const getPreviousDay = () => {
@@ -125,6 +126,8 @@ export const DayMeals: React.FC = () => {
     </IonPage>
   );
 };
+
+export default React.memo(DayMeals);
 
 const HeaderContent = styled.div`
   display: flex;

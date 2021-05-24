@@ -20,7 +20,7 @@ import { Products } from "./Products";
 import { ActionSheet } from "./ActionSheet";
 import { NoteAlert } from "./alerts/NoteAlert";
 import { useMeals } from "../../../hooks/mealsHook";
-import { retrieveMeals } from "../../../redux/actions/mealsActions";
+import { retrieveMeals } from "../../../redux/actions/meals/actions";
 import { DeleteAlert } from "./alerts/DeleteAlert";
 import { getMealKey } from "../../../resources/mealTypes";
 

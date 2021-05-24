@@ -4,7 +4,7 @@ import { IMealProduct } from "./IMealProduct";
 export interface IMeal {
     id: string;
     type: MealTypeEnum;
-    dateTime: Date;
+    date: Date;
     products: IMealProduct[];
     note?: string;
 }

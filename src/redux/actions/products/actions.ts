@@ -64,7 +64,7 @@ export const retrieveProducts = (
 export function addProduct(product: IProduct) {
   return async (dispatch: Dispatch) => {
     try {
-      await dataService.saveProduct(product);
+      await dataService.addProduct(product);
       dispatch(storeProduct(product));
     } catch (e) {
       console.log(e);
@@ -97,6 +97,7 @@ export function deleteProduct(id: string) {
 export const importProducts = (products: IProduct[]) => {
   return async (dispatch: Dispatch) => {
     try {
+      //FIXME
       // const prodStorageSvc = new ProductsStorageService();
       // await prodStorageSvc.importData(products);
       dispatch(storeProducts(products));

@@ -77,7 +77,7 @@ export class MealsStorageService {
   }
 
   public async save(meal: IMeal): Promise<void> {
-    const date = meal.dateTime;
+    const date = meal.date;
     const dayMeals = await this.getAllForDate(date);
     await this.set(date, [...dayMeals, meal]);
   }
@@ -100,8 +100,8 @@ export class MealsStorageService {
   }
 
   public async remove(meal: IMeal): Promise<void> {
-    const dayMeals = await this.getAllForDate(meal.dateTime);
+    const dayMeals = await this.getAllForDate(meal.date);
     const mealsUpdated = dayMeals.filter((m: IMeal) => m.id !== meal.id);
-    await this.set(meal.dateTime, mealsUpdated);
+    await this.set(meal.date, mealsUpdated);
   }
 }

@@ -22,7 +22,7 @@ import { IMealProduct } from "../../../classes/meal/IMealProduct";
 import { MealProduct } from "../../../classes/meal/MealProduct";
 import { useProducts } from "../../../hooks/productsHook";
 import { retrieveProducts } from "../../../redux/actions/products/actions";
-import { updateMeal } from "../../../redux/actions/mealsActions";
+import { updateMeal } from "../../../redux/actions/meals/actions";
 import CalculationService from "../../../services/CalculationService";
 
 interface Props {
