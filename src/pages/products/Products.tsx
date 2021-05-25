@@ -72,13 +72,13 @@ const Products: React.FC = () => {
     if (!fetching) {
       completeInfineScroll();
     }
-    if (allFetched && ionInfiniteScrollRef.current) {
+    if (ionInfiniteScrollRef.current) {
       ionInfiniteScrollRef.current.disabled = allFetched;
     }
   }, [fetching, allFetched]);
 
   useEffect(() => {
-    dispatch(retrieveProducts(limit, offset, searchString));
+      dispatch(retrieveProducts(limit, offset, searchString));
   }, [searchString]);
 
   const handleOnCalculate = (product: IProduct) => {
@@ -108,8 +108,6 @@ const Products: React.FC = () => {
       ionInfiniteScrollRef.current.complete();
     }
   };
-
-  console.log("Render Products component");
 
   return (
     <IonPage>

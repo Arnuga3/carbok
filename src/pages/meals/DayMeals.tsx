@@ -76,7 +76,7 @@ const DayMeals: React.FC = () => {
   };
 
   const handleReorder = (e: any) => {
-    dispatch(updateMeals(date, e.detail.complete(meals)));
+    dispatch(updateMeals(e.detail.complete(meals)));
   };
 
   return (
@@ -104,7 +104,7 @@ const DayMeals: React.FC = () => {
       <IonContent fullscreen>
         <IonList>
           <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
-            {meals.map((meal, i) => (
+            {meals.sort((a, b) => a.order - b.order).map((meal, i) => (
               <DayMealCard key={i} meal={meal} />
             ))}
           </IonReorderGroup>

@@ -6,10 +6,10 @@ import { IonButton, IonHeader, IonIcon, IonTitle } from "@ionic/react";
 import { chevronBackOutline, chevronForwardOutline } from "ionicons/icons";
 import { IMeal } from "../../classes/meal/IMeal";
 import { IMealProduct } from "../../classes/meal/IMealProduct";
-import { MealsStorageService } from "../../services/MealsStorageService";
 import { CalculationService } from "../../services/CalculationService";
 import { CardData } from "./Overview";
 import { Range } from "./Overview";
+import { dataService } from "../../services/DataService";
 
 interface Props {
   data: CardData;
@@ -19,7 +19,6 @@ interface Props {
 export const DateRangeSwitch: React.FC<Props> = ({ data, onDateRangeChange }) => {
   const { t } = useTranslation();
   const c = new CalculationService();
-  const mealsStorageService = new MealsStorageService();
 
   useEffect(() => {
     getCardRangeData("7_days");
@@ -33,7 +32,7 @@ export const DateRangeSwitch: React.FC<Props> = ({ data, onDateRangeChange }) =>
     switch (range) {
       case "7_days":
         const ago7Days = moment(today).subtract(7, "day").toDate();
-        rangeMeals = await mealsStorageService.getAllForRange(ago7Days, today);
+        rangeMeals = await dataService.retrieveMealsBetween(ago7Days, today);
         for (const meal of rangeMeals) {
           products = [...products, ...meal.products];
         }
@@ -48,7 +47,7 @@ export const DateRangeSwitch: React.FC<Props> = ({ data, onDateRangeChange }) =>
 
       case "30_days":
         const ago30Days = moment(today).subtract(30, "day").toDate();
-        rangeMeals = await mealsStorageService.getAllForRange(ago30Days, today);
+        rangeMeals = await dataService.retrieveMealsBetween(ago30Days, today);
         for (const meal of rangeMeals) {
           products = [...products, ...meal.products];
         }
@@ -63,7 +62,7 @@ export const DateRangeSwitch: React.FC<Props> = ({ data, onDateRangeChange }) =>
 
       case "90_days":
         const ago90Days = moment(today).subtract(90, "day").toDate();
-        rangeMeals = await mealsStorageService.getAllForRange(ago90Days, today);
+        rangeMeals = await dataService.retrieveMealsBetween(ago90Days, today);
         for (const meal of rangeMeals) {
           products = [...products, ...meal.products];
         }

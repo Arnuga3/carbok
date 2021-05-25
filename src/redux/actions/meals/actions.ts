@@ -2,7 +2,7 @@ import { Dispatch } from "redux";
 import { IMeal } from "../../../classes/meal/IMeal";
 import { Meal } from "../../../classes/meal/Meal";
 import { MealsStorageService } from "../../../services/MealsStorageService";
-import { uuidv4 } from "../../../utils/helper";
+import { getDateOnly, uuidv4 } from "../../../utils/helper";
 import {
   AddMeal,
   MealsActions,
@@ -72,13 +72,16 @@ export const updateMeal = (meal: IMeal) => {
     }
   };
 };
-//FIXME
-export const updateMeals = (date: Date, meals: IMeal[]) => {
+
+export const updateMeals = (meals: IMeal[]) => {
   return async (dispatch: Dispatch) => {
     try {
-      const mealsStorageSvc = new MealsStorageService();
-      await mealsStorageSvc.updateAllForDate(date, meals);
-      dispatch(storeMeals(meals));
+      const mealsOrdered = meals.map((meal, idx) => ({
+        ...meal,
+        order: idx,
+      }));
+      await dataService.updateMeals(mealsOrdered);
+      dispatch(storeMeals(mealsOrdered));
     } catch (e) {
       console.log(e);
     }
@@ -109,6 +112,21 @@ export const changeDate = (date: Date) => {
     }
   };
 };
+
+export const copyMeal = (date: Date, meal: IMeal) => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const productsCopy = meal.products.map((product) => ({
+        ...product,
+        id: uuidv4(),
+      }));
+      dataService.addMeal(new Meal(meal.type, getDateOnly(date), productsCopy));
+      dispatch(changeStoredDate(date));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};
 //FIXME
 export const importMeals = (meals: { [key: string]: IMeal[] }) => {
   return async (dispatch: Dispatch) => {
@@ -119,23 +137,6 @@ export const importMeals = (meals: { [key: string]: IMeal[] }) => {
       if (mealsToday) {
         dispatch(storeMeals(mealsToday));
       }
-    } catch (e) {
-      console.log(e);
-    }
-  };
-};
-//FIXME
-export const copyMeal = (date: Date, meal: IMeal) => {
-  return async (dispatch: Dispatch) => {
-    try {
-      const mealsStorageSvc = new MealsStorageService();
-      const productsCopy = meal.products.map((product) => ({
-        ...product,
-        id: uuidv4(),
-      }));
-      const mealCopy = new Meal(meal.type, date, productsCopy);
-      await mealsStorageSvc.saveToDate(date, mealCopy);
-      dispatch(changeStoredDate(date));
     } catch (e) {
       console.log(e);
     }

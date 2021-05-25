@@ -9,6 +9,7 @@ export class Meal implements IMeal {
   type: MealTypeEnum;
   products: IMealProduct[];
   note: string = "";
+  order: number = 0;
 
   constructor(
     type: MealTypeEnum,

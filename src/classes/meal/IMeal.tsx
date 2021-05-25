@@ -7,4 +7,5 @@ export interface IMeal {
     date: Date;
     products: IMealProduct[];
     note?: string;
+    order: number;
 }

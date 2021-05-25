@@ -1,7 +1,15 @@
-import { db } from "../database/CarbokDB";
+import { importDB, exportDB } from "dexie-export-import";
+import { db, DexieExportJsonStructure } from "../database/CarbokDB";
 import { IProduct } from "../classes/product/IProduct";
 import { IMeal } from "../classes/meal/IMeal";
 import { getDateOnly } from "../utils/helper";
+
+import {
+  Plugins,
+  FilesystemDirectory,
+  FilesystemEncoding,
+} from "@capacitor/core";
+const { Filesystem } = Plugins;
 
 class DataService {
   /* products */
@@ -55,9 +63,13 @@ class DataService {
 
   /* meals */
   public async retrieveMeals(date: Date) {
+    return await db.meals.where("date").equals(getDateOnly(date)).toArray();
+  }
+
+  public async retrieveMealsBetween(fromDate: Date, toDate: Date) {
     return await db.meals
       .where("date")
-      .equals(getDateOnly(date))
+      .between(getDateOnly(fromDate), getDateOnly(toDate))
       .toArray();
   }
 
@@ -69,10 +81,44 @@ class DataService {
     await db.meals.update(meal.id as any, meal);
   }
 
+  public async updateMeals(meals: IMeal[]): Promise<void> {
+    await db.meals.bulkPut(meals);
+  }
+
   public async deleteMeal(id: string): Promise<void> {
     await db.meals.delete(id);
   }
   /* end meals */
+
+  /* import - export */
+  public async exportData() {
+    try {
+      const dbCopy = await db.transaction("r", db.tables, () => {
+        return Promise.all(
+          db.tables.map((table) =>
+            table.toArray().then((rows) => ({ table: table.name, rows: rows }))
+          )
+        );
+      });
+      await Filesystem.writeFile({
+        path: `carbok-dexie-${Date.now()}.json`,
+        data: JSON.stringify(dbCopy),
+        directory: FilesystemDirectory.Documents,
+        encoding: FilesystemEncoding.UTF8,
+      });
+    } catch (error) {
+      console.error("" + error);
+    }
+  }
+  /* end import - export */
 }
+
+// function import(data, db) {
+//   return db.transaction('rw', db.tables, () => {
+//       return Promise.all(data.map (t =>
+//           db.table(t.table).clear()
+//             .then(()=>db.table(t.table).bulkAdd(t.rows)));
+//   });
+// }
 
 export const dataService = new DataService();

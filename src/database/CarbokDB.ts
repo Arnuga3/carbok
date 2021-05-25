@@ -36,3 +36,22 @@ export class CarbokDB extends Dexie {
 }
 
 export const db = new CarbokDB();
+
+export interface DexieExportJsonStructure {
+  formatName: "dexie";
+  formatVersion: 1;
+  data: {
+    databaseName: string;
+    databaseVersion: number;
+    tables: Array<{
+      name: string;
+      schema: string;
+      rowCount: number;
+    }>;
+    data: Array<{
+      tableName: string;
+      inbound: boolean;
+      rows: any[];
+    }>;
+  };
+}

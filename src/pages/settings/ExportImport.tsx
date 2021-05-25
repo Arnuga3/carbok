@@ -13,19 +13,11 @@ import {
   useIonToast,
 } from "@ionic/react";
 import { downloadOutline, pushOutline } from "ionicons/icons";
-import { MealsStorageService } from "../../services/MealsStorageService";
-import { ProductsStorageService } from "../../services/ProductsStorageService";
 import { importMeals } from "../../redux/actions/meals/actions";
 import { importProducts } from "../../redux/actions/products/actions";
 import { IMeal } from "../../classes/meal/IMeal";
 import { IProduct } from "../../classes/product/IProduct";
-
-import {
-  Plugins,
-  FilesystemDirectory,
-  FilesystemEncoding,
-} from "@capacitor/core";
-const { Filesystem } = Plugins;
+import { dataService } from "../../services/DataService";
 
 export const ExportImport: React.FC = () => {
   const { t } = useTranslation();
@@ -37,19 +29,7 @@ export const ExportImport: React.FC = () => {
 
   const handleExport = async () => {
     try {
-      const mealsStorageSvc = new MealsStorageService();
-      const productsStorageSvc = new ProductsStorageService();
-
-      const data = {
-        meals: await mealsStorageSvc.exportData(),
-        products: await productsStorageSvc.exportData(),
-      };
-      await Filesystem.writeFile({
-        path: `carbok-${Date.now()}.json`,
-        data: JSON.stringify(data),
-        directory: FilesystemDirectory.Documents,
-        encoding: FilesystemEncoding.UTF8,
-      });
+      await dataService.exportData();
       present({
         message: t("page.settings.toast.export.success"),
         duration: 2000,

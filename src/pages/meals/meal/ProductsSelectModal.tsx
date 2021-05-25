@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createRef, RefObject, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
@@ -12,6 +12,8 @@ import {
   IonButton,
   IonModal,
   IonFooter,
+  IonInfiniteScroll,
+  IonInfiniteScrollContent,
 } from "@ionic/react";
 import { checkmarkCircle, ellipseOutline, close } from "ionicons/icons";
 import { ProductsSearch } from "../../../components/common/ProductsSearch";
@@ -33,28 +35,37 @@ interface Props {
 
 const defaultSelectedProducts: IProduct[] = [];
 
-export const ProductsSelectModal: React.FC<Props> = ({ meal, open, onClose }) => {
+export const ProductsSelectModal: React.FC<Props> = ({
+  meal,
+  open,
+  onClose,
+}) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const c = new CalculationService();
 
-  const { products } = useProducts();
-  const [searchResult, setSearchResult] = useState(products);
+  const { products, limit, offset, searchString, fetching, allFetched } =
+    useProducts();
+
   const [selectedProducts, setSelectedProducts] = useState(
     defaultSelectedProducts
   );
 
-  useEffect(() => {
-    if (products.length === 0) {
-      // dispatch(retrieveProducts());
-    }
-  }, []);
+  const ionInfiniteScrollRef: RefObject<HTMLIonInfiniteScrollElement> =
+    createRef<HTMLIonInfiniteScrollElement>();
 
   useEffect(() => {
-    if (products && products.length !== 0) {
-      setSearchResult(products);
+    if (!fetching) {
+      completeInfineScroll();
     }
-  }, [products]);
+    if (ionInfiniteScrollRef.current) {
+      ionInfiniteScrollRef.current.disabled = allFetched;
+    }
+  }, [fetching, allFetched]);
+
+  useEffect(() => {
+    dispatch(retrieveProducts(limit, offset, searchString));
+  }, [searchString]);
 
   const toggleSelect = (product: IProduct) => {
     const isSelected = selectedProducts.find((prd) => prd.id === product.id);
@@ -69,26 +80,20 @@ export const ProductsSelectModal: React.FC<Props> = ({ meal, open, onClose }) =>
     setSelectedProducts(selectedProductsUpdated);
   };
 
-  const handleSearch = (result: IProduct[]) => setSearchResult(result);
-
   const handleSelect = () => {
     const mealProducts: IMealProduct[] = selectedProducts.map((product) => {
       const mealProduct = new MealProduct(product);
 
-      if (mealProduct.portionType === 'weight') {
+      if (mealProduct.portionType === "weight") {
         const { carbs, sugars } = mealProduct.carbsData.per100;
         const { portion } = mealProduct.mealProductCarbs.per100;
         return {
           ...mealProduct,
           mealProductCarbs: {
             ...mealProduct.mealProductCarbs,
-            per100: c.getCarbsFromWeight(
-              carbs,
-              sugars,
-              portion,
-            ),
-          }
-        }
+            per100: c.getCarbsFromWeight(carbs, sugars, portion),
+          },
+        };
       }
       return mealProduct;
     });
@@ -107,11 +112,17 @@ export const ProductsSelectModal: React.FC<Props> = ({ meal, open, onClose }) =>
     onClose();
   };
 
+  const completeInfineScroll = () => {
+    if (ionInfiniteScrollRef.current) {
+      ionInfiniteScrollRef.current.complete();
+    }
+  };
+
   return (
     <IonModal isOpen={open}>
       <IonHeader mode="ios" translucent>
         <HeaderContent>
-          {/* <ProductsSearch products={products} onSearchComplete={handleSearch} /> */}
+          <ProductsSearch />
           <IonButton onClick={handleClose} color="primary" fill="clear">
             <IonIcon icon={close} slot="icon-only" />
           </IonButton>
@@ -119,7 +130,7 @@ export const ProductsSelectModal: React.FC<Props> = ({ meal, open, onClose }) =>
       </IonHeader>
       <IonContent fullscreen>
         <IonList>
-          {searchResult.map((product: IProduct, i: number) => (
+          {products.map((product: IProduct, i: number) => (
             <IonItem key={i} onClick={() => toggleSelect(product)}>
               <IonIcon
                 slot="start"
@@ -134,6 +145,14 @@ export const ProductsSelectModal: React.FC<Props> = ({ meal, open, onClose }) =>
             </IonItem>
           ))}
         </IonList>
+        <IonInfiniteScroll
+          ref={ionInfiniteScrollRef}
+          onIonInfinite={() =>
+            dispatch(retrieveProducts(limit, offset, searchString))
+          }
+        >
+          <IonInfiniteScrollContent loadingSpinner="dots" />
+        </IonInfiniteScroll>
       </IonContent>
       {selectedProducts.length > 0 && (
         <IonFooter slot="fixed">
