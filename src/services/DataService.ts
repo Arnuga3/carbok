@@ -1,8 +1,9 @@
-import { importDB, exportDB } from "dexie-export-import";
-import { db, DexieExportJsonStructure } from "../database/CarbokDB";
+import { db } from "../database/CarbokDB";
 import { IProduct } from "../classes/product/IProduct";
 import { IMeal } from "../classes/meal/IMeal";
 import { getDateOnly } from "../utils/helper";
+
+import { isPlatform, getPlatforms } from "@ionic/react";
 
 import {
   Plugins,
@@ -14,37 +15,23 @@ const { Filesystem } = Plugins;
 class DataService {
   /* products */
   public async retrieveProducts(
-    limit: number,
-    offset: number,
     searchText: string | null
   ): Promise<IProduct[]> {
     const result = searchText
-      ? await this.searchAndGetProductsChunk(limit, offset, searchText)
-      : await this.getProductsChunk(limit, offset);
+      ? await this.searchProducts(searchText)
+      : await this.retrieveAllProducts();
     return result;
   }
 
-  private async searchAndGetProductsChunk(
-    limit: number,
-    offset: number,
-    searchText: string
-  ): Promise<IProduct[]> {
-    const regex = new RegExp(searchText);
-    return await db.products
-      .filter((prod) => regex.test(prod.name.toLowerCase()))
-      .offset(offset)
-      .limit(limit)
-      .toArray();
+  public async retrieveAllProducts(): Promise<IProduct[]> {
+    return await db.products.orderBy("name").toArray();
   }
 
-  private async getProductsChunk(
-    limit: number,
-    offset: number
-  ): Promise<IProduct[]> {
+  private async searchProducts(searchText: string): Promise<IProduct[]> {
+    const regex = new RegExp(searchText);
     return await db.products
       .orderBy("name")
-      .offset(offset)
-      .limit(limit)
+      .filter((prod) => regex.test(prod.name.toLowerCase()))
       .toArray();
   }
 
@@ -91,34 +78,67 @@ class DataService {
   /* end meals */
 
   /* import - export */
-  public async exportData() {
+  public async exportData(): Promise<void> {
     try {
-      const dbCopy = await db.transaction("r", db.tables, () => {
+      const dbExport = await db.transaction("r", db.tables, () => {
         return Promise.all(
           db.tables.map((table) =>
             table.toArray().then((rows) => ({ table: table.name, rows: rows }))
           )
         );
       });
-      await Filesystem.writeFile({
-        path: `carbok-dexie-${Date.now()}.json`,
-        data: JSON.stringify(dbCopy),
-        directory: FilesystemDirectory.Documents,
-        encoding: FilesystemEncoding.UTF8,
-      });
+      const data: { fileName: string; json: string } = {
+        fileName: `carbok-dexie-${Date.now()}`,
+        json: JSON.stringify(dbExport),
+      };
+      isPlatform("hybrid") ? this.writeFile(data) : this.downloadFile(data);
     } catch (error) {
       console.error("" + error);
     }
   }
+
+  private downloadFile(data: { fileName: string; json: string }) {
+    const a = window.document.createElement("a");
+    a.href = window.URL.createObjectURL(
+      new Blob([data.json], { type: "application/json" })
+    );
+    a.download = `${data.fileName}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  private async writeFile(data: { fileName: string; json: string }) {
+    await Filesystem.writeFile({
+      path: `${data.fileName}.json`,
+      data: data.json,
+      directory: FilesystemDirectory.Documents,
+      encoding: FilesystemEncoding.UTF8,
+    });
+  }
+
+  public async importData(data: string): Promise<void> {
+    await db.products.clear();
+    await db.meals.clear();
+    await db.transaction("rw", db.tables, () => {
+      return Promise.all(
+        JSON.parse(data).map(async (t: any) => {
+          await db.table(t.table).clear();
+          if (t.table === "meals") {
+            return await db.table(t.table).bulkAdd(
+              t.rows.map((r: IMeal) => ({
+                ...r,
+                date: getDateOnly(new Date(r.date)),
+              }))
+            );
+          } else {
+            return await db.table(t.table).bulkAdd(t.rows);
+          }
+        })
+      );
+    });
+  }
   /* end import - export */
 }
-
-// function import(data, db) {
-//   return db.transaction('rw', db.tables, () => {
-//       return Promise.all(data.map (t =>
-//           db.table(t.table).clear()
-//             .then(()=>db.table(t.table).bulkAdd(t.rows)));
-//   });
-// }
 
 export const dataService = new DataService();

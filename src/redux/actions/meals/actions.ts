@@ -1,7 +1,6 @@
 import { Dispatch } from "redux";
 import { IMeal } from "../../../classes/meal/IMeal";
 import { Meal } from "../../../classes/meal/Meal";
-import { MealsStorageService } from "../../../services/MealsStorageService";
 import { getDateOnly, uuidv4 } from "../../../utils/helper";
 import {
   AddMeal,
@@ -122,21 +121,6 @@ export const copyMeal = (date: Date, meal: IMeal) => {
       }));
       dataService.addMeal(new Meal(meal.type, getDateOnly(date), productsCopy));
       dispatch(changeStoredDate(date));
-    } catch (e) {
-      console.log(e);
-    }
-  };
-};
-//FIXME
-export const importMeals = (meals: { [key: string]: IMeal[] }) => {
-  return async (dispatch: Dispatch) => {
-    try {
-      const mealsStorageSvc = new MealsStorageService();
-      await mealsStorageSvc.importData(meals);
-      const mealsToday = await mealsStorageSvc.getAllForDate(new Date());
-      if (mealsToday) {
-        dispatch(storeMeals(mealsToday));
-      }
     } catch (e) {
       console.log(e);
     }

@@ -24,12 +24,12 @@ export const ProductListItem: React.FC<Props> = ({ product }) => {
         };
   return (
     <ListItemContent>
-      <ContentRow>
+      <ContentRowFirst>
         <NameBadge>{product.name}</NameBadge>
         <IonText color="medium">
           <small>{data.portion}</small>
         </IonText>
-      </ContentRow>
+      </ContentRowFirst>
       <ContentRow>
         <IonText color="medium">
           <small>{t("carbohydrates")}</small>
@@ -54,17 +54,22 @@ const ListItemContent = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 8px 16px 8px 0;
+  padding: 4px 16px 4px 0;
+`;
+
+const ContentRowFirst = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const ContentRow = styled.div`
   display: flex;
   justify-content: space-between;
-  line-height: 90%;
+  line-height: 80%;
 `;
 
 const NameBadge = styled.div`
   display: flex;
   align-items: center;
-  font-size: 1.1em;
 `;

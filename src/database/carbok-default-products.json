@@ -485,7 +485,7 @@
         "id": "30aa3d5e-a7e3-4a84-801f-95f8af3b6ad3",
         "name": "Apple juice",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -508,7 +508,7 @@
         "id": "947b9d08-daad-4ca4-973f-0dcc0b762700",
         "name": "Carrot juice",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -531,7 +531,7 @@
         "id": "1cebd98d-81e8-4c59-9541-3531d7a7fb76",
         "name": "Celery juice",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -554,7 +554,7 @@
         "id": "c2f23c98-06cd-4c8c-97eb-8ed848c8aa2c",
         "name": "Grapefruit juice",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -577,7 +577,7 @@
         "id": "53fdb047-aa8d-4b47-9002-0f85040ceedf",
         "name": "Lemon juice",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -598,9 +598,9 @@
     },
     {
         "id": "1b63ebab-043b-4437-ac11-486093df294b",
-        "name": "Juice, lime, commercial or home squeezed",
+        "name": "Lime juice",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -623,7 +623,7 @@
         "id": "f926d2e3-148b-44e8-9988-0490f437be0f",
         "name": "Orange juice",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -646,7 +646,7 @@
         "id": "bab61082-a8fe-49cd-8647-49fe2ace84ef",
         "name": "Pear juice",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -669,7 +669,7 @@
         "id": "362edeb8-e74f-4199-bbf2-2e9d66d3606f",
         "name": "Pineapple juice",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -692,7 +692,7 @@
         "id": "094ee315-1a0a-4744-89dc-52a1598c405d",
         "name": "Pomegranate juice",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -715,7 +715,7 @@
         "id": "7d8ae607-2b43-4abe-851c-4c094fb4ef46",
         "name": "Prune juice",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -738,7 +738,7 @@
         "id": "c4c294e5-b89d-402f-abb4-2176b13ee3fb",
         "name": "Tomato juice",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -830,7 +830,7 @@
         "id": "b9c60039-5a36-4462-9a91-f42e2daec1ec",
         "name": "Rice cracker plain",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -853,7 +853,7 @@
         "id": "69b99f94-a8b8-43e7-90df-2f4f9f6fb23e",
         "name": "Chocolate chip biscuit",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -876,7 +876,7 @@
         "id": "f26ccc0f-a828-49e8-b4a9-eb28c32bbc80",
         "name": "Macaron (almond based)",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -899,7 +899,7 @@
         "id": "95f15361-c1f4-4a06-88f5-d92356dcae5c",
         "name": "Shortbread biscuit",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -968,7 +968,7 @@
         "id": "ecb8ec18-a247-4f1f-9b86-771efac3afe6",
         "name": "Bagel white",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -991,7 +991,7 @@
         "id": "7ec61749-aa9b-4c03-85b3-2f4f34c162c7",
         "name": "Bagel, fruit",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1014,7 +1014,7 @@
         "id": "de2e58ba-8380-436f-b1d4-4bd4361982eb",
         "name": "Breadcrumbs, white",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1037,7 +1037,7 @@
         "id": "b07b5cdf-5842-4a49-9071-6be25fc023dc",
         "name": "Corn bread",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1060,7 +1060,7 @@
         "id": "8a873e66-8c5a-41de-b78d-0945279ebf97",
         "name": "Bread croutons",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1083,7 +1083,7 @@
         "id": "118e0934-70a8-41b1-8d40-94af1f353285",
         "name": "Wrap white",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1106,7 +1106,7 @@
         "id": "f6ceecee-c104-43e3-8b9d-09722c938377",
         "name": "Wrap wholemeal",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1129,7 +1129,7 @@
         "id": "facb2602-3a7e-423a-9cfd-3d15183ae0df",
         "name": "Bread white",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1152,7 +1152,7 @@
         "id": "efdb4ae1-c1eb-4ca7-8b02-8bf985440e42",
         "name": "Bread, white ciabatta",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1175,7 +1175,7 @@
         "id": "1cbd1ffd-1593-4246-95fb-d593771b1e08",
         "name": "Bread wholemeal",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1198,7 +1198,7 @@
         "id": "8c9bcee3-8c3e-466f-8578-2f0220b8fbf6",
         "name": "Bread wholemeal, seeds",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1221,7 +1221,7 @@
         "id": "751b0258-aca3-4087-bbe5-11c8f04e54e5",
         "name": "Bread wholemeal, grains, seeds, oats",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1244,7 +1244,7 @@
         "id": "2fc12a79-5c25-4482-bfe2-9cb1b7837f71",
         "name": "Bread white & wholemeal",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1267,7 +1267,7 @@
         "id": "dac41f1b-eaa1-442b-82cf-811f3f2ad0f4",
         "name": "Bread, garlic or herb",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1290,7 +1290,7 @@
         "id": "16ab768e-8314-48c3-8278-44e01a653a7a",
         "name": "Bread, Naan",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1313,7 +1313,7 @@
         "id": "aa1e2e12-d291-4e5d-961e-c8f31423d1c3",
         "name": "Bread, mixed grain",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1336,7 +1336,7 @@
         "id": "7cc8a5af-6178-40d7-abc2-d66343096ffa",
         "name": "Bread, pizza base",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1359,7 +1359,7 @@
         "id": "67d63939-17a5-4a79-9e23-72f932ba7d8b",
         "name": "Bun with sultanas",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1382,7 +1382,7 @@
         "id": "f6f3d7e6-bf50-4d91-b66e-20d8e9a5a7c9",
         "name": "English Muffin white",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1405,7 +1405,7 @@
         "id": "ae82ab27-52f4-4304-91e1-df9b1847242f",
         "name": "English Muffins wholemeal",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1428,7 +1428,7 @@
         "id": "a36dc626-bfca-489d-abbf-ffbe7e8d471b",
         "name": "Cereal, corn flakes",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1451,7 +1451,7 @@
         "id": "7c3cd1dc-540d-4596-a075-b283783f11ad",
         "name": "Cereal, mixed grain flakes",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1474,7 +1474,7 @@
         "id": "18f37e14-d24a-475c-9cff-ffb5ec4e28d9",
         "name": "Cereal, mixed grain flakes, fruit & nut",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1497,7 +1497,7 @@
         "id": "e6165ed2-ad20-4594-8c74-cbd594609bd9",
         "name": "Cereal, mixed grain flakes, dried fruit",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1520,7 +1520,7 @@
         "id": "5776b7da-5bbd-44be-b45a-8be530e3fb78",
         "name": "Cereal, puffed rice",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1543,7 +1543,7 @@
         "id": "79ebf231-f389-4fb3-bc23-09b7e9ccdf09",
         "name": "Muesli, dried fruit",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -1566,7 +1566,7 @@
         "id": "7ec4d83e-35b5-4672-85e3-d796cd30fa4a",
         "name": "Muesli, dried fruit & nuts",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -1612,7 +1612,7 @@
         "id": "5259f0a4-8861-4d9b-b694-6eddd1c9e323",
         "name": "Porridge, oats with cows milk",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1635,7 +1635,7 @@
         "id": "cf4cd341-030d-4f5b-9881-1b57bc183ff5",
         "name": "Brownie",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -1658,7 +1658,7 @@
         "id": "ba96ac04-c688-4883-9601-b34c0c19e56b",
         "name": "Cake or cupcake, berry",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -1681,7 +1681,7 @@
         "id": "c5de000f-c2ea-4833-8c89-aa18cc604a40",
         "name": "Cake or cupcake, caramel, iced",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -1704,7 +1704,7 @@
         "id": "92ea5492-8576-4ac2-8eb0-53e878fca96e",
         "name": "Cake or cupcake, carrot",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -1727,7 +1727,7 @@
         "id": "6b7aa83d-bbf8-4624-82ae-c9c59f227651",
         "name": "Cheesecake, biscuit base",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -1750,7 +1750,7 @@
         "id": "9d57ebdb-fe9e-4532-8799-d880d0b4a489",
         "name": "Cake or cupcake, chocolate",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -1773,7 +1773,7 @@
         "id": "15bf5aab-1185-49eb-ba0e-8b8bdb69ec35",
         "name": "Cake or cupcake, citrus",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -1796,7 +1796,7 @@
         "id": "691f2c7a-1b2b-4efe-9d98-ba09caf98589",
         "name": "Cake or cupcake, citrus, iced",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -1819,7 +1819,7 @@
         "id": "d311e9e0-0fa2-470a-bb82-772ba7125fb2",
         "name": "Cake or cupcake, hazelnut",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -1842,7 +1842,7 @@
         "id": "cc2a8275-9dd6-4d41-81fd-f886b2c7d9d3",
         "name": "Doughnut, custard filled",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -1865,7 +1865,7 @@
         "id": "74daba5e-e98a-452c-8493-ca4ff6e5731d",
         "name": "Doughnut, jam filled",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -1888,7 +1888,7 @@
         "id": "405489dd-8faf-4939-b32a-72ce3ad40918",
         "name": "Doughnut glazed",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -1911,7 +1911,7 @@
         "id": "2a4d07c6-5f1b-4f5f-ad8d-3872b83c0162",
         "name": "Muffin, chocolate chip",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -1934,7 +1934,7 @@
         "id": "7f0b8f7b-b67b-44f3-90c5-2402cd8a9705",
         "name": "Waffle plain",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1957,7 +1957,7 @@
         "id": "1b286d28-e94d-4efd-a070-c6c1e54df220",
         "name": "Yorkshire pudding",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -1980,7 +1980,7 @@
         "id": "c71c4dd4-8c6a-4995-8ea1-27ca2e9741a5",
         "name": "Buckwheat groats, cooked",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -2003,7 +2003,7 @@
         "id": "13597728-f345-401b-8d9b-d97e7da17777",
         "name": "Bulgur cooked",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -2049,7 +2049,7 @@
         "id": "dc78b26b-1e64-49ed-9683-22dc0e168374",
         "name": "Couscous, cooked",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -2095,7 +2095,7 @@
         "id": "2a20e29a-f58a-4a8d-b38f-c839fc5f75bb",
         "name": "Rice white, cooked",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -2118,7 +2118,7 @@
         "id": "40828f19-e78a-4df7-9926-c2571ee3409f",
         "name": "Rice, brown, cooked",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -2141,7 +2141,7 @@
         "id": "260ae822-49be-4458-bcf1-e47d479ee896",
         "name": "Rice for sushi, cooked",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -2210,7 +2210,7 @@
         "id": "88defc91-dd8d-47bf-8048-41630ed2b84b",
         "name": "Rice fried with egg",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -2233,7 +2233,7 @@
         "id": "3f8254d9-624e-467f-bff6-2ef5a6ca5f92",
         "name": "Risotto",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -2256,7 +2256,7 @@
         "id": "f19e49a2-bbd1-47bb-9e38-c60cf0a119d6",
         "name": "Flour white, self-raising",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -2279,7 +2279,7 @@
         "id": "e02b32c8-0fa4-4c13-b343-4b7d9257e83b",
         "name": "Flour wholemeal, plain",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -2325,7 +2325,7 @@
         "id": "da89c9ca-a769-49a8-ad17-f67ff0ed8e04",
         "name": "Pasta cooked",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -2348,7 +2348,7 @@
         "id": "6f001298-7857-459f-93d7-d6a524fab537",
         "name": "Pasta wholemeal cooked",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -2371,7 +2371,7 @@
         "id": "07c32993-6bd5-4332-9a13-36a490753b91",
         "name": "Croissant",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -2394,7 +2394,7 @@
         "id": "5b646548-c7fd-415b-bada-23db9b461100",
         "name": "Eclair or profiterole, chocolate icing",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -2417,7 +2417,7 @@
         "id": "89ca1954-34f3-4d31-824c-18af4f919814",
         "name": "Prawn toast, white bread, fried",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -2438,7 +2438,7 @@
     },
     {
         "id": "330941c5-2585-456c-a63c-448f7aa5099b",
-        "name": "Samosa, meat & vegetable, deep fried",
+        "name": "Samosa, meat & vegetables, deep fried",
         "category": {
             "type": "other"
         },
@@ -2461,7 +2461,7 @@
     },
     {
         "id": "8ba9ceed-c115-4ccf-ae55-c417444887d5",
-        "name": "Samosa, vegetable, deep fried",
+        "name": "Samosa, vegetables, deep fried",
         "category": {
             "type": "other"
         },
@@ -2507,7 +2507,7 @@
     },
     {
         "id": "af9643a2-1fb3-4c08-b345-de2f6c99861a",
-        "name": "Spring roll, meat & vegetable, deep fried",
+        "name": "Spring roll, meat & vegetables, deep fried",
         "category": {
             "type": "other"
         },
@@ -2553,7 +2553,7 @@
     },
     {
         "id": "6ecbd198-9362-4174-9466-138cba38e05b",
-        "name": "Spring roll, vegetable, deep fried",
+        "name": "Spring roll, vegetables, deep fried",
         "category": {
             "type": "other"
         },
@@ -2624,7 +2624,7 @@
         "id": "567b930f-76cb-4108-aacd-d2afeb5c8cbf",
         "name": "Apple strudel",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -2647,7 +2647,7 @@
         "id": "76aabe16-c3fd-4515-a1ae-a0e55003c6cb",
         "name": "Tart, custard",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -2831,7 +2831,7 @@
         "id": "365af413-7780-45ed-aaf9-a9f60fae4d8c",
         "name": "Apple sauce",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -2900,7 +2900,7 @@
         "id": "1ed57e2a-b342-43ba-86b1-cfb438677bc9",
         "name": "Cranberry sauce",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -3222,7 +3222,7 @@
         "id": "873f4e98-5f74-4392-8513-fe2a84ef3729",
         "name": "Breadcrumbs for coating food",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -3291,7 +3291,7 @@
         "id": "2b56d68f-9997-4d35-86b5-17ea544f06df",
         "name": "Cheese spread regular",
         "category": {
-            "type": "other"
+            "type": "dairy"
         },
         "units": {
             "type": "g"
@@ -3314,7 +3314,7 @@
         "id": "33b6c81a-616f-4b64-9a9e-bbdda4399e97",
         "name": "Cheese brie",
         "category": {
-            "type": "other"
+            "type": "dairy"
         },
         "units": {
             "type": "g"
@@ -3337,7 +3337,7 @@
         "id": "f0d89761-0da3-43bd-9a6b-cbf319503942",
         "name": "Cheese camembert",
         "category": {
-            "type": "other"
+            "type": "dairy"
         },
         "units": {
             "type": "g"
@@ -3360,7 +3360,7 @@
         "id": "7107896c-3b12-407e-8a02-bdb16ececac1",
         "name": "Cheese cheddar",
         "category": {
-            "type": "other"
+            "type": "dairy"
         },
         "units": {
             "type": "g"
@@ -3383,7 +3383,7 @@
         "id": "3cfc4e53-1605-4d94-97cf-f7f9b57bb266",
         "name": "Cheese cottage regular",
         "category": {
-            "type": "other"
+            "type": "dairy"
         },
         "units": {
             "type": "g"
@@ -3406,7 +3406,7 @@
         "id": "f1126dae-2322-4b6e-a329-1b88eb97f650",
         "name": "Cheese fetta regular",
         "category": {
-            "type": "other"
+            "type": "dairy"
         },
         "units": {
             "type": "g"
@@ -3426,33 +3426,10 @@
         "portionType": "weight"
     },
     {
-        "id": "43a8bda6-8147-41bf-92f5-215fabc0f08c",
-        "name": "Cheese, goat, firm",
-        "category": {
-            "type": "other"
-        },
-        "units": {
-            "type": "g"
-        },
-        "carbsData": {
-            "per100": {
-                "carbs": 0.8,
-                "sugars": 0.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight"
-    },
-    {
         "id": "b3e6147c-3f27-4b76-9652-d160405dcac3",
         "name": "Cheese goat",
         "category": {
-            "type": "other"
+            "type": "dairy"
         },
         "units": {
             "type": "g"
@@ -3475,7 +3452,7 @@
         "id": "c796ab2f-b8ea-48df-9fa9-1b1088144fe4",
         "name": "Cheese haloumi",
         "category": {
-            "type": "other"
+            "type": "dairy"
         },
         "units": {
             "type": "g"
@@ -3498,7 +3475,7 @@
         "id": "1cfbd742-71e9-4062-992f-afb376cb35b5",
         "name": "Cheese, mozzarella, reduced fat",
         "category": {
-            "type": "other"
+            "type": "dairy"
         },
         "units": {
             "type": "g"
@@ -3521,7 +3498,7 @@
         "id": "8a443366-c9f0-430f-9ce2-6d8430016d57",
         "name": "Cheese mozzarella",
         "category": {
-            "type": "other"
+            "type": "dairy"
         },
         "units": {
             "type": "g"
@@ -3544,7 +3521,7 @@
         "id": "24dabec6-8b37-43b4-be40-667c63966e72",
         "name": "Cream double",
         "category": {
-            "type": "other"
+            "type": "dairy"
         },
         "units": {
             "type": "g"
@@ -3567,7 +3544,7 @@
         "id": "3455eb83-5e16-4eb4-bd2e-969052d65f52",
         "name": "Cream sour regular",
         "category": {
-            "type": "other"
+            "type": "dairy"
         },
         "units": {
             "type": "g"
@@ -3613,7 +3590,7 @@
         "id": "b3550772-fa3c-49ca-90e7-9bfb3fd20643",
         "name": "Ice cream, caramel",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -3636,7 +3613,7 @@
         "id": "187097a7-fcbf-401b-b11b-095b71aaa2c5",
         "name": "Ice cream, strawberry",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -3682,7 +3659,7 @@
         "id": "db9e5727-a557-4839-a00d-c0364a17187d",
         "name": "Milk cow, skim ~0.15%",
         "category": {
-            "type": "other"
+            "type": "dairy"
         },
         "units": {
             "type": "g"
@@ -3705,7 +3682,7 @@
         "id": "2f8da3d9-65cc-410b-8a4e-c7c3c3c128d3",
         "name": "Milk cow, regular fat ~3.5%",
         "category": {
-            "type": "other"
+            "type": "dairy"
         },
         "units": {
             "type": "g"
@@ -3728,7 +3705,7 @@
         "id": "f9a44222-ec68-4ca1-99d3-bacee1990e49",
         "name": "Milk cow, 1-2%",
         "category": {
-            "type": "other"
+            "type": "dairy"
         },
         "units": {
             "type": "g"
@@ -3751,7 +3728,7 @@
         "id": "b8b17c87-1d13-4449-88c5-170166260505",
         "name": "Milk goat",
         "category": {
-            "type": "other"
+            "type": "dairy"
         },
         "units": {
             "type": "g"
@@ -3843,7 +3820,7 @@
         "id": "82199770-45d0-478e-9f8c-d0e0e4e26a17",
         "name": "Apple",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -3866,7 +3843,7 @@
         "id": "c1c959c2-10e1-464f-aad1-f0d4a1747d60",
         "name": "Apple golden",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -3889,7 +3866,7 @@
         "id": "93a496a3-c0e1-4f07-8bf1-4738cbb2f0c9",
         "name": "Apple pink lady",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -3912,7 +3889,7 @@
         "id": "06168c59-1ebb-447c-8594-acab34bc5e47",
         "name": "Apple royal gala",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -3935,7 +3912,7 @@
         "id": "1d1f530d-58ce-45bb-bd06-21d395fd2379",
         "name": "Apricot",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -3958,7 +3935,7 @@
         "id": "e19051c1-6345-423c-b8d9-86e74ee22cc9",
         "name": "Apricot dried",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -3981,7 +3958,7 @@
         "id": "51c642f5-5b47-40d8-abb0-63434772900c",
         "name": "Apricot canned in syrup",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4004,7 +3981,7 @@
         "id": "e18d978c-650c-40da-8a05-bd29ccbd553e",
         "name": "Banana",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4027,7 +4004,7 @@
         "id": "1bf1372c-defb-474a-889a-78fe7025eef9",
         "name": "Banana chip",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4050,7 +4027,7 @@
         "id": "9766f455-a9eb-4512-8a8a-14df74d32285",
         "name": "Blackberry",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4073,7 +4050,7 @@
         "id": "fbeb924f-fd76-48f3-b34f-ff865a923716",
         "name": "Blueberry",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4165,7 +4142,7 @@
         "id": "c24de3d2-72fe-4cce-b0b4-c5ba5a4b085c",
         "name": "Date dried",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4188,7 +4165,7 @@
         "id": "51bfb536-831f-4600-ab0b-c1ad4ce0c5dc",
         "name": "Fig dried",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4211,7 +4188,7 @@
         "id": "4b27d85b-9667-4e61-8c43-c130ebe7a172",
         "name": "Grape red",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4234,7 +4211,7 @@
         "id": "d0d93695-9d90-4177-bc0c-8769917292bf",
         "name": "Grapefruit",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4257,7 +4234,7 @@
         "id": "29615b8b-4f80-4c82-b08e-7f29f3e5ab48",
         "name": "Guava",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4280,7 +4257,7 @@
         "id": "fe4483ef-c7b8-4e61-adb3-0987f3e19913",
         "name": "Kiwi green",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4303,7 +4280,7 @@
         "id": "0657fa29-75c2-4188-9c52-ba86afc61329",
         "name": "Kiwi gold",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4326,7 +4303,7 @@
         "id": "07dd4b76-9deb-431e-a80a-1646f232abbe",
         "name": "Lemon",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4349,7 +4326,7 @@
         "id": "265a2fff-af06-46f3-8ae5-cd3917cec6e8",
         "name": "Lime",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4372,7 +4349,7 @@
         "id": "d565a2c5-af10-43b7-8ecd-993af1e67e45",
         "name": "Lychee",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4395,7 +4372,7 @@
         "id": "fa3d1634-bf6c-4146-b802-15e9bdfbdd07",
         "name": "Mandarin",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4418,7 +4395,7 @@
         "id": "41a1cc8e-91c9-480b-b948-01f599240403",
         "name": "Tangerine",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4441,7 +4418,7 @@
         "id": "097c7d33-4177-470b-a24e-0080eee5f463",
         "name": "Mango",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4464,7 +4441,7 @@
         "id": "cb579eab-bcc5-4d91-b31a-ff60610fd8e9",
         "name": "Melon honey",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4487,7 +4464,7 @@
         "id": "e889f8d0-734a-471f-baa9-c0637282ecfc",
         "name": "Watermelon",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4510,7 +4487,7 @@
         "id": "0ae9e9ac-fb5f-4b1a-9736-ba896d3b8877",
         "name": "Mixed dried fruit",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4533,7 +4510,7 @@
         "id": "00fbb53b-4712-48ed-b37e-50e06c80b1a1",
         "name": "Nectarine yellow",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4556,7 +4533,7 @@
         "id": "d9fbf596-3831-443e-8951-01b4be619b00",
         "name": "Orange, peeled, raw, not further defined",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4579,7 +4556,7 @@
         "id": "e6ae0e9a-5ea8-4e6e-b34a-ab920d2ab08a",
         "name": "Orange, peeled, stewed, no added fat",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4602,7 +4579,7 @@
         "id": "e525aea4-3a91-4b65-a5b3-afb04e6897d1",
         "name": "Orange",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4625,7 +4602,7 @@
         "id": "6afa1e7d-7888-4758-8039-d3ecd237c3a2",
         "name": "Passionfruit",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4648,7 +4625,7 @@
         "id": "dd684dd8-503e-44f3-8934-d5033962fe73",
         "name": "Papaya",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4671,7 +4648,7 @@
         "id": "2812a4c3-e930-46ec-a2f7-9b1a40d95a9a",
         "name": "Peach",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4694,7 +4671,7 @@
         "id": "c25e8d7d-2640-4bef-892e-0f496e53cf30",
         "name": "Pear",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4717,7 +4694,7 @@
         "id": "89bc1acd-6a4b-4911-9558-3c09c6ddc276",
         "name": "Pineapple",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4740,7 +4717,7 @@
         "id": "cb2af203-46c4-4489-a61a-b39bb602a31e",
         "name": "Plum",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4763,7 +4740,7 @@
         "id": "81651a39-4d93-41d9-8a60-0c2ee28f0154",
         "name": "Pomegranate",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4786,7 +4763,7 @@
         "id": "5a75b0e8-4234-4dc6-8785-e87e16031f33",
         "name": "Raisin",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4832,7 +4809,7 @@
         "id": "310aa500-a4a3-4e38-b593-2e7aedc66634",
         "name": "Strawberry",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4855,7 +4832,7 @@
         "id": "d370bd8b-8797-4ac2-bfc5-bff228749bb0",
         "name": "Sultana",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -4924,7 +4901,7 @@
         "id": "2b03ddfe-c653-4c09-8d43-66331092ee83",
         "name": "Lentil red, cooked",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -4947,7 +4924,7 @@
         "id": "b6f5365f-eab5-4b6f-afa8-0553ffe09e04",
         "name": "Pea boiled, steamed",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -5683,7 +5660,7 @@
         "id": "ffa14ee0-1194-4f41-8603-f44b1704f154",
         "name": "Dip, avocado or guacamole",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -6026,7 +6003,7 @@
     },
     {
         "id": "291815ed-58f9-407d-9dc2-b157606454ce",
-        "name": "Sushi, vegetable, with seaweed",
+        "name": "Sushi, vegetables, with seaweed",
         "category": {
             "type": "other"
         },
@@ -6281,7 +6258,7 @@
         "id": "3298bdfe-eff2-4ea6-a2c0-7d0b245f81dd",
         "name": "Popcorn sweet",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6327,7 +6304,7 @@
         "id": "584b95f1-3e09-4e81-845b-66dd6a858df4",
         "name": "Pretzels",
         "category": {
-            "type": "other"
+            "type": "grains"
         },
         "units": {
             "type": "g"
@@ -6350,7 +6327,7 @@
         "id": "68b73675-b419-4390-9289-28de54fcfc33",
         "name": "Chocolate dark",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6373,7 +6350,7 @@
         "id": "0c35da79-3ae0-40ff-b3a1-bc04ba7d152d",
         "name": "Chocolate milk",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6396,7 +6373,7 @@
         "id": "7291a587-1534-4d4c-afd1-338b792f4380",
         "name": "Chocolate white",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6419,7 +6396,7 @@
         "id": "15428104-cc24-424e-a46b-e5fec5365650",
         "name": "Marmalade orange regular",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6442,7 +6419,7 @@
         "id": "ccfaa0f1-22e9-43fc-9db0-a81228072e24",
         "name": "Sauce caramel",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6465,7 +6442,7 @@
         "id": "da17a181-14c9-4075-9113-cfcf24952ce1",
         "name": "Sauce chocolate",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6488,7 +6465,7 @@
         "id": "bd16c1b3-69e5-4569-8c86-bb93887df7a1",
         "name": "Honey",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6511,7 +6488,7 @@
         "id": "8663f25e-be49-4d00-90a6-59fd7953e028",
         "name": "Sugar brown",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6534,7 +6511,7 @@
         "id": "c01ed427-e5ab-464e-93ee-90c2828bd3aa",
         "name": "Sugar",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6557,7 +6534,7 @@
         "id": "e4927086-11b7-486e-9a51-20a61f0efcf3",
         "name": "Sugar white, icing",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6580,7 +6557,7 @@
         "id": "95302d4e-5853-4555-b70c-1358049efcaa",
         "name": "Syrup golden",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6603,7 +6580,7 @@
         "id": "705ee3a2-9a96-4494-91aa-6263da0788c5",
         "name": "Syrup maple",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6626,7 +6603,7 @@
         "id": "1e16016c-2a03-4a81-8a2d-60ef0e96a3d5",
         "name": "Confectionery, rocky road",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6649,7 +6626,7 @@
         "id": "fb08d79a-2046-422f-ac33-c8e12fb5fb60",
         "name": "Honeycomb",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6672,7 +6649,7 @@
         "id": "7a12d220-6ecd-4efb-8e04-ea5720d4e47e",
         "name": "Licorice allsorts",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6695,7 +6672,7 @@
         "id": "bde93d9d-01e4-4131-873c-d574efdb988b",
         "name": "Lollipop or chupa chups",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6718,7 +6695,7 @@
         "id": "73c14b6a-3391-4d52-898b-61f1e7cab90a",
         "name": "Marshmallow",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6741,7 +6718,7 @@
         "id": "caa43553-3dbf-436d-9836-38f6694137f5",
         "name": "Marzipan",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6764,7 +6741,7 @@
         "id": "c34064eb-bdaf-401d-a067-34619869d0e6",
         "name": "Meringue",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6787,7 +6764,7 @@
         "id": "6d24e1c5-4cd4-40c6-84bd-b37324fcd146",
         "name": "Turkish delight",
         "category": {
-            "type": "other"
+            "type": "sweets"
         },
         "units": {
             "type": "g"
@@ -6810,7 +6787,7 @@
         "id": "4eed680d-5331-4b20-9eab-8e51e17ebfb7",
         "name": "Artichoke",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -6833,7 +6810,7 @@
         "id": "5fb69211-b026-4c3a-8977-6f5a6447e19f",
         "name": "Asparagus",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -6856,7 +6833,7 @@
         "id": "025de8d2-89bc-48c0-bca0-37e64cf88906",
         "name": "Avocado",
         "category": {
-            "type": "other"
+            "type": "fruit"
         },
         "units": {
             "type": "g"
@@ -6879,7 +6856,7 @@
         "id": "e4b50d5a-39ab-4166-af9a-bf2589a16873",
         "name": "Basil",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -6902,7 +6879,7 @@
         "id": "4676d281-05b5-4f69-85ef-6e150c0330dd",
         "name": "Bean green cooked",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -6925,7 +6902,7 @@
         "id": "50e12574-11b2-4b13-823d-a612ce512cac",
         "name": "Bean red boiled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -6948,7 +6925,7 @@
         "id": "9d32a477-1458-4426-9634-3183b3fd6a82",
         "name": "Beetroot purple boiled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -6971,7 +6948,7 @@
         "id": "b71255df-401a-46fc-92cf-07bdda7d94c7",
         "name": "Brussels sprout boiled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -6994,7 +6971,7 @@
         "id": "8f3ae584-0a08-4059-b455-62f83f9f20c1",
         "name": "Cabbage Chinese boiled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7017,7 +6994,7 @@
         "id": "5e8f2269-fffb-4c91-8742-7185ce1f1dcd",
         "name": "Cabbage red boiled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7040,7 +7017,7 @@
         "id": "27326e52-5c8c-4c0a-b8c3-123847502421",
         "name": "Cabbage savoy boiled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7063,7 +7040,7 @@
         "id": "d1095e14-5e25-43ef-9212-ee3e3a9d9e2f",
         "name": "Cabbage white",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7086,7 +7063,7 @@
         "id": "0b0e8ae0-cce7-48c6-9dfb-7190dadcb45c",
         "name": "Carrot baby",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7109,7 +7086,7 @@
         "id": "a2a5dbad-0344-4310-801c-e224913a982e",
         "name": "Carrot",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7132,7 +7109,7 @@
         "id": "eb6ab1d6-79a8-40e1-bb56-fadb34caa525",
         "name": "Cauliflower boiled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7155,7 +7132,7 @@
         "id": "3ad075cd-3a22-496b-aee7-b2c3db62cf4a",
         "name": "Celeriac",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7178,7 +7155,7 @@
         "id": "1ca4e3a7-f28a-4758-8e34-ab0a8fc1c026",
         "name": "Celery",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7201,7 +7178,7 @@
         "id": "926774c7-f9df-488b-9aa0-db5e51a7bf63",
         "name": "Chilli",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7224,7 +7201,7 @@
         "id": "bb41a368-ac95-4521-b7c6-7cfb386ee8d4",
         "name": "Chives",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7247,7 +7224,7 @@
         "id": "a01afa7d-77df-49e6-a89d-41527324ccfa",
         "name": "Coriander fresh",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7270,7 +7247,7 @@
         "id": "155f7a8f-f5b2-4e4a-9106-e8ff7083c201",
         "name": "Cucumber",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7293,7 +7270,7 @@
         "id": "5c9499a1-7242-4986-9244-f27d372aaaf5",
         "name": "Dill",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7316,7 +7293,7 @@
         "id": "268b81f4-5498-4069-b0ff-dc29b2bdf275",
         "name": "Eggplant boiled or steamed",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7362,7 +7339,7 @@
         "id": "cc40130e-1b30-4e37-95de-c142c19bfe29",
         "name": "Garlic",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7385,7 +7362,7 @@
         "id": "cd8be1bd-adaa-475c-b70c-699e29ce5174",
         "name": "Gherkin pickled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7408,7 +7385,7 @@
         "id": "4abe715c-6b82-4b5a-8709-39ea40c2edb7",
         "name": "Ginger",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7431,7 +7408,7 @@
         "id": "2c6e107b-41ee-4cce-8b1b-4b643b69a982",
         "name": "Kale cooked",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7454,7 +7431,7 @@
         "id": "7aecdc72-6c21-4ab4-bc05-732b02d64662",
         "name": "Leek boiled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7477,7 +7454,7 @@
         "id": "f6271582-5f28-4b45-a8f8-f53ec25fbf53",
         "name": "Lettuce",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7500,7 +7477,7 @@
         "id": "421fe226-f875-4582-8d05-90e274f22595",
         "name": "Lettuce iceberg",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7546,7 +7523,7 @@
         "id": "01cb4dcb-6b07-4208-9022-9fc9a851c306",
         "name": "Mixed green leafs",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7615,7 +7592,7 @@
         "id": "d631016d-1117-4e59-9452-42edfaaa3922",
         "name": "Onion",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7638,7 +7615,7 @@
         "id": "96f2b908-39c6-413c-8396-1403dbe2a4d2",
         "name": "Onion pickled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7684,7 +7661,7 @@
         "id": "2b068120-dbba-4ee1-8c33-ae8c3f1e741e",
         "name": "Onion spring",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7707,7 +7684,7 @@
         "id": "4d81b8b9-6b2e-4114-b0df-2032c4fba880",
         "name": "Parsley",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7730,7 +7707,7 @@
         "id": "f2fc754a-1340-4df0-9039-c82a512e3c61",
         "name": "Parsnip boiled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7753,7 +7730,7 @@
         "id": "74e219d1-3608-4c4e-8842-2b73e5f86eae",
         "name": "Pea green cooked",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7776,7 +7753,7 @@
         "id": "67f21f5c-cf48-4ea7-a346-2f3499fbea80",
         "name": "Potato chips, regular deep fried",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7799,7 +7776,7 @@
         "id": "87936789-9261-45b0-99af-66162faaaa68",
         "name": "Potato fries, deep fried",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7822,7 +7799,7 @@
         "id": "2f93f5cf-f2cf-4d10-a6c8-0a415a769928",
         "name": "Potato hash brown cooked",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7868,7 +7845,7 @@
         "id": "102f9dd8-f503-4b88-ba3c-ba53295831e7",
         "name": "Potato new, boiled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7891,7 +7868,7 @@
         "id": "29bc4d6a-5b5e-442e-a3a4-3035b3eaaf48",
         "name": "Potato boiled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7914,7 +7891,7 @@
         "id": "38f55009-c816-4e5a-96e6-3d4515632959",
         "name": "Potato red boiled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7937,7 +7914,7 @@
         "id": "70c6fa0e-962e-42be-9f08-1109a8ee0319",
         "name": "Pumpkin cooked",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7960,7 +7937,7 @@
         "id": "2e0412d1-4a7b-4c30-acc6-400ef3acc46b",
         "name": "Rocket",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -7983,7 +7960,7 @@
         "id": "cfd7e108-d2ed-4062-8836-eb161dd7a8b3",
         "name": "Radish, red skinned",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -8006,7 +7983,7 @@
         "id": "13f9e194-5476-4a89-a401-531ba19b2b60",
         "name": "Rosemary",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -8052,7 +8029,7 @@
         "id": "2b30934e-28ac-4a89-b6ca-1cb6664b0954",
         "name": "Spinach",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -8075,7 +8052,7 @@
         "id": "03d4d455-1496-4bbd-b7f1-dc49be665d68",
         "name": "Sprout bean cooked",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -8098,7 +8075,7 @@
         "id": "f490d285-33c5-4b78-8543-152c785f00de",
         "name": "Swede boiled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -8121,7 +8098,7 @@
         "id": "a2e3ea0b-0f2e-4a77-a5e6-b5c8602316c3",
         "name": "Sweet potato boiled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -8144,7 +8121,7 @@
         "id": "e41cc673-0f41-4388-97d6-4eec5908d75a",
         "name": "Sweetcorn baby",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -8167,7 +8144,7 @@
         "id": "3074a53d-58af-48b7-a1fc-88b1cc17ad1b",
         "name": "Sweetcorn on cob boiled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -8190,7 +8167,7 @@
         "id": "f329eda7-d652-4757-b473-ff7ac1ff3067",
         "name": "Tomato, cherry or grape",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -8213,7 +8190,7 @@
         "id": "c660c22c-2e35-405e-893b-20a4ef3bc5d2",
         "name": "Tomato",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -8236,7 +8213,7 @@
         "id": "d666ab27-e0fc-4136-83ca-2a0205806521",
         "name": "Tomato paste",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -8259,7 +8236,7 @@
         "id": "9aedf448-900f-4dc5-a4f1-1a5141ed3d6d",
         "name": "Tomato puree",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -8282,7 +8259,7 @@
         "id": "fa81ff28-2651-4fe1-861e-4c98d578f8f2",
         "name": "Tomato sundried",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -8305,7 +8282,7 @@
         "id": "a836d906-715b-4f64-9274-79aab6f5dfb6",
         "name": "Turnip white boiled",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -8328,7 +8305,7 @@
         "id": "e0e408de-ee0e-43d6-a84d-83b084fdc24c",
         "name": "Wasabi root",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -8351,7 +8328,7 @@
         "id": "c26b0256-f698-40c2-9b2a-2c004786f0e0",
         "name": "Watercress",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"
@@ -8374,7 +8351,7 @@
         "id": "94609c62-9a9f-464c-83c0-7f87e07ab6bb",
         "name": "Zucchini green cooked",
         "category": {
-            "type": "other"
+            "type": "vegetables"
         },
         "units": {
             "type": "g"

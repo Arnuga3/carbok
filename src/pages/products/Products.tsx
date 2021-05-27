@@ -1,9 +1,6 @@
-import React, {
-  createRef,
-  RefObject,
-  useEffect,
-  useState,
-} from "react";
+import React, { useEffect, useState } from "react";
+import { VariableSizeList as List } from "react-window";
+import AutoSizer from "react-virtualized-auto-sizer";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
@@ -11,7 +8,6 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonList,
   IonButton,
   IonItem,
   IonButtons,
@@ -21,8 +17,6 @@ import {
   IonItemOption,
   IonAlert,
   IonAvatar,
-  IonInfiniteScroll,
-  IonInfiniteScrollContent,
 } from "@ionic/react";
 import {
   addOutline,
@@ -58,56 +52,100 @@ async function toggleActionsSlide(selector: string) {
 const Products: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { products, limit, offset, searchString, fetching, allFetched } =
+  const { products, searchString } =
     useProducts();
 
-  const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
-  const [openCalculatorModal, setOpenCalculatorModal] = useState(false);
-  const [productSelected, setProductSelected] = useState<IProduct | null>(null);
+  const [state, setState] = useState<{
+    openDeleteAlert: boolean;
+    openCalculatorModal: boolean;
+    productSelected: IProduct | null;
+  }>({
+    openDeleteAlert: false,
+    openCalculatorModal: false,
+    productSelected: null,
+  });
 
-  const ionInfiniteScrollRef: RefObject<HTMLIonInfiniteScrollElement> =
-    createRef<HTMLIonInfiniteScrollElement>();
-
-  useEffect(() => {
-    if (!fetching) {
-      completeInfineScroll();
-    }
-    if (ionInfiniteScrollRef.current) {
-      ionInfiniteScrollRef.current.disabled = allFetched;
-    }
-  }, [fetching, allFetched]);
+  const { openDeleteAlert, openCalculatorModal, productSelected } = state;
 
   useEffect(() => {
-      dispatch(retrieveProducts(limit, offset, searchString));
+    dispatch(retrieveProducts(searchString));
   }, [searchString]);
 
   const handleOnCalculate = (product: IProduct) => {
-    setProductSelected(product);
-    setOpenCalculatorModal(true);
+    setState({
+      ...state,
+      productSelected: product,
+      openCalculatorModal: true,
+    });
   };
 
   const handleOnDelete = (product: IProduct) => {
-    setProductSelected(product);
-    setOpenDeleteAlert(true);
+    setState({
+      ...state,
+      productSelected: product,
+      openDeleteAlert: true,
+    });
   };
 
   const handleDelete = () => {
     if (productSelected) {
       dispatch(deleteProduct(productSelected.id));
-      setProductSelected(null);
+      setState({
+        ...state,
+        productSelected: null,
+      });
     }
   };
 
   const handleOnClose = () => {
-    setProductSelected(null);
-    setOpenCalculatorModal(false);
+    setState({
+      ...state,
+      productSelected: null,
+      openCalculatorModal: false,
+    });
   };
 
-  const completeInfineScroll = () => {
-    if (ionInfiniteScrollRef.current) {
-      ionInfiniteScrollRef.current.complete();
-    }
-  };
+  const Row = ({ index, style }: { index: number; style: any }) => (
+    <div style={style}>
+      <IonItemSliding
+        key={index}
+        id={PRODUCTSPAGE + index}
+        onClick={() => toggleActionsSlide(PRODUCTSPAGE + index)}
+      >
+        <IonItem detail lines="none">
+          <IonAvatar slot="start">
+            <CircleBadge
+              color={categoryColours[products[index].category.type]}
+              size={35}
+            >
+              {t(getCatKey(products[index].category.type)).slice(0, 3)}
+            </CircleBadge>
+          </IonAvatar>
+          <ProductListItem product={products[index]} />
+        </IonItem>
+        <IonItemOptions>
+          <SlidingAction
+            color="secondary"
+            onClick={() => handleOnCalculate(products[index])}
+          >
+            <IonIcon icon={calculator} slot="icon-only" />
+          </SlidingAction>
+          <SlidingAction
+            color="tertiary"
+            routerLink={`/products/edit-product/${products[index].id}`}
+          >
+            <IonIcon icon={createOutline} slot="icon-only" />
+          </SlidingAction>
+          <SlidingAction
+            color="danger"
+            onClick={() => handleOnDelete(products[index])}
+          >
+            <IonIcon icon={trashOutline} slot="icon-only" />
+          </SlidingAction>
+        </IonItemOptions>
+      </IonItemSliding>
+    </div>
+  );
 
   return (
     <IonPage>
@@ -118,7 +156,7 @@ const Products: React.FC = () => {
               fill="clear"
               shape="round"
               color="primary"
-              onClick={() => setOpenCalculatorModal(true)}
+              onClick={() => setState({ ...state, openCalculatorModal: true })}
             >
               <IonIcon slot="icon-only" icon={calculator} />
             </IonButton>
@@ -137,59 +175,24 @@ const Products: React.FC = () => {
         </HeaderContent>
       </IonHeader>
       <IonContent fullscreen>
-        <IonList>
-          {products.map((product: IProduct, i: number) => (
-            <IonItemSliding
-              key={i}
-              id={PRODUCTSPAGE + i}
-              onClick={() => toggleActionsSlide(PRODUCTSPAGE + i)}
-            >
-              <IonItem detail>
-                <IonAvatar slot="start">
-                  <CircleBadge
-                    color={categoryColours[product.category.type]}
-                    size={40}
-                  >
-                    {t(getCatKey(product.category.type)).slice(0, 3)}
-                  </CircleBadge>
-                </IonAvatar>
-                <ProductListItem product={product} />
-              </IonItem>
-              <IonItemOptions>
-                <SlidingAction
-                  color="secondary"
-                  onClick={() => handleOnCalculate(product)}
-                >
-                  <IonIcon icon={calculator} slot="icon-only" />
-                </SlidingAction>
-                <SlidingAction
-                  color="tertiary"
-                  routerLink={`/products/edit-product/${product.id}`}
-                >
-                  <IonIcon icon={createOutline} slot="icon-only" />
-                </SlidingAction>
-                <SlidingAction
-                  color="danger"
-                  onClick={() => handleOnDelete(product)}
-                >
-                  <IonIcon icon={trashOutline} slot="icon-only" />
-                </SlidingAction>
-              </IonItemOptions>
-            </IonItemSliding>
-          ))}
-        </IonList>
-        <IonInfiniteScroll
-          ref={ionInfiniteScrollRef}
-          onIonInfinite={() =>
-            dispatch(retrieveProducts(limit, offset, searchString))
-          }
-        >
-          <IonInfiniteScrollContent loadingSpinner="dots" />
-        </IonInfiniteScroll>
+        <AutoSizer>
+          {({ height, width }) => (
+            <>
+              <List
+                height={height}
+                width={width}
+                itemCount={products.length}
+                itemSize={() => 75}
+              >
+                {Row}
+              </List>
+            </>
+          )}
+        </AutoSizer>
       </IonContent>
       <IonAlert
         isOpen={openDeleteAlert}
-        onDidDismiss={() => setOpenDeleteAlert(false)}
+        onDidDismiss={() => setState({ ...state, openDeleteAlert: true })}
         header={t("page.products.edit.product.delete.alert.title")}
         subHeader={t("page.products.edit.product.delete.alert.subtitle")}
         buttons={[

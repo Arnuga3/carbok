@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import {
@@ -13,15 +12,10 @@ import {
   useIonToast,
 } from "@ionic/react";
 import { downloadOutline, pushOutline } from "ionicons/icons";
-import { importMeals } from "../../redux/actions/meals/actions";
-import { importProducts } from "../../redux/actions/products/actions";
-import { IMeal } from "../../classes/meal/IMeal";
-import { IProduct } from "../../classes/product/IProduct";
 import { dataService } from "../../services/DataService";
 
 export const ExportImport: React.FC = () => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
   const [present, dismiss] = useIonToast();
 
   const [openImportAlert, setOpenImportAlert] = useState(false);
@@ -45,9 +39,8 @@ export const ExportImport: React.FC = () => {
   };
 
   const handleFileSelect = () => {
-    const fileInput: HTMLInputElement | null = document.querySelector(
-      "#data-import"
-    );
+    const fileInput: HTMLInputElement | null =
+      document.querySelector("#data-import");
     if (fileInput) {
       fileInput.click();
     }
@@ -65,13 +58,7 @@ export const ExportImport: React.FC = () => {
         const result = target?.result;
         if (result && typeof result === "string") {
           try {
-            const data: {
-              meals: { [key: string]: IMeal[] };
-              products: IProduct[];
-            } = JSON.parse(result);
-
-            dispatch(importMeals(data.meals));
-            dispatch(importProducts(data.products));
+            dataService.importData(result);
             resetFile();
             present({
               message: t("page.settings.toast.import.success"),
@@ -92,9 +79,8 @@ export const ExportImport: React.FC = () => {
   };
 
   const resetFile = () => {
-    const fileInput: HTMLInputElement | null = document.querySelector(
-      "#data-import"
-    );
+    const fileInput: HTMLInputElement | null =
+      document.querySelector("#data-import");
     if (fileInput) {
       fileInput.value = "";
     }

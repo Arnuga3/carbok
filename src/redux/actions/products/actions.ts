@@ -42,19 +42,11 @@ export const setSearchString = (
   searchString,
 });
 
-export const retrieveProducts = (
-  limit: number,
-  offset: number,
-  searchText: string | null = null
-) => {
+export const retrieveProducts = (searchText: string | null = null) => {
   return async (dispatch: Dispatch) => {
     try {
       dispatch(fetchingStart());
-      dispatch(
-        storeProducts(
-          await dataService.retrieveProducts(limit, offset, searchText)
-        )
-      );
+      dispatch(storeProducts(await dataService.retrieveProducts(searchText)));
     } catch (e) {
       console.log(e);
     }
@@ -93,16 +85,3 @@ export function deleteProduct(id: string) {
     }
   };
 }
-
-export const importProducts = (products: IProduct[]) => {
-  return async (dispatch: Dispatch) => {
-    try {
-      //FIXME
-      // const prodStorageSvc = new ProductsStorageService();
-      // await prodStorageSvc.importData(products);
-      dispatch(storeProducts(products));
-    } catch (e) {
-      console.log(e);
-    }
-  };
-};

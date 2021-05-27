@@ -4,20 +4,14 @@ import { ProductsActions } from "../actions/products/interfaces";
 
 export interface ProductsState {
   products: IProduct[];
-  readonly limit: number;
-  offset: number;
   searchString: string | null;
   fetching: boolean;
-  allFetched: boolean;
 }
 
 const defaultState: ProductsState = {
   products: [],
-  limit: 50,
-  offset: 0,
   searchString: null,
   fetching: false,
-  allFetched: false,
 };
 
 const reducer: Reducer<ProductsState> = (
@@ -26,18 +20,17 @@ const reducer: Reducer<ProductsState> = (
 ) => {
   switch (action.type) {
     case ProductsActions.ADD_PRODUCT:
+      const productsUpdated = [...state.products, action.product].sort((a, b) => a.name - b.name);
       return {
         ...state,
-        products: [...state.products, action.product],
+        products: productsUpdated,
       };
 
     case ProductsActions.ADD_PRODUCTS:
       return {
         ...state,
-        products: [...state.products, ...action.products],
-        offset: state.offset + state.limit,
+        products: action.products,
         fetching: false,
-        allFetched: action.products.length < state.limit || action.products.length === 0,
       };
 
     case ProductsActions.UPDATE_PRODUCT:
@@ -61,7 +54,6 @@ const reducer: Reducer<ProductsState> = (
       return {
         ...state,
         products: [],
-        offset: 0,
         searchString: action.searchString,
       };
 
