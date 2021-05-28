@@ -88,7 +88,7 @@ export const CalculatorModal: React.FC<Props> = ({
 
   return (
     <IonModal isOpen={open} onWillDismiss={onClose}>
-      <IonHeader mode="ios" translucent>
+      <IonHeader mode="ios">
         <HeaderContent>
           <IonTitle color="medium">{t("page.products.caluclator.modal.title")}</IonTitle>
           <IonButton onClick={onClose} color="primary" fill="clear">
@@ -190,6 +190,7 @@ export const CalculatorModal: React.FC<Props> = ({
 
 const HeaderContent = styled.div`
   display: flex;
+  justify-content: flex-end;
   padding: 0 8px;
 `;
 

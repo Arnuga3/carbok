@@ -98,9 +98,9 @@ export const ProductsSelectModal: React.FC<Props> = ({
     onClose();
   };
 
-  const Row = ({ index, style }: { index: number; style: any }) => (
+  const ItemRow = ({ index, style }: { index: number; style: any }) => (
     <div style={style}>
-      <IonItem
+      <Item
         lines="none"
         key={index}
         onClick={() => toggleSelect(products[index])}
@@ -115,7 +115,7 @@ export const ProductsSelectModal: React.FC<Props> = ({
           }
         />
         <ProductListItem product={products[index]} />
-      </IonItem>
+      </Item>
     </div>
   );
 
@@ -136,9 +136,9 @@ export const ProductsSelectModal: React.FC<Props> = ({
               height={height}
               width={width}
               itemCount={products.length}
-              itemSize={() => 75}
+              itemSize={() => 70}
             >
-              {Row}
+              {ItemRow}
             </List>
           )}
         </AutoSizer>
@@ -160,6 +160,10 @@ export const ProductsSelectModal: React.FC<Props> = ({
     </IonModal>
   );
 };
+
+const Item = styled(IonItem)`
+  --min-height: 70px;
+`;
 
 const HeaderContent = styled.div`
   display: flex;

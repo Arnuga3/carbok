@@ -6025,29 +6025,6 @@
         "portionType": "weight"
     },
     {
-        "id": "297d827a-2ab3-4dea-8801-5d7ac0063f61",
-        "name": "Fish, white flesh, battered, packaged frozen, baked, roasted, fried, grilled or BBQ'd, with or without added fat",
-        "category": {
-            "type": "other"
-        },
-        "units": {
-            "type": "g"
-        },
-        "carbsData": {
-            "per100": {
-                "carbs": 10.2,
-                "sugars": 0.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight"
-    },
-    {
         "id": "af26dcbc-62ac-4ca4-9d02-3b7c2b1be7ea",
         "name": "Fish white, battered, deep fried",
         "category": {

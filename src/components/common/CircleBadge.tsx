@@ -13,7 +13,7 @@ const Badge = styled.div`
   width: ${(props: { color: string; size: number }) => props.size}px;
   height: ${(props: { color: string; size: number }) => props.size}px;
   border-radius: 50%;
-  margin-right: 4px;
+  margin: 0 2px 0 4px;
   background-color: ${(props: { color: string; size: number }) => props.color};
   display: flex;
   justify-content: center;

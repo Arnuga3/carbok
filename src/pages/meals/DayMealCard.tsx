@@ -4,10 +4,9 @@ import {
   IonButton,
   IonCard,
   IonCardContent,
-  IonCardHeader,
-  IonCardTitle,
   IonDatetime,
   IonIcon,
+  IonItem,
   IonReorder,
   IonText,
 } from "@ionic/react";
@@ -17,9 +16,9 @@ import { IMeal } from "../../classes/meal/IMeal";
 import { useTranslation } from "react-i18next";
 import { MealProductsChart } from "../../components/common/MealProductsChart";
 import {
+  addOutline,
   chatbubbleOutline,
   copyOutline,
-  createOutline,
   listOutline,
   pieChartOutline,
 } from "ionicons/icons";
@@ -56,46 +55,57 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
 
   return (
     <IonCard>
-      <CardHeader>
-        <CardHeaderTitle>
-          <CardTitle>{t(getMealKey(meal.type))}</CardTitle>
-          <small>{`${t("products")}: ${meal.products.length}`}</small>
-        </CardHeaderTitle>
-        <CardHeaderCarbs>
-          <TotalCarbs color="secondary">
-            {calculation.getMealTotalCarbs(meal.products)}
-          </TotalCarbs>
-          <small>{t("carbohydrates")}</small>
-        </CardHeaderCarbs>
-      </CardHeader>
-      <CardBody>
-        {display === "details" ? (
-          <>
-            {meal.products.map((product, i) => (
-              <DayMealCardProduct
-                key={i}
-                product={product}
-                meal={meal}
-                t={t}
-                i={i}
-              />
-            ))}
-            {meal.note && (
-              <Note>
-                <NoteIcon icon={chatbubbleOutline} />
-                <small>{meal.note}</small>
-              </Note>
+      <ReorderHandle>
+        <IonReorder />
+      </ReorderHandle>
+      <IonCardContent>
+        <IonItem routerLink={`/meals/${meal.id}/products`} lines="none" mode="md">
+          <ItemContent>
+            <CardHeader>
+              <CardHeaderTitle>
+                <IonText color="primary">
+                  <h1>{t(getMealKey(meal.type))}</h1>
+                </IonText>
+                <IonText color="medium">
+                  <small>{`${t("products")}: ${meal.products.length}`}</small>
+                </IonText>
+              </CardHeaderTitle>
+              <CardHeaderCarbs>
+                <IonText color="secondary">
+                  <h1>{calculation.getMealTotalCarbs(meal.products)}</h1>
+                </IonText>
+                <IonText color="medium">
+                  <small>{t("carbohydrates")}</small>
+                </IonText>
+              </CardHeaderCarbs>
+            </CardHeader>
+            {display === "details" ? (
+              <DayMealCardProductList>
+                {meal.products.map((product, i) => (
+                  <DayMealCardProduct
+                    key={i}
+                    product={product}
+                    meal={meal}
+                    t={t}
+                    i={i}
+                  />
+                ))}
+                {meal.note && (
+                  <Note>
+                    <NoteIcon icon={chatbubbleOutline} />
+                    <small>{meal.note}</small>
+                  </Note>
+                )}
+              </DayMealCardProductList>
+            ) : (
+              <CardContent>
+                <MealCarbsChart meal={meal} />
+                <MealProductsChart meal={meal} />
+              </CardContent>
             )}
-          </>
-        ) : (
-          <CardContent>
-            <MealCarbsChart meal={meal} />
-            <MealProductsChart meal={meal} />
-          </CardContent>
-        )}
-        <Divider />
+          </ItemContent>
+        </IonItem>
         <CardActions>
-          <IonReorder />
           <ActionButton
             color="primary"
             fill="clear"
@@ -126,10 +136,13 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
             size="small"
             routerLink={`/meals/${meal.id}/products`}
           >
-            <IonIcon icon={createOutline} slot="icon-only" />
+            <IonIcon
+              icon={addOutline}
+              slot="icon-only"
+            />
           </ActionButton>
         </CardActions>
-      </CardBody>
+      </IonCardContent>
       <Datetime
         ref={copyDatetime}
         doneText={t("button.done")}
@@ -142,9 +155,28 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
   );
 };
 
-const CardHeader = styled(IonCardHeader)`
+const ReorderHandle = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
+  padding: 4px;
+  background-color: var(--ion-color-primary);
+  color: white;
+`;
+
+const DayMealCardProductList = styled.div`
+  margin-top: 8px;
+`;
+
+const ItemContent = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px 0;
+`;
+
+const CardHeader = styled.div`
+  display: flex;
   justify-content: space-between;
   align-items: center;
 `;
@@ -153,40 +185,20 @@ const CardHeaderTitle = styled.div`
   flex: 5;
 `;
 
-const CardTitle = styled.div`
-  color: var(--ion-color-primary);
-  font-size: 1.6em;
-  font-weight: bold;
-`;
-
 const CardHeaderCarbs = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 `;
 
-const TotalCarbs = styled(IonText)`
-  font-size: 2em;
-  font-weight: bold;
-`;
-
 const CardActions = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin-top: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const ActionButton = styled(IonButton)`
-  padding-left: 4px;
-`;
-
-const CardBody = styled(IonCardContent)`
-  margin-top: 8px;
-`;
-
-const Divider = styled.div`
-  margin: 8px 0 4px 0;
-  border-top: 1px solid var(--ion-color-medium);
+  margin-top: 12px;
 `;
 
 const CardContent = styled.div`

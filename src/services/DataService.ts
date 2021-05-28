@@ -17,7 +17,7 @@ class DataService {
   public async retrieveProducts(
     searchText: string | null
   ): Promise<IProduct[]> {
-    const result = searchText
+    const result = searchText && searchText.trim() !== ""
       ? await this.searchProducts(searchText)
       : await this.retrieveAllProducts();
     return result;

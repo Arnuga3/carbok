@@ -42,6 +42,7 @@ const DayMeals: React.FC = () => {
   const { settings } = useAppSettings();
   const { meals, date } = useMeals();
   const [openActionSheet, setOpenActionSheet] = useState(false);
+  const [reorder, setReorder] = useState(false);
 
   useEffect(() => {
     if (meals.length === 0) {
@@ -81,7 +82,7 @@ const DayMeals: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader mode="ios" translucent>
+      <IonHeader mode="ios">
         <HeaderContent>
           <IonButton fill="clear" onClick={getPreviousDay}>
             <IonIcon icon={chevronBackOutline} color="medium" />
@@ -101,21 +102,21 @@ const DayMeals: React.FC = () => {
           </IonButton>
         </HeaderContent>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent>
         <IonList>
           <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
             {meals.sort((a, b) => a.order - b.order).map((meal, i) => (
               <DayMealCard key={i} meal={meal} />
             ))}
           </IonReorderGroup>
-          <AddButton
-            color="tertiary"
-            expand="block"
-            shape="round"
-            onClick={() => setOpenActionSheet(true)}
-          >
-            {t("page.meals.button.add.meal")}
-          </AddButton>
+            <Button
+              color="tertiary"
+              expand="block"
+              shape="round"
+              onClick={() => setOpenActionSheet(true)}
+            >
+              {t("page.meals.button.add.meal")}
+            </Button>
         </IonList>
       </IonContent>
       <AddMealActionSheet
@@ -134,6 +135,7 @@ const HeaderContent = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const DateSelect = styled(IonItem)`
@@ -145,6 +147,6 @@ const Datetime = styled(IonDatetime)`
   font-weight: bold;
 `;
 
-const AddButton = styled(IonButton)`
-  margin: 12px;
+const Button = styled(IonButton)`
+  margin: 8px;
 `;

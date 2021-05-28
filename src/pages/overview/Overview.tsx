@@ -46,7 +46,7 @@ const Overview: React.FC = () => {
   return (
     <IonPage>
       <DateRangeSwitch data={cardData} onDateRangeChange={handleDateRangeChange} />
-      <IonContent fullscreen>
+      <IonContent>
         {cardData.meals.length > 0 && (
           <>
             <IonCard>

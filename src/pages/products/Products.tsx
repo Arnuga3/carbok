@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { VariableSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import { useTranslation } from "react-i18next";
@@ -52,8 +52,7 @@ async function toggleActionsSlide(selector: string) {
 const Products: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { products, searchString } =
-    useProducts();
+  const { products, searchString } = useProducts();
 
   const [state, setState] = useState<{
     openDeleteAlert: boolean;
@@ -105,14 +104,14 @@ const Products: React.FC = () => {
     });
   };
 
-  const Row = ({ index, style }: { index: number; style: any }) => (
+  const ItemRow = ({ index, style }: { index: number; style: any }) => (
     <div style={style}>
       <IonItemSliding
         key={index}
         id={PRODUCTSPAGE + index}
         onClick={() => toggleActionsSlide(PRODUCTSPAGE + index)}
       >
-        <IonItem detail lines="none">
+        <Item detail lines="none">
           <IonAvatar slot="start">
             <CircleBadge
               color={categoryColours[products[index].category.type]}
@@ -122,7 +121,7 @@ const Products: React.FC = () => {
             </CircleBadge>
           </IonAvatar>
           <ProductListItem product={products[index]} />
-        </IonItem>
+        </Item>
         <IonItemOptions>
           <SlidingAction
             color="secondary"
@@ -147,9 +146,27 @@ const Products: React.FC = () => {
     </div>
   );
 
+  const ItemsList = useMemo(() => {
+    return (
+      <AutoSizer>
+        {({ height, width }) => (
+          <List
+            height={height}
+            width={width}
+            itemCount={products.length}
+            overscanCount={20}
+            itemSize={() => 70}
+          >
+            {ItemRow}
+          </List>
+        )}
+      </AutoSizer>
+    );
+  }, [products]);
+
   return (
     <IonPage>
-      <IonHeader mode="ios" translucent>
+      <IonHeader mode="ios">
         <HeaderContent>
           <IonButtons slot="start">
             <IonButton
@@ -175,24 +192,11 @@ const Products: React.FC = () => {
         </HeaderContent>
       </IonHeader>
       <IonContent fullscreen>
-        <AutoSizer>
-          {({ height, width }) => (
-            <>
-              <List
-                height={height}
-                width={width}
-                itemCount={products.length}
-                itemSize={() => 75}
-              >
-                {Row}
-              </List>
-            </>
-          )}
-        </AutoSizer>
+        {ItemsList}
       </IonContent>
       <IonAlert
         isOpen={openDeleteAlert}
-        onDidDismiss={() => setState({ ...state, openDeleteAlert: true })}
+        onDidDismiss={() => setState({ ...state, openDeleteAlert: false })}
         header={t("page.products.edit.product.delete.alert.title")}
         subHeader={t("page.products.edit.product.delete.alert.subtitle")}
         buttons={[
@@ -215,9 +219,14 @@ const Products: React.FC = () => {
 
 export default React.memo(Products);
 
+const Item = styled(IonItem)`
+  --min-height: 70px;
+`;
+
 const HeaderContent = styled.div`
   display: flex;
   padding: 0 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const SlidingAction = styled(IonItemOption)`

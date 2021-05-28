@@ -55,6 +55,7 @@
     "button.reset": "Сбросить",
     "button.export": "Скачать",
     "button.import": "Залить",
+    "button.reorder": "Порядок",
 
     "page.overview.carbs.range.card.title": "Последние {{days}} дней",
     "page.overview.carbs.range.card.subtitle": "из которых {{sugarPercent}}% Сахара",

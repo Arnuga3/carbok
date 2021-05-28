@@ -2,7 +2,13 @@ import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 import styled from "styled-components";
-import { IonButton, IonHeader, IonIcon, IonTitle } from "@ionic/react";
+import {
+  IonButton,
+  IonHeader,
+  IonIcon,
+  IonTitle,
+  useIonViewDidEnter,
+} from "@ionic/react";
 import { chevronBackOutline, chevronForwardOutline } from "ionicons/icons";
 import { IMeal } from "../../classes/meal/IMeal";
 import { IMealProduct } from "../../classes/meal/IMealProduct";
@@ -16,13 +22,18 @@ interface Props {
   onDateRangeChange: (data: CardData) => void;
 }
 
-export const DateRangeSwitch: React.FC<Props> = ({ data, onDateRangeChange }) => {
+export const DateRangeSwitch: React.FC<Props> = ({
+  data,
+  onDateRangeChange,
+}) => {
   const { t } = useTranslation();
   const c = new CalculationService();
 
-  useEffect(() => {
-    getCardRangeData("7_days");
-  }, []);
+  useIonViewDidEnter(() => {
+    if (data.meals.length === 0) {
+      getCardRangeData("7_days");
+    }
+  });
 
   const getCardRangeData = async (range: Range) => {
     let rangeMeals: IMeal[] = [];

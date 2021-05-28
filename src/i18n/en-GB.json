@@ -55,6 +55,7 @@
     "button.reset": "Reset",
     "button.export": "Export",
     "button.import": "Import",
+    "button.reorder": "Reorder",
 
     "page.overview.carbs.range.card.title": "Last {{days}} days",
     "page.overview.carbs.range.card.subtitle": "of which {{sugarPercent}}% Sugars",

@@ -23,7 +23,6 @@ import Overview from "./pages/overview/Overview";
 import { useTranslation } from "react-i18next";
 import { initAppSettings } from "./redux/actions/appSettingsActions";
 
-import styled from 'styled-components';
 import icon from "./resources/icons/logo.svg";
 
 import "./i18n/config";
@@ -82,7 +81,7 @@ const App: React.FC = () => {
 
           <IonTabBar slot="bottom">
             <IonTabButton tab="overview" href="/overview">
-              <CarbokIcon src={icon} />
+              <IonIcon src={icon} />
               <IonLabel>{t("tab.overview")}</IonLabel>
             </IonTabButton>
             <IonTabButton tab="meals" href="/meals">
@@ -105,9 +104,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
-const CarbokIcon = styled(IonIcon)`
-  // padding-left: 16px;
-  // font-size: 24px;
-
-`;
