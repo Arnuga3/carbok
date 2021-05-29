@@ -42,7 +42,6 @@ const DayMeals: React.FC = () => {
   const { settings } = useAppSettings();
   const { meals, date } = useMeals();
   const [openActionSheet, setOpenActionSheet] = useState(false);
-  const [reorder, setReorder] = useState(false);
 
   useEffect(() => {
     if (meals.length === 0) {
@@ -59,7 +58,7 @@ const DayMeals: React.FC = () => {
   }, [settings.language]);
 
   const handleMealTypeSelect = (mealType: MealTypeEnum) => {
-    dispatch(addMeal(new Meal(mealType, getDateOnly(date), [])));
+    dispatch(addMeal(new Meal(mealType, getDateOnly(date), [], meals.length)));
   };
 
   const getPreviousDay = () => {
