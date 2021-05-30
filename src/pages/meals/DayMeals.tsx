@@ -36,7 +36,7 @@ import { useAppSettings } from "../../hooks/appSettingsHook";
 import { MealTypeEnum } from "../../classes/meal/MealTypeEnum";
 import { getDateOnly } from "../../utils/helper";
 
-const DayMeals: React.FC = () => {
+export const DayMeals: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { settings } = useAppSettings();
@@ -126,8 +126,6 @@ const DayMeals: React.FC = () => {
     </IonPage>
   );
 };
-
-export default React.memo(DayMeals);
 
 const HeaderContent = styled.div`
   display: flex;

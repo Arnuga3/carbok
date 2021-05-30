@@ -3,7 +3,7 @@ import { IProduct } from "../classes/product/IProduct";
 import { IMeal } from "../classes/meal/IMeal";
 import { getDateOnly } from "../utils/helper";
 
-import { isPlatform, getPlatforms } from "@ionic/react";
+import { isPlatform } from "@ionic/react";
 
 import {
   Plugins,
@@ -49,7 +49,7 @@ class DataService {
   /* end products */
 
   /* meals */
-  public async retrieveMeals(date: Date) {
+  public async retrieveMeals(date: Date): Promise<IMeal[]> {
     return await db.meals.where("date").equals(getDateOnly(date)).toArray();
   }
 

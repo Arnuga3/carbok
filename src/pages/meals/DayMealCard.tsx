@@ -59,7 +59,11 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
         <IonReorder />
       </ReorderHandle>
       <IonCardContent>
-        <IonItem routerLink={`/meals/${meal.id}/products`} lines="none" mode="md">
+        <IonItem
+          routerLink={`/meals/${meal.id}/products`}
+          lines="none"
+          mode="md"
+        >
           <ItemContent>
             <CardHeader>
               <CardHeaderTitle>
@@ -93,7 +97,9 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
                 {meal.note && (
                   <Note>
                     <NoteIcon icon={chatbubbleOutline} />
-                    <small>{meal.note}</small>
+                    <IonText color="medium">
+                      <small>{meal.note}</small>
+                    </IonText>
                   </Note>
                 )}
               </DayMealCardProductList>
@@ -136,10 +142,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
             size="small"
             routerLink={`/meals/${meal.id}/products`}
           >
-            <IonIcon
-              icon={addOutline}
-              slot="icon-only"
-            />
+            <IonIcon icon={addOutline} slot="icon-only" />
           </ActionButton>
         </CardActions>
       </IonCardContent>

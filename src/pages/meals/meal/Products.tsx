@@ -39,13 +39,11 @@ export const Products: React.FC<Props> = ({ meal }) => {
 
   const [openProductsModal, setOpenProductsModal] = useState(false);
   const [openPortionSizeAlert, setOpenPortionSizeAlert] = useState(false);
-  const [openPortionQuantityAlert, setOpenPortionQuantityAlert] = useState(
-    false
-  );
+  const [openPortionQuantityAlert, setOpenPortionQuantityAlert] =
+    useState(false);
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<IMealProduct | null>(
-    null
-  );
+  const [selectedProduct, setSelectedProduct] =
+    useState<IMealProduct | null>(null);
 
   const handlePortionSizeChange = (product: IMealProduct) => {
     setSelectedProduct(product);
@@ -83,7 +81,10 @@ export const Products: React.FC<Props> = ({ meal }) => {
           >
             <IonItem detail>
               <IonAvatar slot="start">
-                <CircleBadge color={categoryColours[product.category.type]} size={40}>
+                <CircleBadge
+                  color={categoryColours[product.category.type]}
+                  size={40}
+                >
                   {t(getCatKey(product.category.type)).slice(0, 3)}
                 </CircleBadge>
               </IonAvatar>
@@ -130,11 +131,13 @@ export const Products: React.FC<Props> = ({ meal }) => {
           {t("page.meals.button.add.product")}
         </AddButton>
       </IonList>
-      <ProductsSelectModal
-        meal={meal}
-        open={openProductsModal}
-        onClose={() => setOpenProductsModal(false)}
-      />
+      {openProductsModal && (
+        <ProductsSelectModal
+          meal={meal}
+          open={openProductsModal}
+          onClose={() => setOpenProductsModal(false)}
+        />
+      )}
       <ChangePortionWeightAlert
         meal={meal}
         product={selectedProduct}

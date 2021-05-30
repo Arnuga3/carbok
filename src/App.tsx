@@ -15,8 +15,8 @@ import { restaurant, fastFood, person } from "ionicons/icons";
 import { Meal } from "./pages/meals/meal/Meal";
 import { AddProduct } from "./pages/products/product/AddProduct";
 import { EditProduct } from "./pages/products/product/EditProduct";
+import { DayMeals } from "./pages/meals/DayMeals";
 import Settings from "./pages/settings/Settings";
-import DayMeals from "./pages/meals/DayMeals";
 import Products from "./pages/products/Products";
 import Overview from "./pages/overview/Overview";
 
@@ -60,7 +60,7 @@ const App: React.FC = () => {
         <IonTabs>
           <IonRouterOutlet>
             <Route exact path="/:tab(overview)" render={() => <Overview/>} />
-            <Route exact path="/:tab(meals)" render={() => <DayMeals/>} />
+            <Route exact path="/:tab(meals)" component={DayMeals} />
             <Route exact path="/:tab(meals)/:id/products" component={Meal} />
             <Route exact path="/:tab(products)" render={() => <Products/>} />
             <Route exact path="/:tab(settings)" render={() => <Settings/>} />
