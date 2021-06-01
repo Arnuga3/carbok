@@ -36,6 +36,8 @@ import {
 import { CircleBadge } from "../../components/common/CircleBadge";
 import { categoryColours } from "../../resources/config";
 import { getCatKey } from "../../resources/productCategories";
+import { CircleBadgeMultiColor } from "../../components/common/CircleBadgeMultiColor";
+import { getCategoriesColours } from "./util";
 
 const PRODUCTSPAGE = "products-page";
 
@@ -113,12 +115,22 @@ const Products: React.FC = () => {
       >
         <Item detail lines="none">
           <IonAvatar slot="start">
-            <CircleBadge
-              color={categoryColours[products[index].category.type]}
-              size={35}
-            >
-              {t(getCatKey(products[index].category.type)).slice(0, 3)}
-            </CircleBadge>
+            {products[index].categories.length === 1 && (
+              <CircleBadge
+                color={categoryColours[products[index].categories[0]]}
+                size={35}
+              >
+                {t(getCatKey(products[index].categories[0])).slice(0, 3)}
+              </CircleBadge>
+            )}
+            {products[index].categories.length > 1 && (
+              <CircleBadgeMultiColor
+                colors={getCategoriesColours(products[index].categories)}
+                size={35}
+              >
+                {t(getCatKey("mix"))}
+              </CircleBadgeMultiColor>
+            )}
           </IonAvatar>
           <ProductListItem product={products[index]} />
         </Item>
@@ -191,9 +203,7 @@ const Products: React.FC = () => {
           </IonButtons>
         </HeaderContent>
       </IonHeader>
-      <IonContent fullscreen>
-        {ItemsList}
-      </IonContent>
+      <IonContent>{ItemsList}</IonContent>
       <IonAlert
         isOpen={openDeleteAlert}
         onDidDismiss={() => setState({ ...state, openDeleteAlert: false })}

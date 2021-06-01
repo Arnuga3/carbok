@@ -1,33 +1,33 @@
 import { db } from "../database/CarbokDB";
-import { IProduct } from "../classes/product/IProduct";
-import { IMeal } from "../classes/meal/IMeal";
 import { getDateOnly } from "../utils/helper";
 
-import { isPlatform, getPlatforms } from "@ionic/react";
+import { isPlatform } from "@ionic/react";
 
 import {
   Plugins,
   FilesystemDirectory,
   FilesystemEncoding,
 } from "@capacitor/core";
+import { Meal } from "../classes/meal/Meal";
+import { Product } from "../classes/product/Product";
 const { Filesystem } = Plugins;
 
 class DataService {
   /* products */
   public async retrieveProducts(
     searchText: string | null
-  ): Promise<IProduct[]> {
+  ): Promise<Product[]> {
     const result = searchText && searchText.trim() !== ""
       ? await this.searchProducts(searchText)
       : await this.retrieveAllProducts();
     return result;
   }
 
-  public async retrieveAllProducts(): Promise<IProduct[]> {
+  public async retrieveAllProducts(): Promise<Product[]> {
     return await db.products.orderBy("name").toArray();
   }
 
-  private async searchProducts(searchText: string): Promise<IProduct[]> {
+  private async searchProducts(searchText: string): Promise<Product[]> {
     const regex = new RegExp(searchText);
     return await db.products
       .orderBy("name")
@@ -35,11 +35,11 @@ class DataService {
       .toArray();
   }
 
-  public async addProduct(product: IProduct): Promise<void> {
+  public async addProduct(product: Product): Promise<void> {
     await db.products.put(product);
   }
 
-  public async updateProduct(product: IProduct): Promise<void> {
+  public async updateProduct(product: Product): Promise<void> {
     await db.products.update(product.id as any, product);
   }
 
@@ -60,15 +60,15 @@ class DataService {
       .toArray();
   }
 
-  public async addMeal(meal: IMeal): Promise<void> {
+  public async addMeal(meal: Meal): Promise<void> {
     await db.meals.put(meal);
   }
 
-  public async updateMeal(meal: IMeal): Promise<void> {
+  public async updateMeal(meal: Meal): Promise<void> {
     await db.meals.update(meal.id as any, meal);
   }
 
-  public async updateMeals(meals: IMeal[]): Promise<void> {
+  public async updateMeals(meals: Meal[]): Promise<void> {
     await db.meals.bulkPut(meals);
   }
 
@@ -126,7 +126,7 @@ class DataService {
           await db.table(t.table).clear();
           if (t.table === "meals") {
             return await db.table(t.table).bulkAdd(
-              t.rows.map((r: IMeal) => ({
+              t.rows.map((r: Meal) => ({
                 ...r,
                 date: getDateOnly(new Date(r.date)),
               }))

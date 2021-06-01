@@ -1,9 +1,10 @@
 import { IAppSettings } from "../classes/appSettings/IAppSettings";
+import { ProductCategoryType } from "../classes/productCategory/ProductCategoryType";
 
 export const defaultAppSettings: IAppSettings = {
   themeMode: "light",
   language: "en-GB",
-}
+};
 
 export const chartColors = {
   carbohydrates: "#3d405b",

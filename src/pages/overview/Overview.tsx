@@ -12,10 +12,10 @@ import {
   IonPage,
 } from "@ionic/react";
 import { IChartProductCategory } from "../../classes/productCategory/IChartProductCategory";
-import { IMeal } from "../../classes/meal/IMeal";
 import { MealCarbsLinearChart } from "./MealCarbsLinearChart";
 import { CategoriesPieChart } from "../../components/common/CategoriesPieChart";
 import { DateRangeSwitch } from "./DateRangeSwitch";
+import { Meal } from "../../classes/meal/Meal";
 
 export type Range = "7_days" | "30_days" | "90_days";
 
@@ -23,7 +23,7 @@ export interface CardData {
   range: Range;
   from: Date | null;
   to: Date | null;
-  meals: IMeal[] | [];
+  meals: Meal[] | [];
   categories: IChartProductCategory[] | [];
 }
 

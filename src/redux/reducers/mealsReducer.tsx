@@ -1,9 +1,9 @@
 import { Reducer } from "redux";
-import { IMeal } from "../../classes/meal/IMeal";
+import { Meal } from "../../classes/meal/Meal";
 import { MealsActions } from "../actions/meals/interfaces";
 
 export interface MealsState {
-  meals: IMeal[];
+  meals: Meal[];
   date: Date;
 }
 

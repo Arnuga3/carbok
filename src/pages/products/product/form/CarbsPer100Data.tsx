@@ -111,7 +111,7 @@ export const CarbsPer100Data: React.FC<Props> = ({
             }
             onFocus={handleFocus}
           ></IonInputStyled>
-          <Units>{t(getUnitShortKey(product.units.type))}</Units>
+          <Units>{t(getUnitShortKey(product.units))}</Units>
         </IonColRight>
       </IonRow>
     </IonGrid>

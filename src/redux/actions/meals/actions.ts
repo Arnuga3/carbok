@@ -1,5 +1,4 @@
 import { Dispatch } from "redux";
-import { IMeal } from "../../../classes/meal/IMeal";
 import { Meal } from "../../../classes/meal/Meal";
 import { getDateOnly, uuidv4 } from "../../../utils/helper";
 import {
@@ -12,22 +11,22 @@ import {
 } from "./interfaces";
 import { dataService } from "../../../services/DataService";
 
-export const storeMeal = (meal: IMeal): AddMeal => ({
+export const storeMeal = (meal: Meal): AddMeal => ({
   type: MealsActions.ADD_MEAL,
   meal,
 });
 
-export const storeMeals = (meals: IMeal[]): AddMeals => ({
+export const storeMeals = (meals: Meal[]): AddMeals => ({
   type: MealsActions.ADD_MEALS,
   meals,
 });
 
-export const updateStoredMeal = (meal: IMeal): UpdateMeal => ({
+export const updateStoredMeal = (meal: Meal): UpdateMeal => ({
   type: MealsActions.UPDATE_MEAL,
   meal,
 });
 
-export const deleteStoredMeal = (meal: IMeal): DeleteMeal => ({
+export const deleteStoredMeal = (meal: Meal): DeleteMeal => ({
   type: MealsActions.DELETE_MEAL,
   meal,
 });
@@ -37,7 +36,7 @@ export const changeStoredDate = (date: Date): ChangeDate => ({
   date,
 });
 
-export function addMeal(meal: IMeal) {
+export function addMeal(meal: Meal) {
   return async (dispatch: Dispatch) => {
     try {
       await dataService.addMeal(meal);
@@ -61,7 +60,7 @@ export const retrieveMeals = (date: Date) => {
   };
 };
 
-export const updateMeal = (meal: IMeal) => {
+export const updateMeal = (meal: Meal) => {
   return async (dispatch: Dispatch) => {
     try {
       await dataService.updateMeal(meal);
@@ -72,7 +71,7 @@ export const updateMeal = (meal: IMeal) => {
   };
 };
 
-export const updateMeals = (meals: IMeal[]) => {
+export const updateMeals = (meals: Meal[]) => {
   return async (dispatch: Dispatch) => {
     try {
       const mealsOrdered = meals.map((meal, idx) => ({
@@ -87,7 +86,7 @@ export const updateMeals = (meals: IMeal[]) => {
   };
 };
 
-export const deleteMeal = (meal: IMeal) => {
+export const deleteMeal = (meal: Meal) => {
   return async (dispatch: Dispatch) => {
     try {
       await dataService.deleteMeal(meal.id);
@@ -112,7 +111,7 @@ export const changeDate = (date: Date) => {
   };
 };
 
-export const copyMeal = (date: Date, meal: IMeal) => {
+export const copyMeal = (date: Date, meal: Meal) => {
   return async (dispatch: Dispatch) => {
     try {
       const productsCopy = meal.products.map((product) => ({

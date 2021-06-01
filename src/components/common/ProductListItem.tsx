@@ -20,7 +20,7 @@ export const ProductListItem: React.FC<Props> = ({ product }) => {
         }
       : {
           ...product.carbsData.per100,
-          portion: `100${t(getUnitShortKey(product.units.type))}`,
+          portion: `100${t(getUnitShortKey(product.units))}`,
         };
   return (
     <ListItemContent>

@@ -12,7 +12,6 @@ import {
 } from "@ionic/react";
 import styled from "styled-components";
 
-import { IMeal } from "../../classes/meal/IMeal";
 import { useTranslation } from "react-i18next";
 import { MealProductsChart } from "../../components/common/MealProductsChart";
 import {
@@ -29,9 +28,10 @@ import { useMeals } from "../../hooks/mealsHook";
 import { copyMeal } from "../../redux/actions/meals/actions";
 import { DayMealCardProduct } from "./DayMealCardProduct";
 import { getMealKey } from "../../resources/mealTypes";
+import { Meal } from "../../classes/meal/Meal";
 
 interface Props {
-  meal: IMeal;
+  meal: Meal;
 }
 
 type Display = "details" | "stats";

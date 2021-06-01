@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 import styled from "styled-components";
@@ -10,12 +10,12 @@ import {
   useIonViewDidEnter,
 } from "@ionic/react";
 import { chevronBackOutline, chevronForwardOutline } from "ionicons/icons";
-import { IMeal } from "../../classes/meal/IMeal";
-import { IMealProduct } from "../../classes/meal/IMealProduct";
 import { CalculationService } from "../../services/CalculationService";
 import { CardData } from "./Overview";
 import { Range } from "./Overview";
 import { dataService } from "../../services/DataService";
+import { Meal } from "../../classes/meal/Meal";
+import { MealProduct } from "../../classes/meal/MealProduct";
 
 interface Props {
   data: CardData;
@@ -36,8 +36,8 @@ export const DateRangeSwitch: React.FC<Props> = ({
   });
 
   const getCardRangeData = async (range: Range) => {
-    let rangeMeals: IMeal[] = [];
-    let products: IMealProduct[] = [];
+    let rangeMeals: Meal[] = [];
+    let products: MealProduct[] = [];
     const today = new Date();
 
     switch (range) {

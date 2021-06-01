@@ -1,9 +1,6 @@
-import { Units } from "../classes/units/Units";
+import { UnitsType } from "../classes/units/UnitsType";
 
-export const productUnits = [
-  new Units("g"),
-  new Units("ml"),
-];
+export const productUnits: UnitsType[] = ["g", "ml"];
 
 export function getUnitKey(type: string): string {
   const name = type === "ml" ? "milliliters" : "grams";

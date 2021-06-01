@@ -15,7 +15,6 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import moment from "moment";
 import { ellipsisVertical } from "ionicons/icons";
-import { IMeal } from "../../../classes/meal/IMeal";
 import { Products } from "./Products";
 import { ActionSheet } from "./ActionSheet";
 import { NoteAlert } from "./alerts/NoteAlert";
@@ -40,7 +39,7 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
     }
   }, []);
 
-  const meal: IMeal | undefined = meals.find(
+  const meal = meals.find(
     (meal) => meal.id === match.params.id
   );
 

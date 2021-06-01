@@ -1,14 +1,13 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import { LineChart, Line, ResponsiveContainer } from "recharts";
-import { IMeal } from "../../classes/meal/IMeal";
 import { CalculationService } from "../../services/CalculationService";
 import { chartColors } from "../../resources/config";
 import { IonText } from "@ionic/react";
+import { Meal } from "../../classes/meal/Meal";
 
 interface Props {
-  meals: IMeal[];
+  meals: Meal[];
 }
 
 interface MealData {

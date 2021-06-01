@@ -2,15 +2,15 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { IonAlert } from "@ionic/react";
-import { IMeal } from "../../../../classes/meal/IMeal";
-import { IMealProduct } from "../../../../classes/meal/IMealProduct";
 import { PortionType } from "../../../../classes/productCarbs/PortionType";
 import CalculationService from "../../../../services/CalculationService";
 import { updateMeal } from "../../../../redux/actions/meals/actions";
+import { Meal } from "../../../../classes/meal/Meal";
+import { MealProduct } from "../../../../classes/meal/MealProduct";
 
 interface Props {
-  meal: IMeal;
-  product: IMealProduct | null;
+  meal: Meal;
+  product: MealProduct | null;
   open: boolean;
   onClose: () => void;
 }
@@ -31,7 +31,7 @@ export const ChangeQuantityAlert: React.FC<Props> = ({
 
       const mealUpdated = {
         ...meal,
-        products: meal.products.map((prod: IMealProduct) =>
+        products: meal.products.map((prod: MealProduct) =>
           prod.id === product.id
             ? {
                 ...prod,

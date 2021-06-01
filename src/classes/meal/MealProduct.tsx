@@ -1,24 +1,24 @@
-import { IProductCategory } from "../productCategory/IProductCategory";
-import { IUnits } from "../units/IUnits";
-import { ICarbs } from "../productCarbs/ICarbs";
 import { IMealProduct } from "./IMealProduct";
 import { IProduct } from "../product/IProduct";
 import { PortionType } from "../productCarbs/PortionType";
 import { uuidv4 } from "../../utils/helper";
+import { ProductCategoryType } from "../productCategory/ProductCategoryType";
+import { UnitsType } from "../units/UnitsType";
+import { ProductCarbs } from "../productCarbs/ProductCarbs";
 
 export class MealProduct implements IMealProduct {
   id: string = uuidv4();
   name: string;
-  category: IProductCategory;
-  units: IUnits;
-  carbsData: ICarbs;
-  mealProductCarbs: ICarbs;
+  categories: ProductCategoryType[];
+  units: UnitsType;
+  carbsData: ProductCarbs;
+  mealProductCarbs: ProductCarbs;
   portionType: PortionType;
   portionTypeInUse: PortionType;
 
   constructor(product: IProduct) {
     this.name = product.name;
-    this.category = product.category;
+    this.categories = product.categories;
     this.units = product.units;
     this.carbsData = product.carbsData;
     this.mealProductCarbs = product.carbsData;

@@ -22,8 +22,6 @@ import {
 import { warningOutline } from "ionicons/icons";
 import styled from "styled-components";
 
-import { IProductCategory } from "../../../classes/productCategory/IProductCategory";
-import { IUnits } from "../../../classes/units/IUnits";
 import { IProductDummy } from "../../../classes/product/IProductDummy";
 import { ICarbsPerPortion } from "../../../classes/productCarbs/ICarbsPerPortion";
 import { ICarbsPer100 } from "../../../classes/productCarbs/ICarbsPer100";
@@ -36,10 +34,13 @@ import { CarbsPer100Data } from "./form/CarbsPer100Data";
 
 import { getUnitShortKey, productUnits } from "../../../resources/productUnits";
 import { addProduct } from "../../../redux/actions/products/actions";
+import { ProductCategoryType } from "../../../classes/productCategory/ProductCategoryType";
+import { toggleCategory } from "../util";
+import { UnitsType } from "../../../classes/units/UnitsType";
 
 const defaultData: IProductDummy = {
   name: null,
-  category: null,
+  categories: [],
   units: productUnits[0],
   portionType: "weight",
   carbsData: {
@@ -64,14 +65,17 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
   const [saveAttempted, setSaveAttempted] = useState(false);
   const [carbsDataValid, setCarbsDataValid] = useState(true);
 
-  const handleCategorySelect = (category: IProductCategory) => {
-    setProduct({ ...product, category });
+  const handleCategorySelect = (category: ProductCategoryType) => {
+    const categoriesUpdated = toggleCategory(category, product.categories);
+    setProduct({ ...product, categories: categoriesUpdated });
   };
 
   const handlePerPortionChange = (
     perPortion: ICarbsPerPortion,
     dataValid: boolean
   ) => {
+
+    // TODO - Make one state
     setCarbsDataValid(dataValid);
     setProduct({ ...product, carbsData: { ...product.carbsData, perPortion } });
   };
@@ -83,10 +87,10 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
 
   const handleSave = () => {
     setSaveAttempted(true);
-    if (product.category && product.name && carbsDataValid) {
+    if (product.categories && product.name && carbsDataValid) {
       const newProduct = new Product(
         product.name,
-        product.category,
+        product.categories,
         product.units,
         product.carbsData,
         product.portionType
@@ -101,8 +105,8 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
   }, [product.name, saveAttempted]);
 
   const categoryValid = useCallback(() => {
-    return !saveAttempted || product.category !== null;
-  }, [product.category, saveAttempted]);
+    return !saveAttempted || product.categories !== null;
+  }, [product.categories, saveAttempted]);
 
   return (
     <IonPage>
@@ -151,7 +155,7 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
             <Category
               data={product}
               categoryValid={categoryValid()}
-              onCategorySelect={handleCategorySelect}
+              onCategoryToggle={handleCategorySelect}
             />
           </IonCardContent>
         </IonCard>
@@ -162,7 +166,7 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
           <IonCardContent>
             <Units
               units={product.units}
-              onUnitsChange={(units: IUnits) =>
+              onUnitsChange={(units: UnitsType) =>
                 setProduct({ ...product, units })
               }
             />
@@ -172,7 +176,7 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
           <IonCardHeader>
             <IonCardSubtitle>
               {t("page.products.form.carbohydrates")}
-              {t(getUnitShortKey(product.units.type))}
+              {t(getUnitShortKey(product.units))}
             </IonCardSubtitle>
           </IonCardHeader>
           <IonCardContent>

@@ -1,12 +1,12 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import { IMeal } from "../../../../classes/meal/IMeal";
 import { IonAlert } from "@ionic/react";
 import { deleteMeal } from "../../../../redux/actions/meals/actions";
+import { Meal } from "../../../../classes/meal/Meal";
 
 interface Props {
-  meal: IMeal | undefined;
+  meal: Meal | undefined;
   open: boolean;
   onClose: () => void;
   history: any;

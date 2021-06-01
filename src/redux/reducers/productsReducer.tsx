@@ -1,9 +1,9 @@
 import { Reducer } from "redux";
-import { IProduct } from "../../classes/product/IProduct";
+import { Product } from "../../classes/product/Product";
 import { ProductsActions } from "../actions/products/interfaces";
 
 export interface ProductsState {
-  products: IProduct[];
+  products: Product[];
   searchString: string | null;
   fetching: boolean;
 }

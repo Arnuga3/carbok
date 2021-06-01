@@ -26,7 +26,7 @@ export const DayMealCardProduct: React.FC<Props> = ({
         }
       : {
           portion: `${product.mealProductCarbs.per100.portion}${t(
-            getUnitShortKey(product.units.type)
+            getUnitShortKey(product.units)
           )}`,
           carbs: product.mealProductCarbs.per100.carbs,
         };

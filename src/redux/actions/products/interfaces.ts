@@ -1,4 +1,4 @@
-import { IProduct } from "../../../classes/product/IProduct";
+import { Product } from "../../../classes/product/Product";
 
 export enum ProductsActions {
   ADD_PRODUCT = "ADD_PRODUCT",
@@ -11,17 +11,17 @@ export enum ProductsActions {
 
 export interface AddProduct {
   type: ProductsActions.ADD_PRODUCT;
-  product: IProduct;
+  product: Product;
 }
 
 export interface AddProducts {
   type: ProductsActions.ADD_PRODUCTS;
-  products: IProduct[];
+  products: Product[];
 }
 
 export interface UpdateProduct {
   type: ProductsActions.UPDATE_PRODUCT;
-  product: IProduct;
+  product: Product;
 }
 
 export interface DeleteProduct {

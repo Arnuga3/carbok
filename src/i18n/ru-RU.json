@@ -12,7 +12,9 @@
     "product.category.sweets": "Сладости",
     "product.category.sweets.description": "Сладости",
     "product.category.other": "Другое",
-    "product.category.other.description": "Сочетание разных продуктов",
+    "product.category.other.description": "Что-то другое",
+    "product.category.mix": "MIX",
+    "product.category.mix.description": "Сочетание разных продуктов",
 
     "units.grams": "Граммы",
     "units.grams.short": "г",

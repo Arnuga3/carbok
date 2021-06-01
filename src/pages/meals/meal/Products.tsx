@@ -18,7 +18,6 @@ import {
   scaleOutline,
   trashOutline,
 } from "ionicons/icons";
-import { IMeal } from "../../../classes/meal/IMeal";
 import { CircleBadge } from "../../../components/common/CircleBadge";
 import { MealProductListItem } from "../../../components/common/MealProductListItem";
 import { ProductsSelectModal } from "./ProductsSelectModal";
@@ -28,9 +27,13 @@ import { ChangeQuantityAlert } from "./productAlerts/ChangeQuantityAlert";
 import { DeleteAlert } from "./productAlerts/DeleteAlert";
 import { categoryColours } from "../../../resources/config";
 import { getCatKey } from "../../../resources/productCategories";
+import { CircleBadgeMultiColor } from "../../../components/common/CircleBadgeMultiColor";
+import { getCategoriesColours } from "../../products/util";
+import { Meal } from "../../../classes/meal/Meal";
+import { MealProduct } from "../../../classes/meal/MealProduct";
 
 interface Props {
-  meal: IMeal;
+  meal: Meal;
 }
 const MEALSPAGE = "meals-page";
 
@@ -39,25 +42,23 @@ export const Products: React.FC<Props> = ({ meal }) => {
 
   const [openProductsModal, setOpenProductsModal] = useState(false);
   const [openPortionSizeAlert, setOpenPortionSizeAlert] = useState(false);
-  const [openPortionQuantityAlert, setOpenPortionQuantityAlert] = useState(
-    false
-  );
+  const [openPortionQuantityAlert, setOpenPortionQuantityAlert] =
+    useState(false);
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<IMealProduct | null>(
-    null
-  );
+  const [selectedProduct, setSelectedProduct] =
+    useState<MealProduct | null>(null);
 
-  const handlePortionSizeChange = (product: IMealProduct) => {
+  const handlePortionSizeChange = (product: MealProduct) => {
     setSelectedProduct(product);
     setOpenPortionSizeAlert(true);
   };
 
-  const handlePortionQunatityChange = (product: IMealProduct) => {
+  const handlePortionQunatityChange = (product: MealProduct) => {
     setSelectedProduct(product);
     setOpenPortionQuantityAlert(true);
   };
 
-  const handleOnMealProductDelete = (product: IMealProduct) => {
+  const handleOnMealProductDelete = (product: MealProduct) => {
     setSelectedProduct(product);
     setOpenDeleteAlert(true);
   };
@@ -83,9 +84,22 @@ export const Products: React.FC<Props> = ({ meal }) => {
           >
             <IonItem detail>
               <IonAvatar slot="start">
-                <CircleBadge color={categoryColours[product.category.type]} size={40}>
-                  {t(getCatKey(product.category.type)).slice(0, 3)}
-                </CircleBadge>
+                {product.categories.length === 1 && (
+                  <CircleBadge
+                    color={categoryColours[product.categories[0]]}
+                    size={35}
+                  >
+                    {t(getCatKey(product.categories[0])).slice(0, 3)}
+                  </CircleBadge>
+                )}
+                {product.categories.length > 1 && (
+                  <CircleBadgeMultiColor
+                    colors={getCategoriesColours(product.categories)}
+                    size={35}
+                  >
+                    {t(getCatKey("mix"))}
+                  </CircleBadgeMultiColor>
+                )}
               </IonAvatar>
               <MealProductListItem product={product} />
             </IonItem>

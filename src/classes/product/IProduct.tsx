@@ -1,13 +1,13 @@
-import { IProductCategory } from "../productCategory/IProductCategory";
-import { IUnits } from "../units/IUnits";
-import { ICarbs } from "../productCarbs/ICarbs";
 import { PortionType } from "../productCarbs/PortionType";
+import { ProductCategoryType } from "../productCategory/ProductCategoryType";
+import { ProductCarbs } from "../productCarbs/ProductCarbs";
+import { UnitsType } from "../units/UnitsType";
 
 export interface IProduct {
     id: string;
     name: string;
-    category: IProductCategory;
-    units: IUnits;
-    carbsData: ICarbs;
+    categories: ProductCategoryType[];
+    units: UnitsType;
+    carbsData: ProductCarbs;
     portionType: PortionType;
 }

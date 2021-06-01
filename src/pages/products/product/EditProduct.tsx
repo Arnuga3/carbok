@@ -19,14 +19,12 @@ import {
   IonToggle,
 } from "@ionic/react";
 import styled from "styled-components";
-import { IProductCategory } from "../../../classes/productCategory/IProductCategory";
 import { updateProduct } from "../../../redux/actions/products/actions";
 import { Category } from "./form/Category";
 import { Units } from "./form/Units";
 import { CarbsPerPortionData } from "./form/CarbsPerPortionData";
 import { warningOutline } from "ionicons/icons";
 import { RouteComponentProps } from "react-router";
-import { IUnits } from "../../../classes/units/IUnits";
 import { IProduct } from "../../../classes/product/IProduct";
 import { useProducts } from "../../../hooks/productsHook";
 import { getUnitShortKey, productUnits } from "../../../resources/productUnits";
@@ -34,12 +32,15 @@ import { IProductDummy } from "../../../classes/product/IProductDummy";
 import { ICarbsPer100 } from "../../../classes/productCarbs/ICarbsPer100";
 import { ICarbsPerPortion } from "../../../classes/productCarbs/ICarbsPerPortion";
 import { CarbsPer100Data } from "./form/CarbsPer100Data";
+import { ProductCategoryType } from "../../../classes/productCategory/ProductCategoryType";
+import { toggleCategory } from "../util";
+import { UnitsType } from "../../../classes/units/UnitsType";
 
 interface EditProductPageProps extends RouteComponentProps<{ id: string }> {}
 
 const defaultData: IProductDummy = {
   name: null,
-  category: null,
+  categories: [],
   units: productUnits[0],
   portionType: "weight",
   carbsData: {
@@ -74,7 +75,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
     prod = {
       id: productRetrieved.id,
       name: productRetrieved.name,
-      category: productRetrieved.category,
+      categories: productRetrieved.categories,
       units: productRetrieved.units,
       carbsData: productRetrieved.carbsData,
       portionType: productRetrieved.portionType,
@@ -85,8 +86,9 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
   const [saveAttempted, setSaveAttempted] = useState(false);
   const [carbsDataValid, setCarbsDataValid] = useState(true);
 
-  const handleCategorySelect = (category: IProductCategory) => {
-    setProduct({ ...product, category });
+  const handleCategoryToggle = (category: ProductCategoryType) => {
+    const categoriesUpdated = toggleCategory(category, product.categories);
+    setProduct({ ...product, categories: categoriesUpdated });
   };
 
   const handlePerPortionChange = (
@@ -104,11 +106,11 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
 
   const handleUpdate = () => {
     setSaveAttempted(true);
-    if (product.id && product.category && product.name && carbsDataValid) {
+    if (product.id && product.categories && product.name && carbsDataValid) {
       const productUpdated: IProduct = {
         id: product.id,
         name: product.name,
-        category: product.category,
+        categories: product.categories,
         units: product.units,
         carbsData: product.carbsData,
         portionType: product.portionType,
@@ -123,8 +125,8 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
   }, [product.name, saveAttempted]);
 
   const categoryValid = useCallback(() => {
-    return !saveAttempted || product.category !== null;
-  }, [product.category, saveAttempted]);
+    return !saveAttempted || product.categories !== null;
+  }, [product.categories, saveAttempted]);
 
   return (
     <IonPage>
@@ -173,7 +175,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
             <Category
               data={product}
               categoryValid={categoryValid()}
-              onCategorySelect={handleCategorySelect}
+              onCategoryToggle={handleCategoryToggle}
             />
           </IonCardContent>
         </IonCard>
@@ -184,7 +186,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
           <IonCardContent>
             <Units
               units={product.units}
-              onUnitsChange={(units: IUnits) =>
+              onUnitsChange={(units: UnitsType) =>
                 setProduct({ ...product, units })
               }
             />
@@ -194,7 +196,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
           <IonCardHeader>
             <IonCardSubtitle>
               {t("page.products.form.carbohydrates")}
-              {t(getUnitShortKey(product.units.type))}
+              {t(getUnitShortKey(product.units))}
             </IonCardSubtitle>
           </IonCardHeader>
           <IonCardContent>

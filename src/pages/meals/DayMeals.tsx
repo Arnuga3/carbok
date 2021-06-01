@@ -42,7 +42,6 @@ const DayMeals: React.FC = () => {
   const { settings } = useAppSettings();
   const { meals, date } = useMeals();
   const [openActionSheet, setOpenActionSheet] = useState(false);
-  const [reorder, setReorder] = useState(false);
 
   useEffect(() => {
     if (meals.length === 0) {

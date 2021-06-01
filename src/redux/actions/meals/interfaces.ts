@@ -1,4 +1,4 @@
-import { IMeal } from "../../../classes/meal/IMeal";
+import { Meal } from "../../../classes/meal/Meal";
 
 export enum MealsActions {
   ADD_MEAL = "ADD_MEAL",
@@ -10,22 +10,22 @@ export enum MealsActions {
 
 export interface AddMeal {
   type: MealsActions.ADD_MEAL;
-  meal: IMeal;
+  meal: Meal;
 }
 
 export interface AddMeals {
   type: MealsActions.ADD_MEALS;
-  meals: IMeal[];
+  meals: Meal[];
 }
 
 export interface UpdateMeal {
   type: MealsActions.UPDATE_MEAL;
-  meal: IMeal;
+  meal: Meal;
 }
 
 export interface DeleteMeal {
   type: MealsActions.DELETE_MEAL;
-  meal: IMeal;
+  meal: Meal;
 }
 
 export interface ChangeDate {

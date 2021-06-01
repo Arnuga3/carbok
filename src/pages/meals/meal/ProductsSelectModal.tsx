@@ -1,4 +1,4 @@
-import React, { createRef, RefObject, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { VariableSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import { useDispatch } from "react-redux";
@@ -17,22 +17,21 @@ import {
 import { checkmarkCircle, ellipseOutline, close } from "ionicons/icons";
 import { ProductsSearch } from "../../../components/common/ProductsSearch";
 import { ProductListItem } from "../../../components/common/ProductListItem";
-import { IMeal } from "../../../classes/meal/IMeal";
-import { IProduct } from "../../../classes/product/IProduct";
-import { IMealProduct } from "../../../classes/meal/IMealProduct";
-import { MealProduct } from "../../../classes/meal/MealProduct";
 import { useProducts } from "../../../hooks/productsHook";
 import { retrieveProducts } from "../../../redux/actions/products/actions";
 import { updateMeal } from "../../../redux/actions/meals/actions";
+import { Product } from "../../../classes/product/Product";
+import { MealProduct } from "../../../classes/meal/MealProduct";
+import { Meal } from "../../../classes/meal/Meal";
 import CalculationService from "../../../services/CalculationService";
 
 interface Props {
-  meal: IMeal;
+  meal: Meal;
   open: boolean;
   onClose: any;
 }
 
-const defaultSelectedProducts: IProduct[] = [];
+const defaultSelectedProducts: Product[] = [];
 
 export const ProductsSelectModal: React.FC<Props> = ({
   meal,
@@ -53,12 +52,12 @@ export const ProductsSelectModal: React.FC<Props> = ({
     dispatch(retrieveProducts(searchString));
   }, [searchString]);
 
-  const toggleSelect = (product: IProduct) => {
+  const toggleSelect = (product: Product) => {
     const isSelected = selectedProducts.find((prd) => prd.id === product.id);
     let selectedProductsUpdated;
     if (isSelected) {
       selectedProductsUpdated = selectedProducts.filter(
-        (prd: IProduct) => prd.id !== product.id
+        (prd: Product) => prd.id !== product.id
       );
     } else {
       selectedProductsUpdated = [...selectedProducts, product];
@@ -67,7 +66,7 @@ export const ProductsSelectModal: React.FC<Props> = ({
   };
 
   const handleSelect = () => {
-    const mealProducts: IMealProduct[] = selectedProducts.map((product) => {
+    const mealProducts: MealProduct[] = selectedProducts.map((product) => {
       const mealProduct = new MealProduct(product);
 
       if (mealProduct.portionType === "weight") {
@@ -84,7 +83,7 @@ export const ProductsSelectModal: React.FC<Props> = ({
       return mealProduct;
     });
 
-    const mealUpdated: IMeal = {
+    const mealUpdated = {
       ...meal,
       products: [...meal.products, ...mealProducts],
     };

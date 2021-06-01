@@ -1,14 +1,6 @@
-import { ProductCategory } from "../classes/productCategory/ProductCategory";
+import { ProductCategoryType } from "../classes/productCategory/ProductCategoryType";
 
-export const categories = [
-  new ProductCategory("grains"),
-  new ProductCategory("fruit"),
-  new ProductCategory("vegetables"),
-  new ProductCategory("protein"),
-  new ProductCategory("dairy"),
-  new ProductCategory("sweets"),
-  new ProductCategory("other"),
-];
+export const categories: ProductCategoryType[] = ["grains", "fruit", "vegetables", "protein", "dairy", "sweets", "other"];
 
 export function getCatKey(type: string): string {
   return `product.category.${type}`;

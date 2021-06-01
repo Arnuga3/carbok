@@ -1,25 +1,25 @@
-import { IMealProduct } from "../classes/meal/IMealProduct";
+import { MealProduct } from "../classes/meal/MealProduct";
 import { ICarbsPer100 } from "../classes/productCarbs/ICarbsPer100";
 import { ICarbsPerPortion } from "../classes/productCarbs/ICarbsPerPortion";
 import { IChartProductCategory } from "../classes/productCategory/IChartProductCategory";
-import { IProductCategory } from "../classes/productCategory/IProductCategory";
+import { ProductCategoryType } from "../classes/productCategory/ProductCategoryType";
 import { categoryColours, chartColors } from "../resources/config";
 import { categories, getCatKey } from "../resources/productCategories";
+
+export function getPercentsOf(item: number, total: number): number {
+  return (item * 100) / total;
+}
 
 export class CalculationService {
   private dec2(number: number) {
     return +number.toFixed(2);
   }
 
-  private getPercentsOf(item: number, total: number): number {
-    return (item * 100) / total;
-  }
-
   public getPercentsOfSugars(sugars: number, carbs: number): number {
     if (!carbs || !sugars) {
       return 0;
     }
-    return this.dec2(this.getPercentsOf(sugars, carbs));
+    return this.dec2(getPercentsOf(sugars, carbs));
   }
 
   public getPortionCarbs(
@@ -78,53 +78,78 @@ export class CalculationService {
     };
   }
 
-  public getPieChartData(products: IMealProduct[]) {
+  public getPieChartData(products: MealProduct[]) {
     const chartProductCategories: IChartProductCategory[] = categories.map(
-      (category: IProductCategory) => ({
+      (category: ProductCategoryType) => ({
         value: 0,
-        type: category.type,
-        color: categoryColours[category.type],
-        name: getCatKey(category.type),
+        type: category,
+        color: categoryColours[category],
+        name: getCatKey(category),
       })
     );
-    return this.getCategoriesWithWeights(chartProductCategories, products);
+    const cats = this.getCategoriesWithWeights(
+      chartProductCategories,
+      products
+    );
+    return cats;
   }
 
   private getCategoriesWithWeights(
     categories: IChartProductCategory[],
-    products: IMealProduct[]
+    products: MealProduct[]
   ): IChartProductCategory[] {
     let totalWeightCount: number = 0; // Used to calculate % of total weights
-    return products
-      .reduce((data, product: IMealProduct) => {
-        // Count total weights for each category
-        return data.map((category: IChartProductCategory) => {
-          if (category.type === product.category.type) {
-            const weight =
-              product.portionTypeInUse === "weight"
-                ? +product.mealProductCarbs.per100.portion
-                : +product.carbsData.per100.carbs !== 0
-                ? this.getPercentsOf(
-                    +product.mealProductCarbs.perPortion.carbs,
-                    +product.carbsData.per100.carbs
-                  )
-                : 0;
 
-            totalWeightCount += weight;
-            return { ...category, value: category.value + weight };
-          }
-          return category;
-        });
-      }, categories)
-      .map((category) => ({
-        // Calculate % of total weights
-        ...category,
-        value: Math.floor((category.value * 100) / totalWeightCount),
-      }));
+    let categoriesWithWeight = categories;
+    products.forEach((p) => {
+      categoriesWithWeight = this.countCategoriesWeights(
+        categoriesWithWeight,
+        p
+      );
+    });
+
+    return categoriesWithWeight.map((category) => ({
+      ...category,
+      value: Math.floor((category.value * 100) / totalWeightCount),
+    }));
   }
 
-  public getMealTotalCarbs(products: IMealProduct[]): number {
-    return products.reduce((total, product: IMealProduct) => {
+  private countCategoriesWeights(
+    chartCategories: IChartProductCategory[],
+    product: MealProduct
+  ): IChartProductCategory[] {
+    const productCategories = product.categories;
+    const productWeight = this.getWeight(product);
+
+    if (productWeight) {
+      const categoryWeight = productWeight / productCategories.length;
+      const cats = chartCategories.map((c) =>
+        productCategories.includes(c.type as ProductCategoryType)
+          ? { ...c, value: c.value + categoryWeight }
+          : c
+      );
+      console.log(cats);
+      return cats;
+    }
+    return chartCategories;
+  }
+
+  private getWeight(product: MealProduct): number {
+    if (product.portionTypeInUse === "weight") {
+      return product.mealProductCarbs.per100.portion;
+    }
+    // TODO - Why carbs here?
+    if (+product.carbsData.per100.carbs !== 0) {
+      return getPercentsOf(
+        +product.mealProductCarbs.perPortion.carbs,
+        +product.carbsData.per100.carbs
+      );
+    }
+    return 0;
+  }
+
+  public getMealTotalCarbs(products: MealProduct[]): number {
+    return products.reduce((total, product: MealProduct) => {
       const productCarbs =
         product.portionTypeInUse === "weight"
           ? +product.mealProductCarbs.per100.carbs
@@ -133,8 +158,8 @@ export class CalculationService {
     }, 0);
   }
 
-  public getMealTotalSugars(products: IMealProduct[]): number {
-    return products.reduce((total, product: IMealProduct) => {
+  public getMealTotalSugars(products: MealProduct[]): number {
+    return products.reduce((total, product: MealProduct) => {
       const productSugars =
         product.portionTypeInUse === "weight"
           ? +product.mealProductCarbs.per100.sugars
@@ -143,7 +168,7 @@ export class CalculationService {
     }, 0);
   }
 
-  public getPieChartCarbSugarPercents(products: IMealProduct[]) {
+  public getPieChartCarbSugarPercents(products: MealProduct[]) {
     const carbs = this.getMealTotalCarbs(products);
     const sugars = this.getMealTotalSugars(products);
     const sugarPercentage = this.getPercentsOfSugars(sugars, carbs);

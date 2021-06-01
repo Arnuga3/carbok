@@ -21,7 +21,7 @@ export const MealProductListItem: React.FC<Props> = ({ product }) => {
       : {
           ...product.mealProductCarbs.per100,
           portion: `${product.mealProductCarbs.per100.portion}${t(
-            getUnitShortKey(product.units.type)
+            getUnitShortKey(product.units)
           )}`,
         };
   return (

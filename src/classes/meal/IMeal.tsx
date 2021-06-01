@@ -1,11 +1,11 @@
+import { MealProduct } from "./MealProduct";
 import { MealTypeEnum } from "./MealTypeEnum";
-import { IMealProduct } from "./IMealProduct";
 
 export interface IMeal {
     id: string;
     type: MealTypeEnum;
     date: Date;
-    products: IMealProduct[];
+    products: MealProduct[];
     note?: string;
     order: number;
 }
