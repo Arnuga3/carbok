@@ -14,10 +14,12 @@ export class Meal implements IMeal {
   constructor(
     type: MealTypeEnum,
     dateTime: Date = new Date(),
-    products: MealProduct[] = []
+    products: MealProduct[] = [],
+    order: number,
   ) {
     this.type = type;
     this.date = dateTime;
     this.products = products;
+    this.order = order;
   }
 }

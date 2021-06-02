@@ -23,12 +23,14 @@ export const ExportImport: React.FC = () => {
 
   const handleExport = async () => {
     try {
-      await dataService.exportData();
-      present({
-        message: t("page.settings.toast.export.success"),
-        duration: 2000,
-        color: "success",
-      });
+      await dataService.exportData()
+        .then(() => {
+          present({
+            message: t("page.settings.toast.export.success"),
+            duration: 2000,
+            color: "success",
+          });
+        });
     } catch (e) {
       present({
         message: t("page.settings.toast.export.fail"),

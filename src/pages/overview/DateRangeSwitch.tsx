@@ -117,7 +117,7 @@ export const DateRangeSwitch: React.FC<Props> = ({
     }
   };
   return (
-    <IonHeader mode="ios" translucent>
+    <Header mode="ios">
       <RangeSwitch>
         <IonButton
           color={data.range === "90_days" ? "light" : "medium"}
@@ -141,9 +141,13 @@ export const DateRangeSwitch: React.FC<Props> = ({
           <IonIcon icon={chevronForwardOutline} />
         </IonButton>
       </RangeSwitch>
-    </IonHeader>
+    </Header>
   );
 };
+
+const Header = styled(IonHeader)`
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+`;
 
 const RangeSwitch = styled.div`
   display: flex;

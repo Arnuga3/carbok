@@ -1,8 +1,6 @@
 import { db } from "../database/CarbokDB";
 import { getDateOnly } from "../utils/helper";
-
 import { isPlatform } from "@ionic/react";
-
 import {
   Plugins,
   FilesystemDirectory,
@@ -49,7 +47,7 @@ class DataService {
   /* end products */
 
   /* meals */
-  public async retrieveMeals(date: Date) {
+  public async retrieveMeals(date: Date): Promise<Meal[]> {
     return await db.meals.where("date").equals(getDateOnly(date)).toArray();
   }
 

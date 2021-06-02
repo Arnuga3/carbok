@@ -118,7 +118,7 @@ export const copyMeal = (date: Date, meal: Meal) => {
         ...product,
         id: uuidv4(),
       }));
-      dataService.addMeal(new Meal(meal.type, getDateOnly(date), productsCopy));
+      dataService.addMeal(new Meal(meal.type, getDateOnly(date), productsCopy, 0));
       dispatch(changeStoredDate(date));
     } catch (e) {
       console.log(e);

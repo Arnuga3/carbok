@@ -143,11 +143,13 @@ export const Products: React.FC<Props> = ({ meal }) => {
           {t("page.meals.button.add.product")}
         </AddButton>
       </IonList>
-      <ProductsSelectModal
-        meal={meal}
-        open={openProductsModal}
-        onClose={() => setOpenProductsModal(false)}
-      />
+      {openProductsModal && (
+        <ProductsSelectModal
+          meal={meal}
+          open={openProductsModal}
+          onClose={() => setOpenProductsModal(false)}
+        />
+      )}
       <ChangePortionWeightAlert
         meal={meal}
         product={selectedProduct}
