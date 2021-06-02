@@ -9,14 +9,14 @@ interface Props {
   meal: Meal | undefined;
   open: boolean;
   onClose: () => void;
-  history: any;
+  history?: any;
 }
 
 export const DeleteAlert: React.FC<Props> = ({
   meal,
   open,
   onClose,
-  history,
+  history = null,
 }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -24,7 +24,9 @@ export const DeleteAlert: React.FC<Props> = ({
   const handleDelete = () => {
     if (meal) {
       dispatch(deleteMeal(meal));
-      history.goBack();
+      if (history) {
+        history.goBack();
+      }
     }
   };
 

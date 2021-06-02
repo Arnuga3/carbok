@@ -15,3 +15,11 @@ export function getDateString(date: Date): string {
 export function getDateOnly(date: Date): Date {
   return new Date(moment(date).format("LL"));
 }
+
+export function dec2(number: number) {
+  return +number.toFixed(2);
+}
+
+export function getPercentsOf(item: number, total: number): number {
+  return (item * 100) / total;
+}

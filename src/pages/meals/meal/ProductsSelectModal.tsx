@@ -23,8 +23,7 @@ import { updateMeal } from "../../../redux/actions/meals/actions";
 import { Product } from "../../../classes/product/Product";
 import { MealProduct } from "../../../classes/meal/MealProduct";
 import { Meal } from "../../../classes/meal/Meal";
-import CalculationService from "../../../services/CalculationService";
-
+import { calcService } from "../../../services/CalculationService";
 interface Props {
   meal: Meal;
   open: boolean;
@@ -40,7 +39,6 @@ export const ProductsSelectModal: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const c = new CalculationService();
 
   const { products, searchString } = useProducts();
 
@@ -76,7 +74,7 @@ export const ProductsSelectModal: React.FC<Props> = ({
           ...mealProduct,
           mealProductCarbs: {
             ...mealProduct.mealProductCarbs,
-            per100: c.getCarbsFromWeight(carbs, sugars, portion),
+            per100: calcService.getCarbsFromWeight(carbs, sugars, portion),
           },
         };
       }

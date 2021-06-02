@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { IonAlert } from "@ionic/react";
 import { PortionType } from "../../../../classes/productCarbs/PortionType";
-import CalculationService from "../../../../services/CalculationService";
+import { calcService } from "../../../../services/CalculationService";
 import { updateMeal } from "../../../../redux/actions/meals/actions";
 import { Meal } from "../../../../classes/meal/Meal";
 import { MealProduct } from "../../../../classes/meal/MealProduct";
@@ -23,7 +23,6 @@ export const ChangeQuantityAlert: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const c = new CalculationService();
 
   const handlePortionQuantityUpdate = (targetQuantity: number) => {
     if (product) {
@@ -38,7 +37,7 @@ export const ChangeQuantityAlert: React.FC<Props> = ({
                 portionTypeInUse: portionType,
                 mealProductCarbs: {
                   ...prod.mealProductCarbs,
-                  perPortion: c.getCarbsFromQuantity(
+                  perPortion: calcService.getCarbsFromQuantity(
                     product.carbsData.perPortion,
                     targetQuantity
                   ),

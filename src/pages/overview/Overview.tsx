@@ -11,7 +11,7 @@ import {
   IonContent,
   IonPage,
 } from "@ionic/react";
-import { IChartProductCategory } from "../../classes/productCategory/IChartProductCategory";
+import { IPieCategory } from "../../classes/productCategory/IPieCategory";
 import { MealCarbsLinearChart } from "./MealCarbsLinearChart";
 import { CategoriesPieChart } from "../../components/common/CategoriesPieChart";
 import { DateRangeSwitch } from "./DateRangeSwitch";
@@ -24,7 +24,7 @@ export interface CardData {
   from: Date | null;
   to: Date | null;
   meals: Meal[] | [];
-  categories: IChartProductCategory[] | [];
+  categories: IPieCategory[] | [];
 }
 
 const defaultCardDataState: CardData = {

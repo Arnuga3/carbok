@@ -1,4 +1,4 @@
-export interface IChartProductCategory {
+export interface IPieCategory {
   name: string;
   value: number;
   type: string;

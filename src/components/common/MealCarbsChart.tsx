@@ -5,8 +5,8 @@ import { ResponsiveContainer, Bar, BarChart, CartesianGrid } from "recharts";
 import { IonText } from "@ionic/react";
 import { IMeal } from "../../classes/meal/IMeal";
 import { CircleBadge } from "./CircleBadge";
-import CalculationService from "../../services/CalculationService";
 import { chartColors } from "../../resources/config";
+import { calcService } from "../../services/CalculationService";
 
 interface Props {
   meal: IMeal;
@@ -14,10 +14,9 @@ interface Props {
 
 export const MealCarbsChart: React.FC<Props> = ({ meal }) => {
   const { t } = useTranslation();
-  const calculation = new CalculationService();
-  const totalCarbs = calculation.getMealTotalCarbs(meal.products);
-  const totalSugars = calculation.getMealTotalSugars(meal.products);
-  const sugarPercentage = calculation.getPercentsOfSugars(
+  const totalCarbs = calcService.getMealTotalCarbs(meal.products);
+  const totalSugars = calcService.getMealTotalSugars(meal.products);
+  const sugarPercentage = calcService.getPercentsOfSugars(
     totalSugars,
     totalCarbs
   );
@@ -30,7 +29,7 @@ export const MealCarbsChart: React.FC<Props> = ({ meal }) => {
               data={[
                 {
                   carbs: totalCarbs,
-                  sugars: calculation.getMealTotalSugars(meal.products),
+                  sugars: calcService.getMealTotalSugars(meal.products),
                 },
               ]}
             >

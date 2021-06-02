@@ -1,12 +1,12 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
-import { IChartProductCategory } from "../../classes/productCategory/IChartProductCategory";
+import { IPieCategory } from "../../classes/productCategory/IPieCategory";
 import styled from "styled-components";
 import { CircleBadge } from "./CircleBadge";
 
 interface Props {
-  categories: IChartProductCategory[] | [];
+  categories: IPieCategory[] | [];
 }
 
 export const CategoriesPieChart: React.FC<Props> = ({ categories }) => {
@@ -24,7 +24,7 @@ export const CategoriesPieChart: React.FC<Props> = ({ categories }) => {
             outerRadius={55}
           >
             {categories.map(
-              (category: IChartProductCategory, index: number) => (
+              (category: IPieCategory, index: number) => (
                 <Cell key={`cell-${index}`} fill={category.color} />
               )
             )}
@@ -32,7 +32,7 @@ export const CategoriesPieChart: React.FC<Props> = ({ categories }) => {
         </PieChart>
       </ResponsiveContainer>
       <div>
-        {categories.map((category: IChartProductCategory, index: number) => (
+        {categories.map((category: IPieCategory, index: number) => (
           <Category key={index}>
             <CircleBadge color={category.color} />
             {t(category.name)}

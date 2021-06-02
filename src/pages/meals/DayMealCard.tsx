@@ -1,5 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
+import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import moment from "moment";
 import {
   IonButton,
   IonCard,
@@ -10,44 +13,33 @@ import {
   IonReorder,
   IonText,
 } from "@ionic/react";
-import styled from "styled-components";
-
-import { useTranslation } from "react-i18next";
-import { MealProductsChart } from "../../components/common/MealProductsChart";
 import {
   addOutline,
   chatbubbleOutline,
   copyOutline,
-  listOutline,
-  pieChartOutline,
+  trashOutline,
 } from "ionicons/icons";
-import { MealCarbsChart } from "../../components/common/MealCarbsChart";
-import CalculationService from "../../services/CalculationService";
-import moment from "moment";
-import { useMeals } from "../../hooks/mealsHook";
-import { copyMeal } from "../../redux/actions/meals/actions";
 import { DayMealCardProduct } from "./DayMealCardProduct";
-import { getMealKey } from "../../resources/mealTypes";
 import { Meal } from "../../classes/meal/Meal";
+import { DeleteAlert } from "./meal/alerts/DeleteAlert";
+import { useMeals } from "../../hooks/mealsHook";
+import { getMealKey } from "../../resources/mealTypes";
+import { copyMeal } from "../../redux/actions/meals/actions";
+import { calcService } from "../../services/CalculationService";
+import { NoteAlert } from "./meal/alerts/NoteAlert";
 
 interface Props {
   meal: Meal;
 }
 
-type Display = "details" | "stats";
-
 export const DayMealCard: React.FC<Props> = ({ meal }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const calculation = new CalculationService();
-  const [display, setDisplay] = useState<Display>("details");
+
   const { date } = useMeals();
-
+  const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
+  const [openNoteAlert, setOpenNoteAlert] = useState(false);
   const copyDatetime = useRef<HTMLIonDatetimeElement | null>(null);
-
-  const toggleDisplay = () => {
-    setDisplay(display === "details" ? "stats" : "details");
-  };
 
   const copyMealToDate = (date: Date) => {
     dispatch(copyMeal(date, meal));
@@ -59,7 +51,11 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
         <IonReorder />
       </ReorderHandle>
       <IonCardContent>
-        <IonItem routerLink={`/meals/${meal.id}/products`} lines="none" mode="md">
+        <IonItem
+          routerLink={`/meals/${meal.id}/products`}
+          lines="none"
+          mode="md"
+        >
           <ItemContent>
             <CardHeader>
               <CardHeaderTitle>
@@ -72,40 +68,42 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
               </CardHeaderTitle>
               <CardHeaderCarbs>
                 <IonText color="secondary">
-                  <h1>{calculation.getMealTotalCarbs(meal.products)}</h1>
+                  <h1>{calcService.getMealTotalCarbs(meal.products)}</h1>
                 </IonText>
                 <IonText color="medium">
                   <small>{t("carbohydrates")}</small>
                 </IonText>
               </CardHeaderCarbs>
             </CardHeader>
-            {display === "details" ? (
-              <DayMealCardProductList>
-                {meal.products.map((product, i) => (
-                  <DayMealCardProduct
-                    key={i}
-                    product={product}
-                    meal={meal}
-                    t={t}
-                    i={i}
-                  />
-                ))}
-                {meal.note && (
-                  <Note>
-                    <NoteIcon icon={chatbubbleOutline} />
-                    <small>{meal.note}</small>
-                  </Note>
-                )}
-              </DayMealCardProductList>
-            ) : (
-              <CardContent>
-                <MealCarbsChart meal={meal} />
-                <MealProductsChart meal={meal} />
-              </CardContent>
-            )}
+            <DayMealCardProductList>
+              {meal.products.map((product, i) => (
+                <DayMealCardProduct
+                  key={i}
+                  product={product}
+                  meal={meal}
+                  t={t}
+                  i={i}
+                />
+              ))}
+              {meal.note && (
+                <Note>
+                  <NoteIcon icon={chatbubbleOutline} />
+                  <small>{meal.note}</small>
+                </Note>
+              )}
+            </DayMealCardProductList>
           </ItemContent>
         </IonItem>
         <CardActions>
+          <ActionButton
+            color="warning"
+            fill="clear"
+            shape="round"
+            size="small"
+            onClick={() => setOpenDeleteAlert(true)}
+          >
+            <IonIcon icon={trashOutline} slot="icon-only" />
+          </ActionButton>
           <ActionButton
             color="primary"
             fill="clear"
@@ -121,13 +119,9 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
             fill="clear"
             shape="round"
             size="small"
-            onClick={toggleDisplay}
-            disabled={meal.products.length === 0}
+            onClick={() => setOpenNoteAlert(true)}
           >
-            <IonIcon
-              icon={display === "details" ? pieChartOutline : listOutline}
-              slot="icon-only"
-            />
+            <IonIcon icon={chatbubbleOutline} slot="icon-only" />
           </ActionButton>
           <ActionButton
             color="primary"
@@ -136,10 +130,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
             size="small"
             routerLink={`/meals/${meal.id}/products`}
           >
-            <IonIcon
-              icon={addOutline}
-              slot="icon-only"
-            />
+            <IonIcon icon={addOutline} slot="icon-only" />
           </ActionButton>
         </CardActions>
       </IonCardContent>
@@ -150,6 +141,16 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
         monthShortNames={moment.monthsShort()}
         value={moment(date).toISOString()}
         onIonChange={(e: any) => copyMealToDate(e.detail.value)}
+      />
+      <DeleteAlert
+        meal={meal}
+        open={openDeleteAlert}
+        onClose={() => setOpenDeleteAlert(false)}
+      />
+      <NoteAlert
+        meal={meal}
+        open={openNoteAlert}
+        onClose={() => setOpenNoteAlert(false)}
       />
     </IonCard>
   );
@@ -199,11 +200,6 @@ const CardActions = styled.div`
 
 const ActionButton = styled(IonButton)`
   margin-top: 12px;
-`;
-
-const CardContent = styled.div`
-  display: flex;
-  justify-content: space-between;
 `;
 
 const Note = styled.div`

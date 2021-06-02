@@ -2,12 +2,12 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { IonAlert } from "@ionic/react";
-import { updateMeal } from "../../../../redux/actions/meals/actions";
 import { PortionType } from "../../../../classes/productCarbs/PortionType";
-import CalculationService from "../../../../services/CalculationService";
-import { getUnitShortKey } from "../../../../resources/productUnits";
 import { Meal } from "../../../../classes/meal/Meal";
 import { MealProduct } from "../../../../classes/meal/MealProduct";
+import { updateMeal } from "../../../../redux/actions/meals/actions";
+import { getUnitShortKey } from "../../../../resources/productUnits";
+import { calcService } from "../../../../services/CalculationService";
 
 interface Props {
   meal: Meal;
@@ -16,10 +16,14 @@ interface Props {
   onClose: () => void;
 }
 
-export const ChangePortionWeightAlert: React.FC<Props> = ({ meal, product, open, onClose }) => {
+export const ChangePortionWeightAlert: React.FC<Props> = ({
+  meal,
+  product,
+  open,
+  onClose,
+}) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const c = new CalculationService();
 
   const handlePortionSizeUpdate = (targetPortion: number) => {
     if (product) {
@@ -35,7 +39,11 @@ export const ChangePortionWeightAlert: React.FC<Props> = ({ meal, product, open,
                 portionTypeInUse: portionType,
                 mealProductCarbs: {
                   ...prod.mealProductCarbs,
-                  per100: c.getCarbsFromWeight(carbs, sugars, targetPortion),
+                  per100: calcService.getCarbsFromWeight(
+                    carbs,
+                    sugars,
+                    targetPortion
+                  ),
                 },
               }
             : prod

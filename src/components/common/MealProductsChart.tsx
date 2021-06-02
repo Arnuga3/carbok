@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { IMeal } from "../../classes/meal/IMeal";
-import { IChartProductCategory } from "../../classes/productCategory/IChartProductCategory";
+import { IPieCategory } from "../../classes/productCategory/IPieCategory";
 import { CircleBadge } from "./CircleBadge";
-import CalculationService from "../../services/CalculationService";
+import { chartsDataService } from "../../services/ChartsDataService";
 
 interface Props {
   meal: IMeal;
@@ -13,8 +13,7 @@ interface Props {
 
 export const MealProductsChart: React.FC<Props> = ({ meal }) => {
   const { t } = useTranslation();
-  const calculation = new CalculationService();
-  const categories = calculation.getPieChartData(meal.products);
+  const categories = chartsDataService.getPieCategoriesData(meal.products);
   return (
     <Wrapper>
       <ResponsiveContainer height={75} width={75}>
@@ -29,7 +28,7 @@ export const MealProductsChart: React.FC<Props> = ({ meal }) => {
             outerRadius={25}
           >
             {categories.map(
-              (category: IChartProductCategory, index: number) => (
+              (category: IPieCategory, index: number) => (
                 <Cell key={`cell-${index}`} fill={category.color} />
               )
             )}
@@ -39,7 +38,7 @@ export const MealProductsChart: React.FC<Props> = ({ meal }) => {
       <Categories>
         {categories
           .filter((category) => category.value > 0)
-          .map((category: IChartProductCategory, index: number) => (
+          .map((category: IPieCategory, index: number) => (
             <Category key={index}>
               <CircleBadge color={category.color} />
               {t(category.name)}

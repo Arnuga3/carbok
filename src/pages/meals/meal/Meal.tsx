@@ -9,6 +9,7 @@ import {
   IonPage,
   isPlatform,
   IonTitle,
+  IonCard,
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -22,6 +23,8 @@ import { useMeals } from "../../../hooks/mealsHook";
 import { retrieveMeals } from "../../../redux/actions/meals/actions";
 import { DeleteAlert } from "./alerts/DeleteAlert";
 import { getMealKey } from "../../../resources/mealTypes";
+import { MealCarbsChart } from "../../../components/common/MealCarbsChart";
+import { MealProductsChart } from "../../../components/common/MealProductsChart";
 
 interface MealPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -39,13 +42,11 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
     }
   }, []);
 
-  const meal = meals.find(
-    (meal) => meal.id === match.params.id
-  );
+  const meal = meals.find((meal) => meal.id === match.params.id);
 
   return (
     <IonPage>
-      <IonHeader mode="ios" translucent>
+      <IonHeader mode="ios">
         <HeaderContent>
           <IonBackButton
             mode={isPlatform("ios") ? "ios" : "md"}
@@ -68,7 +69,21 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
           </IonButton>
         </HeaderContent>
       </IonHeader>
-      <IonContent fullscreen>{meal && <Products meal={meal} />}</IonContent>
+      <IonContent>
+        {meal && (
+          <>
+            {meal.products.length > 0 && (
+              <IonCard>
+                <CardContent>
+                  <MealCarbsChart meal={meal} />
+                  <MealProductsChart meal={meal} />
+                </CardContent>
+              </IonCard>
+            )}
+            <Products meal={meal} />
+          </>
+        )}
+      </IonContent>
       <ActionSheet
         open={openActionSheet}
         onNote={() => setOpenNoteAlert(true)}
@@ -95,4 +110,10 @@ const HeaderContent = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 8px;
+`;
+
+const CardContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
 `;

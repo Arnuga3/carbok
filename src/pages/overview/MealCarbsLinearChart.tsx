@@ -1,10 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { LineChart, Line, ResponsiveContainer } from "recharts";
-import { CalculationService } from "../../services/CalculationService";
 import { chartColors } from "../../resources/config";
 import { IonText } from "@ionic/react";
 import { Meal } from "../../classes/meal/Meal";
+import { calcService } from "../../services/CalculationService";
 
 interface Props {
   meals: Meal[];
@@ -17,11 +17,10 @@ interface MealData {
 
 export const MealCarbsLinearChart: React.FC<Props> = ({ meals }) => {
   const { t } = useTranslation();
-  const calculation = new CalculationService();
 
   const data: MealData[] = meals.map((meal) => ({
-    carbs: calculation.getMealTotalCarbs(meal.products),
-    sugars: calculation.getMealTotalSugars(meal.products),
+    carbs: calcService.getMealTotalCarbs(meal.products),
+    sugars: calcService.getMealTotalSugars(meal.products),
   }));
 
   const totals = data.reduce(

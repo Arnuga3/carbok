@@ -21,7 +21,6 @@ import {
 import { CircleBadge } from "../../../components/common/CircleBadge";
 import { MealProductListItem } from "../../../components/common/MealProductListItem";
 import { ProductsSelectModal } from "./ProductsSelectModal";
-import { IMealProduct } from "../../../classes/meal/IMealProduct";
 import { ChangePortionWeightAlert } from "./productAlerts/ChangePortionWeightAlert";
 import { ChangeQuantityAlert } from "./productAlerts/ChangeQuantityAlert";
 import { DeleteAlert } from "./productAlerts/DeleteAlert";

@@ -10,12 +10,12 @@ import {
   useIonViewDidEnter,
 } from "@ionic/react";
 import { chevronBackOutline, chevronForwardOutline } from "ionicons/icons";
-import { CalculationService } from "../../services/CalculationService";
 import { CardData } from "./Overview";
 import { Range } from "./Overview";
 import { dataService } from "../../services/DataService";
 import { Meal } from "../../classes/meal/Meal";
 import { MealProduct } from "../../classes/meal/MealProduct";
+import { chartsDataService } from "../../services/ChartsDataService";
 
 interface Props {
   data: CardData;
@@ -27,7 +27,6 @@ export const DateRangeSwitch: React.FC<Props> = ({
   onDateRangeChange,
 }) => {
   const { t } = useTranslation();
-  const c = new CalculationService();
 
   useIonViewDidEnter(() => {
     if (data.meals.length === 0) {
@@ -52,7 +51,7 @@ export const DateRangeSwitch: React.FC<Props> = ({
           to: today,
           range,
           meals: rangeMeals,
-          categories: c.getPieChartData(products),
+          categories: chartsDataService.getPieCategoriesData(products),
         });
         break;
 
@@ -67,7 +66,7 @@ export const DateRangeSwitch: React.FC<Props> = ({
           to: today,
           range,
           meals: rangeMeals,
-          categories: c.getPieChartData(products),
+          categories: chartsDataService.getPieCategoriesData(products),
         });
         break;
 
@@ -82,7 +81,7 @@ export const DateRangeSwitch: React.FC<Props> = ({
           to: today,
           range,
           meals: rangeMeals,
-          categories: c.getPieChartData(products),
+          categories: chartsDataService.getPieCategoriesData(products),
         });
         break;
     }
