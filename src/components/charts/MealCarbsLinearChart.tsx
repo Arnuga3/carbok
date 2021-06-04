@@ -35,30 +35,34 @@ export const MealCarbsLinearChart: React.FC<Props> = ({ meals }) => {
 
   return (
     <>
-      <IonText>
-        {t("page.overview.carbs.range.card.subtitle", {
-          sugarPercent: Math.floor((totals.sugars * 100) / totals.carbs),
-        })}
-      </IonText>
-      <ResponsiveContainer width={"100%"} height={100}>
-        <LineChart data={data}>
-          {/* <ReferenceLine y={100} label="30%" stroke="red" /> */}
-          <Line
-            type="monotone"
-            dataKey="carbs"
-            stroke={chartColors.carbohydrates}
-            strokeWidth={2}
-            dot={false}
-          />
-          <Line
-            type="monotone"
-            dataKey="sugars"
-            stroke={chartColors.sugars}
-            strokeWidth={2}
-            dot={false}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      {totals.sugars && totals.carbs && (
+        <>
+          <IonText>
+            {t("page.overview.carbs.range.card.subtitle", {
+              sugarPercent: Math.floor((totals.sugars * 100) / totals.carbs),
+            })}
+          </IonText>
+          <ResponsiveContainer width={"100%"} height={100}>
+            <LineChart data={data}>
+              {/* <ReferenceLine y={100} label="30%" stroke="red" /> */}
+              <Line
+                type="monotone"
+                dataKey="carbs"
+                stroke={chartColors.carbohydrates}
+                strokeWidth={2}
+                dot={false}
+              />
+              <Line
+                type="monotone"
+                dataKey="sugars"
+                stroke={chartColors.sugars}
+                strokeWidth={2}
+                dot={false}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </>
+      )}
     </>
   );
 };

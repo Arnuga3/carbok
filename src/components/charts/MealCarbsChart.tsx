@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { ResponsiveContainer, Bar, BarChart, CartesianGrid } from "recharts";
 import { IonText } from "@ionic/react";
 import { IMeal } from "../../classes/meal/IMeal";
-import { CircleBadge } from "./CircleBadge";
+import { CircleBadge } from "../common/CircleBadge";
 import { chartColors } from "../../resources/config";
 import { calcService } from "../../services/CalculationService";
 

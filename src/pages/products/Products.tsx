@@ -17,6 +17,8 @@ import {
   IonItemOption,
   IonAlert,
   IonAvatar,
+  useIonViewDidEnter,
+  useIonViewWillEnter,
 } from "@ionic/react";
 import {
   addOutline,
@@ -67,6 +69,13 @@ const Products: React.FC = () => {
   });
 
   const { openDeleteAlert, openCalculatorModal, productSelected } = state;
+  
+  useEffect(() => {
+    if (products.length === 0) {
+      console.log("get")
+      dispatch(retrieveProducts());
+    }
+  }, [products]);
 
   useEffect(() => {
     dispatch(retrieveProducts(searchString));
@@ -107,7 +116,7 @@ const Products: React.FC = () => {
   };
 
   const ItemRow = ({ index, style }: { index: number; style: any }) => (
-    <div style={style}>
+    <Animation style={style}>
       <IonItemSliding
         key={index}
         id={PRODUCTSPAGE + index}
@@ -155,7 +164,7 @@ const Products: React.FC = () => {
           </SlidingAction>
         </IonItemOptions>
       </IonItemSliding>
-    </div>
+    </Animation>
   );
 
   const ItemsList = useMemo(() => {
@@ -228,6 +237,20 @@ const Products: React.FC = () => {
 };
 
 export default React.memo(Products);
+
+const Animation = styled.div`
+  animation-name: fade;
+  animation-duration: 1s;
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+`;
 
 const Item = styled(IonItem)`
   --min-height: 70px;

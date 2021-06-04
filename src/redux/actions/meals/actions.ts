@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { Meal } from "../../../classes/meal/Meal";
-import { getDateOnly, uuidv4 } from "../../../utils/helper";
+import { uuidv4 } from "../../../utils/helper";
 import {
   AddMeal,
   MealsActions,
@@ -10,6 +10,7 @@ import {
   ChangeDate,
 } from "./interfaces";
 import { dataService } from "../../../services/DataService";
+import { dateService } from "../../../services/DateService";
 
 export const storeMeal = (meal: Meal): AddMeal => ({
   type: MealsActions.ADD_MEAL,
@@ -118,7 +119,7 @@ export const copyMeal = (date: Date, meal: Meal) => {
         ...product,
         id: uuidv4(),
       }));
-      await dataService.addMeal(new Meal(meal.type, getDateOnly(date), productsCopy, 0));
+      await dataService.addMeal(new Meal(meal.type, dateService.dateNoTime(date), productsCopy, 0));
       dispatch(changeStoredDate(date));
     } catch (e) {
       console.log(e);

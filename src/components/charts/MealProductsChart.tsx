@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { IMeal } from "../../classes/meal/IMeal";
 import { IPieCategory } from "../../classes/productCategory/IPieCategory";
-import { CircleBadge } from "./CircleBadge";
+import { CircleBadge } from "../common/CircleBadge";
 import { chartsDataService } from "../../services/ChartsDataService";
 import { IonText } from "@ionic/react";
 

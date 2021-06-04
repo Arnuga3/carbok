@@ -1,5 +1,4 @@
 import { db } from "../database/CarbokDB";
-import { getDateOnly } from "../utils/helper";
 import { isPlatform } from "@ionic/react";
 import {
   Plugins,
@@ -8,6 +7,7 @@ import {
 } from "@capacitor/core";
 import { Meal } from "../classes/meal/Meal";
 import { Product } from "../classes/product/Product";
+import { dateService } from "./DateService";
 const { Filesystem } = Plugins;
 
 class DataService {
@@ -48,13 +48,13 @@ class DataService {
 
   /* meals */
   public async retrieveMeals(date: Date): Promise<Meal[]> {
-    return await db.meals.where("date").equals(getDateOnly(date)).toArray();
+    return await db.meals.where("date").equals(date).toArray();
   }
 
   public async retrieveMealsBetween(fromDate: Date, toDate: Date) {
     return await db.meals
       .where("date")
-      .between(getDateOnly(fromDate), getDateOnly(toDate))
+      .between(fromDate, toDate)
       .toArray();
   }
 
@@ -126,7 +126,7 @@ class DataService {
             return await db.table(t.table).bulkAdd(
               t.rows.map((r: Meal) => ({
                 ...r,
-                date: getDateOnly(new Date(r.date)),
+                date: dateService.dateNoTime(new Date(r.date)),
               }))
             );
           } else {

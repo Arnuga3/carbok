@@ -1,6 +1,5 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import moment from "moment";
 import styled from "styled-components";
 import {
   IonButton,
@@ -16,6 +15,7 @@ import { dataService } from "../../services/DataService";
 import { Meal } from "../../classes/meal/Meal";
 import { MealProduct } from "../../classes/meal/MealProduct";
 import { chartsDataService } from "../../services/ChartsDataService";
+import { dateService } from "../../services/DateService";
 
 interface Props {
   data: CardData;
@@ -37,17 +37,17 @@ export const DateRangeSwitch: React.FC<Props> = ({
   const getCardRangeData = async (range: Range) => {
     let rangeMeals: Meal[] = [];
     let products: MealProduct[] = [];
-    const today = new Date();
+    const today = dateService.todayNoTime();
 
     switch (range) {
       case "7_days":
-        const ago7Days = moment(today).add(1, "day").subtract(8, "day").toDate();
-        rangeMeals = await dataService.retrieveMealsBetween(ago7Days, today);
+        const day7Ago = dateService.day7AgoNoTime();
+        rangeMeals = await dataService.retrieveMealsBetween(day7Ago, today);
         for (const meal of rangeMeals) {
           products = [...products, ...meal.products];
         }
         onDateRangeChange({
-          from: ago7Days,
+          from: day7Ago,
           to: today,
           range,
           meals: rangeMeals,
@@ -56,13 +56,13 @@ export const DateRangeSwitch: React.FC<Props> = ({
         break;
 
       case "30_days":
-        const ago30Days = moment(today).add(1, "day").subtract(31, "day").toDate();
-        rangeMeals = await dataService.retrieveMealsBetween(ago30Days, today);
+        const day30Ago = dateService.day30AgoNoTime();
+        rangeMeals = await dataService.retrieveMealsBetween(day30Ago, today);
         for (const meal of rangeMeals) {
           products = [...products, ...meal.products];
         }
         onDateRangeChange({
-          from: ago30Days,
+          from: day30Ago,
           to: today,
           range,
           meals: rangeMeals,
@@ -71,13 +71,13 @@ export const DateRangeSwitch: React.FC<Props> = ({
         break;
 
       case "90_days":
-        const ago90Days = moment(today).add(1, "day").subtract(91, "day").toDate();
-        rangeMeals = await dataService.retrieveMealsBetween(ago90Days, today);
+        const day90Ago = dateService.day90AgoNoTime();
+        rangeMeals = await dataService.retrieveMealsBetween(day90Ago, today);
         for (const meal of rangeMeals) {
           products = [...products, ...meal.products];
         }
         onDateRangeChange({
-          from: ago90Days,
+          from: day90Ago,
           to: today,
           range,
           meals: rangeMeals,

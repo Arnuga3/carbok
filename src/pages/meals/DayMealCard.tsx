@@ -41,115 +41,134 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
   });
 
   return (
-    <IonCard>
-      <ReorderHandle>
-        <IonReorder />
-      </ReorderHandle>
-      <IonCardContent>
-        <IonItem
-          routerLink={`/meals/${meal.id}/products`}
-          lines="none"
-          mode="md"
-        >
-          <ItemContent>
-            <CardHeader>
-              <CardHeaderTitle>
-                <IonText color="primary">
-                  <h1>{t(getMealKey(meal.type))}</h1>
-                </IonText>
-                <IonText color="medium">
-                  <small>{`${t("products")}: ${meal.products.length}`}</small>
-                </IonText>
-              </CardHeaderTitle>
-              <CardHeaderCarbs>
-                <IonText color="secondary">
-                  <h1>{calcService.getMealTotalCarbs(meal.products)}</h1>
-                </IonText>
-                <IonText color="medium">
-                  <small>{t("carbohydrates")}</small>
-                </IonText>
-              </CardHeaderCarbs>
-            </CardHeader>
-            <DayMealCardProductList>
-              {meal.products.map((product, i) => (
-                <DayMealCardProduct
-                  key={i}
-                  product={product}
-                  meal={meal}
-                  t={t}
-                  i={i}
-                />
-              ))}
-              {meal.note && (
-                <Note>
-                  <NoteIcon icon={chatbubbleOutline} color="primary" />
-                  <IonText color="medium">
-                    <small>{meal.note}</small>
-                  </IonText>
-                </Note>
-              )}
-            </DayMealCardProductList>
-          </ItemContent>
-        </IonItem>
-        <CardActions>
-          <ActionButton
-            color="danger"
-            fill="clear"
-            shape="round"
-            size="small"
-            onClick={() => setOpenDeleteAlert(true)}
-          >
-            <IonIcon icon={trashOutline} slot="icon-only" />
-          </ActionButton>
-          <ActionButton
-            color="secondary"
-            fill="clear"
-            shape="round"
-            size="small"
-            onClick={() => copyDatetime.current?.open()}
-            disabled={meal.products.length === 0}
-          >
-            <IonIcon icon={copyOutline} slot="icon-only" />
-          </ActionButton>
-          <ActionButton
-            color="secondary"
-            fill="clear"
-            shape="round"
-            size="small"
-            onClick={() => setOpenNoteAlert(true)}
-          >
-            <IonIcon icon={chatbubbleOutline} slot="icon-only" />
-          </ActionButton>
-          <ActionButton
-            color="secondary"
-            fill="clear"
-            shape="round"
-            size="small"
+    <Animation>
+      <IonCard>
+        <ReorderHandle>
+          <IonReorder />
+        </ReorderHandle>
+        <IonCardContent>
+          <IonItem
             routerLink={`/meals/${meal.id}/products`}
+            lines="none"
+            mode="md"
           >
-            <IonIcon icon={pencilOutline} slot="icon-only" />
-          </ActionButton>
-        </CardActions>
-      </IonCardContent>
-      <DeleteAlert
-        meal={meal}
-        open={openDeleteAlert}
-        onClose={() => setOpenDeleteAlert(false)}
-      />
-      <NoteAlert
-        meal={meal}
-        open={openNoteAlert}
-        onClose={() => setOpenNoteAlert(false)}
-      />
-      <CopyDatetime ref={copyDatetime} onDateChange={(state) => setCopyAlertState(state)} />
-      <CopyAlert
-        meal={meal}
-        copyState={copyAlertState}
-        onClose={() => setCopyAlertState({ open: false, date: null })}
-      />
-    </IonCard>
+            <ItemContent>
+              <CardHeader>
+                <CardHeaderTitle>
+                  <IonText color="primary">
+                    <h1>{t(getMealKey(meal.type))}</h1>
+                  </IonText>
+                  <IonText color="medium">
+                    <small>{`${t("products")}: ${meal.products.length}`}</small>
+                  </IonText>
+                </CardHeaderTitle>
+                <CardHeaderCarbs>
+                  <IonText color="secondary">
+                    <h1>{calcService.getMealTotalCarbs(meal.products)}</h1>
+                  </IonText>
+                  <IonText color="medium">
+                    <small>{t("carbohydrates")}</small>
+                  </IonText>
+                </CardHeaderCarbs>
+              </CardHeader>
+              <DayMealCardProductList>
+                {meal.products.map((product, i) => (
+                  <DayMealCardProduct
+                    key={i}
+                    product={product}
+                    meal={meal}
+                    t={t}
+                    i={i}
+                  />
+                ))}
+                {meal.note && (
+                  <Note>
+                    <NoteIcon icon={chatbubbleOutline} color="primary" />
+                    <IonText color="medium">
+                      <small>{meal.note}</small>
+                    </IonText>
+                  </Note>
+                )}
+              </DayMealCardProductList>
+            </ItemContent>
+          </IonItem>
+          <CardActions>
+            <ActionButton
+              color="danger"
+              fill="clear"
+              shape="round"
+              size="small"
+              onClick={() => setOpenDeleteAlert(true)}
+            >
+              <IonIcon icon={trashOutline} slot="icon-only" />
+            </ActionButton>
+            <ActionButton
+              color="secondary"
+              fill="clear"
+              shape="round"
+              size="small"
+              onClick={() => copyDatetime.current?.open()}
+              disabled={meal.products.length === 0}
+            >
+              <IonIcon icon={copyOutline} slot="icon-only" />
+            </ActionButton>
+            <ActionButton
+              color="secondary"
+              fill="clear"
+              shape="round"
+              size="small"
+              onClick={() => setOpenNoteAlert(true)}
+            >
+              <IonIcon icon={chatbubbleOutline} slot="icon-only" />
+            </ActionButton>
+            <ActionButton
+              color="secondary"
+              fill="clear"
+              shape="round"
+              size="small"
+              routerLink={`/meals/${meal.id}/products`}
+            >
+              <IonIcon icon={pencilOutline} slot="icon-only" />
+            </ActionButton>
+          </CardActions>
+        </IonCardContent>
+        <DeleteAlert
+          meal={meal}
+          open={openDeleteAlert}
+          onClose={() => setOpenDeleteAlert(false)}
+        />
+        <NoteAlert
+          meal={meal}
+          open={openNoteAlert}
+          onClose={() => setOpenNoteAlert(false)}
+        />
+        <CopyDatetime
+          ref={copyDatetime}
+          onDateChange={(state) => setCopyAlertState(state)}
+        />
+        <CopyAlert
+          meal={meal}
+          copyState={copyAlertState}
+          onClose={() => setCopyAlertState({ open: false, date: null })}
+        />
+      </IonCard>
+    </Animation>
   );
 };
+
+const Animation = styled.div`
+  animation-name: fade;
+  animation-duration: 0.5s;
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+`;
 
 const ReorderHandle = styled.div`
   display: flex;

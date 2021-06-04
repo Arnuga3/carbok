@@ -12,8 +12,8 @@ import {
   IonPage,
 } from "@ionic/react";
 import { IPieCategory } from "../../classes/productCategory/IPieCategory";
-import { MealCarbsLinearChart } from "./MealCarbsLinearChart";
-import { CategoriesPieChart } from "../../components/common/CategoriesPieChart";
+import { MealCarbsLinearChart } from "../../components/charts/MealCarbsLinearChart";
+import { CategoriesPieChart } from "../../components/charts/CategoriesPieChart";
 import { DateRangeSwitch } from "./DateRangeSwitch";
 import { Meal } from "../../classes/meal/Meal";
 

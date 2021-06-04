@@ -22,10 +22,11 @@ import { useMeals } from "../../../hooks/mealsHook";
 import { retrieveMeals } from "../../../redux/actions/meals/actions";
 import { DeleteAlert } from "./alerts/DeleteAlert";
 import { getMealKey } from "../../../resources/mealTypes";
-import { MealCarbsChart } from "../../../components/common/MealCarbsChart";
-import { MealProductsChart } from "../../../components/common/MealProductsChart";
+import { MealCarbsChart } from "../../../components/charts/MealCarbsChart";
+import { MealProductsChart } from "../../../components/charts/MealProductsChart";
 import { CopyDatetime } from "./alerts/CopyDateTime";
 import { CopyAlert, CopyState } from "./alerts/CopyAlert";
+import { dateService } from "../../../services/DateService";
 
 interface MealPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -40,12 +41,12 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
     open: false,
     date: null,
   });
-  
+
   const copyDatetime = useRef<HTMLIonDatetimeElement>(null);
-  
+
   useEffect(() => {
     if (meals.length === 0) {
-      dispatch(retrieveMeals(date));
+      dispatch(retrieveMeals(dateService.dateNoTime(date)));
     }
   }, []);
 
@@ -107,7 +108,10 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
         open={openNoteAlert}
         onClose={() => setOpenNoteAlert(false)}
       />
-      <CopyDatetime ref={copyDatetime} onDateChange={(state) => setCopyAlertState(state)} />
+      <CopyDatetime
+        ref={copyDatetime}
+        onDateChange={(state) => setCopyAlertState(state)}
+      />
       <CopyAlert
         history={history}
         meal={meal}

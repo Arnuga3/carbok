@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import moment from "moment";
+import "moment/min/locales";
+import styled from "styled-components";
 import {
   IonContent,
   IonHeader,
@@ -16,14 +19,10 @@ import {
   chevronBackOutline,
   chevronForwardOutline,
 } from "ionicons/icons";
-import styled from "styled-components";
-import moment from "moment";
-import "moment/min/locales";
-
 import { AddMealActionSheet } from "./AddMealActionSheet";
 import { DayMealCard } from "./DayMealCard";
 import { Meal } from "../../classes/meal/Meal";
-
+import { MealTypeEnum } from "../../classes/meal/MealTypeEnum";
 import {
   addMeal,
   changeDate,
@@ -33,8 +32,7 @@ import {
 import { useMeals } from "../../hooks/mealsHook";
 import { useTranslation } from "react-i18next";
 import { useAppSettings } from "../../hooks/appSettingsHook";
-import { MealTypeEnum } from "../../classes/meal/MealTypeEnum";
-import { getDateOnly } from "../../utils/helper";
+import { dateService } from "../../services/DateService";
 
 export const DayMeals: React.FC = () => {
   const { t } = useTranslation();
@@ -45,7 +43,7 @@ export const DayMeals: React.FC = () => {
 
   useEffect(() => {
     if (meals.length === 0) {
-      dispatch(retrieveMeals(date));
+      dispatch(retrieveMeals(dateService.dateNoTime(date)));
     }
   }, []);
 
@@ -58,21 +56,23 @@ export const DayMeals: React.FC = () => {
   }, [settings.language]);
 
   const handleMealTypeSelect = (mealType: MealTypeEnum) => {
-    dispatch(addMeal(new Meal(mealType, getDateOnly(date), [], meals.length)));
+    dispatch(
+      addMeal(
+        new Meal(mealType, dateService.dateNoTime(date), [], meals.length)
+      )
+    );
   };
 
   const getPreviousDay = () => {
-    const previousDay = moment(date).subtract(1, "day");
-    dispatch(changeDate(new Date(previousDay.toISOString())));
+    dispatch(changeDate(dateService.previousDay(date)));
   };
 
   const getNextDay = () => {
-    const nextDay = moment(date).add(1, "day");
-    dispatch(changeDate(new Date(nextDay.toISOString())));
+    dispatch(changeDate(dateService.nextDay(date)));
   };
 
   const getCalendarDay = (date: Date) => {
-    dispatch(changeDate(date));
+    dispatch(changeDate(dateService.dateNoTime(date)));
   };
 
   const handleReorder = (e: any) => {
@@ -99,23 +99,26 @@ export const DayMeals: React.FC = () => {
           <IonButton fill="clear" onClick={getNextDay}>
             <IonIcon icon={chevronForwardOutline} color="medium" />
           </IonButton>
+          <div></div>
         </HeaderContent>
       </IonHeader>
       <IonContent>
         <IonList>
           <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
-            {meals.sort((a, b) => a.order - b.order).map((meal, i) => (
-              <DayMealCard key={i} meal={meal} />
-            ))}
+            {meals
+              .sort((a, b) => a.order - b.order)
+              .map((meal, i) => (
+                <DayMealCard key={i} meal={meal} />
+              ))}
           </IonReorderGroup>
-            <Button
-              color="tertiary"
-              expand="block"
-              shape="round"
-              onClick={() => setOpenActionSheet(true)}
-            >
-              {t("page.meals.button.add.meal")}
-            </Button>
+          <Button
+            color="tertiary"
+            expand="block"
+            shape="round"
+            onClick={() => setOpenActionSheet(true)}
+          >
+            {t("page.meals.button.add.meal")}
+          </Button>
         </IonList>
       </IonContent>
       <AddMealActionSheet

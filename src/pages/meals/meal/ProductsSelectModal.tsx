@@ -18,7 +18,10 @@ import { checkmarkCircle, ellipseOutline, close } from "ionicons/icons";
 import { ProductsSearch } from "../../../components/common/ProductsSearch";
 import { ProductListItem } from "../../../components/common/ProductListItem";
 import { useProducts } from "../../../hooks/productsHook";
-import { retrieveProducts } from "../../../redux/actions/products/actions";
+import {
+  retrieveProducts,
+  setSearchString,
+} from "../../../redux/actions/products/actions";
 import { updateMeal } from "../../../redux/actions/meals/actions";
 import { Product } from "../../../classes/product/Product";
 import { MealProduct } from "../../../classes/meal/MealProduct";
@@ -48,6 +51,9 @@ export const ProductsSelectModal: React.FC<Props> = ({
 
   useEffect(() => {
     dispatch(retrieveProducts(searchString));
+    return () => {
+      dispatch(setSearchString(null));
+    }
   }, [searchString]);
 
   const toggleSelect = (product: Product) => {
