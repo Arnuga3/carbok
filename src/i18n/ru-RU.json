@@ -58,6 +58,8 @@
     "button.export": "Скачать",
     "button.import": "Залить",
     "button.reorder": "Порядок",
+    "button.copy": "Скопировать",
+    "button.copy.to": "Скопировать на",
 
     "page.overview.carbs.range.card.title": "Последние {{days}} дней",
     "page.overview.carbs.range.card.subtitle": "из которых {{sugarPercent}}% Сахара",
@@ -70,6 +72,8 @@
     "page.meals.delete.meal.product.alert.subtitle": "Продукт будет убран из Еды",
     "page.meals.button.add.product": "Добавить Продукты",
     "page.meals.note.alert.title": "Заметка",
+    "page.meals.copy.meal.alert.title": "Скопировать еду?",
+    "page.meals.copy.meal.alert.subtitle": "Еда будет скопирована на {{date}}?",
 
     "page.products.title": "Продукты",
     "page.products.search.placeholder": "Поиск",

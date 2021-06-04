@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { VariableSizeList as List } from "react-window";
-import AutoSizer from "react-virtualized-auto-sizer";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { VariableSizeList as List } from "react-window";
+import AutoSizer from "react-virtualized-auto-sizer";
 import {
   IonItem,
   IonIcon,
@@ -103,6 +103,7 @@ export const ProductsSelectModal: React.FC<Props> = ({
         onClick={() => toggleSelect(products[index])}
       >
         <IonIcon
+          size="large"
           slot="start"
           color="primary"
           icon={
@@ -118,7 +119,7 @@ export const ProductsSelectModal: React.FC<Props> = ({
 
   return (
     <IonModal isOpen={open}>
-      <IonHeader mode="ios" translucent>
+      <IonHeader mode="ios">
         <HeaderContent>
           <ProductsSearch />
           <IonButton onClick={handleClose} color="primary" fill="clear">
@@ -126,7 +127,7 @@ export const ProductsSelectModal: React.FC<Props> = ({
           </IonButton>
         </HeaderContent>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent>
         <AutoSizer>
           {({ height, width }) => (
             <List
@@ -164,7 +165,9 @@ const Item = styled(IonItem)`
 
 const HeaderContent = styled.div`
   display: flex;
-  padding: 0 8px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const SelectButton = styled(IonButton)`

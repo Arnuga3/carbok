@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import {
   IonBackButton,
@@ -9,7 +9,6 @@ import {
   IonPage,
   isPlatform,
   IonTitle,
-  IonCard,
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -25,6 +24,8 @@ import { DeleteAlert } from "./alerts/DeleteAlert";
 import { getMealKey } from "../../../resources/mealTypes";
 import { MealCarbsChart } from "../../../components/common/MealCarbsChart";
 import { MealProductsChart } from "../../../components/common/MealProductsChart";
+import { CopyDatetime } from "./alerts/CopyDateTime";
+import { CopyAlert, CopyState } from "./alerts/CopyAlert";
 
 interface MealPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -35,7 +36,13 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
   const [openActionSheet, setOpenActionSheet] = useState(false);
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
   const [openNoteAlert, setOpenNoteAlert] = useState(false);
-
+  const [copyAlertState, setCopyAlertState] = useState<CopyState>({
+    open: false,
+    date: null,
+  });
+  
+  const copyDatetime = useRef<HTMLIonDatetimeElement>(null);
+  
   useEffect(() => {
     if (meals.length === 0) {
       dispatch(retrieveMeals(date));
@@ -73,12 +80,10 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
         {meal && (
           <>
             {meal.products.length > 0 && (
-              <IonCard>
-                <CardContent>
-                  <MealCarbsChart meal={meal} />
-                  <MealProductsChart meal={meal} />
-                </CardContent>
-              </IonCard>
+              <Charts>
+                <MealCarbsChart meal={meal} />
+                <MealProductsChart meal={meal} />
+              </Charts>
             )}
             <Products meal={meal} />
           </>
@@ -88,6 +93,7 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
         open={openActionSheet}
         onNote={() => setOpenNoteAlert(true)}
         onDelete={() => setOpenDeleteAlert(true)}
+        onCopy={() => copyDatetime.current?.open()}
         onClose={() => setOpenActionSheet(false)}
       />
       <DeleteAlert
@@ -101,6 +107,13 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
         open={openNoteAlert}
         onClose={() => setOpenNoteAlert(false)}
       />
+      <CopyDatetime ref={copyDatetime} onDateChange={(state) => setCopyAlertState(state)} />
+      <CopyAlert
+        history={history}
+        meal={meal}
+        copyState={copyAlertState}
+        onClose={() => setCopyAlertState({ open: false, date: null })}
+      />
     </IonPage>
   );
 };
@@ -110,10 +123,12 @@ const HeaderContent = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
-const CardContent = styled.div`
+const Charts = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 12px;
+  background-color: var(--ion-color-tertiary);
 `;

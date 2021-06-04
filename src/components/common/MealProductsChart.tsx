@@ -6,6 +6,7 @@ import { IMeal } from "../../classes/meal/IMeal";
 import { IPieCategory } from "../../classes/productCategory/IPieCategory";
 import { CircleBadge } from "./CircleBadge";
 import { chartsDataService } from "../../services/ChartsDataService";
+import { IonText } from "@ionic/react";
 
 interface Props {
   meal: IMeal;
@@ -16,32 +17,30 @@ export const MealProductsChart: React.FC<Props> = ({ meal }) => {
   const categories = chartsDataService.getPieCategoriesData(meal.products);
   return (
     <Wrapper>
-      <ResponsiveContainer height={75} width={75}>
-        <PieChart>
-          <Pie
-            cx={35}
-            stroke="none"
-            data={categories}
-            dataKey="value"
-            nameKey="name"
-            innerRadius={10}
-            outerRadius={25}
-          >
-            {categories.map(
-              (category: IPieCategory, index: number) => (
-                <Cell key={`cell-${index}`} fill={category.color} />
-              )
-            )}
-          </Pie>
-        </PieChart>
-      </ResponsiveContainer>
+      <PieChart height={75} width={75}>
+        <Pie
+          cx={35}
+          stroke="none"
+          data={categories}
+          dataKey="value"
+          nameKey="name"
+          innerRadius={10}
+          outerRadius={25}
+        >
+          {categories.map((category: IPieCategory, index: number) => (
+            <Cell key={`cell-${index}`} fill={category.color} />
+          ))}
+        </Pie>
+      </PieChart>
       <Categories>
         {categories
           .filter((category) => category.value > 0)
           .map((category: IPieCategory, index: number) => (
             <Category key={index}>
               <CircleBadge color={category.color} />
-              {t(category.name)}
+              <IonText color="medium">
+                {t(category.name)}
+              </IonText>
             </Category>
           ))}
       </Categories>
@@ -64,7 +63,6 @@ const Categories = styled.div`
 const Category = styled.div`
   display: flex;
   align-items: center;
-  margin: 0;
-  padding-left: 8px;
-  font-size: 0.8em;
+  margin: 2px 0;
+  font-size: 0.7em;
 `;

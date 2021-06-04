@@ -29,7 +29,7 @@ class ChartsDataService {
     products.forEach((product) => {
       const productWeight = this.getProductWeight(product);
 
-      if (productWeight) {
+      if (productWeight > 0) {
         totalWeightCount += productWeight;
         pieCategories = this.countWeightsForCategories(
           pieCategories,
@@ -70,7 +70,7 @@ class ChartsDataService {
     const { portionTypeInUse, carbsData, mealProductCarbs } = product;
 
     if (portionTypeInUse === "weight") {
-      return mealProductCarbs.per100.portion;
+      return +mealProductCarbs.per100.portion;
     }
 
     if (

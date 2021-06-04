@@ -58,6 +58,8 @@
     "button.export": "Export",
     "button.import": "Import",
     "button.reorder": "Reorder",
+    "button.copy": "Copy",
+    "button.copy.to": "Copy to",
 
     "page.overview.carbs.range.card.title": "Last {{days}} days",
     "page.overview.carbs.range.card.subtitle": "of which {{sugarPercent}}% Sugars",
@@ -70,6 +72,8 @@
     "page.meals.delete.meal.product.alert.subtitle": "It will be removed from a meal",
     "page.meals.button.add.product": "Add Products",
     "page.meals.note.alert.title": "Meal Note",
+    "page.meals.copy.meal.alert.title": "Copy meal?",
+    "page.meals.copy.meal.alert.subtitle": "Meal will be copied to {{date}}?",
 
     "page.products.title": "Products",
     "page.products.search.placeholder": "Search",

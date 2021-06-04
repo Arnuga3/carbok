@@ -13,7 +13,7 @@ export function getDateString(date: Date): string {
 }
 
 export function getDateOnly(date: Date): Date {
-  return new Date(moment(date).format("LL"));
+  return new Date(moment(date).format("L"));
 }
 
 export function dec2(number: number) {

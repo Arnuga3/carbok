@@ -1,32 +1,29 @@
 import React, { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import moment from "moment";
 import {
   IonButton,
   IonCard,
   IonCardContent,
-  IonDatetime,
   IonIcon,
   IonItem,
   IonReorder,
   IonText,
 } from "@ionic/react";
 import {
-  addOutline,
   chatbubbleOutline,
   copyOutline,
+  pencilOutline,
   trashOutline,
 } from "ionicons/icons";
 import { DayMealCardProduct } from "./DayMealCardProduct";
 import { Meal } from "../../classes/meal/Meal";
 import { DeleteAlert } from "./meal/alerts/DeleteAlert";
-import { useMeals } from "../../hooks/mealsHook";
 import { getMealKey } from "../../resources/mealTypes";
-import { copyMeal } from "../../redux/actions/meals/actions";
 import { calcService } from "../../services/CalculationService";
 import { NoteAlert } from "./meal/alerts/NoteAlert";
+import { CopyAlert, CopyState } from "./meal/alerts/CopyAlert";
+import { CopyDatetime } from "./meal/alerts/CopyDateTime";
 
 interface Props {
   meal: Meal;
@@ -34,16 +31,14 @@ interface Props {
 
 export const DayMealCard: React.FC<Props> = ({ meal }) => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const copyDatetime = useRef<HTMLIonDatetimeElement>(null);
 
-  const { date } = useMeals();
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
   const [openNoteAlert, setOpenNoteAlert] = useState(false);
-  const copyDatetime = useRef<HTMLIonDatetimeElement | null>(null);
-
-  const copyMealToDate = (date: Date) => {
-    dispatch(copyMeal(date, meal));
-  };
+  const [copyAlertState, setCopyAlertState] = useState<CopyState>({
+    open: false,
+    date: null,
+  });
 
   return (
     <IonCard>
@@ -87,8 +82,10 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
               ))}
               {meal.note && (
                 <Note>
-                  <NoteIcon icon={chatbubbleOutline} />
-                  <small>{meal.note}</small>
+                  <NoteIcon icon={chatbubbleOutline} color="primary" />
+                  <IonText color="medium">
+                    <small>{meal.note}</small>
+                  </IonText>
                 </Note>
               )}
             </DayMealCardProductList>
@@ -96,7 +93,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
         </IonItem>
         <CardActions>
           <ActionButton
-            color="warning"
+            color="danger"
             fill="clear"
             shape="round"
             size="small"
@@ -105,7 +102,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
             <IonIcon icon={trashOutline} slot="icon-only" />
           </ActionButton>
           <ActionButton
-            color="primary"
+            color="secondary"
             fill="clear"
             shape="round"
             size="small"
@@ -115,7 +112,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
             <IonIcon icon={copyOutline} slot="icon-only" />
           </ActionButton>
           <ActionButton
-            color="primary"
+            color="secondary"
             fill="clear"
             shape="round"
             size="small"
@@ -124,24 +121,16 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
             <IonIcon icon={chatbubbleOutline} slot="icon-only" />
           </ActionButton>
           <ActionButton
-            color="primary"
+            color="secondary"
             fill="clear"
             shape="round"
             size="small"
             routerLink={`/meals/${meal.id}/products`}
           >
-            <IonIcon icon={addOutline} slot="icon-only" />
+            <IonIcon icon={pencilOutline} slot="icon-only" />
           </ActionButton>
         </CardActions>
       </IonCardContent>
-      <Datetime
-        ref={copyDatetime}
-        doneText={t("button.done")}
-        cancelText={t("button.cancel")}
-        monthShortNames={moment.monthsShort()}
-        value={moment(date).toISOString()}
-        onIonChange={(e: any) => copyMealToDate(e.detail.value)}
-      />
       <DeleteAlert
         meal={meal}
         open={openDeleteAlert}
@@ -151,6 +140,12 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
         meal={meal}
         open={openNoteAlert}
         onClose={() => setOpenNoteAlert(false)}
+      />
+      <CopyDatetime ref={copyDatetime} onDateChange={(state) => setCopyAlertState(state)} />
+      <CopyAlert
+        meal={meal}
+        copyState={copyAlertState}
+        onClose={() => setCopyAlertState({ open: false, date: null })}
       />
     </IonCard>
   );
@@ -209,8 +204,4 @@ const Note = styled.div`
 
 const NoteIcon = styled(IonIcon)`
   padding: 8px 4px 8px 0;
-`;
-
-const Datetime = styled(IonDatetime)`
-  display: none;
 `;

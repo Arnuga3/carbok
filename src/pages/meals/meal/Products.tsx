@@ -74,6 +74,19 @@ export const Products: React.FC<Props> = ({ meal }) => {
 
   return (
     <>
+      {meal.note && (
+        <Note>
+          <IonItem lines="none">
+            <IonIcon
+              icon={chatbubbleOutline}
+              slot="start"
+              color="medium"
+              size="small"
+            />
+            <IonText color="medium">{meal.note}</IonText>
+          </IonItem>
+        </Note>
+      )}
       <IonList>
         {meal.products.map((product, i) => (
           <IonItemSliding
@@ -81,12 +94,12 @@ export const Products: React.FC<Props> = ({ meal }) => {
             id={MEALSPAGE + i}
             onClick={() => toggleActionsSlide(MEALSPAGE + i)}
           >
-            <IonItem detail>
+            <IonItem detail lines="none">
               <IonAvatar slot="start">
                 {product.categories.length === 1 && (
                   <CircleBadge
                     color={categoryColours[product.categories[0]]}
-                    size={35}
+                    size={40}
                   >
                     {t(getCatKey(product.categories[0])).slice(0, 3)}
                   </CircleBadge>
@@ -94,7 +107,7 @@ export const Products: React.FC<Props> = ({ meal }) => {
                 {product.categories.length > 1 && (
                   <CircleBadgeMultiColor
                     colors={getCategoriesColours(product.categories)}
-                    size={35}
+                    size={40}
                   >
                     {t(getCatKey("mix"))}
                   </CircleBadgeMultiColor>
@@ -126,14 +139,6 @@ export const Products: React.FC<Props> = ({ meal }) => {
             </IonItemOptions>
           </IonItemSliding>
         ))}
-        {meal.note && (
-          <Note>
-            <IonItem lines="none">
-              <IonIcon icon={chatbubbleOutline} slot="start" />
-              <IonText color="medium">{meal.note}</IonText>
-            </IonItem>
-          </Note>
-        )}
         <AddButton
           color="tertiary"
           expand="block"
@@ -181,5 +186,5 @@ const SlidingAction = styled(IonItemOption)`
 `;
 
 const Note = styled.div`
-  padding: 12px 8px 0 8px;
+  padding: 0px 8px;
 `;

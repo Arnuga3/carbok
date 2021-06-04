@@ -25,7 +25,8 @@ export const MealCarbsChart: React.FC<Props> = ({ meal }) => {
       {meal.products.length > 0 && (
         <>
           <ResponsiveContainer width="100%" height={75}>
-            <BarChart maxBarSize={18}
+            <BarChart
+              maxBarSize={18}
               data={[
                 {
                   carbs: totalCarbs,
@@ -38,22 +39,24 @@ export const MealCarbsChart: React.FC<Props> = ({ meal }) => {
               <Bar dataKey="sugars" fill={chartColors.sugars} />
             </BarChart>
           </ResponsiveContainer>
-          <div>
-            <CarbsLabel>
-              <CircleBadge color={chartColors.carbohydrates} />
-              <IonText>
-                {`${t("carbohydrates")}: ${totalCarbs}${t(
-                  "units.grams.short"
-                )}`}
-              </IonText>
-            </CarbsLabel>
-            <CarbsLabel>
-              <CircleBadge color={chartColors.sugars} />
-              <IonText>
-                {` ${t("of.which.sugars")}: ${Math.floor(sugarPercentage)}%`}
-              </IonText>
-            </CarbsLabel>
-          </div>
+          <Labels>
+            <div>
+              <CarbsLabel>
+                <CircleBadge color={chartColors.carbohydrates} />
+                <IonText color="medium">
+                  {`${t("carbohydrates")}: ${totalCarbs}${t(
+                    "units.grams.short"
+                  )}`}
+                </IonText>
+              </CarbsLabel>
+              <CarbsLabel>
+                <CircleBadge color={chartColors.sugars} />
+                <IonText color="medium">
+                  {`${t("of.which.sugars")}: ${Math.floor(sugarPercentage)}%`}
+                </IonText>
+              </CarbsLabel>
+            </div>
+          </Labels>
         </>
       )}
     </Wrapper>
@@ -65,11 +68,18 @@ const Wrapper = styled.div`
   flex: 1;
   flex-direction: column;
   justify-content: space-evenly;
-  border-right: 1px solid rgba(0, 0, 0, 0.15);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+`;
+
+const Labels = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 8px;
 `;
 
 const CarbsLabel = styled(IonText)`
   display: flex;
   align-items: center;
-  font-size: 0.8em;
+  margin: 2px 0;
+  font-size: 0.7em;
 `;

@@ -118,7 +118,7 @@ const Products: React.FC = () => {
             {products[index].categories.length === 1 && (
               <CircleBadge
                 color={categoryColours[products[index].categories[0]]}
-                size={35}
+                size={40}
               >
                 {t(getCatKey(products[index].categories[0])).slice(0, 3)}
               </CircleBadge>
@@ -126,7 +126,7 @@ const Products: React.FC = () => {
             {products[index].categories.length > 1 && (
               <CircleBadgeMultiColor
                 colors={getCategoriesColours(products[index].categories)}
-                size={35}
+                size={40}
               >
                 {t(getCatKey("mix"))}
               </CircleBadgeMultiColor>

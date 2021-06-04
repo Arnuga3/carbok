@@ -41,7 +41,7 @@ export const DateRangeSwitch: React.FC<Props> = ({
 
     switch (range) {
       case "7_days":
-        const ago7Days = moment(today).subtract(7, "day").toDate();
+        const ago7Days = moment(today).add(1, "day").subtract(8, "day").toDate();
         rangeMeals = await dataService.retrieveMealsBetween(ago7Days, today);
         for (const meal of rangeMeals) {
           products = [...products, ...meal.products];
@@ -56,7 +56,7 @@ export const DateRangeSwitch: React.FC<Props> = ({
         break;
 
       case "30_days":
-        const ago30Days = moment(today).subtract(30, "day").toDate();
+        const ago30Days = moment(today).add(1, "day").subtract(31, "day").toDate();
         rangeMeals = await dataService.retrieveMealsBetween(ago30Days, today);
         for (const meal of rangeMeals) {
           products = [...products, ...meal.products];
@@ -71,7 +71,7 @@ export const DateRangeSwitch: React.FC<Props> = ({
         break;
 
       case "90_days":
-        const ago90Days = moment(today).subtract(90, "day").toDate();
+        const ago90Days = moment(today).add(1, "day").subtract(91, "day").toDate();
         rangeMeals = await dataService.retrieveMealsBetween(ago90Days, today);
         for (const meal of rangeMeals) {
           products = [...products, ...meal.products];

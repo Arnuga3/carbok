@@ -24,7 +24,7 @@ const Badge = styled.div`
   margin: 0 2px 0 4px;
   background-image: linear-gradient(
     135deg,
-    ${(props: { colors: string[]; size: number }) => props.colors.join(",")}
+    ${(props: { colors: string[]; size: number }) => props.colors.sort().join(",")}
   );
   display: flex;
   justify-content: center;
