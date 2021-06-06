@@ -99,18 +99,16 @@ export const ExportImport: React.FC = () => {
         </IonCardHeader>
         <IonCardContent>
           <Button
-            color="tertiary"
+            color="primary"
             expand="block"
-            shape="round"
             onClick={handleExport}
           >
             {t("button.export")}
             <IonIcon slot="end" icon={downloadOutline} />
           </Button>
           <Button
-            color="tertiary"
+            color="primary"
             expand="block"
-            shape="round"
             onClick={handleFileSelect}
           >
             <IonIcon slot="start" icon={pushOutline} />

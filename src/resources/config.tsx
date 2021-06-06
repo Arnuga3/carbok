@@ -6,8 +6,8 @@ export const defaultAppSettings: IAppSettings = {
 };
 
 export const chartColors = {
-  carbohydrates: "#1fa851",
-  sugars: "#ffc409",
+  carbohydrates: "#ffc409",
+  sugars: "white",
 };
 
 export const categoryColours = {

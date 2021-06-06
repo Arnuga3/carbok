@@ -55,7 +55,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
             <ItemContent>
               <CardHeader>
                 <CardHeaderTitle>
-                  <IonText color="primary">
+                  <IonText color="tertiary">
                     <h1>{t(getMealKey(meal.type))}</h1>
                   </IonText>
                   <IonText color="medium">
