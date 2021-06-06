@@ -66,9 +66,9 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
   const dispatch = useDispatch();
 
   const { products } = useProducts();
-  const productRetrieved: IProduct | undefined = products.find(
-    (product: IProduct) => product.id === match.params.id
-  );
+  const productRetrieved: IProduct | undefined = products
+    ? products.find((product: IProduct) => product.id === match.params.id)
+    : undefined;
   let prod = defaultData;
 
   if (productRetrieved) {

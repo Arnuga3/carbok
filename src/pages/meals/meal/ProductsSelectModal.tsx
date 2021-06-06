@@ -50,10 +50,12 @@ export const ProductsSelectModal: React.FC<Props> = ({
   );
 
   useEffect(() => {
-    dispatch(retrieveProducts(searchString));
+    if (searchString) {
+      dispatch(retrieveProducts(searchString));
+    }
     return () => {
       dispatch(setSearchString(null));
-    }
+    };
   }, [searchString]);
 
   const toggleSelect = (product: Product) => {
@@ -103,23 +105,25 @@ export const ProductsSelectModal: React.FC<Props> = ({
 
   const ItemRow = ({ index, style }: { index: number; style: any }) => (
     <div style={style}>
-      <Item
-        lines="none"
-        key={index}
-        onClick={() => toggleSelect(products[index])}
-      >
-        <IonIcon
-          size="large"
-          slot="start"
-          color="primary"
-          icon={
-            selectedProducts.find((prd) => prd.id === products[index].id)
-              ? checkmarkCircle
-              : ellipseOutline
-          }
-        />
-        <ProductListItem product={products[index]} />
-      </Item>
+      {products && (
+        <Item
+          lines="none"
+          key={index}
+          onClick={() => toggleSelect(products[index])}
+        >
+          <IonIcon
+            size="large"
+            slot="start"
+            color="primary"
+            icon={
+              selectedProducts.find((prd) => prd.id === products[index].id)
+                ? checkmarkCircle
+                : ellipseOutline
+            }
+          />
+          <ProductListItem product={products[index]} />
+        </Item>
+      )}
     </div>
   );
 
@@ -139,7 +143,7 @@ export const ProductsSelectModal: React.FC<Props> = ({
             <List
               height={height}
               width={width}
-              itemCount={products.length}
+              itemCount={products ? products.length : 0}
               itemSize={() => 70}
             >
               {ItemRow}

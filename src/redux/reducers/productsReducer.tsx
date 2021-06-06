@@ -3,13 +3,13 @@ import { Product } from "../../classes/product/Product";
 import { ProductsActions } from "../actions/products/interfaces";
 
 export interface ProductsState {
-  products: Product[];
+  products: Product[] | null;
   searchString: string | null;
   fetching: boolean;
 }
 
 const defaultState: ProductsState = {
-  products: [],
+  products: null,
   searchString: null,
   fetching: false,
 };
@@ -20,7 +20,7 @@ const reducer: Reducer<ProductsState> = (
 ) => {
   switch (action.type) {
     case ProductsActions.ADD_PRODUCT:
-      const productsUpdated = [...state.products, action.product].sort((a, b) => a.name - b.name);
+      const productsUpdated = [...(state.products ?? []), action.product];
       return {
         ...state,
         products: productsUpdated,
@@ -34,25 +34,33 @@ const reducer: Reducer<ProductsState> = (
       };
 
     case ProductsActions.UPDATE_PRODUCT:
-      return {
-        ...state,
-        products: state.products.map((product) =>
-          product.id === action.product.id
-            ? { ...product, ...action.product }
-            : product
-        ),
-      };
+      if (state.products) {
+        return {
+          ...state,
+          products: state.products.map((product) =>
+            product.id === action.product.id
+              ? { ...product, ...action.product }
+              : product
+          ),
+        };
+      }
+      return state;
 
     case ProductsActions.DELETE_PRODUCT:
-      return {
-        ...state,
-        products: state.products.filter((product) => product.id !== action.id),
-      };
+      if (state.products) {
+        return {
+          ...state,
+          products: state.products.filter(
+            (product) => product.id !== action.id
+          ),
+        };
+      }
+      return state;
 
-      
     case ProductsActions.SET_SEARCH_STRING:
       return {
         ...state,
+        products: null,
         searchString: action.searchString,
       };
 

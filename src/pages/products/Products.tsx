@@ -68,13 +68,21 @@ const Products: React.FC = () => {
   });
 
   const { openDeleteAlert, openCalculatorModal, productSelected } = state;
-  
+
   useEffect(() => {
-    dispatch(retrieveProducts(searchString));
+    if (searchString) {
+      dispatch(retrieveProducts(searchString));
+    }
     return () => {
       dispatch(setSearchString(null));
-    }
+    };
   }, [searchString]);
+
+  useEffect(() => {
+    if (!products) {
+      dispatch(retrieveProducts());
+    }
+  }, [products]);
 
   const handleOnCalculate = (product: IProduct) => {
     setState({
@@ -112,53 +120,55 @@ const Products: React.FC = () => {
 
   const ItemRow = ({ index, style }: { index: number; style: any }) => (
     <Animation style={style}>
-      <IonItemSliding
-        key={index}
-        id={PRODUCTSPAGE + index}
-        onClick={() => toggleActionsSlide(PRODUCTSPAGE + index)}
-      >
-        <Item detail lines="none">
-          <IonAvatar slot="start">
-            {products[index].categories.length === 1 && (
-              <CircleBadge
-                color={categoryColours[products[index].categories[0]]}
-                size={40}
-              >
-                {t(getCatKey(products[index].categories[0])).slice(0, 3)}
-              </CircleBadge>
-            )}
-            {products[index].categories.length > 1 && (
-              <CircleBadgeMultiColor
-                colors={getCategoriesColours(products[index].categories)}
-                size={40}
-              >
-                {t(getCatKey("mix"))}
-              </CircleBadgeMultiColor>
-            )}
-          </IonAvatar>
-          <ProductListItem product={products[index]} />
-        </Item>
-        <IonItemOptions>
-          <SlidingAction
-            color="secondary"
-            onClick={() => handleOnCalculate(products[index])}
-          >
-            <IonIcon icon={calculator} slot="icon-only" />
-          </SlidingAction>
-          <SlidingAction
-            color="tertiary"
-            routerLink={`/products/edit-product/${products[index].id}`}
-          >
-            <IonIcon icon={createOutline} slot="icon-only" />
-          </SlidingAction>
-          <SlidingAction
-            color="danger"
-            onClick={() => handleOnDelete(products[index])}
-          >
-            <IonIcon icon={trashOutline} slot="icon-only" />
-          </SlidingAction>
-        </IonItemOptions>
-      </IonItemSliding>
+      {products && (
+        <IonItemSliding
+          key={index}
+          id={PRODUCTSPAGE + index}
+          onClick={() => toggleActionsSlide(PRODUCTSPAGE + index)}
+        >
+          <Item detail lines="none">
+            <IonAvatar slot="start">
+              {products[index].categories.length === 1 && (
+                <CircleBadge
+                  color={categoryColours[products[index].categories[0]]}
+                  size={40}
+                >
+                  {t(getCatKey(products[index].categories[0])).slice(0, 3)}
+                </CircleBadge>
+              )}
+              {products[index].categories.length > 1 && (
+                <CircleBadgeMultiColor
+                  colors={getCategoriesColours(products[index].categories)}
+                  size={40}
+                >
+                  {t(getCatKey("mix"))}
+                </CircleBadgeMultiColor>
+              )}
+            </IonAvatar>
+            <ProductListItem product={products[index]} />
+          </Item>
+          <IonItemOptions>
+            <SlidingAction
+              color="secondary"
+              onClick={() => handleOnCalculate(products[index])}
+            >
+              <IonIcon icon={calculator} slot="icon-only" />
+            </SlidingAction>
+            <SlidingAction
+              color="tertiary"
+              routerLink={`/products/edit-product/${products[index].id}`}
+            >
+              <IonIcon icon={createOutline} slot="icon-only" />
+            </SlidingAction>
+            <SlidingAction
+              color="danger"
+              onClick={() => handleOnDelete(products[index])}
+            >
+              <IonIcon icon={trashOutline} slot="icon-only" />
+            </SlidingAction>
+          </IonItemOptions>
+        </IonItemSliding>
+      )}
     </Animation>
   );
 
@@ -169,7 +179,7 @@ const Products: React.FC = () => {
           <List
             height={height}
             width={width}
-            itemCount={products.length}
+            itemCount={products ? products.length : 0}
             overscanCount={25}
             itemSize={() => 70}
           >
@@ -207,7 +217,7 @@ const Products: React.FC = () => {
           </IonButtons>
         </HeaderContent>
       </IonHeader>
-      <IonContent>{ItemsList}</IonContent>
+      <IonContent>{products && ItemsList}</IonContent>
       <IonAlert
         isOpen={openDeleteAlert}
         onDidDismiss={() => setState({ ...state, openDeleteAlert: false })}
