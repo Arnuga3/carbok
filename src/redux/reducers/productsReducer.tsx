@@ -53,7 +53,6 @@ const reducer: Reducer<ProductsState> = (
     case ProductsActions.SET_SEARCH_STRING:
       return {
         ...state,
-        products: [],
         searchString: action.searchString,
       };
 

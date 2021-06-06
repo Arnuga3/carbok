@@ -5,13 +5,19 @@ import { useTranslation } from "react-i18next";
 import { setSearchString } from "../../redux/actions/products/actions";
 import styled from "styled-components";
 
+let delayTimer: any;
+
 export const ProductsSearch: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  
+
   const handleSearch = (e: any) => {
-    dispatch(setSearchString(e.detail.value.toLowerCase()));
+    clearTimeout(delayTimer);
+    delayTimer = setTimeout(() => {
+      dispatch(setSearchString(e.detail.value.toLowerCase()));
+    }, 500);
   };
+
   return (
     <Search
       clearIcon={closeCircleOutline}

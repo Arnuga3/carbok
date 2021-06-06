@@ -17,8 +17,6 @@ import {
   IonItemOption,
   IonAlert,
   IonAvatar,
-  useIonViewDidEnter,
-  useIonViewWillEnter,
 } from "@ionic/react";
 import {
   addOutline,
@@ -34,6 +32,7 @@ import { useProducts } from "../../hooks/productsHook";
 import {
   deleteProduct,
   retrieveProducts,
+  setSearchString,
 } from "../../redux/actions/products/actions";
 import { CircleBadge } from "../../components/common/CircleBadge";
 import { categoryColours } from "../../resources/config";
@@ -71,14 +70,10 @@ const Products: React.FC = () => {
   const { openDeleteAlert, openCalculatorModal, productSelected } = state;
   
   useEffect(() => {
-    if (products.length === 0) {
-      console.log("get")
-      dispatch(retrieveProducts());
-    }
-  }, [products]);
-
-  useEffect(() => {
     dispatch(retrieveProducts(searchString));
+    return () => {
+      dispatch(setSearchString(null));
+    }
   }, [searchString]);
 
   const handleOnCalculate = (product: IProduct) => {
@@ -175,7 +170,7 @@ const Products: React.FC = () => {
             height={height}
             width={width}
             itemCount={products.length}
-            overscanCount={20}
+            overscanCount={25}
             itemSize={() => 70}
           >
             {ItemRow}
