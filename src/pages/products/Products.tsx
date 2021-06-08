@@ -254,7 +254,7 @@ const Products: React.FC = () => {
               })
             }
           >
-            <b>All</b>
+            <b>{t("page.products.filter.products.all")}</b>
           </DisplayButton>
           <DisplayButton
             size="small"
@@ -269,7 +269,7 @@ const Products: React.FC = () => {
               })
             }
           >
-            <b>My Products</b>
+            <b>{t("page.products.filter.products.my")}</b>
           </DisplayButton>
         </DisplayButtons>
         {products && ItemsList}

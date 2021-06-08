@@ -77,6 +77,8 @@
 
     "page.products.title": "Продукты",
     "page.products.search.placeholder": "Поиск",
+    "page.products.filter.products.all": "Все",
+    "page.products.filter.products.my": "Мои Продукты",
     "page.products.add.product.title": "Добавить Продукт",
     "page.products.edit.product.title": "Изменить Продукт",
     "page.products.edit.product.delete.alert.title": "Удалить Продукт?",

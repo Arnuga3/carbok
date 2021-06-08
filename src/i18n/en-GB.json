@@ -77,6 +77,8 @@
 
     "page.products.title": "Products",
     "page.products.search.placeholder": "Search",
+    "page.products.filter.products.all": "All",
+    "page.products.filter.products.my": "My Products",
     "page.products.add.product.title": "Add Product",
     "page.products.edit.product.title": "Edit Product",
     "page.products.edit.product.delete.alert.title": "Delete product?",
