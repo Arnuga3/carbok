@@ -12,6 +12,7 @@ export class Product implements IProduct {
   units: UnitsType;
   carbsData: ProductCarbs;
   portionType: PortionType;
+  standard?: boolean;
 
   constructor(
     name: string,
@@ -19,11 +20,13 @@ export class Product implements IProduct {
     units: UnitsType,
     carbsData: ProductCarbs,
     portionType: PortionType,
+    standard: boolean = false,
   ) {
     this.name = name;
     this.categories = categories;
     this.units = units;
     this.carbsData = carbsData;
     this.portionType = portionType;
+    this.standard = standard;
   }
 }

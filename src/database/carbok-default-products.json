@@ -17,7 +17,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "b0d91095-e26e-45cc-a931-9cef812ae548",
@@ -38,7 +39,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "8f50e273-d0f1-4f92-b87e-f5f2ff2951fe",
@@ -59,7 +61,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "32acae85-0f1e-4f89-a5db-cf07a5519077",
@@ -80,7 +83,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "d756a0fc-b545-42d3-8260-126e2dc6e9c2",
@@ -101,7 +105,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "b8f105f5-8ec3-4971-a7b8-377f38f8d56a",
@@ -122,7 +127,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "d61df0c1-1fa2-4a21-b445-b148c9fa3cf8",
@@ -143,7 +149,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "6514dcfd-d23d-4aeb-a290-e8df951b50a3",
@@ -164,7 +171,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "88a90cc8-ae20-4f35-823b-15695bfb507f",
@@ -185,7 +193,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "9059722d-5037-4024-8ddb-4637ffb24d39",
@@ -206,7 +215,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "90919f6f-0e4c-420e-bc27-c51269ddc5e0",
@@ -227,7 +237,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "8b91944e-de7c-4acd-90b4-6ab630aa4f66",
@@ -248,7 +259,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "7f9d1148-7e83-4e7d-878f-db0c95a08175",
@@ -269,7 +281,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "ecb1b2dd-455a-4a4c-a9b3-001639fdb29d",
@@ -290,7 +303,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "afd91301-e1c7-428b-b168-dcb19db955fa",
@@ -311,7 +325,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "3fa443a5-0a03-4e18-bd50-1f907a7bfa08",
@@ -332,7 +347,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "4323c65f-519f-4f1f-a89e-a5225a3afd39",
@@ -353,7 +369,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "05dcd1a5-8642-41af-b7a4-fa26d9f84119",
@@ -374,7 +391,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "5e3d2c9a-1016-4b69-8609-a9143cf04318",
@@ -395,7 +413,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "4fcf2dff-b7da-4e91-9962-01faba866c22",
@@ -416,7 +435,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "34b0d160-d89a-4ae4-abf0-7828d61e9cf4",
@@ -437,7 +457,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "30aa3d5e-a7e3-4a84-801f-95f8af3b6ad3",
@@ -458,7 +479,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "947b9d08-daad-4ca4-973f-0dcc0b762700",
@@ -479,7 +501,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "1cebd98d-81e8-4c59-9541-3531d7a7fb76",
@@ -500,7 +523,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "c2f23c98-06cd-4c8c-97eb-8ed848c8aa2c",
@@ -521,7 +545,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "53fdb047-aa8d-4b47-9002-0f85040ceedf",
@@ -542,7 +567,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "1b63ebab-043b-4437-ac11-486093df294b",
@@ -563,7 +589,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "f926d2e3-148b-44e8-9988-0490f437be0f",
@@ -584,7 +611,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "bab61082-a8fe-49cd-8647-49fe2ace84ef",
@@ -605,7 +633,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "362edeb8-e74f-4199-bbf2-2e9d66d3606f",
@@ -626,7 +655,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "094ee315-1a0a-4744-89dc-52a1598c405d",
@@ -647,7 +677,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "7d8ae607-2b43-4abe-851c-4c094fb4ef46",
@@ -668,7 +699,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "c4c294e5-b89d-402f-abb4-2176b13ee3fb",
@@ -689,7 +721,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "bc943de1-fcba-4be7-8459-19378861e2b3",
@@ -710,7 +743,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "e044aeea-1ae9-4904-84b1-ead4c8e42ec8",
@@ -731,7 +765,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "3637e6c3-6c48-4523-8662-6e3f372f965d",
@@ -752,7 +787,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "b9c60039-5a36-4462-9a91-f42e2daec1ec",
@@ -773,7 +809,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "69b99f94-a8b8-43e7-90df-2f4f9f6fb23e",
@@ -794,7 +831,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "f26ccc0f-a828-49e8-b4a9-eb28c32bbc80",
@@ -815,7 +853,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "95f15361-c1f4-4a06-88f5-d92356dcae5c",
@@ -836,7 +875,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "b0422b02-a985-485f-810f-96e4c394702f",
@@ -857,7 +897,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "8438fcb4-4cf7-421c-ad0a-eb23fe1f5b36",
@@ -878,7 +919,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "ecb8ec18-a247-4f1f-9b86-771efac3afe6",
@@ -899,7 +941,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "7ec61749-aa9b-4c03-85b3-2f4f34c162c7",
@@ -920,7 +963,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "de2e58ba-8380-436f-b1d4-4bd4361982eb",
@@ -941,7 +985,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "b07b5cdf-5842-4a49-9071-6be25fc023dc",
@@ -962,7 +1007,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "8a873e66-8c5a-41de-b78d-0945279ebf97",
@@ -983,7 +1029,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "118e0934-70a8-41b1-8d40-94af1f353285",
@@ -1004,7 +1051,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "f6ceecee-c104-43e3-8b9d-09722c938377",
@@ -1025,7 +1073,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "facb2602-3a7e-423a-9cfd-3d15183ae0df",
@@ -1046,7 +1095,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "efdb4ae1-c1eb-4ca7-8b02-8bf985440e42",
@@ -1067,7 +1117,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "1cbd1ffd-1593-4246-95fb-d593771b1e08",
@@ -1088,7 +1139,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "8c9bcee3-8c3e-466f-8578-2f0220b8fbf6",
@@ -1109,7 +1161,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "751b0258-aca3-4087-bbe5-11c8f04e54e5",
@@ -1130,7 +1183,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2fc12a79-5c25-4482-bfe2-9cb1b7837f71",
@@ -1151,7 +1205,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "dac41f1b-eaa1-442b-82cf-811f3f2ad0f4",
@@ -1172,7 +1227,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "16ab768e-8314-48c3-8278-44e01a653a7a",
@@ -1193,7 +1249,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "aa1e2e12-d291-4e5d-961e-c8f31423d1c3",
@@ -1214,7 +1271,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "7cc8a5af-6178-40d7-abc2-d66343096ffa",
@@ -1235,7 +1293,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "67d63939-17a5-4a79-9e23-72f932ba7d8b",
@@ -1256,7 +1315,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "f6f3d7e6-bf50-4d91-b66e-20d8e9a5a7c9",
@@ -1277,7 +1337,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "ae82ab27-52f4-4304-91e1-df9b1847242f",
@@ -1298,7 +1359,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "a36dc626-bfca-489d-abbf-ffbe7e8d471b",
@@ -1319,7 +1381,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "7c3cd1dc-540d-4596-a075-b283783f11ad",
@@ -1340,7 +1403,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "18f37e14-d24a-475c-9cff-ffb5ec4e28d9",
@@ -1361,7 +1425,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "e6165ed2-ad20-4594-8c74-cbd594609bd9",
@@ -1382,7 +1447,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "5776b7da-5bbd-44be-b45a-8be530e3fb78",
@@ -1403,7 +1469,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "79ebf231-f389-4fb3-bc23-09b7e9ccdf09",
@@ -1424,7 +1491,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "7ec4d83e-35b5-4672-85e3-d796cd30fa4a",
@@ -1445,7 +1513,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "4fce140b-b874-4ead-a308-8270a14de762",
@@ -1466,7 +1535,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "5259f0a4-8861-4d9b-b694-6eddd1c9e323",
@@ -1487,7 +1557,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "cf4cd341-030d-4f5b-9881-1b57bc183ff5",
@@ -1508,7 +1579,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "ba96ac04-c688-4883-9601-b34c0c19e56b",
@@ -1529,7 +1601,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "c5de000f-c2ea-4833-8c89-aa18cc604a40",
@@ -1550,7 +1623,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "92ea5492-8576-4ac2-8eb0-53e878fca96e",
@@ -1571,7 +1645,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "6b7aa83d-bbf8-4624-82ae-c9c59f227651",
@@ -1592,7 +1667,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "9d57ebdb-fe9e-4532-8799-d880d0b4a489",
@@ -1613,7 +1689,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "15bf5aab-1185-49eb-ba0e-8b8bdb69ec35",
@@ -1634,7 +1711,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "691f2c7a-1b2b-4efe-9d98-ba09caf98589",
@@ -1655,7 +1733,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "d311e9e0-0fa2-470a-bb82-772ba7125fb2",
@@ -1676,7 +1755,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "cc2a8275-9dd6-4d41-81fd-f886b2c7d9d3",
@@ -1697,7 +1777,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "74daba5e-e98a-452c-8493-ca4ff6e5731d",
@@ -1718,7 +1799,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "405489dd-8faf-4939-b32a-72ce3ad40918",
@@ -1739,7 +1821,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2a4d07c6-5f1b-4f5f-ad8d-3872b83c0162",
@@ -1760,7 +1843,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "7f0b8f7b-b67b-44f3-90c5-2402cd8a9705",
@@ -1781,7 +1865,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "1b286d28-e94d-4efd-a070-c6c1e54df220",
@@ -1802,7 +1887,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "c71c4dd4-8c6a-4995-8ea1-27ca2e9741a5",
@@ -1823,7 +1909,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "13597728-f345-401b-8d9b-d97e7da17777",
@@ -1844,7 +1931,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "4917a76b-805c-4918-a032-06baa1f02c6d",
@@ -1865,7 +1953,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "dc78b26b-1e64-49ed-9683-22dc0e168374",
@@ -1886,7 +1975,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "8e090aff-ff01-44ec-98f3-58c9335f41dd",
@@ -1907,7 +1997,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2a20e29a-f58a-4a8d-b38f-c839fc5f75bb",
@@ -1928,7 +2019,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "40828f19-e78a-4df7-9926-c2571ee3409f",
@@ -1949,7 +2041,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "260ae822-49be-4458-bcf1-e47d479ee896",
@@ -1970,7 +2063,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "453c4084-70dc-4955-8750-66e2f13e24dd",
@@ -1991,7 +2085,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "11edd568-0b43-4ad4-83a2-8762f55710a1",
@@ -2012,7 +2107,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "88defc91-dd8d-47bf-8048-41630ed2b84b",
@@ -2033,7 +2129,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "3f8254d9-624e-467f-bff6-2ef5a6ca5f92",
@@ -2054,7 +2151,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "f19e49a2-bbd1-47bb-9e38-c60cf0a119d6",
@@ -2075,7 +2173,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "e02b32c8-0fa4-4c13-b343-4b7d9257e83b",
@@ -2096,7 +2195,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "863a7e1a-8f2d-45e8-bcdb-0635b71ae7af",
@@ -2117,7 +2217,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "da89c9ca-a769-49a8-ad17-f67ff0ed8e04",
@@ -2138,7 +2239,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "6f001298-7857-459f-93d7-d6a524fab537",
@@ -2159,7 +2261,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "07c32993-6bd5-4332-9a13-36a490753b91",
@@ -2180,7 +2283,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "5b646548-c7fd-415b-bada-23db9b461100",
@@ -2201,7 +2305,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "89ca1954-34f3-4d31-824c-18af4f919814",
@@ -2222,7 +2327,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "330941c5-2585-456c-a63c-448f7aa5099b",
@@ -2243,7 +2349,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "8ba9ceed-c115-4ccf-ae55-c417444887d5",
@@ -2264,7 +2371,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "674e2e0e-c6d2-4edd-8f45-c44c03c22de1",
@@ -2285,7 +2393,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "af9643a2-1fb3-4c08-b345-de2f6c99861a",
@@ -2306,7 +2415,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2cdc3b0d-4003-400d-acde-0c61cfaad44b",
@@ -2327,7 +2437,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "6ecbd198-9362-4174-9466-138cba38e05b",
@@ -2348,7 +2459,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "343acc7f-71be-45f7-948c-6598bc2841bb",
@@ -2369,7 +2481,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "607465b5-1649-4771-b2e5-ad14bcc9b7b7",
@@ -2390,7 +2503,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "567b930f-76cb-4108-aacd-d2afeb5c8cbf",
@@ -2411,7 +2525,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "76aabe16-c3fd-4515-a1ae-a0e55003c6cb",
@@ -2432,7 +2547,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "f7ceba18-170f-43bc-9c0f-5f167ff1bd61",
@@ -2453,7 +2569,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "94a765a0-9e15-4cc2-942b-570fef1586b9",
@@ -2474,7 +2591,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "4f745c0e-b5e8-409e-ab2d-5cc8466bef2c",
@@ -2495,7 +2613,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "a26ed45c-d2f6-4ae3-8721-7f53e983ccbe",
@@ -2516,7 +2635,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "d9eca17d-898a-4a2c-b8ef-6f38c94aa371",
@@ -2537,7 +2657,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "a2943178-5ba3-4035-9899-15d62f139ef7",
@@ -2558,7 +2679,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "47a6273d-d659-4fd4-b8a6-ce6fc3bd4846",
@@ -2579,7 +2701,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "365af413-7780-45ed-aaf9-a9f60fae4d8c",
@@ -2600,7 +2723,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "c964253c-ce7d-4fdd-ba7b-b452356bd54a",
@@ -2621,7 +2745,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "19840b99-83bb-4a1f-8be2-281f221f4432",
@@ -2642,7 +2767,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "1ed57e2a-b342-43ba-86b1-cfb438677bc9",
@@ -2663,7 +2789,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "81ffc25f-f2b9-4730-a738-34e5338bc19a",
@@ -2684,7 +2811,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "9746e90c-6390-4604-89e5-c7e66d851232",
@@ -2705,7 +2833,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "b6fc73fc-9d80-4b53-b7e8-b63762f0e6a1",
@@ -2726,7 +2855,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "220a0afb-6dad-4fc7-a026-aa0da38f4d22",
@@ -2747,7 +2877,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "cd813d82-44cb-48d9-a0d5-decd6606f889",
@@ -2768,7 +2899,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "577ea854-1609-4bb0-9ce6-d929d3348045",
@@ -2789,7 +2921,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "154cfb97-adfe-4397-842f-af9c704757b2",
@@ -2810,7 +2943,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "c64d7be3-0bfd-43b3-9646-492f659b721b",
@@ -2831,7 +2965,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "95769511-1c22-4c39-ba43-a8395016a985",
@@ -2852,7 +2987,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "7c0fd0c3-2aaa-49a8-8f03-d45fc9df8ff3",
@@ -2873,7 +3009,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "21c02b61-eaf0-48de-a2ed-41b925521ee9",
@@ -2894,7 +3031,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "0b126c4c-7465-426f-8a4f-7caf6613b49c",
@@ -2915,7 +3053,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "e55b4927-12e4-4042-9a94-a38349bafada",
@@ -2936,7 +3075,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "873f4e98-5f74-4392-8513-fe2a84ef3729",
@@ -2957,7 +3097,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2ca13025-d8b8-4b60-9a6d-cc62496ac5bb",
@@ -2978,7 +3119,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "854cb6b4-035a-434e-b2b5-d23f5e5c1ffe",
@@ -2999,7 +3141,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2b56d68f-9997-4d35-86b5-17ea544f06df",
@@ -3020,7 +3163,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "33b6c81a-616f-4b64-9a9e-bbdda4399e97",
@@ -3041,7 +3185,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "f0d89761-0da3-43bd-9a6b-cbf319503942",
@@ -3062,7 +3207,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "7107896c-3b12-407e-8a02-bdb16ececac1",
@@ -3083,7 +3229,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "3cfc4e53-1605-4d94-97cf-f7f9b57bb266",
@@ -3104,7 +3251,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "f1126dae-2322-4b6e-a329-1b88eb97f650",
@@ -3125,7 +3273,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "b3e6147c-3f27-4b76-9652-d160405dcac3",
@@ -3146,7 +3295,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "c796ab2f-b8ea-48df-9fa9-1b1088144fe4",
@@ -3167,7 +3317,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "1cfbd742-71e9-4062-992f-afb376cb35b5",
@@ -3188,7 +3339,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "8a443366-c9f0-430f-9ce2-6d8430016d57",
@@ -3209,7 +3361,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "24dabec6-8b37-43b4-be40-667c63966e72",
@@ -3230,7 +3383,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "3455eb83-5e16-4eb4-bd2e-969052d65f52",
@@ -3251,7 +3405,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "406c2bb8-65d5-4b25-ad1a-e2eb047ed6c1",
@@ -3272,7 +3427,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "b3550772-fa3c-49ca-90e7-9bfb3fd20643",
@@ -3293,7 +3449,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "187097a7-fcbf-401b-b11b-095b71aaa2c5",
@@ -3314,7 +3471,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "d3103d6b-9ef7-4b9a-b3df-6c537a842747",
@@ -3335,7 +3493,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "db9e5727-a557-4839-a00d-c0364a17187d",
@@ -3356,7 +3515,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2f8da3d9-65cc-410b-8a4e-c7c3c3c128d3",
@@ -3377,7 +3537,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "f9a44222-ec68-4ca1-99d3-bacee1990e49",
@@ -3398,7 +3559,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "b8b17c87-1d13-4449-88c5-170166260505",
@@ -3419,7 +3581,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "152c06c0-5349-4379-9160-5d6fe43a9cb2",
@@ -3440,7 +3603,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "ab673c17-3f05-476c-a072-a00bb1ab7fc4",
@@ -3461,7 +3625,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "443512da-eb31-43c9-a954-1c7131481b65",
@@ -3482,7 +3647,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "82199770-45d0-478e-9f8c-d0e0e4e26a17",
@@ -3503,7 +3669,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "c1c959c2-10e1-464f-aad1-f0d4a1747d60",
@@ -3524,7 +3691,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "93a496a3-c0e1-4f07-8bf1-4738cbb2f0c9",
@@ -3545,7 +3713,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "06168c59-1ebb-447c-8594-acab34bc5e47",
@@ -3566,7 +3735,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "1d1f530d-58ce-45bb-bd06-21d395fd2379",
@@ -3587,7 +3757,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "e19051c1-6345-423c-b8d9-86e74ee22cc9",
@@ -3608,7 +3779,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "51c642f5-5b47-40d8-abb0-63434772900c",
@@ -3629,7 +3801,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "e18d978c-650c-40da-8a05-bd29ccbd553e",
@@ -3650,7 +3823,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "1bf1372c-defb-474a-889a-78fe7025eef9",
@@ -3671,7 +3845,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "9766f455-a9eb-4512-8a8a-14df74d32285",
@@ -3692,7 +3867,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "fbeb924f-fd76-48f3-b34f-ff865a923716",
@@ -3713,7 +3889,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "477c4bbf-3ca8-432d-8c81-0c29a3ce10b4",
@@ -3734,7 +3911,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "ae9b8a70-7fbe-4b78-a839-0f37de3fec1c",
@@ -3755,7 +3933,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "788f87aa-13e4-49f4-af1c-a487a62d960a",
@@ -3776,7 +3955,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "c24de3d2-72fe-4cce-b0b4-c5ba5a4b085c",
@@ -3797,7 +3977,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "51bfb536-831f-4600-ab0b-c1ad4ce0c5dc",
@@ -3818,7 +3999,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "4b27d85b-9667-4e61-8c43-c130ebe7a172",
@@ -3839,7 +4021,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "d0d93695-9d90-4177-bc0c-8769917292bf",
@@ -3860,7 +4043,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "29615b8b-4f80-4c82-b08e-7f29f3e5ab48",
@@ -3881,7 +4065,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "fe4483ef-c7b8-4e61-adb3-0987f3e19913",
@@ -3902,7 +4087,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "0657fa29-75c2-4188-9c52-ba86afc61329",
@@ -3923,7 +4109,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "07dd4b76-9deb-431e-a80a-1646f232abbe",
@@ -3944,7 +4131,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "265a2fff-af06-46f3-8ae5-cd3917cec6e8",
@@ -3965,7 +4153,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "d565a2c5-af10-43b7-8ecd-993af1e67e45",
@@ -3986,7 +4175,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "fa3d1634-bf6c-4146-b802-15e9bdfbdd07",
@@ -4007,7 +4197,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "41a1cc8e-91c9-480b-b948-01f599240403",
@@ -4028,7 +4219,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "097c7d33-4177-470b-a24e-0080eee5f463",
@@ -4049,7 +4241,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "cb579eab-bcc5-4d91-b31a-ff60610fd8e9",
@@ -4070,7 +4263,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "e889f8d0-734a-471f-baa9-c0637282ecfc",
@@ -4091,7 +4285,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "0ae9e9ac-fb5f-4b1a-9736-ba896d3b8877",
@@ -4112,7 +4307,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "00fbb53b-4712-48ed-b37e-50e06c80b1a1",
@@ -4133,7 +4329,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "d9fbf596-3831-443e-8951-01b4be619b00",
@@ -4154,7 +4351,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "e6ae0e9a-5ea8-4e6e-b34a-ab920d2ab08a",
@@ -4175,7 +4373,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "e525aea4-3a91-4b65-a5b3-afb04e6897d1",
@@ -4196,7 +4395,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "6afa1e7d-7888-4758-8039-d3ecd237c3a2",
@@ -4217,7 +4417,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "dd684dd8-503e-44f3-8934-d5033962fe73",
@@ -4238,7 +4439,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2812a4c3-e930-46ec-a2f7-9b1a40d95a9a",
@@ -4259,7 +4461,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "c25e8d7d-2640-4bef-892e-0f496e53cf30",
@@ -4280,7 +4483,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "89bc1acd-6a4b-4911-9558-3c09c6ddc276",
@@ -4301,7 +4505,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "cb2af203-46c4-4489-a61a-b39bb602a31e",
@@ -4322,7 +4527,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "81651a39-4d93-41d9-8a60-0c2ee28f0154",
@@ -4343,7 +4549,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "5a75b0e8-4234-4dc6-8785-e87e16031f33",
@@ -4364,7 +4571,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "09d34960-2664-46c2-8a7a-44374d817b74",
@@ -4385,7 +4593,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "310aa500-a4a3-4e38-b593-2e7aedc66634",
@@ -4406,7 +4615,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "d370bd8b-8797-4ac2-bfc5-bff228749bb0",
@@ -4427,7 +4637,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "697a0c5c-c056-4984-8433-92292a99ac96",
@@ -4448,7 +4659,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "c16a84ce-7b7e-49ae-beef-7121702a67db",
@@ -4469,7 +4681,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2b03ddfe-c653-4c09-8d43-66331092ee83",
@@ -4490,7 +4703,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "b6f5365f-eab5-4b6f-afa8-0553ffe09e04",
@@ -4511,7 +4725,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "d701d2fd-a4a3-4687-9a5f-d9655e0be047",
@@ -4532,7 +4747,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2c36e140-0d8a-41a9-a372-5ac21477f0d0",
@@ -4553,7 +4769,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "5308ef3f-fe32-4243-a669-2eaba7d3d382",
@@ -4574,7 +4791,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "06747847-d7cd-44ad-b78b-5cf3cd27ffd6",
@@ -4595,7 +4813,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "79219d67-cb75-48ad-82e6-d719b9e7fd99",
@@ -4616,7 +4835,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "14ad1ec6-3fc2-4763-b7d1-539676e7ad7b",
@@ -4637,7 +4857,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "e1ce7329-17a2-4607-afae-8a14387835e2",
@@ -4658,7 +4879,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "b64f89ea-3e1d-47c4-b645-5331aaf918ab",
@@ -4679,7 +4901,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "d528c331-fe3e-4534-bdd6-c791bd601bf5",
@@ -4700,7 +4923,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "8f45eeb8-8e04-4cc9-a084-6faebdbb8a5c",
@@ -4721,7 +4945,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "1c8f79b0-bf2d-4980-957f-48db676b6a4e",
@@ -4742,7 +4967,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "dd42a45c-231d-4e24-93da-b7192fb6a0cf",
@@ -4763,7 +4989,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2f97af5f-0fb3-4abd-99c9-6a280fc1f41f",
@@ -4784,7 +5011,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "8c8abd50-520d-4793-b204-e64e09788c14",
@@ -4805,7 +5033,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "33227dd5-e18e-4882-b9e6-3746b33d26fc",
@@ -4826,7 +5055,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "424e5d96-3a50-47bd-90e1-09482bdb95ea",
@@ -4847,7 +5077,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "0d2df386-757a-4158-9b5c-2933733bcd7f",
@@ -4868,7 +5099,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "708aab93-15d9-4101-a272-188f49f68549",
@@ -4889,7 +5121,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "531f17e4-c77a-4d12-8040-8dd68cff50e0",
@@ -4910,7 +5143,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "fefd1111-1e62-46fe-b901-7eda461d853c",
@@ -4931,7 +5165,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "97cd0f99-bc7f-4b10-9429-c84031b44897",
@@ -4952,7 +5187,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "b4c76326-fd28-46c8-a98f-da36b46de92b",
@@ -4973,7 +5209,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "797e2c00-e768-470d-8cab-b819d773a14b",
@@ -4994,7 +5231,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "86af3bbf-f99f-46a3-8b37-a42f6510e952",
@@ -5015,7 +5253,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "9b51b9d4-4b1e-40d6-a2c0-92ce7c8e1da0",
@@ -5036,7 +5275,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "15a98b63-288f-4dab-97ac-7291d605dbbe",
@@ -5057,7 +5297,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "08e74e46-24fa-4097-bb0e-46f20a16c66b",
@@ -5078,7 +5319,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "119790d7-5f8c-4e57-8ffc-67294d91bc2b",
@@ -5099,7 +5341,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "4cd46cd3-e8da-41da-9973-a0207de7585e",
@@ -5120,7 +5363,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "a1645240-2063-43f2-b3dd-e22c7b729bd8",
@@ -5141,7 +5385,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "1516fa04-215e-40b4-9066-215a80061f2d",
@@ -5162,7 +5407,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "ffa14ee0-1194-4f41-8603-f44b1704f154",
@@ -5183,7 +5429,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "7bd66c4d-31bb-4191-9b2f-24a8330462ec",
@@ -5204,7 +5451,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "9ae6b245-4173-4c92-a3d3-93098bafd6f8",
@@ -5225,7 +5473,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "8682fafa-0107-4f67-b948-6568f2a2b413",
@@ -5246,7 +5495,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "635a7a1a-18fc-47c4-9c11-7d23f8ff1300",
@@ -5267,7 +5517,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "22963096-2f30-4416-9ce9-4647a60d95fe",
@@ -5288,7 +5539,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "99a7b08b-f597-48f2-aec3-409a776d134d",
@@ -5309,7 +5561,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "80e436cc-46bc-4f31-b724-9bb1882720b5",
@@ -5330,7 +5583,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2e39804d-cb0e-496b-9ddf-4078e21cf7cc",
@@ -5351,7 +5605,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "021c5999-7946-49d8-96dc-65a418eecddb",
@@ -5372,7 +5627,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "1d90ed41-7c20-4c49-b921-eaff9f59c6c5",
@@ -5393,7 +5649,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "b10c88d5-19db-4681-96d8-a183b238dc44",
@@ -5414,7 +5671,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "00060f12-d8d9-4301-9db8-412bbc865c39",
@@ -5435,7 +5693,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "ad233524-e7db-4e53-a75f-ff3daf50b129",
@@ -5456,7 +5715,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "4fd2b47d-8165-4972-ac11-18b824449842",
@@ -5477,7 +5737,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "291815ed-58f9-407d-9dc2-b157606454ce",
@@ -5498,7 +5759,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "af26dcbc-62ac-4ca4-9d02-3b7c2b1be7ea",
@@ -5519,7 +5781,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "7d410e56-2a20-4826-adcd-644c508909a5",
@@ -5540,7 +5803,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "16011f00-76a7-4b75-bf52-96075763c744",
@@ -5561,7 +5825,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "ae64b8ad-f4e8-431e-bc4e-dc67c6ba93b0",
@@ -5582,7 +5847,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "213954e8-3c7e-4773-aabc-befe0d2c83d2",
@@ -5603,7 +5869,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "75121788-5873-4486-9fcd-243282d08204",
@@ -5624,7 +5891,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "7aef93d4-675d-4c4c-bdcb-e2ea9ece8c23",
@@ -5645,7 +5913,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "88c02f55-0e6b-4eeb-883c-50fe390bd27f",
@@ -5666,7 +5935,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "6484ba96-6221-42d3-b1b6-7e62bba3db7e",
@@ -5687,7 +5957,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "3298bdfe-eff2-4ea6-a2c0-7d0b245f81dd",
@@ -5708,7 +5979,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "b9fac50b-f153-44d1-a5c2-916edd6e0d5a",
@@ -5729,7 +6001,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "584b95f1-3e09-4e81-845b-66dd6a858df4",
@@ -5750,7 +6023,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "68b73675-b419-4390-9289-28de54fcfc33",
@@ -5771,7 +6045,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "0c35da79-3ae0-40ff-b3a1-bc04ba7d152d",
@@ -5792,7 +6067,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "7291a587-1534-4d4c-afd1-338b792f4380",
@@ -5813,7 +6089,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "15428104-cc24-424e-a46b-e5fec5365650",
@@ -5834,7 +6111,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "ccfaa0f1-22e9-43fc-9db0-a81228072e24",
@@ -5855,7 +6133,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "da17a181-14c9-4075-9113-cfcf24952ce1",
@@ -5876,7 +6155,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "bd16c1b3-69e5-4569-8c86-bb93887df7a1",
@@ -5897,7 +6177,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "8663f25e-be49-4d00-90a6-59fd7953e028",
@@ -5918,7 +6199,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "c01ed427-e5ab-464e-93ee-90c2828bd3aa",
@@ -5939,7 +6221,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "e4927086-11b7-486e-9a51-20a61f0efcf3",
@@ -5960,7 +6243,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "95302d4e-5853-4555-b70c-1358049efcaa",
@@ -5981,7 +6265,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "705ee3a2-9a96-4494-91aa-6263da0788c5",
@@ -6002,7 +6287,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "1e16016c-2a03-4a81-8a2d-60ef0e96a3d5",
@@ -6023,7 +6309,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "fb08d79a-2046-422f-ac33-c8e12fb5fb60",
@@ -6044,7 +6331,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "7a12d220-6ecd-4efb-8e04-ea5720d4e47e",
@@ -6065,7 +6353,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "bde93d9d-01e4-4131-873c-d574efdb988b",
@@ -6086,7 +6375,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "73c14b6a-3391-4d52-898b-61f1e7cab90a",
@@ -6107,7 +6397,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "caa43553-3dbf-436d-9836-38f6694137f5",
@@ -6128,7 +6419,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "c34064eb-bdaf-401d-a067-34619869d0e6",
@@ -6149,7 +6441,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "6d24e1c5-4cd4-40c6-84bd-b37324fcd146",
@@ -6170,7 +6463,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "4eed680d-5331-4b20-9eab-8e51e17ebfb7",
@@ -6191,7 +6485,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "5fb69211-b026-4c3a-8977-6f5a6447e19f",
@@ -6212,7 +6507,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "025de8d2-89bc-48c0-bca0-37e64cf88906",
@@ -6233,7 +6529,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "e4b50d5a-39ab-4166-af9a-bf2589a16873",
@@ -6254,7 +6551,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "4676d281-05b5-4f69-85ef-6e150c0330dd",
@@ -6275,7 +6573,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "50e12574-11b2-4b13-823d-a612ce512cac",
@@ -6296,7 +6595,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "9d32a477-1458-4426-9634-3183b3fd6a82",
@@ -6317,7 +6617,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "b71255df-401a-46fc-92cf-07bdda7d94c7",
@@ -6338,7 +6639,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "8f3ae584-0a08-4059-b455-62f83f9f20c1",
@@ -6359,7 +6661,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "5e8f2269-fffb-4c91-8742-7185ce1f1dcd",
@@ -6380,7 +6683,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "27326e52-5c8c-4c0a-b8c3-123847502421",
@@ -6401,7 +6705,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "d1095e14-5e25-43ef-9212-ee3e3a9d9e2f",
@@ -6422,7 +6727,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "0b0e8ae0-cce7-48c6-9dfb-7190dadcb45c",
@@ -6443,7 +6749,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "a2a5dbad-0344-4310-801c-e224913a982e",
@@ -6464,7 +6771,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "eb6ab1d6-79a8-40e1-bb56-fadb34caa525",
@@ -6485,7 +6793,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "3ad075cd-3a22-496b-aee7-b2c3db62cf4a",
@@ -6506,7 +6815,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "1ca4e3a7-f28a-4758-8e34-ab0a8fc1c026",
@@ -6527,7 +6837,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "926774c7-f9df-488b-9aa0-db5e51a7bf63",
@@ -6548,7 +6859,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "bb41a368-ac95-4521-b7c6-7cfb386ee8d4",
@@ -6569,7 +6881,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "a01afa7d-77df-49e6-a89d-41527324ccfa",
@@ -6590,7 +6903,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "155f7a8f-f5b2-4e4a-9106-e8ff7083c201",
@@ -6611,7 +6925,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "5c9499a1-7242-4986-9244-f27d372aaaf5",
@@ -6632,7 +6947,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "268b81f4-5498-4069-b0ff-dc29b2bdf275",
@@ -6653,7 +6969,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "a0db4ca6-dc92-4915-9a36-45109ca1b2b5",
@@ -6674,7 +6991,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "cc40130e-1b30-4e37-95de-c142c19bfe29",
@@ -6695,7 +7013,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "cd8be1bd-adaa-475c-b70c-699e29ce5174",
@@ -6716,7 +7035,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "4abe715c-6b82-4b5a-8709-39ea40c2edb7",
@@ -6737,7 +7057,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2c6e107b-41ee-4cce-8b1b-4b643b69a982",
@@ -6758,7 +7079,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "7aecdc72-6c21-4ab4-bc05-732b02d64662",
@@ -6779,7 +7101,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "f6271582-5f28-4b45-a8f8-f53ec25fbf53",
@@ -6800,7 +7123,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "421fe226-f875-4582-8d05-90e274f22595",
@@ -6821,7 +7145,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "40d79790-dff0-4efb-b1e2-6eff84e9579d",
@@ -6842,7 +7167,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "01cb4dcb-6b07-4208-9022-9fc9a851c306",
@@ -6863,7 +7189,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "3475877f-f436-4039-a101-379103a86fae",
@@ -6884,7 +7211,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "a80ff55a-0e96-4482-af04-276e1f35be67",
@@ -6905,7 +7233,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "d631016d-1117-4e59-9452-42edfaaa3922",
@@ -6926,7 +7255,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "96f2b908-39c6-413c-8396-1403dbe2a4d2",
@@ -6947,7 +7277,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "aa14dbba-cc51-4fd3-a69d-c447ceab7584",
@@ -6968,7 +7299,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2b068120-dbba-4ee1-8c33-ae8c3f1e741e",
@@ -6989,7 +7321,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "4d81b8b9-6b2e-4114-b0df-2032c4fba880",
@@ -7010,7 +7343,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "f2fc754a-1340-4df0-9039-c82a512e3c61",
@@ -7031,7 +7365,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "74e219d1-3608-4c4e-8842-2b73e5f86eae",
@@ -7052,7 +7387,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "67f21f5c-cf48-4ea7-a346-2f3499fbea80",
@@ -7073,7 +7409,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "87936789-9261-45b0-99af-66162faaaa68",
@@ -7094,7 +7431,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2f93f5cf-f2cf-4d10-a6c8-0a415a769928",
@@ -7115,7 +7453,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "a9e69b2c-d737-4656-879e-a055ebf2885e",
@@ -7136,7 +7475,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "102f9dd8-f503-4b88-ba3c-ba53295831e7",
@@ -7157,7 +7497,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "29bc4d6a-5b5e-442e-a3a4-3035b3eaaf48",
@@ -7178,7 +7519,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "38f55009-c816-4e5a-96e6-3d4515632959",
@@ -7199,7 +7541,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "70c6fa0e-962e-42be-9f08-1109a8ee0319",
@@ -7220,7 +7563,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2e0412d1-4a7b-4c30-acc6-400ef3acc46b",
@@ -7241,7 +7585,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "cfd7e108-d2ed-4062-8836-eb161dd7a8b3",
@@ -7262,7 +7607,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "13f9e194-5476-4a89-a401-531ba19b2b60",
@@ -7283,7 +7629,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "07bc6d23-8d23-4b7c-b841-7d40c7703cd5",
@@ -7304,7 +7651,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "2b30934e-28ac-4a89-b6ca-1cb6664b0954",
@@ -7325,7 +7673,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "03d4d455-1496-4bbd-b7f1-dc49be665d68",
@@ -7346,7 +7695,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "f490d285-33c5-4b78-8543-152c785f00de",
@@ -7367,7 +7717,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "a2e3ea0b-0f2e-4a77-a5e6-b5c8602316c3",
@@ -7388,7 +7739,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "e41cc673-0f41-4388-97d6-4eec5908d75a",
@@ -7409,7 +7761,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "3074a53d-58af-48b7-a1fc-88b1cc17ad1b",
@@ -7430,7 +7783,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "f329eda7-d652-4757-b473-ff7ac1ff3067",
@@ -7451,7 +7805,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "c660c22c-2e35-405e-893b-20a4ef3bc5d2",
@@ -7472,7 +7827,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "d666ab27-e0fc-4136-83ca-2a0205806521",
@@ -7493,7 +7849,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "9aedf448-900f-4dc5-a4f1-1a5141ed3d6d",
@@ -7514,7 +7871,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "fa81ff28-2651-4fe1-861e-4c98d578f8f2",
@@ -7535,7 +7893,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "a836d906-715b-4f64-9274-79aab6f5dfb6",
@@ -7556,7 +7915,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "e0e408de-ee0e-43d6-a84d-83b084fdc24c",
@@ -7577,7 +7937,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "c26b0256-f698-40c2-9b2a-2c004786f0e0",
@@ -7598,7 +7959,8 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     },
     {
         "id": "94609c62-9a9f-464c-83c0-7f87e07ab6bb",
@@ -7619,6 +7981,7 @@
                 "sugars": 0
             }
         },
-        "portionType": "weight"
+        "portionType": "weight",
+        "standard" : true
     }
 ]

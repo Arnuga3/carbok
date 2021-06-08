@@ -21,7 +21,9 @@ export const DayMealCardProduct: React.FC<Props> = ({
   const data =
     product.portionTypeInUse === "quantity"
       ? {
-          portion: `${product.mealProductCarbs.perPortion.quantity} ${product.mealProductCarbs.perPortion.description}`,
+          portion: `${product.mealProductCarbs.perPortion.quantity} ${
+            product.mealProductCarbs.perPortion.description ?? ""
+          }`,
           carbs: product.mealProductCarbs.perPortion.carbs,
         }
       : {
@@ -32,7 +34,7 @@ export const DayMealCardProduct: React.FC<Props> = ({
         };
   return (
     <ProductItem>{`
-      ${product.name}
+      ${product.name},
       ${data.portion}
       (${data.carbs} ${t("carbohydrates.short")})${
       i !== meal.products.length - 1 ? "," : ""

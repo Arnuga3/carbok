@@ -55,7 +55,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
             <ItemContent>
               <CardHeader>
                 <CardHeaderTitle>
-                  <IonText color="tertiary">
+                  <IonText color="secondary">
                     <h1>{t(getMealKey(meal.type))}</h1>
                   </IonText>
                   <IonText color="medium">
@@ -103,7 +103,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
               <IonIcon icon={trashOutline} slot="icon-only" />
             </ActionButton>
             <ActionButton
-              color="secondary"
+              color="medium"
               fill="clear"
               shape="round"
               size="small"
@@ -113,7 +113,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
               <IonIcon icon={copyOutline} slot="icon-only" />
             </ActionButton>
             <ActionButton
-              color="secondary"
+              color="medium"
               fill="clear"
               shape="round"
               size="small"
@@ -122,7 +122,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
               <IonIcon icon={chatbubbleOutline} slot="icon-only" />
             </ActionButton>
             <ActionButton
-              color="secondary"
+              color="medium"
               fill="clear"
               shape="round"
               size="small"

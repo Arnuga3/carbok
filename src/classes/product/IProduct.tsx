@@ -10,4 +10,5 @@ export interface IProduct {
     units: UnitsType;
     carbsData: ProductCarbs;
     portionType: PortionType;
+    standard?: boolean;
 }

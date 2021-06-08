@@ -1,5 +1,4 @@
 import { Dispatch } from "redux";
-import { IProduct } from "../../../classes/product/IProduct";
 import {
   AddProduct,
   ProductsActions,
@@ -10,18 +9,19 @@ import {
   SetSearchString,
 } from "./interfaces";
 import { dataService } from "../../../services/DataService";
+import { Product } from "../../../classes/product/Product";
 
-const storeProduct = (product: IProduct): AddProduct => ({
+const storeProduct = (product: Product): AddProduct => ({
   type: ProductsActions.ADD_PRODUCT,
   product,
 });
 
-const storeProducts = (products: IProduct[]): AddProducts => ({
+const storeProducts = (products: Product[]): AddProducts => ({
   type: ProductsActions.ADD_PRODUCTS,
   products,
 });
 
-const updateStoredProduct = (product: IProduct): UpdateProduct => ({
+const updateStoredProduct = (product: Product): UpdateProduct => ({
   type: ProductsActions.UPDATE_PRODUCT,
   product,
 });
@@ -53,7 +53,7 @@ export const retrieveProducts = (searchText: string | null = null) => {
   };
 };
 
-export function addProduct(product: IProduct) {
+export function addProduct(product: Product) {
   return async (dispatch: Dispatch) => {
     try {
       await dataService.addProduct(product);
@@ -64,7 +64,7 @@ export function addProduct(product: IProduct) {
   };
 }
 
-export function updateProduct(product: IProduct) {
+export function updateProduct(product: Product) {
   return async (dispatch: Dispatch) => {
     try {
       await dataService.updateProduct(product);

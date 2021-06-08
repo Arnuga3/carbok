@@ -25,7 +25,6 @@ import { Units } from "./form/Units";
 import { CarbsPerPortionData } from "./form/CarbsPerPortionData";
 import { warningOutline } from "ionicons/icons";
 import { RouteComponentProps } from "react-router";
-import { IProduct } from "../../../classes/product/IProduct";
 import { useProducts } from "../../../hooks/productsHook";
 import { getUnitShortKey, productUnits } from "../../../resources/productUnits";
 import { IProductDummy } from "../../../classes/product/IProductDummy";
@@ -35,6 +34,7 @@ import { CarbsPer100Data } from "./form/CarbsPer100Data";
 import { ProductCategoryType } from "../../../classes/productCategory/ProductCategoryType";
 import { toggleCategory } from "../util";
 import { UnitsType } from "../../../classes/units/UnitsType";
+import { Product } from "../../../classes/product/Product";
 
 interface EditProductPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -66,8 +66,8 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
   const dispatch = useDispatch();
 
   const { products } = useProducts();
-  const productRetrieved: IProduct | undefined = products
-    ? products.find((product: IProduct) => product.id === match.params.id)
+  const productRetrieved: Product | undefined = products
+    ? products.find((product: Product) => product.id === match.params.id)
     : undefined;
   let prod = defaultData;
 
@@ -107,7 +107,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
   const handleUpdate = () => {
     setSaveAttempted(true);
     if (product.id && product.categories && product.name && carbsDataValid) {
-      const productUpdated: IProduct = {
+      const productUpdated: Product = {
         id: product.id,
         name: product.name,
         categories: product.categories,
@@ -130,7 +130,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
 
   return (
     <IonPage>
-      <IonHeader mode="ios" translucent>
+      <IonHeader mode="ios">
         <HeaderContent>
           <IonBackButton
             mode={isPlatform("ios") ? "ios" : "md"}
@@ -143,7 +143,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
           </IonTitle>
         </HeaderContent>
       </IonHeader>
-      <IonContentStyled fullscreen>
+      <IonContentStyled>
         <IonCard>
           <IonCardHeader>
             <IonCardSubtitle>

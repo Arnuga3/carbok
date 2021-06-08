@@ -74,7 +74,6 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
     perPortion: ICarbsPerPortion,
     dataValid: boolean
   ) => {
-
     // TODO - Make one state
     setCarbsDataValid(dataValid);
     setProduct({ ...product, carbsData: { ...product.carbsData, perPortion } });
@@ -87,7 +86,12 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
 
   const handleSave = () => {
     setSaveAttempted(true);
-    if (product.categories && product.name && carbsDataValid) {
+    if (
+      product.name &&
+      nameValid() &&
+      product.categories.length > 0 &&
+      carbsDataValid
+    ) {
       const newProduct = new Product(
         product.name,
         product.categories,
@@ -105,12 +109,12 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
   }, [product.name, saveAttempted]);
 
   const categoryValid = useCallback(() => {
-    return !saveAttempted || product.categories !== null;
+    return !saveAttempted || product.categories.length !== 0;
   }, [product.categories, saveAttempted]);
 
   return (
     <IonPage>
-      <IonHeader mode="ios" translucent>
+      <IonHeader mode="ios">
         <HeaderContent>
           <IonBackButton
             mode={isPlatform("ios") ? "ios" : "md"}
@@ -123,7 +127,7 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
           </IonTitle>
         </HeaderContent>
       </IonHeader>
-      <IonContentStyled fullscreen>
+      <IonContentStyled>
         <IonCard>
           <IonCardHeader>
             <IonCardSubtitle>

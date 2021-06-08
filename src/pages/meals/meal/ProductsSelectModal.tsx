@@ -143,6 +143,7 @@ export const ProductsSelectModal: React.FC<Props> = ({
             <List
               height={height}
               width={width}
+              overscanCount={3}
               itemCount={products ? products.length : 0}
               itemSize={() => 70}
             >
