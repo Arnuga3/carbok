@@ -240,8 +240,6 @@ const Products: React.FC = () => {
             </IonButton>
           </IonButtons>
         </HeaderContent>
-      </IonHeader>
-      <IonContent>
         <DisplayButtons>
           <DisplayButton
             size="small"
@@ -272,8 +270,8 @@ const Products: React.FC = () => {
             <b>{t("page.products.filter.products.my")}</b>
           </DisplayButton>
         </DisplayButtons>
-        {products && ItemsList}
-      </IonContent>
+      </IonHeader>
+      <IonContent>{products && ItemsList}</IonContent>
       <IonAlert
         isOpen={openDeleteAlert}
         onDidDismiss={() => setState({ ...state, openDeleteAlert: false })}
