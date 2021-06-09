@@ -1,3 +1,4 @@
+import { Meal } from "../classes/meal/Meal";
 import { MealProduct } from "../classes/meal/MealProduct";
 import { IPieCategory } from "../classes/productCategory/IPieCategory";
 import { ProductCategoryType } from "../classes/productCategory/ProductCategoryType";
@@ -5,8 +6,30 @@ import { categoryColours, chartColors } from "../resources/config";
 import { categories, getCatKey } from "../resources/productCategories";
 import { getPercentsOf } from "../utils/helper";
 import { calcService } from "./CalculationService";
+import { dateService } from "./DateService";
+import { MealData } from "../components/charts/MealCarbsLinearChart";
+import _ from "lodash";
 
 class ChartsDataService {
+  public getMealsCarbLinearData(meals: Meal[]): MealData[] {
+    const mealsFormatedDate = meals.map((m) => ({
+      ...m,
+      date: dateService.dateNoTime(m.date),
+    }));
+    const mealsByDate = _.chain(mealsFormatedDate)
+      .groupBy("date")
+      .map((value) => ({ meals: value }))
+      .value();
+    return mealsByDate.map((day) => this.getDayMealCarbs(day.meals));
+  }
+  private getDayMealCarbs(dayMeals: Meal[]): MealData {
+    const dayMealCarbs: MealData = { carbs: 0, sugars: 0 };
+    for (const dayMeal of dayMeals) {
+      dayMealCarbs.carbs += calcService.getMealTotalCarbs(dayMeal.products);
+      dayMealCarbs.sugars += calcService.getMealTotalSugars(dayMeal.products);
+    }
+    return dayMealCarbs;
+  }
   public getBarCarbSugarData(products: MealProduct[]) {
     const carbs = calcService.getMealTotalCarbs(products);
     const sugars = calcService.getMealTotalSugars(products);

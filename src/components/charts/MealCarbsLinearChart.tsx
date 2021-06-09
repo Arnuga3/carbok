@@ -5,23 +5,22 @@ import { chartColors } from "../../resources/config";
 import { IonText } from "@ionic/react";
 import { Meal } from "../../classes/meal/Meal";
 import { calcService } from "../../services/CalculationService";
+import { dateService } from "../../services/DateService";
+import { chartsDataService } from "../../services/ChartsDataService";
+
+export interface MealData {
+  carbs: number;
+  sugars: number;
+}
 
 interface Props {
   meals: Meal[];
 }
 
-interface MealData {
-  carbs: number;
-  sugars: number;
-}
-
 export const MealCarbsLinearChart: React.FC<Props> = ({ meals }) => {
   const { t } = useTranslation();
 
-  const data: MealData[] = meals.map((meal) => ({
-    carbs: calcService.getMealTotalCarbs(meal.products),
-    sugars: calcService.getMealTotalSugars(meal.products),
-  }));
+  const data: MealData[] = chartsDataService.getMealsCarbLinearData(meals);
 
   const totals = data.reduce(
     (totalData, mealData) => {

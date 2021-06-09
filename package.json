@@ -26,6 +26,7 @@
     "i18next": "^20.1.0",
     "ionicons": "^5.4.0",
     "locale-code": "^2.0.2",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -84,6 +85,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "2.4.7",
+    "@types/lodash": "^4.14.170",
     "@types/react-virtualized-auto-sizer": "^1.0.0",
     "@types/react-window": "^1.8.3",
     "@types/redux-logger": "^3.0.8"
