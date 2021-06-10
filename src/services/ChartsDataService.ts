@@ -22,6 +22,7 @@ class ChartsDataService {
       .value();
     return mealsByDate.map((day) => this.getDayMealCarbs(day.meals));
   }
+
   private getDayMealCarbs(dayMeals: Meal[]): MealData {
     const dayMealCarbs: MealData = { carbs: 0, sugars: 0 };
     for (const dayMeal of dayMeals) {
@@ -30,6 +31,7 @@ class ChartsDataService {
     }
     return dayMealCarbs;
   }
+
   public getBarCarbSugarData(products: MealProduct[]) {
     const carbs = calcService.getMealTotalCarbs(products);
     const sugars = calcService.getMealTotalSugars(products);
@@ -45,13 +47,12 @@ class ChartsDataService {
       },
     ];
   }
+
   public getPieCategoriesData(products: MealProduct[]): IPieCategory[] {
     let totalWeightCount: number = 0; // Used to calculate % of total weights
-
     let pieCategories = this.getPieCategories();
     products.forEach((product) => {
       const productWeight = this.getProductWeight(product);
-
       if (productWeight > 0) {
         totalWeightCount += productWeight;
         pieCategories = this.countWeightsForCategories(
@@ -61,7 +62,6 @@ class ChartsDataService {
         );
       }
     });
-
     return pieCategories.map((category) => ({
       ...category,
       value: Math.floor((category.value * 100) / totalWeightCount),
@@ -91,11 +91,9 @@ class ChartsDataService {
 
   private getProductWeight(product: MealProduct): number {
     const { portionTypeInUse, carbsData, mealProductCarbs } = product;
-
     if (portionTypeInUse === "weight") {
       return +mealProductCarbs.per100.portion;
     }
-
     if (
       +carbsData.per100.carbs !== 0 &&
       +mealProductCarbs.perPortion.carbs !== 0

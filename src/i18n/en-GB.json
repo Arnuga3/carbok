@@ -59,7 +59,7 @@
     "button.import": "Import",
     "button.reorder": "Reorder",
     "button.copy": "Copy",
-    "button.copy.to": "Copy to",
+    "button.copy.to": "Copy To",
 
     "page.overview.carbs.range.card.title": "Last {{days}} days",
     "page.overview.carbs.range.card.subtitle": "of which {{sugarPercent}}% Sugars",

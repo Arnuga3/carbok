@@ -59,7 +59,7 @@
     "button.import": "Залить",
     "button.reorder": "Порядок",
     "button.copy": "Скопировать",
-    "button.copy.to": "Скопировать на",
+    "button.copy.to": "Скопировать На",
 
     "page.overview.carbs.range.card.title": "Последние {{days}} дней",
     "page.overview.carbs.range.card.subtitle": "из которых {{sugarPercent}}% Сахара",
