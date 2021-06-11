@@ -18,6 +18,8 @@ import {
   IonAlert,
   IonAvatar,
   IonText,
+  IonFab,
+  IonFabButton,
 } from "@ionic/react";
 import {
   addOutline,
@@ -200,7 +202,7 @@ const Products: React.FC = () => {
     return (
       <AutoSizer>
         {({ height, width }) => (
-          <List
+          <ProductsList
             height={height}
             width={width}
             itemCount={productsFiltered ? productsFiltered.length : 0}
@@ -208,7 +210,7 @@ const Products: React.FC = () => {
             itemSize={() => 70}
           >
             {ItemRow}
-          </List>
+          </ProductsList>
         )}
       </AutoSizer>
     );
@@ -216,62 +218,60 @@ const Products: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader mode="ios">
-        <HeaderContent>
-          <IonButtons slot="start">
-            <IonButton
+      <IonContent>
+        <Header>
+          <ProductsSearch />
+          <DisplayButtons>
+            <DisplayButton
+              color={displayAll ? "warning" : "medium"}
               fill="clear"
+              size="small"
               shape="round"
-              color="primary"
+              onClick={() =>
+                setState({
+                  ...state,
+                  displayAll: true,
+                  productsFiltered: products ?? [],
+                })
+              }
+            >
+              <b>{t("page.products.filter.products.all")}</b>
+            </DisplayButton>
+            <DisplayButton
+              color={displayAll ? "medium" : "warning"}
+              fill="clear"
+              size="small"
+              shape="round"
+              onClick={() =>
+                setState({
+                  ...state,
+                  displayAll: false,
+                  productsFiltered: products
+                    ? products.filter((product) => !product.standard)
+                    : [],
+                })
+              }
+            >
+              <b>{t("page.products.filter.products.my")}</b>
+            </DisplayButton>
+            <IonButton
+              color="light"
+              fill="clear"
+              size="small"
+              shape="round"
               onClick={() => setState({ ...state, openCalculatorModal: true })}
             >
               <IonIcon slot="icon-only" icon={calculator} />
             </IonButton>
-          </IonButtons>
-          <ProductsSearch />
-          <IonButtons slot="end">
-            <IonButton
-              fill="clear"
-              shape="round"
-              color="primary"
-              routerLink="/products/add-product"
-            >
-              <IonIcon icon={addOutline} slot="icon-only" />
-            </IonButton>
-          </IonButtons>
-        </HeaderContent>
-        <DisplayButtons>
-          <DisplayButton
-            size="small"
-            color={displayAll ? "tertiary" : "medium"}
-            onClick={() =>
-              setState({
-                ...state,
-                displayAll: true,
-                productsFiltered: products ?? [],
-              })
-            }
-          >
-            <b>{t("page.products.filter.products.all")}</b>
-          </DisplayButton>
-          <DisplayButton
-            size="small"
-            color={!displayAll ? "tertiary" : "medium"}
-            onClick={() =>
-              setState({
-                ...state,
-                displayAll: false,
-                productsFiltered: products
-                  ? products.filter((product) => !product.standard)
-                  : [],
-              })
-            }
-          >
-            <b>{t("page.products.filter.products.my")}</b>
-          </DisplayButton>
-        </DisplayButtons>
-      </IonHeader>
-      <IonContent>{products && ItemsList}</IonContent>
+          </DisplayButtons>
+        </Header>
+        {products && ItemsList}
+        <IonFab vertical="bottom" horizontal="center" slot="fixed">
+          <IonFabButton routerLink="/products/add-product" color="tertiary">
+            <IonIcon icon={addOutline} />
+          </IonFabButton>
+        </IonFab>
+      </IonContent>
       <IonAlert
         isOpen={openDeleteAlert}
         onDidDismiss={() => setState({ ...state, openDeleteAlert: false })}
@@ -298,27 +298,32 @@ const Products: React.FC = () => {
 export default React.memo(Products);
 
 const Animation = styled.div`
-  animation-name: fade;
-  animation-duration: 1s;
+  // animation-name: fade;
+  // animation-duration: 1s;
 
-  @keyframes fade {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+  // @keyframes fade {
+  //   from {
+  //   }
+  //   to {
+  //   }
+  // }
+`;
+
+const Header = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 8px;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  background-color: var(--ion-color-tertiary);
+`;
+
+const ProductsList = styled(List)`
+  padding-bottom: 65px;
 `;
 
 const Item = styled(IonItem)`
   --min-height: 70px;
-`;
-
-const HeaderContent = styled.div`
-  display: flex;
-  padding: 0 8px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const SlidingAction = styled(IonItemOption)`
@@ -326,12 +331,13 @@ const SlidingAction = styled(IonItemOption)`
 `;
 
 const DisplayButtons = styled.div`
+  margin-top: -4px;
+  padding-bottom: 4px;
+  flex: 1;
   display: flex;
-  padding: 4px 0;
-  background-color: rgba(0, 0, 0, 0.1);
+  justify-content: space-evenly;
 `;
 
 const DisplayButton = styled(IonButton)`
-  flex: 1;
   padding: 0 4px;
 `;

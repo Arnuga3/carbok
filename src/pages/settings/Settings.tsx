@@ -47,19 +47,19 @@ const Settings: React.FC = () => {
           <IonIcon src={icon}></IonIcon>
           <small>v{version}</small>
         </Version>
-        <IonCard>
+        <Card color="tertiary">
           <IonCardHeader>
             <IonCardSubtitle>{t("page.settings.card.title")}</IonCardSubtitle>
           </IonCardHeader>
           <IonCardContent>
-            <IonItem lines="none">
+            <IonItem lines="none" color="tertiary">
               <IonLabel>{t("page.settings.card.dark.mode")}</IonLabel>
               <IonToggle
                 checked={settings.themeMode === "dark"}
                 onIonChange={(e) => handleThemeModeChange(e.detail.checked)}
               />
             </IonItem>
-            <IonItem lines="none">
+            <IonItem lines="none" color="tertiary">
               <IonLabel>{t("page.settings.card.language")}</IonLabel>
               <IonSelect
                 value={settings.language}
@@ -73,7 +73,7 @@ const Settings: React.FC = () => {
               </IonSelect>
             </IonItem>
           </IonCardContent>
-        </IonCard>
+        </Card>
         <ExportImport />
       </IonContent>
     </IonPage>
@@ -81,6 +81,12 @@ const Settings: React.FC = () => {
 };
 
 export default React.memo(Settings);
+
+const Card = styled(IonCard)`
+  border-radius: 20px;
+  margin-top: 16px;
+  box-shadow: 0 4px 12px 0 rgba(0,0,0,0.6);
+`;
 
 const Version = styled.div`
   text-align: center;

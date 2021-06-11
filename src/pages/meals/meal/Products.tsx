@@ -3,7 +3,8 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import {
   IonAvatar,
-  IonButton,
+  IonFab,
+  IonFabButton,
   IonIcon,
   IonItem,
   IonItemOption,
@@ -13,6 +14,7 @@ import {
   IonText,
 } from "@ionic/react";
 import {
+  addOutline,
   chatbubbleOutline,
   layersOutline,
   scaleOutline,
@@ -87,7 +89,7 @@ export const Products: React.FC<Props> = ({ meal }) => {
           </IonItem>
         </Note>
       )}
-      <IonList>
+      <List>
         {meal.products.map((product, i) => (
           <IonItemSliding
             key={i}
@@ -139,15 +141,15 @@ export const Products: React.FC<Props> = ({ meal }) => {
             </IonItemOptions>
           </IonItemSliding>
         ))}
-        <AddButton
-          color="tertiary"
-          expand="block"
-          shape="round"
+      </List>
+      <IonFab vertical="bottom" horizontal="center" slot="fixed">
+        <IonFabButton
           onClick={() => setOpenProductsModal(true)}
+          color="primary"
         >
-          {t("page.meals.button.add.product")}
-        </AddButton>
-      </IonList>
+          <IonIcon icon={addOutline} />
+        </IonFabButton>
+      </IonFab>
       {openProductsModal && (
         <ProductsSelectModal
           meal={meal}
@@ -177,8 +179,12 @@ export const Products: React.FC<Props> = ({ meal }) => {
   );
 };
 
-const AddButton = styled(IonButton)`
-  margin: 12px;
+const List = styled(IonList)`
+  min-height: 100%;
+  padding-bottom: 65px;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  box-shadow: 0 0 16px 0 rgba(0,0,0,0.5);
 `;
 
 const SlidingAction = styled(IonItemOption)`

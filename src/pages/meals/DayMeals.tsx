@@ -5,7 +5,6 @@ import "moment/min/locales";
 import styled from "styled-components";
 import {
   IonContent,
-  IonHeader,
   IonPage,
   IonIcon,
   IonList,
@@ -13,8 +12,11 @@ import {
   IonDatetime,
   IonItem,
   IonReorderGroup,
+  IonFab,
+  IonFabButton,
 } from "@ionic/react";
 import {
+  addOutline,
   calendarOutline,
   chevronBackOutline,
   chevronForwardOutline,
@@ -81,29 +83,34 @@ export const DayMeals: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader mode="ios">
-        <HeaderContent>
+      <IonContent>
+        <CalendarHeader>
           <IonButton fill="clear" onClick={getPreviousDay}>
-            <IonIcon icon={chevronBackOutline} color="medium" />
+            <IonIcon
+              icon={chevronBackOutline}
+              color="warning"
+              slot="icon-only"
+            />
           </IonButton>
           <DateSelect lines="none">
-            <IonIcon icon={calendarOutline} color="primary" slot="start" />
+            <IonIcon icon={calendarOutline} color="medium" size="small"/>
             <Datetime
               doneText={t("button.done")}
               cancelText={t("button.cancel")}
               monthShortNames={moment.monthsShort()}
               value={moment(date).toISOString()}
               onIonChange={(e: any) => getCalendarDay(e.detail.value)}
-            ></Datetime>
+            />
           </DateSelect>
           <IonButton fill="clear" onClick={getNextDay}>
-            <IonIcon icon={chevronForwardOutline} color="medium" />
+            <IonIcon
+              icon={chevronForwardOutline}
+              color="warning"
+              slot="icon-only"
+            />
           </IonButton>
-          <div></div>
-        </HeaderContent>
-      </IonHeader>
-      <IonContent>
-        <IonList>
+        </CalendarHeader>
+        <List>
           <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
             {meals
               .sort((a, b) => a.order - b.order)
@@ -111,15 +118,15 @@ export const DayMeals: React.FC = () => {
                 <DayMealCard key={i} meal={meal} />
               ))}
           </IonReorderGroup>
-          <Button
-            color="tertiary"
-            expand="block"
-            shape="round"
+        </List>
+        <IonFab vertical="bottom" horizontal="center" slot="fixed">
+          <IonFabButton
             onClick={() => setOpenActionSheet(true)}
+            color="tertiary"
           >
-            {t("page.meals.button.add.meal")}
-          </Button>
-        </IonList>
+            <IonIcon icon={addOutline} />
+          </IonFabButton>
+        </IonFab>
       </IonContent>
       <AddMealActionSheet
         open={openActionSheet}
@@ -130,23 +137,29 @@ export const DayMeals: React.FC = () => {
   );
 };
 
-const HeaderContent = styled.div`
+const CalendarHeader = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  padding: 0 8px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 6px 0px;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  background-color: var(--ion-color-tertiary);
+`;
+
+const List = styled(IonList)`
+  min-height: 100%;
+  padding-bottom: 65px;
 `;
 
 const DateSelect = styled(IonItem)`
-  --border-radius: 25px;
+  --border-radius: 32px;
+  --min-height: 24px;
+  --max-height: 24px;
 `;
 
 const Datetime = styled(IonDatetime)`
-  color: var(--ion-color-medium);
   font-weight: bold;
-`;
-
-const Button = styled(IonButton)`
-  margin: 8px;
+  --padding-bottom: 4px;
+  --padding-end: 4px;
 `;

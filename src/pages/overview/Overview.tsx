@@ -45,11 +45,14 @@ const Overview: React.FC = () => {
 
   return (
     <IonPage>
-      <DateRangeSwitch data={cardData} onDateRangeChange={handleDateRangeChange} />
+      <DateRangeSwitch
+        data={cardData}
+        onDateRangeChange={handleDateRangeChange}
+      />
       <IonContent>
         {cardData.meals.length > 0 && (
           <>
-            <IonCard color="primary">
+            <Card color="primary">
               <CardHeader>
                 <IonCardTitle>{t("carbohydrates")}</IonCardTitle>
                 {cardData.from && cardData.to && (
@@ -61,8 +64,8 @@ const Overview: React.FC = () => {
               <IonCardContent>
                 <MealCarbsLinearChart meals={cardData.meals} />
               </IonCardContent>
-            </IonCard>
-            <IonCard color="tertiary">
+            </Card>
+            <Card color="tertiary">
               <CardHeader>
                 <IonCardTitle>
                   {t("page.overview.foods.range.card.title")}
@@ -78,7 +81,7 @@ const Overview: React.FC = () => {
               <IonCardContent>
                 <CategoriesPieChart categories={cardData.categories} />
               </IonCardContent>
-            </IonCard>
+            </Card>
           </>
         )}
       </IonContent>
@@ -87,6 +90,12 @@ const Overview: React.FC = () => {
 };
 
 export default React.memo(Overview);
+
+const Card = styled(IonCard)`
+  border-radius: 20px;
+  margin-top: 16px;
+  box-shadow: 0 4px 12px 0 rgba(0,0,0,0.6);
+`;
 
 const CardHeader = styled(IonCardHeader)`
   display: flex;

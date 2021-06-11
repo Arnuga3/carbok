@@ -9,12 +9,13 @@ import {
   IonPage,
   isPlatform,
   IonTitle,
+  IonText,
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import moment from "moment";
-import { ellipsisVertical } from "ionicons/icons";
+import { arrowBackOutline, ellipsisVertical } from "ionicons/icons";
 import { Products } from "./Products";
 import { ActionSheet } from "./ActionSheet";
 import { NoteAlert } from "./alerts/NoteAlert";
@@ -54,30 +55,29 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
 
   return (
     <IonPage>
-      <IonHeader mode="ios">
-        <HeaderContent>
+      <IonContent color="tertiary">
+        <Header>
           <IonBackButton
+            color="light"
             mode={isPlatform("ios") ? "ios" : "md"}
             defaultHref={`/meals`}
-            text={t("button.back")}
-            color="primary"
+            icon={arrowBackOutline}
           />
-          &nbsp;
           {meal && (
-            <IonTitle color="medium">{`${t(getMealKey(meal.type))}, ${moment(
-              date
-            ).format("MMM D")}`}</IonTitle>
+            <Date color="warning">
+              <h4>{`${t(getMealKey(meal.type))}, ${moment(date).format(
+                "MMM D"
+              )}`}</h4>
+            </Date>
           )}
           <IonButton
-            color="primary"
+            color="light"
             fill="clear"
             onClick={() => setOpenActionSheet(true)}
           >
             <IonIcon icon={ellipsisVertical} />
           </IonButton>
-        </HeaderContent>
-      </IonHeader>
-      <IonContent>
+        </Header>
         {meal && (
           <>
             {meal.products.length > 0 && (
@@ -122,12 +122,15 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
   );
 };
 
-const HeaderContent = styled.div`
+const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 8px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+`;
+
+const Date = styled(IonText)`
+  align-text: center;
 `;
 
 const Charts = styled.div`

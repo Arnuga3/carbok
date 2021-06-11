@@ -56,17 +56,16 @@ const ListItemContent = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 8px 16px 8px 0;
+  padding: 16px 8px 8px 0;
 `;
 
 const ContentRow = styled.div`
   display: flex;
   justify-content: space-between;
-  line-height: 90%;
+  line-height: 95%;
 `;
 
 const NameBadge = styled.div`
   display: flex;
   align-items: center;
-  font-size: 1.1em;
 `;

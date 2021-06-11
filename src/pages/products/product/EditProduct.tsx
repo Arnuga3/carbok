@@ -2,10 +2,8 @@ import React, { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import {
-  IonHeader,
   IonContent,
   IonPage,
-  IonTitle,
   IonBackButton,
   IonButton,
   IonCard,
@@ -17,13 +15,14 @@ import {
   IonCardSubtitle,
   IonItem,
   IonToggle,
+  IonText,
 } from "@ionic/react";
 import styled from "styled-components";
 import { updateProduct } from "../../../redux/actions/products/actions";
 import { Category } from "./form/Category";
 import { Units } from "./form/Units";
 import { CarbsPerPortionData } from "./form/CarbsPerPortionData";
-import { warningOutline } from "ionicons/icons";
+import { arrowBackOutline, warningOutline } from "ionicons/icons";
 import { RouteComponentProps } from "react-router";
 import { useProducts } from "../../../hooks/productsHook";
 import { getUnitShortKey, productUnits } from "../../../resources/productUnits";
@@ -130,20 +129,18 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
 
   return (
     <IonPage>
-      <IonHeader mode="ios">
-        <HeaderContent>
+      <IonContentStyled color="tertiary">
+        <Header>
           <IonBackButton
+            color="light"
             mode={isPlatform("ios") ? "ios" : "md"}
-            defaultHref="/products"
-            text={t("button.back")}
-            color="primary"
+            defaultHref={`/meals`}
+            icon={arrowBackOutline}
           />
-          <IonTitle color="medium">
-            {t("page.products.edit.product.title")}
-          </IonTitle>
-        </HeaderContent>
-      </IonHeader>
-      <IonContentStyled>
+          <Title color="warning">
+            <h5>{t("page.products.edit.product.title")}</h5>
+          </Title>
+        </Header>
         <IonCard>
           <IonCardHeader>
             <IonCardSubtitle>
@@ -233,7 +230,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
           )}
         </IonCard>
         <Button
-          color="tertiary"
+          color="primary"
           expand="block"
           shape="round"
           fill="solid"
@@ -246,11 +243,16 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
   );
 };
 
-const HeaderContent = styled.div`
+const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 8px;
+`;
+
+const Title = styled(IonText)`
+  flex: 1;
+  text-align: center;
 `;
 
 const IonContentStyled = styled(IonContent)`

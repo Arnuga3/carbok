@@ -91,7 +91,7 @@ export const ExportImport: React.FC = () => {
 
   return (
     <>
-      <IonCard>
+      <Card color="primary">
         <IonCardHeader>
           <IonCardSubtitle>
             {t("page.settings.card.title.data")}
@@ -99,16 +99,18 @@ export const ExportImport: React.FC = () => {
         </IonCardHeader>
         <IonCardContent>
           <Button
-            color="primary"
+            color="light"
             expand="block"
+            shape="round"
             onClick={handleExport}
           >
             {t("button.export")}
             <IonIcon slot="end" icon={downloadOutline} />
           </Button>
           <Button
-            color="primary"
+            color="light"
             expand="block"
+            shape="round"
             onClick={handleFileSelect}
           >
             <IonIcon slot="start" icon={pushOutline} />
@@ -121,7 +123,7 @@ export const ExportImport: React.FC = () => {
             />
           </Button>
         </IonCardContent>
-      </IonCard>
+      </Card>
       <IonAlert
         onWillDismiss={() => setFile(null)}
         isOpen={openImportAlert}
@@ -143,6 +145,12 @@ export const ExportImport: React.FC = () => {
     </>
   );
 };
+
+const Card = styled(IonCard)`
+  border-radius: 20px;
+  margin-top: 16px;
+  box-shadow: 0 4px 12px 0 rgba(0,0,0,0.6);
+`;
 
 const Button = styled(IonButton)`
   margin-top: 12px;

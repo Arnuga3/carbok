@@ -3,9 +3,8 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import {
   IonButton,
-  IonHeader,
   IonIcon,
-  IonTitle,
+  IonText,
   useIonViewDidEnter,
 } from "@ionic/react";
 import { chevronBackOutline, chevronForwardOutline } from "ionicons/icons";
@@ -117,25 +116,29 @@ export const DateRangeSwitch: React.FC<Props> = ({
     }
   };
   return (
-    <Header mode="ios">
+    <Header>
       <RangeSwitch>
         <IonButton
-          color={data.range === "90_days" ? "light" : "medium"}
+          color={data.range === "90_days" ? "medium" : "warning"}
           fill="clear"
           shape="round"
+          slot="icon-only"
           onClick={getPreviousRange}
         >
           <IonIcon icon={chevronBackOutline} />
         </IonButton>
-        <IonTitle color="medium">
-          {t("page.overview.carbs.range.card.title", {
-            days: data.range.split("_")[0],
-          })}
-        </IonTitle>
+        <IonText color="warning">
+          <h5>
+            {t("page.overview.carbs.range.card.title", {
+              days: data.range.split("_")[0],
+            })}
+          </h5>
+        </IonText>
         <IonButton
-          color={data.range === "7_days" ? "light" : "medium"}
+          color={data.range === "7_days" ? "medium" : "warning"}
           fill="clear"
           shape="round"
+          slot="icon-only"
           onClick={getNextRange}
         >
           <IonIcon icon={chevronForwardOutline} />
@@ -145,12 +148,16 @@ export const DateRangeSwitch: React.FC<Props> = ({
   );
 };
 
-const Header = styled(IonHeader)`
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+const Header = styled.div`
+  width: 100%;
+  padding: 0 0 8px 0;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  background-color: var(--ion-color-tertiary);
 `;
 
 const RangeSwitch = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 `;

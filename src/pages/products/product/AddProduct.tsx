@@ -18,8 +18,9 @@ import {
   IonCardSubtitle,
   IonItem,
   IonToggle,
+  IonText,
 } from "@ionic/react";
-import { warningOutline } from "ionicons/icons";
+import { arrowBackOutline, warningOutline } from "ionicons/icons";
 import styled from "styled-components";
 
 import { IProductDummy } from "../../../classes/product/IProductDummy";
@@ -114,20 +115,18 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
 
   return (
     <IonPage>
-      <IonHeader mode="ios">
-        <HeaderContent>
+      <IonContentStyled color="tertiary">
+        <Header>
           <IonBackButton
+            color="light"
             mode={isPlatform("ios") ? "ios" : "md"}
-            defaultHref="/products"
-            text={t("button.back")}
-            color="primary"
+            defaultHref={`/meals`}
+            icon={arrowBackOutline}
           />
-          <IonTitle color="medium">
-            {t("page.products.add.product.title")}
-          </IonTitle>
-        </HeaderContent>
-      </IonHeader>
-      <IonContentStyled>
+          <Title color="warning">
+            <h5>{t("page.products.add.product.title")}</h5>
+          </Title>
+        </Header>
         <IonCard>
           <IonCardHeader>
             <IonCardSubtitle>
@@ -217,7 +216,7 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
           )}
         </IonCard>
         <SaveButton
-          color="tertiary"
+          color="primary"
           expand="block"
           shape="round"
           onClick={handleSave}
@@ -229,11 +228,16 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
   );
 };
 
-const HeaderContent = styled.div`
+const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 8px;
+`;
+
+const Title = styled(IonText)`
+  flex: 1;
+  text-align: center;
 `;
 
 const IonContentStyled = styled(IonContent)`
