@@ -212,7 +212,7 @@ const Products: React.FC = () => {
             width={width}
             itemCount={productsFiltered ? productsFiltered.length : 0}
             overscanCount={3}
-            itemSize={() => 70}
+            itemSize={() => 75}
           >
             {ItemRow}
           </ProductsList>
@@ -230,9 +230,9 @@ const Products: React.FC = () => {
             fill="clear"
             size="small"
             shape="round"
-            onClick={() => setState({ ...state, openCalculatorModal: true })}
+            onClick={() => setState({ ...state, openFilterAlert: true })}
           >
-            <IonIcon slot="icon-only" icon={calculator} />
+            <IonIcon slot="icon-only" icon={filterOutline} />
           </IonButton>
           <ProductsSearch />
           <IonButton
@@ -240,14 +240,14 @@ const Products: React.FC = () => {
             fill="clear"
             size="small"
             shape="round"
-            onClick={() => setState({ ...state, openFilterAlert: true })}
+            onClick={() => setState({ ...state, openCalculatorModal: true })}
           >
-            <IonIcon slot="icon-only" icon={filterOutline} />
+            <IonIcon slot="icon-only" icon={calculator} />
           </IonButton>
         </Header>
         {products && ItemsList}
         <IonFab vertical="bottom" horizontal="center" slot="fixed">
-          <IonFabButton routerLink="/products/add-product" color="tertiary">
+          <IonFabButton routerLink="/products/add-product" color="primary">
             <IonIcon icon={addOutline} />
           </IonFabButton>
         </IonFab>
@@ -308,16 +308,13 @@ const Animation = styled.div`
 `;
 
 const Header = styled.div`
-  width: 100%;
+  height: 58px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 0 8px;
-  border-bottom-left-radius: 32px;
-  border-bottom-right-radius: 32px;
-  background-color: var(--ion-color-tertiary);
-  position: fixed;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
-  z-index: 99;
+  border-radius: 4px;
+  margin: 4px 4px 0 4px;
+  background-color: var(--ion-color-primary);
 `;
 
 const ProductsList = styled(List)`

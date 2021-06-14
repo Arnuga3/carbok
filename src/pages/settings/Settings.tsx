@@ -42,11 +42,7 @@ const Settings: React.FC = () => {
 
   return (
     <IonPage>
-      <IonContent fullscreen>
-        <Version>
-          <IonIcon src={icon}></IonIcon>
-          <small>v{version}</small>
-        </Version>
+      <IonContent>
         <Card color="tertiary">
           <IonCardHeader>
             <IonCardSubtitle>{t("page.settings.card.title")}</IonCardSubtitle>
@@ -75,6 +71,10 @@ const Settings: React.FC = () => {
           </IonCardContent>
         </Card>
         <ExportImport />
+        <Version>
+          <IonIcon src={icon}></IonIcon>
+          <small>v{version}</small>
+        </Version>
       </IonContent>
     </IonPage>
   );
@@ -91,7 +91,7 @@ const Card = styled(IonCard)`
 const Version = styled.div`
   text-align: center;
   color: var(--ion-color-medium);
-  margin-top: 8px;
+  margin-top: 16px;
 
   & small {
     margin-left: 4px;

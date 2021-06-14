@@ -52,6 +52,8 @@ export const ProductsSelectModal: React.FC<Props> = ({
   useEffect(() => {
     if (searchString) {
       dispatch(retrieveProducts(searchString));
+    } else {
+      dispatch(retrieveProducts());
     }
     return () => {
       dispatch(setSearchString(null));
@@ -129,14 +131,12 @@ export const ProductsSelectModal: React.FC<Props> = ({
 
   return (
     <IonModal isOpen={open}>
-      <IonHeader mode="ios">
-        <HeaderContent>
-          <ProductsSearch />
-          <IonButton onClick={handleClose} color="primary" fill="clear">
-            <IonIcon icon={close} slot="icon-only" />
-          </IonButton>
-        </HeaderContent>
-      </IonHeader>
+      <Header>
+        <ProductsSearch />
+        <IonButton onClick={handleClose} color="secondary" fill="clear">
+          <IonIcon icon={close} slot="icon-only" />
+        </IonButton>
+      </Header>
       <IonContent>
         <AutoSizer>
           {({ height, width }) => (
@@ -174,11 +174,14 @@ const Item = styled(IonItem)`
   --min-height: 70px;
 `;
 
-const HeaderContent = styled.div`
+const Header = styled.div`
+  height: 58px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  align-items: center;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  margin: 4px 4px 0 4px;
 `;
 
 const SelectButton = styled(IonButton)`

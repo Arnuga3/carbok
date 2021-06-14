@@ -16,6 +16,7 @@ import {
   IonItem,
   IonToggle,
   IonText,
+  IonList,
 } from "@ionic/react";
 import styled from "styled-components";
 import { updateProduct } from "../../../redux/actions/products/actions";
@@ -141,103 +142,105 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
             <h5>{t("page.products.edit.product.title")}</h5>
           </Title>
         </Header>
-        <IonCard>
-          <IonCardHeader>
-            <IonCardSubtitle>
-              {!nameValid() && (
-                <IonIcon
-                  icon={warningOutline}
-                  color={nameValid() ? "primary" : "danger"}
-                />
-              )}
-              {t("page.products.form.name")}
-            </IonCardSubtitle>
-          </IonCardHeader>
-          <IonCardContent>
-            <IonInputStyled
-              value={product.name}
-              onIonInput={(e: any) =>
-                setProduct({ ...product, name: e.target.value })
-              }
-            />
-          </IonCardContent>
-        </IonCard>
-        <IonCard>
-          <IonCardHeader>
-            <IonCardSubtitle>
-              {t("page.products.form.category")}
-            </IonCardSubtitle>
-          </IonCardHeader>
-          <IonCardContent>
-            <Category
-              data={product}
-              categoryValid={categoryValid()}
-              onCategoryToggle={handleCategoryToggle}
-            />
-          </IonCardContent>
-        </IonCard>
-        <IonCard>
-          <IonCardHeader>
-            <IonCardSubtitle>{t("page.products.form.units")}</IonCardSubtitle>
-          </IonCardHeader>
-          <IonCardContent>
-            <Units
-              units={product.units}
-              onUnitsChange={(units: UnitsType) =>
-                setProduct({ ...product, units })
-              }
-            />
-          </IonCardContent>
-        </IonCard>
-        <IonCard>
-          <IonCardHeader>
-            <IonCardSubtitle>
-              {t("page.products.form.carbohydrates")}
-              {t(getUnitShortKey(product.units))}
-            </IonCardSubtitle>
-          </IonCardHeader>
-          <IonCardContent>
-            <CarbsPer100Data
-              product={product}
-              onPer100Change={handlePer100Change}
-            />
-          </IonCardContent>
-        </IonCard>
-        <IonCard>
-          <CardHeader>
-            <IonCardSubtitle>
-              {t("page.products.form.quantity")}
-            </IonCardSubtitle>
-            <IonItem lines="none">
-              <IonToggle
-                checked={product.portionType === "quantity"}
-                onIonChange={(e) =>
-                  setProduct({
-                    ...product,
-                    portionType: e.detail.checked ? "quantity" : "weight",
-                  })
+        <List>
+          <Card>
+            <IonCardHeader>
+              <IonCardSubtitle>
+                {!nameValid() && (
+                  <IonIcon
+                    icon={warningOutline}
+                    color={nameValid() ? "primary" : "danger"}
+                  />
+                )}
+                {t("page.products.form.name")}
+              </IonCardSubtitle>
+            </IonCardHeader>
+            <IonCardContent>
+              <IonInputStyled
+                value={product.name}
+                onIonInput={(e: any) =>
+                  setProduct({ ...product, name: e.target.value })
                 }
               />
-            </IonItem>
-          </CardHeader>
-          {product.portionType === "quantity" && (
+            </IonCardContent>
+          </Card>
+          <Card>
+            <IonCardHeader>
+              <IonCardSubtitle>
+                {t("page.products.form.category")}
+              </IonCardSubtitle>
+            </IonCardHeader>
             <IonCardContent>
-              <CarbsPerPortionData
-                product={product}
-                onPerPortionChange={handlePerPortionChange}
+              <Category
+                data={product}
+                categoryValid={categoryValid()}
+                onCategoryToggle={handleCategoryToggle}
               />
             </IonCardContent>
-          )}
-        </IonCard>
-        <Button
-          color="primary"
-          expand="block"
-          shape="round"
-          fill="solid"
-          onClick={handleUpdate}
-        >
-          {t("button.save")}
-        </Button>
+          </Card>
+          <Card>
+            <IonCardHeader>
+              <IonCardSubtitle>{t("page.products.form.units")}</IonCardSubtitle>
+            </IonCardHeader>
+            <IonCardContent>
+              <Units
+                units={product.units}
+                onUnitsChange={(units: UnitsType) =>
+                  setProduct({ ...product, units })
+                }
+              />
+            </IonCardContent>
+          </Card>
+          <Card>
+            <IonCardHeader>
+              <IonCardSubtitle>
+                {t("page.products.form.carbohydrates")}
+                {t(getUnitShortKey(product.units))}
+              </IonCardSubtitle>
+            </IonCardHeader>
+            <IonCardContent>
+              <CarbsPer100Data
+                product={product}
+                onPer100Change={handlePer100Change}
+              />
+            </IonCardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <IonCardSubtitle>
+                {t("page.products.form.quantity")}
+              </IonCardSubtitle>
+              <IonItem lines="none">
+                <IonToggle
+                  checked={product.portionType === "quantity"}
+                  onIonChange={(e) =>
+                    setProduct({
+                      ...product,
+                      portionType: e.detail.checked ? "quantity" : "weight",
+                    })
+                  }
+                />
+              </IonItem>
+            </CardHeader>
+            {product.portionType === "quantity" && (
+              <IonCardContent>
+                <CarbsPerPortionData
+                  product={product}
+                  onPerPortionChange={handlePerPortionChange}
+                />
+              </IonCardContent>
+            )}
+          </Card>
+          <Button
+            color="primary"
+            expand="block"
+            shape="round"
+            fill="solid"
+            onClick={handleUpdate}
+          >
+            {t("button.save")}
+          </Button>
+        </List>
       </IonContentStyled>
     </IonPage>
   );
@@ -252,13 +255,23 @@ const Header = styled.div`
 
 const Title = styled(IonText)`
   flex: 1;
-  text-align: center;
 `;
 
 const IonContentStyled = styled(IonContent)`
   & .input-right-align {
     text-align: right;
   }
+`;
+
+const List = styled(IonList)`
+  min-height: 100%;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
+`;
+
+const Card = styled(IonCard)`
+  box-shadow: 0 0 0;
 `;
 
 const CardHeader = styled(IonCardHeader)`

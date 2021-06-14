@@ -51,20 +51,7 @@ const Overview: React.FC = () => {
       />
       <IonContent>
         {cardData.meals.length > 0 && (
-          <Wrapper>
-            <Card color="primary">
-              <CardHeader>
-                <IonCardTitle>{t("carbohydrates")}</IonCardTitle>
-                {cardData.from && cardData.to && (
-                  <CardSubtitle>{`${moment(cardData.from).format(
-                    "D MMM"
-                  )} - ${moment(cardData.to).format("D MMM")}`}</CardSubtitle>
-                )}
-              </CardHeader>
-              <IonCardContent>
-                <MealCarbsLinearChart meals={cardData.meals} />
-              </IonCardContent>
-            </Card>
+          <>
             <Card color="tertiary">
               <CardHeader>
                 <IonCardTitle>
@@ -82,7 +69,20 @@ const Overview: React.FC = () => {
                 <CategoriesPieChart categories={cardData.categories} />
               </IonCardContent>
             </Card>
-          </Wrapper>
+            <Card color="primary">
+              <CardHeader>
+                <IonCardTitle>{t("carbohydrates")}</IonCardTitle>
+                {cardData.from && cardData.to && (
+                  <CardSubtitle>{`${moment(cardData.from).format(
+                    "D MMM"
+                  )} - ${moment(cardData.to).format("D MMM")}`}</CardSubtitle>
+                )}
+              </CardHeader>
+              <IonCardContent>
+                <MealCarbsLinearChart meals={cardData.meals} />
+              </IonCardContent>
+            </Card>
+          </>
         )}
       </IonContent>
     </IonPage>
@@ -90,10 +90,6 @@ const Overview: React.FC = () => {
 };
 
 export default React.memo(Overview);
-
-const Wrapper = styled.div`
-  margin-top: 75px;
-`;
 
 const Card = styled(IonCard)`
   border-radius: 20px;

@@ -121,11 +121,11 @@ export const DateRangeSwitch: React.FC<Props> = ({
           <IonIcon icon={chevronBackOutline} slot="icon-only" />
         </IonButton>
         <IonText color="light">
-          <h5>
+          <b>
             {t("page.overview.carbs.range.card.title", {
               days: data.range.split("_")[0],
             })}
-          </h5>
+          </b>
         </IonText>
         <IonButton
           color={data.range === "7_days" ? "medium" : "warning"}
@@ -140,19 +140,15 @@ export const DateRangeSwitch: React.FC<Props> = ({
 };
 
 const Header = styled.div`
-  width: 100%;
   height: 58px;
-  border-bottom-left-radius: 32px;
-  border-bottom-right-radius: 32px;
-  background-color: var(--ion-color-tertiary);
-  position: fixed;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
-  z-index: 99;
+  border-radius: 4px;
+  margin: 4px 4px 0 4px;
+  background-color: var(--ion-color-primary);
 `;
 
 const RangeSwitch = styled.div`
   height: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 `;

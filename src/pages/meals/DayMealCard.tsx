@@ -45,32 +45,27 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
 
   return (
     <Animation>
-      <Card mode="md" color="primary">
+      <Card mode="md">
         <ReorderHandle>
           <IonReorder />
         </ReorderHandle>
         <CardContent>
-          <IonItem
-            routerLink={`/meals/${meal.id}/products`}
-            lines="none"
-            mode="md"
-            color="primary"
-          >
+          <IonItem routerLink={`/meals/${meal.id}/products`} lines="none">
             <ItemContent>
               <CardHeader>
                 <CardHeaderTitle>
-                  <IonText color="warning">
+                  <IonText color="medium">
                     <small>{`${t("products")}: ${meal.products.length}`}</small>
                   </IonText>
-                  <IonText color="tertiary">
+                  <IonText color="secondary">
                     <h1>{t(getMealKey(meal.type))}</h1>
                   </IonText>
                 </CardHeaderTitle>
                 <CardHeaderCarbs>
-                  <IonText color="warning">
+                  <IonText color="medium">
                     <small>{t("carbohydrates")}</small>
                   </IonText>
-                  <IonText color="tertiary">
+                  <IonText color="secondary">
                     <h1>{calcService.getMealTotalCarbs(meal.products)}</h1>
                   </IonText>
                 </CardHeaderCarbs>
@@ -106,7 +101,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
               <IonIcon icon={trashOutline} slot="icon-only" />
             </ActionButton>
             <ActionButton
-              color="warning"
+              color="medium"
               fill="clear"
               size="small"
               onClick={() => copyDatetime.current?.open()}
@@ -115,7 +110,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
               <IonIcon icon={copyOutline} slot="icon-only" />
             </ActionButton>
             <ActionButton
-              color="warning"
+              color="medium"
               fill="clear"
               size="small"
               onClick={() => setOpenNoteAlert(true)}
@@ -123,7 +118,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
               <IonIcon icon={chatbubbleOutline} slot="icon-only" />
             </ActionButton>
             <ActionButton
-              color="light"
+              color="medium"
               fill="clear"
               size="small"
               routerLink={`/meals/${meal.id}/products`}
@@ -172,7 +167,6 @@ const Animation = styled.div`
 
 const Card = styled(IonCard)`
   border-radius: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
 `;
 
 const CardContent = styled(IonCardContent)`
@@ -182,7 +176,7 @@ const CardContent = styled(IonCardContent)`
 const ReorderHandle = styled.div`
   display: flex;
   justify-content: center;
-  background-color: var(--ion-color-tertiary);
+  background-color: var(--ion-color-primary);
   color: white;
 `;
 
@@ -217,7 +211,7 @@ const CardHeaderCarbs = styled.div`
 const CardActions = styled.div`
   display: flex;
   justify-content: space-evenly;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const ActionButton = styled(IonButton)`

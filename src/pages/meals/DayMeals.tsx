@@ -93,7 +93,11 @@ export const DayMeals: React.FC = () => {
             />
           </IonButton>
           <DateSelect lines="none">
-            <IonIcon icon={calendarOutline} color="medium" size="small"/>
+            <IonIcon
+              icon={calendarOutline}
+              color="secondary"
+              style={{ paddingRight: 12 }}
+            />
             <Datetime
               doneText={t("button.done")}
               cancelText={t("button.cancel")}
@@ -121,7 +125,7 @@ export const DayMeals: React.FC = () => {
         </List>
         <IonFab vertical="bottom" horizontal="center" slot="fixed">
           <IonFabButton
-            onClick={() => setOpenActionSheet(true)}
+            onClick={() => setOpenActionSheet(!openActionSheet)}
             color="tertiary"
           >
             <IonIcon icon={addOutline} />
@@ -131,29 +135,25 @@ export const DayMeals: React.FC = () => {
       <AddMealActionSheet
         open={openActionSheet}
         onSelect={handleMealTypeSelect}
-        onClose={() => setOpenActionSheet(false)}
+        onClose={() => setOpenActionSheet(!openActionSheet)}
       />
     </IonPage>
   );
 };
 
 const CalendarHeader = styled.div`
-  width: 100%;
   height: 58px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  border-bottom-left-radius: 32px;
-  border-bottom-right-radius: 32px;
-  background-color: var(--ion-color-tertiary);
-  position: fixed;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
-  z-index: 99;
+  border-radius: 4px;
+  margin: 4px 4px 0 4px;
+  background-color: var(--ion-color-primary);
 `;
 
 const List = styled(IonList)`
   min-height: 100%;
-  padding 65px 0;
+  padding-bottom: 65px;
   z-index: 90;
 `;
 

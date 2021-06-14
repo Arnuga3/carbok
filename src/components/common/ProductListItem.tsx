@@ -54,7 +54,7 @@ const ListItemContent = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 4px 16px 4px 0;
+  padding: 8px 16px 4px 0;
 `;
 
 const ContentRowFirst = styled.div`

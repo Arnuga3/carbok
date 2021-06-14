@@ -83,10 +83,10 @@ export const CalculatorModal: React.FC<Props> = ({
 
   return (
     <IonModal isOpen={open} onWillDismiss={onClose}>
+      <Result>{result()}</Result>
       <Label color="medium">
         {t("page.products.caluclator.modal.result.title")}
       </Label>
-      <Result>{result()}</Result>
       <IonContent color="tertiary">
         <List>
           <Card>
@@ -157,23 +157,25 @@ export const CalculatorModal: React.FC<Props> = ({
               </IonGrid>
             </IonCardContent>
           </Card>
-          <Button
-            color="primary"
-            expand="block"
-            shape="round"
-            onClick={handleReset}
-          >
-            {t("button.reset")}
-          </Button>
-          <Button
-            color="primary"
-            expand="block"
-            shape="round"
-            fill="outline"
-            onClick={onClose}
-          >
-            {t("button.close")}
-          </Button>
+          <Buttons>
+            <Button
+              color="medium"
+              fill="clear"
+              expand="block"
+              shape="round"
+              onClick={onClose}
+            >
+              {t("button.close")}
+            </Button>
+            <Button
+              color="primary"
+              expand="block"
+              shape="round"
+              onClick={handleReset}
+            >
+              {t("button.reset")}
+            </Button>
+          </Buttons>
         </List>
       </IonContent>
     </IonModal>
@@ -182,20 +184,20 @@ export const CalculatorModal: React.FC<Props> = ({
 
 const List = styled(IonList)`
   min-height: 100%;
-  padding-bottom: 65px;
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
-  margin-top: 24px;
+  margin-top: 12px;
 `;
 
 const Label = styled(IonText)`
   background-color: var(--ion-color-tertiary);
   text-align: center;
-  padding: 16px 0;
+  padding-bottom: 16px;
 `;
 
 const Result = styled.div`
+  padding: 36px 0 8px 0;
   text-align: center;
   font-size: 4em;
   font-weight: bold;
@@ -241,6 +243,11 @@ const Error = styled.div`
   text-align: right;
 `;
 
+const Buttons = styled.div`
+  display: flex;
+`;
+
 const Button = styled(IonButton)`
   margin: 16px 12px;
+  flex: 1;
 `;
