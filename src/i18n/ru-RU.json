@@ -60,6 +60,7 @@
     "button.reorder": "Порядок",
     "button.copy": "Скопировать",
     "button.copy.to": "Скопировать На",
+    "button.filter": "Фильтровать",
 
     "page.overview.carbs.range.card.title": "Последние {{days}} дней",
     "page.overview.carbs.range.card.subtitle": "из которых {{sugarPercent}}% Сахара",
@@ -85,8 +86,7 @@
     "page.products.edit.product.delete.alert.subtitle": "Продукт будет полностью удален",
     "page.products.button.add.product": "Добавить Продукт",
     "page.products.button.category": "Категория",
-    "page.products.caluclator.modal.title": "Быстрый Калькулятор",
-    "page.products.caluclator.modal.result.title": "Углеводов на Порцию",
+    "page.products.caluclator.modal.result.title": "Углеводы",
     "page.products.form.name": "Название",
     "page.products.form.category": "Категория",
     "page.products.form.units": "Единица Измерения",

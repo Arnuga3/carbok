@@ -1,12 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import {
-  IonButton,
-  IonIcon,
-  IonText,
-  useIonViewDidEnter,
-} from "@ionic/react";
+import { IonButton, IonIcon, IonText, useIonViewDidEnter } from "@ionic/react";
 import { chevronBackOutline, chevronForwardOutline } from "ionicons/icons";
 import { CardData } from "./Overview";
 import { Range } from "./Overview";
@@ -121,13 +116,11 @@ export const DateRangeSwitch: React.FC<Props> = ({
         <IonButton
           color={data.range === "90_days" ? "medium" : "warning"}
           fill="clear"
-          shape="round"
-          slot="icon-only"
           onClick={getPreviousRange}
         >
-          <IonIcon icon={chevronBackOutline} />
+          <IonIcon icon={chevronBackOutline} slot="icon-only" />
         </IonButton>
-        <IonText color="warning">
+        <IonText color="light">
           <h5>
             {t("page.overview.carbs.range.card.title", {
               days: data.range.split("_")[0],
@@ -137,11 +130,9 @@ export const DateRangeSwitch: React.FC<Props> = ({
         <IonButton
           color={data.range === "7_days" ? "medium" : "warning"}
           fill="clear"
-          shape="round"
-          slot="icon-only"
           onClick={getNextRange}
         >
-          <IonIcon icon={chevronForwardOutline} />
+          <IonIcon icon={chevronForwardOutline} slot="icon-only" />
         </IonButton>
       </RangeSwitch>
     </Header>
@@ -150,13 +141,17 @@ export const DateRangeSwitch: React.FC<Props> = ({
 
 const Header = styled.div`
   width: 100%;
-  padding: 0 0 8px 0;
+  height: 58px;
   border-bottom-left-radius: 32px;
   border-bottom-right-radius: 32px;
   background-color: var(--ion-color-tertiary);
+  position: fixed;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+  z-index: 99;
 `;
 
 const RangeSwitch = styled.div`
+  height: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;

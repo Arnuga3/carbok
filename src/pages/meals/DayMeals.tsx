@@ -138,18 +138,23 @@ export const DayMeals: React.FC = () => {
 };
 
 const CalendarHeader = styled.div`
+  width: 100%;
+  height: 58px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding: 6px 0px;
   border-bottom-left-radius: 32px;
   border-bottom-right-radius: 32px;
   background-color: var(--ion-color-tertiary);
+  position: fixed;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+  z-index: 99;
 `;
 
 const List = styled(IonList)`
   min-height: 100%;
-  padding-bottom: 65px;
+  padding 65px 0;
+  z-index: 90;
 `;
 
 const DateSelect = styled(IonItem)`
@@ -160,6 +165,5 @@ const DateSelect = styled(IonItem)`
 
 const Datetime = styled(IonDatetime)`
   font-weight: bold;
-  --padding-bottom: 4px;
-  --padding-end: 4px;
+  --padding-top: 12px;
 `;

@@ -3,22 +3,17 @@ import {
   IonButton,
   IonCard,
   IonCardContent,
-  IonCardHeader,
-  IonCardTitle,
   IonCol,
   IonContent,
   IonGrid,
-  IonHeader,
-  IonIcon,
   IonInput,
+  IonList,
   IonModal,
   IonRow,
   IonText,
-  IonTitle,
 } from "@ionic/react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { close } from "ionicons/icons";
 import { IProduct } from "../../classes/product/IProduct";
 
 interface Props {
@@ -88,116 +83,128 @@ export const CalculatorModal: React.FC<Props> = ({
 
   return (
     <IonModal isOpen={open} onWillDismiss={onClose}>
-      <IonHeader mode="ios">
-        <HeaderContent>
-          <IonTitle color="medium">{t("page.products.caluclator.modal.title")}</IonTitle>
-          <IonButton onClick={onClose} color="primary" fill="clear">
-            <IonIcon icon={close} slot="icon-only" />
-          </IonButton>
-        </HeaderContent>
-      </IonHeader>
-      <IonContent fullscreen>
-        <IonCard>
-          <IonCardHeader>
-            <IonCardTitle>
-              {t("page.products.caluclator.modal.result.title")}:
-            </IonCardTitle>
-          </IonCardHeader>
-          <IonCardContent>
-            <IonText>
-              <Result>{result()}</Result>
-            </IonText>
-          </IonCardContent>
-        </IonCard>
-        <IonCard>
-          <IonCardContent>
-            <IonGrid>
-              <IonRow>
-                <IonColLeft>
-                  <div>{t("per")}</div>
-                </IonColLeft>
-                <IonColRight>
-                  <IonInputStyled
-                    type="number"
-                    inputmode="numeric"
-                    enterkeyhint="done"
-                    value={data.portion}
-                    onIonChange={(e: any) =>
-                      setData({ ...data, portion: e.target.value })
-                    }
-                    onFocus={handleFocus}
-                  ></IonInputStyled>
-                  <Units>{`${t("units.milliliters.short")}/ ${t(
-                    "units.grams.short"
-                  )}`}</Units>
-                </IonColRight>
-              </IonRow>
-              {!portionValid() && (
-                <Error>{t("page.products.portion.error")}</Error>
-              )}
-              <IonRow>
-                <IonColLeft>
-                  <div>{t("carbohydrates")}</div>
-                </IonColLeft>
-                <IonColRight>
-                  <IonInputStyled
-                    type="number"
-                    inputmode="numeric"
-                    enterkeyhint="done"
-                    value={data.carbs}
-                    onIonChange={(e: any) =>
-                      setData({ ...data, carbs: e.target.value })
-                    }
-                    onFocus={handleFocus}
-                  ></IonInputStyled>
-                  <Units>{t("units.grams.short")}</Units>
-                </IonColRight>
-              </IonRow>
-              {!carbsValid() && <Error>{t("page.products.carbs.error")}</Error>}
-              <IonRow>
-                <IonColLeft>
-                  <div>{t("portion.size")}</div>
-                </IonColLeft>
-                <IonColRight>
-                  <IonInputStyled
-                    type="number"
-                    inputmode="numeric"
-                    enterkeyhint="done"
-                    value={data.targetPortion}
-                    onIonChange={(e: any) =>
-                      setData({ ...data, targetPortion: e.target.value })
-                    }
-                    onFocus={handleFocus}
-                  ></IonInputStyled>
-                  <Units>{t("units.grams.short")}</Units>
-                </IonColRight>
-              </IonRow>
-            </IonGrid>
-          </IonCardContent>
-        </IonCard>
-        <ResetButton
-          color="tertiary"
-          expand="block"
-          shape="round"
-          onClick={handleReset}
-        >
-          {t("button.reset")}
-        </ResetButton>
+      <Label color="medium">
+        {t("page.products.caluclator.modal.result.title")}
+      </Label>
+      <Result>{result()}</Result>
+      <IonContent color="tertiary">
+        <List>
+          <Card>
+            <IonCardContent>
+              <IonGrid>
+                <IonRow>
+                  <IonColLeft>
+                    <div>{t("per")}</div>
+                  </IonColLeft>
+                  <IonColRight>
+                    <IonInputStyled
+                      type="number"
+                      inputmode="numeric"
+                      enterkeyhint="done"
+                      value={data.portion}
+                      onIonChange={(e: any) =>
+                        setData({ ...data, portion: e.target.value })
+                      }
+                      onFocus={handleFocus}
+                    ></IonInputStyled>
+                    <Units>{`${t("units.milliliters.short")}/ ${t(
+                      "units.grams.short"
+                    )}`}</Units>
+                  </IonColRight>
+                </IonRow>
+                {!portionValid() && (
+                  <Error>{t("page.products.portion.error")}</Error>
+                )}
+                <IonRow>
+                  <IonColLeft>
+                    <div>{t("carbohydrates")}</div>
+                  </IonColLeft>
+                  <IonColRight>
+                    <IonInputStyled
+                      type="number"
+                      inputmode="numeric"
+                      enterkeyhint="done"
+                      value={data.carbs}
+                      onIonChange={(e: any) =>
+                        setData({ ...data, carbs: e.target.value })
+                      }
+                      onFocus={handleFocus}
+                    ></IonInputStyled>
+                    <Units>{t("units.grams.short")}</Units>
+                  </IonColRight>
+                </IonRow>
+                {!carbsValid() && (
+                  <Error>{t("page.products.carbs.error")}</Error>
+                )}
+                <IonRow>
+                  <IonColLeft>
+                    <div>{t("portion.size")}</div>
+                  </IonColLeft>
+                  <IonColRight>
+                    <IonInputStyled
+                      type="number"
+                      inputmode="numeric"
+                      enterkeyhint="done"
+                      value={data.targetPortion}
+                      onIonChange={(e: any) =>
+                        setData({ ...data, targetPortion: e.target.value })
+                      }
+                      onFocus={handleFocus}
+                    ></IonInputStyled>
+                    <Units>{t("units.grams.short")}</Units>
+                  </IonColRight>
+                </IonRow>
+              </IonGrid>
+            </IonCardContent>
+          </Card>
+          <Button
+            color="primary"
+            expand="block"
+            shape="round"
+            onClick={handleReset}
+          >
+            {t("button.reset")}
+          </Button>
+          <Button
+            color="primary"
+            expand="block"
+            shape="round"
+            fill="outline"
+            onClick={onClose}
+          >
+            {t("button.close")}
+          </Button>
+        </List>
       </IonContent>
     </IonModal>
   );
 };
 
-const HeaderContent = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 8px;
+const List = styled(IonList)`
+  min-height: 100%;
+  padding-bottom: 65px;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
+  margin-top: 24px;
+`;
+
+const Label = styled(IonText)`
+  background-color: var(--ion-color-tertiary);
+  text-align: center;
+  padding: 16px 0;
 `;
 
 const Result = styled.div`
   text-align: center;
-  font-size: 3.5em;
+  font-size: 4em;
   font-weight: bold;
+  background-color: var(--ion-color-tertiary);
+  color: var(--ion-color-warning);
+`;
+
+const Card = styled(IonCard)`
+  box-shadow: 0 0;
 `;
 
 const IonColLeft = styled(IonCol)`
@@ -234,6 +241,6 @@ const Error = styled.div`
   text-align: right;
 `;
 
-const ResetButton = styled(IonButton)`
-  margin: 12px;
+const Button = styled(IonButton)`
+  margin: 16px 12px;
 `;

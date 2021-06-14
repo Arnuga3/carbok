@@ -6,18 +6,15 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import {
   IonContent,
-  IonHeader,
   IonPage,
   IonButton,
   IonItem,
-  IonButtons,
   IonIcon,
   IonItemOptions,
   IonItemSliding,
   IonItemOption,
   IonAlert,
   IonAvatar,
-  IonText,
   IonFab,
   IonFabButton,
 } from "@ionic/react";
@@ -25,6 +22,7 @@ import {
   addOutline,
   calculator,
   createOutline,
+  filterOutline,
   trashOutline,
 } from "ionicons/icons";
 import { CalculatorModal } from "./CalculatorModal";
@@ -42,6 +40,7 @@ import { getCatKey } from "../../resources/productCategories";
 import { CircleBadgeMultiColor } from "../../components/common/CircleBadgeMultiColor";
 import { getCategoriesColours } from "./util";
 import { Product } from "../../classes/product/Product";
+import { FilterAlert } from "./FilterAlert";
 
 const PRODUCTSPAGE = "products-page";
 
@@ -55,6 +54,10 @@ async function toggleActionsSlide(selector: string) {
   }
 }
 
+function addFakeProduct(products: Product[]): Product[] {
+  return products[0] ? [products[0], ...products] : [];
+}
+
 const Products: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -66,12 +69,14 @@ const Products: React.FC = () => {
     productSelected: Product | null;
     displayAll: boolean;
     productsFiltered: Product[];
+    openFilterAlert: boolean;
   }>({
     openDeleteAlert: false,
     openCalculatorModal: false,
     productSelected: null,
     displayAll: true,
     productsFiltered: [],
+    openFilterAlert: false,
   });
 
   const {
@@ -99,8 +104,8 @@ const Products: React.FC = () => {
       setState({
         ...state,
         productsFiltered: displayAll
-          ? products
-          : products.filter((product) => !product.standard),
+          ? addFakeProduct(products)
+          : addFakeProduct(products.filter((product) => !product.standard)),
       });
     }
   }, [products]);
@@ -215,55 +220,30 @@ const Products: React.FC = () => {
       </AutoSizer>
     );
   }, [productsFiltered]);
-
+  console.log(state);
   return (
     <IonPage>
       <IonContent>
         <Header>
+          <IonButton
+            color="warning"
+            fill="clear"
+            size="small"
+            shape="round"
+            onClick={() => setState({ ...state, openCalculatorModal: true })}
+          >
+            <IonIcon slot="icon-only" icon={calculator} />
+          </IonButton>
           <ProductsSearch />
-          <DisplayButtons>
-            <DisplayButton
-              color={displayAll ? "warning" : "medium"}
-              fill="clear"
-              size="small"
-              shape="round"
-              onClick={() =>
-                setState({
-                  ...state,
-                  displayAll: true,
-                  productsFiltered: products ?? [],
-                })
-              }
-            >
-              <b>{t("page.products.filter.products.all")}</b>
-            </DisplayButton>
-            <DisplayButton
-              color={displayAll ? "medium" : "warning"}
-              fill="clear"
-              size="small"
-              shape="round"
-              onClick={() =>
-                setState({
-                  ...state,
-                  displayAll: false,
-                  productsFiltered: products
-                    ? products.filter((product) => !product.standard)
-                    : [],
-                })
-              }
-            >
-              <b>{t("page.products.filter.products.my")}</b>
-            </DisplayButton>
-            <IonButton
-              color="light"
-              fill="clear"
-              size="small"
-              shape="round"
-              onClick={() => setState({ ...state, openCalculatorModal: true })}
-            >
-              <IonIcon slot="icon-only" icon={calculator} />
-            </IonButton>
-          </DisplayButtons>
+          <IonButton
+            color="warning"
+            fill="clear"
+            size="small"
+            shape="round"
+            onClick={() => setState({ ...state, openFilterAlert: true })}
+          >
+            <IonIcon slot="icon-only" icon={filterOutline} />
+          </IonButton>
         </Header>
         {products && ItemsList}
         <IonFab vertical="bottom" horizontal="center" slot="fixed">
@@ -291,6 +271,24 @@ const Products: React.FC = () => {
         open={openCalculatorModal}
         onClose={handleOnClose}
       />
+      <FilterAlert
+        open={state.openFilterAlert}
+        onClose={() => setState({ ...state, openFilterAlert: false })}
+        value={state.displayAll ? "all" : "my"}
+        onFilter={(filter: string) =>
+          setState({
+            ...state,
+            openFilterAlert: false,
+            displayAll: filter === "all",
+            productsFiltered:
+              filter === "all"
+                ? products ?? []
+                : products
+                ? products.filter((product) => !product.standard)
+                : [],
+          })
+        }
+      />
     </IonPage>
   );
 };
@@ -310,12 +308,16 @@ const Animation = styled.div`
 `;
 
 const Header = styled.div`
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   padding: 0 8px;
   border-bottom-left-radius: 32px;
   border-bottom-right-radius: 32px;
   background-color: var(--ion-color-tertiary);
+  position: fixed;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+  z-index: 99;
 `;
 
 const ProductsList = styled(List)`
@@ -328,16 +330,4 @@ const Item = styled(IonItem)`
 
 const SlidingAction = styled(IonItemOption)`
   width: 75px;
-`;
-
-const DisplayButtons = styled.div`
-  margin-top: -4px;
-  padding-bottom: 4px;
-  flex: 1;
-  display: flex;
-  justify-content: space-evenly;
-`;
-
-const DisplayButton = styled(IonButton)`
-  padding: 0 4px;
 `;

@@ -60,6 +60,7 @@
     "button.reorder": "Reorder",
     "button.copy": "Copy",
     "button.copy.to": "Copy To",
+    "button.filter": "Filter",
 
     "page.overview.carbs.range.card.title": "Last {{days}} days",
     "page.overview.carbs.range.card.subtitle": "of which {{sugarPercent}}% Sugars",
@@ -85,8 +86,7 @@
     "page.products.edit.product.delete.alert.subtitle": "This will be permanently deleted",
     "page.products.button.add.product": "Add Product",
     "page.products.button.category": "Category",
-    "page.products.caluclator.modal.title": "Quick Calculator",
-    "page.products.caluclator.modal.result.title": "Carbohydrates per Portion",
+    "page.products.caluclator.modal.result.title": "Carbohydrates",
     "page.products.form.name": "Name",
     "page.products.form.category": "Category",
     "page.products.form.units": "Units",

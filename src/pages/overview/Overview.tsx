@@ -51,7 +51,7 @@ const Overview: React.FC = () => {
       />
       <IonContent>
         {cardData.meals.length > 0 && (
-          <>
+          <Wrapper>
             <Card color="primary">
               <CardHeader>
                 <IonCardTitle>{t("carbohydrates")}</IonCardTitle>
@@ -82,7 +82,7 @@ const Overview: React.FC = () => {
                 <CategoriesPieChart categories={cardData.categories} />
               </IonCardContent>
             </Card>
-          </>
+          </Wrapper>
         )}
       </IonContent>
     </IonPage>
@@ -90,6 +90,10 @@ const Overview: React.FC = () => {
 };
 
 export default React.memo(Overview);
+
+const Wrapper = styled.div`
+  margin-top: 75px;
+`;
 
 const Card = styled(IonCard)`
   border-radius: 20px;
