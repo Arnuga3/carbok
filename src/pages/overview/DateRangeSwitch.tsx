@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { IonButton, IonIcon, IonText, useIonViewDidEnter } from "@ionic/react";
-import { chevronBackOutline, chevronForwardOutline } from "ionicons/icons";
+import { IonChip, IonLabel } from "@ionic/react";
 import { CardData } from "./Overview";
 import { Range } from "./Overview";
 import { dataService } from "../../services/DataService";
@@ -22,11 +21,10 @@ export const DateRangeSwitch: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation();
 
-  useIonViewDidEnter(() => {
-    if (data.meals.length === 0) {
-      getCardRangeData("7_days");
-    }
-  });
+  const [state, setState] = useState<Range>(data.range);
+  useEffect(() => {
+    getCardRangeData(state);
+  }, [state]);
 
   const getCardRangeData = async (range: Range) => {
     let rangeMeals: Meal[] = [];
@@ -81,74 +79,55 @@ export const DateRangeSwitch: React.FC<Props> = ({
     }
   };
 
-  const getPreviousRange = () => {
-    switch (data.range) {
-      case "7_days":
-        getCardRangeData("30_days");
-        break;
-
-      case "30_days":
-        getCardRangeData("90_days");
-        break;
-
-      default:
-        return false;
-    }
-  };
-
-  const getNextRange = () => {
-    switch (data.range) {
-      case "30_days":
-        getCardRangeData("7_days");
-        break;
-
-      case "90_days":
-        getCardRangeData("30_days");
-        break;
-
-      default:
-        return false;
-    }
-  };
   return (
     <Header>
       <RangeSwitch>
-        <IonButton
-          color={data.range === "90_days" ? "medium" : "light"}
-          fill="clear"
-          onClick={getPreviousRange}
+        <IonChip
+          onClick={() => setState("90_days")}
+          color={state === "90_days" ? "primary" : "medium"}
         >
-          <IonIcon icon={chevronBackOutline} slot="icon-only" />
-        </IonButton>
-        <IonText color="light">
-          <b>
+          <Label>
             {t("page.overview.carbs.range.card.title", {
-              days: data.range.split("_")[0],
+              days: 90,
             })}
-          </b>
-        </IonText>
-        <IonButton
-          color={data.range === "7_days" ? "medium" : "light"}
-          fill="clear"
-          onClick={getNextRange}
+          </Label>
+        </IonChip>
+        <IonChip
+          onClick={() => setState("30_days")}
+          color={state === "30_days" ? "primary" : "medium"}
         >
-          <IonIcon icon={chevronForwardOutline} slot="icon-only" />
-        </IonButton>
+          <Label>
+            {t("page.overview.carbs.range.card.title", {
+              days: 30,
+            })}
+          </Label>
+        </IonChip>
+        <IonChip
+          onClick={() => setState("7_days")}
+          color={state === "7_days" ? "primary" : "medium"}
+        >
+          <Label>
+            {t("page.overview.carbs.range.card.title", {
+              days: 7,
+            })}
+          </Label>
+        </IonChip>
       </RangeSwitch>
     </Header>
   );
 };
 
 const Header = styled.div`
-  height: 58px;
-  border-radius: 4px;
-  margin: 4px 4px 0 4px;
-  background-color: var(--ion-color-primary);
+  padding: 8px;
+`;
+
+const Label = styled(IonLabel)`
+  font-weight: bold;
 `;
 
 const RangeSwitch = styled.div`
   height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 `;

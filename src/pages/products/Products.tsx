@@ -22,10 +22,10 @@ import {
   addOutline,
   calculator,
   createOutline,
-  filterOutline,
+  filter,
   trashOutline,
 } from "ionicons/icons";
-import { CalculatorModal } from "./CalculatorModal";
+import { CalculatorModal } from "../../components/common/CalculatorModal";
 import { ProductsSearch } from "../../components/common/ProductsSearch";
 import { ProductListItem } from "../../components/common/ProductListItem";
 import { useProducts } from "../../hooks/productsHook";
@@ -176,19 +176,19 @@ const Products: React.FC = () => {
           </Item>
           <IonItemOptions>
             <SlidingAction
-              color="secondary"
+              color="tertiary"
               onClick={() => handleOnCalculate(productsFiltered[index])}
             >
               <IonIcon icon={calculator} slot="icon-only" />
             </SlidingAction>
             <SlidingAction
-              color="tertiary"
+              color="primary"
               routerLink={`/products/edit-product/${productsFiltered[index].id}`}
             >
               <IonIcon icon={createOutline} slot="icon-only" />
             </SlidingAction>
             <SlidingAction
-              color="danger"
+              color="secondary"
               onClick={() => handleOnDelete(productsFiltered[index])}
             >
               <IonIcon icon={trashOutline} slot="icon-only" />
@@ -207,7 +207,7 @@ const Products: React.FC = () => {
             height={height}
             width={width}
             itemCount={productsFiltered ? productsFiltered.length : 0}
-            overscanCount={3}
+            overscanCount={5}
             itemSize={() => 75}
           >
             {ItemRow}
@@ -216,29 +216,18 @@ const Products: React.FC = () => {
       </AutoSizer>
     );
   }, [productsFiltered]);
-  console.log(state);
+
   return (
     <IonPage>
       <IonContent>
         <Header>
-          <IonButton
-            color="light"
-            fill="clear"
-            size="small"
-            shape="round"
-            onClick={() => setState({ ...state, openFilterAlert: true })}
-          >
-            <IonIcon slot="icon-only" icon={filterOutline} />
-          </IonButton>
           <ProductsSearch />
           <IonButton
-            color="light"
+            color="primary"
             fill="clear"
-            size="small"
-            shape="round"
-            onClick={() => setState({ ...state, openCalculatorModal: true })}
+            onClick={() => setState({ ...state, openFilterAlert: true })}
           >
-            <IonIcon slot="icon-only" icon={calculator} />
+            <IonIcon slot="icon-only" icon={filter} />
           </IonButton>
         </Header>
         {products && ItemsList}
@@ -304,13 +293,10 @@ const Animation = styled.div`
 `;
 
 const Header = styled.div`
-  height: 58px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 4px;
-  margin: 4px 4px 0 4px;
-  background-color: var(--ion-color-primary);
+  padding: 0 8px;
 `;
 
 const ProductsList = styled(List)`
@@ -318,7 +304,7 @@ const ProductsList = styled(List)`
 `;
 
 const Item = styled(IonItem)`
-  --min-height: 70px;
+  --min-height: 75px;
 `;
 
 const SlidingAction = styled(IonItemOption)`

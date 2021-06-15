@@ -57,7 +57,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
                   <IonText color="medium">
                     <small>{`${t("products")}: ${meal.products.length}`}</small>
                   </IonText>
-                  <IonText color="tertiary">
+                  <IonText color="primary">
                     <h1>{t(getMealKey(meal.type))}</h1>
                   </IonText>
                 </CardHeaderTitle>
@@ -65,7 +65,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
                   <IonText color="medium">
                     <small>{t("carbohydrates")}</small>
                   </IonText>
-                  <IonText color="tertiary">
+                  <IonText color="blue">
                     <h1>{calcService.getMealTotalCarbs(meal.products)}</h1>
                   </IonText>
                 </CardHeaderCarbs>
@@ -118,7 +118,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
               <IonIcon icon={chatbubbleOutline} slot="icon-only" />
             </ActionButton>
             <ActionButton
-              color="tortoise"
+              color="primary"
               fill="clear"
               size="small"
               routerLink={`/meals/${meal.id}/products`}
@@ -170,7 +170,7 @@ const Card = styled(IonCard)`
 `;
 
 const CardContent = styled(IonCardContent)`
-  padding: 4px 4px 8px 4px;
+  padding: 8px;
 `;
 
 const ReorderHandle = styled.div`

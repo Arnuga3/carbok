@@ -62,7 +62,7 @@
     "button.copy.to": "Скопировать На",
     "button.filter": "Фильтровать",
 
-    "page.overview.carbs.range.card.title": "Последние {{days}} дней",
+    "page.overview.carbs.range.card.title": "{{days}} Дней",
     "page.overview.carbs.range.card.subtitle": "из которых {{sugarPercent}}% Сахара",
     "page.overview.foods.range.card.title": "Группы пищевых продуктов",
 

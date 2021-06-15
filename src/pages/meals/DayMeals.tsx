@@ -17,6 +17,7 @@ import {
 } from "@ionic/react";
 import {
   addOutline,
+  calculator,
   calendarOutline,
   chevronBackOutline,
   chevronForwardOutline,
@@ -35,6 +36,7 @@ import { useMeals } from "../../hooks/mealsHook";
 import { useTranslation } from "react-i18next";
 import { useAppSettings } from "../../hooks/appSettingsHook";
 import { dateService } from "../../services/DateService";
+import { CalculatorModal } from "../../components/common/CalculatorModal";
 
 export const DayMeals: React.FC = () => {
   const { t } = useTranslation();
@@ -42,6 +44,7 @@ export const DayMeals: React.FC = () => {
   const { settings } = useAppSettings();
   const { meals, date } = useMeals();
   const [openActionSheet, setOpenActionSheet] = useState(false);
+  const [openCalculatorModal, setOpenCalculatorModal] = useState(false);
 
   useEffect(() => {
     if (meals.length === 0) {
@@ -85,33 +88,41 @@ export const DayMeals: React.FC = () => {
     <IonPage>
       <IonContent>
         <CalendarHeader>
-          <IonButton fill="clear" onClick={getPreviousDay}>
-            <IonIcon
-              icon={chevronBackOutline}
-              color="light"
-              slot="icon-only"
-            />
-          </IonButton>
-          <DateSelect lines="none">
-            <IonIcon
-              icon={calendarOutline}
-              color="tertiary"
-              style={{ paddingRight: 12 }}
-            />
-            <Datetime
+          <DateSelect lines="none" color="light" mode="ios">
+            <IonDatetime
               doneText={t("button.done")}
               cancelText={t("button.cancel")}
               monthShortNames={moment.monthsShort()}
               value={moment(date).toISOString()}
               onIonChange={(e: any) => getCalendarDay(e.detail.value)}
             />
-          </DateSelect>
-          <IonButton fill="clear" onClick={getNextDay}>
             <IonIcon
-              icon={chevronForwardOutline}
-              color="light"
+              icon={calendarOutline}
+              color="primary"
+              style={{ paddingLeft: 12 }}
+            />
+          </DateSelect>
+          <IonButton onClick={getPreviousDay} fill="clear">
+            <IonIcon
+              icon={chevronBackOutline}
+              color="primary"
               slot="icon-only"
             />
+          </IonButton>
+          <IonButton onClick={getNextDay} fill="clear">
+            <IonIcon
+              icon={chevronForwardOutline}
+              color="primary"
+              slot="icon-only"
+            />
+          </IonButton>
+          <IonButton
+            color="primary"
+            fill="clear"
+            size="small"
+            onClick={() => setOpenCalculatorModal(true)}
+          >
+            <IonIcon slot="icon-only" icon={calculator} />
           </IonButton>
         </CalendarHeader>
         <List>
@@ -137,6 +148,10 @@ export const DayMeals: React.FC = () => {
         onSelect={handleMealTypeSelect}
         onClose={() => setOpenActionSheet(!openActionSheet)}
       />
+      <CalculatorModal
+        open={openCalculatorModal}
+        onClose={() => setOpenCalculatorModal(false)}
+      />
     </IonPage>
   );
 };
@@ -146,9 +161,7 @@ const CalendarHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 4px;
-  margin: 4px 4px 0 4px;
-  background-color: var(--ion-color-primary);
+  padding: 0 8px;
 `;
 
 const List = styled(IonList)`
@@ -159,11 +172,4 @@ const List = styled(IonList)`
 
 const DateSelect = styled(IonItem)`
   --border-radius: 32px;
-  --min-height: 24px;
-  --max-height: 24px;
-`;
-
-const Datetime = styled(IonDatetime)`
-  font-weight: bold;
-  --padding-top: 12px;
 `;

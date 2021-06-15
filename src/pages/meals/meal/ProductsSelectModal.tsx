@@ -116,7 +116,7 @@ export const ProductsSelectModal: React.FC<Props> = ({
           <IonIcon
             size="large"
             slot="start"
-            color="primary"
+            color="tortoise"
             icon={
               selectedProducts.find((prd) => prd.id === products[index].id)
                 ? checkmarkCircle
@@ -133,7 +133,7 @@ export const ProductsSelectModal: React.FC<Props> = ({
     <IonModal isOpen={open}>
       <Header>
         <ProductsSearch />
-        <IonButton onClick={handleClose} color="light" fill="clear">
+        <IonButton onClick={handleClose} color="primary" fill="clear">
           <IonIcon icon={close} slot="icon-only" />
         </IonButton>
       </Header>
@@ -145,7 +145,7 @@ export const ProductsSelectModal: React.FC<Props> = ({
               width={width}
               overscanCount={3}
               itemCount={products ? products.length : 0}
-              itemSize={() => 70}
+              itemSize={() => 75}
             >
               {ItemRow}
             </List>
@@ -171,17 +171,13 @@ export const ProductsSelectModal: React.FC<Props> = ({
 };
 
 const Item = styled(IonItem)`
-  --min-height: 70px;
+  --min-height: 75px;
 `;
 
 const Header = styled.div`
-  height: 58px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 4px;
-  margin: 4px 4px 0 4px;
-  background-color: var(--ion-color-primary);
 `;
 
 const SelectButton = styled(IonButton)`

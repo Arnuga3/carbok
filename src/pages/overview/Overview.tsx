@@ -52,7 +52,7 @@ const Overview: React.FC = () => {
       <IonContent>
         {cardData.meals.length > 0 && (
           <>
-            <Card color="blue">
+            <Card color="violet">
               <CardHeader>
                 <IonCardTitle>{t("carbohydrates")}</IonCardTitle>
                 {cardData.from && cardData.to && (
@@ -65,7 +65,7 @@ const Overview: React.FC = () => {
                 <MealCarbsLinearChart meals={cardData.meals} />
               </IonCardContent>
             </Card>
-            <Card color="violet">
+            <Card color="blue">
               <CardHeader>
                 <IonCardTitle>
                   {t("page.overview.foods.range.card.title")}

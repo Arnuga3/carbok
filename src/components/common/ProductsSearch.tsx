@@ -29,6 +29,7 @@ export const ProductsSearch: React.FC = () => {
 
   return (
     <Search
+      mode="ios"
       ref={searchInput}
       clearIcon={closeCircleOutline}
       onIonChange={handleSearch}
@@ -38,7 +39,7 @@ export const ProductsSearch: React.FC = () => {
 };
 
 const Search = styled(IonSearchbar)`
-  --icon-color: var(--ion-color-medium);
+  --icon-color: var(--ion-color-primary);
   --border-radius: 25px;
   border-radius: 4px;
   --padding: 0;

@@ -17,7 +17,7 @@ import { useTranslation } from "react-i18next";
 import { IProduct } from "../../classes/product/IProduct";
 
 interface Props {
-  product: IProduct | null;
+  product?: IProduct | null;
   open: boolean;
   onClose: any;
 }
@@ -85,8 +85,9 @@ export const CalculatorModal: React.FC<Props> = ({
     <IonModal isOpen={open} onWillDismiss={onClose}>
       <Result>{result()}</Result>
       <Label color="medium">
-        {t("page.products.caluclator.modal.result.title")}
+        <small>{t("page.products.caluclator.modal.result.title")}</small>
       </Label>
+      {product && <Label color="tortoise">{product.name}</Label>}
       <IonContent color="tertiary">
         <List>
           <Card>
@@ -193,7 +194,7 @@ const List = styled(IonList)`
 const Label = styled(IonText)`
   background-color: var(--ion-color-tertiary);
   text-align: center;
-  padding-bottom: 16px;
+  padding-bottom: 8px;
 `;
 
 const Result = styled.div`
