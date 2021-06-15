@@ -88,14 +88,14 @@ export const DayMeals: React.FC = () => {
           <IonButton fill="clear" onClick={getPreviousDay}>
             <IonIcon
               icon={chevronBackOutline}
-              color="warning"
+              color="light"
               slot="icon-only"
             />
           </IonButton>
           <DateSelect lines="none">
             <IonIcon
               icon={calendarOutline}
-              color="secondary"
+              color="tertiary"
               style={{ paddingRight: 12 }}
             />
             <Datetime
@@ -109,7 +109,7 @@ export const DayMeals: React.FC = () => {
           <IonButton fill="clear" onClick={getNextDay}>
             <IonIcon
               icon={chevronForwardOutline}
-              color="warning"
+              color="light"
               slot="icon-only"
             />
           </IonButton>

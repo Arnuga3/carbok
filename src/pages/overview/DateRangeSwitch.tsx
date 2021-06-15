@@ -114,7 +114,7 @@ export const DateRangeSwitch: React.FC<Props> = ({
     <Header>
       <RangeSwitch>
         <IonButton
-          color={data.range === "90_days" ? "medium" : "warning"}
+          color={data.range === "90_days" ? "medium" : "light"}
           fill="clear"
           onClick={getPreviousRange}
         >
@@ -128,7 +128,7 @@ export const DateRangeSwitch: React.FC<Props> = ({
           </b>
         </IonText>
         <IonButton
-          color={data.range === "7_days" ? "medium" : "warning"}
+          color={data.range === "7_days" ? "medium" : "light"}
           fill="clear"
           onClick={getNextRange}
         >

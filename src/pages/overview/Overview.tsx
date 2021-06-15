@@ -52,7 +52,20 @@ const Overview: React.FC = () => {
       <IonContent>
         {cardData.meals.length > 0 && (
           <>
-            <Card color="tertiary">
+            <Card color="blue">
+              <CardHeader>
+                <IonCardTitle>{t("carbohydrates")}</IonCardTitle>
+                {cardData.from && cardData.to && (
+                  <CardSubtitle>{`${moment(cardData.from).format(
+                    "D MMM"
+                  )} - ${moment(cardData.to).format("D MMM")}`}</CardSubtitle>
+                )}
+              </CardHeader>
+              <IonCardContent>
+                <MealCarbsLinearChart meals={cardData.meals} />
+              </IonCardContent>
+            </Card>
+            <Card color="violet">
               <CardHeader>
                 <IonCardTitle>
                   {t("page.overview.foods.range.card.title")}
@@ -69,19 +82,6 @@ const Overview: React.FC = () => {
                 <CategoriesPieChart categories={cardData.categories} />
               </IonCardContent>
             </Card>
-            <Card color="primary">
-              <CardHeader>
-                <IonCardTitle>{t("carbohydrates")}</IonCardTitle>
-                {cardData.from && cardData.to && (
-                  <CardSubtitle>{`${moment(cardData.from).format(
-                    "D MMM"
-                  )} - ${moment(cardData.to).format("D MMM")}`}</CardSubtitle>
-                )}
-              </CardHeader>
-              <IonCardContent>
-                <MealCarbsLinearChart meals={cardData.meals} />
-              </IonCardContent>
-            </Card>
           </>
         )}
       </IonContent>
@@ -94,7 +94,7 @@ export default React.memo(Overview);
 const Card = styled(IonCard)`
   border-radius: 20px;
   margin-top: 16px;
-  box-shadow: 0 4px 12px 0 rgba(0,0,0,0.6);
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.6);
 `;
 
 const CardHeader = styled(IonCardHeader)`

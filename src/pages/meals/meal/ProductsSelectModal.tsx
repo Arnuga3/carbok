@@ -133,7 +133,7 @@ export const ProductsSelectModal: React.FC<Props> = ({
     <IonModal isOpen={open}>
       <Header>
         <ProductsSearch />
-        <IonButton onClick={handleClose} color="secondary" fill="clear">
+        <IonButton onClick={handleClose} color="light" fill="clear">
           <IonIcon icon={close} slot="icon-only" />
         </IonButton>
       </Header>
@@ -179,9 +179,9 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
   margin: 4px 4px 0 4px;
+  background-color: var(--ion-color-primary);
 `;
 
 const SelectButton = styled(IonButton)`

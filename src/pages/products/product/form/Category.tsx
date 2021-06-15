@@ -26,7 +26,7 @@ export const Category: React.FC<Props> = ({
         <IonChipStyled
           key={i}
           outline={!!(data.categories && data.categories.includes(category))}
-          color={categoryValid ? "secondary" : "danger"}
+          color={categoryValid ? "tertiary" : "danger"}
           onClick={() => onCategorySelect(category)}
         >
           <IonLabelStyled color={categoryColours[category]}>

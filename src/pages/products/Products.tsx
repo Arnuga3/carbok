@@ -54,10 +54,6 @@ async function toggleActionsSlide(selector: string) {
   }
 }
 
-function addFakeProduct(products: Product[]): Product[] {
-  return products[0] ? [products[0], ...products] : [];
-}
-
 const Products: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -104,8 +100,8 @@ const Products: React.FC = () => {
       setState({
         ...state,
         productsFiltered: displayAll
-          ? addFakeProduct(products)
-          : addFakeProduct(products.filter((product) => !product.standard)),
+          ? products
+          : products.filter((product) => !product.standard),
       });
     }
   }, [products]);
@@ -226,7 +222,7 @@ const Products: React.FC = () => {
       <IonContent>
         <Header>
           <IonButton
-            color="warning"
+            color="light"
             fill="clear"
             size="small"
             shape="round"
@@ -236,7 +232,7 @@ const Products: React.FC = () => {
           </IonButton>
           <ProductsSearch />
           <IonButton
-            color="warning"
+            color="light"
             fill="clear"
             size="small"
             shape="round"

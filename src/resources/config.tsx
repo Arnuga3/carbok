@@ -11,11 +11,11 @@ export const chartColors = {
 };
 
 export const categoryColours = {
-  grains: "#e29578",
-  fruit: "#83c5be",
-  vegetables: "#006d77",
+  grains: "#ffa500",
+  fruit: "#a5be00",
+  vegetables: "#138a36",
   protein: "#997b66",
   dairy: "#d4c7b0",
-  sweets: "#ffafcc",
+  sweets: "#fb5178",
   other: "#a2d2ff",
 };

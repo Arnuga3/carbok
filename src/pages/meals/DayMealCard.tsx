@@ -57,7 +57,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
                   <IonText color="medium">
                     <small>{`${t("products")}: ${meal.products.length}`}</small>
                   </IonText>
-                  <IonText color="secondary">
+                  <IonText color="tertiary">
                     <h1>{t(getMealKey(meal.type))}</h1>
                   </IonText>
                 </CardHeaderTitle>
@@ -65,7 +65,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
                   <IonText color="medium">
                     <small>{t("carbohydrates")}</small>
                   </IonText>
-                  <IonText color="secondary">
+                  <IonText color="tertiary">
                     <h1>{calcService.getMealTotalCarbs(meal.products)}</h1>
                   </IonText>
                 </CardHeaderCarbs>
@@ -93,7 +93,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
           </IonItem>
           <CardActions>
             <ActionButton
-              color="warning"
+              color="danger"
               fill="clear"
               size="small"
               onClick={() => setOpenDeleteAlert(true)}
@@ -101,7 +101,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
               <IonIcon icon={trashOutline} slot="icon-only" />
             </ActionButton>
             <ActionButton
-              color="medium"
+              color="tortoise"
               fill="clear"
               size="small"
               onClick={() => copyDatetime.current?.open()}
@@ -110,7 +110,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
               <IonIcon icon={copyOutline} slot="icon-only" />
             </ActionButton>
             <ActionButton
-              color="medium"
+              color="tortoise"
               fill="clear"
               size="small"
               onClick={() => setOpenNoteAlert(true)}
@@ -118,7 +118,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
               <IonIcon icon={chatbubbleOutline} slot="icon-only" />
             </ActionButton>
             <ActionButton
-              color="medium"
+              color="tortoise"
               fill="clear"
               size="small"
               routerLink={`/meals/${meal.id}/products`}

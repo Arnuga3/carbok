@@ -14,7 +14,7 @@ export const Units: React.FC<Props> = ({ units, onUnitsChange }) => {
   const { t } = useTranslation();
   return (
     <IonSegmentStyled
-      color="secondary"
+      color="tertiary"
       value={units}
       onIonChange={(e) => {
         const unitsSelected = productUnits.find(
