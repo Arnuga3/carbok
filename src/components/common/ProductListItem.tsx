@@ -54,13 +54,17 @@ const ListItemContent = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 8px 16px 4px 0;
+  padding: 4px 0 4px 0;
 `;
 
 const ContentRowFirst = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  & small {
+    white-space: nowrap;
+  }
 `;
 
 const ContentRow = styled.div`
@@ -70,6 +74,7 @@ const ContentRow = styled.div`
 `;
 
 const NameBadge = styled.div`
-  display: flex;
-  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;

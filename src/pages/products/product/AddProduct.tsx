@@ -3,10 +3,8 @@ import { RouteComponentProps } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import {
-  IonHeader,
   IonContent,
   IonPage,
-  IonTitle,
   IonBackButton,
   IonButton,
   IonCard,
@@ -39,6 +37,7 @@ import { addProduct } from "../../../redux/actions/products/actions";
 import { ProductCategoryType } from "../../../classes/productCategory/ProductCategoryType";
 import { toggleCategory } from "../util";
 import { UnitsType } from "../../../classes/units/UnitsType";
+import { Header } from "../../../components/styled/Header";
 
 const defaultData: IProductDummy = {
   name: null,
@@ -230,13 +229,6 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
     </IonPage>
   );
 };
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px;
-`;
 
 const Title = styled(IonText)`
   flex: 1;

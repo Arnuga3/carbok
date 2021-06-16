@@ -8,6 +8,30 @@ import { IProductDummy } from "../../../../classes/product/IProductDummy";
 import { categoryColours } from "../../../../resources/config";
 import { ProductCategoryType } from "../../../../classes/productCategory/ProductCategoryType";
 
+function getCategoryColor(
+  isValid: boolean,
+  productCategories: ProductCategoryType[],
+  category: ProductCategoryType
+) {
+  if (!isValid) {
+    return "danger";
+  }
+  if (!!(productCategories && productCategories.includes(category))) {
+    return categoryColours[category];
+  }
+  return "medium";
+}
+
+function getLabelColor(
+  productCategories: ProductCategoryType[],
+  category: ProductCategoryType
+) {
+  if (!!(productCategories && productCategories.includes(category))) {
+    return "light";
+  }
+  return categoryColours[category];
+}
+
 interface Props {
   data: IProductDummy;
   categoryValid: boolean;
@@ -20,29 +44,30 @@ export const Category: React.FC<Props> = ({
   onCategoryToggle: onCategorySelect,
 }) => {
   const { t } = useTranslation();
+
   return (
     <Row>
       {categories.map((category: ProductCategoryType, i) => (
-        <IonChipStyled
+        <Chip
           key={i}
-          outline={!!(data.categories && data.categories.includes(category))}
-          color={categoryValid ? "tertiary" : "danger"}
+          color={getCategoryColor(categoryValid, data.categories, category)}
           onClick={() => onCategorySelect(category)}
         >
-          <IonLabelStyled color={categoryColours[category]}>
+          <Label color={getLabelColor(data.categories, category)}>
             {t(getCatKey(category))}
-          </IonLabelStyled>
-        </IonChipStyled>
+          </Label>
+        </Chip>
       ))}
     </Row>
   );
 };
 
-const IonChipStyled = styled(IonChip)`
-  --background: ${({ color }) => color};
+const Chip = styled(IonChip)`
+  background: ${({ color }) => color};
+  color: ${({ color }) => color};
 `;
 
-const IonLabelStyled = styled(IonLabel)`
+const Label = styled(IonLabel)`
   color: ${({ color }) => color};
 `;
 

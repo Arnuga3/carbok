@@ -22,6 +22,8 @@ import {
   addOutline,
   calculator,
   createOutline,
+  ellipsisVerticalOutline,
+  eyeOutline,
   filter,
   trashOutline,
 } from "ionicons/icons";
@@ -41,6 +43,8 @@ import { CircleBadgeMultiColor } from "../../components/common/CircleBadgeMultiC
 import { getCategoriesColours } from "./util";
 import { Product } from "../../classes/product/Product";
 import { FilterAlert } from "./FilterAlert";
+import { Header } from "../../components/styled/Header";
+import { ProductModal } from "../../components/common/ProductModal";
 
 const PRODUCTSPAGE = "products-page";
 
@@ -61,6 +65,7 @@ const Products: React.FC = () => {
 
   const [state, setState] = useState<{
     openDeleteAlert: boolean;
+    openProductModal: boolean;
     openCalculatorModal: boolean;
     productSelected: Product | null;
     displayAll: boolean;
@@ -68,6 +73,7 @@ const Products: React.FC = () => {
     openFilterAlert: boolean;
   }>({
     openDeleteAlert: false,
+    openProductModal: false,
     openCalculatorModal: false,
     productSelected: null,
     displayAll: true,
@@ -77,6 +83,7 @@ const Products: React.FC = () => {
 
   const {
     openDeleteAlert,
+    openProductModal,
     openCalculatorModal,
     productSelected,
     displayAll,
@@ -105,6 +112,14 @@ const Products: React.FC = () => {
       });
     }
   }, [products]);
+
+  const handleOnView = (product: Product) => {
+    setState({
+      ...state,
+      productSelected: product,
+      openProductModal: true,
+    });
+  };
 
   const handleOnCalculate = (product: Product) => {
     setState({
@@ -137,6 +152,7 @@ const Products: React.FC = () => {
       ...state,
       productSelected: null,
       openCalculatorModal: false,
+      openProductModal: false,
     });
   };
 
@@ -148,7 +164,7 @@ const Products: React.FC = () => {
           id={PRODUCTSPAGE + index}
           onClick={() => toggleActionsSlide(PRODUCTSPAGE + index)}
         >
-          <Item detail lines="none">
+          <Item lines="none">
             <IonAvatar slot="start">
               {productsFiltered[index].categories.length === 1 && (
                 <CircleBadge
@@ -173,22 +189,35 @@ const Products: React.FC = () => {
               )}
             </IonAvatar>
             <ProductListItem product={productsFiltered[index]} />
+            <IonIcon
+              size="small"
+              color="medium"
+              style={{ marginLeft: 8 }}
+              icon={ellipsisVerticalOutline}
+              slot="end"
+            />
           </Item>
           <IonItemOptions>
             <SlidingAction
               color="tertiary"
+              onClick={() => handleOnView(productsFiltered[index])}
+            >
+              <IonIcon icon={eyeOutline} slot="icon-only" />
+            </SlidingAction>
+            <SlidingAction
+              color="primary"
               onClick={() => handleOnCalculate(productsFiltered[index])}
             >
               <IonIcon icon={calculator} slot="icon-only" />
             </SlidingAction>
             <SlidingAction
-              color="primary"
+              color="secondary"
               routerLink={`/products/edit-product/${productsFiltered[index].id}`}
             >
               <IonIcon icon={createOutline} slot="icon-only" />
             </SlidingAction>
             <SlidingAction
-              color="secondary"
+              color="danger"
               onClick={() => handleOnDelete(productsFiltered[index])}
             >
               <IonIcon icon={trashOutline} slot="icon-only" />
@@ -251,6 +280,11 @@ const Products: React.FC = () => {
           },
         ]}
       />
+      <ProductModal
+        product={productSelected}
+        open={openProductModal}
+        onClose={handleOnClose}
+      />
       <CalculatorModal
         product={productSelected}
         open={openCalculatorModal}
@@ -290,13 +324,6 @@ const Animation = styled.div`
   //   to {
   //   }
   // }
-`;
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 8px;
 `;
 
 const ProductsList = styled(List)`

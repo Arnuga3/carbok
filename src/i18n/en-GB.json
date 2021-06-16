@@ -60,9 +60,9 @@
     "button.reorder": "Reorder",
     "button.copy": "Copy",
     "button.copy.to": "Copy To",
-    "button.filter": "Filter",
+    "button.ok": "Ok",
 
-    "page.overview.carbs.range.card.title": "{{days}} Days",
+    "page.overview.carbs.range.card.title": "{{days}} days",
     "page.overview.carbs.range.card.subtitle": "of which {{sugarPercent}}% Sugars",
     "page.overview.foods.range.card.title": "Food Groups",
 
@@ -78,6 +78,7 @@
 
     "page.products.title": "Products",
     "page.products.search.placeholder": "Search",
+    "page.products.filter.header": "Filter",
     "page.products.filter.products.all": "All",
     "page.products.filter.products.my": "My Products",
     "page.products.add.product.title": "Add Product",

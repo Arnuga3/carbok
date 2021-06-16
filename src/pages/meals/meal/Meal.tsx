@@ -28,6 +28,7 @@ import { MealProductsChart } from "../../../components/charts/MealProductsChart"
 import { CopyDatetime } from "./alerts/CopyDateTime";
 import { CopyAlert, CopyState } from "./alerts/CopyAlert";
 import { dateService } from "../../../services/DateService";
+import { Header } from "../../../components/styled/Header";
 
 interface MealPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -121,13 +122,6 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
     </IonPage>
   );
 };
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 8px;
-`;
 
 const Date = styled(IonText)`
   align-text: center;

@@ -9,6 +9,7 @@ import { Meal } from "../../classes/meal/Meal";
 import { MealProduct } from "../../classes/meal/MealProduct";
 import { chartsDataService } from "../../services/ChartsDataService";
 import { dateService } from "../../services/DateService";
+import { Header } from "../../components/styled/Header";
 
 interface Props {
   data: CardData;
@@ -82,7 +83,7 @@ export const DateRangeSwitch: React.FC<Props> = ({
   return (
     <Header>
       <RangeSwitch>
-        <IonChip
+        <Chip
           onClick={() => setState("90_days")}
           color={state === "90_days" ? "primary" : "medium"}
         >
@@ -91,8 +92,8 @@ export const DateRangeSwitch: React.FC<Props> = ({
               days: 90,
             })}
           </Label>
-        </IonChip>
-        <IonChip
+        </Chip>
+        <Chip
           onClick={() => setState("30_days")}
           color={state === "30_days" ? "primary" : "medium"}
         >
@@ -101,8 +102,8 @@ export const DateRangeSwitch: React.FC<Props> = ({
               days: 30,
             })}
           </Label>
-        </IonChip>
-        <IonChip
+        </Chip>
+        <Chip
           onClick={() => setState("7_days")}
           color={state === "7_days" ? "primary" : "medium"}
         >
@@ -111,14 +112,15 @@ export const DateRangeSwitch: React.FC<Props> = ({
               days: 7,
             })}
           </Label>
-        </IonChip>
+        </Chip>
       </RangeSwitch>
     </Header>
   );
 };
 
-const Header = styled.div`
-  padding: 8px;
+const Chip = styled(IonChip)`
+  height: 40px;
+  border-radius: 32px;
 `;
 
 const Label = styled(IonLabel)`
@@ -126,8 +128,9 @@ const Label = styled(IonLabel)`
 `;
 
 const RangeSwitch = styled.div`
-  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  margin-top: 12px;
 `;

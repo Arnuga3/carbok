@@ -35,6 +35,7 @@ import { ProductCategoryType } from "../../../classes/productCategory/ProductCat
 import { toggleCategory } from "../util";
 import { UnitsType } from "../../../classes/units/UnitsType";
 import { Product } from "../../../classes/product/Product";
+import { Header } from "../../../components/styled/Header";
 
 interface EditProductPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -130,7 +131,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
 
   return (
     <IonPage>
-      <IonContentStyled color="tertiary">
+      <Content color="tertiary">
         <Header>
           <IonBackButton
             color="light"
@@ -241,23 +242,16 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
             {t("button.save")}
           </Button>
         </List>
-      </IonContentStyled>
+      </Content>
     </IonPage>
   );
 };
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px;
-`;
 
 const Title = styled(IonText)`
   flex: 1;
 `;
 
-const IonContentStyled = styled(IonContent)`
+const Content = styled(IonContent)`
   & .input-right-align {
     text-align: right;
   }

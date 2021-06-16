@@ -45,27 +45,31 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
 
   return (
     <Animation>
-      <Card mode="md">
+      <Card mode="md" color="green">
         <ReorderHandle>
           <IonReorder />
         </ReorderHandle>
         <CardContent>
-          <IonItem routerLink={`/meals/${meal.id}/products`} lines="none">
+          <IonItem
+            color="green"
+            routerLink={`/meals/${meal.id}/products`}
+            lines="none"
+          >
             <ItemContent>
               <CardHeader>
                 <CardHeaderTitle>
-                  <IonText color="medium">
+                  <IonText color="tortoise">
                     <small>{`${t("products")}: ${meal.products.length}`}</small>
                   </IonText>
-                  <IonText color="primary">
+                  <IonText color="light">
                     <h1>{t(getMealKey(meal.type))}</h1>
                   </IonText>
                 </CardHeaderTitle>
                 <CardHeaderCarbs>
-                  <IonText color="medium">
+                  <IonText color="tortoise">
                     <small>{t("carbohydrates")}</small>
                   </IonText>
-                  <IonText color="blue">
+                  <IonText color="secondary">
                     <h1>{calcService.getMealTotalCarbs(meal.products)}</h1>
                   </IonText>
                 </CardHeaderCarbs>
@@ -82,8 +86,8 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
                 ))}
                 {meal.note && (
                   <Note>
-                    <NoteIcon icon={chatbubbleOutline} color="primary" />
-                    <IonText color="medium">
+                    <NoteIcon icon={chatbubbleOutline} color="secondary" />
+                    <IonText color="tortoise">
                       <small>{meal.note}</small>
                     </IonText>
                   </Note>
@@ -93,7 +97,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
           </IonItem>
           <CardActions>
             <ActionButton
-              color="danger"
+              color="secondary"
               fill="clear"
               size="small"
               onClick={() => setOpenDeleteAlert(true)}
@@ -118,7 +122,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
               <IonIcon icon={chatbubbleOutline} slot="icon-only" />
             </ActionButton>
             <ActionButton
-              color="primary"
+              color="tortoise"
               fill="clear"
               size="small"
               routerLink={`/meals/${meal.id}/products`}
@@ -167,6 +171,8 @@ const Animation = styled.div`
 
 const Card = styled(IonCard)`
   border-radius: 20px;
+  margin-top: 16px;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.6);
 `;
 
 const CardContent = styled(IonCardContent)`
@@ -176,7 +182,7 @@ const CardContent = styled(IonCardContent)`
 const ReorderHandle = styled.div`
   display: flex;
   justify-content: center;
-  background-color: var(--ion-color-primary);
+  background-color: var(--ion-color-tortoise);
   color: white;
 `;
 

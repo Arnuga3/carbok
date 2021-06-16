@@ -87,7 +87,7 @@ export const CalculatorModal: React.FC<Props> = ({
       <Label color="medium">
         <small>{t("page.products.caluclator.modal.result.title")}</small>
       </Label>
-      {product && <Label color="tortoise">{product.name}</Label>}
+      {product && <Label color="light">{product.name}</Label>}
       <IonContent color="tertiary">
         <List>
           <Card>

@@ -15,6 +15,7 @@ export const FilterAlert: React.FC<Props> = ({ open, value, onClose, onFilter })
     <IonAlert
       isOpen={open}
       onDidDismiss={onClose}
+      header={t("page.products.filter.header")}
       inputs={[
         {
           type: "radio",
@@ -32,7 +33,7 @@ export const FilterAlert: React.FC<Props> = ({ open, value, onClose, onFilter })
       buttons={[
         { text: t("button.close"), role: "cancel" },
         {
-          text: t("button.filter"),
+          text: t("button.ok"),
           role: "destructive",
           handler: (value) => onFilter(value),
         },

@@ -78,14 +78,14 @@ export const Products: React.FC<Props> = ({ meal }) => {
     <>
       {meal.note && (
         <Note>
-          <IonItem lines="none">
+          <IonItem lines="none" color="tertiary">
             <IonIcon
               icon={chatbubbleOutline}
               slot="start"
-              color="medium"
+              color="secondary"
               size="small"
             />
-            <IonText color="medium">{meal.note}</IonText>
+            <IonText color="light">{meal.note}</IonText>
           </IonItem>
         </Note>
       )}
@@ -120,14 +120,14 @@ export const Products: React.FC<Props> = ({ meal }) => {
             <IonItemOptions>
               {product.portionType === "quantity" && (
                 <SlidingAction
-                  color="secondary"
+                  color="primary"
                   onClick={() => handlePortionQunatityChange(product)}
                 >
                   <IonIcon icon={layersOutline} slot="icon-only" />
                 </SlidingAction>
               )}
               <SlidingAction
-                color="tertiary"
+                color="secondary"
                 onClick={() => handlePortionSizeChange(product)}
               >
                 <IonIcon icon={scaleOutline} slot="icon-only" />
@@ -192,5 +192,5 @@ const SlidingAction = styled(IonItemOption)`
 `;
 
 const Note = styled.div`
-  padding: 0px 8px;
+  margin-bottom: 16px;
 `;

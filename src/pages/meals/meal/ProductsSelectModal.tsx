@@ -27,6 +27,7 @@ import { Product } from "../../../classes/product/Product";
 import { MealProduct } from "../../../classes/meal/MealProduct";
 import { Meal } from "../../../classes/meal/Meal";
 import { calcService } from "../../../services/CalculationService";
+import { Header } from "../../../components/styled/Header";
 interface Props {
   meal: Meal;
   open: boolean;
@@ -172,12 +173,6 @@ export const ProductsSelectModal: React.FC<Props> = ({
 
 const Item = styled(IonItem)`
   --min-height: 75px;
-`;
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 `;
 
 const SelectButton = styled(IonButton)`

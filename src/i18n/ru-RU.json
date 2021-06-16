@@ -60,9 +60,9 @@
     "button.reorder": "Порядок",
     "button.copy": "Скопировать",
     "button.copy.to": "Скопировать На",
-    "button.filter": "Фильтровать",
+    "button.ok": "Ok",
 
-    "page.overview.carbs.range.card.title": "{{days}} Дней",
+    "page.overview.carbs.range.card.title": "{{days}} дней",
     "page.overview.carbs.range.card.subtitle": "из которых {{sugarPercent}}% Сахара",
     "page.overview.foods.range.card.title": "Группы пищевых продуктов",
 
@@ -78,6 +78,7 @@
 
     "page.products.title": "Продукты",
     "page.products.search.placeholder": "Поиск",
+    "page.products.filter.header": "Фильтровать",
     "page.products.filter.products.all": "Все",
     "page.products.filter.products.my": "Мои Продукты",
     "page.products.add.product.title": "Добавить Продукт",

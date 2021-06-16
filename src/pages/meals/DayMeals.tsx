@@ -14,6 +14,7 @@ import {
   IonReorderGroup,
   IonFab,
   IonFabButton,
+  IonButtons,
 } from "@ionic/react";
 import {
   addOutline,
@@ -37,6 +38,7 @@ import { useTranslation } from "react-i18next";
 import { useAppSettings } from "../../hooks/appSettingsHook";
 import { dateService } from "../../services/DateService";
 import { CalculatorModal } from "../../components/common/CalculatorModal";
+import { Header } from "../../components/styled/Header";
 
 export const DayMeals: React.FC = () => {
   const { t } = useTranslation();
@@ -87,44 +89,46 @@ export const DayMeals: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <CalendarHeader>
-          <DateSelect lines="none" color="light" mode="ios">
-            <IonDatetime
-              doneText={t("button.done")}
-              cancelText={t("button.cancel")}
-              monthShortNames={moment.monthsShort()}
-              value={moment(date).toISOString()}
-              onIonChange={(e: any) => getCalendarDay(e.detail.value)}
-            />
-            <IonIcon
-              icon={calendarOutline}
+        <Header>
+          <Buttons>
+            <Button onClick={getPreviousDay} fill="clear">
+              <IonIcon
+                icon={chevronBackOutline}
+                color="primary"
+                slot="icon-only"
+              />
+            </Button>
+            <DateSelect lines="none" color="light" mode="ios">
+              <IonIcon
+                icon={calendarOutline}
+                color="primary"
+                style={{ paddingRight: 12 }}
+              />
+              <IonDatetime
+                doneText={t("button.done")}
+                cancelText={t("button.cancel")}
+                monthShortNames={moment.monthsShort()}
+                value={moment(date).toISOString()}
+                onIonChange={(e: any) => getCalendarDay(e.detail.value)}
+              />
+            </DateSelect>
+            <Button onClick={getNextDay} fill="clear">
+              <IonIcon
+                icon={chevronForwardOutline}
+                color="primary"
+                slot="icon-only"
+              />
+            </Button>
+            <IonButton
               color="primary"
-              style={{ paddingLeft: 12 }}
-            />
-          </DateSelect>
-          <IonButton onClick={getPreviousDay} fill="clear">
-            <IonIcon
-              icon={chevronBackOutline}
-              color="primary"
-              slot="icon-only"
-            />
-          </IonButton>
-          <IonButton onClick={getNextDay} fill="clear">
-            <IonIcon
-              icon={chevronForwardOutline}
-              color="primary"
-              slot="icon-only"
-            />
-          </IonButton>
-          <IonButton
-            color="primary"
-            fill="clear"
-            size="small"
-            onClick={() => setOpenCalculatorModal(true)}
-          >
-            <IonIcon slot="icon-only" icon={calculator} />
-          </IonButton>
-        </CalendarHeader>
+              fill="clear"
+              size="small"
+              onClick={() => setOpenCalculatorModal(true)}
+            >
+              <IonIcon slot="icon-only" icon={calculator} />
+            </IonButton>
+          </Buttons>
+        </Header>
         <List>
           <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
             {meals
@@ -137,7 +141,7 @@ export const DayMeals: React.FC = () => {
         <IonFab vertical="bottom" horizontal="center" slot="fixed">
           <IonFabButton
             onClick={() => setOpenActionSheet(!openActionSheet)}
-            color="tertiary"
+            color="primary"
           >
             <IonIcon icon={addOutline} />
           </IonFabButton>
@@ -156,12 +160,16 @@ export const DayMeals: React.FC = () => {
   );
 };
 
-const CalendarHeader = styled.div`
-  height: 58px;
+const Buttons = styled(IonButtons)`
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 8px;
+  width: 100%;
+`;
+
+const Button = styled(IonButton)`
+  border-radius: 100%;
+  background-color: rgba(0,0,0,0.05);
+  color: var(--ion-color-primary);
 `;
 
 const List = styled(IonList)`
