@@ -61,10 +61,12 @@
     "button.copy": "Copy",
     "button.copy.to": "Copy To",
     "button.ok": "Ok",
+    "button.calculate": "Calculate",
 
     "page.overview.carbs.range.card.title": "{{days}} days",
     "page.overview.carbs.range.card.subtitle": "of which {{sugarPercent}}% Sugars",
     "page.overview.foods.range.card.title": "Food Groups",
+    "page.overview.calculator.card.title": "Quick carbohydrates calculator",
 
     "page.meals.button.add.meal": "Add Meal",
     "page.meals.delete.meal.alert.title": "Delete meal?",

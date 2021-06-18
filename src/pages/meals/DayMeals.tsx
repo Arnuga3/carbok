@@ -18,7 +18,6 @@ import {
 } from "@ionic/react";
 import {
   addOutline,
-  calculator,
   calendarOutline,
   chevronBackOutline,
   chevronForwardOutline,
@@ -37,7 +36,6 @@ import { useMeals } from "../../hooks/mealsHook";
 import { useTranslation } from "react-i18next";
 import { useAppSettings } from "../../hooks/appSettingsHook";
 import { dateService } from "../../services/DateService";
-import { CalculatorModal } from "../../components/common/CalculatorModal";
 import { Header } from "../../components/styled/Header";
 
 export const DayMeals: React.FC = () => {
@@ -46,7 +44,6 @@ export const DayMeals: React.FC = () => {
   const { settings } = useAppSettings();
   const { meals, date } = useMeals();
   const [openActionSheet, setOpenActionSheet] = useState(false);
-  const [openCalculatorModal, setOpenCalculatorModal] = useState(false);
 
   useEffect(() => {
     if (meals.length === 0) {
@@ -119,14 +116,6 @@ export const DayMeals: React.FC = () => {
                 slot="icon-only"
               />
             </Button>
-            <IonButton
-              color="primary"
-              fill="clear"
-              size="small"
-              onClick={() => setOpenCalculatorModal(true)}
-            >
-              <IonIcon slot="icon-only" icon={calculator} />
-            </IonButton>
           </Buttons>
         </Header>
         <List>
@@ -151,10 +140,6 @@ export const DayMeals: React.FC = () => {
         open={openActionSheet}
         onSelect={handleMealTypeSelect}
         onClose={() => setOpenActionSheet(!openActionSheet)}
-      />
-      <CalculatorModal
-        open={openCalculatorModal}
-        onClose={() => setOpenCalculatorModal(false)}
       />
     </IonPage>
   );

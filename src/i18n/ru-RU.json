@@ -61,10 +61,12 @@
     "button.copy": "Скопировать",
     "button.copy.to": "Скопировать На",
     "button.ok": "Ok",
+    "button.calculate": "Посчитать",
 
     "page.overview.carbs.range.card.title": "{{days}} дней",
     "page.overview.carbs.range.card.subtitle": "из которых {{sugarPercent}}% Сахара",
     "page.overview.foods.range.card.title": "Группы пищевых продуктов",
+    "page.overview.calculator.card.title": "Быстрый калькулятор углеводов",
 
     "page.meals.button.add.meal": "Добавить Еду",
     "page.meals.delete.meal.alert.title": "Удалить Еду?",

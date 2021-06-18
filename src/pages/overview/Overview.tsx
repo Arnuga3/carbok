@@ -3,12 +3,14 @@ import { useTranslation } from "react-i18next";
 import moment from "moment";
 import styled from "styled-components";
 import {
+  IonButton,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
   IonContent,
+  IonIcon,
   IonPage,
 } from "@ionic/react";
 import { IPieCategory } from "../../classes/productCategory/IPieCategory";
@@ -16,6 +18,8 @@ import { MealCarbsLinearChart } from "../../components/charts/MealCarbsLinearCha
 import { CategoriesPieChart } from "../../components/charts/CategoriesPieChart";
 import { DateRangeSwitch } from "./DateRangeSwitch";
 import { Meal } from "../../classes/meal/Meal";
+import { calculator } from "ionicons/icons";
+import { CalculatorModal } from "../../components/common/CalculatorModal";
 
 export type Range = "7_days" | "30_days" | "90_days";
 
@@ -38,6 +42,7 @@ const defaultCardDataState: CardData = {
 const Overview: React.FC = () => {
   const { t } = useTranslation();
   const [cardData, setCardData] = useState<CardData>(defaultCardDataState);
+  const [openCalculatorModal, setOpenCalculatorModal] = useState(false);
 
   const handleDateRangeChange = (data: CardData) => {
     setCardData(data);
@@ -45,11 +50,11 @@ const Overview: React.FC = () => {
 
   return (
     <IonPage>
-      <DateRangeSwitch
-        data={cardData}
-        onDateRangeChange={handleDateRangeChange}
-      />
       <IonContent>
+        <DateRangeSwitch
+          data={cardData}
+          onDateRangeChange={handleDateRangeChange}
+        />
         {cardData.meals.length > 0 && (
           <>
             <Card color="violet">
@@ -82,6 +87,26 @@ const Overview: React.FC = () => {
                 <CategoriesPieChart categories={cardData.categories} />
               </IonCardContent>
             </Card>
+            <Card color="green">
+              <CardHeader>
+                <IonCardTitle>
+                  {t("page.overview.calculator.card.title")}
+                </IonCardTitle>
+              </CardHeader>
+              <CalculatorCardContent>
+                <IonButton
+                  fill="outline"
+                  color="secondary"
+                  onClick={() => setOpenCalculatorModal(true)}
+                >
+                  {t("button.calculate")}
+                </IonButton>
+              </CalculatorCardContent>
+            </Card>
+            <CalculatorModal
+              open={openCalculatorModal}
+              onClose={() => setOpenCalculatorModal(false)}
+            />
           </>
         )}
       </IonContent>
@@ -100,6 +125,10 @@ const Card = styled(IonCard)`
 const CardHeader = styled(IonCardHeader)`
   display: flex;
   justify-content: space-between;
+`;
+
+const CalculatorCardContent = styled(IonCardContent)`
+  text-align: center;
 `;
 
 const CardSubtitle = styled(IonCardSubtitle)`
