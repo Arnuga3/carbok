@@ -1,5 +1,33 @@
+import { ProductsFilter } from "../../classes/appSettings/ProductsFilterType";
+import { Product } from "../../classes/product/Product";
 import { ProductCategoryType } from "../../classes/productCategory/ProductCategoryType";
 import { categoryColours } from "../../resources/config";
+
+export async function toggleActionsSlide(selector: string) {
+  const productEl: any = document.querySelector("#" + selector);
+  const openItemNum = await productEl.getOpenAmount();
+  if (productEl && openItemNum === 0) {
+    productEl.open();
+  } else {
+    productEl.close();
+  }
+}
+
+export function filterProducts(
+  products: Product[],
+  filter: ProductsFilter
+): Product[] {
+  switch (filter) {
+    case "all":
+      return products ?? [];
+    case "default":
+      return products.filter((product) => product.standard);
+    case "my":
+      return products.filter((product) => !product.standard);
+    default:
+      return [];
+  }
+}
 
 export function toggleCategory(
   category: ProductCategoryType,

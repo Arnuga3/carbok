@@ -41,7 +41,7 @@ import { CircleBadge } from "../../components/common/CircleBadge";
 import { categoryColours } from "../../resources/config";
 import { getCatKey } from "../../resources/productCategories";
 import { CircleBadgeMultiColor } from "../../components/common/CircleBadgeMultiColor";
-import { getCategoriesColours } from "./util";
+import { filterProducts, getCategoriesColours, toggleActionsSlide } from "./util";
 import { Product } from "../../classes/product/Product";
 import { FilterAlert } from "./FilterAlert";
 import { Header } from "../../components/styled/Header";
@@ -51,16 +51,6 @@ import { ProductsFilter } from "../../classes/appSettings/ProductsFilterType";
 import { changeAppSettings } from "../../redux/actions/appSettingsActions";
 
 const PRODUCTSPAGE = "products-page";
-
-async function toggleActionsSlide(selector: string) {
-  const productEl: any = document.querySelector("#" + selector);
-  const openItemNum = await productEl.getOpenAmount();
-  if (productEl && openItemNum === 0) {
-    productEl.open();
-  } else {
-    productEl.close();
-  }
-}
 
 const Products: React.FC = () => {
   const { t } = useTranslation();
@@ -105,7 +95,7 @@ const Products: React.FC = () => {
     if (products) {
       setState({
         ...state,
-        productsFiltered: filterProducts(settings.productsFilter),
+        productsFiltered: filterProducts(products, settings.productsFilter),
       });
     }
   }, [products]);
@@ -168,25 +158,11 @@ const Products: React.FC = () => {
     });
   };
 
-  const filterProducts = (filter: ProductsFilter): Product[] => {
-    if (products) {
-      switch (filter) {
-        case "all":
-          return products ?? [];
-        case "default":
-          return products.filter((product) => product.standard);
-        case "my":
-          return products.filter((product) => !product.standard);
-      }
-    }
-    return [];
-  };
-
   const handleFilter = (filter: ProductsFilter) => {
     setState({
       ...state,
       openFilterAlert: false,
-      productsFiltered: filterProducts(filter),
+      productsFiltered: filterProducts(products ?? [], filter),
     });
     dispatch(
       changeAppSettings({
@@ -199,7 +175,7 @@ const Products: React.FC = () => {
   const ItemRow = ({ index, style }: { index: number; style: any }) => {
     const product = productsFiltered[index];
     return (
-      <Animation style={style}>
+      <div style={style}>
         {productsFiltered && (
           <IonItemSliding
             key={index}
@@ -275,7 +251,7 @@ const Products: React.FC = () => {
             </IonItemOptions>
           </IonItemSliding>
         )}
-      </Animation>
+      </div>
     );
   };
 
@@ -352,18 +328,6 @@ const Products: React.FC = () => {
 };
 
 export default React.memo(Products);
-
-const Animation = styled.div`
-  // animation-name: fade;
-  // animation-duration: 1s;
-
-  // @keyframes fade {
-  //   from {
-  //   }
-  //   to {
-  //   }
-  // }
-`;
 
 const ProductsList = styled(List)`
   padding-bottom: 70px;
