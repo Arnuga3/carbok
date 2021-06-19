@@ -88,13 +88,13 @@ export const DayMeals: React.FC = () => {
       <IonContent>
         <Header>
           <Buttons>
-            <Button onClick={getPreviousDay} fill="clear">
+            <IonButton onClick={getPreviousDay} fill="clear">
               <IonIcon
                 icon={chevronBackOutline}
                 color="primary"
                 slot="icon-only"
               />
-            </Button>
+            </IonButton>
             <DateSelect lines="none" color="light" mode="ios">
               <IonIcon
                 icon={calendarOutline}
@@ -109,13 +109,13 @@ export const DayMeals: React.FC = () => {
                 onIonChange={(e: any) => getCalendarDay(e.detail.value)}
               />
             </DateSelect>
-            <Button onClick={getNextDay} fill="clear">
+            <IonButton onClick={getNextDay} fill="clear">
               <IonIcon
                 icon={chevronForwardOutline}
                 color="primary"
                 slot="icon-only"
               />
-            </Button>
+            </IonButton>
           </Buttons>
         </Header>
         <List>
@@ -123,7 +123,7 @@ export const DayMeals: React.FC = () => {
             {meals
               .sort((a, b) => a.order - b.order)
               .map((meal, i) => (
-                <DayMealCard key={i} meal={meal} />
+                <DayMealCard key={i} meal={meal} date={date} />
               ))}
           </IonReorderGroup>
         </List>
@@ -149,12 +149,6 @@ const Buttons = styled(IonButtons)`
   display: flex;
   justify-content: space-between;
   width: 100%;
-`;
-
-const Button = styled(IonButton)`
-  border-radius: 100%;
-  background-color: rgba(0,0,0,0.05);
-  color: var(--ion-color-primary);
 `;
 
 const List = styled(IonList)`

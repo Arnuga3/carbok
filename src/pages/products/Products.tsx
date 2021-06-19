@@ -21,6 +21,7 @@ import {
 import {
   addOutline,
   calculator,
+  copyOutline,
   createOutline,
   ellipsisVerticalOutline,
   eyeOutline,
@@ -32,9 +33,9 @@ import { ProductsSearch } from "../../components/common/ProductsSearch";
 import { ProductListItem } from "../../components/common/ProductListItem";
 import { useProducts } from "../../hooks/productsHook";
 import {
+  addProduct,
   deleteProduct,
   retrieveProducts,
-  setSearchString,
 } from "../../redux/actions/products/actions";
 import { CircleBadge } from "../../components/common/CircleBadge";
 import { categoryColours } from "../../resources/config";
@@ -68,7 +69,7 @@ const Products: React.FC = () => {
     openProductModal: boolean;
     openCalculatorModal: boolean;
     productSelected: Product | null;
-    displayAll: boolean;
+    productsToDisplay: "all" | "default" | "my";
     productsFiltered: Product[];
     openFilterAlert: boolean;
   }>({
@@ -76,7 +77,7 @@ const Products: React.FC = () => {
     openProductModal: false,
     openCalculatorModal: false,
     productSelected: null,
-    displayAll: true,
+    productsToDisplay: "all",
     productsFiltered: [],
     openFilterAlert: false,
   });
@@ -86,7 +87,7 @@ const Products: React.FC = () => {
     openProductModal,
     openCalculatorModal,
     productSelected,
-    displayAll,
+    productsToDisplay,
     productsFiltered,
   } = state;
 
@@ -94,9 +95,6 @@ const Products: React.FC = () => {
     if (searchString) {
       dispatch(retrieveProducts(searchString));
     }
-    return () => {
-      dispatch(setSearchString(null));
-    };
   }, [searchString]);
 
   useEffect(() => {
@@ -106,12 +104,27 @@ const Products: React.FC = () => {
     if (products) {
       setState({
         ...state,
-        productsFiltered: displayAll
+        productsFiltered: productsToDisplay
           ? products
           : products.filter((product) => !product.standard),
       });
     }
   }, [products]);
+
+  const handleCopy = (product: Product) => {
+    if (product) {
+      const { name, categories, units, carbsData, portionType } = product;
+      const productCopied = new Product(
+        name,
+        categories,
+        units,
+        carbsData,
+        portionType,
+        false
+      );
+      dispatch(addProduct(productCopied));
+    }
+  };
 
   const handleOnView = (product: Product) => {
     setState({
@@ -156,77 +169,121 @@ const Products: React.FC = () => {
     });
   };
 
-  const ItemRow = ({ index, style }: { index: number; style: any }) => (
-    <Animation style={style}>
-      {productsFiltered && (
-        <IonItemSliding
-          key={index}
-          id={PRODUCTSPAGE + index}
-          onClick={() => toggleActionsSlide(PRODUCTSPAGE + index)}
-        >
-          <Item lines="none">
-            <IonAvatar slot="start">
-              {productsFiltered[index].categories.length === 1 && (
-                <CircleBadge
-                  color={categoryColours[productsFiltered[index].categories[0]]}
-                  size={40}
+  const handleFilter = (filter: string) => {
+    let productsFiltered = products ?? [];
+
+    if (filter === "all") {
+      setState({
+        ...state,
+        openFilterAlert: false,
+        productsToDisplay: "all",
+        productsFiltered,
+      });
+    }
+    if (filter === "default") {
+      setState({
+        ...state,
+        openFilterAlert: false,
+        productsToDisplay: "default",
+        productsFiltered: productsFiltered.filter(
+          (product) => product.standard
+        ),
+      });
+    }
+    if (filter === "my") {
+      setState({
+        ...state,
+        openFilterAlert: false,
+        productsToDisplay: "my",
+        productsFiltered: productsFiltered.filter(
+          (product) => !product.standard
+        ),
+      });
+    }
+  };
+
+  const ItemRow = ({ index, style }: { index: number; style: any }) => {
+    const product = productsFiltered[index];
+    return (
+      <Animation style={style}>
+        {productsFiltered && (
+          <IonItemSliding
+            key={index}
+            id={PRODUCTSPAGE + index}
+            onClick={() => toggleActionsSlide(PRODUCTSPAGE + index)}
+          >
+            <Item lines="none">
+              <IonAvatar slot="start">
+                {product.categories.length === 1 && (
+                  <CircleBadge
+                    color={categoryColours[product.categories[0]]}
+                    size={40}
+                    standard={product.standard}
+                  >
+                    {t(getCatKey(product.categories[0])).slice(0, 3)}
+                  </CircleBadge>
+                )}
+                {product.categories.length > 1 && (
+                  <CircleBadgeMultiColor
+                    colors={getCategoriesColours(product.categories)}
+                    size={40}
+                  >
+                    {t(getCatKey("mix"))}
+                  </CircleBadgeMultiColor>
+                )}
+              </IonAvatar>
+              <ProductListItem product={product} />
+              <IonIcon
+                size="small"
+                color="medium"
+                style={{ marginLeft: 8 }}
+                icon={ellipsisVerticalOutline}
+                slot="end"
+              />
+            </Item>
+            <IonItemOptions>
+              {!product.standard && (
+                <SlidingAction
+                  color="danger"
+                  onClick={() => handleOnDelete(product)}
                 >
-                  {t(getCatKey(productsFiltered[index].categories[0])).slice(
-                    0,
-                    3
-                  )}
-                </CircleBadge>
+                  <IonIcon icon={trashOutline} slot="icon-only" />
+                </SlidingAction>
               )}
-              {productsFiltered[index].categories.length > 1 && (
-                <CircleBadgeMultiColor
-                  colors={getCategoriesColours(
-                    productsFiltered[index].categories
-                  )}
-                  size={40}
+              {!product.standard && (
+                <SlidingAction
+                  color="secondary"
+                  routerLink={`/products/edit-product/${product.id}`}
                 >
-                  {t(getCatKey("mix"))}
-                </CircleBadgeMultiColor>
+                  <IonIcon icon={createOutline} slot="icon-only" />
+                </SlidingAction>
               )}
-            </IonAvatar>
-            <ProductListItem product={productsFiltered[index]} />
-            <IonIcon
-              size="small"
-              color="medium"
-              style={{ marginLeft: 8 }}
-              icon={ellipsisVerticalOutline}
-              slot="end"
-            />
-          </Item>
-          <IonItemOptions>
-            <SlidingAction
-              color="tertiary"
-              onClick={() => handleOnView(productsFiltered[index])}
-            >
-              <IonIcon icon={eyeOutline} slot="icon-only" />
-            </SlidingAction>
-            <SlidingAction
-              color="primary"
-              onClick={() => handleOnCalculate(productsFiltered[index])}
-            >
-              <IonIcon icon={calculator} slot="icon-only" />
-            </SlidingAction>
-            <SlidingAction
-              color="secondary"
-              routerLink={`/products/edit-product/${productsFiltered[index].id}`}
-            >
-              <IonIcon icon={createOutline} slot="icon-only" />
-            </SlidingAction>
-            <SlidingAction
-              color="danger"
-              onClick={() => handleOnDelete(productsFiltered[index])}
-            >
-              <IonIcon icon={trashOutline} slot="icon-only" />
-            </SlidingAction>
-          </IonItemOptions>
-        </IonItemSliding>
-      )}
-    </Animation>
-  );
+              {product.standard && (
+                <SlidingAction
+                  color="secondary"
+                  onClick={() => handleCopy(product)}
+                >
+                  <IonIcon icon={copyOutline} slot="icon-only" />
+                </SlidingAction>
+              )}
+              <SlidingAction
+                color="primary"
+                onClick={() => handleOnView(product)}
+              >
+                <IonIcon icon={eyeOutline} slot="icon-only" />
+              </SlidingAction>
+              <SlidingAction
+                color="tertiary"
+                onClick={() => handleOnCalculate(product)}
+              >
+                <IonIcon icon={calculator} slot="icon-only" />
+              </SlidingAction>
+            </IonItemOptions>
+          </IonItemSliding>
+        )}
+      </Animation>
+    );
+  };
 
   const ItemsList = useMemo(() => {
     return (
@@ -293,20 +350,8 @@ const Products: React.FC = () => {
       <FilterAlert
         open={state.openFilterAlert}
         onClose={() => setState({ ...state, openFilterAlert: false })}
-        value={state.displayAll ? "all" : "my"}
-        onFilter={(filter: string) =>
-          setState({
-            ...state,
-            openFilterAlert: false,
-            displayAll: filter === "all",
-            productsFiltered:
-              filter === "all"
-                ? products ?? []
-                : products
-                ? products.filter((product) => !product.standard)
-                : [],
-          })
-        }
+        value={state.productsToDisplay}
+        onFilter={(filter: string) => handleFilter(filter)}
       />
     </IonPage>
   );
@@ -327,7 +372,7 @@ const Animation = styled.div`
 `;
 
 const ProductsList = styled(List)`
-  padding-bottom: 65px;
+  padding-bottom: 70px;
 `;
 
 const Item = styled(IonItem)`

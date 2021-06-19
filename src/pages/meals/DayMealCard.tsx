@@ -13,7 +13,6 @@ import {
   IonText,
 } from "@ionic/react";
 import {
-  arrowUpCircle,
   chatbubbleOutline,
   copyOutline,
   pencilOutline,
@@ -27,12 +26,14 @@ import { calcService } from "../../services/CalculationService";
 import { NoteAlert } from "./meal/alerts/NoteAlert";
 import { CopyAlert, CopyState } from "./meal/alerts/CopyAlert";
 import { CopyDatetime } from "./meal/alerts/CopyDateTime";
+import moment from "moment";
 
 interface Props {
   meal: Meal;
+  date: Date;
 }
 
-export const DayMealCard: React.FC<Props> = ({ meal }) => {
+export const DayMealCard: React.FC<Props> = ({ meal, date }) => {
   const { t } = useTranslation();
   const copyDatetime = useRef<HTMLIonDatetimeElement>(null);
 
@@ -59,7 +60,7 @@ export const DayMealCard: React.FC<Props> = ({ meal }) => {
               <CardHeader>
                 <CardHeaderTitle>
                   <IonText color="tortoise">
-                    <small>{`${t("products")}: ${meal.products.length}`}</small>
+                    <small>{`${moment(date).format("dddd, D MMM")}`}</small>
                   </IonText>
                   <IonText color="light">
                     <h1>{t(getMealKey(meal.type))}</h1>
@@ -201,7 +202,6 @@ const ItemContent = styled.div`
 const CardHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
 `;
 
 const CardHeaderTitle = styled.div`

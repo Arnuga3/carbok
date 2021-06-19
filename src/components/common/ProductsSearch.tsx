@@ -5,8 +5,7 @@ import { useTranslation } from "react-i18next";
 import { setSearchString } from "../../redux/actions/products/actions";
 import styled from "styled-components";
 import { useRef } from "react";
-
-let delayTimer: any;
+import _ from "lodash";
 
 export const ProductsSearch: React.FC = () => {
   const { t } = useTranslation();
@@ -21,18 +20,17 @@ export const ProductsSearch: React.FC = () => {
   });
 
   const handleSearch = (e: any) => {
-    clearTimeout(delayTimer);
-    delayTimer = setTimeout(() => {
-      dispatch(setSearchString(e.detail.value.toLowerCase()));
-    }, 500);
+    dispatch(setSearchString(e.detail.value.toLowerCase()));
   };
+
+  const searchThrottled = useRef(_.throttle(handleSearch, 1000));
 
   return (
     <Search
       mode="ios"
       ref={searchInput}
       clearIcon={closeCircleOutline}
-      onIonChange={handleSearch}
+      onIonChange={(e) => searchThrottled.current(e)}
       placeholder={t("page.products.search.placeholder")}
     />
   );

@@ -82,6 +82,7 @@
     "page.products.search.placeholder": "Поиск",
     "page.products.filter.header": "Фильтровать",
     "page.products.filter.products.all": "Все",
+    "page.products.filter.products.default": "Carbok Продукты",
     "page.products.filter.products.my": "Мои Продукты",
     "page.products.add.product.title": "Добавить Продукт",
     "page.products.edit.product.title": "Изменить Продукт",

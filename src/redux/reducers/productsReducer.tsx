@@ -1,6 +1,7 @@
 import { Reducer } from "redux";
 import { Product } from "../../classes/product/Product";
 import { ProductsActions } from "../actions/products/interfaces";
+import _ from "lodash";
 
 export interface ProductsState {
   products: Product[] | null;
@@ -23,7 +24,7 @@ const reducer: Reducer<ProductsState> = (
       const productsUpdated = [...(state.products ?? []), action.product];
       return {
         ...state,
-        products: productsUpdated,
+        products: _.sortBy(productsUpdated, ["name", "standard"]),
       };
 
     case ProductsActions.ADD_PRODUCTS:

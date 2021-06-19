@@ -25,6 +25,12 @@ export const FilterAlert: React.FC<Props> = ({ open, value, onClose, onFilter })
         },
         {
           type: "radio",
+          label: t("page.products.filter.products.default"),
+          value: "default",
+          checked: value === "default",
+        },
+        {
+          type: "radio",
           label: t("page.products.filter.products.my"),
           value: "my",
           checked: value === "my",
