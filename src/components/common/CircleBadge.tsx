@@ -19,7 +19,11 @@ export const CircleBadge: React.FC<Props> = ({
       <Avatar color={color} size={size}>
         {children}
       </Avatar>
-      {!standard && <Icon icon={heart} />}
+      {!standard && (
+        <IconWrapper>
+          <Icon icon={heart} color="primary" />
+        </IconWrapper>
+      )}
     </Badge>
   );
 };
@@ -42,8 +46,19 @@ const Avatar = styled.div`
   text-transform: uppercase;
 `;
 
-const Icon = styled(IonIcon)`
+const IconWrapper = styled.div`
+  background-color: var(--ion-color-light);
   position: absolute;
   bottom: 0;
   right: -8px;
+  border-radius: 100%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Icon = styled(IonIcon)`
+  padding-top: 2px;
 `;
