@@ -4,7 +4,7 @@ import { IAppSettings } from "../classes/appSettings/IAppSettings";
 const { Storage } = Plugins;
 const appSettingsStorageKey = "settings";
 
-export class AppSettingsStorageService {
+export class SettingsService {
   private key: string;
 
   constructor(key: string = appSettingsStorageKey) {
@@ -27,3 +27,5 @@ export class AppSettingsStorageService {
     await Storage.remove({ key: this.key });
   }
 }
+
+export const settingsService = new SettingsService();

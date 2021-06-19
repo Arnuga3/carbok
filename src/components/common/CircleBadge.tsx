@@ -1,5 +1,5 @@
 import { IonIcon } from "@ionic/react";
-import { person } from "ionicons/icons";
+import { heart } from "ionicons/icons";
 import styled from "styled-components";
 
 interface Props {
@@ -19,7 +19,7 @@ export const CircleBadge: React.FC<Props> = ({
       <Avatar color={color} size={size}>
         {children}
       </Avatar>
-      {!standard && <Icon icon={person} />}
+      {!standard && <Icon icon={heart} />}
     </Badge>
   );
 };

@@ -1,7 +1,7 @@
 import { i18n } from "i18next";
 import { Dispatch } from "redux";
 import { IAppSettings } from "../../classes/appSettings/IAppSettings";
-import { AppSettingsStorageService } from "../../services/AppSettingsStorageService";
+import { settingsService } from "../../services/AppSettingsStorageService";
 
 export enum AppSettingsActions {
   SET_APP_SETTINGS = "SET_APP_SETTINGS",
@@ -21,8 +21,7 @@ const setAppSettings = (settings: IAppSettings): SetAppSettings => ({
 export const initAppSettings = (i18n: i18n) => {
   return async (dispatch: Dispatch) => {
     try {
-      const appSettingsStorageSvc = new AppSettingsStorageService();
-      const settings = await appSettingsStorageSvc.get();
+      const settings = await settingsService.get();
       if (settings) {
         i18n.changeLanguage(settings.language);
         document.body.classList.toggle("dark", settings.themeMode === "dark");
@@ -37,8 +36,7 @@ export const initAppSettings = (i18n: i18n) => {
 export const changeAppSettings = (settings: IAppSettings) => {
   return async (dispatch: Dispatch) => {
     try {
-      const appSettingsStorageSvc = new AppSettingsStorageService();
-      await appSettingsStorageSvc.set(settings);
+      await settingsService.set(settings);
       dispatch(setAppSettings(settings));
     } catch (e) {
       console.log(e);

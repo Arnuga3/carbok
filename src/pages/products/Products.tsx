@@ -46,6 +46,9 @@ import { Product } from "../../classes/product/Product";
 import { FilterAlert } from "./FilterAlert";
 import { Header } from "../../components/styled/Header";
 import { ProductModal } from "../../components/common/ProductModal";
+import { useAppSettings } from "../../hooks/appSettingsHook";
+import { ProductsFilter } from "../../classes/appSettings/ProductsFilterType";
+import { changeAppSettings } from "../../redux/actions/appSettingsActions";
 
 const PRODUCTSPAGE = "products-page";
 
@@ -63,13 +66,13 @@ const Products: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { products, searchString } = useProducts();
+  const { settings } = useAppSettings();
 
   const [state, setState] = useState<{
     openDeleteAlert: boolean;
     openProductModal: boolean;
     openCalculatorModal: boolean;
     productSelected: Product | null;
-    productsToDisplay: "all" | "default" | "my";
     productsFiltered: Product[];
     openFilterAlert: boolean;
   }>({
@@ -77,7 +80,6 @@ const Products: React.FC = () => {
     openProductModal: false,
     openCalculatorModal: false,
     productSelected: null,
-    productsToDisplay: "all",
     productsFiltered: [],
     openFilterAlert: false,
   });
@@ -87,7 +89,6 @@ const Products: React.FC = () => {
     openProductModal,
     openCalculatorModal,
     productSelected,
-    productsToDisplay,
     productsFiltered,
   } = state;
 
@@ -104,9 +105,7 @@ const Products: React.FC = () => {
     if (products) {
       setState({
         ...state,
-        productsFiltered: productsToDisplay
-          ? products
-          : products.filter((product) => !product.standard),
+        productsFiltered: filterProducts(settings.productsFilter),
       });
     }
   }, [products]);
@@ -169,37 +168,32 @@ const Products: React.FC = () => {
     });
   };
 
-  const handleFilter = (filter: string) => {
-    let productsFiltered = products ?? [];
+  const filterProducts = (filter: ProductsFilter): Product[] => {
+    if (products) {
+      switch (filter) {
+        case "all":
+          return products ?? [];
+        case "default":
+          return products.filter((product) => product.standard);
+        case "my":
+          return products.filter((product) => !product.standard);
+      }
+    }
+    return [];
+  };
 
-    if (filter === "all") {
-      setState({
-        ...state,
-        openFilterAlert: false,
-        productsToDisplay: "all",
-        productsFiltered,
-      });
-    }
-    if (filter === "default") {
-      setState({
-        ...state,
-        openFilterAlert: false,
-        productsToDisplay: "default",
-        productsFiltered: productsFiltered.filter(
-          (product) => product.standard
-        ),
-      });
-    }
-    if (filter === "my") {
-      setState({
-        ...state,
-        openFilterAlert: false,
-        productsToDisplay: "my",
-        productsFiltered: productsFiltered.filter(
-          (product) => !product.standard
-        ),
-      });
-    }
+  const handleFilter = (filter: ProductsFilter) => {
+    setState({
+      ...state,
+      openFilterAlert: false,
+      productsFiltered: filterProducts(filter),
+    });
+    dispatch(
+      changeAppSettings({
+        ...settings,
+        productsFilter: filter,
+      })
+    );
   };
 
   const ItemRow = ({ index, style }: { index: number; style: any }) => {
@@ -350,8 +344,8 @@ const Products: React.FC = () => {
       <FilterAlert
         open={state.openFilterAlert}
         onClose={() => setState({ ...state, openFilterAlert: false })}
-        value={state.productsToDisplay}
-        onFilter={(filter: string) => handleFilter(filter)}
+        filter={settings.productsFilter}
+        onFilter={(filter: ProductsFilter) => handleFilter(filter)}
       />
     </IonPage>
   );

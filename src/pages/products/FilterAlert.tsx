@@ -1,15 +1,16 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { IonAlert } from "@ionic/react";
+import { ProductsFilter } from "../../classes/appSettings/ProductsFilterType";
 
 interface Props {
   open: boolean;
-  value: string;
+  filter: ProductsFilter;
   onClose: () => void;
-  onFilter: (filter: string) => void;
+  onFilter: (filter: ProductsFilter) => void;
 }
 
-export const FilterAlert: React.FC<Props> = ({ open, value, onClose, onFilter }) => {
+export const FilterAlert: React.FC<Props> = ({ open, filter: value, onClose, onFilter }) => {
   const { t } = useTranslation();
   return (
     <IonAlert
