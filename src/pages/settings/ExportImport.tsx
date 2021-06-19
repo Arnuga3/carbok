@@ -13,9 +13,12 @@ import {
 } from "@ionic/react";
 import { downloadOutline, pushOutline } from "ionicons/icons";
 import { dataService } from "../../services/DataService";
+import { useDispatch } from "react-redux";
+import { retrieveProducts } from "../../redux/actions/products/actions";
 
 export const ExportImport: React.FC = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const [present, dismiss] = useIonToast();
 
   const [openImportAlert, setOpenImportAlert] = useState(false);
@@ -56,11 +59,12 @@ export const ExportImport: React.FC = () => {
   const handleImport = () => {
     if (file) {
       const reader = new FileReader();
-      reader.addEventListener("load", ({ target }) => {
+      reader.addEventListener("load", async ({ target }) => {
         const result = target?.result;
         if (result && typeof result === "string") {
           try {
-            dataService.importData(result);
+            await dataService.importData(result)
+            dispatch(retrieveProducts());
             resetFile();
             present({
               message: t("page.settings.toast.import.success"),

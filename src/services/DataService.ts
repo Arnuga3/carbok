@@ -8,16 +8,18 @@ import {
 import { Meal } from "../classes/meal/Meal";
 import { Product } from "../classes/product/Product";
 import { dateService } from "./DateService";
+import default_products from "./../database/carbok-default-products.json";
+import { Dispatch } from "redux";
+
 const { Filesystem } = Plugins;
 
 class DataService {
   /* products */
-  public async retrieveProducts(
-    searchText: string | null
-  ): Promise<Product[]> {
-    const result = searchText && searchText.trim() !== ""
-      ? await this.searchProducts(searchText)
-      : await this.retrieveAllProducts();
+  public async retrieveProducts(searchText: string | null): Promise<Product[]> {
+    const result =
+      searchText && searchText.trim() !== ""
+        ? await this.searchProducts(searchText)
+        : await this.retrieveAllProducts();
     return result;
   }
 
@@ -52,10 +54,7 @@ class DataService {
   }
 
   public async retrieveMealsBetween(fromDate: Date, toDate: Date) {
-    return await db.meals
-      .where("date")
-      .between(fromDate, toDate)
-      .toArray();
+    return await db.meals.where("date").between(fromDate, toDate).toArray();
   }
 
   public async addMeal(meal: Meal): Promise<void> {
@@ -80,9 +79,18 @@ class DataService {
     try {
       const dbExport = await db.transaction("r", db.tables, () => {
         return Promise.all(
-          db.tables.map((table) =>
-            table.toArray().then((rows) => ({ table: table.name, rows: rows }))
-          )
+          db.tables.map((table) => {
+            if (table.name === "products") {
+              return table.toArray().then((rows) => ({
+                table: table.name,
+                rows: rows.filter((product: Product) => !product.standard),
+              }));
+            } else {
+              return table
+                .toArray()
+                .then((rows) => ({ table: table.name, rows }));
+            }
+          })
         );
       });
       const data: { fileName: string; json: string } = {
@@ -129,6 +137,13 @@ class DataService {
                 date: dateService.dateNoTime(new Date(r.date)),
               }))
             );
+          } else if (t.table === "products") {
+            return await db
+              .table(t.table)
+              .bulkAdd([
+                ...(default_products as unknown as Product[]),
+                ...t.rows,
+              ]);
           } else {
             return await db.table(t.table).bulkAdd(t.rows);
           }

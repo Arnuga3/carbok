@@ -5,8 +5,6 @@ import {
   IonButton,
   IonCard,
   IonCardContent,
-  IonFab,
-  IonFabButton,
   IonIcon,
   IonItem,
   IonReorder,
@@ -60,7 +58,7 @@ export const DayMealCard: React.FC<Props> = ({ meal, date }) => {
               <CardHeader>
                 <CardHeaderTitle>
                   <IonText color="tortoise">
-                    <small>{`${moment(date).format("dddd, D MMM")}`}</small>
+                    <small>{`${moment(date).format("dddd, D MMM YYYY")}`}</small>
                   </IonText>
                   <IonText color="light">
                     <h1>{t(getMealKey(meal.type))}</h1>
