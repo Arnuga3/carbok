@@ -43,19 +43,19 @@ const Settings: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <Card color="tertiary">
+        <Card>
           <IonCardHeader>
             <IonCardSubtitle>{t("page.settings.card.title")}</IonCardSubtitle>
           </IonCardHeader>
           <IonCardContent>
-            <IonItem lines="none" color="tertiary">
+            <IonItem lines="none">
               <IonLabel>{t("page.settings.card.dark.mode")}</IonLabel>
               <IonToggle
                 checked={settings.themeMode === "dark"}
                 onIonChange={(e) => handleThemeModeChange(e.detail.checked)}
               />
             </IonItem>
-            <IonItem lines="none" color="tertiary">
+            <IonItem lines="none">
               <IonLabel>{t("page.settings.card.language")}</IonLabel>
               <IonSelect
                 value={settings.language}
