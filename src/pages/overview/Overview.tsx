@@ -94,7 +94,7 @@ const Overview: React.FC = () => {
             </IonCardTitle>
           </CardHeader>
           <CalculatorCardContent>
-            <CalculateButton onClick={() => setOpenCalculatorModal(true)}>
+            <CalculateButton onClick={() => setOpenCalculatorModal(true)} color="secondary">
               {t("button.calculate")}
             </CalculateButton>
           </CalculatorCardContent>
