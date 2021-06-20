@@ -46,5 +46,5 @@ export const DayMealCardProduct: React.FC<Props> = ({
 const ProductItem = styled.p`
   font-style: italic;
   padding-left: 8px;
-  color: var(--ion-color-light);
+  color: var(--ion-color-light-shade);
 `;
