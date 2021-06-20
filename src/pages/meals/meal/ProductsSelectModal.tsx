@@ -28,6 +28,7 @@ import { MealProduct } from "../../../classes/meal/MealProduct";
 import { Meal } from "../../../classes/meal/Meal";
 import { calcService } from "../../../services/CalculationService";
 import { Header } from "../../../components/styled/Header";
+
 interface Props {
   meal: Meal;
   open: boolean;
@@ -49,6 +50,10 @@ export const ProductsSelectModal: React.FC<Props> = ({
   const [selectedProducts, setSelectedProducts] = useState(
     defaultSelectedProducts
   );
+
+  document.addEventListener("ionBackButton", () => {
+    onClose();
+  });
 
   useEffect(() => {
     if (searchString) {

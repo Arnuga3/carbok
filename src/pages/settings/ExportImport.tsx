@@ -19,7 +19,7 @@ import { retrieveProducts } from "../../redux/actions/products/actions";
 export const ExportImport: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const [present, dismiss] = useIonToast();
+  const [present] = useIonToast();
 
   const [openImportAlert, setOpenImportAlert] = useState(false);
   const [file, setFile] = useState<File | null>(null);

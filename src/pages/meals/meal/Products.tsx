@@ -150,13 +150,11 @@ export const Products: React.FC<Props> = ({ meal }) => {
           <IonIcon icon={addOutline} />
         </IonFabButton>
       </IonFab>
-      {openProductsModal && (
-        <ProductsSelectModal
-          meal={meal}
-          open={openProductsModal}
-          onClose={() => setOpenProductsModal(false)}
-        />
-      )}
+      <ProductsSelectModal
+        meal={meal}
+        open={openProductsModal}
+        onClose={() => setOpenProductsModal(false)}
+      />
       <ChangePortionWeightAlert
         meal={meal}
         product={selectedProduct}
@@ -184,7 +182,7 @@ const List = styled(IonList)`
   padding-bottom: 65px;
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
-  box-shadow: 0 0 16px 0 rgba(0,0,0,0.5);
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
 `;
 
 const SlidingAction = styled(IonItemOption)`

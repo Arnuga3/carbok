@@ -10,7 +10,6 @@ import {
   IonCardSubtitle,
   IonCardTitle,
   IonContent,
-  IonIcon,
   IonPage,
 } from "@ionic/react";
 import { IPieCategory } from "../../classes/productCategory/IPieCategory";
@@ -18,7 +17,6 @@ import { MealCarbsLinearChart } from "../../components/charts/MealCarbsLinearCha
 import { CategoriesPieChart } from "../../components/charts/CategoriesPieChart";
 import { DateRangeSwitch } from "./DateRangeSwitch";
 import { Meal } from "../../classes/meal/Meal";
-import { calculator } from "ionicons/icons";
 import { CalculatorModal } from "../../components/common/CalculatorModal";
 
 export type Range = "7_days" | "30_days" | "90_days";
@@ -87,28 +85,24 @@ const Overview: React.FC = () => {
                 <CategoriesPieChart categories={cardData.categories} />
               </IonCardContent>
             </Card>
-            <Card color="green">
-              <CardHeader>
-                <IonCardTitle>
-                  {t("page.overview.calculator.card.title")}
-                </IonCardTitle>
-              </CardHeader>
-              <CalculatorCardContent>
-                <IonButton
-                  fill="outline"
-                  color="secondary"
-                  onClick={() => setOpenCalculatorModal(true)}
-                >
-                  {t("button.calculate")}
-                </IonButton>
-              </CalculatorCardContent>
-            </Card>
-            <CalculatorModal
-              open={openCalculatorModal}
-              onClose={() => setOpenCalculatorModal(false)}
-            />
           </>
         )}
+        <Card color="green">
+          <CardHeader>
+            <IonCardTitle>
+              {t("page.overview.calculator.card.title")}
+            </IonCardTitle>
+          </CardHeader>
+          <CalculatorCardContent>
+            <CalculateButton onClick={() => setOpenCalculatorModal(true)}>
+              {t("button.calculate")}
+            </CalculateButton>
+          </CalculatorCardContent>
+        </Card>
+        <CalculatorModal
+          open={openCalculatorModal}
+          onClose={() => setOpenCalculatorModal(false)}
+        />
       </IonContent>
     </IonPage>
   );
@@ -129,6 +123,10 @@ const CardHeader = styled(IonCardHeader)`
 
 const CalculatorCardContent = styled(IonCardContent)`
   text-align: center;
+`;
+
+const CalculateButton = styled(IonButton)`
+  --border-radius: 32px;
 `;
 
 const CardSubtitle = styled(IonCardSubtitle)`
