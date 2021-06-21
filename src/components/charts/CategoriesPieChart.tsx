@@ -52,4 +52,5 @@ const Category = styled.div`
   align-items: center;
   margin: 0;
   padding: 0px 8px;
+  color: var(--ion-color-light);
 `;

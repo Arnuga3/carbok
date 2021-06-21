@@ -66,7 +66,7 @@
     "page.overview.carbs.range.card.title": "{{days}} days",
     "page.overview.carbs.range.card.subtitle": "of which {{sugarPercent}}% Sugars",
     "page.overview.foods.range.card.title": "Food Groups",
-    "page.overview.calculator.card.title": "Quick carbohydrates calculator",
+    "page.overview.calculator.card.title": "Carbohydrates Calculator",
 
     "page.meals.button.add.meal": "Add Meal",
     "page.meals.delete.meal.alert.title": "Delete meal?",
@@ -80,9 +80,8 @@
 
     "page.products.title": "Products",
     "page.products.search.placeholder": "Search",
-    "page.products.filter.header": "Filter",
     "page.products.filter.products.all": "All",
-    "page.products.filter.products.default": "Carbok Products",
+    "page.products.filter.products.default": "App Products",
     "page.products.filter.products.my": "My Products",
     "page.products.add.product.title": "Add Product",
     "page.products.edit.product.title": "Edit Product",

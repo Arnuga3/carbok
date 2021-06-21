@@ -48,18 +48,18 @@ const Overview: React.FC = () => {
 
   return (
     <IonPage>
+      <DateRangeSwitch
+        data={cardData}
+        onDateRangeChange={handleDateRangeChange}
+      />
       <IonContent>
-        <DateRangeSwitch
-          data={cardData}
-          onDateRangeChange={handleDateRangeChange}
-        />
         {cardData.meals.length > 0 && (
           <>
-            <Card color="violet">
+            <CarbsCard>
               <CardHeader>
                 <IonCardTitle>{t("carbohydrates")}</IonCardTitle>
                 {cardData.from && cardData.to && (
-                  <CardSubtitle>{`${moment(cardData.from).format(
+                  <CardSubtitle color="light">{`${moment(cardData.from).format(
                     "D MMM"
                   )} - ${moment(cardData.to).format("D MMM")}`}</CardSubtitle>
                 )}
@@ -67,16 +67,16 @@ const Overview: React.FC = () => {
               <IonCardContent>
                 <MealCarbsLinearChart meals={cardData.meals} />
               </IonCardContent>
-            </Card>
-            <Card color="blue">
+            </CarbsCard>
+            <ProductsCard>
               <CardHeader>
                 <IonCardTitle>
                   {t("page.overview.foods.range.card.title")}
                 </IonCardTitle>
                 {cardData.from && cardData.to && (
-                  <IonCardSubtitle>{`${moment(cardData.from).format(
-                    "D MMM"
-                  )} - ${moment(cardData.to).format(
+                  <IonCardSubtitle color="light">{`${moment(
+                    cardData.from
+                  ).format("D MMM")} - ${moment(cardData.to).format(
                     "D MMM"
                   )}`}</IonCardSubtitle>
                 )}
@@ -84,17 +84,20 @@ const Overview: React.FC = () => {
               <IonCardContent>
                 <CategoriesPieChart categories={cardData.categories} />
               </IonCardContent>
-            </Card>
+            </ProductsCard>
           </>
         )}
-        <Card color="green">
+        <Card>
           <CardHeader>
             <IonCardTitle>
               {t("page.overview.calculator.card.title")}
             </IonCardTitle>
           </CardHeader>
           <CalculatorCardContent>
-            <CalculateButton onClick={() => setOpenCalculatorModal(true)} color="secondary">
+            <CalculateButton
+              onClick={() => setOpenCalculatorModal(true)}
+              color="light"
+            >
               {t("button.calculate")}
             </CalculateButton>
           </CalculatorCardContent>
@@ -110,10 +113,31 @@ const Overview: React.FC = () => {
 
 export default React.memo(Overview);
 
+const CarbsCard = styled(IonCard)`
+  border-radius: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+  background-color: #00DBDE;
+  background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+  
+
+`;
+
+const ProductsCard = styled(IonCard)`
+  border-radius: 20px;
+  margin-top: 12px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+  background-color: #4158D0;
+background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+
+
+`;
+
 const Card = styled(IonCard)`
   border-radius: 20px;
-  margin-top: 16px;
-  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.6);
+  margin-top: 12px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+  background-image: linear-gradient( 109.6deg,  rgba(62,161,219,1) 11.2%, rgba(93,52,236,1) 100.2% );
 `;
 
 const CardHeader = styled(IonCardHeader)`

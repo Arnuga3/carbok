@@ -97,13 +97,13 @@ export const ExportImport: React.FC = () => {
     <>
       <Card>
         <IonCardHeader>
-          <IonCardSubtitle>
+          <IonCardSubtitle color="light">
             {t("page.settings.card.title.data")}
           </IonCardSubtitle>
         </IonCardHeader>
         <IonCardContent>
           <Button
-            color="primary"
+            color="light"
             expand="block"
             shape="round"
             onClick={handleExport}
@@ -112,7 +112,7 @@ export const ExportImport: React.FC = () => {
             <IonIcon slot="end" icon={downloadOutline} />
           </Button>
           <Button
-            color="primary"
+            color="light"
             expand="block"
             shape="round"
             onClick={handleFileSelect}
@@ -153,7 +153,8 @@ export const ExportImport: React.FC = () => {
 const Card = styled(IonCard)`
   border-radius: 20px;
   margin-top: 16px;
-  box-shadow: 0 4px 12px 0 rgba(0,0,0,0.6);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(6,123,239,1) 14.2%, rgba(219,115,249,1) 89.5% );
 `;
 
 const Button = styled(IonButton)`

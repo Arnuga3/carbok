@@ -37,6 +37,7 @@ import { useTranslation } from "react-i18next";
 import { useAppSettings } from "../../hooks/appSettingsHook";
 import { dateService } from "../../services/DateService";
 import { Header } from "../../components/styled/Header";
+import { Toolbar } from "../../components/styled/Toolbar";
 
 export const DayMeals: React.FC = () => {
   const { t } = useTranslation();
@@ -85,39 +86,35 @@ export const DayMeals: React.FC = () => {
 
   return (
     <IonPage>
+      <Toolbar>
+        <Buttons>
+          <IonButton onClick={getPreviousDay} fill="clear">
+            <IonIcon icon={chevronBackOutline} color="light" slot="icon-only" />
+          </IonButton>
+          <DateSelect lines="none" mode="ios">
+            <IonIcon
+              icon={calendarOutline}
+              color="primary"
+              style={{ paddingRight: 12 }}
+            />
+            <DateTime
+              doneText={t("button.done")}
+              cancelText={t("button.cancel")}
+              monthShortNames={moment.monthsShort()}
+              value={moment(date).toISOString()}
+              onIonChange={(e: any) => getCalendarDay(e.detail.value)}
+            />
+          </DateSelect>
+          <IonButton onClick={getNextDay} fill="clear">
+            <IonIcon
+              icon={chevronForwardOutline}
+              color="light"
+              slot="icon-only"
+            />
+          </IonButton>
+        </Buttons>
+      </Toolbar>
       <IonContent>
-        <Header>
-          <Buttons>
-            <IonButton onClick={getPreviousDay} fill="clear">
-              <IonIcon
-                icon={chevronBackOutline}
-                color="primary"
-                slot="icon-only"
-              />
-            </IonButton>
-            <DateSelect lines="none" color="light" mode="ios">
-              <IonIcon
-                icon={calendarOutline}
-                color="primary"
-                style={{ paddingRight: 12 }}
-              />
-              <IonDatetime
-                doneText={t("button.done")}
-                cancelText={t("button.cancel")}
-                monthShortNames={moment.monthsShort()}
-                value={moment(date).toISOString()}
-                onIonChange={(e: any) => getCalendarDay(e.detail.value)}
-              />
-            </DateSelect>
-            <IonButton onClick={getNextDay} fill="clear">
-              <IonIcon
-                icon={chevronForwardOutline}
-                color="primary"
-                slot="icon-only"
-              />
-            </IonButton>
-          </Buttons>
-        </Header>
         <List>
           <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
             {meals
@@ -158,5 +155,11 @@ const List = styled(IonList)`
 `;
 
 const DateSelect = styled(IonItem)`
-  --border-radius: 32px;
+  border-radius: 32px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+`;
+
+const DateTime = styled(IonDatetime)`
+  color: var(--ion-color-medium);
 `;

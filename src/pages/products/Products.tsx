@@ -7,7 +7,6 @@ import styled from "styled-components";
 import {
   IonContent,
   IonPage,
-  IonButton,
   IonItem,
   IonIcon,
   IonItemOptions,
@@ -25,7 +24,6 @@ import {
   createOutline,
   ellipsisVerticalOutline,
   eyeOutline,
-  filter,
   trashOutline,
 } from "ionicons/icons";
 import { CalculatorModal } from "../../components/common/CalculatorModal";
@@ -41,14 +39,19 @@ import { CircleBadge } from "../../components/common/CircleBadge";
 import { categoryColours } from "../../resources/config";
 import { getCatKey } from "../../resources/productCategories";
 import { CircleBadgeMultiColor } from "../../components/common/CircleBadgeMultiColor";
-import { filterProducts, getCategoriesColours, toggleActionsSlide } from "./util";
+import {
+  filterProducts,
+  getCategoriesColours,
+  toggleActionsSlide,
+} from "./util";
 import { Product } from "../../classes/product/Product";
-import { FilterAlert } from "./FilterAlert";
-import { Header } from "../../components/styled/Header";
 import { ProductModal } from "../../components/common/ProductModal";
 import { useAppSettings } from "../../hooks/appSettingsHook";
 import { ProductsFilter } from "../../classes/appSettings/ProductsFilterType";
 import { changeAppSettings } from "../../redux/actions/appSettingsActions";
+import { Chip } from "../../components/styled/Chip";
+import { Toolbar } from "../../components/styled/Toolbar";
+import { ChipLabel } from "../../components/styled/ChipLabel";
 
 const PRODUCTSPAGE = "products-page";
 
@@ -275,17 +278,27 @@ const Products: React.FC = () => {
 
   return (
     <IonPage>
+      <Toolbar>
+        <FilterBadges>
+          <Chip onClick={() => handleFilter("all")}>
+            <ChipLabel active={settings.productsFilter === "all"}>
+              {t("page.products.filter.products.all")}
+            </ChipLabel>
+          </Chip>
+          <Chip onClick={() => handleFilter("default")}>
+            <ChipLabel active={settings.productsFilter === "default"}>
+              {t("page.products.filter.products.default")}
+            </ChipLabel>
+          </Chip>
+          <Chip onClick={() => handleFilter("my")}>
+            <ChipLabel active={settings.productsFilter === "my"}>
+              {t("page.products.filter.products.my")}
+            </ChipLabel>
+          </Chip>
+        </FilterBadges>
+        <ProductsSearch />
+      </Toolbar>
       <IonContent>
-        <Header>
-          <ProductsSearch />
-          <IonButton
-            color="primary"
-            fill="clear"
-            onClick={() => setState({ ...state, openFilterAlert: true })}
-          >
-            <IonIcon slot="icon-only" icon={filter} />
-          </IonButton>
-        </Header>
         {products && ItemsList}
         <IonFab vertical="bottom" horizontal="center" slot="fixed">
           <IonFabButton routerLink="/products/add-product" color="primary">
@@ -317,17 +330,16 @@ const Products: React.FC = () => {
         open={openCalculatorModal}
         onClose={handleOnClose}
       />
-      <FilterAlert
-        open={state.openFilterAlert}
-        onClose={() => setState({ ...state, openFilterAlert: false })}
-        filter={settings.productsFilter}
-        onFilter={(filter: ProductsFilter) => handleFilter(filter)}
-      />
     </IonPage>
   );
 };
 
 export default React.memo(Products);
+
+const FilterBadges = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
 
 const ProductsList = styled(List)`
   padding-bottom: 70px;

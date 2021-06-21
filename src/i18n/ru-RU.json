@@ -66,7 +66,7 @@
     "page.overview.carbs.range.card.title": "{{days}} дней",
     "page.overview.carbs.range.card.subtitle": "из которых {{sugarPercent}}% Сахара",
     "page.overview.foods.range.card.title": "Группы пищевых продуктов",
-    "page.overview.calculator.card.title": "Быстрый калькулятор углеводов",
+    "page.overview.calculator.card.title": "Калькулятор Углеводов",
 
     "page.meals.button.add.meal": "Добавить Еду",
     "page.meals.delete.meal.alert.title": "Удалить Еду?",
@@ -80,9 +80,8 @@
 
     "page.products.title": "Продукты",
     "page.products.search.placeholder": "Поиск",
-    "page.products.filter.header": "Фильтровать",
     "page.products.filter.products.all": "Все",
-    "page.products.filter.products.default": "Carbok Продукты",
+    "page.products.filter.products.default": "Продукты Приложения",
     "page.products.filter.products.my": "Мои Продукты",
     "page.products.add.product.title": "Добавить Продукт",
     "page.products.edit.product.title": "Изменить Продукт",

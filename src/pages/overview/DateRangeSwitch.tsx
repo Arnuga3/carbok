@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { IonChip, IonLabel } from "@ionic/react";
+import { IonLabel } from "@ionic/react";
 import { CardData } from "./Overview";
 import { Range } from "./Overview";
 import { dataService } from "../../services/DataService";
@@ -9,7 +9,9 @@ import { Meal } from "../../classes/meal/Meal";
 import { MealProduct } from "../../classes/meal/MealProduct";
 import { chartsDataService } from "../../services/ChartsDataService";
 import { dateService } from "../../services/DateService";
-import { Header } from "../../components/styled/Header";
+import { Chip } from "../../components/styled/Chip";
+import { Toolbar } from "../../components/styled/Toolbar";
+import { ChipLabel } from "../../components/styled/ChipLabel";
 
 interface Props {
   data: CardData;
@@ -81,56 +83,37 @@ export const DateRangeSwitch: React.FC<Props> = ({
   };
 
   return (
-    <Header>
+    <Toolbar>
       <RangeSwitch>
-        <Chip
-          onClick={() => setState("90_days")}
-          color={state === "90_days" ? "primary" : "medium"}
-        >
-          <Label>
+        <Chip onClick={() => setState("90_days")}>
+          <ChipLabel active={state === "90_days"}>
             {t("page.overview.carbs.range.card.title", {
               days: 90,
             })}
-          </Label>
+          </ChipLabel>
         </Chip>
-        <Chip
-          onClick={() => setState("30_days")}
-          color={state === "30_days" ? "primary" : "medium"}
-        >
-          <Label>
+        <Chip onClick={() => setState("30_days")}>
+          <ChipLabel active={state === "30_days"}>
             {t("page.overview.carbs.range.card.title", {
               days: 30,
             })}
-          </Label>
+          </ChipLabel>
         </Chip>
-        <Chip
-          onClick={() => setState("7_days")}
-          color={state === "7_days" ? "primary" : "medium"}
-        >
-          <Label>
+        <Chip onClick={() => setState("7_days")}>
+          <ChipLabel active={state === "7_days"}>
             {t("page.overview.carbs.range.card.title", {
               days: 7,
             })}
-          </Label>
+          </ChipLabel>
         </Chip>
       </RangeSwitch>
-    </Header>
+    </Toolbar>
   );
 };
-
-const Chip = styled(IonChip)`
-  height: 40px;
-  border-radius: 32px;
-`;
-
-const Label = styled(IonLabel)`
-  font-weight: bold;
-`;
 
 const RangeSwitch = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 12px;
 `;
