@@ -7,53 +7,24 @@ import styled from "styled-components";
 import {
   IonContent,
   IonPage,
-  IonItem,
   IonIcon,
-  IonItemOptions,
-  IonItemSliding,
-  IonItemOption,
   IonAlert,
-  IonAvatar,
   IonFab,
   IonFabButton,
 } from "@ionic/react";
-import {
-  addOutline,
-  calculator,
-  copyOutline,
-  createOutline,
-  ellipsisVerticalOutline,
-  eyeOutline,
-  trashOutline,
-} from "ionicons/icons";
+import { addOutline } from "ionicons/icons";
 import { CalculatorModal } from "../../components/common/CalculatorModal";
-import { ProductsSearch } from "../../components/common/ProductsSearch";
-import { ProductListItem } from "../../components/common/ProductListItem";
 import { useProducts } from "../../hooks/productsHook";
 import {
-  addProduct,
   deleteProduct,
   retrieveProducts,
 } from "../../redux/actions/products/actions";
-import { CircleBadge } from "../../components/common/CircleBadge";
-import { categoryColours } from "../../resources/config";
-import { getCatKey } from "../../resources/productCategories";
-import { CircleBadgeMultiColor } from "../../components/common/CircleBadgeMultiColor";
-import {
-  filterProducts,
-  getCategoriesColours,
-  toggleActionsSlide,
-} from "./util";
+import { filterProducts } from "./util";
 import { Product } from "../../classes/product/Product";
 import { ProductModal } from "../../components/common/ProductModal";
 import { useAppSettings } from "../../hooks/appSettingsHook";
-import { ProductsFilter } from "../../classes/appSettings/ProductsFilterType";
-import { changeAppSettings } from "../../redux/actions/appSettingsActions";
-import { Chip } from "../../components/styled/Chip";
-import { Toolbar } from "../../components/styled/Toolbar";
-import { ChipLabel } from "../../components/styled/ChipLabel";
-
-const PRODUCTSPAGE = "products-page";
+import { ListItem } from "./ListItem";
+import { ProductsToolbar } from "./ProductsToolbar";
 
 const Products: React.FC = () => {
   const { t } = useTranslation();
@@ -68,6 +39,7 @@ const Products: React.FC = () => {
     productSelected: Product | null;
     productsFiltered: Product[];
     openFilterAlert: boolean;
+    onTop: boolean;
   }>({
     openDeleteAlert: false,
     openProductModal: false,
@@ -75,6 +47,7 @@ const Products: React.FC = () => {
     productSelected: null,
     productsFiltered: [],
     openFilterAlert: false,
+    onTop: true,
   });
 
   const {
@@ -83,6 +56,7 @@ const Products: React.FC = () => {
     openCalculatorModal,
     productSelected,
     productsFiltered,
+    onTop,
   } = state;
 
   useEffect(() => {
@@ -103,42 +77,12 @@ const Products: React.FC = () => {
     }
   }, [products]);
 
-  const handleCopy = (product: Product) => {
-    if (product) {
-      const { name, categories, units, carbsData, portionType } = product;
-      const productCopied = new Product(
-        name,
-        categories,
-        units,
-        carbsData,
-        portionType,
-        false
-      );
-      dispatch(addProduct(productCopied));
-    }
-  };
-
-  const handleOnView = (product: Product) => {
+  const handleOnClose = () => {
     setState({
       ...state,
-      productSelected: product,
-      openProductModal: true,
-    });
-  };
-
-  const handleOnCalculate = (product: Product) => {
-    setState({
-      ...state,
-      productSelected: product,
-      openCalculatorModal: true,
-    });
-  };
-
-  const handleOnDelete = (product: Product) => {
-    setState({
-      ...state,
-      productSelected: product,
-      openDeleteAlert: true,
+      productSelected: null,
+      openCalculatorModal: false,
+      openProductModal: false,
     });
   };
 
@@ -152,107 +96,45 @@ const Products: React.FC = () => {
     }
   };
 
-  const handleOnClose = () => {
-    setState({
-      ...state,
-      productSelected: null,
-      openCalculatorModal: false,
-      openProductModal: false,
-    });
+  const handleScroll = (e: any) => {
+    if (e.scrollOffset === 0) {
+      setState({ ...state, onTop: true });
+    }
+    if (e.scrollOffset !== 0) {
+      setState({ ...state, onTop: false });
+    }
   };
 
-  const handleFilter = (filter: ProductsFilter) => {
-    setState({
-      ...state,
-      openFilterAlert: false,
-      productsFiltered: filterProducts(products ?? [], filter),
-    });
-    dispatch(
-      changeAppSettings({
-        ...settings,
-        productsFilter: filter,
-      })
-    );
-  };
-
-  const ItemRow = ({ index, style }: { index: number; style: any }) => {
+  const ProductListItem = ({ index, style }: { index: number; style: any }) => {
     const product = productsFiltered[index];
     return (
       <div style={style}>
         {productsFiltered && (
-          <IonItemSliding
-            key={index}
-            id={PRODUCTSPAGE + index}
-            onClick={() => toggleActionsSlide(PRODUCTSPAGE + index)}
-          >
-            <Item lines="none">
-              <IonAvatar slot="start">
-                {product.categories.length === 1 && (
-                  <CircleBadge
-                    color={categoryColours[product.categories[0]]}
-                    size={40}
-                    standard={product.standard}
-                  >
-                    {t(getCatKey(product.categories[0])).slice(0, 3)}
-                  </CircleBadge>
-                )}
-                {product.categories.length > 1 && (
-                  <CircleBadgeMultiColor
-                    colors={getCategoriesColours(product.categories)}
-                    size={40}
-                  >
-                    {t(getCatKey("mix"))}
-                  </CircleBadgeMultiColor>
-                )}
-              </IonAvatar>
-              <ProductListItem product={product} />
-              <IonIcon
-                size="small"
-                color="medium"
-                style={{ marginLeft: 8 }}
-                icon={ellipsisVerticalOutline}
-                slot="end"
-              />
-            </Item>
-            <IonItemOptions>
-              {!product.standard && (
-                <SlidingAction
-                  color="danger"
-                  onClick={() => handleOnDelete(product)}
-                >
-                  <IonIcon icon={trashOutline} slot="icon-only" />
-                </SlidingAction>
-              )}
-              {!product.standard && (
-                <SlidingAction
-                  color="secondary"
-                  routerLink={`/products/edit-product/${product.id}`}
-                >
-                  <IonIcon icon={createOutline} slot="icon-only" />
-                </SlidingAction>
-              )}
-              {product.standard && (
-                <SlidingAction
-                  color="secondary"
-                  onClick={() => handleCopy(product)}
-                >
-                  <IonIcon icon={copyOutline} slot="icon-only" />
-                </SlidingAction>
-              )}
-              <SlidingAction
-                color="primary"
-                onClick={() => handleOnView(product)}
-              >
-                <IonIcon icon={eyeOutline} slot="icon-only" />
-              </SlidingAction>
-              <SlidingAction
-                color="tertiary"
-                onClick={() => handleOnCalculate(product)}
-              >
-                <IonIcon icon={calculator} slot="icon-only" />
-              </SlidingAction>
-            </IonItemOptions>
-          </IonItemSliding>
+          <ListItem
+            index={index}
+            product={product}
+            onView={(product) =>
+              setState({
+                ...state,
+                productSelected: product,
+                openProductModal: true,
+              })
+            }
+            onCalculate={(product) =>
+              setState({
+                ...state,
+                productSelected: product,
+                openCalculatorModal: true,
+              })
+            }
+            onDelete={(product) =>
+              setState({
+                ...state,
+                productSelected: product,
+                openDeleteAlert: true,
+              })
+            }
+          />
         )}
       </div>
     );
@@ -263,13 +145,14 @@ const Products: React.FC = () => {
       <AutoSizer>
         {({ height, width }) => (
           <ProductsList
+            onScroll={handleScroll}
             height={height}
             width={width}
             itemCount={productsFiltered ? productsFiltered.length : 0}
             overscanCount={5}
             itemSize={() => 75}
           >
-            {ItemRow}
+            {ProductListItem}
           </ProductsList>
         )}
       </AutoSizer>
@@ -278,26 +161,16 @@ const Products: React.FC = () => {
 
   return (
     <IonPage>
-      <Toolbar>
-        <FilterBadges>
-          <Chip onClick={() => handleFilter("all")}>
-            <ChipLabel active={settings.productsFilter === "all"}>
-              {t("page.products.filter.products.all")}
-            </ChipLabel>
-          </Chip>
-          <Chip onClick={() => handleFilter("default")}>
-            <ChipLabel active={settings.productsFilter === "default"}>
-              {t("page.products.filter.products.default")}
-            </ChipLabel>
-          </Chip>
-          <Chip onClick={() => handleFilter("my")}>
-            <ChipLabel active={settings.productsFilter === "my"}>
-              {t("page.products.filter.products.my")}
-            </ChipLabel>
-          </Chip>
-        </FilterBadges>
-        <ProductsSearch />
-      </Toolbar>
+      <ProductsToolbar
+        pageTop={onTop}
+        onFilert={(productsFiltered) =>
+          setState({
+            ...state,
+            openFilterAlert: false,
+            productsFiltered,
+          })
+        }
+      />
       <IonContent>
         {products && ItemsList}
         <IonFab vertical="bottom" horizontal="center" slot="fixed">
@@ -336,19 +209,6 @@ const Products: React.FC = () => {
 
 export default React.memo(Products);
 
-const FilterBadges = styled.div`
-  display: flex;
-  justify-content: space-around;
-`;
-
 const ProductsList = styled(List)`
   padding-bottom: 70px;
-`;
-
-const Item = styled(IonItem)`
-  --min-height: 75px;
-`;
-
-const SlidingAction = styled(IonItemOption)`
-  width: 75px;
 `;

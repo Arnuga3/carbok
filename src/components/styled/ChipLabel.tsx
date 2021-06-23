@@ -29,7 +29,7 @@ const ActiveLight = styled.div`
   min-height: 8px;
   margin-right: 6px;
   border-radius: 100%;
-  background-color: var(--ion-color-light);
+  background-color: var(--ion-color-primary);
 `;
 
 const InactiveLight = styled.div`
@@ -37,5 +37,5 @@ const InactiveLight = styled.div`
   min-height: 8px;
   margin-right: 6px;
   border-radius: 100%;
-  background-color: var(--ion-color-primary);
+  background-color: var(--ion-color-light);
 `;

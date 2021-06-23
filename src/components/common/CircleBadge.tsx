@@ -1,5 +1,5 @@
 import { IonIcon } from "@ionic/react";
-import { heart } from "ionicons/icons";
+import { heartCircle } from "ionicons/icons";
 import styled from "styled-components";
 
 interface Props {
@@ -21,7 +21,7 @@ export const CircleBadge: React.FC<Props> = ({
       </Avatar>
       {!standard && (
         <IconWrapper>
-          <Icon icon={heart} color="primary" />
+          <IonIcon icon={heartCircle} color="danger" />
         </IconWrapper>
       )}
     </Badge>
@@ -52,13 +52,7 @@ const IconWrapper = styled.div`
   bottom: 0;
   right: -8px;
   border-radius: 100%;
-  width: 18px;
-  height: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const Icon = styled(IonIcon)`
-  padding-top: 2px;
 `;
