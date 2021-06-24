@@ -7,7 +7,6 @@ import AutoSizer from "react-virtualized-auto-sizer";
 import {
   IonItem,
   IonIcon,
-  IonHeader,
   IonToolbar,
   IonContent,
   IonButton,
@@ -16,7 +15,7 @@ import {
 } from "@ionic/react";
 import { checkmarkCircle, ellipseOutline, close } from "ionicons/icons";
 import { ProductsSearch } from "../../../components/common/ProductsSearch";
-import { ProductListItem } from "../../../components/common/ProductListItem";
+import { ProductListItemLabel } from "../../../components/common/products/ProductListItemLabel";
 import { useProducts } from "../../../hooks/productsHook";
 import {
   retrieveProducts,
@@ -129,7 +128,7 @@ export const ProductsSelectModal: React.FC<Props> = ({
                 : ellipseOutline
             }
           />
-          <ProductListItem product={products[index]} />
+          <ProductListItemLabel product={products[index]} />
         </Item>
       )}
     </div>

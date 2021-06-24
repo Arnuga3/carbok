@@ -23,14 +23,15 @@ export const ProductsSearch: React.FC = () => {
     dispatch(setSearchString(e.detail.value.toLowerCase()));
   };
 
-  const searchThrottled = useRef(_.throttle(handleSearch, 1000));
+  // const searchThrottled = useRef(_.throttle(handleSearch, 1000));
 
   return (
     <Search
+      debounce={1000}
       mode="md"
       ref={searchInput}
       clearIcon={closeCircleOutline}
-      onIonChange={(e) => searchThrottled.current(e)}
+      onIonChange={(e) => handleSearch(e)}
       placeholder={t("page.products.search.placeholder")}
     />
   );

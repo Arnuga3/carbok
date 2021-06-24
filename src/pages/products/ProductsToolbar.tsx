@@ -15,11 +15,14 @@ import { ChipLabel } from "../../components/styled/ChipLabel";
 import { Product } from "../../classes/product/Product";
 
 interface Props {
-  pageTop: boolean;
   onFilert: (productsFiletered: Product[]) => void;
+  onSearch: () => void;
 }
 
-export const ProductsToolbar: React.FC<Props> = ({ pageTop, onFilert }) => {
+export const ProductsToolbar: React.FC<Props> = ({
+  onFilert,
+  onSearch,
+}) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { products } = useProducts();
@@ -36,30 +39,32 @@ export const ProductsToolbar: React.FC<Props> = ({ pageTop, onFilert }) => {
   };
 
   return (
-    <Toolbar top={pageTop}>
-      <FilterBadges>
-        <Chip onClick={() => handleFilter("all")}>
-          <ChipLabel active={settings.productsFilter === "all"}>
-            {t("page.products.filter.products.all")}
-          </ChipLabel>
-        </Chip>
-        <Chip onClick={() => handleFilter("default")}>
-          <ChipLabel active={settings.productsFilter === "default"}>
-            {t("page.products.filter.products.default")}
-          </ChipLabel>
-        </Chip>
-        <Chip onClick={() => handleFilter("my")}>
-          <ChipLabel active={settings.productsFilter === "my"}>
-            {t("page.products.filter.products.my")}
-          </ChipLabel>
-        </Chip>
-        <IonButtons>
-          <IonButton fill="clear">
-            <IonIcon slot="icon-only" icon={search} />
-          </IonButton>
-        </IonButtons>
-      </FilterBadges>
-    </Toolbar>
+    <>
+      <Toolbar>
+        <FilterBadges>
+          <Chip onClick={() => handleFilter("all")}>
+            <ChipLabel active={settings.productsFilter === "all"}>
+              {t("page.products.filter.products.all")}
+            </ChipLabel>
+          </Chip>
+          <Chip onClick={() => handleFilter("default")}>
+            <ChipLabel active={settings.productsFilter === "default"}>
+              {t("page.products.filter.products.default")}
+            </ChipLabel>
+          </Chip>
+          <Chip onClick={() => handleFilter("my")}>
+            <ChipLabel active={settings.productsFilter === "my"}>
+              {t("page.products.filter.products.my")}
+            </ChipLabel>
+          </Chip>
+          <IonButtons>
+            <IonButton fill="clear" onClick={onSearch}>
+              <IonIcon slot="icon-only" icon={search} />
+            </IonButton>
+          </IonButtons>
+        </FilterBadges>
+      </Toolbar>
+    </>
   );
 };
 

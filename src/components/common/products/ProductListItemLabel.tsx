@@ -1,14 +1,14 @@
 import { IonText } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { IProduct } from "../../classes/product/IProduct";
-import { getUnitShortKey } from "../../resources/productUnits";
+import { IProduct } from "../../../classes/product/IProduct";
+import { getUnitShortKey } from "../../../resources/productUnits";
 
 interface Props {
   product: IProduct;
 }
 
-export const ProductListItem: React.FC<Props> = ({ product }) => {
+export const ProductListItemLabel: React.FC<Props> = ({ product }) => {
   const { t } = useTranslation();
   const data =
     product.portionType === "quantity"
