@@ -8,7 +8,7 @@ interface Props {
   product: IProduct;
 }
 
-export const ProductListItemLabel: React.FC<Props> = ({ product }) => {
+export const ProductsListItemLabel: React.FC<Props> = ({ product }) => {
   const { t } = useTranslation();
   const data =
     product.portionType === "quantity"

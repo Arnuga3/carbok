@@ -17,7 +17,7 @@ import { AddProduct } from "./pages/products/product/AddProduct";
 import { EditProduct } from "./pages/products/product/EditProduct";
 import { DayMeals } from "./pages/meals/DayMeals";
 import Settings from "./pages/settings/Settings";
-import Products from "./pages/products";
+import Products from "./pages/products/Products";
 import Overview from "./pages/overview/Overview";
 
 import { useTranslation } from "react-i18next";

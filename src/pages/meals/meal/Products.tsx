@@ -46,8 +46,9 @@ export const Products: React.FC<Props> = ({ meal }) => {
   const [openPortionQuantityAlert, setOpenPortionQuantityAlert] =
     useState(false);
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
-  const [selectedProduct, setSelectedProduct] =
-    useState<MealProduct | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<MealProduct | null>(
+    null
+  );
 
   const handlePortionSizeChange = (product: MealProduct) => {
     setSelectedProduct(product);
@@ -96,7 +97,7 @@ export const Products: React.FC<Props> = ({ meal }) => {
             id={MEALSPAGE + i}
             onClick={() => toggleActionsSlide(MEALSPAGE + i)}
           >
-            <IonItem detail lines="none">
+            <Item detail lines="none">
               <IonAvatar slot="start">
                 {product.categories.length === 1 && (
                   <CircleBadge
@@ -116,29 +117,33 @@ export const Products: React.FC<Props> = ({ meal }) => {
                 )}
               </IonAvatar>
               <MealProductListItem product={product} />
-            </IonItem>
-            <IonItemOptions>
+            </Item>
+            <ItemOptions>
               {product.portionType === "quantity" && (
                 <SlidingAction
-                  color="primary"
+                  color="light"
                   onClick={() => handlePortionQunatityChange(product)}
                 >
-                  <IonIcon icon={layersOutline} slot="icon-only" />
+                  <IonIcon
+                    icon={layersOutline}
+                    slot="icon-only"
+                    color="primary"
+                  />
                 </SlidingAction>
               )}
               <SlidingAction
-                color="secondary"
+                color="light"
                 onClick={() => handlePortionSizeChange(product)}
               >
-                <IonIcon icon={scaleOutline} slot="icon-only" />
+                <IonIcon icon={scaleOutline} slot="icon-only" color="primary" />
               </SlidingAction>
               <SlidingAction
-                color="danger"
+                color="light"
                 onClick={() => handleOnMealProductDelete(product)}
               >
-                <IonIcon icon={trashOutline} slot="icon-only" />
+                <IonIcon icon={trashOutline} slot="icon-only" color="primary" />
               </SlidingAction>
-            </IonItemOptions>
+            </ItemOptions>
           </IonItemSliding>
         ))}
       </List>
@@ -179,14 +184,30 @@ export const Products: React.FC<Props> = ({ meal }) => {
 
 const List = styled(IonList)`
   min-height: 100%;
+  padding-top: 28px;
   padding-bottom: 65px;
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
 `;
 
+const ItemOptions = styled(IonItemOptions)`
+  dispay: flex;
+  align-items: center;
+`;
+
+const Item = styled(IonItem)`
+  --min-height: 70px;
+  margin: 4px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
+`;
+
 const SlidingAction = styled(IonItemOption)`
-  width: 75px;
+  width: 55px;
+  height: 55px;
+  margin: 4px;
+  border-radius: 100%;
 `;
 
 const Note = styled.div`

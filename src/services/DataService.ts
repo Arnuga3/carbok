@@ -9,7 +9,6 @@ import { Meal } from "../classes/meal/Meal";
 import { Product } from "../classes/product/Product";
 import { dateService } from "./DateService";
 import default_products from "./../database/carbok-default-products.json";
-import { Dispatch } from "redux";
 
 const { Filesystem } = Plugins;
 

@@ -169,7 +169,7 @@ const Animation = styled.div`
 const Card = styled(IonCard)`
   border-radius: 20px;
   margin-top: 16px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.5);
   background-image: linear-gradient( 75.7deg,  rgba(34,126,34,1) 3.8%, rgba(99,162,17,1) 87.1% );
 `;
 

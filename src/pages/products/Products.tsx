@@ -12,8 +12,8 @@ import { filterProducts } from "./util";
 import { Product } from "../../classes/product/Product";
 import { useAppSettings } from "../../hooks/appSettingsHook";
 import { ProductsToolbar } from "./ProductsToolbar";
-import { ProductsWithState } from "./../../components/common/products";
-import { ProductsSearchModal } from "../../components/common/ProductsSearchModal";
+import { ProductsListWithActions } from "../../components/common/products/productsListWithActions/ProductsListWithActions";
+import { ProductsSearchModal } from "./ProductsSearchModal";
 import { addOutline } from "ionicons/icons";
 
 const Products: React.FC = () => {
@@ -53,7 +53,7 @@ const Products: React.FC = () => {
       />
       {products && (
         <>
-          <ProductsWithState
+          <ProductsListWithActions
             identifier="products-page"
             products={filterProducts(products, settings.productsFilter)}
           />

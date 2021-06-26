@@ -12,10 +12,11 @@ export const Search: React.FC<Props> = ({ onSearchChange, onClear }) => {
   const { t } = useTranslation();
 
   const handleSearch = (e: any) => {
-    const searchTerm = e.detail.value.toLowerCase();
-    if (searchTerm.trim().length === 0) {
+    const searchTerm = e.detail.value.toLowerCase().trim();
+    if (searchTerm.length === 0) {
       onClear();
-    } else {
+    }
+    if (searchTerm.length > 2) {
       onSearchChange(searchTerm);
     }
   };

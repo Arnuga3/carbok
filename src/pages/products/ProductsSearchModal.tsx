@@ -8,10 +8,12 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { arrowBack } from "ionicons/icons";
-import { Search } from "./Search";
+import { Search } from "../../components/common/Search";
 import { dataService } from "../../services/DataService";
 import { Product } from "../../classes/product/Product";
-import { ProductsWithState } from "./products";
+import { ProductsListWithActions } from "../../components/common/products/productsListWithActions/ProductsListWithActions";
+import { useAppSettings } from "../../hooks/appSettingsHook";
+import { filterProducts } from "./util";
 
 interface Props {
   open: boolean;
@@ -19,16 +21,22 @@ interface Props {
 }
 
 export const ProductsSearchModal: React.FC<Props> = ({ open, onClose }) => {
+  const { settings } = useAppSettings();
   const [products, setProducts] = useState<Product[]>([]);
-
-  const handleSearch = async (searchTerm: string) => {
-    const productsFound = await dataService.retrieveProducts(searchTerm);
-    setProducts(productsFound);
-  };
+  
+  document.addEventListener("ionBackButton", () => {
+    onClose();
+  });
 
   useEffect(() => {
     setProducts([]);
   }, [open]);
+  
+  const handleSearch = async (searchTerm: string) => {
+    const productsFound = await dataService.retrieveProducts(searchTerm);
+    const productsFiltered = filterProducts(productsFound, settings.productsFilter);
+    setProducts(productsFiltered);
+  };
 
   return (
     <IonModal isOpen={open} onWillDismiss={onClose}>
@@ -52,7 +60,7 @@ export const ProductsSearchModal: React.FC<Props> = ({ open, onClose }) => {
                 onClear={() => setProducts([])}
               />
             </IonToolbar>
-            <ProductsWithState
+            <ProductsListWithActions
               identifier="products-page-search"
               products={products}
             />

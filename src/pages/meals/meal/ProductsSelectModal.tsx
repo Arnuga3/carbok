@@ -2,39 +2,30 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { VariableSizeList as List } from "react-window";
-import AutoSizer from "react-virtualized-auto-sizer";
 import {
-  IonItem,
   IonIcon,
   IonToolbar,
   IonContent,
   IonButton,
   IonModal,
   IonFooter,
+  IonButtons,
 } from "@ionic/react";
-import { checkmarkCircle, ellipseOutline, close } from "ionicons/icons";
-import { ProductsSearch } from "../../../components/common/ProductsSearch";
-import { ProductListItemLabel } from "../../../components/common/products/ProductListItemLabel";
-import { useProducts } from "../../../hooks/productsHook";
-import {
-  retrieveProducts,
-  setSearchString,
-} from "../../../redux/actions/products/actions";
+import { arrowBack } from "ionicons/icons";
 import { updateMeal } from "../../../redux/actions/meals/actions";
 import { Product } from "../../../classes/product/Product";
 import { MealProduct } from "../../../classes/meal/MealProduct";
 import { Meal } from "../../../classes/meal/Meal";
 import { calcService } from "../../../services/CalculationService";
-import { Header } from "../../../components/styled/Header";
+import { ProductsListSelectable } from "../../../components/common/products/productsListSelectable/ProductsListSelectable";
+import { dataService } from "../../../services/DataService";
+import { Search } from "../../../components/common/Search";
 
 interface Props {
   meal: Meal;
   open: boolean;
-  onClose: any;
+  onClose: () => void;
 }
-
-const defaultSelectedProducts: Product[] = [];
 
 export const ProductsSelectModal: React.FC<Props> = ({
   meal,
@@ -44,42 +35,31 @@ export const ProductsSelectModal: React.FC<Props> = ({
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const { products, searchString } = useProducts();
+  const [state, setState] = useState<{
+    products: Product[];
+    productsSelected: Product[];
+  }>({
+    products: [],
+    productsSelected: [],
+  });
 
-  const [selectedProducts, setSelectedProducts] = useState(
-    defaultSelectedProducts
-  );
+  const { products, productsSelected } = state;
+
+  useEffect(() => {
+    setState({ products: [], productsSelected: [] });
+  }, [open]);
 
   document.addEventListener("ionBackButton", () => {
     onClose();
   });
 
-  useEffect(() => {
-    if (searchString) {
-      dispatch(retrieveProducts(searchString));
-    } else {
-      dispatch(retrieveProducts());
-    }
-    return () => {
-      dispatch(setSearchString(null));
-    };
-  }, [searchString]);
-
-  const toggleSelect = (product: Product) => {
-    const isSelected = selectedProducts.find((prd) => prd.id === product.id);
-    let selectedProductsUpdated;
-    if (isSelected) {
-      selectedProductsUpdated = selectedProducts.filter(
-        (prd: Product) => prd.id !== product.id
-      );
-    } else {
-      selectedProductsUpdated = [...selectedProducts, product];
-    }
-    setSelectedProducts(selectedProductsUpdated);
+  const handleSearch = async (searchTerm: string) => {
+    const productsFound = await dataService.retrieveProducts(searchTerm);
+    setState({ ...state, products: productsFound, productsSelected: [] });
   };
 
   const handleSelect = () => {
-    const mealProducts: MealProduct[] = selectedProducts.map((product) => {
+    const mealProducts: MealProduct[] = productsSelected.map((product) => {
       const mealProduct = new MealProduct(product);
 
       if (mealProduct.portionType === "weight") {
@@ -102,82 +82,57 @@ export const ProductsSelectModal: React.FC<Props> = ({
     };
 
     dispatch(updateMeal(mealUpdated));
-    handleClose();
-  };
-
-  const handleClose = () => {
-    setSelectedProducts(defaultSelectedProducts);
     onClose();
   };
-
-  const ItemRow = ({ index, style }: { index: number; style: any }) => (
-    <div style={style}>
-      {products && (
-        <Item
-          lines="none"
-          key={index}
-          onClick={() => toggleSelect(products[index])}
-        >
-          <IonIcon
-            size="large"
-            slot="start"
-            color="tortoise"
-            icon={
-              selectedProducts.find((prd) => prd.id === products[index].id)
-                ? checkmarkCircle
-                : ellipseOutline
-            }
-          />
-          <ProductListItemLabel product={products[index]} />
-        </Item>
-      )}
-    </div>
-  );
-
   return (
-    <IonModal isOpen={open}>
-      <Header>
-        <ProductsSearch />
-        <IonButton onClick={handleClose} color="primary" fill="clear">
-          <IonIcon icon={close} slot="icon-only" />
-        </IonButton>
-      </Header>
-      <IonContent>
-        <AutoSizer>
-          {({ height, width }) => (
-            <List
-              height={height}
-              width={width}
-              overscanCount={3}
-              itemCount={products ? products.length : 0}
-              itemSize={() => 75}
-            >
-              {ItemRow}
-            </List>
+    <IonModal isOpen={open} onDidDismiss={onClose}>
+      {open && (
+        <>
+          <IonContent>
+            <IonToolbar>
+              <IonButtons slot="start">
+                <IonButton
+                  color="medium"
+                  fill="clear"
+                  expand="block"
+                  shape="round"
+                  onClick={onClose}
+                >
+                  <IonIcon icon={arrowBack} slot="icon-only" />
+                </IonButton>
+              </IonButtons>
+              <Search
+                onSearchChange={handleSearch}
+                onClear={() => setState({ products: [], productsSelected: [] })}
+              />
+            </IonToolbar>
+            <ProductsListSelectable
+              products={products ?? []}
+              productsSelected={productsSelected ?? []}
+              onSelectionChange={(products: Product[]) =>
+                setState({ ...state, productsSelected: products })
+              }
+            />
+          </IonContent>
+          {productsSelected.length > 0 && (
+            <IonFooter slot="fixed">
+              <IonToolbar>
+                <SelectButton
+                  color="tertiary"
+                  onClick={handleSelect}
+                  expand="block"
+                  shape="round"
+                >
+                  {t("button.add.selected")}
+                </SelectButton>
+              </IonToolbar>
+            </IonFooter>
           )}
-        </AutoSizer>
-      </IonContent>
-      {selectedProducts.length > 0 && (
-        <IonFooter slot="fixed">
-          <IonToolbar>
-            <SelectButton
-              color="tertiary"
-              onClick={handleSelect}
-              expand="block"
-              shape="round"
-            >
-              {t("button.add.selected")}
-            </SelectButton>
-          </IonToolbar>
-        </IonFooter>
+        </>
       )}
     </IonModal>
   );
 };
-
-const Item = styled(IonItem)`
-  --min-height: 75px;
-`;
 
 const SelectButton = styled(IonButton)`
   margin: 12px;

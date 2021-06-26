@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import moment from "moment";
 import "moment/min/locales";
@@ -36,8 +36,8 @@ import { useMeals } from "../../hooks/mealsHook";
 import { useTranslation } from "react-i18next";
 import { useAppSettings } from "../../hooks/appSettingsHook";
 import { dateService } from "../../services/DateService";
-import { Header } from "../../components/styled/Header";
 import { Toolbar } from "../../components/styled/Toolbar";
+import _ from "lodash";
 
 export const DayMeals: React.FC = () => {
   const { t } = useTranslation();
@@ -45,6 +45,23 @@ export const DayMeals: React.FC = () => {
   const { settings } = useAppSettings();
   const { meals, date } = useMeals();
   const [openActionSheet, setOpenActionSheet] = useState(false);
+
+  const listRef = useRef<HTMLDivElement>(null);
+
+  const checkScroll = (e: any) => {
+    console.log(e.detail.scrollTop);
+    if (listRef.current) {
+      if (e.detail.scrollTop === 0) {
+        console.log(e.detail.scrollTop);
+        listRef.current.style.borderTop = "1px solid transparent";
+      } else {
+        console.log(e.detail.scrollTop);
+        listRef.current.style.borderTop = "1px solid rgba(0,0,0,0.1)";
+      }
+    }
+  };
+
+  const checkScrollThrottled = useRef(_.throttle(checkScroll, 500));
 
   useEffect(() => {
     if (meals.length === 0) {
@@ -87,10 +104,12 @@ export const DayMeals: React.FC = () => {
   return (
     <IonPage>
       <Toolbar>
-        <Buttons>
-          <IonButton onClick={getPreviousDay} fill="clear">
-            <IonIcon icon={chevronBackOutline} color="light" slot="icon-only" />
-          </IonButton>
+        <ButtonWrapper>
+          <IonButtons>
+            <IonButton onClick={getPreviousDay} color="primary">
+              <IonIcon icon={chevronBackOutline} slot="icon-only" />
+            </IonButton>
+          </IonButtons>
           <DateSelect lines="none" mode="ios">
             <IonIcon
               icon={calendarOutline}
@@ -105,34 +124,32 @@ export const DayMeals: React.FC = () => {
               onIonChange={(e: any) => getCalendarDay(e.detail.value)}
             />
           </DateSelect>
-          <IonButton onClick={getNextDay} fill="clear">
-            <IonIcon
-              icon={chevronForwardOutline}
-              color="light"
-              slot="icon-only"
-            />
+          <IonButton onClick={getNextDay} color="primary">
+            <IonIcon icon={chevronForwardOutline} slot="icon-only" />
           </IonButton>
-        </Buttons>
+        </ButtonWrapper>
       </Toolbar>
-      <IonContent>
-        <List>
-          <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
-            {meals
-              .sort((a, b) => a.order - b.order)
-              .map((meal, i) => (
-                <DayMealCard key={i} meal={meal} date={date} />
-              ))}
-          </IonReorderGroup>
-        </List>
-        <IonFab vertical="bottom" horizontal="center" slot="fixed">
-          <IonFabButton
-            onClick={() => setOpenActionSheet(!openActionSheet)}
-            color="primary"
-          >
-            <IonIcon icon={addOutline} />
-          </IonFabButton>
-        </IonFab>
-      </IonContent>
+      <ListWrapper ref={listRef}>
+        <IonContent scrollEvents onIonScroll={(e) => checkScrollThrottled.current(e)}>
+          <List>
+            <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
+              {meals
+                .sort((a, b) => a.order - b.order)
+                .map((meal, i) => (
+                  <DayMealCard key={i} meal={meal} date={date} />
+                ))}
+            </IonReorderGroup>
+          </List>
+          <IonFab vertical="bottom" horizontal="center" slot="fixed">
+            <IonFabButton
+              onClick={() => setOpenActionSheet(!openActionSheet)}
+              color="primary"
+            >
+              <IonIcon icon={addOutline} />
+            </IonFabButton>
+          </IonFab>
+        </IonContent>
+      </ListWrapper>
       <AddMealActionSheet
         open={openActionSheet}
         onSelect={handleMealTypeSelect}
@@ -142,22 +159,27 @@ export const DayMeals: React.FC = () => {
   );
 };
 
-const Buttons = styled(IonButtons)`
+const ButtonWrapper = styled(IonButtons)`
   display: flex;
   justify-content: space-between;
   width: 100%;
+`;
+
+const ListWrapper = styled.div`
+  width: 100%;
+  height: 100%;
 `;
 
 const List = styled(IonList)`
   min-height: 100%;
   padding-bottom: 65px;
   z-index: 90;
+  padding-top: 0;
 `;
 
 const DateSelect = styled(IonItem)`
   border-radius: 32px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
-    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
 `;
 
 const DateTime = styled(IonDatetime)`

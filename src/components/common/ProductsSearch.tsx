@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import { setSearchString } from "../../redux/actions/products/actions";
 import styled from "styled-components";
 import { useRef } from "react";
-import _ from "lodash";
 
 export const ProductsSearch: React.FC = () => {
   const { t } = useTranslation();
