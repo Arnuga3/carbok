@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 import styled from "styled-components";
@@ -18,6 +18,7 @@ import { CategoriesPieChart } from "../../components/charts/CategoriesPieChart";
 import { DateRangeSwitch } from "./DateRangeSwitch";
 import { Meal } from "../../classes/meal/Meal";
 import { CalculatorModal } from "../../components/common/CalculatorModal";
+import _ from "lodash";
 
 export type Range = "7_days" | "30_days" | "90_days";
 
@@ -41,6 +42,19 @@ const Overview: React.FC = () => {
   const { t } = useTranslation();
   const [cardData, setCardData] = useState<CardData>(defaultCardDataState);
   const [openCalculatorModal, setOpenCalculatorModal] = useState(false);
+  const listRef = useRef<HTMLDivElement>(null);
+
+  const checkScroll = (e: any) => {
+    if (listRef.current) {
+      if (e.detail.scrollTop === 0) {
+        listRef.current.style.borderTop = "1px solid transparent";
+      } else {
+        listRef.current.style.borderTop = "1px solid rgba(0,0,0,0.1)";
+      }
+    }
+  };
+
+  const checkScrollThrottled = useRef(_.throttle(checkScroll, 500));
 
   const handleDateRangeChange = (data: CardData) => {
     setCardData(data);
@@ -52,92 +66,142 @@ const Overview: React.FC = () => {
         data={cardData}
         onDateRangeChange={handleDateRangeChange}
       />
-      <IonContent>
-        {cardData.meals.length > 0 && (
-          <>
-            <CarbsCard>
-              <CardHeader>
-                <IonCardTitle>{t("carbohydrates")}</IonCardTitle>
-                {cardData.from && cardData.to && (
-                  <CardSubtitle color="light">{`${moment(cardData.from).format(
-                    "D MMM"
-                  )} - ${moment(cardData.to).format("D MMM")}`}</CardSubtitle>
-                )}
-              </CardHeader>
-              <IonCardContent>
-                <MealCarbsLinearChart meals={cardData.meals} />
-              </IonCardContent>
-            </CarbsCard>
-            <ProductsCard>
-              <CardHeader>
-                <IonCardTitle>
-                  {t("page.overview.foods.range.card.title")}
-                </IonCardTitle>
-                {cardData.from && cardData.to && (
-                  <IonCardSubtitle color="light">{`${moment(
-                    cardData.from
-                  ).format("D MMM")} - ${moment(cardData.to).format(
-                    "D MMM"
-                  )}`}</IonCardSubtitle>
-                )}
-              </CardHeader>
-              <IonCardContent>
-                <CategoriesPieChart categories={cardData.categories} />
-              </IonCardContent>
-            </ProductsCard>
-          </>
-        )}
-        <Card>
-          <CardHeader>
-            <IonCardTitle>
-              {t("page.overview.calculator.card.title")}
-            </IonCardTitle>
-          </CardHeader>
-          <CalculatorCardContent>
-            <CalculateButton
-              onClick={() => setOpenCalculatorModal(true)}
-              color="light"
-            >
-              {t("button.calculate")}
-            </CalculateButton>
-          </CalculatorCardContent>
-        </Card>
-        <CalculatorModal
-          open={openCalculatorModal}
-          onClose={() => setOpenCalculatorModal(false)}
-        />
-      </IonContent>
+      <ListWrapper ref={listRef}>
+        <IonContent
+          scrollEvents
+          onIonScroll={(e) => checkScrollThrottled.current(e)}
+        >
+          {cardData.meals.length > 0 && (
+            <>
+              <CarbsCard>
+                <CardHeader>
+                  <IonCardTitle color="light">
+                    {t("carbohydrates")}
+                  </IonCardTitle>
+                  {cardData.from && cardData.to && (
+                    <CardSubtitle color="light">{`${moment(
+                      cardData.from
+                    ).format("D MMM")} - ${moment(cardData.to).format(
+                      "D MMM"
+                    )}`}</CardSubtitle>
+                  )}
+                </CardHeader>
+                <IonCardContent>
+                  <MealCarbsLinearChart meals={cardData.meals} />
+                </IonCardContent>
+              </CarbsCard>
+              <ProductsCard>
+                <CardHeader>
+                  <IonCardTitle color="light">
+                    {t("page.overview.foods.range.card.title")}
+                  </IonCardTitle>
+                  {cardData.from && cardData.to && (
+                    <IonCardSubtitle color="light">{`${moment(
+                      cardData.from
+                    ).format("D MMM")} - ${moment(cardData.to).format(
+                      "D MMM"
+                    )}`}</IonCardSubtitle>
+                  )}
+                </CardHeader>
+                <IonCardContent>
+                  <CategoriesPieChart categories={cardData.categories} />
+                </IonCardContent>
+              </ProductsCard>
+            </>
+          )}
+          <Card>
+            <CardHeader>
+              <IonCardTitle color="light">
+                {t("page.overview.calculator.card.title")}
+              </IonCardTitle>
+            </CardHeader>
+            <CalculatorCardContent>
+              <CalculateButton
+                onClick={() => setOpenCalculatorModal(true)}
+                color="secondary"
+              >
+                {t("button.calculate")}
+              </CalculateButton>
+            </CalculatorCardContent>
+          </Card>
+          <CalculatorModal
+            open={openCalculatorModal}
+            onClose={() => setOpenCalculatorModal(false)}
+          />
+        </IonContent>
+      </ListWrapper>
     </IonPage>
   );
 };
 
 export default React.memo(Overview);
 
+const ListWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
 const CarbsCard = styled(IonCard)`
   border-radius: 20px;
   margin-top: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
-  background-color: #00DBDE;
-  background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
-  
-
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(
+    to right top,
+    #00576a,
+    #005d6c,
+    #00636d,
+    #00686c,
+    #006e6b,
+    #007369,
+    #007865,
+    #007c5f,
+    #008056,
+    #00844a,
+    #00883b,
+    #058b28
+  );
 `;
 
 const ProductsCard = styled(IonCard)`
   border-radius: 20px;
   margin-top: 12px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
-  background-color: #4158D0;
-background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-
-
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(
+    to right top,
+    #00576a,
+    #005d6c,
+    #00636d,
+    #00686c,
+    #006e6b,
+    #007369,
+    #007865,
+    #007c5f,
+    #008056,
+    #00844a,
+    #00883b,
+    #058b28
+  );
 `;
 
 const Card = styled(IonCard)`
   border-radius: 20px;
   margin-top: 12px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
-  background-image: linear-gradient( 109.6deg,  rgba(62,161,219,1) 11.2%, rgba(93,52,236,1) 100.2% );
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(
+    to right top,
+    #00576a,
+    #005d6c,
+    #00636d,
+    #00686c,
+    #006e6b,
+    #007369,
+    #007865,
+    #007c5f,
+    #008056,
+    #00844a,
+    #00883b,
+    #058b28
+  );
 `;
 
 const CardHeader = styled(IonCardHeader)`

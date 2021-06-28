@@ -49,9 +49,16 @@ export const ProductsSelectModal: React.FC<Props> = ({
     setState({ products: [], productsSelected: [] });
   }, [open]);
 
-  document.addEventListener("ionBackButton", () => {
-    onClose();
-  });
+  useEffect(() => {
+    document.addEventListener("ionBackButton", () => {
+      onClose();
+    });
+    return () => {
+      document.removeEventListener("ionBackButton", () => {
+        onClose();
+      });
+    };
+  }, []);
 
   const handleSearch = async (searchTerm: string) => {
     const productsFound = await dataService.retrieveProducts(searchTerm);
@@ -88,32 +95,30 @@ export const ProductsSelectModal: React.FC<Props> = ({
     <IonModal isOpen={open} onDidDismiss={onClose}>
       {open && (
         <>
-          <IonContent>
-            <IonToolbar>
-              <IonButtons slot="start">
-                <IonButton
-                  color="medium"
-                  fill="clear"
-                  expand="block"
-                  shape="round"
-                  onClick={onClose}
-                >
-                  <IonIcon icon={arrowBack} slot="icon-only" />
-                </IonButton>
-              </IonButtons>
-              <Search
-                onSearchChange={handleSearch}
-                onClear={() => setState({ products: [], productsSelected: [] })}
-              />
-            </IonToolbar>
-            <ProductsListSelectable
-              products={products ?? []}
-              productsSelected={productsSelected ?? []}
-              onSelectionChange={(products: Product[]) =>
-                setState({ ...state, productsSelected: products })
-              }
+          <IonToolbar>
+            <IonButtons slot="start">
+              <IonButton
+                color="medium"
+                fill="clear"
+                expand="block"
+                shape="round"
+                onClick={onClose}
+              >
+                <IonIcon icon={arrowBack} slot="icon-only" />
+              </IonButton>
+            </IonButtons>
+            <Search
+              onSearchChange={handleSearch}
+              onClear={() => setState({ products: [], productsSelected: [] })}
             />
-          </IonContent>
+          </IonToolbar>
+          <ProductsListSelectable
+            products={products ?? []}
+            productsSelected={productsSelected ?? []}
+            onSelectionChange={(products: Product[]) =>
+              setState({ ...state, productsSelected: products })
+            }
+          />
           {productsSelected.length > 0 && (
             <IonFooter slot="fixed">
               <IonToolbar>

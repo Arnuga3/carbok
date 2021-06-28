@@ -23,50 +23,58 @@ interface Props {
 export const ProductsSearchModal: React.FC<Props> = ({ open, onClose }) => {
   const { settings } = useAppSettings();
   const [products, setProducts] = useState<Product[]>([]);
-  
-  document.addEventListener("ionBackButton", () => {
-    onClose();
-  });
+
+  useEffect(() => {
+    document.addEventListener("ionBackButton", () => {
+      onClose();
+    });
+    return () => {
+      document.removeEventListener("ionBackButton", () => {
+        onClose();
+      });
+    };
+  }, []);
 
   useEffect(() => {
     setProducts([]);
   }, [open]);
-  
+
   const handleSearch = async (searchTerm: string) => {
     const productsFound = await dataService.retrieveProducts(searchTerm);
-    const productsFiltered = filterProducts(productsFound, settings.productsFilter);
+    const productsFiltered = filterProducts(
+      productsFound,
+      settings.productsFilter
+    );
     setProducts(productsFiltered);
   };
 
   return (
     <IonModal isOpen={open} onWillDismiss={onClose}>
-      <IonContent>
-        {open && (
-          <>
-            <IonToolbar>
-              <IonButtons slot="start">
-                <IonButton
-                  color="medium"
-                  fill="clear"
-                  expand="block"
-                  shape="round"
-                  onClick={onClose}
-                >
-                  <IonIcon icon={arrowBack} slot="icon-only" />
-                </IonButton>
-              </IonButtons>
-              <Search
-                onSearchChange={handleSearch}
-                onClear={() => setProducts([])}
-              />
-            </IonToolbar>
-            <ProductsListWithActions
-              identifier="products-page-search"
-              products={products}
+      {open && (
+        <>
+          <IonToolbar>
+            <IonButtons slot="start">
+              <IonButton
+                color="medium"
+                fill="clear"
+                expand="block"
+                shape="round"
+                onClick={onClose}
+              >
+                <IonIcon icon={arrowBack} slot="icon-only" />
+              </IonButton>
+            </IonButtons>
+            <Search
+              onSearchChange={handleSearch}
+              onClear={() => setProducts([])}
             />
-          </>
-        )}
-      </IonContent>
+          </IonToolbar>
+          <ProductsListWithActions
+            identifier="products-page-search"
+            products={products}
+          />
+        </>
+      )}
     </IonModal>
   );
 };

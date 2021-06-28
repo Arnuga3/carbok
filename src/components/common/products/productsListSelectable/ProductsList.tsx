@@ -73,7 +73,8 @@ export const ProductsList: React.FC<Props> = ({
   const checkScrollThrottled = useRef(_.throttle(checkScroll, 500));
 
   return (
-    <ListWrapper ref={listRef}>
+    <>
+      <ListTopLine ref={listRef} />
       <AutoSizer>
         {({ height, width }) => (
           <List
@@ -88,13 +89,12 @@ export const ProductsList: React.FC<Props> = ({
           </List>
         )}
       </AutoSizer>
-    </ListWrapper>
+    </>
   );
 };
 
-const ListWrapper = styled.div`
+const ListTopLine = styled.div`
   width: 100%;
-  height: 100%;
 `;
 
 const List = styled(ReactWindowList)`

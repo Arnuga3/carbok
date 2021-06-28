@@ -1,5 +1,6 @@
 import { IonSearchbar } from "@ionic/react";
 import { closeCircleOutline } from "ionicons/icons";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
@@ -16,14 +17,14 @@ export const Search: React.FC<Props> = ({ onSearchChange, onClear }) => {
     if (searchTerm.length === 0) {
       onClear();
     }
-    if (searchTerm.length > 2) {
+    if (searchTerm.length > 1) {
       onSearchChange(searchTerm);
     }
   };
 
   return (
     <SearchBar
-      debounce={1000}
+      debounce={500}
       mode="md"
       clearIcon={closeCircleOutline}
       onIonChange={(e) => handleSearch(e)}

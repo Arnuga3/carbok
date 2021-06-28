@@ -13,7 +13,7 @@ interface Props {
 
 export const ProductsList: React.FC<Props> = ({ identifier, products }) => {
   const listRef = useRef<HTMLDivElement>(null);
-  
+
   const checkScroll = (e: any) => {
     if (listRef.current) {
       if (!!(e.scrollOffset === 0)) {
@@ -42,7 +42,8 @@ export const ProductsList: React.FC<Props> = ({ identifier, products }) => {
   };
 
   return (
-    <ListWrapper ref={listRef}>
+    <>
+      <ListTopLine ref={listRef} />
       <AutoSizer>
         {({ height, width }) => (
           <List
@@ -57,13 +58,12 @@ export const ProductsList: React.FC<Props> = ({ identifier, products }) => {
           </List>
         )}
       </AutoSizer>
-    </ListWrapper>
+    </>
   );
 };
 
-const ListWrapper = styled.div`
+const ListTopLine = styled.div`
   width: 100%;
-  height: 100%;
 `;
 
 const List = styled(ReactWindowList)`

@@ -49,13 +49,10 @@ export const DayMeals: React.FC = () => {
   const listRef = useRef<HTMLDivElement>(null);
 
   const checkScroll = (e: any) => {
-    console.log(e.detail.scrollTop);
     if (listRef.current) {
       if (e.detail.scrollTop === 0) {
-        console.log(e.detail.scrollTop);
         listRef.current.style.borderTop = "1px solid transparent";
       } else {
-        console.log(e.detail.scrollTop);
         listRef.current.style.borderTop = "1px solid rgba(0,0,0,0.1)";
       }
     }
@@ -143,7 +140,7 @@ export const DayMeals: React.FC = () => {
           <IonFab vertical="bottom" horizontal="center" slot="fixed">
             <IonFabButton
               onClick={() => setOpenActionSheet(!openActionSheet)}
-              color="primary"
+              color="secondary"
             >
               <IonIcon icon={addOutline} />
             </IonFabButton>

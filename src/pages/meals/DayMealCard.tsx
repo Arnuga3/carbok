@@ -53,7 +53,7 @@ export const DayMealCard: React.FC<Props> = ({ meal, date }) => {
             <ItemContent>
               <CardHeader>
                 <CardHeaderTitle>
-                  <IonText color="tortoise">
+                  <IonText color="secondary">
                     <small>{`${moment(date).format(
                       "dddd, D MMM YYYY"
                     )}`}</small>
@@ -63,7 +63,7 @@ export const DayMealCard: React.FC<Props> = ({ meal, date }) => {
                   </IonText>
                 </CardHeaderTitle>
                 <CardHeaderCarbs>
-                  <IonText color="tortoise">
+                  <IonText color="secondary">
                     <small>{t("carbohydrates")}</small>
                   </IonText>
                   <IonText color="light">
@@ -169,8 +169,8 @@ const Animation = styled.div`
 const Card = styled(IonCard)`
   border-radius: 20px;
   margin-top: 16px;
-  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.5);
-  background-image: linear-gradient( 75.7deg,  rgba(34,126,34,1) 3.8%, rgba(99,162,17,1) 87.1% );
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(to right, #2a9d8f, #43a790, #59b091, #6db992, #81c293);
 `;
 
 const CardContent = styled(IonCardContent)`
@@ -180,7 +180,7 @@ const CardContent = styled(IonCardContent)`
 const ReorderHandle = styled.div`
   display: flex;
   justify-content: center;
-  background-color: var(--ion-color-green);
+  background-color: var(--ion-color-primary);
   color: white;
 `;
 
