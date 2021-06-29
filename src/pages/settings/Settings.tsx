@@ -45,7 +45,9 @@ const Settings: React.FC = () => {
       <IonContent>
         <Card>
           <IonCardHeader>
-            <IonCardSubtitle color="light">{t("page.settings.card.title")}</IonCardSubtitle>
+            <IonCardSubtitle color="light">
+              {t("page.settings.card.title")}
+            </IonCardSubtitle>
           </IonCardHeader>
           <IonCardContent>
             <IonItem lines="none" color="none">
@@ -57,7 +59,8 @@ const Settings: React.FC = () => {
             </IonItem>
             <IonItem lines="none" color="none">
               <IonLabel>{t("page.settings.card.language")}</IonLabel>
-              <IonSelect color="none"
+              <IonSelect
+                color="none"
                 value={settings.language}
                 onIonChange={(e) => handleLanguageChange(e.detail.value)}
               >
@@ -86,7 +89,23 @@ const Card = styled(IonCard)`
   border-radius: 20px;
   margin-top: 16px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
-  background-image: linear-gradient(to right, #2a9d8f, #43a790, #59b091, #6db992, #81c293);
+  background: hsla(192, 17%, 94%, 1);
+  background: linear-gradient(
+    90deg,
+    hsla(192, 17%, 94%, 1) 0%,
+    hsla(197, 14%, 57%, 1) 100%
+  );
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(192, 17%, 94%, 1) 0%,
+    hsla(197, 14%, 57%, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(192, 17%, 94%, 1) 0%,
+    hsla(197, 14%, 57%, 1) 100%
+  );
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#eef2f3", endColorstr="#8399a2", GradientType=1 );
 `;
 
 const Version = styled.div`

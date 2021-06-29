@@ -11,7 +11,7 @@ import { chartsDataService } from "../../services/ChartsDataService";
 import { dateService } from "../../services/DateService";
 import { Chip } from "../../components/styled/Chip";
 import { Toolbar } from "../../components/styled/Toolbar";
-import { ChipLabel } from "../../components/styled/ChipLabel";
+import { ChipLabel } from "../../components/common/ChipLabel";
 
 interface Props {
   data: CardData;

@@ -15,6 +15,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Product } from "../../classes/product/Product";
 import { getCatKey } from "../../resources/productCategories";
+import { Header } from "./Header";
 
 interface Props {
   product: Product | null;
@@ -29,15 +30,19 @@ export const ProductModal: React.FC<Props> = ({ product, open, onClose }) => {
     <>
       {product ? (
         <IonModal isOpen={open} onWillDismiss={onClose}>
-          <Label color="secondary">
-            <h3>{product.name}</h3>
-          </Label>
-          <Categories color="tortoise">
-            {product.categories.map((category, i) => (
-              <small key={i}>{` ${t(getCatKey(category))} `}</small>
-            ))}
-          </Categories>
-          <IonContent color="tertiary">
+          <Header height={180}>
+            <Wrapper>
+              <Label color="secondary">
+                <h3>{product.name}</h3>
+              </Label>
+              <Categories color="tortoise">
+                {product.categories.map((category, i) => (
+                  <small key={i}>{` ${t(getCatKey(category))} `}</small>
+                ))}
+              </Categories>
+            </Wrapper>
+          </Header>
+          <Content color="tertiary">
             <List>
               <Card>
                 <IonCardContent>
@@ -105,31 +110,45 @@ export const ProductModal: React.FC<Props> = ({ product, open, onClose }) => {
                 {t("button.close")}
               </Button>
             </List>
-          </IonContent>
+          </Content>
         </IonModal>
       ) : null}
     </>
   );
 };
 
+const Content = styled(IonContent)`
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
+  z-index: 99;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 36px 0 8px 0;
+  text-align: center;
+`;
+
 const List = styled(IonList)`
   min-height: 100%;
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
-  margin-top: 12px;
 `;
 
 const Label = styled(IonText)`
-  background-color: var(--ion-color-tertiary);
   text-align: center;
   padding: 32px 16px 0 16px;
+  z-index: 99;
 `;
 
 const Categories = styled(IonText)`
-  background-color: var(--ion-color-tertiary);
   text-align: center;
   padding-bottom: 8px;
+  z-index: 99;
 `;
 
 const Card = styled(IonCard)`

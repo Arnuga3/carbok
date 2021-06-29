@@ -26,14 +26,13 @@ export const ExportImport: React.FC = () => {
 
   const handleExport = async () => {
     try {
-      await dataService.exportData()
-        .then(() => {
-          present({
-            message: t("page.settings.toast.export.success"),
-            duration: 2000,
-            color: "success",
-          });
+      await dataService.exportData().then(() => {
+        present({
+          message: t("page.settings.toast.export.success"),
+          duration: 2000,
+          color: "success",
         });
+      });
     } catch (e) {
       present({
         message: t("page.settings.toast.export.fail"),
@@ -63,7 +62,7 @@ export const ExportImport: React.FC = () => {
         const result = target?.result;
         if (result && typeof result === "string") {
           try {
-            await dataService.importData(result)
+            await dataService.importData(result);
             dispatch(retrieveProducts());
             resetFile();
             present({
@@ -154,7 +153,23 @@ const Card = styled(IonCard)`
   border-radius: 20px;
   margin-top: 16px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
-  background-image: linear-gradient(to right, #2a9d8f, #43a790, #59b091, #6db992, #81c293);
+  background: hsla(192, 17%, 94%, 1);
+  background: linear-gradient(
+    90deg,
+    hsla(192, 17%, 94%, 1) 0%,
+    hsla(197, 14%, 57%, 1) 100%
+  );
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(192, 17%, 94%, 1) 0%,
+    hsla(197, 14%, 57%, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(192, 17%, 94%, 1) 0%,
+    hsla(197, 14%, 57%, 1) 100%
+  );
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#eef2f3", endColorstr="#8399a2", GradientType=1 );
 `;
 
 const Button = styled(IonButton)`

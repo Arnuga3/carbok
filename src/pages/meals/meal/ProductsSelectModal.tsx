@@ -20,6 +20,7 @@ import { calcService } from "../../../services/CalculationService";
 import { ProductsListSelectable } from "../../../components/common/products/productsListSelectable/ProductsListSelectable";
 import { dataService } from "../../../services/DataService";
 import { Search } from "../../../components/common/Search";
+import { NoResult } from "../../../components/common/products/NoResult";
 
 interface Props {
   meal: Meal;
@@ -112,13 +113,17 @@ export const ProductsSelectModal: React.FC<Props> = ({
               onClear={() => setState({ products: [], productsSelected: [] })}
             />
           </IonToolbar>
-          <ProductsListSelectable
-            products={products ?? []}
-            productsSelected={productsSelected ?? []}
-            onSelectionChange={(products: Product[]) =>
-              setState({ ...state, productsSelected: products })
-            }
-          />
+          {state.products.length > 0 ? (
+            <ProductsListSelectable
+              products={products ?? []}
+              productsSelected={productsSelected ?? []}
+              onSelectionChange={(products: Product[]) =>
+                setState({ ...state, productsSelected: products })
+              }
+            />
+          ) : (
+            <NoResult />
+          )}
           {productsSelected.length > 0 && (
             <IonFooter slot="fixed">
               <IonToolbar>

@@ -37,7 +37,6 @@ import { addProduct } from "../../../redux/actions/products/actions";
 import { ProductCategoryType } from "../../../classes/productCategory/ProductCategoryType";
 import { toggleCategory } from "../util";
 import { UnitsType } from "../../../classes/units/UnitsType";
-import { Header } from "../../../components/styled/Header";
 
 const defaultData: IProductDummy = {
   name: null,
@@ -229,6 +228,11 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
     </IonPage>
   );
 };
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
 const Title = styled(IonText)`
   flex: 1;

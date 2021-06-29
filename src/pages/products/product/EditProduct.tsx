@@ -35,7 +35,6 @@ import { ProductCategoryType } from "../../../classes/productCategory/ProductCat
 import { toggleCategory } from "../util";
 import { UnitsType } from "../../../classes/units/UnitsType";
 import { Product } from "../../../classes/product/Product";
-import { Header } from "../../../components/styled/Header";
 
 interface EditProductPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -247,11 +246,20 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
   );
 };
 
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const Title = styled(IonText)`
   flex: 1;
 `;
 
 const Content = styled(IonContent)`
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
+  z-index: 9999;
   & .input-right-align {
     text-align: right;
   }

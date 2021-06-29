@@ -14,6 +14,7 @@ import { Product } from "../../classes/product/Product";
 import { ProductsListWithActions } from "../../components/common/products/productsListWithActions/ProductsListWithActions";
 import { useAppSettings } from "../../hooks/appSettingsHook";
 import { filterProducts } from "./util";
+import { NoResult } from "../../components/common/products/NoResult";
 
 interface Props {
   open: boolean;
@@ -69,10 +70,12 @@ export const ProductsSearchModal: React.FC<Props> = ({ open, onClose }) => {
               onClear={() => setProducts([])}
             />
           </IonToolbar>
-          <ProductsListWithActions
-            identifier="products-page-search"
-            products={products}
-          />
+          {products.length > 0 ? (
+            <ProductsListWithActions
+              identifier="products-page-search"
+              products={products}
+            />
+          ) : <NoResult/>}
         </>
       )}
     </IonModal>

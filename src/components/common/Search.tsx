@@ -1,6 +1,5 @@
 import { IonSearchbar } from "@ionic/react";
 import { closeCircleOutline } from "ionicons/icons";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 

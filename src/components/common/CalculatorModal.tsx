@@ -15,6 +15,7 @@ import {
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { IProduct } from "../../classes/product/IProduct";
+import { Header } from "./Header";
 
 interface Props {
   product?: IProduct | null;
@@ -83,12 +84,18 @@ export const CalculatorModal: React.FC<Props> = ({
 
   return (
     <IonModal isOpen={open} onWillDismiss={onClose}>
-      <Result>{result()}</Result>
-      <Label color="medium">
-        <small>{t("page.products.caluclator.modal.result.title")}</small>
-      </Label>
-      {product && <Label color="light">{product.name}</Label>}
-      <IonContent color="tertiary">
+      <Header height={200}>
+        <Wrapper>
+          <Result color="warning">
+            <h1>{result()}</h1>
+          </Result>
+          <Label color="medium">
+            <small>{t("page.products.caluclator.modal.result.title")}</small>
+          </Label>
+          {product && <Label color="light">{product.name}</Label>}
+        </Wrapper>
+      </Header>
+      <Content color="tertiary">
         <List>
           <Card>
             <IonCardContent>
@@ -178,32 +185,45 @@ export const CalculatorModal: React.FC<Props> = ({
             </Button>
           </Buttons>
         </List>
-      </IonContent>
+      </Content>
     </IonModal>
   );
 };
 
-const List = styled(IonList)`
-  min-height: 100%;
+const Content = styled(IonContent)`
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
-  margin-top: 12px;
+  z-index: 99;
+`;
+
+const List = styled(IonList)`
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  min-height: 100%;
 `;
 
 const Label = styled(IonText)`
-  background-color: var(--ion-color-tertiary);
   text-align: center;
   padding-bottom: 8px;
+  z-index: 99;
 `;
 
-const Result = styled.div`
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   padding: 36px 0 8px 0;
   text-align: center;
-  font-size: 4em;
-  font-weight: bold;
-  background-color: var(--ion-color-tertiary);
-  color: var(--ion-color-warning);
+`;
+
+const Result = styled(IonText)`
+  z-index: 100;
+  h1 {
+    font-size: 4em;
+    font-weight: bold;
+  }
 `;
 
 const Card = styled(IonCard)`

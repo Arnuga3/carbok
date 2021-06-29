@@ -11,7 +11,7 @@ import { ProductsFilter } from "../../classes/appSettings/ProductsFilterType";
 import { changeAppSettings } from "../../redux/actions/appSettingsActions";
 import { Chip } from "../../components/styled/Chip";
 import { Toolbar } from "../../components/styled/Toolbar";
-import { ChipLabel } from "../../components/styled/ChipLabel";
+import { ChipLabel } from "../../components/common/ChipLabel";
 import { Product } from "../../classes/product/Product";
 
 interface Props {

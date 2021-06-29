@@ -28,7 +28,8 @@ import { MealProductsChart } from "../../../components/charts/MealProductsChart"
 import { CopyDatetime } from "./alerts/CopyDateTime";
 import { CopyAlert, CopyState } from "./alerts/CopyAlert";
 import { dateService } from "../../../services/DateService";
-import { Header } from "../../../components/styled/Header";
+import { Header } from "../../../components/common/Header";
+
 
 interface MealPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -57,7 +58,7 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
   return (
     <IonPage>
       <IonContent color="tertiary">
-        <Header>
+        <Header height={70}>
           <IonBackButton
             color="light"
             mode={isPlatform("ios") ? "ios" : "md"}
