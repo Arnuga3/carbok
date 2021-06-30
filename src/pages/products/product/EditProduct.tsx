@@ -130,15 +130,15 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
 
   return (
     <IonPage>
-      <Content color="tertiary">
+      <Content color="primary">
         <Header>
           <IonBackButton
-            color="light"
+            color="secondary"
             mode={isPlatform("ios") ? "ios" : "md"}
             defaultHref={`/meals`}
             icon={arrowBackOutline}
           />
-          <Title color="warning">
+          <Title color="white">
             <h5>{t("page.products.edit.product.title")}</h5>
           </Title>
         </Header>
@@ -256,10 +256,6 @@ const Title = styled(IonText)`
 `;
 
 const Content = styled(IonContent)`
-  border-top-left-radius: 32px;
-  border-top-right-radius: 32px;
-  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
-  z-index: 9999;
   & .input-right-align {
     text-align: right;
   }

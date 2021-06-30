@@ -21,7 +21,7 @@ export const CircleBadge: React.FC<Props> = ({
       </Avatar>
       {!standard && (
         <IconWrapper>
-          <IonIcon icon={heartCircle} color="danger" />
+          <IonIcon icon={heartCircle} color="primary" />
         </IconWrapper>
       )}
     </Badge>

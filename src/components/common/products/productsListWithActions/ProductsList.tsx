@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { VariableSizeList as ReactWindowList } from "react-window";
+import React, { memo, useRef } from "react";
+import { VariableSizeList as ReactWindowList, areEqual } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import styled from "styled-components";
 import { Product } from "../../../../classes/product/Product";
@@ -26,39 +26,41 @@ export const ProductsList: React.FC<Props> = ({ identifier, products }) => {
 
   const checkScrollThrottled = useRef(_.throttle(checkScroll, 500));
 
-  const ListItem = ({ index, style }: { index: number; style: any }) => {
-    const product = products[index];
+  const ListItem = memo(({ data, index, style }: any) => {
+    const product = data[index];
     return (
       <div style={style}>
-        {products && (
-          <ProductsListItem
-            identifier={identifier}
-            index={index}
-            product={product}
-          />
-        )}
+        <ProductsListItem
+          identifier={identifier}
+          index={index}
+          product={product}
+        />
       </div>
     );
-  };
+  }, areEqual);
 
   return (
-    <>
-      <ListTopLine ref={listRef} />
-      <AutoSizer>
-        {({ height, width }) => (
-          <List
-            onScroll={(e) => checkScrollThrottled.current(e)}
-            height={height}
-            width={width}
-            itemCount={products ? products.length : 0}
-            overscanCount={5}
-            itemSize={() => 75}
-          >
-            {ListItem}
-          </List>
-        )}
-      </AutoSizer>
-    </>
+    products && (
+      <>
+        <ListTopLine ref={listRef} />
+        <AutoSizer>
+          {({ height, width }) => (
+            <List
+              onScroll={(e) => checkScrollThrottled.current(e)}
+              height={height}
+              width={width}
+              itemData={products}
+              itemCount={products.length}
+              overscanCount={30}
+              itemSize={() => 75}
+              estimatedItemSize={75}
+            >
+              {ListItem}
+            </List>
+          )}
+        </AutoSizer>
+      </>
+    )
   );
 };
 

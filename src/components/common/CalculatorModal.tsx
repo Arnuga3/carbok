@@ -15,7 +15,6 @@ import {
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { IProduct } from "../../classes/product/IProduct";
-import { Header } from "./Header";
 
 interface Props {
   product?: IProduct | null;
@@ -84,18 +83,16 @@ export const CalculatorModal: React.FC<Props> = ({
 
   return (
     <IonModal isOpen={open} onWillDismiss={onClose}>
-      <Header height={200}>
+      <Content color="primary">
         <Wrapper>
-          <Result color="warning">
+          <Result color="white">
             <h1>{result()}</h1>
           </Result>
-          <Label color="medium">
+          <Label color="white">
             <small>{t("page.products.caluclator.modal.result.title")}</small>
           </Label>
-          {product && <Label color="light">{product.name}</Label>}
+          {product && <Label color="secondary">{product.name}</Label>}
         </Wrapper>
-      </Header>
-      <Content color="tertiary">
         <List>
           <Card>
             <IonCardContent>
@@ -207,14 +204,13 @@ const List = styled(IonList)`
 const Label = styled(IonText)`
   text-align: center;
   padding-bottom: 8px;
-  z-index: 99;
 `;
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 36px 0 8px 0;
+  padding: 36px 0;
   text-align: center;
 `;
 

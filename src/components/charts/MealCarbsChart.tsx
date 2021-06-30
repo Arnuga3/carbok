@@ -43,7 +43,7 @@ export const MealCarbsChart: React.FC<Props> = ({ meal }) => {
             <div>
               <CarbsLabel>
                 <CircleBadge color={chartColors.carbohydrates} />
-                <IonText color="medium">
+                <IonText color="white">
                   {`${t("carbohydrates")}: ${totalCarbs}${t(
                     "units.grams.short"
                   )}`}
@@ -51,7 +51,7 @@ export const MealCarbsChart: React.FC<Props> = ({ meal }) => {
               </CarbsLabel>
               <CarbsLabel>
                 <CircleBadge color={chartColors.sugars} />
-                <IonText color="medium">
+                <IonText color="white">
                   {`${t("of.which.sugars")}: ${Math.floor(sugarPercentage)}%`}
                 </IonText>
               </CarbsLabel>

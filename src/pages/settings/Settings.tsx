@@ -43,7 +43,7 @@ const Settings: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <Card>
+        <Card color="light-darker">
           <IonCardHeader>
             <IonCardSubtitle color="light">
               {t("page.settings.card.title")}
@@ -89,23 +89,6 @@ const Card = styled(IonCard)`
   border-radius: 20px;
   margin-top: 16px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
-  background: hsla(192, 17%, 94%, 1);
-  background: linear-gradient(
-    90deg,
-    hsla(192, 17%, 94%, 1) 0%,
-    hsla(197, 14%, 57%, 1) 100%
-  );
-  background: -moz-linear-gradient(
-    90deg,
-    hsla(192, 17%, 94%, 1) 0%,
-    hsla(197, 14%, 57%, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    90deg,
-    hsla(192, 17%, 94%, 1) 0%,
-    hsla(197, 14%, 57%, 1) 100%
-  );
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#eef2f3", endColorstr="#8399a2", GradientType=1 );
 `;
 
 const Version = styled.div`

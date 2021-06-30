@@ -216,7 +216,6 @@ export const ProductsListItem: React.FC<Props> = ({
               </SlidingAction>
             </ItemOptions>
           </IonItemSliding>
-
           <IonAlert
             isOpen={openDeleteAlert}
             onDidDismiss={() => setState({ ...state, openDeleteAlert: false })}

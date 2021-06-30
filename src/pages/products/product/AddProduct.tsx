@@ -114,15 +114,15 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
 
   return (
     <IonPage>
-      <IonContentStyled color="tertiary">
+      <IonContentStyled color="primary">
         <Header>
           <IonBackButton
-            color="light"
+            color="secondary"
             mode={isPlatform("ios") ? "ios" : "md"}
             defaultHref={`/meals`}
             icon={arrowBackOutline}
           />
-          <Title color="warning">
+          <Title color="white">
             <h5>{t("page.products.add.product.title")}</h5>
           </Title>
         </Header>

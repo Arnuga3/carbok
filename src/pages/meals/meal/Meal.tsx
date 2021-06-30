@@ -28,8 +28,6 @@ import { MealProductsChart } from "../../../components/charts/MealProductsChart"
 import { CopyDatetime } from "./alerts/CopyDateTime";
 import { CopyAlert, CopyState } from "./alerts/CopyAlert";
 import { dateService } from "../../../services/DateService";
-import { Header } from "../../../components/common/Header";
-
 
 interface MealPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -57,23 +55,23 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
 
   return (
     <IonPage>
-      <IonContent color="tertiary">
-        <Header height={70}>
+      <IonContent color="primary">
+        <Header>
           <IonBackButton
-            color="light"
+            color="secondary"
             mode={isPlatform("ios") ? "ios" : "md"}
             defaultHref={`/meals`}
             icon={arrowBackOutline}
           />
           {meal && (
-            <Date color="warning">
+            <Date color="white">
               <h4>{`${t(getMealKey(meal.type))}, ${moment(date).format(
                 "MMM D"
               )}`}</h4>
             </Date>
           )}
           <IonButton
-            color="light"
+            color="secondary"
             fill="clear"
             onClick={() => setOpenActionSheet(true)}
           >
@@ -124,6 +122,13 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
   );
 };
 
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--ion-color-primary);
+  padding: 12px;
+`;
+
 const Date = styled(IonText)`
   align-text: center;
 `;
@@ -131,6 +136,6 @@ const Date = styled(IonText)`
 const Charts = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 12px;
-  background-color: var(--ion-color-tertiary);
+  padding: 12px 12px 24px 12px;
+  background-color: var(--ion-color-primary);
 `;

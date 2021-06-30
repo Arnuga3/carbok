@@ -38,7 +38,7 @@ export const MealProductsChart: React.FC<Props> = ({ meal }) => {
           .map((category: IPieCategory, index: number) => (
             <Category key={index}>
               <CircleBadge color={category.color} />
-              <IonText color="medium">
+              <IonText color="white">
                 {t(category.name)}
               </IonText>
             </Category>

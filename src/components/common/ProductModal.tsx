@@ -15,7 +15,6 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Product } from "../../classes/product/Product";
 import { getCatKey } from "../../resources/productCategories";
-import { Header } from "./Header";
 
 interface Props {
   product: Product | null;
@@ -30,19 +29,17 @@ export const ProductModal: React.FC<Props> = ({ product, open, onClose }) => {
     <>
       {product ? (
         <IonModal isOpen={open} onWillDismiss={onClose}>
-          <Header height={180}>
+          <Content color="primary">
             <Wrapper>
-              <Label color="secondary">
+              <Label color="white">
                 <h3>{product.name}</h3>
               </Label>
-              <Categories color="tortoise">
+              <Categories color="secondary">
                 {product.categories.map((category, i) => (
                   <small key={i}>{` ${t(getCatKey(category))} `}</small>
                 ))}
               </Categories>
             </Wrapper>
-          </Header>
-          <Content color="tertiary">
             <List>
               <Card>
                 <IonCardContent>
@@ -128,7 +125,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 36px 0 8px 0;
+  padding: 36px 0;
   text-align: center;
 `;
 
