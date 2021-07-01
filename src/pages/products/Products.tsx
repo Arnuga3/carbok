@@ -7,7 +7,7 @@ import {
   IonPage,
 } from "@ionic/react";
 import { useProducts } from "../../hooks/productsHook";
-import { retrieveProducts } from "../../redux/actions/products/actions";
+import { retrieveProducts } from "../../redux/actions/products/productActions";
 import { filterProducts } from "./util";
 import { Product } from "../../classes/product/Product";
 import { useAppSettings } from "../../hooks/appSettingsHook";

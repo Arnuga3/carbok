@@ -1,4 +1,4 @@
-import { Product } from "../../../classes/product/Product";
+import { Product } from "../../../../classes/product/Product";
 
 export enum ProductsActions {
   ADD_PRODUCT = "ADD_PRODUCT",
@@ -27,13 +27,4 @@ export interface UpdateProduct {
 export interface DeleteProduct {
   type: ProductsActions.DELETE_PRODUCT;
   id: string;
-}
-
-export interface FetchingStart {
-  type: ProductsActions.FETCHING_START;
-}
-
-export interface SetSearchString {
-  type: ProductsActions.SET_SEARCH_STRING;
-  searchString: string | null;
 }

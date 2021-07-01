@@ -33,7 +33,7 @@ import { CarbsPerPortionData } from "./form/CarbsPerPortionData";
 import { CarbsPer100Data } from "./form/CarbsPer100Data";
 
 import { getUnitShortKey, productUnits } from "../../../resources/productUnits";
-import { addProduct } from "../../../redux/actions/products/actions";
+import { addProduct } from "../../../redux/actions/products/productActions";
 import { ProductCategoryType } from "../../../classes/productCategory/ProductCategoryType";
 import { toggleCategory } from "../util";
 import { UnitsType } from "../../../classes/units/UnitsType";

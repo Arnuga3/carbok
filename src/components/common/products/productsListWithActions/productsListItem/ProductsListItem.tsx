@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
@@ -9,7 +9,6 @@ import {
   IonItemSliding,
   IonItemOption,
   IonAvatar,
-  IonAlert,
 } from "@ionic/react";
 import {
   calculator,
@@ -19,22 +18,22 @@ import {
   eyeOutline,
   trashOutline,
 } from "ionicons/icons";
-import { ProductsListItemLabel } from "../ProductsListItemLabel";
-import {
-  addProduct,
-  deleteProduct,
-} from "../../../../redux/actions/products/actions";
-import { CircleBadge } from "../../CircleBadge";
-import { categoryColours } from "../../../../resources/config";
-import { getCatKey } from "../../../../resources/productCategories";
-import { CircleBadgeMultiColor } from "../../CircleBadgeMultiColor";
+import { ProductsListItemLabel } from "../../ProductsListItemLabel";
+import { CircleBadge } from "../../../CircleBadge";
+import { categoryColours } from "../../../../../resources/config";
+import { getCatKey } from "../../../../../resources/productCategories";
+import { CircleBadgeMultiColor } from "../../../CircleBadgeMultiColor";
 import {
   getCategoriesColours,
   toggleActionsSlide,
-} from "../../../../pages/products/util";
-import { Product } from "../../../../classes/product/Product";
-import { ProductModal } from "../../ProductModal";
-import { CalculatorModal } from "../../CalculatorModal";
+} from "../../../../../pages/products/util";
+import { Product } from "../../../../../classes/product/Product";
+import {
+  calculateProduct,
+  confirmDeleteProduct,
+  showProduct,
+} from "../../../../../redux/actions/products/listProductActions";
+import { copyProduct } from "../../../../../redux/actions/products/productActions";
 
 interface Props {
   identifier: string;
@@ -50,87 +49,10 @@ export const ProductsListItem: React.FC<Props> = ({
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const [state, setState] = useState<{
-    productSelected: Product | null;
-    openDeleteAlert: boolean;
-    openProductModal: boolean;
-    openCalculatorModal: boolean;
-  }>({
-    productSelected: null,
-    openDeleteAlert: false,
-    openProductModal: false,
-    openCalculatorModal: false,
-  });
-
-  const {
-    productSelected,
-    openDeleteAlert,
-    openProductModal,
-    openCalculatorModal,
-  } = state;
-
-  const handleOnView = (product: Product) => {
-    setState({
-      ...state,
-      productSelected: product,
-      openProductModal: true,
-    });
-  };
-
-  const handleOnClose = () => {
-    setState({
-      ...state,
-      productSelected: null,
-      openCalculatorModal: false,
-      openProductModal: false,
-    });
-  };
-
-  const handleOnCalculate = (product: Product) => {
-    setState({
-      ...state,
-      productSelected: product,
-      openCalculatorModal: true,
-    });
-  };
-
-  const handleOnDelete = (product: Product) => {
-    setState({
-      ...state,
-      productSelected: product,
-      openDeleteAlert: true,
-    });
-  };
-
-  const handleDelete = () => {
-    if (productSelected) {
-      dispatch(deleteProduct(productSelected.id));
-      setState({
-        ...state,
-        productSelected: null,
-      });
-    }
-  };
-
-  const handleCopy = (product: Product) => {
-    if (product) {
-      const { name, categories, units, carbsData, portionType } = product;
-      const productCopied = new Product(
-        name,
-        categories,
-        units,
-        carbsData,
-        portionType,
-        false
-      );
-      dispatch(addProduct(productCopied));
-    }
-  };
-
   return (
     <>
       {product ? (
-        <>
+        <Animation>
           <IonItemSliding
             key={index}
             id={identifier + index}
@@ -169,7 +91,7 @@ export const ProductsListItem: React.FC<Props> = ({
               {!product.standard && (
                 <SlidingAction
                   color="light"
-                  onClick={() => handleOnDelete(product)}
+                  onClick={() => dispatch(confirmDeleteProduct(product))}
                 >
                   <IonIcon
                     icon={trashOutline}
@@ -193,7 +115,7 @@ export const ProductsListItem: React.FC<Props> = ({
               {product.standard && (
                 <SlidingAction
                   color="light"
-                  onClick={() => handleCopy(product)}
+                  onClick={() => dispatch(copyProduct(product))}
                 >
                   <IonIcon
                     icon={copyOutline}
@@ -204,47 +126,37 @@ export const ProductsListItem: React.FC<Props> = ({
               )}
               <SlidingAction
                 color="light"
-                onClick={() => handleOnView(product)}
+                onClick={() => dispatch(showProduct(product))}
               >
                 <IonIcon icon={eyeOutline} slot="icon-only" color="primary" />
               </SlidingAction>
               <SlidingAction
                 color="light"
-                onClick={() => handleOnCalculate(product)}
+                onClick={() => dispatch(calculateProduct(product))}
               >
                 <IonIcon icon={calculator} slot="icon-only" color="primary" />
               </SlidingAction>
             </ItemOptions>
           </IonItemSliding>
-          <IonAlert
-            isOpen={openDeleteAlert}
-            onDidDismiss={() => setState({ ...state, openDeleteAlert: false })}
-            header={t("page.products.edit.product.delete.alert.title")}
-            subHeader={t("page.products.edit.product.delete.alert.subtitle")}
-            buttons={[
-              { text: t("button.cancel"), role: "cancel" },
-              {
-                text: t("button.delete"),
-                role: "destructive",
-                handler: handleDelete,
-              },
-            ]}
-          />
-          <ProductModal
-            product={productSelected}
-            open={openProductModal}
-            onClose={handleOnClose}
-          />
-          <CalculatorModal
-            product={productSelected}
-            open={openCalculatorModal}
-            onClose={handleOnClose}
-          />
-        </>
+        </Animation>
       ) : null}
     </>
   );
 };
+
+const Animation = styled.div`
+  animation-name: fade;
+  animation-duration: 0.4s;
+
+  @keyframes fade {
+    from {
+      opacity: 0.5;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+`;
 
 const Item = styled(IonItem)`
   --min-height: 70px;

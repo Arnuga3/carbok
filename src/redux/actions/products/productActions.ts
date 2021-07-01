@@ -5,9 +5,7 @@ import {
   AddProducts,
   UpdateProduct,
   DeleteProduct,
-  FetchingStart,
-  SetSearchString,
-} from "./interfaces";
+} from "./interfaces/productInterfaces";
 import { dataService } from "../../../services/DataService";
 import { Product } from "../../../classes/product/Product";
 
@@ -31,27 +29,37 @@ const deleteStoredProduct = (id: string): DeleteProduct => ({
   id,
 });
 
-const fetchingStart = (): FetchingStart => ({
-  type: ProductsActions.FETCHING_START,
-});
-
-export const setSearchString = (
-  searchString: string | null
-): SetSearchString => ({
-  type: ProductsActions.SET_SEARCH_STRING,
-  searchString,
-});
-
 export const retrieveProducts = (searchText: string | null = null) => {
   return async (dispatch: Dispatch) => {
     try {
-      dispatch(fetchingStart());
       dispatch(storeProducts(await dataService.retrieveProducts(searchText)));
     } catch (e) {
       console.log(e);
     }
   };
 };
+
+export function copyProduct(product: Product) {
+  return async (dispatch: Dispatch) => {
+    try {
+      if (product) {
+        const { name, categories, units, carbsData, portionType } = product;
+        const productCopy = new Product(
+          name,
+          categories,
+          units,
+          carbsData,
+          portionType,
+          false
+        );
+        await dataService.addProduct(productCopy);
+        dispatch(storeProduct(productCopy));
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+}
 
 export function addProduct(product: Product) {
   return async (dispatch: Dispatch) => {

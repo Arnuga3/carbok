@@ -14,7 +14,7 @@ import {
 import { downloadOutline, pushOutline } from "ionicons/icons";
 import { dataService } from "../../services/DataService";
 import { useDispatch } from "react-redux";
-import { retrieveProducts } from "../../redux/actions/products/actions";
+import { retrieveProducts } from "../../redux/actions/products/productActions";
 
 export const ExportImport: React.FC = () => {
   const { t } = useTranslation();

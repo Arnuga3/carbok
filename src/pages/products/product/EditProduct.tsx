@@ -19,7 +19,7 @@ import {
   IonList,
 } from "@ionic/react";
 import styled from "styled-components";
-import { updateProduct } from "../../../redux/actions/products/actions";
+import { updateProduct } from "../../../redux/actions/products/productActions";
 import { Category } from "./form/Category";
 import { Units } from "./form/Units";
 import { CarbsPerPortionData } from "./form/CarbsPerPortionData";

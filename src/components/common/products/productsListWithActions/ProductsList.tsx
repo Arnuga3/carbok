@@ -3,7 +3,7 @@ import { VariableSizeList as ReactWindowList, areEqual } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import styled from "styled-components";
 import { Product } from "../../../../classes/product/Product";
-import { ProductsListItem } from "./ProductsListItem";
+import { ProductsListItem } from "./productsListItem/ProductsListItem";
 import _ from "lodash";
 
 interface Props {
@@ -38,7 +38,7 @@ export const ProductsList: React.FC<Props> = ({ identifier, products }) => {
       </div>
     );
   }, areEqual);
-
+  
   return (
     products && (
       <>
@@ -51,7 +51,7 @@ export const ProductsList: React.FC<Props> = ({ identifier, products }) => {
               width={width}
               itemData={products}
               itemCount={products.length}
-              overscanCount={30}
+              overscanCount={20}
               itemSize={() => 75}
               estimatedItemSize={75}
             >

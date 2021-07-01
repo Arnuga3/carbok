@@ -1,6 +1,6 @@
 import { Reducer } from "redux";
-import { Product } from "../../classes/product/Product";
-import { ProductsActions } from "../actions/products/interfaces";
+import { Product } from "../../../classes/product/Product";
+import { ProductsActions } from "../../actions/products/interfaces/productInterfaces";
 import _ from "lodash";
 
 export interface ProductsState {
