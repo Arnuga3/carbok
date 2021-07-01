@@ -145,69 +145,51 @@ const CarbsCard = styled(IonCard)`
   border-radius: 20px;
   margin-top: 20px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
-  background: hsla(159, 82%, 55%, 1);
-  background: linear-gradient(
-    90deg,
-    hsla(159, 82%, 55%, 1) 0%,
-    hsla(206, 98%, 48%, 1) 100%
-  );
-  background: -moz-linear-gradient(
-    90deg,
-    hsla(159, 82%, 55%, 1) 0%,
-    hsla(206, 98%, 48%, 1) 100%
-  );
+  background: #348f50; /* fallback for old browsers */
   background: -webkit-linear-gradient(
-    90deg,
-    hsla(159, 82%, 55%, 1) 0%,
-    hsla(206, 98%, 48%, 1) 100%
-  );
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#2FEAA8", endColorstr="#028CF3", GradientType=1 );
+    to top,
+    #56b4d3,
+    #348f50
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #56b4d3,
+    #348f50
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 `;
 
 const ProductsCard = styled(IonCard)`
   border-radius: 20px;
   margin-top: 12px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
-  background: hsla(195, 86%, 50%, 1);
-  background: linear-gradient(
-    90deg,
-    hsla(195, 86%, 50%, 1) 0%,
-    hsla(236, 93%, 65%, 1) 100%
-  );
-  background: -moz-linear-gradient(
-    90deg,
-    hsla(195, 86%, 50%, 1) 0%,
-    hsla(236, 93%, 65%, 1) 100%
-  );
+  background: #348f50; /* fallback for old browsers */
   background: -webkit-linear-gradient(
-    90deg,
-    hsla(195, 86%, 50%, 1) 0%,
-    hsla(236, 93%, 65%, 1) 100%
-  );
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#12B3EB", endColorstr="#5460F9", GradientType=1 );
+    to top,
+    #56b4d3,
+    #348f50
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #56b4d3,
+    #348f50
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 `;
 
 const Card = styled(IonCard)`
   border-radius: 20px;
   margin-top: 12px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
-  background: hsla(61, 100%, 39%, 1);
-  background: linear-gradient(
-    90deg,
-    hsla(61, 100%, 39%, 1) 0%,
-    hsla(63, 85%, 30%, 1) 100%
-  );
-  background: -moz-linear-gradient(
-    90deg,
-    hsla(61, 100%, 39%, 1) 0%,
-    hsla(63, 85%, 30%, 1) 100%
-  );
+  background: #348f50; /* fallback for old browsers */
   background: -webkit-linear-gradient(
-    90deg,
-    hsla(61, 100%, 39%, 1) 0%,
-    hsla(63, 85%, 30%, 1) 100%
-  );
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#C3C600", endColorstr="#858C0B", GradientType=1 );
+    to top,
+    #56b4d3,
+    #348f50
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #56b4d3,
+    #348f50
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 `;
 
 const CardHeader = styled(IonCardHeader)`

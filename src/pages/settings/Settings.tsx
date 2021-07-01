@@ -43,9 +43,9 @@ const Settings: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <Card color="light-darker">
+        <Card>
           <IonCardHeader>
-            <IonCardSubtitle color="light">
+            <IonCardSubtitle>
               {t("page.settings.card.title")}
             </IonCardSubtitle>
           </IonCardHeader>

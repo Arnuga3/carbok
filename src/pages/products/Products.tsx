@@ -58,7 +58,7 @@ const Products: React.FC = () => {
             products={filterProducts(products, settings.productsFilter)}
           />
           <IonFab vertical="bottom" horizontal="center" slot="fixed">
-            <IonFabButton routerLink="/products/add-product" color="primary">
+            <IonFabButton routerLink="/products/add-product" color="secondary">
               <IonIcon icon={addOutline} />
             </IonFabButton>
           </IonFab>

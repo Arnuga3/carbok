@@ -216,7 +216,7 @@ export const AddProduct: React.FC<RouteComponentProps> = ({ history }) => {
             )}
           </Card>
           <SaveButton
-            color="primary"
+            color="secondary"
             expand="block"
             shape="round"
             onClick={handleSave}

@@ -23,6 +23,9 @@ export const Search: React.FC<Props> = ({ onSearchChange, onClear }) => {
 
   return (
     <SearchBar
+      type="search"
+      enterkeyhint="search"
+      inputMode="search"
       debounce={500}
       mode="md"
       clearIcon={closeCircleOutline}

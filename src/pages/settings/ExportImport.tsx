@@ -94,15 +94,15 @@ export const ExportImport: React.FC = () => {
 
   return (
     <>
-      <Card color="light-darker">
+      <Card>
         <IonCardHeader>
-          <IonCardSubtitle color="light">
+          <IonCardSubtitle>
             {t("page.settings.card.title.data")}
           </IonCardSubtitle>
         </IonCardHeader>
         <IonCardContent>
           <Button
-            color="light"
+            color="light-darker"
             expand="block"
             shape="round"
             onClick={handleExport}
@@ -111,7 +111,7 @@ export const ExportImport: React.FC = () => {
             <IonIcon slot="end" icon={downloadOutline} />
           </Button>
           <Button
-            color="light"
+            color="light-darker"
             expand="block"
             shape="round"
             onClick={handleFileSelect}

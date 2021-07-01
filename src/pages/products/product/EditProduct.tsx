@@ -232,7 +232,7 @@ export const EditProduct: React.FC<EditProductPageProps> = ({
             )}
           </Card>
           <Button
-            color="primary"
+            color="secondary"
             expand="block"
             shape="round"
             fill="solid"
