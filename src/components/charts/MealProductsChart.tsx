@@ -6,7 +6,7 @@ import { IMeal } from "../../classes/meal/IMeal";
 import { IPieCategory } from "../../classes/productCategory/IPieCategory";
 import { chartsDataService } from "../../services/ChartsDataService";
 import { IonText } from "@ionic/react";
-import { CategoryAvatar } from "../common/CategoryAvatar";
+import { CategoryAvatar } from "../common/products/CategoryAvatar";
 
 interface Props {
   meal: IMeal;

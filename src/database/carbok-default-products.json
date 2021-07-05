@@ -24,15 +24,15 @@
     },
     {
         "id": "00fbb53b-4712-48ed-b37e-50e06c80b1a1",
-        "name": "Nectarine yellow",
+        "name": "Nectarine",
         "categories": [
             "fruit"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 8.3,
-                "sugars": 8.3,
+                "carbs": 9,
+                "sugars": 9,
                 "portion": 100
             },
             "perPortion": {
@@ -136,37 +136,15 @@
     },
     {
         "id": "06168c59-1ebb-447c-8594-acab34bc5e47",
-        "name": "Apple royal gala",
+        "name": "Apple",
         "categories": [
             "fruit"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 12.1,
-                "sugars": 11.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "0657fa29-75c2-4188-9c52-ba86afc61329",
-        "name": "Kiwi gold",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 11.1,
-                "sugars": 10.9,
+                "carbs": 11.5,
+                "sugars": 11.5,
                 "portion": 100
             },
             "perPortion": {
@@ -297,8 +275,8 @@
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 12.6,
-                "sugars": 12.1,
+                "carbs": 13.4,
+                "sugars": 13.1,
                 "portion": 100
             },
             "perPortion": {
@@ -600,40 +578,16 @@
         "standard": true
     },
     {
-        "id": "15428104-cc24-424e-a46b-e5fec5365650",
-        "name": "Marmalade orange regular",
+        "id": "154cfb97-adfe-4397-842f-af9c704757b2",
+        "name": "Raspberries",
         "categories": [
-            "sweets",
             "fruit"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 65.5,
-                "sugars": 65.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "154cfb97-adfe-4397-842f-af9c704757b2",
-        "name": "Salsa",
-        "categories": [
-            "other",
-            "vegetables"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 6.3,
-                "sugars": 4.9,
+                "carbs": 4.5,
+                "sugars": 4.5,
                 "portion": 100
             },
             "perPortion": {
@@ -836,28 +790,6 @@
             "per100": {
                 "carbs": 1.2,
                 "sugars": 1.2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "1bf1372c-defb-474a-889a-78fe7025eef9",
-        "name": "Banana chip",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 50.7,
-                "sugars": 35.3,
                 "portion": 100
             },
             "perPortion": {
@@ -1281,8 +1213,8 @@
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 9.2,
-                "sugars": 8.8,
+                "carbs": 7.6,
+                "sugars": 7.6,
                 "portion": 100
             },
             "perPortion": {
@@ -1742,28 +1674,6 @@
         "standard": true
     },
     {
-        "id": "30aa3d5e-a7e3-4a84-801f-95f8af3b6ad3",
-        "name": "Apple juice",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 12.5,
-                "sugars": 11.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "310aa500-a4a3-4e38-b593-2e7aedc66634",
         "name": "Strawberry",
         "categories": [
@@ -1967,15 +1877,15 @@
     },
     {
         "id": "362edeb8-e74f-4199-bbf2-2e9d66d3606f",
-        "name": "Pineapple juice",
+        "name": "Pineapple",
         "categories": [
             "fruit"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 10.3,
-                "sugars": 10.3,
+                "carbs": 9.8,
+                "sugars": 9.8,
                 "portion": 100
             },
             "perPortion": {
@@ -1999,28 +1909,6 @@
             "per100": {
                 "carbs": 8.8,
                 "sugars": 8.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "365af413-7780-45ed-aaf9-a9f60fae4d8c",
-        "name": "Apple sauce",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 15.7,
-                "sugars": 15.3,
                 "portion": 100
             },
             "perPortion": {
@@ -2323,15 +2211,15 @@
     },
     {
         "id": "443512da-eb31-43c9-a954-1c7131481b65",
-        "name": "Egg emu",
+        "name": "Strawberries",
         "categories": [
-            "protein"
+            "fruit"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 2.7,
-                "sugars": 2.6,
+                "carbs": 5.9,
+                "sugars": 5.9,
                 "portion": 100
             },
             "perPortion": {
@@ -2345,17 +2233,15 @@
     },
     {
         "id": "453c4084-70dc-4955-8750-66e2f13e24dd",
-        "name": "Paella with chicken, chorizo",
+        "name": "Clementine",
         "categories": [
-            "protein",
-            "grains",
-            "vegetables"
+            "fruit"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 16.9,
-                "sugars": 1.6,
+                "carbs": 9.3,
+                "sugars": 9.3,
                 "portion": 100
             },
             "perPortion": {
@@ -2457,15 +2343,37 @@
     },
     {
         "id": "4b27d85b-9667-4e61-8c43-c130ebe7a172",
-        "name": "Grape red",
+        "name": "Grapes Red or Black",
         "categories": [
             "fruit"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 16.3,
-                "sugars": 16.3,
+                "carbs": 16.7,
+                "sugars": 16.7,
+                "portion": 100
+            },
+            "perPortion": {
+                "quantity": 1,
+                "carbs": 0,
+                "sugars": 0
+            }
+        },
+        "portionType": "weight",
+        "standard": true
+    },
+    {
+        "id": "4f745c0e-b5e8-409e-ab2d-5cc8466bef2c",
+        "name": "Grapes Green",
+        "categories": [
+            "fruit"
+        ],
+        "units": "g",
+        "carbsData": {
+            "per100": {
+                "carbs": 14.9,
+                "sugars": 14.9,
                 "portion": 100
             },
             "perPortion": {
@@ -2488,28 +2396,6 @@
             "per100": {
                 "carbs": 1.3,
                 "sugars": 0.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "4f745c0e-b5e8-409e-ab2d-5cc8466bef2c",
-        "name": "Horseradish, prepared",
-        "categories": [
-            "vegetables"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 8,
-                "sugars": 8,
                 "portion": 100
             },
             "perPortion": {
@@ -2734,30 +2620,6 @@
             "per100": {
                 "carbs": 1.8,
                 "sugars": 1.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "567b930f-76cb-4108-aacd-d2afeb5c8cbf",
-        "name": "Apple strudel",
-        "categories": [
-            "sweets",
-            "fruit",
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 38.1,
-                "sugars": 23.1,
                 "portion": 100
             },
             "perPortion": {
@@ -3961,28 +3823,6 @@
         "standard": true
     },
     {
-        "id": "82199770-45d0-478e-9f8c-d0e0e4e26a17",
-        "name": "Apple",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 12,
-                "sugars": 11.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "8438fcb4-4cf7-421c-ad0a-eb23fe1f5b36",
         "name": "Cone, waffle for ice cream",
         "categories": [
@@ -4196,28 +4036,6 @@
             "per100": {
                 "carbs": 29.3,
                 "sugars": 0.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "89bc1acd-6a4b-4911-9558-3c09c6ddc276",
-        "name": "Pineapple",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 8.2,
-                "sugars": 8.2,
                 "portion": 100
             },
             "perPortion": {
@@ -4486,28 +4304,6 @@
             "per100": {
                 "carbs": 43.6,
                 "sugars": 30,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "93a496a3-c0e1-4f07-8bf1-4738cbb2f0c9",
-        "name": "Apple pink lady",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 12.4,
-                "sugars": 11.9,
                 "portion": 100
             },
             "perPortion": {
@@ -5595,28 +5391,6 @@
         "standard": true
     },
     {
-        "id": "bab61082-a8fe-49cd-8647-49fe2ace84ef",
-        "name": "Pear juice",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 13.2,
-                "sugars": 9.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "bb41a368-ac95-4521-b7c6-7cfb386ee8d4",
         "name": "Chives",
         "categories": [
@@ -5750,28 +5524,6 @@
         "standard": true
     },
     {
-        "id": "c1c959c2-10e1-464f-aad1-f0d4a1747d60",
-        "name": "Apple golden",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 10.8,
-                "sugars": 10.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "c24de3d2-72fe-4cce-b0b4-c5ba5a4b085c",
         "name": "Date dried",
         "categories": [
@@ -5802,9 +5554,9 @@
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 13.1,
-                "sugars": 9.9,
-                "portion": 100
+                "carbs": 10.2,
+                "sugars": 10.2,
+                "portion": 133
             },
             "perPortion": {
                 "quantity": 1,
@@ -6067,8 +5819,8 @@
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 7.1,
-                "sugars": 6.5,
+                "carbs": 8.8,
+                "sugars": 8.8,
                 "portion": 100
             },
             "perPortion": {
@@ -6082,15 +5834,15 @@
     },
     {
         "id": "cb579eab-bcc5-4d91-b31a-ff60610fd8e9",
-        "name": "Melon honey",
+        "name": "Melon Honeydew",
         "categories": [
             "fruit"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 7.1,
-                "sugars": 7.1,
+                "carbs": 6.8,
+                "sugars": 6.8,
                 "portion": 100
             },
             "perPortion": {
@@ -6526,15 +6278,15 @@
     },
     {
         "id": "d9fbf596-3831-443e-8951-01b4be619b00",
-        "name": "Orange, peeled, raw, not further defined",
+        "name": "Orange",
         "categories": [
             "fruit"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 8,
-                "sugars": 8,
+                "carbs": 8.2,
+                "sugars": 8.2,
                 "portion": 100
             },
             "perPortion": {
@@ -6799,8 +6551,8 @@
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 19.6,
-                "sugars": 12.8,
+                "carbs": 22.3,
+                "sugars": 19.5,
                 "portion": 100
             },
             "perPortion": {
@@ -6923,28 +6675,6 @@
         "standard": true
     },
     {
-        "id": "e525aea4-3a91-4b65-a5b3-afb04e6897d1",
-        "name": "Orange",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 8.4,
-                "sugars": 8.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "e55b4927-12e4-4042-9a94-a38349bafada",
         "name": "Vinegar balsamic",
         "categories": [
@@ -6990,28 +6720,6 @@
         "standard": true
     },
     {
-        "id": "e6ae0e9a-5ea8-4e6e-b34a-ab920d2ab08a",
-        "name": "Orange, peeled, stewed, no added fat",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 9,
-                "sugars": 9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "e889f8d0-734a-471f-baa9-c0637282ecfc",
         "name": "Watermelon",
         "categories": [
@@ -7020,8 +6728,8 @@
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 5,
-                "sugars": 5,
+                "carbs": 7,
+                "sugars": 7,
                 "portion": 100
             },
             "perPortion": {
@@ -7320,52 +7028,6 @@
         "standard": true
     },
     {
-        "id": "f7ceba18-170f-43bc-9c0f-5f167ff1bd61",
-        "name": "Apple turnover",
-        "categories": [
-            "grains",
-            "sweets",
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 27.2,
-                "sugars": 10.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "f926d2e3-148b-44e8-9988-0490f437be0f",
-        "name": "Orange juice",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 8,
-                "sugars": 8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "f9a44222-ec68-4ca1-99d3-bacee1990e49",
         "name": "Milk cow, 1-2%",
         "categories": [
@@ -7477,15 +7139,15 @@
     },
     {
         "id": "fbeb924f-fd76-48f3-b34f-ff865a923716",
-        "name": "Blueberry",
+        "name": "Blueberries",
         "categories": [
             "fruit"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 11.3,
-                "sugars": 10.8,
+                "carbs": 14.2,
+                "sugars": 10,
                 "portion": 100
             },
             "perPortion": {
@@ -7499,15 +7161,15 @@
     },
     {
         "id": "fe4483ef-c7b8-4e61-adb3-0987f3e19913",
-        "name": "Kiwi green",
+        "name": "Kiwi",
         "categories": [
             "fruit"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 9,
-                "sugars": 9,
+                "carbs": 9.5,
+                "sugars": 9.3,
                 "portion": 100
             },
             "perPortion": {

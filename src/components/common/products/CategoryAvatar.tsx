@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { HeartIcon } from "./products/HeartIcon";
+import { HeartIcon } from "./HeartIcon";
 
 interface Props {
   colors: string | string[];

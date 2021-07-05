@@ -27,7 +27,7 @@ import { ChangeQuantityAlert } from "./productAlerts/ChangeQuantityAlert";
 import { DeleteAlert } from "./productAlerts/DeleteAlert";
 import { categoryColours } from "../../../resources/config";
 import { getCatKey } from "../../../resources/productCategories";
-import { CategoryAvatar } from "../../../components/common/CategoryAvatar";
+import { CategoryAvatar } from "../../../components/common/products/CategoryAvatar";
 import { getCategoriesColours } from "../../products/util";
 import { Meal } from "../../../classes/meal/Meal";
 import { MealProduct } from "../../../classes/meal/MealProduct";

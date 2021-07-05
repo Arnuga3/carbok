@@ -21,7 +21,7 @@ import {
 import { ProductsListItemLabel } from "../../ProductsListItemLabel";
 import { categoryColours } from "../../../../../resources/config";
 import { getCatKey } from "../../../../../resources/productCategories";
-import { CategoryAvatar } from "../../../CategoryAvatar";
+import { CategoryAvatar } from "../../CategoryAvatar";
 import {
   getCategoriesColours,
   toggleActionsSlide,

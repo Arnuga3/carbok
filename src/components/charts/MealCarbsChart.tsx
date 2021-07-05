@@ -6,7 +6,7 @@ import { IonText } from "@ionic/react";
 import { IMeal } from "../../classes/meal/IMeal";
 import { chartColors } from "../../resources/config";
 import { calcService } from "../../services/CalculationService";
-import { CategoryAvatar } from "../common/CategoryAvatar";
+import { CategoryAvatar } from "../common/products/CategoryAvatar";
 
 interface Props {
   meal: IMeal;

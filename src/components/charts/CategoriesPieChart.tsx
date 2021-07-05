@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { IPieCategory } from "../../classes/productCategory/IPieCategory";
 import styled from "styled-components";
-import { CategoryAvatar } from "../common/CategoryAvatar";
+import { CategoryAvatar } from "../common/products/CategoryAvatar";
 
 interface Props {
   categories: IPieCategory[] | [];
