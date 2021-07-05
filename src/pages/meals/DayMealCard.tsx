@@ -44,7 +44,7 @@ export const DayMealCard: React.FC<Props> = ({ meal, date }) => {
 
   return (
     <Animation>
-      <Card mode="md">
+      <Card mode="md" color="primary">
         <ReorderHandle>
           <IonReorder />
         </ReorderHandle>
@@ -58,7 +58,7 @@ export const DayMealCard: React.FC<Props> = ({ meal, date }) => {
                       "dddd, D MMM YYYY"
                     )}`}</small>
                   </IonText>
-                  <IonText color="light">
+                  <IonText color="white">
                     <h1>{t(getMealKey(meal.type))}</h1>
                   </IonText>
                 </CardHeaderTitle>
@@ -66,7 +66,7 @@ export const DayMealCard: React.FC<Props> = ({ meal, date }) => {
                   <IonText color="secondary">
                     <small>{t("carbohydrates")}</small>
                   </IonText>
-                  <IonText color="light">
+                  <IonText color="white">
                     <h1>{calcService.getMealTotalCarbs(meal.products)}</h1>
                   </IonText>
                 </CardHeaderCarbs>
@@ -83,8 +83,8 @@ export const DayMealCard: React.FC<Props> = ({ meal, date }) => {
                 ))}
                 {meal.note && (
                   <Note>
-                    <NoteIcon icon={chatbubbleOutline} color="tortoise" />
-                    <IonText color="tortoise">
+                    <NoteIcon icon={chatbubbleOutline} color="secondary" />
+                    <IonText color="secondary">
                       <small>{meal.note}</small>
                     </IonText>
                   </Note>
@@ -119,7 +119,7 @@ export const DayMealCard: React.FC<Props> = ({ meal, date }) => {
               <IonIcon icon={chatbubbleOutline} slot="icon-only" />
             </ActionButton>
             <ActionButton
-              color="light"
+              color="white"
               fill="clear"
               size="small"
               routerLink={`/meals/${meal.id}/products`}
@@ -170,7 +170,6 @@ const Card = styled(IonCard)`
   border-radius: 20px;
   margin-top: 16px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
-  background-image: linear-gradient(to right, #2a9d8f, #43a790, #59b091, #6db992, #81c293);
 `;
 
 const CardContent = styled(IonCardContent)`
@@ -180,7 +179,7 @@ const CardContent = styled(IonCardContent)`
 const ReorderHandle = styled.div`
   display: flex;
   justify-content: center;
-  background-color: var(--ion-color-primary);
+  background-color: var(--ion-color-primary-shade);
   color: white;
 `;
 

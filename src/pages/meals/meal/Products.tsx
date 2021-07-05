@@ -79,14 +79,14 @@ export const Products: React.FC<Props> = ({ meal }) => {
     <>
       {meal.note && (
         <Note>
-          <IonItem lines="none" color="tertiary">
+          <IonItem lines="none" color="primary">
             <IonIcon
               icon={chatbubbleOutline}
               slot="start"
               color="secondary"
               size="small"
             />
-            <IonText color="light">{meal.note}</IonText>
+            <IonText color="secondary">{meal.note}</IonText>
           </IonItem>
         </Note>
       )}
@@ -112,7 +112,7 @@ export const Products: React.FC<Props> = ({ meal }) => {
                     colors={getCategoriesColours(product.categories)}
                     size={40}
                   >
-                    {t(getCatKey("mix"))}
+                    {`+ ${product.categories.length}`}
                   </CircleBadgeMultiColor>
                 )}
               </IonAvatar>
@@ -147,10 +147,10 @@ export const Products: React.FC<Props> = ({ meal }) => {
           </IonItemSliding>
         ))}
       </List>
-      <IonFab vertical="bottom" horizontal="center" slot="fixed">
+      <IonFab vertical="bottom" horizontal="end" slot="fixed">
         <IonFabButton
           onClick={() => setOpenProductsModal(true)}
-          color="primary"
+          color="secondary"
         >
           <IonIcon icon={addOutline} />
         </IonFabButton>
@@ -211,5 +211,5 @@ const SlidingAction = styled(IonItemOption)`
 `;
 
 const Note = styled.div`
-  margin-bottom: 16px;
+  margin: 0 0 16px 12px;
 `;

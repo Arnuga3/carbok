@@ -13,8 +13,6 @@
     "product.category.sweets.description": "Sweets",
     "product.category.other": "Other",
     "product.category.other.description": "Something other",
-    "product.category.mix": "MIX",
-    "product.category.mix.description": "A mix of different product items",
 
     "units.grams": "Grams",
     "units.grams.short": "g",
@@ -31,7 +29,6 @@
     "tab.calculator": "Calculator",
     "tab.meals": "Meals",
     "tab.products": "Products",
-    "tab.settings": "Settings",
 
     "per": "Per",
     "quantity": "Quantity",
@@ -63,6 +60,13 @@
     "button.copy.to": "Copy To",
     "button.ok": "Ok",
     "button.calculate": "Calculate",
+
+    "page.home.title": "Counting carbs is now easier",
+    "page.home.overview": "Overview",
+    "page.home.calculator": "Calculator",
+    "page.home.meals": "Meals",
+    "page.home.products": "Products",
+    "page.home.support": "Love Carbok! How I can help?",
 
     "page.overview.carbs.range.card.title": "{{days}} days",
     "page.overview.carbs.range.card.subtitle": "of which {{sugarPercent}}% Sugars",

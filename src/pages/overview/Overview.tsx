@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import moment from "moment";
 import styled from "styled-components";
 import {
-  IonButton,
   IonCard,
   IonCardContent,
   IonCardHeader,
@@ -17,7 +16,6 @@ import { MealCarbsLinearChart } from "../../components/charts/MealCarbsLinearCha
 import { CategoriesPieChart } from "../../components/charts/CategoriesPieChart";
 import { DateRangeSwitch } from "./DateRangeSwitch";
 import { Meal } from "../../classes/meal/Meal";
-import { CalculatorModal } from "../../components/common/CalculatorModal";
 import _ from "lodash";
 
 export type Range = "7_days" | "30_days" | "90_days";
@@ -41,7 +39,6 @@ const defaultCardDataState: CardData = {
 const Overview: React.FC = () => {
   const { t } = useTranslation();
   const [cardData, setCardData] = useState<CardData>(defaultCardDataState);
-  const [openCalculatorModal, setOpenCalculatorModal] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
 
   const checkScroll = (e: any) => {
@@ -73,7 +70,7 @@ const Overview: React.FC = () => {
         >
           {cardData.meals.length > 0 && (
             <>
-              <CarbsCard>
+              <CarbsCard color="green">
                 <CardHeader>
                   <IonCardTitle color="light">
                     {t("carbohydrates")}
@@ -90,13 +87,13 @@ const Overview: React.FC = () => {
                   <MealCarbsLinearChart meals={cardData.meals} />
                 </IonCardContent>
               </CarbsCard>
-              <ProductsCard>
+              <ProductsCard color="blue">
                 <CardHeader>
-                  <IonCardTitle color="light">
+                  <IonCardTitle>
                     {t("page.overview.foods.range.card.title")}
                   </IonCardTitle>
                   {cardData.from && cardData.to && (
-                    <IonCardSubtitle color="light">{`${moment(
+                    <IonCardSubtitle>{`${moment(
                       cardData.from
                     ).format("D MMM")} - ${moment(cardData.to).format(
                       "D MMM"
@@ -109,25 +106,6 @@ const Overview: React.FC = () => {
               </ProductsCard>
             </>
           )}
-          <Card>
-            <CardHeader>
-              <IonCardTitle color="light">
-                {t("page.overview.calculator.card.title")}
-              </IonCardTitle>
-            </CardHeader>
-            <CalculatorCardContent>
-              <CalculateButton
-                onClick={() => setOpenCalculatorModal(true)}
-                color="secondary"
-              >
-                {t("button.calculate")}
-              </CalculateButton>
-            </CalculatorCardContent>
-          </Card>
-          <CalculatorModal
-            open={openCalculatorModal}
-            onClose={() => setOpenCalculatorModal(false)}
-          />
         </IonContent>
       </ListWrapper>
     </IonPage>
@@ -145,64 +123,17 @@ const CarbsCard = styled(IonCard)`
   border-radius: 20px;
   margin-top: 20px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
-  background: #348f50; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #56b4d3,
-    #348f50
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #56b4d3,
-    #348f50
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 `;
 
 const ProductsCard = styled(IonCard)`
   border-radius: 20px;
   margin-top: 12px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
-  background: #348f50; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #56b4d3,
-    #348f50
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #56b4d3,
-    #348f50
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-`;
-
-const Card = styled(IonCard)`
-  border-radius: 20px;
-  margin-top: 12px;
-  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
-  background: #348f50; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #56b4d3,
-    #348f50
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #56b4d3,
-    #348f50
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 `;
 
 const CardHeader = styled(IonCardHeader)`
   display: flex;
   justify-content: space-between;
-`;
-
-const CalculatorCardContent = styled(IonCardContent)`
-  text-align: center;
-`;
-
-const CalculateButton = styled(IonButton)`
-  --border-radius: 32px;
 `;
 
 const CardSubtitle = styled(IonCardSubtitle)`

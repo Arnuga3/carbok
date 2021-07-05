@@ -74,7 +74,7 @@ export const ProductsListItem: React.FC<Props> = ({
                     colors={getCategoriesColours(product.categories)}
                     size={40}
                   >
-                    {t(getCatKey("mix"))}
+                    {`+ ${product.categories.length}`}
                   </CircleBadgeMultiColor>
                 )}
               </IonAvatar>

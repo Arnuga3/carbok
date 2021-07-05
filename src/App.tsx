@@ -3,15 +3,12 @@ import { Redirect, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
   IonApp,
-  IonIcon,
-  IonLabel,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
   IonTabs,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { restaurant, fastFood, person } from "ionicons/icons";
 import { Meal } from "./pages/meals/meal/Meal";
 import { AddProduct } from "./pages/products/product/AddProduct";
 import { EditProduct } from "./pages/products/product/EditProduct";
@@ -19,11 +16,16 @@ import { DayMeals } from "./pages/meals/DayMeals";
 import Settings from "./pages/settings/Settings";
 import Products from "./pages/products/Products";
 import Overview from "./pages/overview/Overview";
+import Home from "./pages/home/Home";
 
 import { useTranslation } from "react-i18next";
 import { initAppSettings } from "./redux/actions/appSettingsActions";
 
-import icon from "./resources/icons/logo.svg";
+import CChartIcon from "./resources/icons/chart.svg";
+import CCalculatorIcon from "./resources/icons/calculator.svg";
+import CLogoIcon from "./resources/icons/logo.svg";
+import CMealsIcon from "./resources/icons/meals.svg";
+import CProductsIcon from "./resources/icons/products.svg";
 
 import "./i18n/config";
 
@@ -45,6 +47,8 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import { CarbokIcon } from "./components/styled/CarbokIcon";
+import { Calculator } from "./pages/calculator/Calculator";
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -59,11 +63,17 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route exact path="/:tab(overview)" render={() => <Overview/>} />
+            <Route exact path="/:tab(overview)" render={() => <Overview />} />
+            <Route
+              exact
+              path="/:tab(calculator)"
+              render={() => <Calculator />}
+            />
+            <Route exact path="/:tab(home)" render={() => <Home />} />
             <Route exact path="/:tab(meals)" component={DayMeals} />
             <Route exact path="/:tab(meals)/:id/products" component={Meal} />
-            <Route exact path="/:tab(products)" render={() => <Products/>} />
-            <Route exact path="/:tab(settings)" render={() => <Settings/>} />
+            <Route exact path="/:tab(products)" render={() => <Products />} />
+            <Route exact path="/settings" render={() => <Settings />} />
             <Route
               exact
               path="/:tab(products)/add-product"
@@ -75,26 +85,25 @@ const App: React.FC = () => {
               component={EditProduct}
             />
             <Route exact path="/">
-              <Redirect from="/" to="/meals" />
+              <Redirect from="/" to="/home" />
             </Route>
           </IonRouterOutlet>
 
           <IonTabBar slot="bottom">
             <IonTabButton tab="overview" href="/overview">
-              <IonIcon src={icon} />
-              <IonLabel>{t("tab.overview")}</IonLabel>
+              <CarbokIcon src={CChartIcon} />
+            </IonTabButton>
+            <IonTabButton tab="calculator" href="/calculator">
+              <CarbokIcon src={CCalculatorIcon} />
+            </IonTabButton>
+            <IonTabButton tab="home" href="/home">
+              <CarbokIcon src={CLogoIcon} style={{ paddingBottom: 4 }} size="40" />
             </IonTabButton>
             <IonTabButton tab="meals" href="/meals">
-              <IonIcon icon={restaurant} />
-              <IonLabel>{t("tab.meals")}</IonLabel>
+              <CarbokIcon src={CMealsIcon} />
             </IonTabButton>
             <IonTabButton tab="products" href="/products">
-              <IonIcon icon={fastFood} />
-              <IonLabel>{t("tab.products")}</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="settings" href="/settings">
-              <IonIcon icon={person} />
-              <IonLabel>{t("tab.settings")}</IonLabel>
+              <CarbokIcon src={CProductsIcon} size="40" />
             </IonTabButton>
           </IonTabBar>
         </IonTabs>

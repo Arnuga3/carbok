@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   IonButton,
   IonCard,
@@ -8,19 +8,12 @@ import {
   IonGrid,
   IonInput,
   IonList,
-  IonModal,
+  IonPage,
   IonRow,
   IonText,
 } from "@ionic/react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { IProduct } from "../../classes/product/IProduct";
-
-interface Props {
-  product?: IProduct | null;
-  open: boolean;
-  onClose: () => void;
-}
 
 const defaultDataState = {
   portion: 100,
@@ -28,26 +21,10 @@ const defaultDataState = {
   targetPortion: 0,
 };
 
-export const CalculatorModal: React.FC<Props> = ({
-  product = null,
-  open,
-  onClose,
-}) => {
+export const Calculator: React.FC = () => {
   const { t } = useTranslation();
   const [data, setData] = useState(defaultDataState);
   const { portion, carbs, targetPortion } = data;
-
-  useEffect(() => {
-    if (product) {
-      setData({
-        portion: 100,
-        carbs: product.carbsData.per100.carbs,
-        targetPortion: product.carbsData.per100.portion ?? 0,
-      });
-    } else {
-      setData(defaultDataState);
-    }
-  }, [product]);
 
   const handleFocus = (e: any) => {
     e.currentTarget
@@ -64,15 +41,7 @@ export const CalculatorModal: React.FC<Props> = ({
   }, [data.carbs, data.portion]);
 
   const handleReset = () => {
-    if (product) {
-      setData({
-        portion: 100,
-        carbs: product.carbsData.per100.carbs,
-        targetPortion: product.carbsData.per100.portion ?? 0,
-      });
-    } else {
-      setData(defaultDataState);
-    }
+    setData(defaultDataState);
   };
 
   const result = () => {
@@ -82,7 +51,7 @@ export const CalculatorModal: React.FC<Props> = ({
   };
 
   return (
-    <IonModal isOpen={open} onWillDismiss={onClose}>
+    <IonPage>
       <Content color="primary">
         <Wrapper>
           <Result color="white">
@@ -91,7 +60,6 @@ export const CalculatorModal: React.FC<Props> = ({
           <Label color="white">
             <small>{t("page.products.caluclator.modal.result.title")}</small>
           </Label>
-          {product && <Label color="secondary">{product.name}</Label>}
         </Wrapper>
         <List>
           <Card>
@@ -162,28 +130,17 @@ export const CalculatorModal: React.FC<Props> = ({
               </IonGrid>
             </IonCardContent>
           </Card>
-          <Buttons>
-            <Button
-              color="medium"
-              fill="clear"
-              expand="block"
-              shape="round"
-              onClick={onClose}
-            >
-              {t("button.close")}
-            </Button>
-            <Button
-              color="secondary"
-              expand="block"
-              shape="round"
-              onClick={handleReset}
-            >
-              {t("button.reset")}
-            </Button>
-          </Buttons>
+          <Button
+            color="secondary"
+            expand="block"
+            shape="round"
+            onClick={handleReset}
+          >
+            {t("button.reset")}
+          </Button>
         </List>
       </Content>
-    </IonModal>
+    </IonPage>
   );
 };
 
@@ -199,6 +156,8 @@ const List = styled(IonList)`
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
   min-height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Label = styled(IonText)`
@@ -260,11 +219,6 @@ const Error = styled.div`
   text-align: right;
 `;
 
-const Buttons = styled.div`
-  display: flex;
-`;
-
 const Button = styled(IonButton)`
   margin: 16px 12px;
-  flex: 1;
 `;

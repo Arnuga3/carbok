@@ -137,7 +137,7 @@ export const DayMeals: React.FC = () => {
                 ))}
             </IonReorderGroup>
           </List>
-          <IonFab vertical="bottom" horizontal="center" slot="fixed">
+          <IonFab vertical="bottom" horizontal="end" slot="fixed">
             <IonFabButton
               onClick={() => setOpenActionSheet(!openActionSheet)}
               color="secondary"

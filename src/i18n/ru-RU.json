@@ -13,8 +13,6 @@
     "product.category.sweets.description": "Сладости",
     "product.category.other": "Другое",
     "product.category.other.description": "Что-то другое",
-    "product.category.mix": "MIX",
-    "product.category.mix.description": "Сочетание разных продуктов",
 
     "units.grams": "Граммы",
     "units.grams.short": "г",
@@ -31,7 +29,6 @@
     "tab.calculator": "Калькулятор",
     "tab.meals": "Питание",
     "tab.products": "Продукты",
-    "tab.settings": "Настройки",
 
     "per": "На",
     "quantity": "Количество",
@@ -63,6 +60,13 @@
     "button.copy.to": "Скопировать На",
     "button.ok": "Ok",
     "button.calculate": "Посчитать",
+
+    "page.home.title": "Подсчет углеводов теперь проще",
+    "page.home.overview": "Обзор",
+    "page.home.calculator": "Калькулятор",
+    "page.home.meals": "Питание",
+    "page.home.products": "Продукты",
+    "page.home.support": "Люблю Carbok! Как я могу помочь?",
 
     "page.overview.carbs.range.card.title": "{{days}} дней",
     "page.overview.carbs.range.card.subtitle": "из которых {{sugarPercent}}% Сахара",

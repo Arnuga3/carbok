@@ -12,6 +12,8 @@ import reducer from './redux/reducers/index';
 
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
+import './resources/fonts/Montserrat-Light.ttf';
+
 const logger = createLogger({
   collapsed: true,
   timestamp: false,
