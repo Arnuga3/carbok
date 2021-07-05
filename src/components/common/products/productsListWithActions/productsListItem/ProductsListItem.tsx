@@ -19,10 +19,9 @@ import {
   trashOutline,
 } from "ionicons/icons";
 import { ProductsListItemLabel } from "../../ProductsListItemLabel";
-import { CircleBadge } from "../../../CircleBadge";
 import { categoryColours } from "../../../../../resources/config";
 import { getCatKey } from "../../../../../resources/productCategories";
-import { CircleBadgeMultiColor } from "../../../CircleBadgeMultiColor";
+import { CategoryAvatar } from "../../../CategoryAvatar";
 import {
   getCategoriesColours,
   toggleActionsSlide,
@@ -61,21 +60,22 @@ export const ProductsListItem: React.FC<Props> = ({
             <Item lines="none">
               <IonAvatar slot="start">
                 {product.categories.length === 1 && (
-                  <CircleBadge
-                    color={categoryColours[product.categories[0]]}
+                  <CategoryAvatar
+                    colors={categoryColours[product.categories[0]]}
                     size={40}
                     standard={product.standard}
                   >
                     {t(getCatKey(product.categories[0])).slice(0, 3)}
-                  </CircleBadge>
+                  </CategoryAvatar>
                 )}
                 {product.categories.length > 1 && (
-                  <CircleBadgeMultiColor
+                  <CategoryAvatar
                     colors={getCategoriesColours(product.categories)}
                     size={40}
+                    standard={product.standard}
                   >
                     {`+ ${product.categories.length}`}
-                  </CircleBadgeMultiColor>
+                  </CategoryAvatar>
                 )}
               </IonAvatar>
               <ProductsListItemLabel product={product} />

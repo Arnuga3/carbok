@@ -49,14 +49,16 @@ export const DayMealCard: React.FC<Props> = ({ meal, date }) => {
           <IonReorder />
         </ReorderHandle>
         <CardContent>
-          <IonItem routerLink={`/meals/${meal.id}/products`} lines="none" color="none">
+          <IonItem
+            routerLink={`/meals/${meal.id}/products`}
+            lines="none"
+            color="none"
+          >
             <ItemContent>
               <CardHeader>
                 <CardHeaderTitle>
                   <IonText color="secondary">
-                    <small>{`${moment(date).format(
-                      "dddd, D MMM YYYY"
-                    )}`}</small>
+                    <p>{`${moment(date).format("dddd, D MMM YYYY")}`}</p>
                   </IonText>
                   <IonText color="white">
                     <h1>{t(getMealKey(meal.type))}</h1>
@@ -64,7 +66,7 @@ export const DayMealCard: React.FC<Props> = ({ meal, date }) => {
                 </CardHeaderTitle>
                 <CardHeaderCarbs>
                   <IonText color="secondary">
-                    <small>{t("carbohydrates")}</small>
+                    <p>{t("carbohydrates")}</p>
                   </IonText>
                   <IonText color="white">
                     <h1>{calcService.getMealTotalCarbs(meal.products)}</h1>
@@ -85,7 +87,7 @@ export const DayMealCard: React.FC<Props> = ({ meal, date }) => {
                   <Note>
                     <NoteIcon icon={chatbubbleOutline} color="secondary" />
                     <IonText color="secondary">
-                      <small>{meal.note}</small>
+                      <p>{meal.note}</p>
                     </IonText>
                   </Note>
                 )}
@@ -198,6 +200,10 @@ const ItemContent = styled.div`
 const CardHeader = styled.div`
   display: flex;
   justify-content: space-between;
+
+  p {
+    text-transform: capitalize;
+  }
 `;
 
 const CardHeaderTitle = styled.div`

@@ -34,7 +34,7 @@ const Home: React.FC = () => {
             <b>{t("page.home.title")}</b>
           </IonText>
           <IonButtons>
-            <IonButton routerLink="/settings">
+            <IonButton routerLink="/settings" style={{ marginLeft: 8 }}>
               <IonIcon icon={person} slot="icon-only" color="white" />
             </IonButton>
           </IonButtons>
@@ -91,7 +91,7 @@ const Toolbar = styled.div`
 `;
 
 const OptionsContainer = styled.div`
-  margin-top: -165px;
+  margin-top: -150px;
   padding: 24px 12px;
   display: flex;
   flex-wrap: wrap;

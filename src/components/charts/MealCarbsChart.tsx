@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 import { ResponsiveContainer, Bar, BarChart, CartesianGrid } from "recharts";
 import { IonText } from "@ionic/react";
 import { IMeal } from "../../classes/meal/IMeal";
-import { CircleBadge } from "../common/CircleBadge";
 import { chartColors } from "../../resources/config";
 import { calcService } from "../../services/CalculationService";
+import { CategoryAvatar } from "../common/CategoryAvatar";
 
 interface Props {
   meal: IMeal;
@@ -42,7 +42,7 @@ export const MealCarbsChart: React.FC<Props> = ({ meal }) => {
           <Labels>
             <div>
               <CarbsLabel>
-                <CircleBadge color={chartColors.carbohydrates} />
+                <CategoryAvatar colors={chartColors.carbohydrates} />
                 <IonText color="white">
                   {`${t("carbohydrates")}: ${totalCarbs}${t(
                     "units.grams.short"
@@ -50,7 +50,7 @@ export const MealCarbsChart: React.FC<Props> = ({ meal }) => {
                 </IonText>
               </CarbsLabel>
               <CarbsLabel>
-                <CircleBadge color={chartColors.sugars} />
+                <CategoryAvatar colors={chartColors.sugars} />
                 <IonText color="white">
                   {`${t("of.which.sugars")}: ${Math.floor(sugarPercentage)}%`}
                 </IonText>

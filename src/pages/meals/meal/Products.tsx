@@ -20,7 +20,6 @@ import {
   scaleOutline,
   trashOutline,
 } from "ionicons/icons";
-import { CircleBadge } from "../../../components/common/CircleBadge";
 import { MealProductListItem } from "../../../components/common/MealProductListItem";
 import { ProductsSelectModal } from "./ProductsSelectModal";
 import { ChangePortionWeightAlert } from "./productAlerts/ChangePortionWeightAlert";
@@ -28,7 +27,7 @@ import { ChangeQuantityAlert } from "./productAlerts/ChangeQuantityAlert";
 import { DeleteAlert } from "./productAlerts/DeleteAlert";
 import { categoryColours } from "../../../resources/config";
 import { getCatKey } from "../../../resources/productCategories";
-import { CircleBadgeMultiColor } from "../../../components/common/CircleBadgeMultiColor";
+import { CategoryAvatar } from "../../../components/common/CategoryAvatar";
 import { getCategoriesColours } from "../../products/util";
 import { Meal } from "../../../classes/meal/Meal";
 import { MealProduct } from "../../../classes/meal/MealProduct";
@@ -100,20 +99,20 @@ export const Products: React.FC<Props> = ({ meal }) => {
             <Item detail lines="none">
               <IonAvatar slot="start">
                 {product.categories.length === 1 && (
-                  <CircleBadge
-                    color={categoryColours[product.categories[0]]}
+                  <CategoryAvatar
+                    colors={categoryColours[product.categories[0]]}
                     size={40}
                   >
                     {t(getCatKey(product.categories[0])).slice(0, 3)}
-                  </CircleBadge>
+                  </CategoryAvatar>
                 )}
                 {product.categories.length > 1 && (
-                  <CircleBadgeMultiColor
+                  <CategoryAvatar
                     colors={getCategoriesColours(product.categories)}
                     size={40}
                   >
                     {`+ ${product.categories.length}`}
-                  </CircleBadgeMultiColor>
+                  </CategoryAvatar>
                 )}
               </IonAvatar>
               <MealProductListItem product={product} />

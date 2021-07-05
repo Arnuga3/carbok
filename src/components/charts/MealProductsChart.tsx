@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell } from "recharts";
 import { IMeal } from "../../classes/meal/IMeal";
 import { IPieCategory } from "../../classes/productCategory/IPieCategory";
-import { CircleBadge } from "../common/CircleBadge";
 import { chartsDataService } from "../../services/ChartsDataService";
 import { IonText } from "@ionic/react";
+import { CategoryAvatar } from "../common/CategoryAvatar";
 
 interface Props {
   meal: IMeal;
@@ -37,10 +37,8 @@ export const MealProductsChart: React.FC<Props> = ({ meal }) => {
           .filter((category) => category.value > 0)
           .map((category: IPieCategory, index: number) => (
             <Category key={index}>
-              <CircleBadge color={category.color} />
-              <IonText color="white">
-                {t(category.name)}
-              </IonText>
+              <CategoryAvatar colors={category.color} />
+              <IonText color="white">{t(category.name)}</IonText>
             </Category>
           ))}
       </Categories>
