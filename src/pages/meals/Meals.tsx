@@ -23,7 +23,7 @@ import {
   chevronForwardOutline,
 } from "ionicons/icons";
 import { AddMealActionSheet } from "./AddMealActionSheet";
-import { DayMealCard } from "./DayMealCard";
+import { MealCard } from "./MealCard";
 import { Meal } from "../../classes/meal/Meal";
 import { MealTypeEnum } from "../../classes/meal/MealTypeEnum";
 import {
@@ -38,8 +38,9 @@ import { useAppSettings } from "../../hooks/appSettingsHook";
 import { dateService } from "../../services/DateService";
 import { Toolbar } from "../../components/styled/Toolbar";
 import _ from "lodash";
+import { changeBorderStyle } from "../../utils/eventHelpers";
 
-export const DayMeals: React.FC = () => {
+export const Meals: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { settings } = useAppSettings();
@@ -47,18 +48,9 @@ export const DayMeals: React.FC = () => {
   const [openActionSheet, setOpenActionSheet] = useState(false);
 
   const listRef = useRef<HTMLDivElement>(null);
-
-  const checkScroll = (e: any) => {
-    if (listRef.current) {
-      if (e.detail.scrollTop === 0) {
-        listRef.current.style.borderTop = "1px solid transparent";
-      } else {
-        listRef.current.style.borderTop = "1px solid rgba(0,0,0,0.1)";
-      }
-    }
-  };
-
-  const checkScrollThrottled = useRef(_.throttle(checkScroll, 500));
+  const changeBorderStyleThrottled = useRef(
+    _.throttle((e) => changeBorderStyle(e, listRef.current), 500)
+  );
 
   useEffect(() => {
     if (meals.length === 0) {
@@ -127,13 +119,16 @@ export const DayMeals: React.FC = () => {
         </ButtonWrapper>
       </Toolbar>
       <ListWrapper ref={listRef}>
-        <IonContent scrollEvents onIonScroll={(e) => checkScrollThrottled.current(e)}>
+        <IonContent
+          scrollEvents
+          onIonScroll={(e) => changeBorderStyleThrottled.current(e)}
+        >
           <List>
             <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
               {meals
                 .sort((a, b) => a.order - b.order)
                 .map((meal, i) => (
-                  <DayMealCard key={i} meal={meal} date={date} />
+                  <MealCard key={i} meal={meal} date={date} />
                 ))}
             </IonReorderGroup>
           </List>

@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { Meal } from "../../../classes/meal/Meal";
-import { uuidv4 } from "../../../utils/helper";
+import { uuidv4 } from "../../../utils/helpers";
 import {
   AddMeal,
   MealsActions,

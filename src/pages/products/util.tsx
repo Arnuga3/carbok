@@ -3,15 +3,6 @@ import { Product } from "../../classes/product/Product";
 import { ProductCategoryType } from "../../classes/productCategory/ProductCategoryType";
 import { categoryColours } from "../../resources/config";
 
-export async function toggleActionsSlide(selector: string) {
-  const productEl: any = document.querySelector("#" + selector);
-  const openItemNum = await productEl.getOpenAmount();
-  if (productEl && openItemNum === 0) {
-    productEl.open();
-  } else {
-    productEl.close();
-  }
-}
 
 export function filterProducts(
   products: Product[],

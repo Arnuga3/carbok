@@ -1,7 +1,7 @@
 import { IMealProduct } from "./IMealProduct";
 import { IProduct } from "../product/IProduct";
 import { PortionType } from "../productCarbs/PortionType";
-import { uuidv4 } from "../../utils/helper";
+import { uuidv4 } from "../../utils/helpers";
 import { ProductCategoryType } from "../productCategory/ProductCategoryType";
 import { UnitsType } from "../units/UnitsType";
 import { ProductCarbs } from "../productCarbs/ProductCarbs";

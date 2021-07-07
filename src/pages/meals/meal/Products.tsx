@@ -31,6 +31,7 @@ import { CategoryAvatar } from "../../../components/common/products/CategoryAvat
 import { getCategoriesColours } from "../../products/util";
 import { Meal } from "../../../classes/meal/Meal";
 import { MealProduct } from "../../../classes/meal/MealProduct";
+import { toggleActionsSlide } from "../../../utils/eventHelpers";
 
 interface Props {
   meal: Meal;
@@ -62,16 +63,6 @@ export const Products: React.FC<Props> = ({ meal }) => {
   const handleOnMealProductDelete = (product: MealProduct) => {
     setSelectedProduct(product);
     setOpenDeleteAlert(true);
-  };
-
-  const toggleActionsSlide = async (selector: string) => {
-    const productEl: any = document.querySelector("#" + selector);
-    const openItemNum = await productEl.getOpenAmount();
-    if (productEl && openItemNum === 0) {
-      productEl.open();
-    } else {
-      productEl.close();
-    }
   };
 
   return (

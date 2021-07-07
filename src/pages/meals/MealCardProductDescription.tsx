@@ -12,7 +12,7 @@ interface Props {
   i: number;
 }
 
-export const DayMealCardProduct: React.FC<Props> = ({
+export const MealCardProductDescription: React.FC<Props> = ({
   product,
   t,
   i,

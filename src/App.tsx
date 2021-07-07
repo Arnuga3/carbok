@@ -12,7 +12,7 @@ import { IonReactRouter } from "@ionic/react-router";
 import { Meal } from "./pages/meals/meal/Meal";
 import { AddProduct } from "./pages/products/product/AddProduct";
 import { EditProduct } from "./pages/products/product/EditProduct";
-import { DayMeals } from "./pages/meals/DayMeals";
+import { Meals } from "./pages/meals/Meals";
 import Settings from "./pages/settings/Settings";
 import Products from "./pages/products/Products";
 import Overview from "./pages/overview/Overview";
@@ -70,7 +70,7 @@ const App: React.FC = () => {
               render={() => <Calculator />}
             />
             <Route exact path="/:tab(home)" render={() => <Home />} />
-            <Route exact path="/:tab(meals)" component={DayMeals} />
+            <Route exact path="/:tab(meals)" component={Meals} />
             <Route exact path="/:tab(meals)/:id/products" component={Meal} />
             <Route exact path="/:tab(products)" render={() => <Products />} />
             <Route exact path="/settings" render={() => <Settings />} />

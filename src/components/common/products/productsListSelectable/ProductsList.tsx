@@ -7,6 +7,7 @@ import { ProductsListItemLabel } from "../ProductsListItemLabel";
 import { checkmarkCircle, ellipseOutline } from "ionicons/icons";
 import { IonIcon, IonItem } from "@ionic/react";
 import _ from "lodash";
+import { changeBorderStyle } from "../../../../utils/eventHelpers";
 
 interface Props {
   products: Product[];
@@ -20,6 +21,9 @@ export const ProductsList: React.FC<Props> = ({
   onSelectionChange,
 }) => {
   const listRef = useRef<HTMLDivElement>(null);
+  const changeBorderStyleThrottled = useRef(
+    _.throttle((e) => changeBorderStyle(e, listRef.current), 500)
+  );
 
   const toggleSelect = (product: Product) => {
     const isSelected = productsSelected.find((prd) => prd.id === product.id);
@@ -60,25 +64,13 @@ export const ProductsList: React.FC<Props> = ({
     );
   };
 
-  const checkScroll = (e: any) => {
-    if (listRef.current) {
-      if (!!(e.scrollOffset === 0)) {
-        listRef.current.style.borderTop = "1px solid transparent";
-      } else {
-        listRef.current.style.borderTop = "1px solid rgba(0,0,0,0.1)";
-      }
-    }
-  };
-
-  const checkScrollThrottled = useRef(_.throttle(checkScroll, 500));
-
   return (
     <>
       <ListTopLine ref={listRef} />
       <AutoSizer>
         {({ height, width }) => (
           <List
-            onScroll={(e) => checkScrollThrottled.current(e)}
+            onScroll={(e) => changeBorderStyleThrottled.current(e)}
             height={height}
             width={width}
             itemCount={products ? products.length : 0}

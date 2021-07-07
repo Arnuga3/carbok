@@ -15,6 +15,7 @@ import { downloadOutline, pushOutline } from "ionicons/icons";
 import { dataService } from "../../services/DataService";
 import { useDispatch } from "react-redux";
 import { retrieveProducts } from "../../redux/actions/products/productActions";
+import { resetFile, selectFile } from "../../utils/eventHelpers";
 
 export const ExportImport: React.FC = () => {
   const { t } = useTranslation();
@@ -39,14 +40,6 @@ export const ExportImport: React.FC = () => {
         duration: 2000,
         color: "danger",
       });
-    }
-  };
-
-  const handleFileSelect = () => {
-    const fileInput: HTMLInputElement | null =
-      document.querySelector("#data-import");
-    if (fileInput) {
-      fileInput.click();
     }
   };
 
@@ -83,15 +76,6 @@ export const ExportImport: React.FC = () => {
     }
   };
 
-  const resetFile = () => {
-    const fileInput: HTMLInputElement | null =
-      document.querySelector("#data-import");
-    if (fileInput) {
-      fileInput.value = "";
-    }
-    setFile(null);
-  };
-
   return (
     <>
       <Card>
@@ -114,7 +98,7 @@ export const ExportImport: React.FC = () => {
             color="light-darker"
             expand="block"
             shape="round"
-            onClick={handleFileSelect}
+            onClick={selectFile}
           >
             <IonIcon slot="start" icon={pushOutline} />
             {t("button.import")}
@@ -137,7 +121,10 @@ export const ExportImport: React.FC = () => {
           {
             text: t("button.cancel"),
             role: "cancel",
-            handler: resetFile,
+            handler: () => {
+              resetFile();
+              setFile(null);
+            },
           },
           {
             text: t("button.import"),

@@ -24,7 +24,6 @@ import { getCatKey } from "../../../../../resources/productCategories";
 import { CategoryAvatar } from "../../CategoryAvatar";
 import {
   getCategoriesColours,
-  toggleActionsSlide,
 } from "../../../../../pages/products/util";
 import { Product } from "../../../../../classes/product/Product";
 import {
@@ -33,6 +32,7 @@ import {
   showProduct,
 } from "../../../../../redux/actions/products/listProductActions";
 import { copyProduct } from "../../../../../redux/actions/products/productActions";
+import { toggleActionsSlide } from "../../../../../utils/eventHelpers";
 
 interface Props {
   identifier: string;

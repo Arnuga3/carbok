@@ -9,7 +9,7 @@ interface Props {
   onClick?: () => void;
 }
 
-export const Option: React.FC<Props> = ({
+export const Content: React.FC<Props> = ({
   color,
   title,
   link,
@@ -18,12 +18,12 @@ export const Option: React.FC<Props> = ({
 }) => {
   return (
     <Card color={color} routerLink={link} onClick={onClick}>
-      <Content>
+      <CardContent>
         {children}
         <IonText color="primary">
           <p>{title}</p>
         </IonText>
-      </Content>
+      </CardContent>
     </Card>
   );
 };
@@ -39,7 +39,7 @@ const Card = styled(IonCard)`
   border-radius: 16px;
 `;
 
-const Content = styled(IonCardContent)`
+const CardContent = styled(IonCardContent)`
   display: flex;
   flex-direction: column;
   align-items: center;

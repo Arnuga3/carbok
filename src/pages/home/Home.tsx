@@ -9,7 +9,7 @@ import {
   IonPage,
   IonText,
 } from "@ionic/react";
-import { Option } from "./Option";
+import { Content } from "./Content";
 import { person } from "ionicons/icons";
 import { CalculatorModal } from "../../components/common/CalculatorModal";
 
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <IonContent color="primary">
-        <Toolbar>
+        <Header>
           <Title>
             <CarbokIcon src={CLogoIcon} color="white" size="56" />
           </Title>
@@ -38,26 +38,26 @@ const Home: React.FC = () => {
               <IonIcon icon={person} slot="icon-only" color="white" />
             </IonButton>
           </IonButtons>
-        </Toolbar>
-        <Fancy />
-        <OptionsContainer>
-          <Option title={t("page.home.overview")} link="/overview">
+        </Header>
+        <StyleElement />
+        <AppContents>
+          <Content title={t("page.home.overview")} link="/overview">
             <CarbokIcon src={CChartIcon} size="48" />
-          </Option>
-          <Option title={t("page.home.meals")} link="/meals">
+          </Content>
+          <Content title={t("page.home.meals")} link="/meals">
             <CarbokIcon src={CMealsIcon} size="48" />
-          </Option>
-          <Option title={t("page.home.products")} link="/products">
+          </Content>
+          <Content title={t("page.home.products")} link="/products">
             <CarbokIcon src={CProductsIcon} size="60" />
-          </Option>
-          <Option
+          </Content>
+          <Content
             title={t("page.home.calculator")}
             onClick={() => setOpenCalculatorModal(true)}
           >
             <CarbokIcon src={CCalculatorIcon} size="48" />
-          </Option>
-          <Option title={t("page.home.support")} />
-        </OptionsContainer>
+          </Content>
+          <Content title={t("page.home.support")} />
+        </AppContents>
         <CalculatorModal
           open={openCalculatorModal}
           onClose={() => setOpenCalculatorModal(false)}
@@ -75,14 +75,14 @@ const Title = styled.div`
   margin-right: 12px;
 `;
 
-const Fancy = styled.div`
+const StyleElement = styled.div`
   height: 200px;
   border-bottom-right-radius: 100px;
   margin-top: -50px;
   background-color: var(--ion-color-secondary);
 `;
 
-const Toolbar = styled.div`
+const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -90,7 +90,7 @@ const Toolbar = styled.div`
   background-color: var(--ion-color-secondary);
 `;
 
-const OptionsContainer = styled.div`
+const AppContents = styled.div`
   margin-top: -150px;
   padding: 24px 12px;
   display: flex;

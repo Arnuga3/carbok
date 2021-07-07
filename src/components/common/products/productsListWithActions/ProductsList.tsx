@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Product } from "../../../../classes/product/Product";
 import { ProductsListItem } from "./productsListItem/ProductsListItem";
 import _ from "lodash";
+import { changeBorderStyle } from "../../../../utils/eventHelpers";
 
 interface Props {
   identifier: string;
@@ -13,18 +14,9 @@ interface Props {
 
 export const ProductsList: React.FC<Props> = ({ identifier, products }) => {
   const listRef = useRef<HTMLDivElement>(null);
-
-  const checkScroll = (e: any) => {
-    if (listRef.current) {
-      if (!!(e.scrollOffset === 0)) {
-        listRef.current.style.borderTop = "1px solid transparent";
-      } else {
-        listRef.current.style.borderTop = "1px solid rgba(0,0,0,0.1)";
-      }
-    }
-  };
-
-  const checkScrollThrottled = useRef(_.throttle(checkScroll, 500));
+  const changeBorderStyleThrottled = useRef(
+    _.throttle((e) => changeBorderStyle(e, listRef.current), 500)
+  );
 
   const ListItem = memo(({ data, index, style }: any) => {
     const product = data[index];
@@ -46,7 +38,7 @@ export const ProductsList: React.FC<Props> = ({ identifier, products }) => {
         <AutoSizer>
           {({ height, width }) => (
             <List
-              onScroll={(e) => checkScrollThrottled.current(e)}
+              onScroll={(e) => changeBorderStyleThrottled.current(e)}
               height={height}
               width={width}
               itemData={products}

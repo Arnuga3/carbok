@@ -1,5 +1,5 @@
 import { IMeal } from "./IMeal";
-import { uuidv4 } from "../../utils/helper";
+import { uuidv4 } from "../../utils/helpers";
 import { MealTypeEnum } from "./MealTypeEnum";
 import { MealProduct } from "./MealProduct";
 

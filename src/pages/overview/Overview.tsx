@@ -17,6 +17,7 @@ import { CategoriesPieChart } from "../../components/charts/CategoriesPieChart";
 import { DateRangeSwitch } from "./DateRangeSwitch";
 import { Meal } from "../../classes/meal/Meal";
 import _ from "lodash";
+import { changeBorderStyle } from "../../utils/eventHelpers";
 
 export type Range = "7_days" | "30_days" | "90_days";
 
@@ -39,19 +40,11 @@ const defaultCardDataState: CardData = {
 const Overview: React.FC = () => {
   const { t } = useTranslation();
   const [cardData, setCardData] = useState<CardData>(defaultCardDataState);
+  
   const listRef = useRef<HTMLDivElement>(null);
-
-  const checkScroll = (e: any) => {
-    if (listRef.current) {
-      if (e.detail.scrollTop === 0) {
-        listRef.current.style.borderTop = "1px solid transparent";
-      } else {
-        listRef.current.style.borderTop = "1px solid rgba(0,0,0,0.1)";
-      }
-    }
-  };
-
-  const checkScrollThrottled = useRef(_.throttle(checkScroll, 500));
+  const changeBorderStyleThrottled = useRef(
+    _.throttle((e) => changeBorderStyle(e, listRef.current), 500)
+  );
 
   const handleDateRangeChange = (data: CardData) => {
     setCardData(data);
@@ -66,7 +59,7 @@ const Overview: React.FC = () => {
       <ListWrapper ref={listRef}>
         <IonContent
           scrollEvents
-          onIonScroll={(e) => checkScrollThrottled.current(e)}
+          onIonScroll={(e) => changeBorderStyleThrottled.current(e)}
         >
           {cardData.meals.length > 0 && (
             <>

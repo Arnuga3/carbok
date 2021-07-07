@@ -4,6 +4,7 @@ import { IonInput, IonCol, IonGrid, IonRow } from "@ionic/react";
 import styled from "styled-components";
 import { ICarbsPerPortion } from "../../../../classes/productCarbs/ICarbsPerPortion";
 import { IProductDummy } from "../../../../classes/product/IProductDummy";
+import { focusElement } from "../../../../utils/eventHelpers";
 
 export enum PerPortionEnum {
   DESCRIPTION = "DESCRIPTION",
@@ -38,12 +39,6 @@ export const CarbsPerPortionData: React.FC<Props> = ({
   const sugarsValid = useCallback(() => {
     return perPortion.sugars >= 0 && perPortion.sugars <= perPortion.carbs;
   }, [perPortion.carbs, perPortion.sugars]);
-
-  const handleFocus = (e: any) => {
-    e.currentTarget
-      .getInputElement()
-      .then((el: HTMLInputElement) => el.select());
-  };
 
   const handlePerPortionChange = (type: PerPortionEnum, value: string) => {
     let perPortion = product.carbsData.perPortion;
@@ -85,7 +80,7 @@ export const CarbsPerPortionData: React.FC<Props> = ({
             onIonChange={(e: any) =>
               handlePerPortionChange(PerPortionEnum.QUANTITY, e.target.value)
             }
-            onFocus={handleFocus}
+            onFocus={focusElement}
           />
         </IonColRight>
       </IonRow>
@@ -115,7 +110,7 @@ export const CarbsPerPortionData: React.FC<Props> = ({
             onIonChange={(e: any) =>
               handlePerPortionChange(PerPortionEnum.CARBS, e.target.value)
             }
-            onFocus={handleFocus}
+            onFocus={focusElement}
           ></IonInputStyled>
           <Units>{t("units.grams.short")}</Units>
         </IonColRight>
@@ -134,7 +129,7 @@ export const CarbsPerPortionData: React.FC<Props> = ({
             onIonChange={(e: any) =>
               handlePerPortionChange(PerPortionEnum.SUGARS, e.target.value)
             }
-            onFocus={handleFocus}
+            onFocus={focusElement}
           ></IonInputStyled>
           <Units>{t("units.grams.short")}</Units>
         </IonColRight>

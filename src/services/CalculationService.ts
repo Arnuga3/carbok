@@ -1,7 +1,7 @@
 import { MealProduct } from "../classes/meal/MealProduct";
 import { ICarbsPer100 } from "../classes/productCarbs/ICarbsPer100";
 import { ICarbsPerPortion } from "../classes/productCarbs/ICarbsPerPortion";
-import { dec2, getPercentsOf } from "../utils/helper";
+import { dec2, getPercentsOf } from "../utils/helpers";
 
 class CalculationService {
 

@@ -4,7 +4,7 @@ import { IPieCategory } from "../classes/productCategory/IPieCategory";
 import { ProductCategoryType } from "../classes/productCategory/ProductCategoryType";
 import { categoryColours, chartColors } from "../resources/config";
 import { categories, getCatKey } from "../resources/productCategories";
-import { getPercentsOf } from "../utils/helper";
+import { getPercentsOf } from "../utils/helpers";
 import { calcService } from "./CalculationService";
 import { dateService } from "./DateService";
 import { MealData } from "../components/charts/MealCarbsLinearChart";

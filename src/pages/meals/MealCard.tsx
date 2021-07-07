@@ -16,7 +16,7 @@ import {
   pencilOutline,
   trashOutline,
 } from "ionicons/icons";
-import { DayMealCardProduct } from "./DayMealCardProduct";
+import { MealCardProductDescription } from "./MealCardProductDescription";
 import { Meal } from "../../classes/meal/Meal";
 import { DeleteAlert } from "./meal/alerts/DeleteAlert";
 import { getMealKey } from "../../resources/mealTypes";
@@ -30,8 +30,8 @@ interface Props {
   meal: Meal;
   date: Date;
 }
-
-export const DayMealCard: React.FC<Props> = ({ meal, date }) => {
+//TODO - Extract acrions?
+export const MealCard: React.FC<Props> = ({ meal, date }) => {
   const { t } = useTranslation();
   const copyDatetime = useRef<HTMLIonDatetimeElement>(null);
 
@@ -75,7 +75,7 @@ export const DayMealCard: React.FC<Props> = ({ meal, date }) => {
               </CardHeader>
               <DayMealCardProductList>
                 {meal.products.map((product, i) => (
-                  <DayMealCardProduct
+                  <MealCardProductDescription
                     key={i}
                     product={product}
                     meal={meal}

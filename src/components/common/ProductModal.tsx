@@ -4,7 +4,6 @@ import {
   IonCard,
   IonCardContent,
   IonCol,
-  IonContent,
   IonGrid,
   IonList,
   IonModal,
@@ -15,6 +14,8 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Product } from "../../classes/product/Product";
 import { getCatKey } from "../../resources/productCategories";
+import { RoundedContent } from "../styled/RoundedContent";
+import { RoundedContentHeader } from "../styled/RoundedContentHeader";
 
 interface Props {
   product: Product | null;
@@ -29,8 +30,8 @@ export const ProductModal: React.FC<Props> = ({ product, open, onClose }) => {
     <>
       {product ? (
         <IonModal isOpen={open} onWillDismiss={onClose}>
-          <Content color="primary">
-            <Wrapper>
+          <RoundedContent color="primary">
+            <RoundedContentHeader>
               <Label color="white">
                 <h3>{product.name}</h3>
               </Label>
@@ -39,7 +40,7 @@ export const ProductModal: React.FC<Props> = ({ product, open, onClose }) => {
                   <small key={i}>{` ${t(getCatKey(category))} `}</small>
                 ))}
               </Categories>
-            </Wrapper>
+            </RoundedContentHeader>
             <List>
               <Card>
                 <IonCardContent>
@@ -107,27 +108,12 @@ export const ProductModal: React.FC<Props> = ({ product, open, onClose }) => {
                 {t("button.close")}
               </Button>
             </List>
-          </Content>
+          </RoundedContent>
         </IonModal>
       ) : null}
     </>
   );
 };
-
-const Content = styled(IonContent)`
-  border-top-left-radius: 32px;
-  border-top-right-radius: 32px;
-  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
-  z-index: 99;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 36px 0;
-  text-align: center;
-`;
 
 const List = styled(IonList)`
   min-height: 100%;

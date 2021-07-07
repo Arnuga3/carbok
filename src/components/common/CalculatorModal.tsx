@@ -4,7 +4,6 @@ import {
   IonCard,
   IonCardContent,
   IonCol,
-  IonContent,
   IonGrid,
   IonInput,
   IonList,
@@ -15,6 +14,9 @@ import {
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { IProduct } from "../../classes/product/IProduct";
+import { focusElement } from "../../utils/eventHelpers";
+import { RoundedContent } from "../styled/RoundedContent";
+import { RoundedContentHeader } from "../styled/RoundedContentHeader";
 
 interface Props {
   product?: IProduct | null;
@@ -49,12 +51,6 @@ export const CalculatorModal: React.FC<Props> = ({
     }
   }, [product]);
 
-  const handleFocus = (e: any) => {
-    e.currentTarget
-      .getInputElement()
-      .then((el: HTMLInputElement) => el.select());
-  };
-
   const portionValid = useCallback(() => {
     return data.portion > 0;
   }, [data.portion]);
@@ -83,8 +79,8 @@ export const CalculatorModal: React.FC<Props> = ({
 
   return (
     <IonModal isOpen={open} onWillDismiss={onClose}>
-      <Content color="primary">
-        <Wrapper>
+      <RoundedContent color="primary">
+        <RoundedContentHeader>
           <Result color="white">
             <h1>{result()}</h1>
           </Result>
@@ -92,7 +88,7 @@ export const CalculatorModal: React.FC<Props> = ({
             <small>{t("page.products.caluclator.modal.result.title")}</small>
           </Label>
           {product && <Label color="secondary">{product.name}</Label>}
-        </Wrapper>
+        </RoundedContentHeader>
         <List>
           <Card>
             <IonCardContent>
@@ -110,7 +106,7 @@ export const CalculatorModal: React.FC<Props> = ({
                       onIonChange={(e: any) =>
                         setData({ ...data, portion: e.target.value })
                       }
-                      onFocus={handleFocus}
+                      onFocus={focusElement}
                     ></IonInputStyled>
                     <Units>{`${t("units.milliliters.short")}/ ${t(
                       "units.grams.short"
@@ -133,7 +129,7 @@ export const CalculatorModal: React.FC<Props> = ({
                       onIonChange={(e: any) =>
                         setData({ ...data, carbs: e.target.value })
                       }
-                      onFocus={handleFocus}
+                      onFocus={focusElement}
                     ></IonInputStyled>
                     <Units>{t("units.grams.short")}</Units>
                   </IonColRight>
@@ -154,7 +150,7 @@ export const CalculatorModal: React.FC<Props> = ({
                       onIonChange={(e: any) =>
                         setData({ ...data, targetPortion: e.target.value })
                       }
-                      onFocus={handleFocus}
+                      onFocus={focusElement}
                     ></IonInputStyled>
                     <Units>{t("units.grams.short")}</Units>
                   </IonColRight>
@@ -182,17 +178,10 @@ export const CalculatorModal: React.FC<Props> = ({
             </Button>
           </Buttons>
         </List>
-      </Content>
+      </RoundedContent>
     </IonModal>
   );
 };
-
-const Content = styled(IonContent)`
-  border-top-left-radius: 32px;
-  border-top-right-radius: 32px;
-  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
-  z-index: 99;
-`;
 
 const List = styled(IonList)`
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
@@ -204,14 +193,6 @@ const List = styled(IonList)`
 const Label = styled(IonText)`
   text-align: center;
   padding-bottom: 8px;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 36px 0;
-  text-align: center;
 `;
 
 const Result = styled(IonText)`

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { ICarbsPer100 } from "../../../../classes/productCarbs/ICarbsPer100";
 import { IProductDummy } from "../../../../classes/product/IProductDummy";
 import { getUnitShortKey } from "../../../../resources/productUnits";
+import { focusElement } from "../../../../utils/eventHelpers";
 
 export enum Per100Enum {
   CARBS = "CARBS",
@@ -31,12 +32,6 @@ export const CarbsPer100Data: React.FC<Props> = ({
   const sugarsValid = useCallback(() => {
     return per100.sugars >= 0 && per100.sugars <= per100.carbs;
   }, [per100.carbs, per100.sugars]);
-
-  const handleFocus = (e: any) => {
-    e.currentTarget
-      .getInputElement()
-      .then((el: HTMLInputElement) => el.select());
-  };
 
   const handlePer100Change = (type: Per100Enum, value: any) => {
     let per100 = product.carbsData.per100;
@@ -71,7 +66,7 @@ export const CarbsPer100Data: React.FC<Props> = ({
             onIonChange={(e: any) =>
               handlePer100Change(Per100Enum.CARBS, e.target.value)
             }
-            onFocus={handleFocus}
+            onFocus={focusElement}
           ></IonInputStyled>
           <Units>{t("units.grams.short")}</Units>
         </IonColRight>
@@ -90,7 +85,7 @@ export const CarbsPer100Data: React.FC<Props> = ({
             onIonChange={(e: any) =>
               handlePer100Change(Per100Enum.SUGARS, e.target.value)
             }
-            onFocus={handleFocus}
+            onFocus={focusElement}
           ></IonInputStyled>
           <Units>{t("units.grams.short")}</Units>
         </IonColRight>
@@ -109,7 +104,7 @@ export const CarbsPer100Data: React.FC<Props> = ({
             onIonChange={(e: any) =>
               handlePer100Change(Per100Enum.DEFAULT_PORTION, e.target.value)
             }
-            onFocus={handleFocus}
+            onFocus={focusElement}
           ></IonInputStyled>
           <Units>{t(getUnitShortKey(product.units))}</Units>
         </IonColRight>
