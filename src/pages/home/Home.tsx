@@ -25,17 +25,17 @@ const Home: React.FC = () => {
   const [openCalculatorModal, setOpenCalculatorModal] = useState(false);
   return (
     <IonPage>
-      <IonContent color="tertiary">
+      <IonContent color="beige">
         <Header>
           <Title>
             <CarbokIcon src={CLogoIcon} color="tertiary" size="56" />
           </Title>
-          <IonText color="primary">
+          <IonText>
             <b>{t("page.home.title")}</b>
           </IonText>
           <IonButtons>
             <IonButton routerLink="/settings" style={{ marginLeft: 8 }}>
-              <IonIcon icon={person} slot="icon-only" color="primary" />
+              <IonIcon icon={person} slot="icon-only" color="tertiary" />
             </IonButton>
           </IonButtons>
         </Header>
@@ -78,8 +78,8 @@ const Title = styled.div`
 const StyleElement = styled.div`
   height: 200px;
   border-bottom-right-radius: 100px;
-  margin-top: -85px;
-  background-color: var(--ion-color-beige);
+  margin-top: -90px;
+  background-color: var(--ion-color-white);
 `;
 
 const Header = styled.div`
