@@ -25,36 +25,36 @@ const Home: React.FC = () => {
   const [openCalculatorModal, setOpenCalculatorModal] = useState(false);
   return (
     <IonPage>
-      <IonContent color="beige">
+      <IonContent>
         <Header>
           <Title>
-            <CarbokIcon src={CLogoIcon} color="tertiary" size="56" />
+            <CarbokIcon src={CLogoIcon} color="beige" size="54" />
           </Title>
-          <IonText>
+          <IonText color="beige">
             <b>{t("page.home.title")}</b>
           </IonText>
           <IonButtons>
             <IonButton routerLink="/settings" style={{ marginLeft: 8 }}>
-              <IonIcon icon={person} slot="icon-only" color="tertiary" />
+              <IonIcon icon={person} slot="icon-only" color="white" />
             </IonButton>
           </IonButtons>
         </Header>
         <StyleElement />
         <AppContents>
           <Content title={t("page.home.overview")} link="/overview">
-            <CarbokIcon src={CChartIcon} size="48" />
+            <CarbokIcon src={CChartIcon} size="48" color="secondary" />
           </Content>
           <Content title={t("page.home.meals")} link="/meals">
-            <CarbokIcon src={CMealsIcon} size="48" />
+            <CarbokIcon src={CMealsIcon} size="48" color="secondary" />
           </Content>
           <Content title={t("page.home.products")} link="/products">
-            <CarbokIcon src={CProductsIcon} size="60" />
+            <CarbokIcon src={CProductsIcon} size="60" color="secondary" />
           </Content>
           <Content
             title={t("page.home.calculator")}
             onClick={() => setOpenCalculatorModal(true)}
           >
-            <CarbokIcon src={CCalculatorIcon} size="48" />
+            <CarbokIcon src={CCalculatorIcon} size="48" color="secondary" />
           </Content>
           <Content title={t("page.home.support")} />
         </AppContents>
@@ -79,7 +79,7 @@ const StyleElement = styled.div`
   height: 200px;
   border-bottom-right-radius: 100px;
   margin-top: -90px;
-  background-color: var(--ion-color-white);
+  background-color: var(--ion-color-primary);
 `;
 
 const Header = styled.div`
