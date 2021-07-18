@@ -26,6 +26,7 @@ import CCalculatorIcon from "./resources/icons/calculator.svg";
 import CLogoIcon from "./resources/icons/logo.svg";
 import CMealsIcon from "./resources/icons/meals.svg";
 import CProductsIcon from "./resources/icons/products.svg";
+import CLogoStrokeIcon from "./resources/icons/carbok-stroke.svg";
 
 import "./i18n/config";
 
@@ -97,7 +98,7 @@ const App: React.FC = () => {
               <CarbokIcon src={CCalculatorIcon} />
             </IonTabButton>
             <IonTabButton tab="home" href="/home">
-              <CarbokIcon src={CLogoIcon} style={{ paddingBottom: 4 }} size="40" />
+              <CarbokIcon src={CLogoStrokeIcon} style={{ paddingBottom: 4 }} size="44" />
             </IonTabButton>
             <IonTabButton tab="meals" href="/meals">
               <CarbokIcon src={CMealsIcon} />

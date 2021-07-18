@@ -63,7 +63,7 @@ const Overview: React.FC = () => {
         >
           {cardData.meals.length > 0 && (
             <>
-              <CarbsCard color="green">
+              <CarbsCard color="tertiary">
                 <CardHeader>
                   <IonCardTitle color="light">
                     {t("carbohydrates")}
@@ -80,7 +80,7 @@ const Overview: React.FC = () => {
                   <MealCarbsLinearChart meals={cardData.meals} />
                 </IonCardContent>
               </CarbsCard>
-              <ProductsCard color="blue">
+              <ProductsCard color="primary">
                 <CardHeader>
                   <IonCardTitle>
                     {t("page.overview.foods.range.card.title")}

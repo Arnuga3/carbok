@@ -20,7 +20,7 @@ export const Content: React.FC<Props> = ({
     <Card color={color} routerLink={link} onClick={onClick}>
       <CardContent>
         {children}
-        <IonText color="primary">
+        <IonText color="tertiary">
           <p>{title}</p>
         </IonText>
       </CardContent>
@@ -36,7 +36,7 @@ const Card = styled(IonCard)`
   height: 165px;
   margin: 8px 4px;
   box-shadow: 1px 3px 10px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 16px;
+  border-radius: 2px;
 `;
 
 const CardContent = styled(IonCardContent)`

@@ -47,7 +47,7 @@ export const ProductsToolbar: React.FC<Props> = ({ onFilert, onSearch }) => {
             onClick={() => handleFilter("all")}
             color={
               settings.productsFilter === "all"
-                ? "var(--ion-color-primary)"
+                ? "var(--ion-color-secondary)"
                 : "var(--ion-color-light-darker)"
             }
           >
@@ -57,7 +57,7 @@ export const ProductsToolbar: React.FC<Props> = ({ onFilert, onSearch }) => {
             onClick={() => handleFilter("default")}
             color={
               settings.productsFilter === "default"
-                ? "var(--ion-color-primary)"
+                ? "var(--ion-color-secondary)"
                 : "var(--ion-color-light-darker)"
             }
           >
@@ -67,7 +67,7 @@ export const ProductsToolbar: React.FC<Props> = ({ onFilert, onSearch }) => {
             onClick={() => handleFilter("my")}
             color={
               settings.productsFilter === "my"
-                ? "var(--ion-color-primary)"
+                ? "var(--ion-color-secondary)"
                 : "var(--ion-color-light-darker)"
             }
           >

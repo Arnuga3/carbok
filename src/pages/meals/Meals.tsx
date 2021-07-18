@@ -21,6 +21,7 @@ import {
   calendarOutline,
   chevronBackOutline,
   chevronForwardOutline,
+  todayOutline,
 } from "ionicons/icons";
 import { AddMealActionSheet } from "./AddMealActionSheet";
 import { MealCard } from "./MealCard";
@@ -99,12 +100,10 @@ export const Meals: React.FC = () => {
               <IonIcon icon={chevronBackOutline} slot="icon-only" />
             </IonButton>
           </IonButtons>
+          <IonButton onClick={() => getCalendarDay(moment().toDate())} color="primary">
+            <IonIcon icon={todayOutline} slot="icon-only" />
+          </IonButton>
           <DateSelect lines="none" mode="ios">
-            <IonIcon
-              icon={calendarOutline}
-              color="primary"
-              style={{ paddingRight: 12 }}
-            />
             <DateTime
               doneText={t("button.done")}
               cancelText={t("button.cancel")}

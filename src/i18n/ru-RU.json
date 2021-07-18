@@ -49,7 +49,7 @@
     "button.edit": "Изменить",
     "button.back": "Назад",
     "button.delete": "Удалить",
-    "button.done": "Ок",
+    "button.done": "OК",
     "button.add.selected": "Добавить Выделеное",
     "button.note": "Заметка",
     "button.reset": "Сбросить",
@@ -58,7 +58,7 @@
     "button.reorder": "Порядок",
     "button.copy": "Скопировать",
     "button.copy.to": "Скопировать На",
-    "button.ok": "Ok",
+    "button.ok": "OК",
     "button.calculate": "Посчитать",
 
     "page.home.title": "Подсчет углеводов теперь проще",
