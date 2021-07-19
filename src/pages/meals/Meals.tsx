@@ -18,9 +18,9 @@ import {
 } from "@ionic/react";
 import {
   addOutline,
-  calendarOutline,
   chevronBackOutline,
   chevronForwardOutline,
+  copyOutline,
   todayOutline,
 } from "ionicons/icons";
 import { AddMealActionSheet } from "./AddMealActionSheet";
@@ -48,6 +48,7 @@ export const Meals: React.FC = () => {
   const { meals, date } = useMeals();
   const [openActionSheet, setOpenActionSheet] = useState(false);
 
+  const dateTime = useRef<HTMLIonDatetimeElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const changeBorderStyleThrottled = useRef(
     _.throttle((e) => changeBorderStyle(e, listRef.current), 500)
@@ -100,11 +101,15 @@ export const Meals: React.FC = () => {
               <IonIcon icon={chevronBackOutline} slot="icon-only" />
             </IonButton>
           </IonButtons>
-          <IonButton onClick={() => getCalendarDay(moment().toDate())} color="primary">
+          <IonButton
+            onClick={() => getCalendarDay(moment().toDate())}
+            color="primary"
+          >
             <IonIcon icon={todayOutline} slot="icon-only" />
           </IonButton>
           <DateSelect lines="none" mode="ios">
             <DateTime
+              ref={dateTime}
               doneText={t("button.done")}
               cancelText={t("button.cancel")}
               monthShortNames={moment.monthsShort()}
@@ -124,11 +129,26 @@ export const Meals: React.FC = () => {
         >
           <List>
             <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
-              {meals
-                .sort((a, b) => a.order - b.order)
-                .map((meal, i) => (
-                  <MealCard key={i} meal={meal} date={date} />
-                ))}
+              {meals.length > 0 ? (
+                meals
+                  .sort((a, b) => a.order - b.order)
+                  .map((meal, i) => (
+                    <MealCard key={i} meal={meal} date={date} />
+                  ))
+              ) : (
+                <QuickActionsWrapper>
+                  <QuickAction
+                    onClick={() => setOpenActionSheet(!openActionSheet)}
+                  >
+                    <small><IonIcon icon={addOutline} size="24px"/> {t("page.meals.quick.action.add.meal")}</small>
+                  </QuickAction>
+                  <QuickAction
+                    onClick={() => dateTime.current?.open()}
+                  >
+                    <small><IonIcon icon={copyOutline} size="24px"/> {t("page.meals.quick.action.copy.meal")}</small>
+                  </QuickAction>
+                </QuickActionsWrapper>
+              )}
             </IonReorderGroup>
           </List>
           <IonFab vertical="bottom" horizontal="end" slot="fixed">
@@ -175,4 +195,23 @@ const DateSelect = styled(IonItem)`
 
 const DateTime = styled(IonDatetime)`
   color: var(--ion-color-medium);
+`;
+
+const QuickActionsWrapper = styled.div`
+  display: flex;
+  margin: 12px 24px;
+`;
+
+const QuickAction = styled.div`
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 80px;
+  height: 80px;
+  border: 2px dashed var(--ion-color-light-darker);
+  color: var(--ion-color-medium);
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 12px;
+  padding: 4px;
 `;
