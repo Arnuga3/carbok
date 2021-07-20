@@ -206,8 +206,8 @@ const QuickAction = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   border: 2px dashed var(--ion-color-light-darker);
   color: var(--ion-color-medium);
   border-radius: 8px;

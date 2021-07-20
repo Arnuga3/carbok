@@ -162,7 +162,7 @@ const Item = styled(IonItem)`
   --min-height: 70px;
   margin: 4px;
   border-radius: 12px;
-  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.1);
 `;
 
 const ItemOptions = styled(IonItemOptions)`

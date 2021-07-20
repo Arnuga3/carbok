@@ -10,6 +10,7 @@ import {
   IonCardTitle,
   IonContent,
   IonPage,
+  IonText,
 } from "@ionic/react";
 import { IPieCategory } from "../../classes/productCategory/IPieCategory";
 import { MealCarbsLinearChart } from "../../components/charts/MealCarbsLinearChart";
@@ -40,7 +41,7 @@ const defaultCardDataState: CardData = {
 const Overview: React.FC = () => {
   const { t } = useTranslation();
   const [cardData, setCardData] = useState<CardData>(defaultCardDataState);
-  
+
   const listRef = useRef<HTMLDivElement>(null);
   const changeBorderStyleThrottled = useRef(
     _.throttle((e) => changeBorderStyle(e, listRef.current), 500)
@@ -61,9 +62,9 @@ const Overview: React.FC = () => {
           scrollEvents
           onIonScroll={(e) => changeBorderStyleThrottled.current(e)}
         >
-          {cardData.meals.length > 0 && (
+          {cardData.meals.length > 0 ? (
             <>
-              <CarbsCard color="tertiary">
+              <CarbsCard color="green">
                 <CardHeader>
                   <IonCardTitle color="light">
                     {t("carbohydrates")}
@@ -80,15 +81,15 @@ const Overview: React.FC = () => {
                   <MealCarbsLinearChart meals={cardData.meals} />
                 </IonCardContent>
               </CarbsCard>
-              <ProductsCard color="primary">
+              <ProductsCard color="beige">
                 <CardHeader>
                   <IonCardTitle>
                     {t("page.overview.foods.range.card.title")}
                   </IonCardTitle>
                   {cardData.from && cardData.to && (
-                    <IonCardSubtitle>{`${moment(
-                      cardData.from
-                    ).format("D MMM")} - ${moment(cardData.to).format(
+                    <IonCardSubtitle>{`${moment(cardData.from).format(
+                      "D MMM"
+                    )} - ${moment(cardData.to).format(
                       "D MMM"
                     )}`}</IonCardSubtitle>
                   )}
@@ -98,6 +99,10 @@ const Overview: React.FC = () => {
                 </IonCardContent>
               </ProductsCard>
             </>
+          ) : (
+            <NoDataText color="medium">
+              <p>{t("not.enough.data")}</p>
+            </NoDataText>
           )}
         </IonContent>
       </ListWrapper>
@@ -131,4 +136,9 @@ const CardHeader = styled(IonCardHeader)`
 
 const CardSubtitle = styled(IonCardSubtitle)`
   padding-left: 4px;
+`;
+
+const NoDataText = styled(IonText)`
+  text-align: center;
+  padding: 12px;
 `;

@@ -1,27 +1,4 @@
-[{
-        "id": "00060f12-d8d9-4301-9db8-412bbc865c39",
-        "name": "Sushi, tuna, without seaweed",
-        "categories": [
-            "other",
-            "grains",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 23.9,
-                "sugars": 1.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
+[
     {
         "id": "00fbb53b-4712-48ed-b37e-50e06c80b1a1",
         "name": "Nectarine",
@@ -67,30 +44,6 @@
         "standard": true
     },
     {
-        "id": "021c5999-7946-49d8-96dc-65a418eecddb",
-        "name": "Sushi, salmon, with seaweed",
-        "categories": [
-            "other",
-            "grains",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 27,
-                "sugars": 1.7,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "025de8d2-89bc-48c0-bca0-37e64cf88906",
         "name": "Avocado",
         "categories": [
@@ -123,72 +76,6 @@
             "per100": {
                 "carbs": 11.5,
                 "sugars": 11.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "06747847-d7cd-44ad-b78b-5cf3cd27ffd6",
-        "name": "Beef liver",
-        "categories": [
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 2.7,
-                "sugars": 0,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "07bc6d23-8d23-4b7c-b841-7d40c7703cd5",
-        "name": "Seaweed boiled",
-        "categories": [
-            "vegetables"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 0.4,
-                "sugars": 0.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "07c32993-6bd5-4332-9a13-36a490753b91",
-        "name": "Croissant",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 35.6,
-                "sugars": 5.1,
                 "portion": 100
             },
             "perPortion": {
@@ -267,72 +154,6 @@
         "standard": true
     },
     {
-        "id": "0ae9e9ac-fb5f-4b1a-9736-ba896d3b8877",
-        "name": "Mixed dried fruit",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 70.2,
-                "sugars": 68.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "0b126c4c-7465-426f-8a4f-7caf6613b49c",
-        "name": "Teriyaki sauce",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 43.5,
-                "sugars": 34.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "0c35da79-3ae0-40ff-b3a1-bc04ba7d152d",
-        "name": "Chocolate milk",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 56,
-                "sugars": 54.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "0d2df386-757a-4158-9b5c-2933733bcd7f",
         "name": "Nut almond",
         "categories": [
@@ -377,52 +198,6 @@
         "standard": true
     },
     {
-        "id": "118e0934-70a8-41b1-8d40-94af1f353285",
-        "name": "Wrap white",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 47.4,
-                "sugars": 6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "11edd568-0b43-4ad4-83a2-8762f55710a1",
-        "name": "Paella with chicken, chorizo, seafood",
-        "categories": [
-            "grains",
-            "vegetables",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 15.1,
-                "sugars": 1.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "13597728-f345-401b-8d9b-d97e7da17777",
         "name": "Bulgur cooked",
         "categories": [
@@ -433,51 +208,6 @@
             "per100": {
                 "carbs": 17.2,
                 "sugars": 0,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "14ad1ec6-3fc2-4763-b7d1-539676e7ad7b",
-        "name": "Lamb liver",
-        "categories": [
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 2.3,
-                "sugars": 0,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "1516fa04-215e-40b4-9066-215a80061f2d",
-        "name": "Casserole chicken",
-        "categories": [
-            "other",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 1.6,
-                "sugars": 1.1,
                 "portion": 100
             },
             "perPortion": {
@@ -556,29 +286,6 @@
         "standard": true
     },
     {
-        "id": "15bf5aab-1185-49eb-ba0e-8b8bdb69ec35",
-        "name": "Cake or cupcake, citrus",
-        "categories": [
-            "sweets",
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 49.2,
-                "sugars": 28.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "16011f00-76a7-4b75-bf52-96075763c744",
         "name": "Oyster",
         "categories": [
@@ -589,74 +296,6 @@
             "per100": {
                 "carbs": 0.6,
                 "sugars": 0,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "16ab768e-8314-48c3-8278-44e01a653a7a",
-        "name": "Bread, Naan",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 40.3,
-                "sugars": 1.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "187097a7-fcbf-401b-b11b-095b71aaa2c5",
-        "name": "Ice cream, strawberry",
-        "categories": [
-            "sweets",
-            "dairy"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 29,
-                "sugars": 20.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "18f37e14-d24a-475c-9cff-ffb5ec4e28d9",
-        "name": "Cereal, mixed grain flakes, fruit & nut",
-        "categories": [
-            "grains",
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 65,
-                "sugars": 23.2,
                 "portion": 100
             },
             "perPortion": {
@@ -691,28 +330,6 @@
         "standard": true
     },
     {
-        "id": "1b286d28-e94d-4efd-a070-c6c1e54df220",
-        "name": "Yorkshire pudding",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 29.4,
-                "sugars": 3.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "1b63ebab-043b-4437-ac11-486093df294b",
         "name": "Cherries",
         "categories": [
@@ -723,28 +340,6 @@
             "per100": {
                 "carbs": 11.2,
                 "sugars": 11.2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "1c8f79b0-bf2d-4980-957f-48db676b6a4e",
-        "name": "Salami danish",
-        "categories": [
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 1.2,
-                "sugars": 0.8,
                 "portion": 100
             },
             "perPortion": {
@@ -779,72 +374,6 @@
         "standard": true
     },
     {
-        "id": "1cbd1ffd-1593-4246-95fb-d593771b1e08",
-        "name": "Bread wholemeal",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 37.7,
-                "sugars": 2.7,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "1cebd98d-81e8-4c59-9541-3531d7a7fb76",
-        "name": "Celery juice",
-        "categories": [
-            "vegetables"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 2.2,
-                "sugars": 1.2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "1cfbd742-71e9-4062-992f-afb376cb35b5",
-        "name": "Cheese, mozzarella, reduced fat",
-        "categories": [
-            "dairy"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 0.1,
-                "sugars": 0.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "1d1f530d-58ce-45bb-bd06-21d395fd2379",
         "name": "Apricot",
         "categories": [
@@ -855,211 +384,6 @@
             "per100": {
                 "carbs": 7.2,
                 "sugars": 7.2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "1d90ed41-7c20-4c49-b921-eaff9f59c6c5",
-        "name": "Sushi, salmon, without seaweed",
-        "categories": [
-            "other",
-            "grains",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 27.3,
-                "sugars": 1.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "1e16016c-2a03-4a81-8a2d-60ef0e96a3d5",
-        "name": "Confectionery, rocky road",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 55.9,
-                "sugars": 48.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "1ed57e2a-b342-43ba-86b1-cfb438677bc9",
-        "name": "Cranberry sauce",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 39.7,
-                "sugars": 39.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "213954e8-3c7e-4773-aabc-befe0d2c83d2",
-        "name": "Squid or calamari, battered, deep fried",
-        "categories": [
-            "grains",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 7.7,
-                "sugars": 0,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "21c02b61-eaf0-48de-a2ed-41b925521ee9",
-        "name": "Tartare sauce regular",
-        "categories": [
-            "other",
-            "vegetables"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 10,
-                "sugars": 9.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "220a0afb-6dad-4fc7-a026-aa0da38f4d22",
-        "name": "Horseradish sauce",
-        "categories": [
-            "other",
-            "vegetables"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 17.9,
-                "sugars": 13.7,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "22963096-2f30-4416-9ce9-4647a60d95fe",
-        "name": "Sushi, fish, without seaweed",
-        "categories": [
-            "grains",
-            "protein",
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 23.9,
-                "sugars": 1.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "24dabec6-8b37-43b4-be40-667c63966e72",
-        "name": "Cream double",
-        "categories": [
-            "dairy"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 1.7,
-                "sugars": 1.7,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "260ae822-49be-4458-bcf1-e47d479ee896",
-        "name": "Rice for sushi, cooked",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 34.2,
-                "sugars": 2.2,
                 "portion": 100
             },
             "perPortion": {
@@ -1094,28 +418,6 @@
         "standard": true
     },
     {
-        "id": "268b81f4-5498-4069-b0ff-dc29b2bdf275",
-        "name": "Eggplant boiled or steamed",
-        "categories": [
-            "vegetables"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 2.8,
-                "sugars": 2.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "2812a4c3-e930-46ec-a2f7-9b1a40d95a9a",
         "name": "Peach",
         "categories": [
@@ -1126,30 +428,6 @@
             "per100": {
                 "carbs": 7.6,
                 "sugars": 7.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "291815ed-58f9-407d-9dc2-b157606454ce",
-        "name": "Sushi, vegetables, with seaweed",
-        "categories": [
-            "other",
-            "grains",
-            "vegetables"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 27.5,
-                "sugars": 2.2,
                 "portion": 100
             },
             "perPortion": {
@@ -1216,29 +494,6 @@
             "per100": {
                 "carbs": 36,
                 "sugars": 0.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "2a4d07c6-5f1b-4f5f-ad8d-3872b83c0162",
-        "name": "Muffin, chocolate chip",
-        "categories": [
-            "sweets",
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 52.7,
-                "sugars": 28.9,
                 "portion": 100
             },
             "perPortion": {
@@ -1339,28 +594,6 @@
         "standard": true
     },
     {
-        "id": "2c36e140-0d8a-41a9-a372-5ac21477f0d0",
-        "name": "Goose",
-        "categories": [
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 2,
-                "sugars": 0,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "2c6e107b-41ee-4cce-8b1b-4b643b69a982",
         "name": "Kale",
         "categories": [
@@ -1393,29 +626,6 @@
             "per100": {
                 "carbs": 14.3,
                 "sugars": 8.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "2cdc3b0d-4003-400d-acde-0c61cfaad44b",
-        "name": "Spring roll, meat, deep fried",
-        "categories": [
-            "grains",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 22,
-                "sugars": 2.6,
                 "portion": 100
             },
             "perPortion": {
@@ -1472,50 +682,6 @@
         "standard": true
     },
     {
-        "id": "2f97af5f-0fb3-4abd-99c9-6a280fc1f41f",
-        "name": "Sausage beef, fried or grilled",
-        "categories": [
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 4.5,
-                "sugars": 1.2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "2fc12a79-5c25-4482-bfe2-9cb1b7837f71",
-        "name": "Bread white & wholemeal",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 47,
-                "sugars": 2.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "3074a53d-58af-48b7-a1fc-88b1cc17ad1b",
         "name": "Sweetcorn on cob",
         "categories": [
@@ -1560,75 +726,6 @@
         "standard": true
     },
     {
-        "id": "3298bdfe-eff2-4ea6-a2c0-7d0b245f81dd",
-        "name": "Popcorn sweet",
-        "categories": [
-            "sweets",
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 81.1,
-                "sugars": 54.3,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "330941c5-2585-456c-a63c-448f7aa5099b",
-        "name": "Samosa, meat & vegetables, deep fried",
-        "categories": [
-            "grains",
-            "vegetables",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 23.7,
-                "sugars": 6.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "33227dd5-e18e-4882-b9e6-3746b33d26fc",
-        "name": "Sausage pork",
-        "categories": [
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 3.2,
-                "sugars": 0,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "33b6c81a-616f-4b64-9a9e-bbdda4399e97",
         "name": "Cheese brie",
         "categories": [
@@ -1639,29 +736,6 @@
             "per100": {
                 "carbs": 0.1,
                 "sugars": 0.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "343acc7f-71be-45f7-948c-6598bc2841bb",
-        "name": "Quiche plain",
-        "categories": [
-            "dairy",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 14.2,
-                "sugars": 3.5,
                 "portion": 100
             },
             "perPortion": {
@@ -1718,28 +792,6 @@
         "standard": true
     },
     {
-        "id": "34b0d160-d89a-4ae4-abf0-7828d61e9cf4",
-        "name": "Yeast powder",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 6.3,
-                "sugars": 0,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "362edeb8-e74f-4199-bbf2-2e9d66d3606f",
         "name": "Pineapple",
         "categories": [
@@ -1750,29 +802,6 @@
             "per100": {
                 "carbs": 9.8,
                 "sugars": 9.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "3637e6c3-6c48-4523-8662-6e3f372f965d",
-        "name": "Tonic water regular",
-        "categories": [
-            "other",
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 8.8,
-                "sugars": 8.8,
                 "portion": 100
             },
             "perPortion": {
@@ -1817,96 +846,6 @@
             "per100": {
                 "carbs": 1.8,
                 "sugars": 1.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "3f8254d9-624e-467f-bff6-2ef5a6ca5f92",
-        "name": "Risotto",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 20.8,
-                "sugars": 1.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "3fa443a5-0a03-4e18-bd50-1f907a7bfa08",
-        "name": "Sage, dried",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 20.4,
-                "sugars": 1.7,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "405489dd-8faf-4939-b32a-72ce3ad40918",
-        "name": "Doughnut glazed",
-        "categories": [
-            "sweets",
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 42,
-                "sugars": 20,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "406c2bb8-65d5-4b25-ad1a-e2eb047ed6c1",
-        "name": "Gelato or sorbet, milk-based",
-        "categories": [
-            "dairy",
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 25.4,
-                "sugars": 22.7,
                 "portion": 100
             },
             "perPortion": {
@@ -1986,50 +925,6 @@
         "standard": true
     },
     {
-        "id": "424e5d96-3a50-47bd-90e1-09482bdb95ea",
-        "name": "Spam",
-        "categories": [
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 1.9,
-                "sugars": 1.2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "4323c65f-519f-4f1f-a89e-a5225a3afd39",
-        "name": "Stock, dry powder or cube",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 22.5,
-                "sugars": 4.3,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "443512da-eb31-43c9-a954-1c7131481b65",
         "name": "Strawberries",
         "categories": [
@@ -2084,28 +979,6 @@
             "per100": {
                 "carbs": 3.6,
                 "sugars": 2.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "47a6273d-d659-4fd4-b8a6-ce6fc3bd4846",
-        "name": "Paste, wasabi",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 45.6,
-                "sugars": 2.8,
                 "portion": 100
             },
             "perPortion": {
@@ -2228,28 +1101,6 @@
         "standard": true
     },
     {
-        "id": "4fcf2dff-b7da-4e91-9962-01faba866c22",
-        "name": "Baking powder",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 20.8,
-                "sugars": 0,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "50e12574-11b2-4b13-823d-a612ce512cac",
         "name": "Bean red boiled",
         "categories": [
@@ -2294,51 +1145,6 @@
         "standard": true
     },
     {
-        "id": "5259f0a4-8861-4d9b-b694-6eddd1c9e323",
-        "name": "Porridge, oats with cows milk",
-        "categories": [
-            "grains",
-            "dairy"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 14.8,
-                "sugars": 5.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "5308ef3f-fe32-4243-a669-2eaba7d3d382",
-        "name": "Rabbit",
-        "categories": [
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 0.2,
-                "sugars": 0.2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "531f17e4-c77a-4d12-8040-8dd68cff50e0",
         "name": "Nut cashew",
         "categories": [
@@ -2349,28 +1155,6 @@
             "per100": {
                 "carbs": 23.1,
                 "sugars": 5.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "5776b7da-5bbd-44be-b45a-8be530e3fb78",
-        "name": "Cereal, puffed rice",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 77,
-                "sugars": 6.5,
                 "portion": 100
             },
             "perPortion": {
@@ -2427,29 +1211,6 @@
         "standard": true
     },
     {
-        "id": "5b646548-c7fd-415b-bada-23db9b461100",
-        "name": "Eclair or profiterole, chocolate icing",
-        "categories": [
-            "sweets",
-            "dairy"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 26.9,
-                "sugars": 16.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "5c9499a1-7242-4986-9244-f27d372aaaf5",
         "name": "Dill",
         "categories": [
@@ -2494,54 +1255,6 @@
         "standard": true
     },
     {
-        "id": "607465b5-1649-4771-b2e5-ad14bcc9b7b7",
-        "name": "Baklava",
-        "categories": [
-            "grains",
-            "sweets",
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 39.4,
-                "sugars": 20.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "635a7a1a-18fc-47c4-9c11-7d23f8ff1300",
-        "name": "Sushi, fish, with seaweed",
-        "categories": [
-            "other",
-            "grains",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 27,
-                "sugars": 1.7,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "6484ba96-6221-42d3-b1b6-7e62bba3db7e",
         "name": "Popcorn",
         "categories": [
@@ -2564,120 +1277,6 @@
         "standard": true
     },
     {
-        "id": "674e2e0e-c6d2-4edd-8f45-c44c03c22de1",
-        "name": "Sausage roll",
-        "categories": [
-            "grains",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 27.2,
-                "sugars": 2.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "67d63939-17a5-4a79-9e23-72f932ba7d8b",
-        "name": "Bun with sultanas",
-        "categories": [
-            "grains",
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 49.4,
-                "sugars": 16.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "68b73675-b419-4390-9289-28de54fcfc33",
-        "name": "Chocolate dark",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 62.6,
-                "sugars": 52,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "691f2c7a-1b2b-4efe-9d98-ba09caf98589",
-        "name": "Cake or cupcake, citrus, iced",
-        "categories": [
-            "sweets",
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 53.1,
-                "sugars": 36,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "69b99f94-a8b8-43e7-90df-2f4f9f6fb23e",
-        "name": "Chocolate chip biscuit",
-        "categories": [
-            "sweets",
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 66,
-                "sugars": 28.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "6afa1e7d-7888-4758-8039-d3ecd237c3a2",
         "name": "Passionfruit",
         "categories": [
@@ -2688,75 +1287,6 @@
             "per100": {
                 "carbs": 5.7,
                 "sugars": 5.7,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "6b7aa83d-bbf8-4624-82ae-c9c59f227651",
-        "name": "Cheesecake, biscuit base",
-        "categories": [
-            "sweets",
-            "dairy",
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 30.2,
-                "sugars": 19.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "6d24e1c5-4cd4-40c6-84bd-b37324fcd146",
-        "name": "Turkish delight",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 77.6,
-                "sugars": 69.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "6ecbd198-9362-4174-9466-138cba38e05b",
-        "name": "Spring roll, vegetables, deep fried",
-        "categories": [
-            "grains",
-            "vegetables"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 26.4,
-                "sugars": 3.2,
                 "portion": 100
             },
             "perPortion": {
@@ -2879,28 +1409,6 @@
         "standard": true
     },
     {
-        "id": "7291a587-1534-4d4c-afd1-338b792f4380",
-        "name": "Chocolate white",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 54.6,
-                "sugars": 54.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "73c14b6a-3391-4d52-898b-61f1e7cab90a",
         "name": "Marshmallow",
         "categories": [
@@ -2911,30 +1419,6 @@
             "per100": {
                 "carbs": 80.6,
                 "sugars": 62,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "74daba5e-e98a-452c-8493-ca4ff6e5731d",
-        "name": "Doughnut, jam filled",
-        "categories": [
-            "sweets",
-            "fruit",
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 46.2,
-                "sugars": 19,
                 "portion": 100
             },
             "perPortion": {
@@ -2980,51 +1464,6 @@
             "per100": {
                 "carbs": 16.5,
                 "sugars": 1.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "751b0258-aca3-4087-bbe5-11c8f04e54e5",
-        "name": "Bread wholemeal, grains, seeds, oats",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 38.8,
-                "sugars": 2.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "76aabe16-c3fd-4515-a1ae-a0e55003c6cb",
-        "name": "Tart, custard",
-        "categories": [
-            "sweets",
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 43.6,
-                "sugars": 19.9,
                 "portion": 100
             },
             "perPortion": {
@@ -3103,51 +1542,6 @@
         "standard": true
     },
     {
-        "id": "79ebf231-f389-4fb3-bc23-09b7e9ccdf09",
-        "name": "Muesli, dried fruit",
-        "categories": [
-            "fruit",
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 62.8,
-                "sugars": 23.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "7a12d220-6ecd-4efb-8e04-ea5720d4e47e",
-        "name": "Licorice allsorts",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 90,
-                "sugars": 74.7,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "7aecdc72-6c21-4ab4-bc05-732b02d64662",
         "name": "Leeks",
         "categories": [
@@ -3192,210 +1586,6 @@
         "standard": true
     },
     {
-        "id": "7c0fd0c3-2aaa-49a8-8f03-d45fc9df8ff3",
-        "name": "Tabasco sauce",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 1.1,
-                "sugars": 0.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "7c3cd1dc-540d-4596-a075-b283783f11ad",
-        "name": "Cereal, mixed grain flakes",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 70.5,
-                "sugars": 24,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "7cc8a5af-6178-40d7-abc2-d66343096ffa",
-        "name": "Bread, pizza base",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 46.7,
-                "sugars": 5.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "7d410e56-2a20-4826-adcd-644c508909a5",
-        "name": "Mussel cooked",
-        "categories": [
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 5,
-                "sugars": 0.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "7d8ae607-2b43-4abe-851c-4c094fb4ef46",
-        "name": "Prune juice",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 18.8,
-                "sugars": 13.3,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "7ec4d83e-35b5-4672-85e3-d796cd30fa4a",
-        "name": "Muesli, dried fruit & nuts",
-        "categories": [
-            "fruit",
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 54.6,
-                "sugars": 19.7,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "7ec61749-aa9b-4c03-85b3-2f4f34c162c7",
-        "name": "Bagel, fruit",
-        "categories": [
-            "grains",
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 46.8,
-                "sugars": 6.7,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "7f0b8f7b-b67b-44f3-90c5-2402cd8a9705",
-        "name": "Waffle plain",
-        "categories": [
-            "grains",
-            "dairy",
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 33.4,
-                "sugars": 9.3,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "80e436cc-46bc-4f31-b724-9bb1882720b5",
-        "name": "Sushi, prawn, without seaweed",
-        "categories": [
-            "other",
-            "grains",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 23.9,
-                "sugars": 1.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "81651a39-4d93-41d9-8a60-0c2ee28f0154",
         "name": "Pomegranate",
         "categories": [
@@ -3406,143 +1596,6 @@
             "per100": {
                 "carbs": 11.2,
                 "sugars": 11.2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "81ffc25f-f2b9-4730-a738-34e5338bc19a",
-        "name": "Garlic sauce",
-        "categories": [
-            "other",
-            "vegetables"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 31.4,
-                "sugars": 6.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "8438fcb4-4cf7-421c-ad0a-eb23fe1f5b36",
-        "name": "Cone, waffle for ice cream",
-        "categories": [
-            "grains",
-            "sweets",
-            "dairy"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 81.6,
-                "sugars": 26.3,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "854cb6b4-035a-434e-b2b5-d23f5e5c1ffe",
-        "name": "Peanut butter, no added sugar",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 9.7,
-                "sugars": 5.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "863a7e1a-8f2d-45e8-bcdb-0635b71ae7af",
-        "name": "Noodles, cooked",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 23.3,
-                "sugars": 0,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "8663f25e-be49-4d00-90a6-59fd7953e028",
-        "name": "Sugar brown",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 96.8,
-                "sugars": 96.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "8682fafa-0107-4f67-b948-6568f2a2b413",
-        "name": "Sushi, crab stick, with seaweed",
-        "categories": [
-            "protein",
-            "grains",
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 29.4,
-                "sugars": 2.5,
                 "portion": 100
             },
             "perPortion": {
@@ -3621,52 +1674,6 @@
         "standard": true
     },
     {
-        "id": "88defc91-dd8d-47bf-8048-41630ed2b84b",
-        "name": "Rice fried with egg",
-        "categories": [
-            "grains",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 29.3,
-                "sugars": 0.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "89ca1954-34f3-4d31-824c-18af4f919814",
-        "name": "Prawn toast, white bread, fried",
-        "categories": [
-            "grains",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 12.7,
-                "sugars": 1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "8a443366-c9f0-430f-9ce2-6d8430016d57",
         "name": "Cheese mozzarella",
         "categories": [
@@ -3689,73 +1696,6 @@
         "standard": true
     },
     {
-        "id": "8a873e66-8c5a-41de-b78d-0945279ebf97",
-        "name": "Bread croutons",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 59,
-                "sugars": 3.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "8b91944e-de7c-4acd-90b4-6ab630aa4f66",
-        "name": "Mustard powder",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 17.2,
-                "sugars": 5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "8ba9ceed-c115-4ccf-ae55-c417444887d5",
-        "name": "Samosa, vegetables, deep fried",
-        "categories": [
-            "vegetables",
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 29.6,
-                "sugars": 8.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "8c8abd50-520d-4793-b204-e64e09788c14",
         "name": "Sausage chorizo",
         "categories": [
@@ -3766,28 +1706,6 @@
             "per100": {
                 "carbs": 1.2,
                 "sugars": 0.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "8c9bcee3-8c3e-466f-8578-2f0220b8fbf6",
-        "name": "Bread wholemeal, seeds",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 34.3,
-                "sugars": 2.6,
                 "portion": 100
             },
             "perPortion": {
@@ -3844,29 +1762,6 @@
         "standard": true
     },
     {
-        "id": "8f45eeb8-8e04-4cc9-a084-6faebdbb8a5c",
-        "name": "Jerky beef",
-        "categories": [
-            "protein",
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 27.3,
-                "sugars": 19.2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "926774c7-f9df-488b-9aa0-db5e51a7bf63",
         "name": "Chilli",
         "categories": [
@@ -3899,28 +1794,6 @@
             "per100": {
                 "carbs": 2,
                 "sugars": 2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "94a765a0-9e15-4cc2-942b-570fef1586b9",
-        "name": "Gravy, prepared",
-        "categories": [
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 5.3,
-                "sugars": 0.1,
                 "portion": 100
             },
             "perPortion": {
@@ -4044,52 +1917,6 @@
         "standard": true
     },
     {
-        "id": "99a7b08b-f597-48f2-aec3-409a776d134d",
-        "name": "Sushi, prawn, with seaweed",
-        "categories": [
-            "other",
-            "grains",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 27,
-                "sugars": 1.7,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "9ae6b245-4173-4c92-a3d3-93098bafd6f8",
-        "name": "Dip, olive",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 2.2,
-                "sugars": 1.3,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "9b51b9d4-4b1e-40d6-a2c0-92ce7c8e1da0",
         "name": "Nut walnut",
         "categories": [
@@ -4122,75 +1949,6 @@
             "per100": {
                 "carbs": 8.2,
                 "sugars": 7.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "9d57ebdb-fe9e-4532-8799-d880d0b4a489",
-        "name": "Cake or cupcake, chocolate",
-        "categories": [
-            "sweets",
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 50.1,
-                "sugars": 32.7,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "a1645240-2063-43f2-b3dd-e22c7b729bd8",
-        "name": "Casserole beef, gravy",
-        "categories": [
-            "other",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 5.5,
-                "sugars": 0.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "a26ed45c-d2f6-4ae3-8721-7f53e983ccbe",
-        "name": "Marinade, Asian style",
-        "categories": [
-            "other",
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 19.8,
-                "sugars": 13.3,
                 "portion": 100
             },
             "perPortion": {
@@ -4257,28 +2015,6 @@
             "per100": {
                 "carbs": 19.2,
                 "sugars": 8.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "a36dc626-bfca-489d-abbf-ffbe7e8d471b",
-        "name": "Cereal, corn flakes",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 75.6,
-                "sugars": 7.7,
                 "portion": 100
             },
             "perPortion": {
@@ -4358,50 +2094,6 @@
         "standard": true
     },
     {
-        "id": "aa1e2e12-d291-4e5d-961e-c8f31423d1c3",
-        "name": "Bread, mixed grain",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 36.4,
-                "sugars": 1.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "ab673c17-3f05-476c-a072-a00bb1ab7fc4",
-        "name": "Egg duck",
-        "categories": [
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 0.9,
-                "sugars": 0.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "ae64b8ad-f4e8-431e-bc4e-dc67c6ba93b0",
         "name": "Scallop",
         "categories": [
@@ -4412,188 +2104,6 @@
             "per100": {
                 "carbs": 1.7,
                 "sugars": 0.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "ae82ab27-52f4-4304-91e1-df9b1847242f",
-        "name": "English Muffins wholemeal",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 41,
-                "sugars": 2.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "ae9b8a70-7fbe-4b78-a839-0f37de3fec1c",
-        "name": "Cherry dried",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 58.6,
-                "sugars": 49.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "af26dcbc-62ac-4ca4-9d02-3b7c2b1be7ea",
-        "name": "Fish white, battered, deep fried",
-        "categories": [
-            "grains",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 11.7,
-                "sugars": 0,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "af9643a2-1fb3-4c08-b345-de2f6c99861a",
-        "name": "Spring roll, meat & vegetables, deep fried",
-        "categories": [
-            "grains",
-            "vegetables",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 27.5,
-                "sugars": 4.3,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "b0422b02-a985-485f-810f-96e4c394702f",
-        "name": "Cone, wafer for ice cream",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 72.3,
-                "sugars": 0.3,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "b07b5cdf-5842-4a49-9071-6be25fc023dc",
-        "name": "Corn bread",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 43.8,
-                "sugars": 3.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "b10c88d5-19db-4681-96d8-a183b238dc44",
-        "name": "Sushi, tuna, with seaweed",
-        "categories": [
-            "other",
-            "grains",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 27.1,
-                "sugars": 1.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "b3550772-fa3c-49ca-90e7-9bfb3fd20643",
-        "name": "Ice cream, caramel",
-        "categories": [
-            "sweets",
-            "dairy"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 30.8,
-                "sugars": 22.7,
                 "portion": 100
             },
             "perPortion": {
@@ -4638,50 +2148,6 @@
             "per100": {
                 "carbs": 8.9,
                 "sugars": 5.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "b64f89ea-3e1d-47c4-b645-5331aaf918ab",
-        "name": "Beef corned cooked",
-        "categories": [
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 0.2,
-                "sugars": 0.2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "b6f5365f-eab5-4b6f-afa8-0553ffe09e04",
-        "name": "Pea boiled, steamed",
-        "categories": [
-            "vegetables"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 9.1,
-                "sugars": 2.9,
                 "portion": 100
             },
             "perPortion": {
@@ -4782,30 +2248,6 @@
         "standard": true
     },
     {
-        "id": "ba96ac04-c688-4883-9601-b34c0c19e56b",
-        "name": "Cake or cupcake, berry",
-        "categories": [
-            "sweets",
-            "grains",
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 40,
-                "sugars": 23.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "bb41a368-ac95-4521-b7c6-7cfb386ee8d4",
         "name": "Chives",
         "categories": [
@@ -4828,29 +2270,6 @@
         "standard": true
     },
     {
-        "id": "bc943de1-fcba-4be7-8459-19378861e2b3",
-        "name": "Cola regular",
-        "categories": [
-            "other",
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 10.5,
-                "sugars": 10.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "bd16c1b3-69e5-4569-8c86-bb93887df7a1",
         "name": "Honey",
         "categories": [
@@ -4861,50 +2280,6 @@
             "per100": {
                 "carbs": 82.1,
                 "sugars": 82.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "bde93d9d-01e4-4131-873c-d574efdb988b",
-        "name": "Lollipop or chupa chups",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 98.3,
-                "sugars": 73.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "c01ed427-e5ab-464e-93ee-90c2828bd3aa",
-        "name": "Sugar",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 99.8,
-                "sugars": 99.8,
                 "portion": 100
             },
             "perPortion": {
@@ -5005,28 +2380,6 @@
         "standard": true
     },
     {
-        "id": "c2f23c98-06cd-4c8c-97eb-8ed848c8aa2c",
-        "name": "Grapefruit juice",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 6,
-                "sugars": 6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "c34064eb-bdaf-401d-a067-34619869d0e6",
         "name": "Meringue",
         "categories": [
@@ -5037,29 +2390,6 @@
             "per100": {
                 "carbs": 90.1,
                 "sugars": 89.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "c5de000f-c2ea-4833-8c89-aa18cc604a40",
-        "name": "Cake or cupcake, caramel, iced",
-        "categories": [
-            "sweets",
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 56.4,
-                "sugars": 40.3,
                 "portion": 100
             },
             "perPortion": {
@@ -5148,28 +2478,6 @@
             "per100": {
                 "carbs": 1.8,
                 "sugars": 1.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "c964253c-ce7d-4fdd-ba7b-b452356bd54a",
-        "name": "Barbecue sauce",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 32.9,
-                "sugars": 25.9,
                 "portion": 100
             },
             "perPortion": {
@@ -5314,28 +2622,6 @@
         "standard": true
     },
     {
-        "id": "cf4cd341-030d-4f5b-9881-1b57bc183ff5",
-        "name": "Brownie",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 49.8,
-                "sugars": 36.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "cfd7e108-d2ed-4062-8836-eb161dd7a8b3",
         "name": "Radish",
         "categories": [
@@ -5412,29 +2698,6 @@
             "per100": {
                 "carbs": 2,
                 "sugars": 1.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "d311e9e0-0fa2-470a-bb82-772ba7125fb2",
-        "name": "Cake or cupcake, hazelnut",
-        "categories": [
-            "sweets",
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 41.3,
-                "sugars": 38.6,
                 "portion": 100
             },
             "perPortion": {
@@ -5558,51 +2821,6 @@
         "standard": true
     },
     {
-        "id": "d756a0fc-b545-42d3-8260-126e2dc6e9c2",
-        "name": "Cinnamon, ground",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 25.5,
-                "sugars": 13.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "d9eca17d-898a-4a2c-b8ef-6f38c94aa371",
-        "name": "Marinade, teriyaki",
-        "categories": [
-            "other",
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 31.8,
-                "sugars": 27.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "d9fbf596-3831-443e-8951-01b4be619b00",
         "name": "Orange",
         "categories": [
@@ -5625,28 +2843,6 @@
         "standard": true
     },
     {
-        "id": "da17a181-14c9-4075-9113-cfcf24952ce1",
-        "name": "Sauce chocolate",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 35.1,
-                "sugars": 29.3,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "da89c9ca-a769-49a8-ad17-f67ff0ed8e04",
         "name": "Pasta cooked",
         "categories": [
@@ -5657,28 +2853,6 @@
             "per100": {
                 "carbs": 28.8,
                 "sugars": 0.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "dac41f1b-eaa1-442b-82cf-811f3f2ad0f4",
-        "name": "Bread, garlic or herb",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 37.3,
-                "sugars": 2.3,
                 "portion": 100
             },
             "perPortion": {
@@ -5801,28 +2975,6 @@
         "standard": true
     },
     {
-        "id": "e02b32c8-0fa4-4c13-b343-4b7d9257e83b",
-        "name": "Flour wholemeal, plain",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 65,
-                "sugars": 0.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "e0e408de-ee0e-43d6-a84d-83b084fdc24c",
         "name": "Wasabi root",
         "categories": [
@@ -5855,28 +3007,6 @@
             "per100": {
                 "carbs": 22.3,
                 "sugars": 19.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "e1ce7329-17a2-4607-afae-8a14387835e2",
-        "name": "Bacon rasher, fried",
-        "categories": [
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 3.1,
-                "sugars": 1.8,
                 "portion": 100
             },
             "perPortion": {
@@ -5933,28 +3063,6 @@
         "standard": true
     },
     {
-        "id": "e4b50d5a-39ab-4166-af9a-bf2589a16873",
-        "name": "Basil",
-        "categories": [
-            "vegetables"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 1.7,
-                "sugars": 0,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "e55b4927-12e4-4042-9a94-a38349bafada",
         "name": "Vinegar balsamic",
         "categories": [
@@ -5965,29 +3073,6 @@
             "per100": {
                 "carbs": 15,
                 "sugars": 15,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "e6165ed2-ad20-4594-8c74-cbd594609bd9",
-        "name": "Cereal, mixed grain flakes, dried fruit",
-        "categories": [
-            "grains",
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 74.4,
-                "sugars": 25.8,
                 "portion": 100
             },
             "perPortion": {
@@ -6044,50 +3129,6 @@
         "standard": true
     },
     {
-        "id": "ecb8ec18-a247-4f1f-9b86-771efac3afe6",
-        "name": "Bagel white",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 50.7,
-                "sugars": 6.2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "efdb4ae1-c1eb-4ca7-8b02-8bf985440e42",
-        "name": "Bread, white ciabatta",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 46.1,
-                "sugars": 2.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "f0d89761-0da3-43bd-9a6b-cbf319503942",
         "name": "Cheese camembert",
         "categories": [
@@ -6120,50 +3161,6 @@
             "per100": {
                 "carbs": 0.2,
                 "sugars": 0.2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "f19e49a2-bbd1-47bb-9e38-c60cf0a119d6",
-        "name": "Flour white, self-raising",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 71.8,
-                "sugars": 0,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "f26ccc0f-a828-49e8-b4a9-eb28c32bbc80",
-        "name": "Macaron (almond based)",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 48.1,
-                "sugars": 46.4,
                 "portion": 100
             },
             "perPortion": {
@@ -6264,28 +3261,6 @@
         "standard": true
     },
     {
-        "id": "f6f3d7e6-bf50-4d91-b66e-20d8e9a5a7c9",
-        "name": "English Muffin white",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 38.7,
-                "sugars": 1.7,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "f9a44222-ec68-4ca1-99d3-bacee1990e49",
         "name": "Milk cow, 1-2%",
         "categories": [
@@ -6318,50 +3293,6 @@
             "per100": {
                 "carbs": 7.8,
                 "sugars": 7.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "facb2602-3a7e-423a-9cfd-3d15183ae0df",
-        "name": "Bread white",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 43.8,
-                "sugars": 2.7,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "fb08d79a-2046-422f-ac33-c8e12fb5fb60",
-        "name": "Honeycomb",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 93.7,
-                "sugars": 93.6,
                 "portion": 100
             },
             "perPortion": {

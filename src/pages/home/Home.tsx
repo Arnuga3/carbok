@@ -4,13 +4,17 @@ import styled from "styled-components";
 import {
   IonButton,
   IonButtons,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
   IonContent,
   IonIcon,
   IonPage,
   IonText,
 } from "@ionic/react";
 import { Content } from "./Content";
-import { person } from "ionicons/icons";
+import { link, personOutline } from "ionicons/icons";
 import { CalculatorModal } from "../../components/common/CalculatorModal";
 
 import CLogoIcon from "./../../resources/icons/logo.svg";
@@ -28,36 +32,59 @@ const Home: React.FC = () => {
       <IonContent>
         <Header>
           <Title>
-            <CarbokIcon src={CLogoIcon} color="beige" size="54" />
+            <CarbokIcon src={CLogoIcon} color="green" size="54" />
           </Title>
-          <IonText color="beige">
-            <b>{t("page.home.title")}</b>
-          </IonText>
           <IonButtons>
             <IonButton routerLink="/settings" style={{ marginLeft: 8 }}>
-              <IonIcon icon={person} slot="icon-only" color="white" />
+              <IonIcon icon={personOutline} slot="icon-only" color="medium" />
             </IonButton>
           </IonButtons>
         </Header>
-        <StyleElement />
-        <AppContents>
-          <Content title={t("page.home.overview")} link="/overview">
-            <CarbokIcon src={CChartIcon} size="48" color="secondary" />
-          </Content>
-          <Content title={t("page.home.meals")} link="/meals">
+
+        <Card>
+          <CardContent>
             <CarbokIcon src={CMealsIcon} size="48" color="secondary" />
-          </Content>
-          <Content title={t("page.home.products")} link="/products">
-            <CarbokIcon src={CProductsIcon} size="60" color="secondary" />
-          </Content>
-          <Content
-            title={t("page.home.calculator")}
-            onClick={() => setOpenCalculatorModal(true)}
-          >
+            <IonButton routerLink="/meals" color="green" shape="round">
+              {t("page.home.meals")}
+            </IonButton>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent>
+            <CarbokIcon src={CProductsIcon} size="52" color="secondary" />
+            <IonButton routerLink="/products" color="green" shape="round">
+              {t("page.home.products")}
+            </IonButton>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent>
             <CarbokIcon src={CCalculatorIcon} size="48" color="secondary" />
-          </Content>
-          <Content title={t("page.home.support")} />
-        </AppContents>
+            <IonButton
+              onClick={() => setOpenCalculatorModal(true)}
+              color="green"
+              shape="round"
+            >
+              {t("page.home.calculator")}
+            </IonButton>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent>
+            <CarbokIcon src={CChartIcon} size="48" color="secondary" />
+            <IonButton routerLink="/overview" color="green" shape="round">
+              {t("page.home.overview")}
+            </IonButton>
+          </CardContent>
+        </Card>
+
+        {/* <Card>
+          <CardContent>{t("page.home.support")}</CardContent>
+        </Card> */}
+
         <CalculatorModal
           open={openCalculatorModal}
           onClose={() => setOpenCalculatorModal(false)}
@@ -75,25 +102,22 @@ const Title = styled.div`
   margin-right: 12px;
 `;
 
-const StyleElement = styled.div`
-  height: 200px;
-  border-bottom-right-radius: 100px;
-  margin-top: -90px;
-  background-color: var(--ion-color-primary);
-`;
-
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 16px 12px 24px;
-  background-color: var(--ion-color-beige);
 `;
 
-const AppContents = styled.div`
-  margin-top: -120px;
-  padding: 24px 12px;
+const Card = styled(IonCard)`
+  border-radius: 24px;
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
+  padding: 8px 0 8px 8px;
+  margin-top: 16px;
+`;
+
+const CardContent = styled(IonCardContent)`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: center;
 `;

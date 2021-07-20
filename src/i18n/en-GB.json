@@ -41,7 +41,8 @@
     "of.which.sugars": "of which Sugars",
     "products": "Products",
     "not.found": "Not Found",
-    "no.result": "No Results",
+    "no.result": "Search results",
+    "not.enough.data": "Not enough data",
 
     "button.cancel": "Cancel",
     "button.close": "Close",
@@ -61,7 +62,6 @@
     "button.ok": "Ok",
     "button.calculate": "Calculate",
 
-    "page.home.title": "Counting carbs is now easier",
     "page.home.overview": "Overview",
     "page.home.calculator": "Calculator",
     "page.home.meals": "Meals",

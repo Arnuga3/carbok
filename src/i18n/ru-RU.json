@@ -41,7 +41,8 @@
     "of.which.sugars": "из которых Сахар",
     "products": "Продукты",
     "not.found": "Не Найдено",
-    "no.result": "Нет Результатов",
+    "no.result": "Результаты поиска",
+    "not.enough.data": "Недостаточно данных",
 
     "button.cancel": "Отменить",
     "button.close": "Закрыть",
@@ -61,7 +62,6 @@
     "button.ok": "OК",
     "button.calculate": "Посчитать",
 
-    "page.home.title": "Подсчет углеводов теперь проще",
     "page.home.overview": "Обзор",
     "page.home.calculator": "Калькулятор",
     "page.home.meals": "Питание",
