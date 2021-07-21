@@ -61,6 +61,9 @@
     "button.copy.to": "Скопировать На",
     "button.ok": "OК",
     "button.calculate": "Посчитать",
+    "button.log.meal": "Добавить еду",
+    "button.manage.products": "Продукты",
+    "button.view.summary": "Посмотреть Сводку",
 
     "page.home.overview": "Обзор",
     "page.home.calculator": "Калькулятор",

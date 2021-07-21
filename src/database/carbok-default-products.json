@@ -155,15 +155,15 @@
     },
     {
         "id": "0d2df386-757a-4158-9b5c-2933733bcd7f",
-        "name": "Nut almond",
+        "name": "Almonds",
         "categories": [
             "other"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 6.4,
-                "sugars": 3.9,
+                "carbs": 6.9,
+                "sugars": 4.2,
                 "portion": 100
             },
             "perPortion": {
@@ -186,28 +186,6 @@
             "per100": {
                 "carbs": 14.8,
                 "sugars": 1.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "13597728-f345-401b-8d9b-d97e7da17777",
-        "name": "Bulgur cooked",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 17.2,
-                "sugars": 0,
                 "portion": 100
             },
             "perPortion": {
@@ -274,28 +252,6 @@
             "per100": {
                 "carbs": 1.2,
                 "sugars": 1.2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "16011f00-76a7-4b75-bf52-96075763c744",
-        "name": "Oyster",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 0.6,
-                "sugars": 0,
                 "portion": 100
             },
             "perPortion": {
@@ -616,28 +572,6 @@
         "standard": true
     },
     {
-        "id": "2ca13025-d8b8-4b60-9a6d-cc62496ac5bb",
-        "name": "Peanut butter",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 14.3,
-                "sugars": 8.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "2e0412d1-4a7b-4c30-acc6-400ef3acc46b",
         "name": "Rocket",
         "categories": [
@@ -661,15 +595,15 @@
     },
     {
         "id": "2f8da3d9-65cc-410b-8a4e-c7c3c3c128d3",
-        "name": "Milk cow, regular fat ~3.5%",
+        "name": "Milk",
         "categories": [
             "dairy"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 5.9,
-                "sugars": 5.9,
+                "carbs": 4.8,
+                "sugars": 4.8,
                 "portion": 100
             },
             "perPortion": {
@@ -727,7 +661,7 @@
     },
     {
         "id": "33b6c81a-616f-4b64-9a9e-bbdda4399e97",
-        "name": "Cheese brie",
+        "name": "Brie cheese",
         "categories": [
             "dairy"
         ],
@@ -749,15 +683,15 @@
     },
     {
         "id": "3455eb83-5e16-4eb4-bd2e-969052d65f52",
-        "name": "Cream sour regular",
+        "name": "Sour cream",
         "categories": [
             "dairy"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 2,
-                "sugars": 2,
+                "carbs": 1.1,
+                "sugars": 1.1,
                 "portion": 100
             },
             "perPortion": {
@@ -778,8 +712,8 @@
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 2.3,
-                "sugars": 0,
+                "carbs": 0.3,
+                "sugars": 0.3,
                 "portion": 100
             },
             "perPortion": {
@@ -837,15 +771,15 @@
     },
     {
         "id": "3cfc4e53-1605-4d94-97cf-f7f9b57bb266",
-        "name": "Cheese cottage regular",
+        "name": "Cottage cheese",
         "categories": [
             "dairy"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 1.8,
-                "sugars": 1.8,
+                "carbs": 4,
+                "sugars": 4,
                 "portion": 100
             },
             "perPortion": {
@@ -1101,28 +1035,6 @@
         "standard": true
     },
     {
-        "id": "50e12574-11b2-4b13-823d-a612ce512cac",
-        "name": "Bean red boiled",
-        "categories": [
-            "vegetables"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 15.8,
-                "sugars": 1.3,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "51bfb536-831f-4600-ab0b-c1ad4ce0c5dc",
         "name": "Fig dried",
         "categories": [
@@ -1131,30 +1043,8 @@
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 54.5,
-                "sugars": 52.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "531f17e4-c77a-4d12-8040-8dd68cff50e0",
-        "name": "Nut cashew",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 23.1,
-                "sugars": 5.5,
+                "carbs": 45,
+                "sugars": 45,
                 "portion": 100
             },
             "perPortion": {
@@ -1175,52 +1065,8 @@
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 79.4,
+                "carbs": 76.4,
                 "sugars": 1.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "5a75b0e8-4234-4dc6-8785-e87e16031f33",
-        "name": "Raisin",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 68.7,
-                "sugars": 66.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "5c9499a1-7242-4986-9244-f27d372aaaf5",
-        "name": "Dill",
-        "categories": [
-            "vegetables"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 2.5,
-                "sugars": 1.2,
                 "portion": 100
             },
             "perPortion": {
@@ -1255,30 +1101,8 @@
         "standard": true
     },
     {
-        "id": "6484ba96-6221-42d3-b1b6-7e62bba3db7e",
-        "name": "Popcorn",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 60.1,
-                "sugars": 1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "6afa1e7d-7888-4758-8039-d3ecd237c3a2",
-        "name": "Passionfruit",
+        "name": "Passion fruit",
         "categories": [
             "fruit"
         ],
@@ -1299,50 +1123,6 @@
         "standard": true
     },
     {
-        "id": "6f001298-7857-459f-93d7-d6a524fab537",
-        "name": "Pasta wholemeal cooked",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 24.6,
-                "sugars": 0,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "705ee3a2-9a96-4494-91aa-6263da0788c5",
-        "name": "Syrup maple",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 59.5,
-                "sugars": 59.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "708aab93-15d9-4101-a272-188f49f68549",
         "name": "Nut brazil",
         "categories": [
@@ -1351,30 +1131,8 @@
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 2.4,
-                "sugars": 2.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "70c6fa0e-962e-42be-9f08-1109a8ee0319",
-        "name": "Pumpkin cooked",
-        "categories": [
-            "vegetables"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 5.3,
-                "sugars": 3.9,
+                "carbs": 3.1,
+                "sugars": 2.4,
                 "portion": 100
             },
             "perPortion": {
@@ -1388,37 +1146,15 @@
     },
     {
         "id": "7107896c-3b12-407e-8a02-bdb16ececac1",
-        "name": "Cheese cheddar",
+        "name": "Cheddar cheese",
         "categories": [
             "dairy"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 1.5,
-                "sugars": 0.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "73c14b6a-3391-4d52-898b-61f1e7cab90a",
-        "name": "Marshmallow",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 80.6,
-                "sugars": 62,
+                "carbs": 0.3,
+                "sugars": 0.3,
                 "portion": 100
             },
             "perPortion": {
@@ -1453,29 +1189,6 @@
         "standard": true
     },
     {
-        "id": "75121788-5873-4486-9fcd-243282d08204",
-        "name": "Fish finger",
-        "categories": [
-            "grains",
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 16.5,
-                "sugars": 1.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "788f87aa-13e4-49f4-af1c-a487a62d960a",
         "name": "Cranberry",
         "categories": [
@@ -1486,50 +1199,6 @@
             "per100": {
                 "carbs": 4,
                 "sugars": 4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "79219d67-cb75-48ad-82e6-d719b9e7fd99",
-        "name": "Black pudding",
-        "categories": [
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 4.3,
-                "sugars": 0.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "797e2c00-e768-470d-8cab-b819d773a14b",
-        "name": "Nut pecan",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 4.9,
-                "sugars": 4.3,
                 "portion": 100
             },
             "perPortion": {
@@ -1565,14 +1234,14 @@
     },
     {
         "id": "7bd66c4d-31bb-4191-9b2f-24a8330462ec",
-        "name": "Dip, hummus",
+        "name": "Hummus",
         "categories": [
             "other"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 9.4,
+                "carbs": 11,
                 "sugars": 0.6,
                 "portion": 100
             },
@@ -1616,118 +1285,8 @@
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 15.6,
-                "sugars": 5.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "873f4e98-5f74-4392-8513-fe2a84ef3729",
-        "name": "Breadcrumbs for coating food",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 58.2,
-                "sugars": 3.2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "88c02f55-0e6b-4eeb-883c-50fe390bd27f",
-        "name": "Corn chips",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 53.1,
-                "sugars": 1.3,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "8a443366-c9f0-430f-9ce2-6d8430016d57",
-        "name": "Cheese mozzarella",
-        "categories": [
-            "dairy"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 0.3,
-                "sugars": 0.3,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "8c8abd50-520d-4793-b204-e64e09788c14",
-        "name": "Sausage chorizo",
-        "categories": [
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 1.2,
-                "sugars": 0.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "8e090aff-ff01-44ec-98f3-58c9335f41dd",
-        "name": "Rye grains, cooked",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 27.3,
-                "sugars": 0.7,
+                "carbs": 11,
+                "sugars": 7.2,
                 "portion": 100
             },
             "perPortion": {
@@ -1806,127 +1365,16 @@
         "standard": true
     },
     {
-        "id": "95302d4e-5853-4555-b70c-1358049efcaa",
-        "name": "Syrup golden",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 74.9,
-                "sugars": 74.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "95769511-1c22-4c39-ba43-a8395016a985",
-        "name": "Sweet chilli sauce",
-        "categories": [
-            "other",
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 57,
-                "sugars": 52.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "95f15361-c1f4-4a06-88f5-d92356dcae5c",
-        "name": "Shortbread biscuit",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 62,
-                "sugars": 19.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "9746e90c-6390-4604-89e5-c7e66d851232",
-        "name": "Hoi sin sauce",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 37.2,
-                "sugars": 33.5,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "97cd0f99-bc7f-4b10-9429-c84031b44897",
-        "name": "Nut hazelnut",
+        "name": "Hazelnuts",
         "categories": [
             "other"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 5.1,
-                "sugars": 4.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "9b51b9d4-4b1e-40d6-a2c0-92ce7c8e1da0",
-        "name": "Nut walnut",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 3,
-                "sugars": 2.7,
+                "carbs": 6,
+                "sugars": 4,
                 "portion": 100
             },
             "perPortion": {
@@ -1949,28 +1397,6 @@
             "per100": {
                 "carbs": 8.2,
                 "sugars": 7.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "a2943178-5ba3-4035-9899-15d62f139ef7",
-        "name": "Mayonnaise",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 23.2,
-                "sugars": 18.6,
                 "portion": 100
             },
             "perPortion": {
@@ -2117,59 +1543,15 @@
     },
     {
         "id": "b3e6147c-3f27-4b76-9652-d160405dcac3",
-        "name": "Cheese goat",
+        "name": "Goats cheese",
         "categories": [
             "dairy"
         ],
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 0.9,
-                "sugars": 0.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "b4c76326-fd28-46c8-a98f-da36b46de92b",
-        "name": "Nut peanut",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 8.9,
-                "sugars": 5.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "b6fc73fc-9d80-4b53-b7e8-b63762f0e6a1",
-        "name": "Hollandaise sauce",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 0.2,
-                "sugars": 0.2,
+                "carbs": 1,
+                "sugars": 0.5,
                 "portion": 100
             },
             "perPortion": {
@@ -2204,30 +1586,8 @@
         "standard": true
     },
     {
-        "id": "b8b17c87-1d13-4449-88c5-170166260505",
-        "name": "Milk goat",
-        "categories": [
-            "dairy"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 3.6,
-                "sugars": 3.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "b9c60039-5a36-4462-9a91-f42e2daec1ec",
-        "name": "Rice cracker plain",
+        "name": "Rice crackers, plain",
         "categories": [
             "grains"
         ],
@@ -2278,8 +1638,8 @@
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 82.1,
-                "sugars": 82.1,
+                "carbs": 82,
+                "sugars": 82,
                 "portion": 100
             },
             "perPortion": {
@@ -2302,28 +1662,6 @@
             "per100": {
                 "carbs": 13.3,
                 "sugars": 0.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "c24de3d2-72fe-4cce-b0b4-c5ba5a4b085c",
-        "name": "Date dried",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 67.2,
-                "sugars": 65.9,
                 "portion": 100
             },
             "perPortion": {
@@ -2380,50 +1718,6 @@
         "standard": true
     },
     {
-        "id": "c34064eb-bdaf-401d-a067-34619869d0e6",
-        "name": "Meringue",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 90.1,
-                "sugars": 89.4,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "c64d7be3-0bfd-43b3-9646-492f659b721b",
-        "name": "Soy sauce regular",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 2.7,
-                "sugars": 1.7,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "c660c22c-2e35-405e-893b-20a4ef3bc5d2",
         "name": "Tomato",
         "categories": [
@@ -2454,52 +1748,8 @@
         "units": "g",
         "carbsData": {
             "per100": {
-                "carbs": 14.1,
+                "carbs": 15.1,
                 "sugars": 0.3,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "c796ab2f-b8ea-48df-9fa9-1b1088144fe4",
-        "name": "Cheese haloumi",
-        "categories": [
-            "dairy"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 1.8,
-                "sugars": 1.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "caa43553-3dbf-436d-9836-38f6694137f5",
-        "name": "Marzipan",
-        "categories": [
-            "sweets"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 55.1,
-                "sugars": 54.1,
                 "portion": 100
             },
             "perPortion": {
@@ -2578,50 +1828,6 @@
         "standard": true
     },
     {
-        "id": "cd813d82-44cb-48d9-a0d5-decd6606f889",
-        "name": "HP sauce regular",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 34.3,
-                "sugars": 23.3,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "cd8be1bd-adaa-475c-b70c-699e29ce5174",
-        "name": "Gherkin pickled",
-        "categories": [
-            "vegetables"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 24.4,
-                "sugars": 23.6,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "cfd7e108-d2ed-4062-8836-eb161dd7a8b3",
         "name": "Radish",
         "categories": [
@@ -2688,72 +1894,6 @@
         "standard": true
     },
     {
-        "id": "d3103d6b-9ef7-4b9a-b3df-6c537a842747",
-        "name": "Milk, almond",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 2,
-                "sugars": 1.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "d370bd8b-8797-4ac2-bfc5-bff228749bb0",
-        "name": "Sultana",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 75,
-                "sugars": 73.2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "d528c331-fe3e-4534-bdd6-c791bd601bf5",
-        "name": "Ham",
-        "categories": [
-            "protein"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 2,
-                "sugars": 0.9,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "d565a2c5-af10-43b7-8ecd-993af1e67e45",
         "name": "Lychee",
         "categories": [
@@ -2798,29 +1938,6 @@
         "standard": true
     },
     {
-        "id": "d701d2fd-a4a3-4687-9a5f-d9655e0be047",
-        "name": "Chicken nuggets",
-        "categories": [
-            "protein",
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 17.3,
-                "sugars": 0.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "d9fbf596-3831-443e-8951-01b4be619b00",
         "name": "Orange",
         "categories": [
@@ -2853,50 +1970,6 @@
             "per100": {
                 "carbs": 28.8,
                 "sugars": 0.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "db9e5727-a557-4839-a00d-c0364a17187d",
-        "name": "Milk cow, skim ~0.15%",
-        "categories": [
-            "dairy"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 4.8,
-                "sugars": 4.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "dc78b26b-1e64-49ed-9683-22dc0e168374",
-        "name": "Couscous, cooked",
-        "categories": [
-            "grains"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 32.7,
-                "sugars": 1.5,
                 "portion": 100
             },
             "perPortion": {
@@ -3063,28 +2136,6 @@
         "standard": true
     },
     {
-        "id": "e55b4927-12e4-4042-9a94-a38349bafada",
-        "name": "Vinegar balsamic",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 15,
-                "sugars": 15,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "e889f8d0-734a-471f-baa9-c0637282ecfc",
         "name": "Watermelon",
         "categories": [
@@ -3117,50 +2168,6 @@
             "per100": {
                 "carbs": 3.6,
                 "sugars": 2.7,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "f0d89761-0da3-43bd-9a6b-cbf319503942",
-        "name": "Cheese camembert",
-        "categories": [
-            "dairy"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 0.1,
-                "sugars": 0.1,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "f1126dae-2322-4b6e-a329-1b88eb97f650",
-        "name": "Cheese fetta regular",
-        "categories": [
-            "dairy"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 0.2,
-                "sugars": 0.2,
                 "portion": 100
             },
             "perPortion": {
@@ -3261,50 +2268,6 @@
         "standard": true
     },
     {
-        "id": "f9a44222-ec68-4ca1-99d3-bacee1990e49",
-        "name": "Milk cow, 1-2%",
-        "categories": [
-            "dairy"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 5.2,
-                "sugars": 5.2,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "fa3d1634-bf6c-4146-b802-15e9bdfbdd07",
-        "name": "Mandarin",
-        "categories": [
-            "fruit"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 7.8,
-                "sugars": 7.8,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
         "id": "fbeb924f-fd76-48f3-b34f-ff865a923716",
         "name": "Blueberries",
         "categories": [
@@ -3337,28 +2300,6 @@
             "per100": {
                 "carbs": 9.5,
                 "sugars": 9.3,
-                "portion": 100
-            },
-            "perPortion": {
-                "quantity": 1,
-                "carbs": 0,
-                "sugars": 0
-            }
-        },
-        "portionType": "weight",
-        "standard": true
-    },
-    {
-        "id": "fefd1111-1e62-46fe-b901-7eda461d853c",
-        "name": "Nut chestnut",
-        "categories": [
-            "other"
-        ],
-        "units": "g",
-        "carbsData": {
-            "per100": {
-                "carbs": 32.1,
-                "sugars": 3.3,
                 "portion": 100
             },
             "perPortion": {

@@ -8,21 +8,12 @@ import {
 } from "@ionic/react";
 
 interface Props {
-  color?: string;
   title: string;
-  link?: string;
-  onClick?: () => void;
 }
 
-export const Content: React.FC<Props> = ({
-  color,
-  title,
-  link,
-  onClick,
-  children,
-}) => {
+export const HomeCard: React.FC<Props> = ({ title, children }) => {
   return (
-    <Card color={color} routerLink={link} onClick={onClick}>
+    <Card>
       <IonCardHeader>
         <IonCardTitle>{title}</IonCardTitle>
       </IonCardHeader>
@@ -32,13 +23,14 @@ export const Content: React.FC<Props> = ({
 };
 
 const Card = styled(IonCard)`
-  width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
+  padding: 12px 0 8px 8px;
+  margin-top: 20px;
 `;
 
 const CardContent = styled(IonCardContent)`
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 `;

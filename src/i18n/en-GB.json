@@ -61,9 +61,12 @@
     "button.copy.to": "Copy To",
     "button.ok": "Ok",
     "button.calculate": "Calculate",
+    "button.log.meal": "Log Meal",
+    "button.manage.products": "Go to Products",
+    "button.view.summary": "View Stats",
 
     "page.home.overview": "Overview",
-    "page.home.calculator": "Calculator",
+    "page.home.calculator": "Carbs Calculator",
     "page.home.meals": "Meals",
     "page.home.products": "Products",
     "page.home.support": "Love Carbok! How can I help?",

@@ -4,17 +4,11 @@ import styled from "styled-components";
 import {
   IonButton,
   IonButtons,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardTitle,
   IonContent,
   IonIcon,
   IonPage,
-  IonText,
 } from "@ionic/react";
-import { Content } from "./Content";
-import { link, personOutline } from "ionicons/icons";
+import { personOutline } from "ionicons/icons";
 import { CalculatorModal } from "../../components/common/CalculatorModal";
 
 import CLogoIcon from "./../../resources/icons/logo.svg";
@@ -23,6 +17,7 @@ import CCalculatorIcon from "./../../resources/icons/calculator.svg";
 import CProductsIcon from "./../../resources/icons/products.svg";
 import CChartIcon from "./../../resources/icons/chart.svg";
 import { CarbokIcon } from "../../components/styled/CarbokIcon";
+import { HomeCard } from "./HomeCard";
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
@@ -32,7 +27,7 @@ const Home: React.FC = () => {
       <IonContent>
         <Header>
           <Title>
-            <CarbokIcon src={CLogoIcon} color="green" size="54" />
+            <CarbokIcon src={CLogoIcon} color="primary" size="54" />
           </Title>
           <IonButtons>
             <IonButton routerLink="/settings" style={{ marginLeft: 8 }}>
@@ -41,45 +36,37 @@ const Home: React.FC = () => {
           </IonButtons>
         </Header>
 
-        <Card>
-          <CardContent>
-            <CarbokIcon src={CMealsIcon} size="48" color="secondary" />
-            <IonButton routerLink="/meals" color="green" shape="round">
-              {t("page.home.meals")}
-            </IonButton>
-          </CardContent>
-        </Card>
+        <HomeCard title={t("page.home.meals")}>
+          <CarbokIcon src={CMealsIcon} size="48" color="secondary" />
+          <IonButton routerLink="/meals" color="green" shape="round">
+            {t("button.log.meal")}
+          </IonButton>
+        </HomeCard>
 
-        <Card>
-          <CardContent>
-            <CarbokIcon src={CProductsIcon} size="52" color="secondary" />
-            <IonButton routerLink="/products" color="green" shape="round">
-              {t("page.home.products")}
-            </IonButton>
-          </CardContent>
-        </Card>
+        <HomeCard title={t("page.home.products")}>
+          <CarbokIcon src={CProductsIcon} size="52" color="secondary" />
+          <IonButton routerLink="/products" color="green" shape="round">
+            {t("button.manage.products")}
+          </IonButton>
+        </HomeCard>
 
-        <Card>
-          <CardContent>
-            <CarbokIcon src={CCalculatorIcon} size="48" color="secondary" />
-            <IonButton
-              onClick={() => setOpenCalculatorModal(true)}
-              color="green"
-              shape="round"
-            >
-              {t("page.home.calculator")}
-            </IonButton>
-          </CardContent>
-        </Card>
+        <HomeCard title={t("page.home.calculator")}>
+          <CarbokIcon src={CCalculatorIcon} size="46" color="secondary" />
+          <IonButton
+            onClick={() => setOpenCalculatorModal(true)}
+            color="green"
+            shape="round"
+          >
+            {t("button.calculate")}
+          </IonButton>
+        </HomeCard>
 
-        <Card>
-          <CardContent>
-            <CarbokIcon src={CChartIcon} size="48" color="secondary" />
-            <IonButton routerLink="/overview" color="green" shape="round">
-              {t("page.home.overview")}
-            </IonButton>
-          </CardContent>
-        </Card>
+        <HomeCard title={t("page.home.overview")}>
+          <CarbokIcon src={CChartIcon} size="48" color="secondary" />
+          <IonButton routerLink="/overview" color="green" shape="round">
+            {t("button.view.summary")}
+          </IonButton>
+        </HomeCard>
 
         {/* <Card>
           <CardContent>{t("page.home.support")}</CardContent>
@@ -98,26 +85,19 @@ export default React.memo(Home);
 
 const Title = styled.div`
   display: flex;
-  align-items: flex-end;
-  margin-right: 12px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--ion-color-white);
+  padding: 0 0 4px 4px;
+  width: 70px;
+  height: 70px;
+  box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.1);
 `;
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 16px 12px 24px;
-`;
-
-const Card = styled(IonCard)`
-  border-radius: 24px;
-  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
-  padding: 8px 0 8px 8px;
-  margin-top: 16px;
-`;
-
-const CardContent = styled(IonCardContent)`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 20px 16px 16px 24px;
 `;
