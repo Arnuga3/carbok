@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { IonChip, IonLabel } from "@ionic/react";
+import { IonChip, useIonViewWillEnter } from "@ionic/react";
 import { CardData } from "./Overview";
 import { Range } from "./Overview";
 import { dataService } from "../../services/DataService";
@@ -9,9 +9,7 @@ import { Meal } from "../../classes/meal/Meal";
 import { MealProduct } from "../../classes/meal/MealProduct";
 import { chartsDataService } from "../../services/ChartsDataService";
 import { dateService } from "../../services/DateService";
-// import { Chip } from "../../components/styled/Chip";
 import { Toolbar } from "../../components/styled/Toolbar";
-import { ChipLabel } from "../../components/common/ChipLabel";
 
 interface Props {
   data: CardData;
@@ -29,6 +27,10 @@ export const DateRangeSwitch: React.FC<Props> = ({
     getCardRangeData(state);
   }, [state]);
 
+  useIonViewWillEnter(() => {
+    getCardRangeData(state);
+  });
+
   const getCardRangeData = async (range: Range) => {
     let rangeMeals: Meal[] = [];
     let products: MealProduct[] = [];
@@ -42,8 +44,8 @@ export const DateRangeSwitch: React.FC<Props> = ({
           products = [...products, ...meal.products];
         }
         onDateRangeChange({
-          from: day7Ago,
-          to: today,
+          from: new Date(day7Ago.setDate(day7Ago.getDate() + 1)),
+          to: new Date(today.setDate(today.getDate() - 1)),
           range,
           meals: rangeMeals,
           categories: chartsDataService.getPieCategoriesData(products),
@@ -57,8 +59,8 @@ export const DateRangeSwitch: React.FC<Props> = ({
           products = [...products, ...meal.products];
         }
         onDateRangeChange({
-          from: day30Ago,
-          to: today,
+          from: new Date(day30Ago.setDate(day30Ago.getDate() + 1)),
+          to: new Date(today.setDate(today.getDate() - 1)),
           range,
           meals: rangeMeals,
           categories: chartsDataService.getPieCategoriesData(products),
@@ -72,8 +74,8 @@ export const DateRangeSwitch: React.FC<Props> = ({
           products = [...products, ...meal.products];
         }
         onDateRangeChange({
-          from: day90Ago,
-          to: today,
+          from: new Date(day90Ago.setDate(day90Ago.getDate() + 1)),
+          to: new Date(today.setDate(today.getDate() - 1)),
           range,
           meals: rangeMeals,
           categories: chartsDataService.getPieCategoriesData(products),

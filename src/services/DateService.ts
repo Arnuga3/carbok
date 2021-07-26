@@ -14,23 +14,24 @@ class DateService {
   }
 
   public todayNoTime(): Date {
-    return this.dateNoTime(this.today);
+    const todayFull = moment(this.today).add(1, "day").toDate();
+    return this.dateNoTime(todayFull);
   }
 
   public day7AgoNoTime(): Date {
     return this.dateNoTime(
-      moment(this.today).add(1, "day").subtract(8, "day").toDate()
+      moment(this.today).subtract(8, "day").toDate()
     );
   }
 
   public day30AgoNoTime(): Date {
     return this.dateNoTime(
-      moment(this.today).add(1, "day").subtract(31, "day").toDate()
+      moment(this.today).subtract(31, "day").toDate()
     );
   }
 
   public day90AgoNoTime(): Date {
-    return moment(this.today).add(1, "day").subtract(91, "day").toDate();
+    return moment(this.today).subtract(91, "day").toDate();
   }
 
   public dateNoTime(date: Date): Date {
