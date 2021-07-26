@@ -16,7 +16,6 @@ export const CategoriesPieChart: React.FC<Props> = ({ categories }) => {
       <ResponsiveContainer width={"60%"} height={150}>
         <PieChart>
           <Pie
-            stroke="none"
             data={categories}
             dataKey="value"
             nameKey="name"

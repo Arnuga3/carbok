@@ -88,7 +88,6 @@ const Title = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: var(--ion-color-white);
   padding: 0 0 4px 4px;
   width: 70px;
   height: 70px;

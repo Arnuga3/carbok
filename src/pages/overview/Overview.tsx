@@ -64,13 +64,13 @@ const Overview: React.FC = () => {
         >
           {cardData.meals.length > 0 ? (
             <>
-              <CarbsCard color="green">
+              <CarbsCard>
                 <CardHeader>
-                  <IonCardTitle color="light">
+                  <IonCardTitle>
                     {t("carbohydrates")}
                   </IonCardTitle>
                   {cardData.from && cardData.to && (
-                    <CardSubtitle color="light">{`${moment(
+                    <CardSubtitle>{`${moment(
                       cardData.from
                     ).format("D MMM")} - ${moment(cardData.to).format(
                       "D MMM"
@@ -81,7 +81,7 @@ const Overview: React.FC = () => {
                   <MealCarbsLinearChart meals={cardData.meals} />
                 </IonCardContent>
               </CarbsCard>
-              <ProductsCard color="beige">
+              <ProductsCard>
                 <CardHeader>
                   <IonCardTitle>
                     {t("page.overview.foods.range.card.title")}
