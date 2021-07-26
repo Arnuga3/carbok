@@ -1,4 +1,5 @@
-import { IonText } from "@ionic/react";
+import { IonIcon, IonText } from "@ionic/react";
+import { heartCircle } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { IProduct } from "../../../classes/product/IProduct";
@@ -6,9 +7,13 @@ import { getUnitShortKey } from "../../../resources/productUnits";
 
 interface Props {
   product: IProduct;
+  selectableType?: boolean;
 }
 
-export const ProductsListItemLabel: React.FC<Props> = ({ product }) => {
+export const ProductsListItemLabel: React.FC<Props> = ({
+  product,
+  selectableType = false,
+}) => {
   const { t } = useTranslation();
   const data =
     product.portionType === "quantity"
@@ -25,7 +30,12 @@ export const ProductsListItemLabel: React.FC<Props> = ({ product }) => {
   return (
     <ListItemContent>
       <ContentRowFirst>
-        <NameBadge>{product.name}</NameBadge>
+        <NameBadge>
+          {selectableType && !product.standard && (
+            <HeartIcon icon={heartCircle} color="danger" />
+          )}
+          {product.name}
+        </NameBadge>
         <IonText color="medium">
           <small>{data.portion}</small>
         </IonText>
@@ -77,4 +87,9 @@ const NameBadge = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+`;
+
+const HeartIcon = styled(IonIcon)`
+  margin-right: 4px;
+  font-size: 14px;
 `;

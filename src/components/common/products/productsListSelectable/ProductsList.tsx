@@ -57,7 +57,7 @@ export const ProductsList: React.FC<Props> = ({
                   : ellipseOutline
               }
             />
-            <ProductsListItemLabel product={products[index]} />
+            <ProductsListItemLabel product={products[index]} selectableType />
           </Item>
         )}
       </div>
