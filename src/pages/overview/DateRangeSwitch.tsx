@@ -22,13 +22,8 @@ export const DateRangeSwitch: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation();
 
-  const [state, setState] = useState<Range>(data.range);
-  useEffect(() => {
-    getCardRangeData(state);
-  }, [state]);
-
   useIonViewWillEnter(() => {
-    getCardRangeData(state);
+    getCardRangeData(data.range);
   });
 
   const getCardRangeData = async (range: Range) => {
@@ -88,9 +83,9 @@ export const DateRangeSwitch: React.FC<Props> = ({
     <Toolbar>
       <RangeSwitch>
         <Chip
-          onClick={() => setState("90_days")}
+          onClick={() => getCardRangeData("90_days")}
           color={
-            state === "90_days"
+            data.range === "90_days"
               ? "var(--ion-color-secondary)"
               : "var(--ion-color-light-darker)"
           }
@@ -98,9 +93,9 @@ export const DateRangeSwitch: React.FC<Props> = ({
           {t("page.overview.carbs.range.card.title", { days: 90 })}
         </Chip>
         <Chip
-          onClick={() => setState("30_days")}
+          onClick={() => getCardRangeData("30_days")}
           color={
-            state === "30_days"
+            data.range === "30_days"
               ? "var(--ion-color-secondary)"
               : "var(--ion-color-light-darker)"
           }
@@ -108,9 +103,9 @@ export const DateRangeSwitch: React.FC<Props> = ({
           {t("page.overview.carbs.range.card.title", { days: 30 })}
         </Chip>
         <Chip
-          onClick={() => setState("7_days")}
+          onClick={() => getCardRangeData("7_days")}
           color={
-            state === "7_days"
+            data.range === "7_days"
               ? "var(--ion-color-secondary)"
               : "var(--ion-color-light-darker)"
           }
