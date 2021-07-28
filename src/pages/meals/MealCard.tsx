@@ -11,9 +11,10 @@ import {
   IonText,
 } from "@ionic/react";
 import {
+  addCircleOutline,
   chatbubbleOutline,
   copyOutline,
-  pencilOutline,
+  pencil,
   trashOutline,
 } from "ionicons/icons";
 import { MealCardProductDescription } from "./MealCardProductDescription";
@@ -25,16 +26,18 @@ import { NoteAlert } from "./meal/alerts/NoteAlert";
 import { CopyAlert, CopyState } from "./meal/alerts/CopyAlert";
 import { CopyDatetime } from "./meal/alerts/CopyDateTime";
 import moment from "moment";
+import { ProductsSelectModal } from "./meal/ProductsSelectModal";
 
 interface Props {
   meal: Meal;
   date: Date;
 }
-//TODO - Extract acrions?
+
 export const MealCard: React.FC<Props> = ({ meal, date }) => {
   const { t } = useTranslation();
   const copyDatetime = useRef<HTMLIonDatetimeElement>(null);
 
+  const [openProductsModal, setOpenProductsModal] = useState(false);
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
   const [openNoteAlert, setOpenNoteAlert] = useState(false);
   const [copyAlertState, setCopyAlertState] = useState<CopyState>({
@@ -91,6 +94,11 @@ export const MealCard: React.FC<Props> = ({ meal, date }) => {
                     </IonText>
                   </Note>
                 )}
+                {meal.products.length > 0 && (
+                  <EditIcon>
+                    <IonIcon icon={pencil} color="secondary" />
+                  </EditIcon>
+                )}
               </DayMealCardProductList>
             </ItemContent>
           </IonItem>
@@ -121,12 +129,12 @@ export const MealCard: React.FC<Props> = ({ meal, date }) => {
               <IonIcon icon={chatbubbleOutline} slot="icon-only" />
             </ActionButton>
             <ActionButton
-              color="white"
+              color="light"
               fill="clear"
               size="small"
-              routerLink={`/meals/${meal.id}/products`}
+              onClick={() => setOpenProductsModal(true)}
             >
-              <IonIcon icon={pencilOutline} slot="icon-only" />
+              <AddProductsIcon icon={addCircleOutline} slot="icon-only" />
             </ActionButton>
           </CardActions>
         </CardContent>
@@ -148,6 +156,11 @@ export const MealCard: React.FC<Props> = ({ meal, date }) => {
           meal={meal}
           copyState={copyAlertState}
           onClose={() => setCopyAlertState({ open: false, date: null })}
+        />
+        <ProductsSelectModal
+          meal={meal}
+          open={openProductsModal}
+          onClose={() => setOpenProductsModal(false)}
         />
       </Card>
     </Animation>
@@ -233,4 +246,15 @@ const Note = styled.div`
 
 const NoteIcon = styled(IonIcon)`
   padding: 8px 4px 8px 0;
+`;
+
+const AddProductsIcon = styled(IonIcon)`
+  font-size: 28px;
+`;
+
+const EditIcon = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-bottom: 8px;
 `;
