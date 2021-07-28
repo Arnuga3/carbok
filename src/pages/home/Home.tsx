@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import {
@@ -9,7 +9,6 @@ import {
   IonPage,
 } from "@ionic/react";
 import { personOutline } from "ionicons/icons";
-import { CalculatorModal } from "../../components/common/CalculatorModal";
 
 import CLogoIcon from "./../../resources/icons/logo.svg";
 import CMealsIcon from "./../../resources/icons/meals.svg";
@@ -21,7 +20,6 @@ import { HomeCard } from "./HomeCard";
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
-  const [openCalculatorModal, setOpenCalculatorModal] = useState(false);
   return (
     <IonPage>
       <IonContent>
@@ -53,7 +51,7 @@ const Home: React.FC = () => {
         <HomeCard title={t("page.home.calculator")}>
           <CarbokIcon src={CCalculatorIcon} size="46" color="secondary" />
           <IonButton
-            onClick={() => setOpenCalculatorModal(true)}
+            routerLink="/calculator"
             color="green"
             shape="round"
           >
@@ -72,10 +70,6 @@ const Home: React.FC = () => {
           <CardContent>{t("page.home.support")}</CardContent>
         </Card> */}
 
-        <CalculatorModal
-          open={openCalculatorModal}
-          onClose={() => setOpenCalculatorModal(false)}
-        />
       </IonContent>
     </IonPage>
   );
