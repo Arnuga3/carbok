@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   IonButton,
   IonButtons,
-  IonContent,
   IonIcon,
   IonModal,
   IonToolbar,
@@ -26,18 +25,10 @@ export const ProductsSearchModal: React.FC<Props> = ({ open, onClose }) => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    document.addEventListener("ionBackButton", () => {
-      onClose();
-    });
-    return () => {
-      document.removeEventListener("ionBackButton", () => {
-        onClose();
-      });
-    };
-  }, []);
-
-  useEffect(() => {
     setProducts([]);
+
+    document.addEventListener("ionBackButton", () => onClose());
+    return () => document.removeEventListener("ionBackButton", () => onClose());
   }, [open]);
 
   const handleSearch = async (searchTerm: string) => {
@@ -75,7 +66,9 @@ export const ProductsSearchModal: React.FC<Props> = ({ open, onClose }) => {
               identifier="products-page-search"
               products={products}
             />
-          ) : <NoResult/>}
+          ) : (
+            <NoResult />
+          )}
         </>
       )}
     </IonModal>

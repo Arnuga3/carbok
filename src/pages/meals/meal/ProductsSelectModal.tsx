@@ -48,17 +48,9 @@ export const ProductsSelectModal: React.FC<Props> = ({
 
   useEffect(() => {
     setState({ products: [], productsSelected: [] });
-  }, [open]);
 
-  useEffect(() => {
-    document.addEventListener("ionBackButton", () => {
-      onClose();
-    });
-    return () => {
-      document.removeEventListener("ionBackButton", () => {
-        onClose();
-      });
-    };
+    document.addEventListener("ionBackButton", () => onClose());
+    return () => document.removeEventListener("ionBackButton", () => onClose());
   }, []);
 
   const handleSearch = async (searchTerm: string) => {
