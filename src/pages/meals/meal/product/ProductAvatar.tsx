@@ -1,12 +1,12 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { CategoryAvatar } from "../../../components/common/products/CategoryAvatar";
-import { categoryColours } from "../../../resources/config";
-import { getCatKey } from "../../../resources/productCategories";
-import { getCategoriesColours } from "../../products/util";
-import { MealProduct } from "../../../classes/meal/MealProduct";
-import { IonAvatar } from "@ionic/react";
-import Products from "../../products/Products";
+import { CategoryAvatar } from "../../../../components/common/products/CategoryAvatar";
+import { categoryColours } from "../../../../resources/config";
+import { getCatKey } from "../../../../resources/productCategories";
+import { getCategoriesColours } from "../../../products/util";
+import { MealProduct } from "../../../../classes/meal/MealProduct";
+import { IonAvatar, IonIcon } from "@ionic/react";
+import { pencil } from "ionicons/icons";
 
 interface Props {
   product: MealProduct;
@@ -18,7 +18,9 @@ export const ProductAvatar: React.FC<Props> = ({ product }) => {
   return (
     <IonAvatar slot="start">
       {product.dummy ? (
-        <CategoryAvatar colors='lightgrey' size={40} />
+        <CategoryAvatar colors='rgba(0,0,0,0.1)' size={40}>
+          <IonIcon icon={pencil} size="small"/>
+        </CategoryAvatar>
       ) : (
         <>
           {product.categories.length === 1 && (

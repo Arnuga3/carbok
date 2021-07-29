@@ -2,12 +2,12 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { IonAlert } from "@ionic/react";
-import { PortionType } from "../../../../classes/productCarbs/PortionType";
-import { Meal } from "../../../../classes/meal/Meal";
-import { MealProduct } from "../../../../classes/meal/MealProduct";
-import { updateMeal } from "../../../../redux/actions/meals/actions";
-import { getUnitShortKey } from "../../../../resources/productUnits";
-import { calcService } from "../../../../services/CalculationService";
+import { PortionType } from "../../../../../classes/productCarbs/PortionType";
+import { Meal } from "../../../../../classes/meal/Meal";
+import { MealProduct } from "../../../../../classes/meal/MealProduct";
+import { updateMeal } from "../../../../../redux/actions/meals/actions";
+import { getUnitShortKey } from "../../../../../resources/productUnits";
+import { calcService } from "../../../../../services/CalculationService";
 
 interface Props {
   meal: Meal;

@@ -25,7 +25,7 @@ import { calcService } from "../../services/CalculationService";
 import { NoteAlert } from "./meal/alerts/NoteAlert";
 import { CopyAlert, CopyState } from "./meal/alerts/CopyAlert";
 import { CopyDatetime } from "./meal/alerts/CopyDateTime";
-import { ProductsSelectModal } from "./meal/ProductsSelectModal";
+import { ProductSelectModal } from "./meal/ProductSelectModal";
 import moment from "moment";
 
 interface Props {
@@ -157,7 +157,7 @@ export const MealCard: React.FC<Props> = ({ meal, date }) => {
           copyState={copyAlertState}
           onClose={() => setCopyAlertState({ open: false, date: null })}
         />
-        <ProductsSelectModal
+        <ProductSelectModal
           meal={meal}
           open={openProductsModal}
           onClose={() => setOpenProductsModal(false)}

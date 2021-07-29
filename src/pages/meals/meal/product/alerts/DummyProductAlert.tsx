@@ -2,11 +2,11 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { IonAlert } from "@ionic/react";
-import { IMeal } from "../../../../classes/meal/IMeal";
-import { updateMeal } from "../../../../redux/actions/meals/actions";
-import { MealDummyProduct } from "../../../../classes/meal/MealDummyProduct";
-import { MealProduct } from "../../../../classes/meal/MealProduct";
-import { Meal } from "../../../../classes/meal/Meal";
+import { IMeal } from "../../../../../classes/meal/IMeal";
+import { updateMeal } from "../../../../../redux/actions/meals/actions";
+import { MealDummyProduct } from "../../../../../classes/meal/MealDummyProduct";
+import { MealProduct } from "../../../../../classes/meal/MealProduct";
+import { Meal } from "../../../../../classes/meal/Meal";
 
 interface Props {
   meal: IMeal | undefined;

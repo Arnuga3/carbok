@@ -4,19 +4,22 @@ import {
   IonBackButton,
   IonButton,
   IonContent,
-  IonHeader,
   IonIcon,
   IonPage,
   isPlatform,
-  IonTitle,
   IonText,
+  IonItem,
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import moment from "moment";
-import { arrowBackOutline, ellipsisVertical } from "ionicons/icons";
-import { Products } from "./Products";
+import {
+  arrowBackOutline,
+  chatbubbleOutline,
+  ellipsisVertical,
+} from "ionicons/icons";
+import { ProductList } from "./ProductList";
 import { ActionSheet } from "./ActionSheet";
 import { NoteAlert } from "./alerts/NoteAlert";
 import { useMeals } from "../../../hooks/mealsHook";
@@ -28,6 +31,7 @@ import { MealProductsChart } from "../../../components/charts/MealProductsChart"
 import { CopyDatetime } from "./alerts/CopyDateTime";
 import { CopyAlert, CopyState } from "./alerts/CopyAlert";
 import { dateService } from "../../../services/DateService";
+import { AddProductButton } from "./AddProductButton";
 
 interface MealPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -86,7 +90,21 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
                 <MealProductsChart meal={meal} />
               </Charts>
             )}
-            <Products meal={meal} />
+            {meal.note && (
+              <Note>
+                <IonItem lines="none" color="primary">
+                  <IonIcon
+                    icon={chatbubbleOutline}
+                    slot="start"
+                    color="secondary"
+                    size="small"
+                  />
+                  <IonText color="secondary">{meal.note}</IonText>
+                </IonItem>
+              </Note>
+            )}
+            <ProductList meal={meal} />
+            <AddProductButton meal={meal} />
           </>
         )}
       </IonContent>
@@ -138,4 +156,8 @@ const Charts = styled.div`
   justify-content: space-between;
   padding: 12px 12px 24px 12px;
   background-color: var(--ion-color-primary);
+`;
+
+const Note = styled.div`
+  margin: 0 0 16px 12px;
 `;

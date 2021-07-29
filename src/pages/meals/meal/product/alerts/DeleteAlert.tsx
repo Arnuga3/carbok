@@ -2,9 +2,9 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { IonAlert } from "@ionic/react";
-import { updateMeal } from "../../../../redux/actions/meals/actions";
-import { Meal } from "../../../../classes/meal/Meal";
-import { MealProduct } from "../../../../classes/meal/MealProduct";
+import { updateMeal } from "../../../../../redux/actions/meals/actions";
+import { Meal } from "../../../../../classes/meal/Meal";
+import { MealProduct } from "../../../../../classes/meal/MealProduct";
 
 interface Props {
   meal: Meal;

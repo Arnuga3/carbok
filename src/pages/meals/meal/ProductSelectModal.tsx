@@ -28,7 +28,7 @@ interface Props {
   onClose: () => void;
 }
 
-export const ProductsSelectModal: React.FC<Props> = ({
+export const ProductSelectModal: React.FC<Props> = ({
   meal,
   open,
   onClose,
