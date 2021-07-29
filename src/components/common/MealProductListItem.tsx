@@ -40,7 +40,7 @@ export const MealProductListItem: React.FC<Props> = ({ product }) => {
           <small>
             {!product.dummy
               ? ` ${data.carbs}${t("units.grams.short")}`
-              : ` ${product.carbsData.perPortion.carbs}${t("units.grams.short")}`}
+              : ` ${product.mealProductCarbs.per100.carbs}${t("units.grams.short")}`}
           </small>
         </IonText>
       </ContentRow>

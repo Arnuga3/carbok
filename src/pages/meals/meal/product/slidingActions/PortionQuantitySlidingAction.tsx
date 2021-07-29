@@ -23,7 +23,6 @@ export const PortionQuantitySlidingAction: React.FC<Props> = ({ meal, product })
       >
         <IonIcon icon={layersOutline} slot="icon-only" color="primary" />
       </SlidingAction>
-
       <ChangeQuantityAlert
         meal={meal}
         product={product}

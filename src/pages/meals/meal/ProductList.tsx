@@ -8,6 +8,7 @@ import { ProductAvatar } from "./product/ProductAvatar";
 import { DeleteSlidingAction } from "./product/slidingActions/DeleteSlidingAction";
 import { PortionSizeSlidingAction } from "./product/slidingActions/PortionSizeSlidingAction";
 import { PortionQuantitySlidingAction } from "./product/slidingActions/PortionQuantitySlidingAction";
+import { MealProduct } from "../../../classes/meal/MealProduct";
 
 interface Props {
   meal: Meal;
@@ -28,7 +29,11 @@ export const ProductList: React.FC<Props> = ({ meal }) => {
             <MealProductListItem product={product} />
           </Item>
           <ItemSlidingActions>
-            {product && (
+            {product.dummy ? (
+              <>
+                <DeleteSlidingAction meal={meal} product={product} />
+              </>
+            ) : (
               <>
                 {product.portionType === "quantity" && (
                   <PortionQuantitySlidingAction meal={meal} product={product} />

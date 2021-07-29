@@ -27,7 +27,7 @@ export class MealDummyProduct implements IMealProduct {
 
   constructor(name: string, carbs: number) {
     this.name = name;
-    this.carbsData = {
+    this.mealProductCarbs = {
       per100: { carbs, sugars: 0, portion: 0 },
       perPortion: { carbs: 0, sugars: 0, quantity: 0 },
     };
