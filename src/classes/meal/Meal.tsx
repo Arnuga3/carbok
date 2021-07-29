@@ -8,7 +8,7 @@ export class Meal implements IMeal {
   date: Date;
   type: MealTypeEnum;
   products: MealProduct[];
-  note: string = "";
+  note?: string | undefined = "";
   order: number = 0;
 
   constructor(

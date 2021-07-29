@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import {
-  IonAvatar,
   IonFab,
   IonFabButton,
+  IonFabList,
   IonIcon,
   IonItem,
   IonItemOption,
@@ -17,7 +16,9 @@ import {
   addOutline,
   chatbubbleOutline,
   layersOutline,
+  pencil,
   scaleOutline,
+  search,
   trashOutline,
 } from "ionicons/icons";
 import { MealProductListItem } from "../../../components/common/MealProductListItem";
@@ -25,13 +26,11 @@ import { ProductsSelectModal } from "./ProductsSelectModal";
 import { ChangePortionWeightAlert } from "./productAlerts/ChangePortionWeightAlert";
 import { ChangeQuantityAlert } from "./productAlerts/ChangeQuantityAlert";
 import { DeleteAlert } from "./productAlerts/DeleteAlert";
-import { categoryColours } from "../../../resources/config";
-import { getCatKey } from "../../../resources/productCategories";
-import { CategoryAvatar } from "../../../components/common/products/CategoryAvatar";
-import { getCategoriesColours } from "../../products/util";
 import { Meal } from "../../../classes/meal/Meal";
 import { MealProduct } from "../../../classes/meal/MealProduct";
 import { toggleActionsSlide } from "../../../utils/eventHelpers";
+import { DummyProductAlert } from "./productAlerts/DummyProductAlert";
+import { ProductAvatar } from "./ProductAvatar";
 
 interface Props {
   meal: Meal;
@@ -39,13 +38,14 @@ interface Props {
 const MEALSPAGE = "meals-page";
 
 export const Products: React.FC<Props> = ({ meal }) => {
-  const { t } = useTranslation();
 
   const [openProductsModal, setOpenProductsModal] = useState(false);
   const [openPortionSizeAlert, setOpenPortionSizeAlert] = useState(false);
   const [openPortionQuantityAlert, setOpenPortionQuantityAlert] =
     useState(false);
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
+  const [openAddDummyProductAlert, setOpenAddDummyProductAlert] =
+    useState(false);
   const [selectedProduct, setSelectedProduct] = useState<MealProduct | null>(
     null
   );
@@ -88,24 +88,7 @@ export const Products: React.FC<Props> = ({ meal }) => {
             onClick={() => toggleActionsSlide(MEALSPAGE + i)}
           >
             <Item detail lines="none">
-              <IonAvatar slot="start">
-                {product.categories.length === 1 && (
-                  <CategoryAvatar
-                    colors={categoryColours[product.categories[0]]}
-                    size={40}
-                  >
-                    {t(getCatKey(product.categories[0])).slice(0, 3)}
-                  </CategoryAvatar>
-                )}
-                {product.categories.length > 1 && (
-                  <CategoryAvatar
-                    colors={getCategoriesColours(product.categories)}
-                    size={40}
-                  >
-                    {`+ ${product.categories.length}`}
-                  </CategoryAvatar>
-                )}
-              </IonAvatar>
+              <ProductAvatar product={product} />
               <MealProductListItem product={product} />
             </Item>
             <ItemOptions>
@@ -138,12 +121,23 @@ export const Products: React.FC<Props> = ({ meal }) => {
         ))}
       </List>
       <IonFab vertical="bottom" horizontal="end" slot="fixed">
-        <IonFabButton
-          onClick={() => setOpenProductsModal(true)}
-          color="secondary"
-        >
+        <IonFabButton color="secondary">
           <IonIcon icon={addOutline} />
         </IonFabButton>
+        <IonFabList side="top">
+          <IonFabButton
+            onClick={() => setOpenProductsModal(true)}
+            color="tertiary"
+          >
+            <IonIcon icon={search} />
+          </IonFabButton>
+          <IonFabButton
+            onClick={() => setOpenAddDummyProductAlert(true)}
+            color="tertiary"
+          >
+            <IonIcon icon={pencil} />
+          </IonFabButton>
+        </IonFabList>
       </IonFab>
       <ProductsSelectModal
         meal={meal}
@@ -167,6 +161,11 @@ export const Products: React.FC<Props> = ({ meal }) => {
         product={selectedProduct}
         open={openDeleteAlert}
         onClose={() => setOpenDeleteAlert(false)}
+      />
+      <DummyProductAlert
+        meal={meal}
+        open={openAddDummyProductAlert}
+        onClose={() => setOpenAddDummyProductAlert(false)}
       />
     </>
   );

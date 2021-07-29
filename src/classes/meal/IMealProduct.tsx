@@ -7,4 +7,5 @@ export interface IMealProduct extends IProduct {
     readonly portionType: PortionType;
     mealProductCarbs: ProductCarbs;
     portionTypeInUse: PortionType;
+    dummy: boolean;
 }

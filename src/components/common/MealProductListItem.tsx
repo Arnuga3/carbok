@@ -29,7 +29,7 @@ export const MealProductListItem: React.FC<Props> = ({ product }) => {
       <ContentRow>
         <NameBadge>{product.name}</NameBadge>
         <IonText color="medium">
-          <small>{data.portion}</small>
+          <small>{!product.dummy ? data.portion : ""}</small>
         </IonText>
       </ContentRow>
       <ContentRow>
@@ -37,17 +37,23 @@ export const MealProductListItem: React.FC<Props> = ({ product }) => {
           <small>{t("carbohydrates")}</small>
         </IonText>
         <IonText color="medium">
-          <small>{` ${data.carbs}${t("units.grams.short")}`}</small>
+          <small>
+            {!product.dummy
+              ? ` ${data.carbs}${t("units.grams.short")}`
+              : ` ${product.carbsData.perPortion.carbs}${t("units.grams.short")}`}
+          </small>
         </IonText>
       </ContentRow>
-      <ContentRow>
-        <IonText color="medium">
-          <small>{t("of.which.sugars")}</small>
-        </IonText>
-        <IonText color="medium">
-          <small>{` ${data.sugars}${t("units.grams.short")}`}</small>
-        </IonText>
-      </ContentRow>
+      {!product.dummy && (
+        <ContentRow>
+          <IonText color="medium">
+            <small>{t("of.which.sugars")}</small>
+          </IonText>
+          <IonText color="medium">
+            <small>{` ${data.sugars}${t("units.grams.short")}`}</small>
+          </IonText>
+        </ContentRow>
+      )}
     </ListItemContent>
   );
 };

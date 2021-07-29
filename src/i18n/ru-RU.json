@@ -87,6 +87,9 @@
     "page.meals.copy.meal.alert.subtitle": "Еда будет скопирована на {{date}}?",
     "page.meals.quick.action.add.meal": "Добавить еду",
     "page.meals.quick.action.copy.meal": "Найти и скопировать еду",
+    "page.meals.dummy.product.alert.title": "Продукт в еду",
+    "page.meals.dummy.product.alert.name": "Название",
+    "page.meals.dummy.product.alert.carbs": "Углеводы",
 
     "page.products.title": "Продукты",
     "page.products.search.placeholder": "Поиск",

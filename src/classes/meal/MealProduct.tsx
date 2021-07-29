@@ -15,6 +15,7 @@ export class MealProduct implements IMealProduct {
   mealProductCarbs: ProductCarbs;
   portionType: PortionType;
   portionTypeInUse: PortionType;
+  dummy: boolean = false;
 
   constructor(product: IProduct) {
     this.name = product.name;

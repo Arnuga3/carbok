@@ -25,8 +25,8 @@ import { calcService } from "../../services/CalculationService";
 import { NoteAlert } from "./meal/alerts/NoteAlert";
 import { CopyAlert, CopyState } from "./meal/alerts/CopyAlert";
 import { CopyDatetime } from "./meal/alerts/CopyDateTime";
-import moment from "moment";
 import { ProductsSelectModal } from "./meal/ProductsSelectModal";
+import moment from "moment";
 
 interface Props {
   meal: Meal;

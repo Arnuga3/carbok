@@ -87,6 +87,9 @@
     "page.meals.copy.meal.alert.subtitle": "Meal will be copied to {{date}}?",
     "page.meals.quick.action.add.meal": "Add Meal or Snack",
     "page.meals.quick.action.copy.meal": "Find and copy Meal or Snack",
+    "page.meals.dummy.product.alert.title": "Meal product",
+    "page.meals.dummy.product.alert.name": "Name",
+    "page.meals.dummy.product.alert.carbs": "Carbohydrates",
 
     "page.products.title": "Products",
     "page.products.search.placeholder": "Search",
