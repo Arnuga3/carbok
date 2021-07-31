@@ -23,6 +23,7 @@ import { Search } from "../../../components/common/Search";
 import { NoResult } from "../../../components/common/products/NoResult";
 import { useSearchHistory } from "../../../hooks/searchHistoryHook";
 import { SearchHistoryList } from "../../../components/common/SearchHistoryList";
+import _ from "lodash";
 
 interface Props {
   meal: Meal;
@@ -65,10 +66,10 @@ export const ProductSelectModal: React.FC<Props> = ({
 
   const onSelect = () => {
     setSearched(
-      [
+      _.uniq([
         ...productsSelected.map((product) => product.name),
         ...(searched ?? []),
-      ].slice(0, 10)
+      ]).slice(0, 10)
     );
 
     const mealProducts: MealProduct[] = productsSelected.map((product) => {

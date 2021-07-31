@@ -91,7 +91,9 @@ export const ProductsSearchModal: React.FC<Props> = ({ open, onClose }) => {
             <IonContent>
               <SearchHistoryList
                 items={searched}
-                onClick={(text: string) => search(text)}
+                onClick={(text: string) =>
+                  setState({ ...state, searchText: text })
+                }
               />
             </IonContent>
           )}

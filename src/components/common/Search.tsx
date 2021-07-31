@@ -29,7 +29,7 @@ export const Search: React.FC<Props> = ({ value, onSearch, onClear }) => {
   };
 
   const onSearchInput = (e: any) => {
-    const searchTerm = e.detail.value.toLowerCase().trim();
+    const searchTerm = e.detail.value;
     handleSearch(searchTerm);
   };
 
