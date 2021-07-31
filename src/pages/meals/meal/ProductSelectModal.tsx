@@ -5,11 +5,11 @@ import styled from "styled-components";
 import {
   IonIcon,
   IonToolbar,
-  IonContent,
   IonButton,
   IonModal,
   IonFooter,
   IonButtons,
+  IonContent,
 } from "@ionic/react";
 import { arrowBack } from "ionicons/icons";
 import { updateMeal } from "../../../redux/actions/meals/actions";
@@ -21,11 +21,19 @@ import { ProductsListSelectable } from "../../../components/common/products/prod
 import { dataService } from "../../../services/DataService";
 import { Search } from "../../../components/common/Search";
 import { NoResult } from "../../../components/common/products/NoResult";
+import { useSearchHistory } from "../../../hooks/searchHistoryHook";
+import { SearchHistoryList } from "../../../components/common/SearchHistoryList";
 
 interface Props {
   meal: Meal;
   open: boolean;
   onClose: () => void;
+}
+
+interface State {
+  products: Product[];
+  productsSelected: Product[];
+  searchText: string | null;
 }
 
 export const ProductSelectModal: React.FC<Props> = ({
@@ -35,30 +43,34 @@ export const ProductSelectModal: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const [searched, setSearched] = useSearchHistory();
 
-  const [state, setState] = useState<{
-    products: Product[];
-    productsSelected: Product[];
-  }>({
+  const [state, setState] = useState<State>({
     products: [],
     productsSelected: [],
+    searchText: null,
   });
-
-  const { products, productsSelected } = state;
+  const { products, productsSelected, searchText } = state;
 
   useEffect(() => {
-    setState({ products: [], productsSelected: [] });
+    if (!open) {
+      reset();
+    }
+  }, [open]);
 
+  useEffect(() => {
     document.addEventListener("ionBackButton", () => onClose());
     return () => document.removeEventListener("ionBackButton", () => onClose());
   }, []);
 
-  const handleSearch = async (searchTerm: string) => {
-    const productsFound = await dataService.retrieveProducts(searchTerm);
-    setState({ ...state, products: productsFound, productsSelected: [] });
-  };
+  const onSelect = () => {
+    setSearched(
+      [
+        ...productsSelected.map((product) => product.name),
+        ...(searched ?? []),
+      ].slice(0, 10)
+    );
 
-  const handleSelect = () => {
     const mealProducts: MealProduct[] = productsSelected.map((product) => {
       const mealProduct = new MealProduct(product);
 
@@ -84,6 +96,25 @@ export const ProductSelectModal: React.FC<Props> = ({
     dispatch(updateMeal(mealUpdated));
     onClose();
   };
+
+  const search = async (searchText: string) => {
+    const searchResults = await dataService.retrieveProducts(searchText);
+    setState({
+      ...state,
+      products: searchResults,
+      productsSelected: [],
+      searchText,
+    });
+  };
+
+  const reset = () =>
+    setState({
+      ...state,
+      products: [],
+      productsSelected: [],
+      searchText: null,
+    });
+
   return (
     <IonModal isOpen={open} onDidDismiss={onClose}>
       {open && (
@@ -100,28 +131,32 @@ export const ProductSelectModal: React.FC<Props> = ({
                 <IonIcon icon={arrowBack} slot="icon-only" />
               </IonButton>
             </IonButtons>
-            <Search
-              onSearchChange={handleSearch}
-              onClear={() => setState({ products: [], productsSelected: [] })}
-            />
+            <Search value={searchText} onSearch={search} onClear={reset} />
           </IonToolbar>
-          {state.products.length > 0 ? (
-            <ProductsListSelectable
-              products={products ?? []}
-              productsSelected={productsSelected ?? []}
-              onSelectionChange={(products: Product[]) =>
-                setState({ ...state, productsSelected: products })
-              }
-            />
-          ) : (
-            <NoResult />
-          )}
+          <IonContent>
+            {state.products.length > 0 && (
+              <ProductsListSelectable
+                products={products ?? []}
+                productsSelected={productsSelected ?? []}
+                onSelectionChange={(products: Product[]) =>
+                  setState({ ...state, productsSelected: products })
+                }
+              />
+            )}
+            {state.products.length === 0 && searched && searched.length > 0 && (
+              <SearchHistoryList
+                items={searched}
+                onClick={(text: string) => search(text)}
+              />
+            )}
+            {state.products.length === 0 && !searched && <NoResult />}
+          </IonContent>
           {productsSelected.length > 0 && (
             <IonFooter slot="fixed">
               <IonToolbar>
                 <SelectButton
                   color="secondary"
-                  onClick={handleSelect}
+                  onClick={onSelect}
                   expand="block"
                   shape="round"
                 >

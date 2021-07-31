@@ -27,7 +27,7 @@ class DataService {
   }
 
   private async searchProducts(searchText: string): Promise<Product[]> {
-    const regex = new RegExp(searchText);
+    const regex = new RegExp(searchText.toLowerCase());
     return await db.products
       .orderBy("name")
       .filter((prod) => regex.test(prod.name.toLowerCase()))

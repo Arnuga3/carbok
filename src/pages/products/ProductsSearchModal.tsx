@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   IonButton,
   IonButtons,
+  IonContent,
   IonIcon,
   IonModal,
   IonToolbar,
@@ -14,30 +15,52 @@ import { ProductsListWithActions } from "../../components/common/products/produc
 import { useAppSettings } from "../../hooks/appSettingsHook";
 import { filterProducts } from "./util";
 import { NoResult } from "../../components/common/products/NoResult";
+import { useSearchHistory } from "../../hooks/searchHistoryHook";
+import { SearchHistoryList } from "../../components/common/SearchHistoryList";
 
 interface Props {
   open: boolean;
   onClose: () => void;
 }
 
+interface State {
+  products: Product[];
+  searchText: string | null;
+}
+
 export const ProductsSearchModal: React.FC<Props> = ({ open, onClose }) => {
   const { settings } = useAppSettings();
-  const [products, setProducts] = useState<Product[]>([]);
+  const [searched, setSearched, refresh] = useSearchHistory();
+
+  const [state, setState] = useState<State>({
+    products: [],
+    searchText: null,
+  });
+  const { products, searchText } = state;
 
   useEffect(() => {
-    setProducts([]);
+    if (!open) {
+      reset();
+    }
+    refresh();
+  }, [open]);
 
+  useEffect(() => {
     document.addEventListener("ionBackButton", () => onClose());
     return () => document.removeEventListener("ionBackButton", () => onClose());
   }, [open]);
 
-  const handleSearch = async (searchTerm: string) => {
-    const productsFound = await dataService.retrieveProducts(searchTerm);
+  const search = async (searchText: string) => {
+    const productsFound = await dataService.retrieveProducts(searchText);
     const productsFiltered = filterProducts(
       productsFound,
       settings.productsFilter
     );
-    setProducts(productsFiltered);
+    setState({ products: productsFiltered, searchText });
+  };
+
+  const reset = () => {
+    setState({ products: [], searchText: null });
   };
 
   return (
@@ -56,19 +79,23 @@ export const ProductsSearchModal: React.FC<Props> = ({ open, onClose }) => {
                 <IonIcon icon={arrowBack} slot="icon-only" />
               </IonButton>
             </IonButtons>
-            <Search
-              onSearchChange={handleSearch}
-              onClear={() => setProducts([])}
-            />
+            <Search value={searchText} onSearch={search} onClear={reset} />
           </IonToolbar>
-          {products.length > 0 ? (
+          {products.length > 0 && (
             <ProductsListWithActions
               identifier="products-page-search"
               products={products}
             />
-          ) : (
-            <NoResult />
           )}
+          {state.products.length === 0 && searched && searched.length > 0 && (
+            <IonContent>
+              <SearchHistoryList
+                items={searched}
+                onClick={(text: string) => search(text)}
+              />
+            </IonContent>
+          )}
+          {state.products.length === 0 && !searched && <NoResult />}
         </>
       )}
     </IonModal>

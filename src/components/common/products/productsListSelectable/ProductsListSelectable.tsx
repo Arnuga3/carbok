@@ -1,5 +1,4 @@
 import React from "react";
-import { IonContent } from "@ionic/react";
 import { Product } from "../../../../classes/product/Product";
 import { ProductsList } from "./ProductsList";
 
@@ -9,6 +8,5 @@ interface Props {
   onSelectionChange: (products: Product[]) => void;
 }
 
-export const ProductsListSelectable: React.FC<Props> = (props) => (
-  <IonContent>{props.products && <ProductsList {...props} />}</IonContent>
-);
+export const ProductsListSelectable: React.FC<Props> = (props) =>
+  props.products && <ProductsList {...props} />;

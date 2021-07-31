@@ -1,35 +1,48 @@
 import { IonSearchbar } from "@ionic/react";
 import { closeCircleOutline } from "ionicons/icons";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 interface Props {
-  onSearchChange: (searchTerm: string) => void;
+  value?: string | null;
+  onSearch: (searchTerm: string) => void;
   onClear: () => void;
 }
 
-export const Search: React.FC<Props> = ({ onSearchChange, onClear }) => {
+export const Search: React.FC<Props> = ({ value, onSearch, onClear }) => {
   const { t } = useTranslation();
 
-  const handleSearch = (e: any) => {
-    const searchTerm = e.detail.value.toLowerCase().trim();
-    if (searchTerm.length === 0) {
+  useEffect(() => {
+    if (value) {
+      handleSearch(value);
+    }
+  }, [value]);
+
+  const handleSearch = (text: string) => {
+    if (text.length === 0) {
       onClear();
     }
-    if (searchTerm.length > 1) {
-      onSearchChange(searchTerm);
+    if (text.length > 1) {
+      onSearch(text);
     }
+  };
+
+  const onSearchInput = (e: any) => {
+    const searchTerm = e.detail.value.toLowerCase().trim();
+    handleSearch(searchTerm);
   };
 
   return (
     <SearchBar
+      value={value}
       type="search"
       enterkeyhint="search"
       inputMode="search"
       debounce={500}
       mode="md"
       clearIcon={closeCircleOutline}
-      onIonChange={(e) => handleSearch(e)}
+      onIonChange={(e) => onSearchInput(e)}
       placeholder={t("page.products.search.placeholder")}
     />
   );
