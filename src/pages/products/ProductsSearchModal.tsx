@@ -43,9 +43,7 @@ export const ProductsSearchModal: React.FC<Props> = ({ open, onClose }) => {
       reset();
     }
     refresh();
-  }, [open]);
 
-  useEffect(() => {
     document.addEventListener("ionBackButton", () => onClose());
     return () => document.removeEventListener("ionBackButton", () => onClose());
   }, [open]);
@@ -91,9 +89,7 @@ export const ProductsSearchModal: React.FC<Props> = ({ open, onClose }) => {
             <IonContent>
               <SearchHistoryList
                 items={searched}
-                onClick={(text: string) =>
-                  setState({ ...state, searchText: text })
-                }
+                onClick={(text: string) => search(text)}
               />
             </IonContent>
           )}
