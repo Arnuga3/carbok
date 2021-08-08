@@ -23,7 +23,6 @@ import { initAppSettings } from "./redux/actions/appSettingsActions";
 
 import CChartIcon from "./resources/icons/chart.svg";
 import CCalculatorIcon from "./resources/icons/calculator.svg";
-import CLogoIcon from "./resources/icons/logo.svg";
 import CMealsIcon from "./resources/icons/meals.svg";
 import CProductsIcon from "./resources/icons/products.svg";
 import CLogoStrokeIcon from "./resources/icons/carbok-stroke.svg";

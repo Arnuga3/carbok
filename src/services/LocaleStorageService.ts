@@ -1,5 +1,4 @@
-import { Plugins } from "@capacitor/core";
-const { Storage } = Plugins;
+import { Storage } from '@capacitor/storage';
 
 export class LocalStorageService {
   public async get(key: string): Promise<string[]|null> {

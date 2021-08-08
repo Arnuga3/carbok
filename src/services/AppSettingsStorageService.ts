@@ -1,7 +1,6 @@
-import { Plugins } from "@capacitor/core";
+import { Storage } from '@capacitor/storage';
 import { IAppSettings } from "../classes/appSettings/IAppSettings";
 
-const { Storage } = Plugins;
 const appSettingsStorageKey = "settings";
 
 export class SettingsService {

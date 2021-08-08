@@ -4,8 +4,6 @@ import { LineChart, Line, ResponsiveContainer } from "recharts";
 import { chartColors } from "../../resources/config";
 import { IonText } from "@ionic/react";
 import { Meal } from "../../classes/meal/Meal";
-import { calcService } from "../../services/CalculationService";
-import { dateService } from "../../services/DateService";
 import { chartsDataService } from "../../services/ChartsDataService";
 
 export interface MealData {

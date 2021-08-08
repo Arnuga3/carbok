@@ -1,16 +1,10 @@
 import { db } from "../database/CarbokDB";
 import { isPlatform } from "@ionic/react";
-import {
-  Plugins,
-  FilesystemDirectory,
-  FilesystemEncoding,
-} from "@capacitor/core";
+import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { Meal } from "../classes/meal/Meal";
 import { Product } from "../classes/product/Product";
 import { dateService } from "./DateService";
 import default_products from "./../database/carbok-default-products.json";
-
-const { Filesystem } = Plugins;
 
 class DataService {
   /* products */
@@ -117,8 +111,8 @@ class DataService {
     await Filesystem.writeFile({
       path: `${data.fileName}.json`,
       data: data.json,
-      directory: FilesystemDirectory.Documents,
-      encoding: FilesystemEncoding.UTF8,
+      directory: Directory.Documents,
+      encoding: Encoding.UTF8,
     });
   }
 
