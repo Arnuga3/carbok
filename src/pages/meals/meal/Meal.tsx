@@ -60,6 +60,13 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
 
   const meal = meals.find((meal) => meal.id === match.params.id);
 
+  const registeredProductsCarbs = calcService.getMealTotalCarbs(
+    meal ? meal.products.filter((p) => !p.dummy) : []
+  );
+  const unregisteredProductsCarbs = calcService.getMealTotalCarbs(
+    meal ? meal.products.filter((p) => p.dummy) : []
+  );
+
   return (
     <IonPage>
       <IonContent color="primary">
@@ -93,9 +100,26 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
                   <IonCardContent>
                     <IonText color="dark">
                       <TotalCarbs>
-                        {calcService.getMealTotalCarbs(meal.products)}
+                        {`${
+                          registeredProductsCarbs + unregisteredProductsCarbs
+                        }`}
                       </TotalCarbs>
                     </IonText>
+                    {unregisteredProductsCarbs > 0 && (
+                      <>
+                        <br />
+                        <IonText>
+                          <CarbInfo>{`${registeredProductsCarbs}${t(
+                            "units.grams.short"
+                          )} +`}</CarbInfo>
+                        </IonText>
+                        <IonText>
+                          <CarbInfo>{`${unregisteredProductsCarbs}${t(
+                            "units.grams.short"
+                          )} (manually added)`}</CarbInfo>
+                        </IonText>
+                      </>
+                    )}
                   </IonCardContent>
                 </CarbsCard>
                 <Card color="light">
@@ -205,4 +229,8 @@ const Note = styled.div`
 
 const TotalCarbs = styled.strong`
   font-size: 3.2em;
+`;
+
+const CarbInfo = styled.small`
+  width: 100%;
 `;

@@ -14,8 +14,10 @@ interface Props {
 
 export const MealCarbsChart: React.FC<Props> = ({ meal }) => {
   const { t } = useTranslation();
-  const totalCarbs = calcService.getMealTotalCarbs(meal.products);
-  const totalSugars = calcService.getMealTotalSugars(meal.products);
+
+  const registeredProducts = meal.products.filter((p) => !p.dummy);
+  const totalCarbs = calcService.getMealTotalCarbs(registeredProducts);
+  const totalSugars = calcService.getMealTotalSugars(registeredProducts);
   const sugarPercentage = calcService.getPercentsOfSugars(
     totalSugars,
     totalCarbs
@@ -30,7 +32,7 @@ export const MealCarbsChart: React.FC<Props> = ({ meal }) => {
               data={[
                 {
                   carbs: totalCarbs,
-                  sugars: calcService.getMealTotalSugars(meal.products),
+                  sugars: calcService.getMealTotalSugars(registeredProducts),
                 },
               ]}
             >
