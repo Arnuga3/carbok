@@ -90,6 +90,7 @@
     "page.meals.dummy.product.alert.title": "Meal product",
     "page.meals.dummy.product.alert.name": "Name",
     "page.meals.dummy.product.alert.carbs": "Carbohydrates",
+    "page.meals.dummy.manual": "manually added",
 
     "page.products.title": "Products",
     "page.products.search.placeholder": "Search",

@@ -116,7 +116,7 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
                         <IonText>
                           <CarbInfo>{`${unregisteredProductsCarbs}${t(
                             "units.grams.short"
-                          )} (manually added)`}</CarbInfo>
+                          )} (${t("page.meals.dummy.manual")})`}</CarbInfo>
                         </IonText>
                       </>
                     )}
