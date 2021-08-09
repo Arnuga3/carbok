@@ -27,6 +27,7 @@ const Card = styled(IonCard)`
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
   padding: 12px 0 8px 8px;
   margin-top: 20px;
+  background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);
 `;
 
 const CardContent = styled(IonCardContent)`

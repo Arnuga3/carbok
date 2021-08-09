@@ -196,7 +196,7 @@ const CarbsCard = styled(IonCard)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to top, #50cc7f 0%, #f5d100 100%);
+  background-image: linear-gradient(to top, #50cc7f 0%, #f3de2c 100%);
 `;
 
 const Note = styled.div`
