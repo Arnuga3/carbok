@@ -43,7 +43,7 @@ export const MealCarbsChart: React.FC<Props> = ({ meal }) => {
             <div>
               <CarbsLabel>
                 <CategoryAvatar colors={chartColors.carbohydrates} />
-                <IonText color="white">
+                <IonText>
                   {`${t("carbohydrates")}: ${totalCarbs}${t(
                     "units.grams.short"
                   )}`}
@@ -51,7 +51,7 @@ export const MealCarbsChart: React.FC<Props> = ({ meal }) => {
               </CarbsLabel>
               <CarbsLabel>
                 <CategoryAvatar colors={chartColors.sugars} />
-                <IonText color="white">
+                <IonText>
                   {`${t("of.which.sugars")}: ${Math.floor(sugarPercentage)}%`}
                 </IonText>
               </CarbsLabel>
@@ -68,7 +68,6 @@ const Wrapper = styled.div`
   flex: 1;
   flex-direction: column;
   justify-content: space-evenly;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const Labels = styled.div`

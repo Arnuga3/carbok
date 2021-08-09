@@ -9,6 +9,8 @@ import {
   isPlatform,
   IonText,
   IonItem,
+  IonCard,
+  IonCardContent,
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -32,6 +34,7 @@ import { CopyDatetime } from "./alerts/CopyDateTime";
 import { CopyAlert, CopyState } from "./alerts/CopyAlert";
 import { dateService } from "../../../services/DateService";
 import { AddProductButton } from "./AddProductButton";
+import { calcService } from "../../../services/CalculationService";
 
 interface MealPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -62,7 +65,7 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
       <IonContent color="primary">
         <Header>
           <IonBackButton
-            color="secondary"
+            color="white"
             mode={isPlatform("ios") ? "ios" : "md"}
             defaultHref={`/meals`}
             icon={arrowBackOutline}
@@ -75,7 +78,7 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
             </Date>
           )}
           <IonButton
-            color="secondary"
+            color="white"
             fill="clear"
             onClick={() => setOpenActionSheet(true)}
           >
@@ -86,8 +89,25 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
           <>
             {meal.products.length > 0 && (
               <Charts>
-                <MealCarbsChart meal={meal} />
-                <MealProductsChart meal={meal} />
+                <CarbsCard color="secondary">
+                  <IonCardContent>
+                    <IonText color="dark">
+                      <TotalCarbs>
+                        {calcService.getMealTotalCarbs(meal.products)}
+                      </TotalCarbs>
+                    </IonText>
+                  </IonCardContent>
+                </CarbsCard>
+                <Card color="light">
+                  <IonCardContent>
+                    <MealCarbsChart meal={meal} />
+                  </IonCardContent>
+                </Card>
+                <Card color="light">
+                  <IonCardContent>
+                    <MealProductsChart meal={meal} />
+                  </IonCardContent>
+                </Card>
               </Charts>
             )}
             {meal.note && (
@@ -153,11 +173,36 @@ const Date = styled(IonText)`
 
 const Charts = styled.div`
   display: flex;
-  justify-content: space-between;
-  padding: 12px 12px 24px 12px;
-  background-color: var(--ion-color-primary);
+  overflow-x: auto;
+  padding: 0 8px 12px 8px;
+`;
+
+const Card = styled(IonCard)`
+  min-width: 150px;
+  margin: 4px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+`;
+
+const CarbsCard = styled(IonCard)`
+  min-width: 150px;
+  margin: 4px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to top, #50cc7f 0%, #f5d100 100%);
 `;
 
 const Note = styled.div`
   margin: 0 0 16px 12px;
+`;
+
+const TotalCarbs = styled.strong`
+  font-size: 3.2em;
 `;

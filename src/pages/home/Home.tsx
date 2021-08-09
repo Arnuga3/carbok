@@ -25,7 +25,7 @@ const Home: React.FC = () => {
       <IonContent>
         <Header>
           <Title>
-            <CarbokIcon src={CLogoIcon} color="primary" size="54" />
+            <CarbokIcon src={CLogoIcon} color="medium" size="54" />
           </Title>
           <IonButtons>
             <IonButton routerLink="/settings" style={{ marginLeft: 8 }}>
@@ -35,24 +35,24 @@ const Home: React.FC = () => {
         </Header>
 
         <HomeCard title={t("page.home.meals")}>
-          <CarbokIcon src={CMealsIcon} size="48" color="secondary" />
-          <IonButton routerLink="/meals" color="green" shape="round">
+          <CarbokIcon src={CMealsIcon} size="48" color="primary" />
+          <IonButton routerLink="/meals" color="primary" shape="round">
             {t("button.log.meal")}
           </IonButton>
         </HomeCard>
 
         <HomeCard title={t("page.home.products")}>
-          <CarbokIcon src={CProductsIcon} size="52" color="secondary" />
-          <IonButton routerLink="/products" color="green" shape="round">
+          <CarbokIcon src={CProductsIcon} size="52" color="primary" />
+          <IonButton routerLink="/products" color="primary" shape="round">
             {t("button.manage.products")}
           </IonButton>
         </HomeCard>
 
         <HomeCard title={t("page.home.calculator")}>
-          <CarbokIcon src={CCalculatorIcon} size="46" color="secondary" />
+          <CarbokIcon src={CCalculatorIcon} size="46" color="primary" />
           <IonButton
             routerLink="/calculator"
-            color="green"
+            color="primary"
             shape="round"
           >
             {t("button.calculate")}
@@ -60,8 +60,8 @@ const Home: React.FC = () => {
         </HomeCard>
 
         <HomeCard title={t("page.home.overview")}>
-          <CarbokIcon src={CChartIcon} size="48" color="secondary" />
-          <IonButton routerLink="/overview" color="green" shape="round">
+          <CarbokIcon src={CChartIcon} size="48" color="primary" />
+          <IonButton routerLink="/overview" color="primary" shape="round">
             {t("button.view.summary")}
           </IonButton>
         </HomeCard>
@@ -81,11 +81,6 @@ const Title = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  padding: 0 0 4px 4px;
-  width: 70px;
-  height: 70px;
-  box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.1);
 `;
 
 const Header = styled.div`

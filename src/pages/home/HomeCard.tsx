@@ -13,7 +13,7 @@ interface Props {
 
 export const HomeCard: React.FC<Props> = ({ title, children }) => {
   return (
-    <Card>
+    <Card color="tertiary">
       <IonCardHeader>
         <IonCardTitle>{title}</IonCardTitle>
       </IonCardHeader>
