@@ -3,5 +3,7 @@ export enum MealTypeEnum {
   LUNCH = "LUNCH",
   DINNER = "DINNER",
   SNACK = "SNACK",
-  OTHER = "OTHER",
+  MUNCHIES = "MUNCHIES",
+  FEAST = "FEAST",
+  CUSTOM = "CUSTOM",
 }

@@ -26,7 +26,7 @@ const Card = styled(IonCard)`
   border-radius: 24px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
   padding: 12px 0 8px 8px;
-  margin-top: 20px;
+  margin-top: 16px;
   background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);
 `;
 

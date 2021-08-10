@@ -41,20 +41,9 @@ const Home: React.FC = () => {
           </IonButton>
         </HomeCard>
 
-        <HomeCard title={t("page.home.products")}>
-          <CarbokIcon src={CProductsIcon} size="52" color="primary" />
-          <IonButton routerLink="/products" color="primary" shape="round">
-            {t("button.manage.products")}
-          </IonButton>
-        </HomeCard>
-
         <HomeCard title={t("page.home.calculator")}>
           <CarbokIcon src={CCalculatorIcon} size="46" color="primary" />
-          <IonButton
-            routerLink="/calculator"
-            color="primary"
-            shape="round"
-          >
+          <IonButton routerLink="/calculator" color="primary" shape="round">
             {t("button.calculate")}
           </IonButton>
         </HomeCard>
@@ -66,10 +55,16 @@ const Home: React.FC = () => {
           </IonButton>
         </HomeCard>
 
+        <HomeCard title={t("page.home.products")}>
+          <CarbokIcon src={CProductsIcon} size="52" color="primary" />
+          <IonButton routerLink="/products" color="primary" shape="round">
+            {t("button.manage")}
+          </IonButton>
+        </HomeCard>
+
         {/* <Card>
           <CardContent>{t("page.home.support")}</CardContent>
         </Card> */}
-
       </IonContent>
     </IonPage>
   );

@@ -5,7 +5,9 @@ export const mealTypes = [
   MealTypeEnum.LUNCH,
   MealTypeEnum.DINNER,
   MealTypeEnum.SNACK,
-  MealTypeEnum.OTHER,
+  MealTypeEnum.MUNCHIES,
+  MealTypeEnum.FEAST,
+  MealTypeEnum.CUSTOM,
 ];
 
 export function getMealKey(type: string): string {
