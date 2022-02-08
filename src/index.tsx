@@ -12,7 +12,8 @@ import reducer from './redux/reducers/index';
 
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
-import './resources/fonts/Nunito-Light.ttf';
+// import './resources/fonts/Nunito-Light.ttf';
+import './resources/fonts/Urbanist-Regular.ttf';
 
 const logger = createLogger({
   collapsed: true,

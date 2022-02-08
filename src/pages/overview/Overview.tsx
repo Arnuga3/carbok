@@ -118,13 +118,11 @@ const ListWrapper = styled.div`
 `;
 
 const CarbsCard = styled(IonCard)`
-  border-radius: 24px;
   margin-top: 20px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
 `;
 
 const ProductsCard = styled(IonCard)`
-  border-radius: 24px;
   margin-top: 20px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
 `;

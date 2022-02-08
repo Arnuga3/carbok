@@ -86,7 +86,6 @@ const Settings: React.FC = () => {
 export default React.memo(Settings);
 
 const Card = styled(IonCard)`
-  border-radius: 20px;
   margin-top: 16px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
 `;

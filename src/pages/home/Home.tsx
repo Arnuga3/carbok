@@ -4,19 +4,29 @@ import styled from "styled-components";
 import {
   IonButton,
   IonButtons,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
   IonContent,
   IonIcon,
   IonPage,
+  IonText,
 } from "@ionic/react";
-import { personOutline } from "ionicons/icons";
+import { settingsOutline } from "ionicons/icons";
+import moment from "moment";
 
-import CLogoIcon from "./../../resources/icons/logo.svg";
 import CMealsIcon from "./../../resources/icons/meals.svg";
 import CCalculatorIcon from "./../../resources/icons/calculator.svg";
 import CProductsIcon from "./../../resources/icons/products.svg";
 import CChartIcon from "./../../resources/icons/chart.svg";
 import { CarbokIcon } from "../../components/styled/CarbokIcon";
-import { HomeCard } from "./HomeCard";
+
+import ProductsImage from "../../resources/images/products.jpg";
+import CalculatorImage from "../../resources/images/calc.jpg";
+import MealsImage from "../../resources/images/meals.jpg";
+import StatisticsImage from "../../resources/images/stats.jpg";
+import { dateService } from "../../services/DateService";
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
@@ -24,43 +34,71 @@ const Home: React.FC = () => {
     <IonPage>
       <IonContent>
         <Header>
-          <Title>
-            <CarbokIcon src={CLogoIcon} color="medium" size="54" />
-          </Title>
+          <div>
+            <IonText>
+              <h3>{t("page.home.title")}</h3>
+            </IonText>
+            <IonText color="tertiary">
+              <small>
+                {moment(dateService.dateNoTime(new Date())).format(
+                  "dddd, D MMM YYYY"
+                )}
+              </small>
+            </IonText>
+          </div>
           <IonButtons>
             <IonButton routerLink="/settings" style={{ marginLeft: 8 }}>
-              <IonIcon icon={personOutline} slot="icon-only" color="medium" />
+              <IonIcon icon={settingsOutline} slot="icon-only" />
             </IonButton>
           </IonButtons>
         </Header>
 
-        <HomeCard title={t("page.home.meals")}>
-          <CarbokIcon src={CMealsIcon} size="48" color="primary" />
-          <IonButton routerLink="/meals" color="primary" shape="round">
-            {t("button.log.meal")}
-          </IonButton>
-        </HomeCard>
+        <Card routerLink="/products">
+          <CardOverlay />
+          <CardBackgroundLighter src={ProductsImage} alt="Products" />
+          <CardOverlay />
+          <IonCardHeader>
+            <IonCardTitle color="secondary">{t("page.home.products")}</IonCardTitle>
+          </IonCardHeader>
+          <CardContent>
+            <CarbokIcon src={CProductsIcon} size="50" color="light" />
+          </CardContent>
+        </Card>
 
-        <HomeCard title={t("page.home.calculator")}>
-          <CarbokIcon src={CCalculatorIcon} size="46" color="primary" />
-          <IonButton routerLink="/calculator" color="primary" shape="round">
-            {t("button.calculate")}
-          </IonButton>
-        </HomeCard>
+        <Card routerLink="/calculator">
+          <CardBackground src={CalculatorImage} alt="Calculator" />
+          <CardOverlay />
+          <IonCardHeader>
+            <IonCardTitle color="secondary">
+              {t("page.home.calculator")}
+            </IonCardTitle>
+          </IonCardHeader>
+          <CardContent>
+            <CarbokIcon src={CCalculatorIcon} size="44" color="light" />
+          </CardContent>
+        </Card>
 
-        <HomeCard title={t("page.home.overview")}>
-          <CarbokIcon src={CChartIcon} size="48" color="primary" />
-          <IonButton routerLink="/overview" color="primary" shape="round">
-            {t("button.view.summary")}
-          </IonButton>
-        </HomeCard>
+        <Card routerLink="/meals">
+          <CardBackground src={MealsImage} alt="Meals" />
+          <CardOverlay />
+          <IonCardHeader>
+            <IonCardTitle color="secondary">{t("page.home.meals")}</IonCardTitle>
+          </IonCardHeader>
+          <CardContent>
+            <CarbokIcon src={CMealsIcon} size="48" color="light" />
+          </CardContent>
+        </Card>
 
-        <HomeCard title={t("page.home.products")}>
-          <CarbokIcon src={CProductsIcon} size="52" color="primary" />
-          <IonButton routerLink="/products" color="primary" shape="round">
-            {t("button.manage")}
-          </IonButton>
-        </HomeCard>
+        <Card routerLink="/overview">
+          <CardBackground src={StatisticsImage} alt="Overview" />
+          <CardOverlay />
+          <IonCardHeader>
+            <IonCardTitle color="secondary">{t("page.home.overview")}</IonCardTitle>
+          </IonCardHeader>
+          <CardContent>
+            <CarbokIcon src={CChartIcon} size="48" color="light" />
+          </CardContent>
+        </Card>
 
         {/* <Card>
           <CardContent>{t("page.home.support")}</CardContent>
@@ -72,15 +110,37 @@ const Home: React.FC = () => {
 
 export default React.memo(Home);
 
-const Title = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 16px 16px 24px;
+`;
+
+const Card = styled(IonCard)`
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
+  margin-top: 12px;
+  border-radius: 16px;
+`;
+
+const CardContent = styled(IonCardContent)`
+  display: flex;
+  margin: 24px 0 6px 0;
+`;
+
+const CardBackgroundLighter = styled.img`
+  position: absolute;
+  filter: grayscale(40%) brightness(1.6) contrast(75%);
+`;
+
+const CardBackground = styled.img`
+  position: absolute;
+  filter: grayscale(40%);
+`;
+
+const CardOverlay = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, black, transparent);
 `;

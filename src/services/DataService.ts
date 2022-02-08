@@ -1,12 +1,23 @@
 import { db } from "../database/CarbokDB";
 import { isPlatform } from "@ionic/react";
-import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
+import { Share } from "@capacitor/share";
 import { Meal } from "../classes/meal/Meal";
 import { Product } from "../classes/product/Product";
 import { dateService } from "./DateService";
 import default_products from "./../database/carbok-default-products.json";
 
 class DataService {
+  /* simple key value storage */
+  public async setValue(key: string, value: string): Promise<void> {
+    await db.keyStore.put({ id: key, value });
+  }
+
+  public async getValue(key: string): Promise<string | null> {
+    const pair = await db.keyStore.get(key);
+    return pair ? pair.value : null;
+  }
+
   /* products */
   public async retrieveProducts(searchText: string | null): Promise<Product[]> {
     const result =
@@ -68,29 +79,35 @@ class DataService {
   /* end meals */
 
   /* import - export */
-  public async exportData(): Promise<void> {
+  public async exportData(present: any): Promise<void> {
     try {
       const dbExport = await db.transaction("r", db.tables, () => {
         return Promise.all(
-          db.tables.map((table) => {
-            if (table.name === "products") {
-              return table.toArray().then((rows) => ({
-                table: table.name,
-                rows: rows.filter((product: Product) => !product.standard),
-              }));
-            } else {
-              return table
-                .toArray()
-                .then((rows) => ({ table: table.name, rows }));
-            }
-          })
+          db.tables
+            .filter((table) => table.name !== "keyStore")
+            .map((table) => {
+              if (table.name === "products") {
+                return table.toArray().then((rows) => ({
+                  table: table.name,
+                  rows: rows.filter((product: Product) => !product.standard),
+                }));
+              } else {
+                return table
+                  .toArray()
+                  .then((rows) => ({ table: table.name, rows }));
+              }
+            })
         );
       });
       const data: { fileName: string; json: string } = {
         fileName: `carbok-dexie-${Date.now()}`,
         json: JSON.stringify(dbExport),
       };
-      isPlatform("hybrid") ? this.writeFile(data) : this.downloadFile(data);
+      // isPlatform("hybrid") ? this.writeFile(data) : this.downloadFile(data);
+
+      isPlatform("hybrid")
+        ? this.share(data, present)
+        : this.downloadFile(data);
     } catch (error) {
       console.error("" + error);
     }
@@ -111,7 +128,7 @@ class DataService {
     await Filesystem.writeFile({
       path: `${data.fileName}.json`,
       data: data.json,
-      directory: Directory.Documents,
+      directory: Directory.Data,
       encoding: Encoding.UTF8,
     });
   }
@@ -145,6 +162,49 @@ class DataService {
     });
   }
   /* end import - export */
+
+  public async share(data: { fileName: string; json: string }, present: any) {
+    Filesystem.writeFile({
+      path: `${data.fileName}.json`,
+      data: data.json,
+      directory: Directory.Cache,
+      encoding: Encoding.UTF8,
+    })
+      .then(() => {
+        return Filesystem.getUri({
+          directory: Directory.Cache,
+          path: `${data.fileName}.json`,
+        });
+      })
+      .then((result) => {
+        return Share.share({
+          title: `Carbok - Data Export`,
+          text: `The exported data contains logs and products. The data can be imported back to the app.`,
+          url: result.uri,
+        })
+          .then(() => {
+            present({
+              message: "Data exported successfully",
+              duration: 2000,
+              color: "success",
+            });
+          })
+          .catch(() => {
+            present({
+              message: "Data was not exported",
+              duration: 2000,
+              color: "danger",
+            });
+          });
+      })
+      .catch((err) => {
+        present({
+          message: `ERROR: ${JSON.stringify(err)}`,
+          duration: 2000,
+          color: "danger",
+        });
+      });
+  }
 }
 
 export const dataService = new DataService();

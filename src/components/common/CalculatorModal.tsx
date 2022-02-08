@@ -18,6 +18,8 @@ import { focusElement } from "../../utils/eventHelpers";
 import { RoundedContent } from "../styled/RoundedContent";
 import { RoundedContentHeader } from "../styled/RoundedContentHeader";
 
+import Background1 from "../../resources/images/background1.jpg";
+
 interface Props {
   product?: IProduct | null;
   open: boolean;
@@ -80,6 +82,7 @@ export const CalculatorModal: React.FC<Props> = ({
   return (
     <IonModal isOpen={open} onWillDismiss={onClose}>
       <RoundedContent color="primary">
+        <ImageBackground src={Background1} />
         <RoundedContentHeader>
           <Result color="white">
             <h1>{result()}</h1>
@@ -248,4 +251,10 @@ const Buttons = styled.div`
 const Button = styled(IonButton)`
   margin: 16px 12px;
   flex: 1;
+`;
+
+const ImageBackground = styled.img`
+  position: absolute;
+  filter: brightness(0.3) blur(1px);
+  z-index: -1;
 `;

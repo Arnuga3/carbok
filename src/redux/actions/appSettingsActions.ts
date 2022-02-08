@@ -2,6 +2,7 @@ import { i18n } from "i18next";
 import { Dispatch } from "redux";
 import { IAppSettings } from "../../classes/appSettings/IAppSettings";
 import { settingsService } from "../../services/AppSettingsStorageService";
+import { dataService } from "../../services/DataService";
 
 export enum AppSettingsActions {
   SET_APP_SETTINGS = "SET_APP_SETTINGS",
@@ -21,7 +22,7 @@ const setAppSettings = (settings: IAppSettings): SetAppSettings => ({
 export const initAppSettings = (i18n: i18n) => {
   return async (dispatch: Dispatch) => {
     try {
-      const settings = await settingsService.get();
+      const settings: IAppSettings|null = await getSettingsFromDB();
       if (settings) {
         i18n.changeLanguage(settings.language);
         document.body.classList.toggle("dark", settings.themeMode === "dark");
@@ -36,10 +37,20 @@ export const initAppSettings = (i18n: i18n) => {
 export const changeAppSettings = (settings: IAppSettings) => {
   return async (dispatch: Dispatch) => {
     try {
-      await settingsService.set(settings);
+      // await settingsService.set(settings);
+      await changeAppSettingsInDB(settings);
       dispatch(setAppSettings(settings));
     } catch (e) {
       console.log(e);
     }
   };
 };
+
+const getSettingsFromDB = async () => {
+  const dbSettings = await dataService.getValue('settings');
+  return dbSettings ? JSON.parse(dbSettings) : null;
+}
+
+const changeAppSettingsInDB = async (settings: IAppSettings) => {
+  await dataService.setValue('settings', JSON.stringify(settings));
+}

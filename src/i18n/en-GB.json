@@ -25,7 +25,7 @@
     "meal.type.snack": "Snack",
     "meal.type.munchies": "Munchies",
     "meal.type.feast": "Food feast",
-    "meal.type.custom": "Stuff to chew & swallow",
+    "meal.type.custom": "Other",
 
     "tab.overview": "Overview",
     "tab.calculator": "Calculator",
@@ -67,10 +67,11 @@
     "button.manage": "Manage",
     "button.view.summary": "Review",
 
-    "page.home.overview": "My eating habits",
+    "page.home.title": "Hi There! Welcome back!",
+    "page.home.overview": "Log Statistics",
     "page.home.calculator": "Carbs Calculator",
-    "page.home.meals": "My food & drinks",
-    "page.home.products": "My & app products",
+    "page.home.meals": "My Logs",
+    "page.home.products": "Products",
     "page.home.support": "Love Carbok! How can I help?",
 
     "page.overview.carbs.range.card.title": "{{days}} days",

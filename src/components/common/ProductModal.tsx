@@ -17,6 +17,8 @@ import { getCatKey } from "../../resources/productCategories";
 import { RoundedContent } from "../styled/RoundedContent";
 import { RoundedContentHeader } from "../styled/RoundedContentHeader";
 
+import Background1 from "../../resources/images/background1.jpg";
+
 interface Props {
   product: Product | null;
   open: boolean;
@@ -31,6 +33,7 @@ export const ProductModal: React.FC<Props> = ({ product, open, onClose }) => {
       {product ? (
         <IonModal isOpen={open} onWillDismiss={onClose}>
           <RoundedContent color="primary">
+            <ImageBackground src={Background1} />
             <RoundedContentHeader>
               <Label color="white">
                 <h3>{product.name}</h3>
@@ -141,4 +144,10 @@ const Card = styled(IonCard)`
 const Button = styled(IonButton)`
   margin: 16px 12px;
   flex: 1;
+`;
+
+const ImageBackground = styled.img`
+  position: absolute;
+  filter: brightness(0.3) blur(1px);
+  z-index: -1;
 `;

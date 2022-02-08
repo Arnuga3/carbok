@@ -17,6 +17,8 @@ import { focusElement } from "../../utils/eventHelpers";
 import { RoundedContent } from "../../components/styled/RoundedContent";
 import { RoundedContentHeader } from "../../components/styled/RoundedContentHeader";
 
+import Background1 from "../../resources/images/background1.jpg";
+
 const defaultData = {
   portion: 100,
   carbs: 0,
@@ -45,6 +47,7 @@ export const Calculator: React.FC = () => {
   return (
     <IonPage>
       <RoundedContent color="primary">
+        <ImageBackground src={Background1} />
         <RoundedContentHeader>
           <Result color="white">
             <h1>{result()}</h1>
@@ -198,4 +201,10 @@ const Error = styled.div`
 
 const Button = styled(IonButton)`
   margin: 16px 12px;
+`;
+
+const ImageBackground = styled.img`
+  position: absolute;
+  filter: brightness(0.3) blur(1px);
+  z-index: -1;
 `;

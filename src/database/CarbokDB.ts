@@ -6,10 +6,15 @@ import default_products from "./carbok-default-products.json";
 export class CarbokDB extends Dexie {
   products: Dexie.Table<Product, string>;
   meals: Dexie.Table<Meal, string>;
+  keyStore: Dexie.Table<{ id: string; value: string }, string>;
 
   constructor() {
     super("CarbokDB");
     const db = this;
+
+    this.version(2).stores({
+      keyStore: "id, value",
+    });
 
     this.version(1).stores({
       products: "id, name, categories, units, portionType",
@@ -27,10 +32,12 @@ export class CarbokDB extends Dexie {
           );
         });
     });
+
     this.open();
 
     this.products = this.table("products");
     this.meals = this.table("meals");
+    this.keyStore = this.table("keyStore");
   }
 }
 

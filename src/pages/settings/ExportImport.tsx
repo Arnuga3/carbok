@@ -27,13 +27,7 @@ export const ExportImport: React.FC = () => {
 
   const handleExport = async () => {
     try {
-      await dataService.exportData().then(() => {
-        present({
-          message: t("page.settings.toast.export.success"),
-          duration: 2000,
-          color: "success",
-        });
-      });
+      await dataService.exportData(present);
     } catch (e) {
       present({
         message: t("page.settings.toast.export.fail"),
@@ -137,7 +131,6 @@ export const ExportImport: React.FC = () => {
 };
 
 const Card = styled(IonCard)`
-  border-radius: 20px;
   margin-top: 16px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
 `;

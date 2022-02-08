@@ -25,7 +25,7 @@
     "meal.type.snack": "Перекус",
     "meal.type.munchies": "Похрустелки",
     "meal.type.feast": "Пир живота",
-    "meal.type.custom": "Что-то пожевать & проглатить",
+    "meal.type.custom": "Другое",
 
     "tab.overview": "Обзор",
     "tab.calculator": "Калькулятор",
@@ -67,10 +67,11 @@
     "button.manage": "Управлять",
     "button.view.summary": "Посмотреть",
 
-    "page.home.overview": "Мои пищевые привычки",
+    "page.home.title": "Привет! Рад Вас видеть!",
+    "page.home.overview": "Статистика",
     "page.home.calculator": "Калькулятор углеводов",
-    "page.home.meals": "Моя еда & напитки",
-    "page.home.products": "Мои & продукты приложения",
+    "page.home.meals": "Мои записи",
+    "page.home.products": "Продукты",
     "page.home.support": "Люблю Carbok! Как я могу помочь?",
 
     "page.overview.carbs.range.card.title": "{{days}} дней",
