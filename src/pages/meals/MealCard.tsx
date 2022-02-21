@@ -26,8 +26,15 @@ import { NoteAlert } from "./meal/alerts/NoteAlert";
 import { CopyAlert, CopyState } from "./meal/alerts/CopyAlert";
 import { CopyDatetime } from "./meal/alerts/CopyDateTime";
 import { ProductSelectModal } from "./meal/ProductSelectModal";
-import moment from "moment";
 
+import BreakfastImage from "../../resources/images/breakfast.jpg";
+import LunchImage from "../../resources/images/lunch.jpg";
+import DinnerImage from "../../resources/images/dinner.jpg";
+import FeastImage from "../../resources/images/feast.jpg";
+import SnackImage from "../../resources/images/snack.jpg";
+import MunchiesImage from "../../resources/images/munchies.jpg";
+import OtherImage from "../../resources/images/other.jpg";
+import { MealTypeEnum } from "../../classes/meal/MealTypeEnum";
 interface Props {
   meal: Meal;
   date: Date;
@@ -47,7 +54,14 @@ export const MealCard: React.FC<Props> = ({ meal, date }) => {
 
   return (
     <Animation>
-      <Card mode="md" color="primary">
+      <Card mode="md">
+          {meal.type === MealTypeEnum.BREAKFAST && <CardBackground src={BreakfastImage} alt="card background" />}
+          {meal.type === MealTypeEnum.LUNCH && <CardBackground src={LunchImage} alt="card background" />}
+          {meal.type === MealTypeEnum.DINNER && <CardBackground src={DinnerImage} alt="card background" />}
+          {meal.type === MealTypeEnum.FEAST && <CardBackground src={FeastImage} alt="card background" />}
+          {meal.type === MealTypeEnum.SNACK && <CardBackground src={SnackImage} alt="card background" />}
+          {meal.type === MealTypeEnum.MUNCHIES && <CardBackground src={MunchiesImage} alt="card background" />}
+          {meal.type === MealTypeEnum.CUSTOM && <CardBackground src={OtherImage} alt="card background" />}
         <ReorderHandle>
           <IonReorder />
         </ReorderHandle>
@@ -60,19 +74,16 @@ export const MealCard: React.FC<Props> = ({ meal, date }) => {
             <ItemContent>
               <CardHeader>
                 <CardHeaderTitle>
-                  <IonText color="secondary">
-                    <p>{`${moment(date).format("dddd, D MMM YYYY")}`}</p>
-                  </IonText>
                   <IonText color="white">
                     <h1>{t(getMealKey(meal.type))}</h1>
                   </IonText>
                 </CardHeaderTitle>
                 <CardHeaderCarbs>
-                  <IonText color="secondary">
-                    <p>{t("carbohydrates")}</p>
-                  </IonText>
                   <IonText color="white">
                     <h1>{calcService.getMealTotalCarbs(meal.products)}</h1>
+                  </IonText>
+                  <IonText color="secondary">
+                    <p>{t("carbohydrates")}</p>
                   </IonText>
                 </CardHeaderCarbs>
               </CardHeader>
@@ -88,8 +99,8 @@ export const MealCard: React.FC<Props> = ({ meal, date }) => {
                 ))}
                 {meal.note && (
                   <Note>
-                    <NoteIcon icon={chatbubbleOutline} color="secondary" />
-                    <IonText color="secondary">
+                    <NoteIcon icon={chatbubbleOutline} color="white" />
+                    <IonText color="white">
                       <p>{meal.note}</p>
                     </IonText>
                   </Note>
@@ -194,8 +205,8 @@ const CardContent = styled(IonCardContent)`
 const ReorderHandle = styled.div`
   display: flex;
   justify-content: center;
-  background-color: var(--ion-color-primary-shade);
   color: white;
+  background-color: rgba(0,0,0,0.5);
 `;
 
 const DayMealCardProductList = styled.div`
@@ -257,4 +268,9 @@ const EditIcon = styled.div`
   justify-content: flex-end;
   width: 100%;
   padding-bottom: 8px;
+`;
+
+const CardBackground = styled.img`
+  position: absolute;
+  filter: grayscale(40%) brightness(0.4) blur(2px);
 `;

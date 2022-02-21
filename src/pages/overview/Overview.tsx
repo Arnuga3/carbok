@@ -20,6 +20,8 @@ import { Meal } from "../../classes/meal/Meal";
 import _ from "lodash";
 import { changeBorderStyle } from "../../utils/eventHelpers";
 
+import BackgroundImage1 from "../../resources/images/spaghetti.jpg";
+
 export type Range = "7_days" | "30_days" | "90_days";
 
 export interface CardData {
@@ -64,26 +66,22 @@ const Overview: React.FC = () => {
         >
           {cardData.meals.length > 0 ? (
             <>
-              <CarbsCard color="primary">
+              <CarbsCard>
                 <CardHeader>
-                  <IonCardTitle>
-                    {t("carbohydrates")}
-                  </IonCardTitle>
+                  <IonCardTitle color="tertiary">{t("carbohydrates")}</IonCardTitle>
                   {cardData.from && cardData.to && (
-                    <CardSubtitle>{`${moment(
-                      cardData.from
-                    ).format("D MMM")} - ${moment(cardData.to).format(
+                    <CardSubtitle>{`${moment(cardData.from).format(
                       "D MMM"
-                    )}`}</CardSubtitle>
+                    )} - ${moment(cardData.to).format("D MMM")}`}</CardSubtitle>
                   )}
                 </CardHeader>
                 <IonCardContent>
                   <MealCarbsLinearChart meals={cardData.meals} />
                 </IonCardContent>
               </CarbsCard>
-              <ProductsCard color="secondary">
+              <ProductsCard color="">
                 <CardHeader>
-                  <IonCardTitle>
+                  <IonCardTitle color="tertiary">
                     {t("page.overview.foods.range.card.title")}
                   </IonCardTitle>
                   {cardData.from && cardData.to && (
@@ -120,11 +118,13 @@ const ListWrapper = styled.div`
 const CarbsCard = styled(IonCard)`
   margin-top: 20px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
 `;
 
 const ProductsCard = styled(IonCard)`
   margin-top: 20px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
 `;
 
 const CardHeader = styled(IonCardHeader)`

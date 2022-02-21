@@ -130,12 +130,12 @@ const CardContent = styled(IonCardContent)`
 
 const CardBackgroundLighter = styled.img`
   position: absolute;
-  filter: grayscale(40%) brightness(1.6) contrast(75%);
+  filter: grayscale(40%) brightness(1.6) contrast(75%) blur(1px);
 `;
 
 const CardBackground = styled.img`
   position: absolute;
-  filter: grayscale(40%);
+  filter: grayscale(40%) blur(1px);
 `;
 
 const CardOverlay = styled.div`

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { localeStorageService } from "../services/LocaleStorageService";
+import { localeStorageService } from "../services/StorageService";
 
 const KEY = "recentSearches";
 

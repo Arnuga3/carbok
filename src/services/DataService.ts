@@ -13,11 +13,14 @@ class DataService {
     await db.keyStore.put({ id: key, value });
   }
 
-  public async getValue(key: string): Promise<string | null> {
+  public async getValue(key: string): Promise<any> {
     const pair = await db.keyStore.get(key);
     return pair ? pair.value : null;
   }
 
+  public async removeValue(key: string): Promise<any> {
+    await db.keyStore.delete(key);
+  }
   /* products */
   public async retrieveProducts(searchText: string | null): Promise<Product[]> {
     const result =
