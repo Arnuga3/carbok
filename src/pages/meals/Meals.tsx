@@ -15,6 +15,7 @@ import {
   IonFab,
   IonFabButton,
   IonButtons,
+  IonText,
 } from "@ionic/react";
 import {
   addOutline,
@@ -105,7 +106,8 @@ export const Meals: React.FC = () => {
             onClick={() => getCalendarDay(moment().toDate())}
             color="primary"
           >
-            <IonIcon icon={todayOutline} slot="icon-only" />
+            <IonIcon icon={todayOutline} />
+            <IonText>&nbsp;<small>Today</small></IonText>
           </IonButton>
           <DateSelect lines="none" mode="ios">
             <DateTime

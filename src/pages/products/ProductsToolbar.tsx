@@ -48,7 +48,7 @@ export const ProductsToolbar: React.FC<Props> = ({ onFilert, onSearch }) => {
             color={
               settings.productsFilter === "all"
                 ? "var(--ion-color-secondary)"
-                : "var(--ion-color-light-darker)"
+                : "var(--ion-color-medium)"
             }
           >
             <Label>{t("page.products.filter.products.all")}</Label>
@@ -58,7 +58,7 @@ export const ProductsToolbar: React.FC<Props> = ({ onFilert, onSearch }) => {
             color={
               settings.productsFilter === "default"
                 ? "var(--ion-color-secondary)"
-                : "var(--ion-color-light-darker)"
+                : "var(--ion-color-medium)"
             }
           >
             <Label>{t("page.products.filter.products.default")}</Label>
@@ -68,7 +68,7 @@ export const ProductsToolbar: React.FC<Props> = ({ onFilert, onSearch }) => {
             color={
               settings.productsFilter === "my"
                 ? "var(--ion-color-secondary)"
-                : "var(--ion-color-light-darker)"
+                : "var(--ion-color-medium)"
             }
           >
             <Label>{t("page.products.filter.products.my")}</Label>
@@ -90,7 +90,7 @@ const Chip = styled(IonChip)`
   border-radius: 32px;
   padding-left: 8px;
   background: ${({ color }) => color};
-  color: var(--ion-color-dark);
+  color: black;
 `;
 
 const Label = styled(IonLabel)`

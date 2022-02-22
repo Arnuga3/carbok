@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IonFab, IonFabButton, IonFabList, IonIcon } from "@ionic/react";
 import { addOutline, pencil, search } from "ionicons/icons";
 import { ProductSelectModal } from "./ProductSelectModal";

@@ -204,23 +204,19 @@ const Charts = styled.div`
 const Card = styled(IonCard)`
   min-width: 150px;
   margin: 4px;
-  border-radius: 20px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
 `;
 
 const CarbsCard = styled(IonCard)`
   min-width: 150px;
   margin: 4px;
-  border-radius: 20px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to top, #50cc7f 0%, #f3de2c 100%);
 `;
 
 const Note = styled.div`

@@ -59,11 +59,6 @@ export const ProductSelectModal: React.FC<Props> = ({
     }
   }, [open]);
 
-  useEffect(() => {
-    document.addEventListener("ionBackButton", () => onClose());
-    return () => document.removeEventListener("ionBackButton", () => onClose());
-  }, []);
-
   const onSelect = () => {
     setSearched(
       _.uniq([

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import {
@@ -27,9 +27,22 @@ import CalculatorImage from "../../resources/images/calc.jpg";
 import MealsImage from "../../resources/images/meals.jpg";
 import StatisticsImage from "../../resources/images/stats.jpg";
 import { dateService } from "../../services/DateService";
+import {App, BackButtonListenerEvent} from "@capacitor/app";
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    App.addListener("backButton", (e: BackButtonListenerEvent) => {
+      if (!e.canGoBack) {
+        App.exitApp();
+      }
+    });
+    return () => {
+      App.removeAllListeners();
+    }
+  }, []);
+
   return (
     <IonPage>
       <IonContent>

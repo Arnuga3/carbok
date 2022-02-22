@@ -87,7 +87,7 @@ export const DateRangeSwitch: React.FC<Props> = ({
           color={
             data.range === "90_days"
               ? "var(--ion-color-secondary)"
-              : "var(--ion-color-light-darker)"
+              : "var(--ion-color-medium)"
           }
         >
           {t("page.overview.carbs.range.card.title", { days: 90 })}
@@ -97,7 +97,7 @@ export const DateRangeSwitch: React.FC<Props> = ({
           color={
             data.range === "30_days"
               ? "var(--ion-color-secondary)"
-              : "var(--ion-color-light-darker)"
+              : "var(--ion-color-medium)"
           }
         >
           {t("page.overview.carbs.range.card.title", { days: 30 })}
@@ -107,7 +107,7 @@ export const DateRangeSwitch: React.FC<Props> = ({
           color={
             data.range === "7_days"
               ? "var(--ion-color-secondary)"
-              : "var(--ion-color-light-darker)"
+              : "var(--ion-color-medium)"
           }
         >
           {t("page.overview.carbs.range.card.title", { days: 7 })}
@@ -130,5 +130,5 @@ const Chip = styled(IonChip)`
   border-radius: 32px;
   padding-left: 8px;
   background: ${({ color }) => color};
-  color: var(--ion-color-dark);
+  color: black;
 `;
