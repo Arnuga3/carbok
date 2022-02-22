@@ -43,9 +43,6 @@ export const ProductsSearchModal: React.FC<Props> = ({ open, onClose }) => {
       reset();
     }
     refresh();
-
-    document.addEventListener("ionBackButton", () => onClose());
-    return () => document.removeEventListener("ionBackButton", () => onClose());
   }, [open]);
 
   const search = async (searchText: string) => {

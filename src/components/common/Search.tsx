@@ -1,6 +1,6 @@
 import { IonSearchbar } from "@ionic/react";
 import { closeCircleOutline } from "ionicons/icons";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
@@ -12,6 +12,15 @@ interface Props {
 
 export const Search: React.FC<Props> = ({ value, onSearch, onClear }) => {
   const { t } = useTranslation();
+  const searchRef = useRef<HTMLIonSearchbarElement>(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (searchRef.current) {
+        searchRef.current.setFocus();
+      }
+    }, 500);
+  }, []);
 
   useEffect(() => {
     if (value) {
@@ -35,6 +44,7 @@ export const Search: React.FC<Props> = ({ value, onSearch, onClear }) => {
 
   return (
     <SearchBar
+      ref={searchRef}
       value={value}
       type="search"
       enterkeyhint="search"
