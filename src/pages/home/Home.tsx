@@ -6,8 +6,6 @@ import {
   IonButtons,
   IonCard,
   IonCardContent,
-  IonCardHeader,
-  IonCardTitle,
   IonContent,
   IonIcon,
   IonPage,
@@ -16,18 +14,12 @@ import {
 import { settingsOutline } from "ionicons/icons";
 import moment from "moment";
 
-import CMealsIcon from "./../../resources/icons/meals.svg";
-import CCalculatorIcon from "./../../resources/icons/calculator.svg";
-import CProductsIcon from "./../../resources/icons/products.svg";
-import CChartIcon from "./../../resources/icons/chart.svg";
-import { CarbokIcon } from "../../components/styled/CarbokIcon";
-
-import ProductsImage from "../../resources/images/products.jpg";
-import CalculatorImage from "../../resources/images/calc.jpg";
-import MealsImage from "../../resources/images/meals.jpg";
-import StatisticsImage from "../../resources/images/stats.jpg";
+import ProductsImage from "../../resources/images/products2.png";
+import CalculatorImage from "../../resources/images/calculator2.png";
+import MealsImage from "../../resources/images/pizza.png";
+import StatisticsImage from "../../resources/images/stats1.png";
 import { dateService } from "../../services/DateService";
-import {App, BackButtonListenerEvent} from "@capacitor/app";
+import { App, BackButtonListenerEvent } from "@capacitor/app";
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
@@ -40,7 +32,7 @@ const Home: React.FC = () => {
     });
     return () => {
       App.removeAllListeners();
-    }
+    };
   }, []);
 
   return (
@@ -67,50 +59,43 @@ const Home: React.FC = () => {
         </Header>
 
         <Card routerLink="/products">
-          <CardOverlay />
-          <CardBackgroundLighter src={ProductsImage} alt="Products" />
-          <CardOverlay />
-          <IonCardHeader>
-            <IonCardTitle color="secondary">{t("page.home.products")}</IonCardTitle>
-          </IonCardHeader>
           <CardContent>
-            <CarbokIcon src={CProductsIcon} size="50" color="light" />
+            <IonText color="white">
+              <CardTitle>{t("page.home.products")}</CardTitle>
+            </IonText>
           </CardContent>
+          <CardImageOverlay />
+          <CardImage src={ProductsImage} alt="Products" />
         </Card>
 
         <Card routerLink="/calculator">
-          <CardBackground src={CalculatorImage} alt="Calculator" />
-          <CardOverlay />
-          <IonCardHeader>
-            <IonCardTitle color="secondary">
-              {t("page.home.calculator")}
-            </IonCardTitle>
-          </IonCardHeader>
           <CardContent>
-            <CarbokIcon src={CCalculatorIcon} size="44" color="light" />
+            <IonText color="white">
+              <CardTitle>{t("page.home.calculator")}</CardTitle>
+            </IonText>
           </CardContent>
+          <CardImageOverlay />
+          <CardImage src={CalculatorImage} alt="Products" />
         </Card>
 
         <Card routerLink="/meals">
-          <CardBackground src={MealsImage} alt="Meals" />
-          <CardOverlay />
-          <IonCardHeader>
-            <IonCardTitle color="secondary">{t("page.home.meals")}</IonCardTitle>
-          </IonCardHeader>
           <CardContent>
-            <CarbokIcon src={CMealsIcon} size="48" color="light" />
+            <IonText color="white">
+              <CardTitle>{t("page.home.meals")}</CardTitle>
+            </IonText>
           </CardContent>
+          <CardImageOverlay />
+          <CardImage src={MealsImage} alt="Products" />
         </Card>
 
         <Card routerLink="/overview">
-          <CardBackground src={StatisticsImage} alt="Overview" />
-          <CardOverlay />
-          <IonCardHeader>
-            <IonCardTitle color="secondary">{t("page.home.overview")}</IonCardTitle>
-          </IonCardHeader>
-          <CardContent>
-            <CarbokIcon src={CChartIcon} size="48" color="light" />
+        <CardContent>
+            <IonText color="white">
+              <CardTitle>{t("page.home.overview")}</CardTitle>
+            </IonText>
           </CardContent>
+          <CardImageOverlay />
+          <CardImage src={StatisticsImage} alt="Products" />
         </Card>
 
         {/* <Card>
@@ -131,29 +116,40 @@ const Header = styled.div`
 `;
 
 const Card = styled(IonCard)`
-  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
+  position: relative;
+  height: 150px;
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
   margin-top: 12px;
-  border-radius: 16px;
+  background-color: var(--ion-color-tortoise);
 `;
 
 const CardContent = styled(IonCardContent)`
+  height: 150px;
+  width: 50%;
   display: flex;
-  margin: 24px 0 6px 0;
+  align-items: center;
 `;
 
-const CardBackgroundLighter = styled.img`
+const CardImage = styled.img`
   position: absolute;
-  filter: grayscale(40%) brightness(1.6) contrast(75%) blur(1px);
+  top: 0;
+  right: 0%;
+  height: 150px;
+  filter: brightness(0.9) contrast(1.2);
 `;
 
-const CardBackground = styled.img`
-  position: absolute;
-  filter: grayscale(40%) blur(1px);
+const CardImageOverlay = styled.div`
+  // position: absolute;
+  // top: 0;
+  // left: 0%;
+  // height: 150px;
+  // width: 100%;
+  // opacity: 0.2;
+  // background-color: var(--ion-color-tertiary);
+  // z-index: 100;
 `;
 
-const CardOverlay = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, black, transparent);
+const CardTitle = styled.div`
+  font-size: 1.8em;
+  padding: 4px;
 `;
