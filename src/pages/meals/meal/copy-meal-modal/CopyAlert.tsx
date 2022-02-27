@@ -13,7 +13,8 @@ export interface CopyState {
 
 interface Props {
   meal: Meal | undefined;
-  copyState: CopyState;
+  open: boolean;
+  date: Date | null;
   onCopied: () => void;
   onClose: () => void;
   history?: any;
@@ -21,13 +22,13 @@ interface Props {
 
 export const CopyAlert: React.FC<Props> = ({
   meal,
-  copyState,
+  open,
+  date,
   onCopied,
   onClose,
 }) => {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
-  const { date, open } = copyState;
 
   const handleCopy = () => {
     if (meal && date) {
@@ -39,12 +40,11 @@ export const CopyAlert: React.FC<Props> = ({
   return (
     <IonAlert
       isOpen={open}
-      onDidDismiss={onClose}
       header={t("page.meals.copy.meal.alert.title", {
         date: moment(date).locale(i18n.language).format("MMMM D, YYYY"),
       })}
       buttons={[
-        { text: t("button.cancel"), role: "cancel" },
+        { text: t("button.cancel"), handler: onClose },
         { text: t("button.copy"), handler: handleCopy },
       ]}
     />

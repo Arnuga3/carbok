@@ -54,10 +54,10 @@ export const Meals: React.FC = () => {
   );
 
   useEffect(() => {
-    if (meals.length === 0) {
+    if (date && meals.length === 0) {
       dispatch(retrieveMeals(dateService.dateNoTime(date)));
     }
-  }, []);
+  }, [date]);
 
   useEffect(() => {
     moment.locale(
@@ -116,7 +116,9 @@ export const Meals: React.FC = () => {
             date={date}
             onClose={() => setOpenCalendar(false)}
             onDateChange={(date) => {
-              getCalendarDay(date);
+              if (date) {
+                getCalendarDay(date);
+              }
               setOpenCalendar(false);
             }}
           />

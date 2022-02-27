@@ -12,7 +12,7 @@ interface Props {
   open: boolean;
   title?: string;
   date?: Date;
-  onDateChange: (date: Date) => void;
+  onDateChange: (date: Date | null) => void;
   onClose: () => void;
 }
 
@@ -32,13 +32,11 @@ export const DatetimeModal: React.FC<Props> = ({
           <Title>{title}</Title>
         </IonText>
         <IonDatetime
-          value={date?.toISOString() || new Date().toISOString()}
+          value={date?.toISOString() || null}
           locale={i18n.language}
           presentation="date"
           onIonChange={(e: CustomEvent<DatetimeChangeEventDetail>) => {
-            const dateStr = e.detail.value;
-            const date = dateStr ? new Date(dateStr) : new Date();
-            onDateChange(date);
+            onDateChange(e.detail.value ? new Date(e.detail.value) : null);
           }}
         />
         <IonButton onClick={onClose}>{t("button.close")}</IonButton>
