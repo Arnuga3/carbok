@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import {
   IonBackButton,
@@ -30,11 +30,11 @@ import { DeleteAlert } from "./alerts/DeleteAlert";
 import { getMealKey } from "../../../resources/mealTypes";
 import { MealCarbsChart } from "../../../components/charts/MealCarbsChart";
 import { MealProductsChart } from "../../../components/charts/MealProductsChart";
-import { CopyDatetime } from "./alerts/CopyDateTime";
-import { CopyAlert, CopyState } from "./alerts/CopyAlert";
 import { dateService } from "../../../services/DateService";
 import { AddProductButton } from "./AddProductButton";
 import { calcService } from "../../../services/CalculationService";
+import { dec2 } from "../../../utils/helpers";
+import { CopyMealModal } from "./copy-meal-modal/CopyMealModal";
 
 interface MealPageProps extends RouteComponentProps<{ id: string }> {}
 
@@ -45,12 +45,7 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
   const [openActionSheet, setOpenActionSheet] = useState(false);
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
   const [openNoteAlert, setOpenNoteAlert] = useState(false);
-  const [copyAlertState, setCopyAlertState] = useState<CopyState>({
-    open: false,
-    date: null,
-  });
-
-  const copyDatetime = useRef<HTMLIonDatetimeElement>(null);
+  const [openCopyModal, setOpenCopyModal] = useState(false);
 
   useEffect(() => {
     if (meals.length === 0) {
@@ -100,9 +95,9 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
                   <IonCardContent>
                     <IonText color="dark">
                       <TotalCarbs>
-                        {`${
+                        {`${dec2(
                           registeredProductsCarbs + unregisteredProductsCarbs
-                        }`}
+                        )}`}
                       </TotalCarbs>
                     </IonText>
                     {unregisteredProductsCarbs > 0 && (
@@ -140,10 +135,10 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
                   <IonIcon
                     icon={chatbubbleOutline}
                     slot="start"
-                    color="secondary"
+                    color="light"
                     size="small"
                   />
-                  <IonText color="secondary">{meal.note}</IonText>
+                  <IonText color="light">{meal.note}</IonText>
                 </IonItem>
               </Note>
             )}
@@ -156,7 +151,7 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
         open={openActionSheet}
         onNote={() => setOpenNoteAlert(true)}
         onDelete={() => setOpenDeleteAlert(true)}
-        onCopy={() => copyDatetime.current?.open()}
+        onCopy={() => setOpenCopyModal(true)}
         onClose={() => setOpenActionSheet(false)}
       />
       <DeleteAlert
@@ -170,15 +165,13 @@ export const Meal: React.FC<MealPageProps> = ({ match, history }) => {
         open={openNoteAlert}
         onClose={() => setOpenNoteAlert(false)}
       />
-      <CopyDatetime
-        ref={copyDatetime}
-        onDateChange={(state) => setCopyAlertState(state)}
-      />
-      <CopyAlert
-        history={history}
+      <CopyMealModal
+        open={openCopyModal}
         meal={meal}
-        copyState={copyAlertState}
-        onClose={() => setCopyAlertState({ open: false, date: null })}
+        onClose={() => {
+          setOpenCopyModal(false);
+          history.push("/meals");
+        }}
       />
     </IonPage>
   );

@@ -7,6 +7,7 @@ import {
   IonTabBar,
   IonTabButton,
   IonTabs,
+  setupIonicReact,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { Meal } from "./pages/meals/meal/Meal";
@@ -49,6 +50,10 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 import { CarbokIcon } from "./components/styled/CarbokIcon";
 import { Calculator } from "./pages/calculator/Calculator";
+
+setupIonicReact({
+  mode: 'md'
+});
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation();

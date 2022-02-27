@@ -55,5 +55,5 @@ export const MealCardProductDescription: React.FC<Props> = ({
 const ProductItem = styled.p`
   font-style: italic;
   padding-left: 8px;
-  color: var(--ion-color-secondary);
+  color: var(--ion-color-dark);
 `;

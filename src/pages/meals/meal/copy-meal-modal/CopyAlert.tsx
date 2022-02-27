@@ -14,6 +14,7 @@ export interface CopyState {
 interface Props {
   meal: Meal | undefined;
   copyState: CopyState;
+  onCopied: () => void;
   onClose: () => void;
   history?: any;
 }
@@ -21,36 +22,30 @@ interface Props {
 export const CopyAlert: React.FC<Props> = ({
   meal,
   copyState,
+  onCopied,
   onClose,
-  history = null,
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const { date, open } = copyState;
 
   const handleCopy = () => {
     if (meal && date) {
       dispatch(copyMeal(date, meal));
-      if (history) {
-        history.goBack();
-      }
     }
+    onCopied();
   };
 
   return (
     <IonAlert
       isOpen={open}
       onDidDismiss={onClose}
-      header={t("page.meals.copy.meal.alert.title")}
-      subHeader={t("page.meals.copy.meal.alert.subtitle", {
-        date: moment(date).format("MMMM D, YYYY"),
+      header={t("page.meals.copy.meal.alert.title", {
+        date: moment(date).locale(i18n.language).format("MMMM D, YYYY"),
       })}
       buttons={[
         { text: t("button.cancel"), role: "cancel" },
-        {
-          text: t("button.copy"),
-          handler: handleCopy,
-        },
+        { text: t("button.copy"), handler: handleCopy },
       ]}
     />
   );

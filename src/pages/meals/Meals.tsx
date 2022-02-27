@@ -9,20 +9,17 @@ import {
   IonIcon,
   IonList,
   IonButton,
-  IonDatetime,
-  IonItem,
   IonReorderGroup,
   IonFab,
   IonFabButton,
   IonButtons,
-  IonText,
 } from "@ionic/react";
 import {
   addOutline,
+  calendarClearOutline,
   chevronBackOutline,
   chevronForwardOutline,
   copyOutline,
-  todayOutline,
 } from "ionicons/icons";
 import { AddMealActionSheet } from "./AddMealActionSheet";
 import { MealCard } from "./MealCard";
@@ -41,6 +38,7 @@ import { dateService } from "../../services/DateService";
 import { Toolbar } from "../../components/styled/Toolbar";
 import _ from "lodash";
 import { changeBorderStyle } from "../../utils/eventHelpers";
+import { DatetimeModal } from "../../components/common/DatetimeModal";
 
 export const Meals: React.FC = () => {
   const { t } = useTranslation();
@@ -48,8 +46,8 @@ export const Meals: React.FC = () => {
   const { settings } = useAppSettings();
   const { meals, date } = useMeals();
   const [openActionSheet, setOpenActionSheet] = useState(false);
+  const [openCalendar, setOpenCalendar] = useState(false);
 
-  const dateTime = useRef<HTMLIonDatetimeElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const changeBorderStyleThrottled = useRef(
     _.throttle((e) => changeBorderStyle(e, listRef.current), 500)
@@ -102,23 +100,27 @@ export const Meals: React.FC = () => {
               <IonIcon icon={chevronBackOutline} slot="icon-only" />
             </IonButton>
           </IonButtons>
+
           <IonButton
-            onClick={() => getCalendarDay(moment().toDate())}
-            color="primary"
+            fill="solid"
+            color="light"
+            shape="round"
+            size="large"
+            onClick={() => setOpenCalendar(true)}
           >
-            <IonIcon icon={todayOutline} />
-            <IonText>&nbsp;<small>Today</small></IonText>
+            <IonIcon color="primary" icon={calendarClearOutline} slot="start"/>
+            {moment(date).format("MMMM D, YYYY")}
           </IonButton>
-          <DateSelect lines="none" mode="ios">
-            <DateTime
-              ref={dateTime}
-              doneText={t("button.done")}
-              cancelText={t("button.cancel")}
-              monthShortNames={moment.monthsShort()}
-              value={moment(date).toISOString()}
-              onIonChange={(e: any) => getCalendarDay(e.detail.value)}
-            />
-          </DateSelect>
+          <DatetimeModal
+            open={openCalendar}
+            date={date}
+            onClose={() => setOpenCalendar(false)}
+            onDateChange={(date) => {
+              getCalendarDay(date);
+              setOpenCalendar(false);
+            }}
+          />
+
           <IonButton onClick={getNextDay} color="primary">
             <IonIcon icon={chevronForwardOutline} slot="icon-only" />
           </IonButton>
@@ -142,12 +144,16 @@ export const Meals: React.FC = () => {
                   <QuickAction
                     onClick={() => setOpenActionSheet(!openActionSheet)}
                   >
-                    <small><IonIcon icon={addOutline} size="24px"/> {t("page.meals.quick.action.add.meal")}</small>
+                    <small>
+                      <IonIcon icon={addOutline} size="24px" />{" "}
+                      {t("page.meals.quick.action.add.meal")}
+                    </small>
                   </QuickAction>
-                  <QuickAction
-                    onClick={() => dateTime.current?.open()}
-                  >
-                    <small><IonIcon icon={copyOutline} size="24px"/> {t("page.meals.quick.action.copy.meal")}</small>
+                  <QuickAction onClick={() => setOpenCalendar(true)}>
+                    <small>
+                      <IonIcon icon={copyOutline} size="24px" />{" "}
+                      {t("page.meals.quick.action.copy.meal")}
+                    </small>
                   </QuickAction>
                 </QuickActionsWrapper>
               )}
@@ -188,15 +194,6 @@ const List = styled(IonList)`
   padding-bottom: 65px;
   z-index: 90;
   padding-top: 0;
-`;
-
-const DateSelect = styled(IonItem)`
-  border-radius: 32px;
-  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
-`;
-
-const DateTime = styled(IonDatetime)`
-  color: var(--ion-color-medium);
 `;
 
 const QuickActionsWrapper = styled.div`

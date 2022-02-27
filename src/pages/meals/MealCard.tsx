@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import {
@@ -11,7 +11,7 @@ import {
   IonText,
 } from "@ionic/react";
 import {
-  addCircleOutline,
+  addCircle,
   chatbubbleOutline,
   copyOutline,
   pencil,
@@ -23,18 +23,8 @@ import { DeleteAlert } from "./meal/alerts/DeleteAlert";
 import { getMealKey } from "../../resources/mealTypes";
 import { calcService } from "../../services/CalculationService";
 import { NoteAlert } from "./meal/alerts/NoteAlert";
-import { CopyAlert, CopyState } from "./meal/alerts/CopyAlert";
-import { CopyDatetime } from "./meal/alerts/CopyDateTime";
 import { ProductSelectModal } from "./meal/ProductSelectModal";
-
-import BreakfastImage from "../../resources/images/breakfast.jpg";
-import LunchImage from "../../resources/images/lunch.jpg";
-import DinnerImage from "../../resources/images/dinner.jpg";
-import FeastImage from "../../resources/images/feast.jpg";
-import SnackImage from "../../resources/images/snack.jpg";
-import MunchiesImage from "../../resources/images/munchies.jpg";
-import OtherImage from "../../resources/images/other.jpg";
-import { MealTypeEnum } from "../../classes/meal/MealTypeEnum";
+import { CopyMealModal } from "./meal/copy-meal-modal/CopyMealModal";
 interface Props {
   meal: Meal;
   date: Date;
@@ -42,26 +32,22 @@ interface Props {
 
 export const MealCard: React.FC<Props> = ({ meal, date }) => {
   const { t } = useTranslation();
-  const copyDatetime = useRef<HTMLIonDatetimeElement>(null);
 
   const [openProductsModal, setOpenProductsModal] = useState(false);
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
   const [openNoteAlert, setOpenNoteAlert] = useState(false);
-  const [copyAlertState, setCopyAlertState] = useState<CopyState>({
-    open: false,
-    date: null,
-  });
+  const [openCopyModal, setOpenCopyModal] = useState(false);
 
   return (
     <Animation>
       <Card mode="md">
-          {meal.type === MealTypeEnum.BREAKFAST && <CardBackground src={BreakfastImage} alt="card background" />}
+        {/* {meal.type === MealTypeEnum.BREAKFAST && <CardBackground src={BreakfastImage} alt="card background" />}
           {meal.type === MealTypeEnum.LUNCH && <CardBackground src={LunchImage} alt="card background" />}
           {meal.type === MealTypeEnum.DINNER && <CardBackground src={DinnerImage} alt="card background" />}
           {meal.type === MealTypeEnum.FEAST && <CardBackground src={FeastImage} alt="card background" />}
           {meal.type === MealTypeEnum.SNACK && <CardBackground src={SnackImage} alt="card background" />}
           {meal.type === MealTypeEnum.MUNCHIES && <CardBackground src={MunchiesImage} alt="card background" />}
-          {meal.type === MealTypeEnum.CUSTOM && <CardBackground src={OtherImage} alt="card background" />}
+          {meal.type === MealTypeEnum.CUSTOM && <CardBackground src={OtherImage} alt="card background" />} */}
         <ReorderHandle>
           <IonReorder />
         </ReorderHandle>
@@ -74,16 +60,16 @@ export const MealCard: React.FC<Props> = ({ meal, date }) => {
             <ItemContent>
               <CardHeader>
                 <CardHeaderTitle>
-                  <IonText color="white">
+                  <IonText color="dark">
                     <h1>{t(getMealKey(meal.type))}</h1>
                   </IonText>
                 </CardHeaderTitle>
                 <CardHeaderCarbs>
-                  <IonText color="white">
+                  <IonText color="dark">
                     <h1>{calcService.getMealTotalCarbs(meal.products)}</h1>
                   </IonText>
-                  <IonText color="secondary">
-                    <p>{t("carbohydrates")}</p>
+                  <IonText color="warning">
+                    <p>{t("carbohydrates.short")}</p>
                   </IonText>
                 </CardHeaderCarbs>
               </CardHeader>
@@ -99,15 +85,15 @@ export const MealCard: React.FC<Props> = ({ meal, date }) => {
                 ))}
                 {meal.note && (
                   <Note>
-                    <NoteIcon icon={chatbubbleOutline} color="white" />
-                    <IonText color="white">
+                    <NoteIcon icon={chatbubbleOutline} color="warning" />
+                    <IonText color="warning">
                       <p>{meal.note}</p>
                     </IonText>
                   </Note>
                 )}
                 {meal.products.length > 0 && (
                   <EditIcon>
-                    <IonIcon icon={pencil} color="secondary" />
+                    <IonIcon icon={pencil} color="white" />
                   </EditIcon>
                 )}
               </DayMealCardProductList>
@@ -115,7 +101,7 @@ export const MealCard: React.FC<Props> = ({ meal, date }) => {
           </IonItem>
           <CardActions>
             <ActionButton
-              color="warning"
+              color="light"
               fill="clear"
               size="small"
               onClick={() => setOpenDeleteAlert(true)}
@@ -126,7 +112,7 @@ export const MealCard: React.FC<Props> = ({ meal, date }) => {
               color="light"
               fill="clear"
               size="small"
-              onClick={() => copyDatetime.current?.open()}
+              onClick={() => setOpenCopyModal(true)}
               disabled={meal.products.length === 0}
             >
               <IonIcon icon={copyOutline} slot="icon-only" />
@@ -145,7 +131,7 @@ export const MealCard: React.FC<Props> = ({ meal, date }) => {
               size="small"
               onClick={() => setOpenProductsModal(true)}
             >
-              <AddProductsIcon icon={addCircleOutline} slot="icon-only" />
+              <AddProductsIcon icon={addCircle} slot="icon-only" />
             </ActionButton>
           </CardActions>
         </CardContent>
@@ -159,19 +145,15 @@ export const MealCard: React.FC<Props> = ({ meal, date }) => {
           open={openNoteAlert}
           onClose={() => setOpenNoteAlert(false)}
         />
-        <CopyDatetime
-          ref={copyDatetime}
-          onDateChange={(state) => setCopyAlertState(state)}
-        />
-        <CopyAlert
-          meal={meal}
-          copyState={copyAlertState}
-          onClose={() => setCopyAlertState({ open: false, date: null })}
-        />
         <ProductSelectModal
           meal={meal}
           open={openProductsModal}
           onClose={() => setOpenProductsModal(false)}
+        />
+        <CopyMealModal
+          meal={meal}
+          open={openCopyModal}
+          onClose={() => setOpenCopyModal(false)}
         />
       </Card>
     </Animation>
@@ -196,6 +178,7 @@ const Card = styled(IonCard)`
   border-radius: 20px;
   margin-top: 16px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
+  background-color: var(--ion-color-tertiary);
 `;
 
 const CardContent = styled(IonCardContent)`
@@ -206,7 +189,7 @@ const ReorderHandle = styled.div`
   display: flex;
   justify-content: center;
   color: white;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 const DayMealCardProductList = styled.div`
@@ -268,9 +251,4 @@ const EditIcon = styled.div`
   justify-content: flex-end;
   width: 100%;
   padding-bottom: 8px;
-`;
-
-const CardBackground = styled.img`
-  position: absolute;
-  filter: grayscale(40%) brightness(0.4) blur(2px);
 `;

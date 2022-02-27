@@ -3,7 +3,7 @@ import { IonActionSheet } from "@ionic/react";
 import { chatboxOutline, close, copyOutline, trashOutline } from "ionicons/icons";
 
 import { useTranslation } from "react-i18next";
-import { CopyState } from "./alerts/CopyAlert";
+import { CopyState } from "./copy-meal-modal/CopyAlert";
 
 interface Props {
   open: any;
