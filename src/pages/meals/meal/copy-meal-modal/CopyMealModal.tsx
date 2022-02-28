@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Meal } from "../../../../classes/meal/Meal";
 import { DatetimeModal } from "../../../../components/common/DatetimeModal";
-import { CopyAlert, CopyState } from "./CopyAlert";
+import { CopyMealConfirm, CopyMealConfirmState } from "./CopyMealConfirm";
 
 interface Props {
   open: boolean;
@@ -12,10 +12,10 @@ interface Props {
 
 export const CopyMealModal: React.FC<Props> = ({ open, meal, onClose }) => {
   const { t } = useTranslation();
-  const [copyState, setCopyState] = useState<CopyState>({ date: null, open: false });
+  const [confirmState, setConfirmState] = useState<CopyMealConfirmState>({ date: null, open: false });
 
   const handleCloseModal = () => {
-    setCopyState({ date: null, open: false });
+    setConfirmState({ date: null, open: false });
     onClose();
   };
 
@@ -24,15 +24,15 @@ export const CopyMealModal: React.FC<Props> = ({ open, meal, onClose }) => {
       <DatetimeModal
         open={open}
         title={t("page.meals.copy.meal.copy.modal.title")}
-        onDateChange={(date) => setCopyState({ date, open: true })}
+        onDateChange={(date) => setConfirmState({ date, open: true })}
         onClose={handleCloseModal}
       />
-      <CopyAlert
-        open={copyState.open}
-        date={copyState.date}
+      <CopyMealConfirm
+        open={confirmState.open}
+        date={confirmState.date}
         meal={meal}
         onCopied={handleCloseModal}
-        onClose={() => setCopyState({ date: null, open: false })}
+        onClose={() => setConfirmState({ date: null, open: false })}
       />
     </>
   );

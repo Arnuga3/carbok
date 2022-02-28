@@ -3,13 +3,13 @@ import { IonActionSheet } from "@ionic/react";
 import { chatboxOutline, close, copyOutline, trashOutline } from "ionicons/icons";
 
 import { useTranslation } from "react-i18next";
-import { CopyState } from "./copy-meal-modal/CopyAlert";
+import { CopyMealConfirmState } from "./copy-meal-modal/CopyMealConfirm";
 
 interface Props {
   open: any;
   onClose: any;
   onNote: any;
-  onCopy: (state: CopyState) => void;
+  onCopy: (state: CopyMealConfirmState) => void;
   onDelete: any;
 }
 

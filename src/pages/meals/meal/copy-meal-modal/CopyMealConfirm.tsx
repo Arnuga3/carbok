@@ -6,7 +6,7 @@ import { IonAlert } from "@ionic/react";
 import { copyMeal } from "../../../../redux/actions/meals/actions";
 import { Meal } from "../../../../classes/meal/Meal";
 
-export interface CopyState {
+export interface CopyMealConfirmState {
   open: boolean;
   date: Date | null;
 }
@@ -20,7 +20,7 @@ interface Props {
   history?: any;
 }
 
-export const CopyAlert: React.FC<Props> = ({
+export const CopyMealConfirm: React.FC<Props> = ({
   meal,
   open,
   date,

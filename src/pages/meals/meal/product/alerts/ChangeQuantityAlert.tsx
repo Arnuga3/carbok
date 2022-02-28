@@ -53,6 +53,10 @@ export const ChangeQuantityAlert: React.FC<Props> = ({
   return (
     <IonAlert
       isOpen={open}
+      onDidPresent={() => {
+        const input: any = document.querySelector('ion-alert input');
+        input.select();
+      }}
       onDidDismiss={onClose}
       header={`${t("quantity")} ${
         product && product.carbsData.perPortion?.description

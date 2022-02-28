@@ -56,7 +56,7 @@ setupIonicReact({
 });
 
 const App: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const dispatch = useDispatch();
 
   useEffect(() => {

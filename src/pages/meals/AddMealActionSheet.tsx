@@ -30,7 +30,6 @@ export const AddMealActionSheet: React.FC<Props> = ({
           text: t("button.cancel"),
           icon: close,
           role: "cancel",
-          handler: onClose,
         },
       ]}
     ></IonActionSheet>

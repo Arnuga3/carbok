@@ -8,6 +8,7 @@ import { MealProduct } from "../../../../../classes/meal/MealProduct";
 import { updateMeal } from "../../../../../redux/actions/meals/actions";
 import { getUnitShortKey } from "../../../../../resources/productUnits";
 import { calcService } from "../../../../../services/CalculationService";
+import { focusElement } from "../../../../../utils/eventHelpers";
 
 interface Props {
   meal: Meal;
@@ -56,6 +57,10 @@ export const ChangePortionWeightAlert: React.FC<Props> = ({
   return (
     <IonAlert
       isOpen={open}
+      onDidPresent={() => {
+        const input: any = document.querySelector('ion-alert input');
+        input.select();
+      }}
       onDidDismiss={onClose}
       header={`${t("portion.size")} (${
         product ? t(getUnitShortKey(product.units)) : ""
@@ -65,6 +70,7 @@ export const ChangePortionWeightAlert: React.FC<Props> = ({
           name: "portion",
           value: product?.mealProductCarbs.per100.portion,
           type: "number",
+
         },
       ]}
       buttons={[
