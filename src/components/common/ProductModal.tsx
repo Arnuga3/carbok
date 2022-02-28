@@ -117,10 +117,11 @@ export const ProductModal: React.FC<Props> = ({ product, open, onClose }) => {
 };
 
 const List = styled(IonList)`
-  min-height: 100%;
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
+  height: calc(100% - 230px);
+  margin-top: -40px;
 `;
 
 const Label = styled(IonText)`
