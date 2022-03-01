@@ -100,15 +100,17 @@ export const ProductModal: React.FC<Props> = ({ product, open, onClose }) => {
                 </IonGrid>
               </IonCardContent>
             </Card>
-            <Button
-              color="medium"
-              fill="clear"
-              expand="block"
-              shape="round"
-              onClick={onClose}
-            >
-              {t("button.close")}
-            </Button>
+            <div>
+              <Button
+                color="medium"
+                fill="clear"
+                expand="block"
+                shape="round"
+                onClick={onClose}
+              >
+                {t("button.close")}
+              </Button>
+            </div>
           </List>
         </RoundedContent>
       </IonModal>
@@ -117,6 +119,9 @@ export const ProductModal: React.FC<Props> = ({ product, open, onClose }) => {
 };
 
 const List = styled(IonList)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);

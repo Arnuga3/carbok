@@ -1,6 +1,6 @@
 {
   "name": "carbok",
-  "version": "2.2.6",
+  "version": "2.3.0",
   "private": true,
   "dependencies": {
     "@capacitor/android": "^3.1.2",
@@ -12,7 +12,6 @@
     "@capacitor/keyboard": "^1.2.2",
     "@capacitor/share": "^1.1.1",
     "@capacitor/status-bar": "^1.0.8",
-    "@capacitor/storage": "^1.0.3",
     "@ionic/pwa-elements": "^3.0.2",
     "@ionic/react": "^6.0.9",
     "@ionic/react-hooks": "0.0.8",

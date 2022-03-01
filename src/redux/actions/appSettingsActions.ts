@@ -1,7 +1,6 @@
 import { i18n } from "i18next";
 import { Dispatch } from "redux";
 import { IAppSettings } from "../../classes/appSettings/IAppSettings";
-import { settingsService } from "../../services/AppSettingsStorageService";
 import { dataService } from "../../services/DataService";
 
 export enum AppSettingsActions {
@@ -37,7 +36,6 @@ export const initAppSettings = (i18n: i18n) => {
 export const changeAppSettings = (settings: IAppSettings) => {
   return async (dispatch: Dispatch) => {
     try {
-      // await settingsService.set(settings);
       await changeAppSettingsInDB(settings);
       dispatch(setAppSettings(settings));
     } catch (e) {

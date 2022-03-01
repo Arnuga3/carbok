@@ -187,6 +187,9 @@ export const CalculatorModal: React.FC<Props> = ({
 };
 
 const List = styled(IonList)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
